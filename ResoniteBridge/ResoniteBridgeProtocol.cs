@@ -15,7 +15,6 @@ namespace ResoniteDataWrapper
         SpecialKeyword = 3,
     }
 
-
     public class ResoniteBridgeValue
     {
         public string valueStr = null;
