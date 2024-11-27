@@ -156,14 +156,12 @@ namespace ResoniteBridge
                     return GetField(objTarget, message.name);
                 case ResoniteBridgeMessageType.SetField:
                     SetField(objTarget, message.name, objInputs[0]);
-                    return null;
+                    return GetField(objTarget, message.name);
                 case ResoniteBridgeMessageType.GetProperty:
                     return GetProperty(objTarget, message.name);
                 case ResoniteBridgeMessageType.SetProperty:
                     SetProperty(objTarget, message.name, objInputs[0]);
-                    return null;
-                case ResoniteBridgeMessageType.GetType:
-                    return (Type)objTarget;
+                    return GetProperty(objTarget, message.name);
                 case ResoniteBridgeMessageType.GetEnum:
                     return GetEnum((Type)objTarget, message.name);
                 default:

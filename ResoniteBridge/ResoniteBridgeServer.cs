@@ -27,6 +27,9 @@ namespace ResoniteBridge
             // network monitoring thread
             monitoringThread = new Thread(() =>
             {
+                bool waitingForRequest = true;
+                ResoniteBridgeValue response = null;
+
                 while (running)
                 {
                     using (NamedPipeServerStream pipeServer =
@@ -49,31 +52,37 @@ namespace ResoniteBridge
                             // string that the client anticipates.
                             while (running)
                             {
-                                string message = ss.ReadString();
-                                try
+                                if (waitingForRequest)
                                 {
-                                    ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
-                                    inputMessages.Enqueue(parsedMessage);
-                                    ResoniteBridgeValue response;
-                                    while (!outputMessages.TryDequeue(out response)) {
-                                        Thread.Sleep(1);
-                                    }
-                                    if (response == null)
+                                    string message = ss.ReadString();
+                                    try
                                     {
-                                        // empty string is null
-                                        ss.WriteString("");
+                                        ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
+                                        inputMessages.Enqueue(parsedMessage);
+                                        while (!outputMessages.TryDequeue(out response) && running)
+                                        {
+                                            Thread.Sleep(1);
+                                        }
+                                        waitingForRequest = false;
                                     }
-                                    else
+                                    catch (JsonSerializationException e)
                                     {
-                                        ss.WriteString(JsonConvert.SerializeObject(response));
+                                        Console.WriteLine("Failed to serialize message");
+                                        Console.WriteLine("ERROR: {0}", e.Message);
+                                        Console.WriteLine("Message:" + message);
                                     }
                                 }
-                                catch (JsonSerializationException e)
+                                
+                                if (response == null)
                                 {
-                                    Console.WriteLine("Failed to serialize message");
-                                    Console.WriteLine("ERROR: {0}", e.Message);
-                                    Console.WriteLine("Message:" + message);
+                                    // empty string is null
+                                    ss.WriteString("");
                                 }
+                                else
+                                {
+                                    ss.WriteString(JsonConvert.SerializeObject(response));
+                                }
+                                waitingForRequest = true;
                             }
                         }
                         // Catch the IOException that is raised if the pipe is broken
@@ -94,46 +103,6 @@ namespace ResoniteBridge
         {
             running = false;
             monitoringThread.Join();
-        }
-    }
-
-    public class StreamString
-    {
-        private Stream ioStream;
-        private UnicodeEncoding streamEncoding;
-
-        public StreamString(Stream ioStream)
-        {
-            this.ioStream = ioStream;
-            streamEncoding = new UnicodeEncoding();
-        }
-
-        public string ReadString()
-        {
-            int len = 0;
-
-            len = ioStream.ReadByte() * 256;
-            len += ioStream.ReadByte();
-            byte[] inBuffer = new byte[len];
-            ioStream.Read(inBuffer, 0, len);
-
-            return streamEncoding.GetString(inBuffer);
-        }
-
-        public int WriteString(string outString)
-        {
-            byte[] outBuffer = streamEncoding.GetBytes(outString);
-            int len = outBuffer.Length;
-            if (len > UInt16.MaxValue)
-            {
-                len = (int)UInt16.MaxValue;
-            }
-            ioStream.WriteByte((byte)(len / 256));
-            ioStream.WriteByte((byte)(len & 255));
-            ioStream.Write(outBuffer, 0, len);
-            ioStream.Flush();
-
-            return outBuffer.Length + 2;
         }
     }
 }
