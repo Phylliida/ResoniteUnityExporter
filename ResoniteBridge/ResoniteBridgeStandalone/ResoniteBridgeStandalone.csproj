@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ResoniteBridge</RootNamespace>
+    <RootNamespace>ResoniteBridgeStandalone</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	  <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
@@ -18,6 +18,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebugType>none</DebugType>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedCode\ReflectionUtils.cs" Link="ReflectionUtils.cs" />
+    <Compile Include="..\SharedCode\ResoniteBridgeClient.cs" Link="ResoniteBridgeClient.cs" />
+    <Compile Include="..\SharedCode\ResoniteBridgeClientWrappers.cs" Link="ResoniteBridgeClientWrappers.cs" />
+    <Compile Include="..\SharedCode\ResoniteBridgeProtocol.cs" Link="ResoniteBridgeProtocol.cs" />
+    <Compile Include="..\SharedCode\ResoniteBridgeServer.cs" Link="ResoniteBridgeServer.cs" />
+    <Compile Include="..\SharedCode\ResoniteBridgeServerEvaluation.cs" Link="ResoniteBridgeServerEvaluation.cs" />
+    <Compile Include="..\SharedCode\UnsupportedTypeLookup.cs" Link="UnsupportedTypeLookup.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
