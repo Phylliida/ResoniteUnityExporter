@@ -3,6 +3,7 @@ using ResoniteDataWrapper;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Pipes;
 using System.Linq;
 using System.Text;
@@ -50,32 +51,46 @@ namespace ResoniteBridgeClient
                             // string that the client anticipates.
                             while (running)
                             {
-                                try
+                                if (!waitingForResponse)
                                 {
-                                    if (!waitingForResponse)
+                                    ResoniteBridgeMessage message;
+                                    while (!inputMessages.TryDequeue(out message) && running)
                                     {
-                                        ResoniteBridgeMessage message;
-                                        while (!inputMessages.TryDequeue(out message) && running)
-                                        {
-                                            Thread.Sleep(1);
-                                        }
+                                        Thread.Sleep(1);
+                                    }
+                                    try
+                                    {
                                         ss.WriteString(JsonConvert.SerializeObject(message));
                                         waitingForResponse = true;
                                     }
+                                    catch (JsonSerializationException e)
+                                    {
+                                        Console.WriteLine("Failed to serialize message, ignoring");
+                                        Console.WriteLine("ERROR: {0}", e.Message);
+                                        Console.WriteLine("Message:" + message);
+                                    }
+                                }
+                                if (waitingForResponse)
+                                {
                                     string result = ss.ReadString();
                                     ResoniteBridgeValue parsedResult = null;
                                     if (result != "")
                                     {
-                                        parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeValue>(result);
+                                        try
+                                        {
+                                            // If failed to deserialize, send null but warn in console
+                                            // (todo: maybe this throws error?)
+                                            parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeValue>(result);
+                                        }
+                                        catch (JsonSerializationException e)
+                                        {
+                                            Console.WriteLine("Failed to deserialize result, sending null instead");
+                                            Console.WriteLine("ERROR: {0}", e.Message);
+                                            Console.WriteLine("Message:" + result);
+                                        }
                                     }
                                     outputMessages.Enqueue(parsedResult);
                                     waitingForResponse = false;
-                                }
-                                catch (JsonSerializationException e)
-                                {
-                                    Console.WriteLine("Failed to serialize message");
-                                    Console.WriteLine("ERROR: {0}", e.Message);
-                                    Console.WriteLine("Message:" + message);
                                 }
                             }
                         }
@@ -83,7 +98,7 @@ namespace ResoniteBridgeClient
                         // or disconnected.
                         catch (IOException e)
                         {
-                            Console.WriteLine("Disconnected from unity with error");
+                            Console.WriteLine("Disconnected from Resonite with error");
                             Console.WriteLine("ERROR: {0}", e.Message);
                         }
                     }
@@ -99,5 +114,4 @@ namespace ResoniteBridgeClient
             monitoringThread.Join();
         }
     }
-}
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ResoniteBridge
 {
@@ -67,22 +68,35 @@ namespace ResoniteBridge
                                     }
                                     catch (JsonSerializationException e)
                                     {
-                                        Console.WriteLine("Failed to serialize message");
+                                        Console.WriteLine("Failed to serialize message, ignoring");
                                         Console.WriteLine("ERROR: {0}", e.Message);
                                         Console.WriteLine("Message:" + message);
                                     }
                                 }
                                 
-                                if (response == null)
+                                if (!waitingForRequest)
                                 {
-                                    // empty string is null
-                                    ss.WriteString("");
+                                    if (response == null)
+                                    {
+                                        // empty string is null
+                                        ss.WriteString("");
+                                    }
+                                    else
+                                    {
+                                        try
+                                        {
+                                            ss.WriteString(JsonConvert.SerializeObject(response));
+                                        }
+                                        catch (JsonSerializationException e)
+                                        {
+                                            Console.WriteLine("Failed to serialize response, sending null (empty string) instead");
+                                            Console.WriteLine("ERROR: {0}", e.Message);
+                                            Console.WriteLine("Message:" + response);
+                                            ss.WriteString("");
+                                        }
+                                    }
+                                    waitingForRequest = true;
                                 }
-                                else
-                                {
-                                    ss.WriteString(JsonConvert.SerializeObject(response));
-                                }
-                                waitingForRequest = true;
                             }
                         }
                         // Catch the IOException that is raised if the pipe is broken
