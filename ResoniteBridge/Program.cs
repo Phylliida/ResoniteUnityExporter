@@ -244,7 +244,7 @@ namespace ResoniteBridge
                                 {
                                     while(bridgeServer.inputMessages.TryPeek(out ResoniteBridgeMessage message))
                                     {
-                                        bridgeServer.outputMessages.Enqueue(message.Evaluate(this));
+                                        bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(this, message));
                                     }
                                 };
                                 CallMethod(focusedWorld, "RunSynchronously",

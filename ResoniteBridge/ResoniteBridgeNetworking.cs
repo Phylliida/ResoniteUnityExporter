@@ -21,7 +21,7 @@ namespace ResoniteBridge
         public volatile bool running = true;
 
         public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
-        public ConcurrentQueue<ResoniteBridgeMessage.ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeMessage.ResoniteBridgeValue>();
+        public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
         public ResoniteBridgeServer ()
         {
             // network monitoring thread
@@ -54,7 +54,7 @@ namespace ResoniteBridge
                                 {
                                     ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
                                     inputMessages.Enqueue(parsedMessage);
-                                    ResoniteBridgeMessage.ResoniteBridgeValue response;
+                                    ResoniteBridgeValue response;
                                     while (!outputMessages.TryDequeue(out response)) {
                                         Thread.Sleep(1);
                                     }
