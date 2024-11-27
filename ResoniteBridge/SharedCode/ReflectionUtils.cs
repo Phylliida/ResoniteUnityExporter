@@ -68,7 +68,7 @@ namespace ResoniteBridge
             return true;
         }
 
-        public static object? CallMethod(object obj, string methodName, params object[] parameters)
+        public static object CallMethod(object obj, string methodName, params object[] parameters)
         {
             MethodInfo method = null;
             try
@@ -120,13 +120,13 @@ namespace ResoniteBridge
             throw new ArgumentException("Did not find method " + methodName + " in type " + obj.GetType().Name + " with " + parameters.Length + " parameters");
         }
 
-        public static object? CallStaticMethod(Type type, string methodName, params object[] parameters)
+        public static object CallStaticMethod(Type type, string methodName, params object[] parameters)
         {
             return type.GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
                 .Invoke(null, parameters);
         }
 
-        public static object? CallStaticMethod(Assembly assembly, string typeName, string methodName, params object[] parameters)
+        public static object CallStaticMethod(Assembly assembly, string typeName, string methodName, params object[] parameters)
         {
             return assembly.GetType(typeName).GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
                 .Invoke(null, parameters);

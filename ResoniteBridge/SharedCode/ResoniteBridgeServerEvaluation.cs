@@ -11,9 +11,18 @@ using static ResoniteBridge.ReflectionUtils;
 
 namespace ResoniteBridge
 {
+
+    public class ResoniteBridgeServerData
+    {
+        public object engine;
+        public object focusedWorld;
+        public Dictionary<string, Assembly> assemblies;
+        public UnsupportedTypeLookup uuidLookup = new UnsupportedTypeLookup(10);
+    }
+
     public class ResoniteBridgeServerEvaluation
     {
-        public static object ParseSpecialKeyword(FrooxEngineRunner runner, string specialKeyword)
+        public static object ParseSpecialKeyword(ResoniteBridgeServerData runner, string specialKeyword)
         {
             switch (specialKeyword)
             {
@@ -54,7 +63,7 @@ namespace ResoniteBridge
             }
         }
 
-        public static object ParseInput(FrooxEngineRunner runner, ResoniteBridgeValue value)
+        public static object ParseInput(ResoniteBridgeServerData runner, ResoniteBridgeValue value)
         {
             // support null inputs
             if (value == null)
@@ -90,7 +99,7 @@ namespace ResoniteBridge
             throw new ArgumentException("Unknown ResoniteBridgeValueType " + value.valueType + " for type " + type + " from assembly " + value.assemblyName);
         }
 
-        public static object[] ParseInputs(FrooxEngineRunner runner, ResoniteBridgeValue[] inputs)
+        public static object[] ParseInputs(ResoniteBridgeServerData runner, ResoniteBridgeValue[] inputs)
         {
             object[] results = new object[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
@@ -100,7 +109,7 @@ namespace ResoniteBridge
             return results;
         }
 
-        public static ResoniteBridgeValue EvaluateMessage(FrooxEngineRunner runner, ResoniteBridgeMessage message)
+        public static ResoniteBridgeValue EvaluateMessage(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
         {
             object result = EvaluateHelper(runner, message);
             if (result == null)
@@ -137,7 +146,7 @@ namespace ResoniteBridge
             return encodedResult;
         }
 
-        public static object EvaluateHelper(FrooxEngineRunner runner, ResoniteBridgeMessage message)
+        public static object EvaluateHelper(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
         {
             object[] objInputs = ParseInputs(runner, message.inputs);
             object objTarget = null;

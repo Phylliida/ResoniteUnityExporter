@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ResoniteBridgeClient
 {
@@ -44,7 +43,7 @@ namespace ResoniteBridgeClient
             return encodedInputs;
         }
 
-        public ResoniteBridgeValue? SendBridgeMessage(ResoniteBridgeMessage message)
+        public ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
         {
             client.inputMessages.Enqueue(message);
             ResoniteBridgeValue output;
@@ -55,7 +54,7 @@ namespace ResoniteBridgeClient
             return output;
         }
 
-        public ResoniteBridgeValue? CallMethod(ResoniteBridgeValue target, string methodName, params object[] args)
+        public ResoniteBridgeValue CallMethod(ResoniteBridgeValue target, string methodName, params object[] args)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -67,7 +66,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue? CallStaticMethod(string assemblyName, string typeName, string methodName, params object[] args)
+        public ResoniteBridgeValue CallStaticMethod(string assemblyName, string typeName, string methodName, params object[] args)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -84,7 +83,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue? GetField(ResoniteBridgeValue target, string fieldName)
+        public ResoniteBridgeValue GetField(ResoniteBridgeValue target, string fieldName)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -97,7 +96,7 @@ namespace ResoniteBridgeClient
         }
 
 
-        public ResoniteBridgeValue? GetProperty(ResoniteBridgeValue target, string fieldName)
+        public ResoniteBridgeValue GetProperty(ResoniteBridgeValue target, string fieldName)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {

@@ -128,20 +128,20 @@ namespace ResoniteBridge
         public Assembly FrooxEngineAsm;
         public Assembly SkyFrostBaseModelsAsm;
         public object mainRootSlot;
-        public Dictionary<string, Assembly> assemblies;
-        public UnsupportedTypeLookup uuidLookup = new UnsupportedTypeLookup(10);
 
         // heavily modified from code given to me by whatsavalue3 (who gave permission to license this as MIT)
         public FrooxEngineRunner()
         {
+            ResoniteBridgeServerData serverData = new ResoniteBridgeServerData();
+
             string resoniteDir = Path.GetDirectoryName(
-                FrooxEngineRunner.GetResoniteExePath(out assemblies)
+                FrooxEngineRunner.GetResoniteExePath(out serverData.assemblies)
             );
             string curDir = System.IO.Directory.GetCurrentDirectory();
             string libraryPath = Path.Combine(resoniteDir, "Resonite_Data", "Managed");
 
-            assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
-            assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
+            serverData.assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
+            serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
 
             object launchOptions = CallConstructor(FrooxEngineAsm, "FrooxEngine.LaunchOptions");
 
@@ -239,12 +239,13 @@ namespace ResoniteBridge
 
                             if (focusedWorld != null)
                             {
-                                this.focusedWorld = focusedWorld;
+                                serverData.focusedWorld = focusedWorld;
+                                serverData.engine = this.engine;
                                 Action runStuff = delegate
                                 {
                                     while(bridgeServer.inputMessages.TryPeek(out ResoniteBridgeMessage message))
                                     {
-                                        bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(this, message));
+                                        bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
                                     }
                                 };
                                 CallMethod(focusedWorld, "RunSynchronously",
