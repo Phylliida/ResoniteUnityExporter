@@ -1,4 +1,5 @@
-﻿using ResoniteDataWrapper;
+﻿using Newtonsoft.Json;
+using ResoniteDataWrapper;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace ResoniteBridge
 
         public volatile bool running = true;
 
-        public ConcurrentQueue<ResoniteBridgeMessage> messages = new ConcurrentQueue<ResoniteBridgeMessage>();
+        public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
+        public ConcurrentQueue<ResoniteBridgeMessage.ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeMessage.ResoniteBridgeValue>();
         public ResoniteBridgeServer ()
         {
             // network monitoring thread
@@ -45,11 +47,33 @@ namespace ResoniteBridge
 
                             // Verify our identity to the connected client using a
                             // string that the client anticipates.
-                            ss.WriteString("Hello!");
-                            while (true)
+                            while (running)
                             {
-                                string filename = ss.ReadString();
-                                Console.WriteLine("Recieved string: '" + ss.ReadString() + "'");
+                                string message = ss.ReadString();
+                                try
+                                {
+                                    ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
+                                    inputMessages.Enqueue(parsedMessage);
+                                    ResoniteBridgeMessage.ResoniteBridgeValue response;
+                                    while (!outputMessages.TryDequeue(out response)) {
+                                        Thread.Sleep(1);
+                                    }
+                                    if (response == null)
+                                    {
+                                        // empty string is null
+                                        ss.WriteString("");
+                                    }
+                                    else
+                                    {
+                                        ss.WriteString(JsonConvert.SerializeObject(response));
+                                    }
+                                }
+                                catch (JsonSerializationException e)
+                                {
+                                    Console.WriteLine("Failed to serialize message");
+                                    Console.WriteLine("ERROR: {0}", e.Message);
+                                    Console.WriteLine("Message:" + message);
+                                }
                             }
                         }
                         // Catch the IOException that is raised if the pipe is broken

@@ -14,6 +14,7 @@ using System.ComponentModel;
 using static ResoniteBridge.ReflectionUtils;
 using System.Text.Json;
 using Newtonsoft.Json;
+using ResoniteDataWrapper;
 
 namespace ResoniteBridge
 {
@@ -215,44 +216,52 @@ namespace ResoniteBridge
             ConcurrentQueue<string> messages = new ConcurrentQueue<string>();
             new Thread(() =>
             {
-                try
+                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer())
                 {
-                    Console.WriteLine("Starting");
-                    while (!opener.IsCompleted)
+
+                    try
                     {
-                        CallMethod(engine, "RunUpdateLoop");
-                        CallMethod(systemInfo, "FrameFinished");
-                        Thread.Sleep(16);
-                    }
-                    Console.WriteLine("Started");
-                    var cancellation = new CancellationTokenSource();
-                    while (true)
-                    {
-                        object focusedWorld =
-                            GetProperty(
-                                GetProperty(engine, "WorldManager"),
-                                "FocusedWorld");
-                            
-                        if (focusedWorld != null)
+                        Console.WriteLine("Starting");
+                        while (!opener.IsCompleted)
                         {
-                            this.focusedWorld = focusedWorld;
-                            Action runStuff = delegate {
-                                // code here for modifying world
-                            };
-                            CallMethod(focusedWorld, "RunSynchronously",
-                                runStuff,
-                                false,
-                                null,
-                                false);
+                            CallMethod(engine, "RunUpdateLoop");
+                            CallMethod(systemInfo, "FrameFinished");
+                            Thread.Sleep(16);
                         }
-                        CallMethod(engine, "RunUpdateLoop");
-                        CallMethod(systemInfo, "FrameFinished");
-                        Thread.Sleep(16);
+                        Console.WriteLine("Started");
+                        var cancellation = new CancellationTokenSource();
+                        while (true)
+                        {
+                            object focusedWorld =
+                                GetProperty(
+                                    GetProperty(engine, "WorldManager"),
+                                    "FocusedWorld");
+
+                            if (focusedWorld != null)
+                            {
+                                this.focusedWorld = focusedWorld;
+                                Action runStuff = delegate
+                                {
+                                    while(bridgeServer.inputMessages.TryPeek(out ResoniteBridgeMessage message))
+                                    {
+                                        bridgeServer.outputMessages.Enqueue(message.Evaluate(this));
+                                    }
+                                };
+                                CallMethod(focusedWorld, "RunSynchronously",
+                                    runStuff,
+                                    false,
+                                    null,
+                                    false);
+                            }
+                            CallMethod(engine, "RunUpdateLoop");
+                            CallMethod(systemInfo, "FrameFinished");
+                            Thread.Sleep(16);
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
+                    }
                 }
             }).Start();
         }
