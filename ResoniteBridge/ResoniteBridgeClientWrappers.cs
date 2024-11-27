@@ -15,7 +15,7 @@ namespace ResoniteBridgeClient
     {
         public static ResoniteBridgeClient client;
 
-        public ResoniteBridgeValue EncodeInput(object input)
+        ResoniteBridgeValue EncodeInput(object input)
         {
             if (input.GetType() == typeof(ResoniteBridgeValue)) {
                 // already a value, just return it
@@ -34,7 +34,7 @@ namespace ResoniteBridgeClient
             }
         }
 
-        public ResoniteBridgeValue[] EncodeInputs(object[] inputs)
+        ResoniteBridgeValue[] EncodeInputs(object[] inputs)
         {
             ResoniteBridgeValue[] encodedInputs = new ResoniteBridgeValue[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)

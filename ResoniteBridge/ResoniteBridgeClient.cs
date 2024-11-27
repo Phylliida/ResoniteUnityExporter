@@ -24,10 +24,12 @@ namespace ResoniteBridgeClient
         public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
         public ResoniteBridgeClient()
         {
+            // this is a bit cursed but it lets us avoid having to pass client into all calls so I think it's ok
+            ResoniteBridgeClientWrappers.client = this;
+
             // network monitoring thread
             monitoringThread = new Thread(() =>
             {
-
                 bool waitingForResponse = false;
 
                 while (running)
