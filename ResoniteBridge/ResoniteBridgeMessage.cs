@@ -25,11 +25,11 @@ namespace ResoniteDataWrapper
 
         public string assembly = null;
 
-        public string target = null;
+        public ResoniteBridgeValue target = null;
 
         public string name = null;
 
-        public string[] inputs = null;
+        public ResoniteBridgeValue[] inputs = null;
 
 
         public static object ParseSpecialKeyword(FrooxEngineRunner runner, string specialKeyword)
@@ -87,14 +87,13 @@ namespace ResoniteDataWrapper
             }
         }
 
-        public static object ParseInput(FrooxEngineRunner runner, string input)
+        public static object ParseInput(FrooxEngineRunner runner, ResoniteBridgeValue value)
         {
-            // support null inputs (empty string is also null)
-            if (input == null || input.Length == 0)
+            // support null inputs
+            if (value == null)
             {
                 return null;
             }
-            ResoniteBridgeValue value = Newtonsoft.Json.JsonConvert.DeserializeObject<ResoniteBridgeValue>(input);
             Type type = GetTypeFromAssembly(runner.assemblies, value.assemblyName, value.typeName);
             switch (value.valueType)
             {
@@ -124,7 +123,7 @@ namespace ResoniteDataWrapper
             throw new ArgumentException("Unknown ResoniteBridgeValueType " + value.valueType + " for type " + type + " from assembly " + value.assemblyName);
         }
 
-        public object[] ParseInputs(FrooxEngineRunner runner, string[] inputs)
+        public static object[] ParseInputs(FrooxEngineRunner runner, ResoniteBridgeValue[] inputs)
         {
             object[] results = new object[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
