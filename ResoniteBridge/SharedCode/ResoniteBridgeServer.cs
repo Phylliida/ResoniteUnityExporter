@@ -18,7 +18,7 @@ namespace ResoniteBridge
 
         Thread monitoringThread;
 
-        public volatile bool running = true;
+        public CancellationTokenSource stopToken = new CancellationTokenSource();
 
         public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
         public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
@@ -30,7 +30,7 @@ namespace ResoniteBridge
                 bool waitingForRequest = true;
                 ResoniteBridgeValue response = null;
 
-                while (running)
+                while (!stopToken.IsCancellationRequested)
                 {
                     using (NamedPipeServerStream pipeServer =
                         new NamedPipeServerStream(NAMED_SOCKET_KEY, PipeDirection.InOut))
@@ -50,7 +50,7 @@ namespace ResoniteBridge
 
                             // Verify our identity to the connected client using a
                             // string that the client anticipates.
-                            while (running)
+                            while (!stopToken.IsCancellationRequested)
                             {
                                 if (waitingForRequest)
                                 {
@@ -59,7 +59,7 @@ namespace ResoniteBridge
                                     {
                                         ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
                                         inputMessages.Enqueue(parsedMessage);
-                                        while (!outputMessages.TryDequeue(out response) && running)
+                                        while (!outputMessages.TryDequeue(out response) && !stopToken.IsCancellationRequested)
                                         {
                                             Thread.Sleep(1);
                                         }
@@ -114,8 +114,11 @@ namespace ResoniteBridge
 
         public void Dispose()
         {
-            running = false;
-            monitoringThread.Join();
+            if (!stopToken.IsCancellationRequested)
+            {
+                stopToken.Cancel();
+                monitoringThread.Join();
+            }
         }
     }
 }

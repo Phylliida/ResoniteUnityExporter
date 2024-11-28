@@ -3,6 +3,7 @@ using ResoniteDataWrapper;
 using ResoniteModLoader;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Reflection;
 using System.Threading;
 
@@ -32,11 +33,62 @@ namespace ResoniteBridgeMod
 
         public ResoniteBridge.ResoniteBridgeServer listener;
 
+        static Dictionary<string, Assembly> loadedAssemblies;
+
+        // from https://stackoverflow.com/a/10253634
+        public static IEnumerable<Assembly> GetAssemblies()
+        {
+            var list = new List<string>();
+            var stack = new Stack<Assembly>();
+
+            stack.Push(typeof(FrooxEngine.Engine).Assembly);
+
+            do
+            {
+                var asm = stack.Pop();
+
+                yield return asm;
+
+                foreach (var reference in asm.GetReferencedAssemblies())
+                    if (!list.Contains(reference.FullName))
+                    {
+                        stack.Push(Assembly.Load(reference));
+                        list.Add(reference.FullName);
+                    }
+
+            }
+            while (stack.Count > 0);
+
+        }
+
         public static Dictionary<string, Assembly> LoadAssemblies()
         {
-            Msg("Hii! I'm in directory " + System.IO.Directory.GetCurrentDirectory());
-            return new Dictionary<string, Assembly>();
+            loadedAssemblies = new Dictionary<string, Assembly>();
+
+            foreach (Assembly assembly in GetAssemblies())
+            {
+                if (!loadedAssemblies.ContainsKey(assembly.FullName))
+                {
+                    loadedAssemblies.Add(assembly.FullName, assembly);
+                }
+                Msg("Got assembly" + assembly.FullName);
+            }
+
+            // Any assemblies loaded later
+            AppDomain.CurrentDomain.AssemblyLoad += (object sender, AssemblyLoadEventArgs args) => {
+                Msg("Got assembly" + args.LoadedAssembly.FullName);
+                if (!loadedAssemblies.ContainsKey(args.LoadedAssembly.FullName))
+                {
+                    loadedAssemblies.Add(args.LoadedAssembly.FullName, args.LoadedAssembly);
+                }
+            };
+            // This will be directory holding resonite
+            // For example
+            // C:\Program Files (x86)\Steam\steamapps\common\Resonite
+            return loadedAssemblies;
         }
+
+        static CancellationTokenSource cancellation = new CancellationTokenSource();
 
         public static void SetupMod()
         {
@@ -58,8 +110,7 @@ namespace ResoniteBridgeMod
                             Thread.Sleep(16);
                         }
                         Msg("Bridge server listening");
-                        var cancellation = new CancellationTokenSource();
-                        while (true)
+                        while (!cancellation.IsCancellationRequested)
                         {
                             FrooxEngine.World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
                             if (focusedWorld != null)

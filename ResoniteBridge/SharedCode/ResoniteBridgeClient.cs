@@ -18,7 +18,7 @@ namespace ResoniteBridgeClient
 
         Thread monitoringThread;
 
-        public volatile bool running = true;
+        public CancellationTokenSource stopToken = new CancellationTokenSource();
 
         public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
         public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
@@ -32,7 +32,7 @@ namespace ResoniteBridgeClient
             {
                 bool waitingForResponse = false;
 
-                while (running)
+                while (!stopToken.IsCancellationRequested)
                 {
                     using (NamedPipeServerStream pipeServer =
                         new NamedPipeServerStream(NAMED_SOCKET_KEY, PipeDirection.InOut))
@@ -51,12 +51,12 @@ namespace ResoniteBridgeClient
                             StreamString ss = new StreamString(pipeServer);
                             // Verify our identity to the connected client using a
                             // string that the client anticipates.
-                            while (running)
+                            while (!stopToken.IsCancellationRequested)
                             {
                                 if (!waitingForResponse)
                                 {
                                     ResoniteBridgeMessage message;
-                                    while (!inputMessages.TryDequeue(out message) && running)
+                                    while (!inputMessages.TryDequeue(out message) && !stopToken.IsCancellationRequested)
                                     {
                                         Thread.Sleep(1);
                                     }
@@ -112,8 +112,11 @@ namespace ResoniteBridgeClient
 
         public void Dispose()
         {
-            running = false;
-            monitoringThread.Join();
+            if (!stopToken.IsCancellationRequested)
+            {
+                stopToken.Cancel();
+                monitoringThread.Join();
+            }
         }
     }
 }
