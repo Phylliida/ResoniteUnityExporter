@@ -91,7 +91,9 @@ namespace ResoniteBridgeUnity {
                     ResoniteBridgeValue focusedWorld = GetProperty(worldManager, "FocusedWorld");
 					Debug.Log("Got focused world " + focusedWorld);
 					if (focusedWorld != null) {
-						CallMethod(focusedWorld, "AddSlot", "Heyo");
+						ResoniteBridgeValue rootSlot = GetProperty(focusedWorld, "RootSlot");
+						Debug.Log("Got root slot " + rootSlot);
+						CallMethod(rootSlot, "AddSlot", "Heyo");
 					}
 				}
 				Debug.Log("Button 1");

@@ -16,8 +16,7 @@ namespace ResoniteBridge
 
         public static bool IsType(object obj)
         {
-            // subclass needed because RuntimeType inherits from Type
-            return obj.GetType() == typeof(Type) || obj.GetType().IsSubclassOf(typeof(Type));
+            return obj.GetType() == typeof(Type) || obj.GetType().FullName == "System.RuntimeType";
         }
 
         public static object GetField(object obj, string fieldName)
