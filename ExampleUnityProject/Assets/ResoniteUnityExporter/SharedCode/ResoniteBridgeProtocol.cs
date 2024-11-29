@@ -3,8 +3,9 @@
 using System.IO;
 using System.Text;
 using System;
+using System.Threading;
 
-namespace ResoniteDataWrapper
+namespace ResoniteBridge
 {
     public enum ResoniteBridgeValueType
     {
@@ -47,41 +48,73 @@ namespace ResoniteDataWrapper
     // from https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication
     public class StreamString
     {
-        private Stream ioStream;
+        private System.IO.Stream ioStream;
         private UnicodeEncoding streamEncoding;
 
-        public StreamString(Stream ioStream)
+        public StreamString(System.IO.Stream ioStream)
         {
             this.ioStream = ioStream;
             streamEncoding = new UnicodeEncoding();
         }
 
-        public string ReadString()
+        public byte[] ReadBytes(int numBytes, int millisTimeout)
         {
-            int len = 0;
-
-            len = ioStream.ReadByte() * 256;
-            len += ioStream.ReadByte();
-            byte[] inBuffer = new byte[len];
-            ioStream.Read(inBuffer, 0, len);
-
-            return streamEncoding.GetString(inBuffer);
+            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+            {
+                byte[] buffer = new byte[numBytes];
+                System.Threading.Tasks.Task<int> readTask = ioStream.ReadAsync(buffer, 0, numBytes, timeoutSource.Token);
+                readTask.Wait();
+                if (timeoutSource.IsCancellationRequested)
+                {
+                    throw new TimeoutException("Read timed out at only " + readTask.Result + " bytes read");
+                }
+                return buffer;
+            }
         }
 
-        public int WriteString(string outString)
+        public string ReadString(int millisTimeout)
+        {
+            byte[] lenBytes = ReadBytes(4, millisTimeout);
+            int len = BitConverter.ToInt32(lenBytes, 0);
+            byte[] stringBytes = ReadBytes(len, millisTimeout);
+            return streamEncoding.GetString(stringBytes);
+        }
+
+        public void WriteBytes(byte[] bytes, int offset, int numToWrite, int millisTimeout)
+        {
+            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+            {
+                System.Threading.Tasks.Task writeTask = ioStream.WriteAsync(bytes, offset, numToWrite, timeoutSource.Token);
+                writeTask.Wait();
+                if (timeoutSource.IsCancellationRequested)
+                {
+                    throw new TimeoutException("Write timed out");
+                }
+            }
+        }
+
+        public void Flush(int millisTimeout)
+        {
+            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+            {
+                System.Threading.Tasks.Task flushTask = ioStream.FlushAsync(timeoutSource.Token);
+                flushTask.Wait();
+                if (timeoutSource.IsCancellationRequested)
+                {
+                    throw new TimeoutException("Flush timed out");
+                }
+            }
+        }
+
+        public int WriteString(string outString, int millisTimeout)
         {
             byte[] outBuffer = streamEncoding.GetBytes(outString);
             int len = outBuffer.Length;
-            if (len > UInt16.MaxValue)
-            {
-                len = (int)UInt16.MaxValue;
-            }
-            ioStream.WriteByte((byte)(len / 256));
-            ioStream.WriteByte((byte)(len & 255));
-            ioStream.Write(outBuffer, 0, len);
-            ioStream.Flush();
-
-            return outBuffer.Length + 2;
+            byte[] lenBytes = BitConverter.GetBytes(len);
+            WriteBytes(lenBytes, 0, lenBytes.Length, millisTimeout);
+            WriteBytes(outBuffer, 0, outBuffer.Length, millisTimeout);
+            Flush(millisTimeout);
+            return outBuffer.Length + lenBytes.Length;
         }
     }
 }

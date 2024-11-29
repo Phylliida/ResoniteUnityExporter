@@ -1,5 +1,4 @@
 ﻿using ResoniteBridge;
-using ResoniteDataWrapper;
 using ResoniteModLoader;
 using System;
 using System.Collections.Generic;
@@ -71,12 +70,10 @@ namespace ResoniteBridgeMod
                 {
                     loadedAssemblies.Add(assembly.FullName, assembly);
                 }
-                Msg("Got assembly" + assembly.FullName);
             }
 
             // Any assemblies loaded later
             AppDomain.CurrentDomain.AssemblyLoad += (object sender, AssemblyLoadEventArgs args) => {
-                Msg("Got assembly" + args.LoadedAssembly.FullName);
                 if (!loadedAssemblies.ContainsKey(args.LoadedAssembly.FullName))
                 {
                     loadedAssemblies.Add(args.LoadedAssembly.FullName, args.LoadedAssembly);
@@ -99,12 +96,26 @@ namespace ResoniteBridgeMod
                     assemblies = LoadAssemblies(),
                     uuidLookup = new UnsupportedTypeLookup(10)
                 };
-                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer())
+                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
+                {
+                    if (FrooxEngine.Engine.Current == null || FrooxEngine.Engine.Current.WorldManager == null || FrooxEngine.Engine.Current.WorldManager.FocusedWorld == null)
+                    {
+                        Msg("Bridge message:" + msg);
+                    }
+                    else
+                    {
+                        FrooxEngine.Engine.Current.WorldManager.FocusedWorld.RunSynchronously(() =>
+                        {
+                            Msg("Bridge message:" + msg);
+                        });
+                    }
+                }))
                 {
                     try
                     {
                         Msg("Starting bridge server");
                         while (FrooxEngine.Engine.Current == null ||
+                            FrooxEngine.Engine.Current.WorldManager == null ||
                             FrooxEngine.Engine.Current.WorldManager.FocusedWorld == null)
                         {
                             Thread.Sleep(16);
@@ -132,7 +143,7 @@ namespace ResoniteBridgeMod
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
+                        Msg("Got exception:" + ex.ToString() + "\n" + Environment.StackTrace);
                     }
                 }
             }).Start();

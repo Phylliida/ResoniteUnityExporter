@@ -1,20 +1,20 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ResoniteDataWrapper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResoniteBridgeClient
+namespace ResoniteBridge
 {
     public class ResoniteBridgeClientWrappers
     {
         public static ResoniteBridgeClient client;
 
-        ResoniteBridgeValue EncodeInput(object input)
+        static ResoniteBridgeValue EncodeInput(object input)
         {
             if (input.GetType() == typeof(ResoniteBridgeValue)) {
                 // already a value, just return it
@@ -33,7 +33,7 @@ namespace ResoniteBridgeClient
             }
         }
 
-        ResoniteBridgeValue[] EncodeInputs(object[] inputs)
+        static ResoniteBridgeValue[] EncodeInputs(object[] inputs)
         {
             ResoniteBridgeValue[] encodedInputs = new ResoniteBridgeValue[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
@@ -43,18 +43,24 @@ namespace ResoniteBridgeClient
             return encodedInputs;
         }
 
-        public ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
+        public static ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
         {
             client.inputMessages.Enqueue(message);
             ResoniteBridgeValue output;
+            Stopwatch elapsedTime = new Stopwatch();
+            elapsedTime.Start();
             while (!client.outputMessages.TryDequeue(out output))
             {
+                if (elapsedTime.ElapsedMilliseconds > 5000)
+                {
+                    throw new TimeoutException("Timed out waiting for response from server");
+                }
                 // We are on unity thread, can't sleep :(
             }
             return output;
         }
 
-        public ResoniteBridgeValue CallMethod(ResoniteBridgeValue target, string methodName, params object[] args)
+        public static ResoniteBridgeValue CallMethod(ResoniteBridgeValue target, string methodName, params object[] args)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -66,7 +72,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue CallStaticMethod(string assemblyName, string typeName, string methodName, params object[] args)
+        public static ResoniteBridgeValue CallStaticMethod(string assemblyName, string typeName, string methodName, params object[] args)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -83,7 +89,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue GetField(ResoniteBridgeValue target, string fieldName)
+        public static ResoniteBridgeValue GetField(ResoniteBridgeValue target, string fieldName)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -96,7 +102,7 @@ namespace ResoniteBridgeClient
         }
 
 
-        public ResoniteBridgeValue GetProperty(ResoniteBridgeValue target, string fieldName)
+        public static ResoniteBridgeValue GetProperty(ResoniteBridgeValue target, string fieldName)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -107,7 +113,7 @@ namespace ResoniteBridgeClient
 
             return SendBridgeMessage(message);
         }
-        public ResoniteBridgeValue SetField(ResoniteBridgeValue target, string fieldName, object value)
+        public static ResoniteBridgeValue SetField(ResoniteBridgeValue target, string fieldName, object value)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -120,7 +126,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue SetProperty(ResoniteBridgeValue target, string fieldName, object value)
+        public static ResoniteBridgeValue SetProperty(ResoniteBridgeValue target, string fieldName, object value)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -133,7 +139,7 @@ namespace ResoniteBridgeClient
             return SendBridgeMessage(message);
         }
 
-        public ResoniteBridgeValue GetType(string assemblyName, string typeName)
+        public static ResoniteBridgeValue LookupType(string assemblyName, string typeName)
         {
             return new ResoniteBridgeValue()
             {
@@ -144,7 +150,7 @@ namespace ResoniteBridgeClient
             };
         }
 
-        public ResoniteBridgeValue GetType(ResoniteBridgeValue target)
+        public static ResoniteBridgeValue LookupType(ResoniteBridgeValue target)
         {
             // no need to send any message as we already have all the needed data
             return new ResoniteBridgeValue()
@@ -156,13 +162,13 @@ namespace ResoniteBridgeClient
             };
         }
 
-        public ResoniteBridgeValue GetEnum(string assemblyName, string typeName, string enumValue)
+        public static ResoniteBridgeValue GetEnum(string assemblyName, string typeName, string enumValue)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
                 messageType = ResoniteBridgeMessageType.GetEnum,
                 name = enumValue,
-                target = GetType(assemblyName, typeName)
+                target = LookupType(assemblyName, typeName)
             };
 
             return SendBridgeMessage(message);
