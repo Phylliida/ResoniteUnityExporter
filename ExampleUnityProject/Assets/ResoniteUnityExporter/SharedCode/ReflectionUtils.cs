@@ -3,30 +3,97 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace ResoniteBridge
 {
     public static class ReflectionUtils
     {
+        public static BindingFlags StaticBindingFlags = BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy;
+
+        public static BindingFlags InstanceBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.FlattenHierarchy;
+
+
+        public static bool IsType(object obj)
+        {
+            // subclass needed because RuntimeType inherits from Type
+            return obj.GetType() == typeof(Type) || obj.GetType().IsSubclassOf(typeof(Type));
+        }
 
         public static object GetField(object obj, string fieldName)
         {
-            return obj.GetType().GetField(fieldName).GetValue(obj);
+            // static get
+            if (IsType(obj))
+            {
+                return ((Type)obj).GetField(fieldName, StaticBindingFlags)
+                    // static take null for obj
+                    .GetValue(null);
+            }
+            // instance get
+            else
+            {
+                return obj.GetType().GetField(fieldName, InstanceBindingFlags)
+                    .GetValue(obj);
+            }
         }
+
 
         public static object GetProperty(object obj, string propertyName)
         {
-            return obj.GetType().GetProperty(propertyName).GetValue(obj);
+            // static get
+            if (IsType(obj))
+            {
+                return ((Type)obj).GetProperty(propertyName, StaticBindingFlags)
+                    // static take null for obj
+                    .GetValue(null);
+            }
+            // instance get
+            else
+            {
+                return obj.GetType().GetProperty(propertyName, InstanceBindingFlags)
+                    .GetValue(obj);
+            }
+        }
+
+        public static ResoniteBridgeServerData serverData;
+
+        public static Type LookupType(string assemblyName, string typeName)
+        {
+            return serverData.assemblies[assemblyName].GetType(typeName);
         }
 
         public static void SetField(object obj, string fieldName, object value)
         {
-            obj.GetType().GetField(fieldName).SetValue(obj, value);
+            // static get
+            if (IsType(obj))
+            {
+                ((Type)obj).GetField(fieldName, StaticBindingFlags)
+                    // static take null for obj
+                    .SetValue(null, value);
+            }
+            // instance get
+            else
+            {
+                obj.GetType().GetField(fieldName, InstanceBindingFlags)
+                    .SetValue(obj, value);
+            }
         }
 
         public static void SetProperty(object obj, string propertyName, object value)
         {
-            obj.GetType().GetProperty(propertyName).SetValue(obj, value);
+            // static get
+            if (IsType(obj))
+            {
+                ((Type)obj).GetProperty(propertyName, StaticBindingFlags)
+                    // static take null for obj
+                    .SetValue(null, value);
+            }
+            // instance get
+            else
+            {
+                obj.GetType().GetProperty(propertyName, InstanceBindingFlags)
+                    .SetValue(obj, value);
+            }
         }
 
         public static object CallConstructor(Assembly assembly, string typeName, params object[] parameters)
@@ -71,6 +138,23 @@ namespace ResoniteBridge
             return true;
         }
 
+        static object CallMethodHelper(object obj, string methodName, params object[] parameters)
+        {
+            // Static method
+            if (IsType(obj))
+            {
+                return ((Type)obj).GetMethod(methodName, StaticBindingFlags)
+                    // static methods take null for obj
+                    .Invoke(null, parameters);
+            }
+            // Instance method
+            else
+            {
+                return obj.GetType().GetMethod(methodName, InstanceBindingFlags)
+                    .Invoke(obj, parameters);
+            }
+        }
+
         public static object CallMethod(object obj, string methodName, params object[] parameters)
         {
             MethodInfo method = null;
@@ -78,20 +162,36 @@ namespace ResoniteBridge
             {
                 try
                 {
-                    method = obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-                    return method
-                        .Invoke(obj, parameters);
+                    return CallMethodHelper(obj, methodName, parameters);
                 }
                 // overriden methods, we need to search manually
                 catch (System.Reflection.AmbiguousMatchException)
                 {
-                    foreach (MethodInfo methodInfo in obj.GetType().GetMethods())
+                    Console.WriteLine("Ambiguous");
+                    MethodInfo[] methods = IsType(obj)
+                        // static
+                        ? ((Type)obj).GetMethods()
+                        // instance
+                        : obj.GetType().GetMethods();
+
+                    foreach (MethodInfo methodInfo in methods)
                     {
                         var methodParameters = methodInfo.GetParameters();
                         if (MethodParamsMatch(methodInfo, parameters))
                         {
                             method = methodInfo;
-                            return method.Invoke(obj, parameters);
+                            if (IsType(obj))
+                            {
+                                Console.WriteLine("try static");
+                                // static method call
+                                return method.Invoke(null, parameters);
+                            }
+                            else
+                            {
+                                Console.WriteLine("try class");
+                                // regular call
+                                return method.Invoke(obj, parameters);
+                            }
                         }
                     }
                 }
@@ -99,6 +199,7 @@ namespace ResoniteBridge
             // this can happen with default params
             catch (System.Reflection.TargetParameterCountException)
             {
+                Console.WriteLine("param count exception");
                 var methodParams = method.GetParameters();
                 // try sticking type missing in other places, this is needed for default arguments
                 if (methodParams.Length > parameters.Length)
@@ -112,7 +213,14 @@ namespace ResoniteBridge
                     {
                         newParams[i] = Type.Missing;
                     }
-                    method.Invoke(obj, newParams);
+                    if (IsType(obj))
+                    {
+                        method.Invoke(null, newParams);
+                    }
+                    else
+                    {
+                        method.Invoke(obj, newParams);
+                    }
                 }
                 else
                 {
@@ -121,18 +229,6 @@ namespace ResoniteBridge
                 }
             }
             throw new ArgumentException("Did not find method " + methodName + " in type " + obj.GetType().Name + " with " + parameters.Length + " parameters");
-        }
-
-        public static object CallStaticMethod(Type type, string methodName, params object[] parameters)
-        {
-            return type.GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
-                .Invoke(null, parameters);
-        }
-
-        public static object CallStaticMethod(Assembly assembly, string typeName, string methodName, params object[] parameters)
-        {
-            return assembly.GetType(typeName).GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.NonPublic)
-                .Invoke(null, parameters);
         }
 
         public static object GetEnum(Type enumType, string enumValue)

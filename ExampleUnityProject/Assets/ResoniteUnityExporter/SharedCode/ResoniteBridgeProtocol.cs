@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using System;
 using System.Threading;
+using System.Reflection;
+using System.Linq;
 
 namespace ResoniteBridge
 {
@@ -13,6 +15,7 @@ namespace ResoniteBridge
         UUID = 1,
         Type = 2,
         SpecialKeyword = 3,
+        Error = 4,
     }
 
     public class ResoniteBridgeValue
@@ -21,6 +24,14 @@ namespace ResoniteBridge
         public string assemblyName = null;
         public string typeName = null;
         public ResoniteBridgeValueType valueType = ResoniteBridgeValueType.Serialized;
+        public override string ToString()
+        {
+            var fields = GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(this)}");
+
+            return $"{GetType().Name}: {string.Join(", ", fields)}";
+        }
     }
     public class ResoniteBridgeMessage
     {
@@ -36,12 +47,11 @@ namespace ResoniteBridge
     public enum ResoniteBridgeMessageType
     {
         CallMethod = 0,
-        CallStaticMethod = 1,
-        GetField = 2,
-        SetField = 3,
-        GetProperty = 4,
-        SetProperty = 5,
-        GetEnum = 6,
+        GetField = 1,
+        SetField = 2,
+        GetProperty = 3,
+        SetProperty = 4,
+        GetEnum = 5,
     }
 
 

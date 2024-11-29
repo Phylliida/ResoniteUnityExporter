@@ -10,9 +10,24 @@ using System.Threading.Tasks;
 
 namespace ResoniteBridge
 {
+    public class EvaluationException : Exception
+    {
+        public string exceptionType;
+
+        public string Message;
+        public EvaluationException(string message)
+        {
+            this.Message = message;
+        }
+    }
+
     public class ResoniteBridgeClientWrappers
     {
         public static ResoniteBridgeClient client;
+
+        public delegate void DebugLogDelegate(string msg);
+
+        public static DebugLogDelegate DebugLog;
 
         static ResoniteBridgeValue EncodeInput(object input)
         {
@@ -24,7 +39,7 @@ namespace ResoniteBridge
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 ResoniteBridgeValue result = new ResoniteBridgeValue()
                 {
-                    assemblyName = Assembly.GetAssembly(input.GetType()).FullName,
+                    assemblyName = Assembly.GetAssembly(input.GetType()).GetName().Name,
                     typeName = input.GetType().FullName,
                     valueStr = serialized,
                     valueType = ResoniteBridgeValueType.Serialized                    
@@ -46,7 +61,7 @@ namespace ResoniteBridge
         public static ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
         {
             client.inputMessages.Enqueue(message);
-            ResoniteBridgeValue output;
+            ResoniteBridgeValue output = null;
             Stopwatch elapsedTime = new Stopwatch();
             elapsedTime.Start();
             while (!client.outputMessages.TryDequeue(out output))
@@ -56,6 +71,14 @@ namespace ResoniteBridge
                     throw new TimeoutException("Timed out waiting for response from server");
                 }
                 // We are on unity thread, can't sleep :(
+            }
+            if (output == null){
+                DebugLog("Got null output?");
+                throw new EvaluationException("Got null output?");
+            }
+            if (output.valueType == ResoniteBridgeValueType.Error)
+            {
+                DebugLog("Got excfeption:" + output.valueStr);
             }
             return output;
         }
@@ -72,22 +95,6 @@ namespace ResoniteBridge
             return SendBridgeMessage(message);
         }
 
-        public static ResoniteBridgeValue CallStaticMethod(string assemblyName, string typeName, string methodName, params object[] args)
-        {
-            ResoniteBridgeMessage message = new ResoniteBridgeMessage()
-            {
-                inputs = EncodeInputs(args),
-                messageType = ResoniteBridgeMessageType.CallStaticMethod,
-                name = methodName,
-                target = new ResoniteBridgeValue()
-                {
-                    valueType = ResoniteBridgeValueType.Type,
-                    assemblyName = assemblyName,
-                    typeName = typeName
-                }
-            };
-            return SendBridgeMessage(message);
-        }
 
         public static ResoniteBridgeValue GetField(ResoniteBridgeValue target, string fieldName)
         {

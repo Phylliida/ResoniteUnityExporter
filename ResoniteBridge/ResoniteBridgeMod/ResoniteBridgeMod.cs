@@ -34,56 +34,7 @@ namespace ResoniteBridgeMod
 
         static Dictionary<string, Assembly> loadedAssemblies;
 
-        // from https://stackoverflow.com/a/10253634
-        public static IEnumerable<Assembly> GetAssemblies()
-        {
-            var list = new List<string>();
-            var stack = new Stack<Assembly>();
-
-            stack.Push(typeof(FrooxEngine.Engine).Assembly);
-
-            do
-            {
-                var asm = stack.Pop();
-
-                yield return asm;
-
-                foreach (var reference in asm.GetReferencedAssemblies())
-                    if (!list.Contains(reference.FullName))
-                    {
-                        stack.Push(Assembly.Load(reference));
-                        list.Add(reference.FullName);
-                    }
-
-            }
-            while (stack.Count > 0);
-
-        }
-
-        public static Dictionary<string, Assembly> LoadAssemblies()
-        {
-            loadedAssemblies = new Dictionary<string, Assembly>();
-
-            foreach (Assembly assembly in GetAssemblies())
-            {
-                if (!loadedAssemblies.ContainsKey(assembly.FullName))
-                {
-                    loadedAssemblies.Add(assembly.FullName, assembly);
-                }
-            }
-
-            // Any assemblies loaded later
-            AppDomain.CurrentDomain.AssemblyLoad += (object sender, AssemblyLoadEventArgs args) => {
-                if (!loadedAssemblies.ContainsKey(args.LoadedAssembly.FullName))
-                {
-                    loadedAssemblies.Add(args.LoadedAssembly.FullName, args.LoadedAssembly);
-                }
-            };
-            // This will be directory holding resonite
-            // For example
-            // C:\Program Files (x86)\Steam\steamapps\common\Resonite
-            return loadedAssemblies;
-        }
+        
 
         static CancellationTokenSource cancellation = new CancellationTokenSource();
 
@@ -93,7 +44,7 @@ namespace ResoniteBridgeMod
             {
                 ResoniteBridgeServerData serverData = new ResoniteBridgeServerData()
                 {
-                    assemblies = LoadAssemblies(),
+                    assemblies = ResoniteBridgeServer.LoadAssemblies(typeof(FrooxEngine.Engine).Assembly),
                     uuidLookup = new UnsupportedTypeLookup(10)
                 };
                 using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
@@ -132,8 +83,25 @@ namespace ResoniteBridgeMod
                                 {
                                     while (bridgeServer.inputMessages.TryDequeue(out ResoniteBridgeMessage message))
                                     {
-                                        Msg("Got message of type " + message.messageType + " with name " + message.name + " with target " + message.target + " with inputs " + message.inputs);
-                                        bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
+                                        try
+                                        {
+                                            foreach (KeyValuePair<string, Assembly> assemb in serverData.assemblies)
+                                            {
+                                                Msg("Has assembly " + assemb.Key);
+                                            }
+                                            Msg("Got message of type " + message.messageType + " with name " + message.name + " with target " + message.target + " with inputs " + message.inputs);
+                                            bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Msg("Got exception when evaluating message:" + ex.ToString() + "\n" + Environment.StackTrace);
+                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            {
+                                                typeName = ex.GetType().Name,
+                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                valueType = ResoniteBridgeValueType.Error
+                                            });
+                                        }
                                     }
                                 };
                                 focusedWorld.RunSynchronously(runStuff);

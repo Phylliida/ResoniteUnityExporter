@@ -115,39 +115,52 @@ namespace ResoniteBridge
 
         public static ResoniteBridgeValue EvaluateMessage(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
         {
-            object result = EvaluateHelper(runner, message);
-            if (result == null)
+            try
             {
-                return null;
-            }
-            ResoniteBridgeValue encodedResult = new ResoniteBridgeValue()
-            {
-                assemblyName = Assembly.GetAssembly(result.GetType()).FullName,
-                typeName = result.GetType().FullName
-            };
+                object result = EvaluateHelper(runner, message);
+                if (result == null)
+                {
+                    return null;
+                }
+                ResoniteBridgeValue encodedResult = new ResoniteBridgeValue()
+                {
+                    assemblyName = ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(result.GetType())),
+                    typeName = result.GetType().FullName
+                };
 
-            if (result.GetType() == typeof(Type))
-            {
-                encodedResult.valueStr = null;
-                encodedResult.valueType = ResoniteBridgeValueType.Type;
-            }
-            else
-            {
-                try
+                if (IsType(result))
                 {
-                    string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(result, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                    encodedResult.valueStr = encoded;
-                    encodedResult.valueType = ResoniteBridgeValueType.Serialized;
+                    encodedResult.valueStr = null;
+                    encodedResult.valueType = ResoniteBridgeValueType.Type;
                 }
-                catch (Newtonsoft.Json.JsonSerializationException)
+                else
                 {
-                    // use guid since serialization failed
-                    Guid guid = runner.uuidLookup.Add(result);
-                    encodedResult.valueStr = guid.ToString();
-                    encodedResult.valueType = ResoniteBridgeValueType.UUID;
+                    try
+                    {
+                        string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(result, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                        encodedResult.valueStr = encoded;
+                        encodedResult.valueType = ResoniteBridgeValueType.Serialized;
+                    }
+                    catch (Newtonsoft.Json.JsonSerializationException)
+                    {
+                        // use guid since serialization failed
+                        Guid guid = runner.uuidLookup.Add(result);
+                        encodedResult.valueStr = guid.ToString();
+                        encodedResult.valueType = ResoniteBridgeValueType.UUID;
+                    }
                 }
+                return encodedResult;
             }
-            return encodedResult;
+            // Return errors to them for easy debugging
+            catch (Exception e)
+            {
+                return new ResoniteBridgeValue()
+                {
+                    typeName = e.GetType().Name,
+                    valueStr = e.ToString() + "\n" + Environment.StackTrace,
+                    valueType = ResoniteBridgeValueType.Error
+                };
+            }
         }
 
         public static object EvaluateHelper(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
@@ -162,9 +175,6 @@ namespace ResoniteBridge
             {
                 case ResoniteBridgeMessageType.CallMethod:
                     return CallMethod(objTarget, message.name, objInputs);
-                case ResoniteBridgeMessageType.CallStaticMethod:
-                    // objTarget should be a type
-                    return CallStaticMethod((Type)objTarget, message.name, objInputs);
                 case ResoniteBridgeMessageType.GetField:
                     return GetField(objTarget, message.name);
                 case ResoniteBridgeMessageType.SetField:

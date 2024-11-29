@@ -14,7 +14,6 @@ using System.ComponentModel;
 using static ResoniteBridge.ReflectionUtils;
 using System.Text.Json;
 using Newtonsoft.Json;
-using ResoniteDataWrapper;
 
 namespace ResoniteBridge
 {
@@ -134,14 +133,23 @@ namespace ResoniteBridge
         {
             ResoniteBridgeServerData serverData = new ResoniteBridgeServerData();
 
+            ReflectionUtils.serverData = serverData;
             string resoniteDir = Path.GetDirectoryName(
                 FrooxEngineRunner.GetResoniteExePath(out serverData.assemblies)
             );
             string curDir = System.IO.Directory.GetCurrentDirectory();
             string libraryPath = Path.Combine(resoniteDir, "Resonite_Data", "Managed");
 
+
             serverData.assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
             serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
+            
+            // Once we have froox engine, load all assemblies (this will collect more as they are loaded)
+            serverData.assemblies = ResoniteBridgeServer.LoadAssemblies(FrooxEngineAsm,
+                   Path.Combine(resoniteDir, "Resonite_Data", "Managed"),
+                   Path.Combine(resoniteDir, "Resonite_Data", "Plugins", "x64")
+                   );
+
 
             object launchOptions = CallConstructor(FrooxEngineAsm, "FrooxEngine.LaunchOptions");
 
@@ -182,7 +190,7 @@ namespace ResoniteBridge
             //{
 
             //}
-            var userspaceWorld = CallStaticMethod(FrooxEngineAsm, "FrooxEngine.Userspace", "SetupUserspace", engine);
+            var userspaceWorld = CallMethod(LookupType("FrooxEngine", "FrooxEngine.Userspace"), "SetupUserspace", engine);
             CallMethod(engine, "RunUpdateLoop");
             
             object worldStart = CallConstructor(FrooxEngineAsm, "FrooxEngine.WorldStartSettings");
@@ -196,7 +204,7 @@ namespace ResoniteBridge
                 "FrooxEngine.WorldAction",
                 delegate (object world)
                 {
-                    CallStaticMethod(FrooxEngineAsm, "FrooxEngine.WorldPresets", "Grid", world);
+                    CallMethod(LookupType("FrooxEngine", "FrooxEngine.WorldPresets"), "Grid", world);
                     SetProperty(world, "AccessLevel",
                         GetEnum(SkyFrostBaseModelsAsm, "SkyFrost.Base.SessionAccessLevel", "Private"));
                     SetField(world, "ForceAnnounceOnWAN", false);
@@ -207,16 +215,19 @@ namespace ResoniteBridge
             SetField(worldStart, "InitWorld", initWorldDelegate);
 
             System.Threading.Tasks.Task opener = (System.Threading.Tasks.Task)
-                CallStaticMethod(FrooxEngineAsm,
-                "FrooxEngine.Userspace",
-                "OpenWorld",
-                worldStart);
+                CallMethod(
+                    LookupType("FrooxEngine", "FrooxEngine.Userspace"),
+                    "OpenWorld",
+                    worldStart);
             opener.ConfigureAwait(false).GetAwaiter();
 
             ConcurrentQueue<string> messages = new ConcurrentQueue<string>();
             new Thread(() =>
             {
-                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer())
+                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
+                {
+                    Console.WriteLine(msg);
+                }))
                 {
 
                     try
@@ -243,9 +254,21 @@ namespace ResoniteBridge
                                 serverData.engine = this.engine;
                                 Action runStuff = delegate
                                 {
-                                    while(bridgeServer.inputMessages.TryPeek(out ResoniteBridgeMessage message))
+                                    while (bridgeServer.inputMessages.TryDequeue(out ResoniteBridgeMessage message))
                                     {
-                                        bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
+                                        try
+                                        {
+                                            bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            {
+                                                typeName = ex.GetType().Name,
+                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                valueType = ResoniteBridgeValueType.Error
+                                            });
+                                        }
                                     }
                                 };
                                 CallMethod(focusedWorld, "RunSynchronously",

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
@@ -13,7 +14,7 @@ namespace ResoniteBridge
 
         Thread monitoringThread;
 
-        public CancellationTokenSource stopToken = new CancellationTokenSource();
+        public CancellationTokenSource stopToken;
 
         public volatile bool connected = false;
 
@@ -23,6 +24,7 @@ namespace ResoniteBridge
         public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
         public ResoniteBridgeClient(LogDelegate DebugLog)
         {
+            stopToken = new CancellationTokenSource();
             // this is a bit cursed but it lets us avoid having to pass client into all calls so I think it's ok
             ResoniteBridgeClientWrappers.client = this;
 
@@ -82,13 +84,15 @@ namespace ResoniteBridge
                                 {
                                     string result = ss.ReadString(millisTimeout, stopToken.Token);
                                     ResoniteBridgeValue parsedResult = null;
-                                    if (result != "")
+                                    if (result != "" && result != null)
                                     {
                                         try
                                         {
                                             // If failed to deserialize, send null but warn in console
                                             // (todo: maybe this throws error?)
                                             parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeValue>(result);
+                                            outputMessages.Enqueue(parsedResult);
+                                            waitingForResponse = false;
                                         }
                                         catch (JsonSerializationException e)
                                         {
@@ -97,8 +101,6 @@ namespace ResoniteBridge
                                             DebugLog("Message: " + result);
                                         }
                                     }
-                                    outputMessages.Enqueue(parsedResult);
-                                    waitingForResponse = false;
                                 }
                             }
                         }
@@ -116,16 +118,18 @@ namespace ResoniteBridge
                         }
                         catch (CanceledException)
                         {
-                            connected = false;
                             DebugLog("Disconnected from Resonite with CanceledException, breaking");
-                            break;
                         }
                         catch (Exception e)
                         {
                             DebugLog("Disconnected from Resonite with error " + e.GetType());
                             DebugLog("ERROR: " + e.Message);
                         }
-                        connected = false;
+                        finally
+                        {
+                            connected = false;
+                            pipeClient.Close();
+                        }
                     }
                 }
             });

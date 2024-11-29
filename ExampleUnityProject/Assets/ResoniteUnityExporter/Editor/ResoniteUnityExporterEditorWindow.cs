@@ -44,14 +44,21 @@ namespace ResoniteBridgeUnity {
 
         public void OnAfterAssemblyReload()
         {
-            Debug.Log("After Assembffly Reload");
+            Debug.Log("fAfter Assfembffly Reload");
         }
 
         void OnGUI()
 		{
-			if (bridgeClient == null) {
-				bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
-			}
+            ResoniteBridge.ResoniteBridgeClientWrappers.DebugLog = (string message) =>
+            {
+                Debug.Log(message);
+            };
+
+            if (bridgeClient == null) {
+                
+                bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
+				
+            }
 			if (bridgeClient.connected) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
@@ -59,7 +66,7 @@ namespace ResoniteBridgeUnity {
 				GUILayout.Label("Connecting to Resonite...", EditorStyles.boldLabel);
 				return;
 			}
-			myString = EditorGUILayout.TextField("Teffxt Field", myString);
+			myString = EditorGUILayout.TextField("Tefffxt Field", myString);
 
 			groupEnabled = EditorGUILayout.BeginToggleGroup("Optional Settings", groupEnabled);
 			myFloat = EditorGUILayout.Slider("Slider", myFloat, 0, 5);
