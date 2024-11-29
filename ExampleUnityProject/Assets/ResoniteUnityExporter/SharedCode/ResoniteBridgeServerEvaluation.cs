@@ -100,6 +100,11 @@ namespace ResoniteBridge
 
         public static object[] ParseInputs(ResoniteBridgeServerData runner, ResoniteBridgeValue[] inputs)
         {
+            // we also support no inputs
+            if (inputs == null)
+            {
+                return new object[] { };
+            }
             object[] results = new object[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
             {

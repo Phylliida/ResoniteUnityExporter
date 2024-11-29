@@ -26,7 +26,7 @@ namespace ResoniteBridge
         public ResoniteBridgeServer (LogDelegate DebugLog)
         {
             stopToken = new CancellationTokenSource();
-            int timeout = 10000;
+            int millisTimeout = 10000;
             // network monitoring thread
             monitoringThread = new Thread(() =>
             {
@@ -56,7 +56,7 @@ namespace ResoniteBridge
                             {
                                 if (waitingForRequest)
                                 {
-                                    string message = ss.ReadString(timeout);
+                                    string message = ss.ReadString(millisTimeout, stopToken.Token);
                                     try
                                     {
                                         DebugLog("Got string " + message);
@@ -65,7 +65,7 @@ namespace ResoniteBridge
                                         Stopwatch elapsed = new Stopwatch();
                                         while (!outputMessages.TryDequeue(out response) && !stopToken.IsCancellationRequested)
                                         {
-                                            if (elapsed.ElapsedMilliseconds > timeout)
+                                            if (elapsed.ElapsedMilliseconds > millisTimeout)
                                             {
                                                 throw new TimeoutException("Recieved message but took too long to process");
                                             }
@@ -86,20 +86,20 @@ namespace ResoniteBridge
                                     if (response == null)
                                     {
                                         // empty string is null
-                                        ss.WriteString("", timeout);
+                                        ss.WriteString("", millisTimeout, stopToken.Token);
                                     }
                                     else
                                     {
                                         try
                                         {
-                                            ss.WriteString(JsonConvert.SerializeObject(response), timeout);
+                                            ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
                                         }
                                         catch (JsonSerializationException e)
                                         {
                                             DebugLog("Failed to serialize response, sending null (empty string) instead");
                                             DebugLog("ERROR: " + e.Message);
                                             DebugLog("Message:" + response);
-                                            ss.WriteString("", timeout);
+                                            ss.WriteString("", millisTimeout, stopToken.Token);
                                         }
                                     }
                                     waitingForRequest = true;
@@ -117,6 +117,11 @@ namespace ResoniteBridge
                         {
                             DebugLog("Timeout, disconnected from client with error");
                             DebugLog("ERROR: " + e.Message);
+                        }
+                        catch (CanceledException)
+                        {
+                            DebugLog("Disconnected from client with CanceledException, breaking");
+                            break;
                         }
                         catch (Exception e)
                         {

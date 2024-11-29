@@ -26,7 +26,7 @@ namespace ResoniteBridge
             // this is a bit cursed but it lets us avoid having to pass client into all calls so I think it's ok
             ResoniteBridgeClientWrappers.client = this;
 
-            int timeout = 10000;
+            int millisTimeout = 10000;
 
             // network monitoring thread
             monitoringThread = new Thread(() =>
@@ -42,7 +42,7 @@ namespace ResoniteBridge
                         {
                             DebugLog("Waiting for connection to Resonite");
 
-                            pipeClient.Connect(timeout);
+                            pipeClient.Connect(millisTimeout);
 
                             connected = true;
                             DebugLog("Connected to Resonite");
@@ -68,7 +68,7 @@ namespace ResoniteBridge
                                     }
                                     try
                                     {
-                                        ss.WriteString(JsonConvert.SerializeObject(message), timeout);
+                                        ss.WriteString(JsonConvert.SerializeObject(message), millisTimeout, stopToken.Token);
                                         waitingForResponse = true;
                                     }
                                     catch (JsonSerializationException e)
@@ -80,7 +80,7 @@ namespace ResoniteBridge
                                 }
                                 if (waitingForResponse)
                                 {
-                                    string result = ss.ReadString(timeout);
+                                    string result = ss.ReadString(millisTimeout, stopToken.Token);
                                     ResoniteBridgeValue parsedResult = null;
                                     if (result != "")
                                     {
@@ -106,22 +106,26 @@ namespace ResoniteBridge
                         // or disconnected.
                         catch (IOException e)
                         {
-                            connected = false;
-                            DebugLog("Disconnected from Resonite with error");
+                            DebugLog("Disconnected from Resonite with IOException");
                             DebugLog("ERROR: " + e.Message);
                         }
                         catch (TimeoutException e)
                         {
-                            connected = false;
-                            DebugLog("Disconnected from Resonite with error");
+                            DebugLog("Disconnected from Resonite with TimeoutException");
                             DebugLog("ERROR: " + e.Message);
+                        }
+                        catch (CanceledException)
+                        {
+                            connected = false;
+                            DebugLog("Disconnected from Resonite with CanceledException, breaking");
+                            break;
                         }
                         catch (Exception e)
                         {
-                            connected = false;
                             DebugLog("Disconnected from Resonite with error " + e.GetType());
                             DebugLog("ERROR: " + e.Message);
                         }
+                        connected = false;
                     }
                 }
             });

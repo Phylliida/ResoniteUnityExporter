@@ -45,6 +45,11 @@ namespace ResoniteBridge
     }
 
 
+    public class CanceledException : Exception {
+    
+    }
+
+
     // from https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication
     public class StreamString
     {
@@ -57,64 +62,95 @@ namespace ResoniteBridge
             streamEncoding = new UnicodeEncoding();
         }
 
-        public byte[] ReadBytes(int numBytes, int millisTimeout)
+        byte[] ReadBytes(int numBytes, CancellationToken cancelToken)
         {
-            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+            byte[] buffer = new byte[numBytes];
+            System.Threading.Tasks.Task<int> readTask = ioStream.ReadAsync(buffer, 0, numBytes, cancelToken);
+            readTask.Wait();
+            if (cancelToken.IsCancellationRequested)
             {
-                byte[] buffer = new byte[numBytes];
-                System.Threading.Tasks.Task<int> readTask = ioStream.ReadAsync(buffer, 0, numBytes, timeoutSource.Token);
-                readTask.Wait();
-                if (timeoutSource.IsCancellationRequested)
-                {
-                    throw new TimeoutException("Read timed out at only " + readTask.Result + " bytes read");
-                }
-                return buffer;
+                throw new CanceledException();
             }
+            return buffer;
         }
 
-        public string ReadString(int millisTimeout)
-        {
-            byte[] lenBytes = ReadBytes(4, millisTimeout);
-            int len = BitConverter.ToInt32(lenBytes, 0);
-            byte[] stringBytes = ReadBytes(len, millisTimeout);
-            return streamEncoding.GetString(stringBytes);
-        }
-
-        public void WriteBytes(byte[] bytes, int offset, int numToWrite, int millisTimeout)
+        public string ReadString(int millisTimeout, CancellationToken cancelToken)
         {
             using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
             {
-                System.Threading.Tasks.Task writeTask = ioStream.WriteAsync(bytes, offset, numToWrite, timeoutSource.Token);
-                writeTask.Wait();
-                if (timeoutSource.IsCancellationRequested)
+                using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, cancelToken))
                 {
-                    throw new TimeoutException("Write timed out");
-                }
-            }
-        }
-
-        public void Flush(int millisTimeout)
-        {
-            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
-            {
-                System.Threading.Tasks.Task flushTask = ioStream.FlushAsync(timeoutSource.Token);
-                flushTask.Wait();
-                if (timeoutSource.IsCancellationRequested)
-                {
-                    throw new TimeoutException("Flush timed out");
+                    try
+                    {
+                        byte[] lenBytes = ReadBytes(4, mergedSource.Token);
+                        int len = BitConverter.ToInt32(lenBytes, 0);
+                        byte[] stringBytes = ReadBytes(len, mergedSource.Token);
+                        return streamEncoding.GetString(stringBytes);
+                    }
+                    catch (CanceledException)
+                    {
+                        if (timeoutSource.IsCancellationRequested && !cancelToken.IsCancellationRequested)
+                        {
+                            throw new TimeoutException();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
                 }
             }
         }
 
-        public int WriteString(string outString, int millisTimeout)
+        void WriteBytes(byte[] bytes, int offset, int numToWrite, CancellationToken cancelToken)
         {
-            byte[] outBuffer = streamEncoding.GetBytes(outString);
-            int len = outBuffer.Length;
-            byte[] lenBytes = BitConverter.GetBytes(len);
-            WriteBytes(lenBytes, 0, lenBytes.Length, millisTimeout);
-            WriteBytes(outBuffer, 0, outBuffer.Length, millisTimeout);
-            Flush(millisTimeout);
-            return outBuffer.Length + lenBytes.Length;
+            System.Threading.Tasks.Task writeTask = ioStream.WriteAsync(bytes, offset, numToWrite, cancelToken);
+            writeTask.Wait();
+            if (cancelToken.IsCancellationRequested)
+            {
+                throw new CanceledException();
+            }
+        }
+
+        void Flush(CancellationToken cancelToken)
+        {
+            System.Threading.Tasks.Task flushTask = ioStream.FlushAsync(cancelToken);
+            flushTask.Wait();
+            if (cancelToken.IsCancellationRequested)
+            {
+                throw new CanceledException();
+            }
+        }
+
+        public int WriteString(string outString, int millisTimeout, CancellationToken cancelToken)
+        {
+            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+            {
+                using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, cancelToken))
+                {
+                    try
+                    {
+                        byte[] outBuffer = streamEncoding.GetBytes(outString);
+                        int len = outBuffer.Length;
+                        byte[] lenBytes = BitConverter.GetBytes(len);
+                        WriteBytes(lenBytes, 0, lenBytes.Length, mergedSource.Token);
+                        WriteBytes(outBuffer, 0, outBuffer.Length, mergedSource.Token);
+                        Flush(mergedSource.Token);
+                        return outBuffer.Length + lenBytes.Length;
+                    }
+                    catch (CanceledException)
+                    {
+                        if (timeoutSource.IsCancellationRequested && !cancelToken.IsCancellationRequested)
+                        {
+                            throw new TimeoutException();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
         }
     }
 }
