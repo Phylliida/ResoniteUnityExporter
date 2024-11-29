@@ -85,10 +85,6 @@ namespace ResoniteBridgeMod
                                     {
                                         try
                                         {
-                                            foreach (KeyValuePair<string, Assembly> assemb in serverData.assemblies)
-                                            {
-                                                Msg("Has assembly " + assemb.Key);
-                                            }
                                             Msg("Got message of type " + message.messageType + " with name " + message.name + " with target " + message.target + " with inputs " + message.inputs);
                                             bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
                                         }

@@ -137,22 +137,7 @@ namespace ResoniteBridge
             return true;
         }
 
-        static object CallMethodHelper(object obj, string methodName, params object[] parameters)
-        {
-            // Static method
-            if (IsType(obj))
-            {
-                return ((Type)obj).GetMethod(methodName, StaticBindingFlags)
-                    // static methods take null for obj
-                    .Invoke(null, parameters);
-            }
-            // Instance method
-            else
-            {
-                return obj.GetType().GetMethod(methodName, InstanceBindingFlags)
-                    .Invoke(obj, parameters);
-            }
-        }
+     
 
         public static object CallMethod(object obj, string methodName, params object[] parameters)
         {
@@ -161,7 +146,19 @@ namespace ResoniteBridge
             {
                 try
                 {
-                    return CallMethodHelper(obj, methodName, parameters);
+                    // Static method
+                    if (IsType(obj))
+                    {
+                        method = ((Type)obj).GetMethod(methodName, StaticBindingFlags);
+                        // static takes null as obj
+                        method.Invoke(null, parameters);
+                    }
+                    // Instance method
+                    else
+                    {
+                        method = obj.GetType().GetMethod(methodName, InstanceBindingFlags);
+                        method.Invoke(obj, parameters);
+                    }
                 }
                 // overriden methods, we need to search manually
                 catch (System.Reflection.AmbiguousMatchException)
