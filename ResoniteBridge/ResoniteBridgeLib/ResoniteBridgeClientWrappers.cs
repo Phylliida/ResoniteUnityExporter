@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,8 @@ namespace ResoniteBridge
 
         static ResoniteBridgeValue EncodeInput(object input)
         {
-            if (input.GetType() == typeof(ResoniteBridgeValue)) {
+            if (input.GetType() == typeof(ResoniteBridgeValue) ||
+                input.GetType().IsSubclassOf(typeof(ResoniteBridgeValue))) {
                 // already a value, just return it
                 return (ResoniteBridgeValue)input;
             } else {                
@@ -179,6 +181,11 @@ namespace ResoniteBridge
             };
 
             return SendBridgeMessage(message);
+        }
+
+        public static object CastValue(ResoniteBridgeValue value, Type typeToCastTo)
+        {
+            return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, typeToCastTo.Name, value);
         }
     }
 }

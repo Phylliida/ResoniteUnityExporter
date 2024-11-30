@@ -24,6 +24,18 @@ namespace ResoniteBridge
         public string assemblyName = null;
         public string typeName = null;
         public ResoniteBridgeValueType valueType = ResoniteBridgeValueType.Serialized;
+
+        public ResoniteBridgeValue()
+        {
+
+        }
+        public ResoniteBridgeValue(ResoniteBridgeValue other)
+        {
+            this.valueStr = other.valueStr;
+            this.assemblyName = other.assemblyName;
+            this.typeName = other.typeName;
+            this.valueType = other.valueType;
+        }
         public override string ToString()
         {
             var fields = GetType()

@@ -3,6 +3,8 @@ using UnityEditor;
 using ResoniteBridge;
 using static ResoniteBridge.ResoniteBridgeClientWrappers;
 
+
+
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
@@ -80,9 +82,7 @@ namespace ResoniteBridgeUnity {
 			EditorGUILayout.BeginHorizontal();
 			if(GUILayout.Button("Button 1"))
 			{
-				ResoniteBridgeValue Engine = LookupType("FrooxEngine", "FrooxEngine.Engine");
-	            Debug.Log("Got engine " + Engine);
-                ResoniteBridgeValue currentEngine = GetProperty(Engine, "Current");
+				ResoniteBridgeValue currentEngine = ResoniteWrapper.FrooxEngine.Engine.Current;
                 Debug.Log("Got current engine " + currentEngine);
                 if (currentEngine != null) {
                     ResoniteBridgeValue worldManager = GetProperty(currentEngine, "WorldManager");
