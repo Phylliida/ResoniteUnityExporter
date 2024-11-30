@@ -3,7 +3,6 @@ using UnityEditor;
 using ResoniteBridge;
 using static ResoniteBridge.ResoniteBridgeClientWrappers;
 
-
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
