@@ -248,8 +248,17 @@ namespace ResoniteBridge
                                     GetProperty(engine, "WorldManager"),
                                     "FocusedWorld");
 
+
+                            bool first = true;
                             if (focusedWorld != null)
                             {
+                                if (first)
+                                {
+                                    first = false;
+                                    Console.WriteLine("Making wrapper assembly");
+                                    ResoniteBinaryWrapper.CreateWrapperAssembly(serverData.assemblies, "ResoniteWrapper");
+                                    Console.WriteLine("Made wrapper assembly");
+                                }
                                 serverData.focusedWorld = focusedWorld;
                                 serverData.engine = this.engine;
                                 Action runStuff = delegate

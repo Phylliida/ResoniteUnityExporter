@@ -151,13 +151,13 @@ namespace ResoniteBridge
                     {
                         method = ((Type)obj).GetMethod(methodName, StaticBindingFlags);
                         // static takes null as obj
-                        method.Invoke(null, parameters);
+                        return method.Invoke(null, parameters);
                     }
                     // Instance method
                     else
                     {
                         method = obj.GetType().GetMethod(methodName, InstanceBindingFlags);
-                        method.Invoke(obj, parameters);
+                        return method.Invoke(obj, parameters);
                     }
                 }
                 // overriden methods, we need to search manually
