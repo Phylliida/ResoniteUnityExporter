@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <RootNamespace>ResoniteBridgeStandalone</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -20,16 +20,6 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ReflectionUtils.cs" Link="ReflectionUtils.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeClient.cs" Link="ResoniteBridgeClient.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeClientWrappers.cs" Link="ResoniteBridgeClientWrappers.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeLibraryWrapper.cs" Link="ResoniteBridgeLibraryWrapper.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeProtocol.cs" Link="ResoniteBridgeProtocol.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeServer.cs" Link="ResoniteBridgeServer.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeServerEvaluation.cs" Link="ResoniteBridgeServerEvaluation.cs" />
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\UnsupportedTypeLookup.cs" Link="UnsupportedTypeLookup.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -37,6 +27,9 @@
   <ItemGroup>
     <Reference Include="FrooxEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
