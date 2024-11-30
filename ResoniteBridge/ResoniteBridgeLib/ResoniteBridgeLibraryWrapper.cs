@@ -19,8 +19,10 @@ namespace ResoniteBridge
         public static PropertyDeclarationSyntax CreateBridgeProperty(PropertyInfo property, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
+            bool isStatic = property.GetAccessors(nonPublic: true)[0].IsStatic;
+            string staticStr = isStatic ? "static " : "";
             string propertyCode = $@"
-            public ResoniteBridge.ResoniteBridgeValue {property.Name}
+            public {staticStr}ResoniteBridge.ResoniteBridgeValue {property.Name}
             {{
                 get
                 {{
@@ -45,24 +47,28 @@ namespace ResoniteBridge
             return (PropertyDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(propertyCode);
         }
 
+        public static string FullTypeName(System.Type type)
+        {
+            string space = GetTypeNamespace(type);
+            return space + "." + type.Name;
+        }
+
+        public static string GetTypeNamespace(System.Type type)
+        {
+            string space = type.Namespace;
+            string assemblyName = ResoniteBridgeServer.GetAssemblyName(type.Assembly);
+
+            if (space == null || space == "")
+            {
+                space = assemblyName;
+            }
+            return space;
+        }
+
         public static NamespaceDeclarationSyntax CreateNamespaceForType(ClassDeclarationSyntax classDecleration, System.Type type)
         {
             // some various nonsense to make sure they properly go like "FrooxEngine.World" instead of just World
-            string space = type.Namespace;
-            if (space == null)
-            {
-                space = "";
-            }
-            string assemblyName = ResoniteBridgeServer.GetAssemblyName(type.Assembly);
-            if (!space.StartsWith(assemblyName))
-            {
-                space = assemblyName + "." + space;
-            }
-            if (space.EndsWith("."))
-            {
-                space = space.Substring(0, space.Length - 1);
-            }
-
+            string space = GetTypeNamespace(type);
             string[] pieces = space.Split(".");
 
             // start innermost and work outwards`
@@ -80,15 +86,20 @@ namespace ResoniteBridge
         }
 
 
-        public static NamespaceDeclarationSyntax WrapType(System.Type type)
+        public static NamespaceDeclarationSyntax WrapType(System.Type type, HashSet<Tuple<string, string>> seenItems)
         {
             ClassDeclarationSyntax classDeclaration = SyntaxFactory.ClassDeclaration(type.Name)
                 .AddModifiers(SyntaxFactory.Token(SyntaxKind.PublicKeyword));
 
+            string fullTypeName = FullTypeName(type);
             foreach (PropertyInfo property in type.GetProperties())
             {
-                PropertyDeclarationSyntax wrappedProperty = CreateBridgeProperty(property, type);
-                classDeclaration = classDeclaration.AddMembers(wrappedProperty);
+                if (!seenItems.Contains(new Tuple<string, string>(fullTypeName, property.Name)))
+                {
+                    seenItems.Add(new Tuple<string, string>(fullTypeName, property.Name));
+                    PropertyDeclarationSyntax wrappedProperty = CreateBridgeProperty(property, type);
+                    classDeclaration = classDeclaration.AddMembers(wrappedProperty);
+                }
             }
 
             return CreateNamespaceForType(classDeclaration, type);
@@ -96,17 +107,22 @@ namespace ResoniteBridge
 
         public static NamespaceDeclarationSyntax WrapAssembly(NamespaceDeclarationSyntax rootNamespace, Assembly assembly, HashSet<string> typesEncountered)
         {
+            HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
             foreach (System.Type typeInAssembly in assembly.GetTypes())
             {
+                string fullTypeName = FullTypeName(typeInAssembly);
                 // prevent type shadowing, just use whichever we see first
-                if (!typesEncountered.Contains(typeInAssembly.FullName))
+                if (!typesEncountered.Contains(fullTypeName))
                 {
                     // ignore weird generic template things
-                    if (!typeInAssembly.FullName.Contains("<>c"))
+                    if (!typeInAssembly.FullName.Contains("<>c") &&
+                        !typeInAssembly.FullName.Contains("<Execute>d") &&
+                        !typeInAssembly.FullName.Contains("<>O") &&
+                        !typeInAssembly.FullName.Contains("<GetEnumerator>d"))
                     {
                         rootNamespace = rootNamespace.AddMembers(
-                            WrapType(typeInAssembly));
-                        typesEncountered.Add(typeInAssembly.FullName);
+                            WrapType(typeInAssembly, seenItems));
+                        typesEncountered.Add(fullTypeName);
                     }
                 }
             }
@@ -115,23 +131,15 @@ namespace ResoniteBridge
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            /*"FrooxEngine",
-            "FrooxEngine.Weaver",
-            "SystemHelperClient",
-            "ProtoFlux.Nodes.Core",
-            "FrooxEngine.Commands",
-            "Substrate",
             "FrooxEngine.Store",
-             */
             "SkyFrost.Base.Models",
-            /*
             "SkyFrost.Base",
             "Elements.Assets",
-            "ColorLUT",
-            "ProtoFlux.Core",
             "Elements.Core",
-            "Elements.Quantity",
-            */
+            "ProtoFlux.Nodes.FrooxEngine",
+            "ProtoFlux.Nodes.Core",
+            "ProtoFluxBindings",
+            "FrooxEngine",
         };
 
         public static NamespaceDeclarationSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
