@@ -23,7 +23,6 @@ namespace ResoniteBridgeMod
 
         public override void OnEngineInit()
         {
-
             Config = GetConfiguration(); //Get the current ModConfiguration for this mod
             Config.Save(true); //If you'd like to save the default config values to file
         

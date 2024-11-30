@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Threading;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -45,9 +46,25 @@ namespace ResoniteBridge
 
         public static NamespaceDeclarationSyntax CreateNamespaceForType(ClassDeclarationSyntax classDecleration, System.Type type)
         {
-            string[] pieces = type.Namespace.Split(".");
+            // some various nonsense to make sure they properly go like "FrooxEngine.World" instead of just World
+            string space = type.Namespace;
+            if (space == null)
+            {
+                space = "";
+            }
+            string assemblyName = ResoniteBridgeServer.GetAssemblyName(type.Assembly);
+            if (!space.StartsWith(assemblyName))
+            {
+                space = assemblyName + "." + space;
+            }
+            if (space.EndsWith("."))
+            {
+                space = space.Substring(0, space.Length - 1);
+            }
 
-            // start innermost and work outwards
+            string[] pieces = space.Split(".");
+
+            // start innermost and work outwards`
             NamespaceDeclarationSyntax curNamespace =
                 SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(pieces[pieces.Length - 1]))
                 .AddMembers(classDecleration);
@@ -91,6 +108,27 @@ namespace ResoniteBridge
             return rootNamespace;
         }
 
+        public static HashSet<string> whitelist = new HashSet<string>()
+        {
+            /*"FrooxEngine",
+            "FrooxEngine.Weaver",
+            "SystemHelperClient",
+            "ProtoFlux.Nodes.Core",
+            "FrooxEngine.Commands",
+            "Substrate",
+            "FrooxEngine.Store",
+             */
+            "SkyFrost.Base.Models",
+            /*
+            "SkyFrost.Base",
+            "Elements.Assets",
+            "ColorLUT",
+            "ProtoFlux.Core",
+            "Elements.Core",
+            "Elements.Quantity",
+            */
+        };
+
         public static NamespaceDeclarationSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             HashSet<string> typesEncountered = new HashSet<string>();
@@ -99,38 +137,64 @@ namespace ResoniteBridge
             foreach (KeyValuePair<string, Assembly> pair in assemblies)
             {
                 Assembly assembly = pair.Value;
-                rootNamespace = WrapAssembly(rootNamespace, assembly, typesEncountered);
+                if (whitelist.Contains(ResoniteBridgeServer.GetAssemblyName(pair.Value)))
+                {
+                    Console.WriteLine("Wrapping assembly " + pair.Key);
+                    rootNamespace = WrapAssembly(rootNamespace, assembly, typesEncountered);
+                    Console.WriteLine("Done wrapping assembly " + pair.Key);
+                }
             }
             return rootNamespace;
         }
 
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
-            NamespaceDeclarationSyntax rootNamespace = WrapAssemblies(assemblies, rootNamespaceName);
-            CompilationUnitSyntax compilationUnit = SyntaxFactory.CompilationUnit()
-                .AddMembers(rootNamespace);
+            new Thread(() =>
+            {
+                NamespaceDeclarationSyntax rootNamespace = WrapAssemblies(assemblies, rootNamespaceName);
+                CompilationUnitSyntax compilationUnit = SyntaxFactory.CompilationUnit()
+                    .AddMembers(rootNamespace);
 
-            SyntaxTree syntaxTree = CSharpSyntaxTree.Create(compilationUnit);
+                SyntaxTree syntaxTree = CSharpSyntaxTree.Create(compilationUnit);
 
-            // Get reference to netstandard.dll
-            PortableExecutableReference netstandardLib = MetadataReference.CreateFromFile(Assembly.Load("netstandard").Location);
-            PortableExecutableReference bridgeLib = MetadataReference.CreateFromFile(typeof(ResoniteBridge.ResoniteBridgeClient).Assembly.Location);
+                // Get reference to netstandard.dll
+                PortableExecutableReference netstandardLib = MetadataReference.CreateFromFile(assemblies["netstandard"].Location);
+                PortableExecutableReference bridgeLib = MetadataReference.CreateFromFile(typeof(ResoniteBridge.ResoniteBridgeClient).Assembly.Location);
+                PortableExecutableReference systemRuntime = MetadataReference.CreateFromFile(assemblies["System.Runtime"].Location);
+                PortableExecutableReference systemPrivateCorelib = MetadataReference.CreateFromFile(assemblies["System.Private.CoreLib"].Location);
+                
 
-            // Create compilation
-            CSharpCompilation compilation = CSharpCompilation.Create(
-                rootNamespaceName,
-                syntaxTrees: new[] { syntaxTree },
-                references: new[]
-                {
+                string outPath = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\ResoniteBridgeStandalone\\" + rootNamespaceName + ".dll";
+                Console.WriteLine("Compiling");
+                // Create compilation
+                CSharpCompilation compilation = CSharpCompilation.Create(
+                    rootNamespaceName,
+                    syntaxTrees: new[] { syntaxTree },
+                    references: new[]
+                    {
                 netstandardLib,
-                bridgeLib
-                },
-                options: new CSharpCompilationOptions(
-                    OutputKind.DynamicallyLinkedLibrary,
-                    optimizationLevel: OptimizationLevel.Release
-                ));
+                bridgeLib,
+                systemRuntime,
+                    },
+                    options: new CSharpCompilationOptions(
+                        OutputKind.DynamicallyLinkedLibrary,
+                        optimizationLevel: OptimizationLevel.Release
+                    ));
 
-            compilation.Emit(rootNamespaceName + ".dll");
+
+                Console.WriteLine("Emitting..." + outPath);
+
+
+                EmitResult result = compilation.Emit(outPath);
+                if (!result.Success)
+                {
+                    var errors = string.Join("\n", result.Diagnostics.Select(d => d.ToString()));
+                    throw new Exception($"Compilation failed: {errors}");
+                }
+
+                Console.WriteLine("Done!");
+
+            }).Start();
             /*
             using (MemoryStream ms = new MemoryStream())
             {

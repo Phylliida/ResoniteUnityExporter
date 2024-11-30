@@ -230,6 +230,8 @@ namespace ResoniteBridge
                 }))
                 {
 
+
+                    bool first = true;
                     try
                     {
                         Console.WriteLine("Starting");
@@ -248,8 +250,6 @@ namespace ResoniteBridge
                                     GetProperty(engine, "WorldManager"),
                                     "FocusedWorld");
 
-
-                            bool first = true;
                             if (focusedWorld != null)
                             {
                                 if (first)
@@ -257,7 +257,16 @@ namespace ResoniteBridge
                                     first = false;
                                     Console.WriteLine("Making wrapper assembly");
                                     ResoniteBinaryWrapper.CreateWrapperAssembly(serverData.assemblies, "ResoniteWrapper");
-                                    Console.WriteLine("Made wrapper assembly");
+
+                                    // hack to prevent discord interface from crashing it
+                                    var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
+                                    SetField(
+                                        GetProperty(engine, "PlatformInterface"),
+                                        "connectors",
+                                        Array.CreateInstance(platformConnectorType
+                                            ,
+                                            0)
+                                        );
                                 }
                                 serverData.focusedWorld = focusedWorld;
                                 serverData.engine = this.engine;
@@ -286,7 +295,14 @@ namespace ResoniteBridge
                                     null,
                                     false);
                             }
-                            CallMethod(engine, "RunUpdateLoop");
+                            try
+                            {
+                                CallMethod(engine, "RunUpdateLoop");
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Got exception " + e.ToString() + "\n" + Environment.StackTrace);
+                            }
                             CallMethod(systemInfo, "FrameFinished");
                             Thread.Sleep(16);
                         }
