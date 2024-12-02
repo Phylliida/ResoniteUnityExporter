@@ -83,7 +83,7 @@ namespace ResoniteBridge
                                 if (waitingForResponse)
                                 {
                                     string result = ss.ReadString(millisTimeout, stopToken.Token);
-                                    ResoniteBridgeValue parsedResult = null;
+                                    ResoniteBridgeValue parsedResult;
                                     if (result != "" && result != null)
                                     {
                                         try

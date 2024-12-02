@@ -17,12 +17,14 @@ namespace ResoniteBridge
 {
     public class ResoniteBinaryWrapper
     {
+
         public static PropertyDeclarationSyntax CreateBridgeProperty(PropertyInfo property, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             string dataType = GetWrappedDataType(property.PropertyType);
             bool isStatic = property.GetAccessors(nonPublic: true)[0].IsStatic;
             string staticStr = isStatic ? "static " : "";
+
             string propertyCode = $@"
             public {staticStr}{dataType} {property.Name}
             {{
@@ -176,7 +178,7 @@ namespace ResoniteBridge
 
 
 
-        public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true)
+        public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true, bool includeGenericArguments=true)
         {
             string genericStr = "";
             if (type.IsGenericType)
@@ -188,7 +190,10 @@ namespace ResoniteBridge
                     // stuff like <T>
                     if (type.IsGenericTypeDefinition)
                     {
-                        genericStrs.Add(genericType.Name);
+                        if (includeGenericArguments)
+                        {
+                            genericStrs.Add(genericType.Name);
+                        }
                     }
                     // specific types (like List<string>)
                     else
@@ -196,10 +201,11 @@ namespace ResoniteBridge
                         genericStrs.Add(GetTypeNameIncludingGenericArguments(genericType));
                     }
                 }
-
-                genericStr = "<" + String.Join(", ", genericStrs) + ">";
+                if (genericStrs.Count > 0 )
+                {
+                    genericStr = "<" + String.Join(", ", genericStrs) + ">";
+                }
             }
-            string space = GetTypeNamespace(type);
             string typeName = type.Name;
             for (int i = 0; i < 10; i++)
             {
@@ -207,15 +213,13 @@ namespace ResoniteBridge
             }
             // & doesn't work in roslyn idk why
             typeName = typeName.Replace("&", "") + genericStr;
-            if (includeNamespace)
+            // generic type parameters we ignore adding namespace to (like <T>)
+            if (includeNamespace && !type.IsGenericTypeParameter)
             {
+                string space = GetTypeNamespace(type);
                 typeName = space + "." + typeName;
             }
-            // this ensures we point to the correct System
-            if (typeName.StartsWith("System."))
-            {
-                typeName = typeName.Replace("System.", "global::System.");
-            }
+ 
             return typeName;
         }
 
@@ -231,7 +235,7 @@ namespace ResoniteBridge
             return space;
         }
 
-        public static NamespaceDeclarationSyntax CreateNamespaceForType(ClassDeclarationSyntax classDecleration, System.Type type)
+        public static NamespaceDeclarationSyntax CreateNamespaceForType(MemberDeclarationSyntax classDecleration, System.Type type)
         {
             // some various nonsense to make sure they properly go like "FrooxEngine.World" instead of just World
             string space = GetTypeNamespace(type);
@@ -255,19 +259,92 @@ namespace ResoniteBridge
         public static NamespaceDeclarationSyntax WrapType(System.Type type, HashSet<Tuple<string, string>> seenItems)
         {
             string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(type, includeNamespace: false);
+            string fullTypeNameWithoutGenerics = GetTypeNameIncludingGenericArguments(type, includeNamespace: false, includeGenericArguments: false);
 
-            string classCode = $@"public class {fullTypeNameWithoutNamespace} : ResoniteBridge.ResoniteBridgeValue 
+            string inheritFrom = type.IsClass
+                ? "ResoniteBridge.ClassResoniteBridgeValue"
+                : "ResoniteBridge.ResoniteBridgeValue";
+
+            string structOrClass = type.IsClass
+                ? "class"
+                : "struct";
+
+            string body = "";
+            // manually implement interface since structs can't inherit from structs
+            if (!type.IsClass)
+            {
+                body = $@"public string valueStr;
+                            public string assemblyName;
+                            public string typeName;
+                            public ResoniteBridgeValueType valueType;
+
+                            public string getValueStr()
+                            {{
+                                return valueStr;
+                            }}
+
+                            public void setValueStr(string valueStr)
+                            {{
+                                this.valueStr = valueStr;
+                            }}
+
+                            public string getAssemblyName()
+                            {{
+                                return assemblyName;
+                            }}
+
+                            public void setAssemblyName(string assemblyName)
+                            {{
+                                this.assemblyName = assemblyName;
+                            }}
+
+                            public string getTypeName()
+                            {{
+                                return typeName;
+                            }}
+
+                            public void setTypeName(string typeName)
+                            {{
+                                this.typeName = typeName;
+                            }}
+
+                            public ResoniteBridgeValueType getValueType()
+                            {{
+                                return valueType;
+                            }}
+
+                            public void setValueType(ResoniteBridgeValueType valueType)
+                            {{
+                                this.valueType = valueType;
+                            }}";
+
+            }
+
+
+            string classCode = $@"public {structOrClass} {fullTypeNameWithoutNamespace} : {inheritFrom} 
             {{
-                public {type.Name}(ResoniteBridge.ResoniteBridgeValue value)
+                public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue value)
                 {{
                     this.valueStr = value.valueStr;
                     this.assemblyName = value.assemblyName;
                     this.typeName = value.typeName;
                     this.valueType = value.valueType;
                 }}
+
+                {body}
             }}";
 
-            ClassDeclarationSyntax classDeclaration = (ClassDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(classCode);
+
+            ClassDeclarationSyntax classDeclaration = null;
+            StructDeclarationSyntax structDeclaration = null;
+            if (type.IsClass)
+            {
+               classDeclaration = (ClassDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(classCode);
+            }
+            else
+            {
+                structDeclaration = (StructDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(classCode);
+            }
             
             HashSet<string> forbidden = new HashSet<string>()
             {
@@ -275,7 +352,6 @@ namespace ResoniteBridge
             };
 
             string fullTypeName = GetTypeNameIncludingGenericArguments(type);
-            Console.WriteLine("Wrapping type " + fullTypeName);
 
             foreach (PropertyInfo property in type.GetProperties())
             {
@@ -289,7 +365,14 @@ namespace ResoniteBridge
                 {
                     seenItems.Add(new Tuple<string, string>(fullTypeName, property.Name));
                     PropertyDeclarationSyntax wrappedProperty = CreateBridgeProperty(property, type);
-                    classDeclaration = classDeclaration.AddMembers(wrappedProperty);
+                    if (type.IsClass)
+                    {
+                        classDeclaration = classDeclaration.AddMembers(wrappedProperty);
+                    }
+                    else
+                    {
+                        structDeclaration = structDeclaration.AddMembers(wrappedProperty);
+                    }
                 }
             }
 
@@ -308,7 +391,14 @@ namespace ResoniteBridge
                     {
                         seenItems.Add(new Tuple<string, string>(fullTypeName, field.Name));
                         PropertyDeclarationSyntax wrappedField = CreateBridgeField(field, type);
-                        classDeclaration = classDeclaration.AddMembers(wrappedField);
+                        if (type.IsClass)
+                        {
+                            classDeclaration = classDeclaration.AddMembers(wrappedField);
+                        }
+                        else
+                        {
+                            structDeclaration = structDeclaration.AddMembers(wrappedField);
+                        }
                     }
 
                 }
@@ -324,13 +414,28 @@ namespace ResoniteBridge
                     seenItems.Add(new Tuple<string, string>(fullTypeName, method.Name));
                     //MethodDeclarationSyntax wrappedField = CreateBridgeMethod(method, type);
                     //classDeclaration = classDeclaration.AddMembers(wrappedField);
+                    if (type.IsClass)
+                    {
+                        //classDeclaration = classDeclaration.AddMembers(wrappedField);
+                    }
+                    else
+                    {
+                        //structDeclaration = structDeclaration.AddMembers(wrappedField);
+                    }
                 }
             }
-
-            return CreateNamespaceForType(classDeclaration, type);
+            
+            if (type.IsClass)
+            {
+                return CreateNamespaceForType(classDeclaration, type);
+            }
+            else
+            {
+                return CreateNamespaceForType(structDeclaration, type);
+            }
         }
 
-        public static NamespaceDeclarationSyntax WrapAssembly(NamespaceDeclarationSyntax rootNamespace, Assembly assembly, HashSet<string> typesEncountered)
+        public static void WrapAssembly(ref NamespaceDeclarationSyntax rootNamespace, ref CompilationUnitSyntax emptyHolder, Assembly assembly, HashSet<string> typesEncountered)
         {
             HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
             foreach (System.Type typeInAssembly in assembly.GetTypes())
@@ -339,37 +444,49 @@ namespace ResoniteBridge
                 // prevent type shadowing, just use whichever we see first
                 if (!typesEncountered.Contains(fullTypeName))
                 {
+                    string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(typeInAssembly, includeNamespace: false);
                     // ignore weird generic template things
                     if (!typeInAssembly.FullName.Contains("<>") &&
                         !typeInAssembly.FullName.Contains(">d") &&
-                        fullTypeName != "FrooxEngine.ProtoFlux") // namespace and class
+                        fullTypeName != "FrooxEngine.ProtoFlux" &&// namespace and class
+                        !fullTypeNameWithoutNamespace.StartsWith("<") && // weird implementation things <SpawnEntity>, <PrivateImplementationDetails>, etc.
+                        !fullTypeNameWithoutNamespace.StartsWith("__StaticArray") && // idk what these are but they break stuff
+                        fullTypeNameWithoutNamespace != "static")
                     {
-                        rootNamespace = rootNamespace.AddMembers(
-                            WrapType(typeInAssembly, seenItems));
+                        NamespaceDeclarationSyntax wrappedType = WrapType(typeInAssembly, seenItems);
+                        if (fullTypeName.StartsWith("System."))
+                        {
+                            emptyHolder = emptyHolder.AddMembers(wrappedType);
+                        }
+                        else
+                        {
+                            rootNamespace = rootNamespace.AddMembers(wrappedType);
+                        }
+                        rootNamespace = rootNamespace.AddMembers();
                         typesEncountered.Add(fullTypeName);
                     }
                 }
             }
-            return rootNamespace;
         }
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            //"FrooxEngine.Store",
-            //"SkyFrost.Base.Models",
-            //"SkyFrost.Base",
-            //"Elements.Assets",
-            //"Elements.Core",
+            "FrooxEngine.Store",
+            "SkyFrost.Base.Models",
+            "SkyFrost.Base",
+            "Elements.Assets",
+            "Elements.Core",
             //"ProtoFlux.Nodes.FrooxEngine",
             //"ProtoFlux.Nodes.Core",
             //"ProtoFluxBindings",
             "FrooxEngine",
         };
 
-        public static NamespaceDeclarationSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
+        public static CompilationUnitSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             HashSet<string> typesEncountered = new HashSet<string>();
             NamespaceDeclarationSyntax rootNamespace = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespaceName));
+            CompilationUnitSyntax emptyHolder = SyntaxFactory.CompilationUnit();
 
             foreach (KeyValuePair<string, Assembly> pair in assemblies)
             {
@@ -377,24 +494,18 @@ namespace ResoniteBridge
                 if (whitelist.Contains(ResoniteBridgeServer.GetAssemblyName(pair.Value)))
                 {
                     Console.WriteLine("Wrapping assembly " + pair.Key);
-                    rootNamespace = WrapAssembly(rootNamespace, assembly, typesEncountered);
+                    WrapAssembly(ref rootNamespace, ref emptyHolder, assembly, typesEncountered);
                     Console.WriteLine("Done wrapping assembly " + pair.Key);
                 }
             }
-            return rootNamespace;
+            return emptyHolder.AddMembers(rootNamespace);
         }
 
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             new Thread(() =>
             {
-                NamespaceDeclarationSyntax rootNamespace = WrapAssemblies(assemblies, rootNamespaceName);
-                CompilationUnitSyntax compilationUnit = SyntaxFactory.CompilationUnit()
-                 .AddUsings(
-                    SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")),
-                    SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic"))
-                 )
-                .AddMembers(rootNamespace);
+                CompilationUnitSyntax compilationUnit = WrapAssemblies(assemblies, rootNamespaceName);
 
                 SyntaxTree syntaxTree = CSharpSyntaxTree.Create(compilationUnit);
 
@@ -451,6 +562,10 @@ namespace ResoniteBridge
                            compilation.SyntaxTrees.First().Options);
 
                 compilation = compilation.AddSyntaxTrees(targetFrameworkAttribute);
+                string sourceCode = compilationUnit.ToFullString();
+                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + ".cs";
+
+                File.WriteAllText(outTxt, sourceCode);
 
                 Console.WriteLine("Emitting..." + outPath);
 

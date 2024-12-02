@@ -39,7 +39,7 @@ namespace ResoniteBridge
             } else {                
                 // we need to serialize it
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                ResoniteBridgeValue result = new ResoniteBridgeValue()
+                StructResoniteBridgeValue result = new StructResoniteBridgeValue()
                 {
                     assemblyName = Assembly.GetAssembly(input.GetType()).GetName().Name,
                     typeName = input.GetType().FullName,
@@ -63,7 +63,7 @@ namespace ResoniteBridge
         public static ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
         {
             client.inputMessages.Enqueue(message);
-            ResoniteBridgeValue output = null;
+            ResoniteBridgeValue output;
             Stopwatch elapsedTime = new Stopwatch();
             elapsedTime.Start();
             while (!client.outputMessages.TryDequeue(out output))
@@ -74,13 +74,13 @@ namespace ResoniteBridge
                 }
                 // We are on unity thread, can't sleep :(
             }
-            if (output == null){
+            if (output.getValueType() == ResoniteBridgeValueType.Null){
                 DebugLog("Got null output?");
                 throw new EvaluationException("Got null output?");
             }
-            if (output.valueType == ResoniteBridgeValueType.Error)
+            if (output.getValueType() == ResoniteBridgeValueType.Error)
             {
-                DebugLog("Got excfeption:" + output.valueStr);
+                DebugLog("Got excfeption:" + output.getValueStr());
             }
             return output;
         }
@@ -150,7 +150,7 @@ namespace ResoniteBridge
 
         public static ResoniteBridgeValue LookupType(string assemblyName, string typeName)
         {
-            return new ResoniteBridgeValue()
+            return new StructResoniteBridgeValue()
             {
                 assemblyName = assemblyName,
                 typeName = typeName,
@@ -162,10 +162,10 @@ namespace ResoniteBridge
         public static ResoniteBridgeValue LookupType(ResoniteBridgeValue target)
         {
             // no need to send any message as we already have all the needed data
-            return new ResoniteBridgeValue()
+            return new StructResoniteBridgeValue()
             {
-                assemblyName = target.assemblyName,
-                typeName = target.typeName,
+                assemblyName = target.getAssemblyName(),
+                typeName = target.getTypeName(),
                 valueStr = null,
                 valueType = ResoniteBridgeValueType.Type
             };

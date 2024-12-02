@@ -280,7 +280,7 @@ namespace ResoniteBridge
                                         }
                                         catch (Exception ex)
                                         {
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            bridgeServer.outputMessages.Enqueue(new StructResoniteBridgeValue()
                                             {
                                                 typeName = ex.GetType().Name,
                                                 valueStr = ex.ToString() + "\n" + Environment.StackTrace,

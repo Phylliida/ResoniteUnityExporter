@@ -11,46 +11,181 @@ namespace ResoniteBridge
 {
     public enum ResoniteBridgeValueType
     {
-        Serialized = 0,
-        UUID = 1,
-        Type = 2,
-        SpecialKeyword = 3,
-        Error = 4,
+        Null = 0,
+        Serialized = 1,
+        UUID = 2,
+        Type = 3,
+        SpecialKeyword = 4,
+        Error = 5,
     }
 
-    public class ResoniteBridgeValue
+    public interface ResoniteBridgeValue
     {
-        public string valueStr = null;
-        public string assemblyName = null;
-        public string typeName = null;
-        public ResoniteBridgeValueType valueType = ResoniteBridgeValueType.Serialized;
+        public string getValueStr();
+        public void setValueStr(string valueStr);
+        public string getAssemblyName();
+        public void setAssemblyName(string assemblyName);
+        public string getTypeName();
+        public void setTypeName(string typeName);
 
-        public ResoniteBridgeValue()
+        public ResoniteBridgeValueType getValueType();
+        public void setValueType(ResoniteBridgeValueType valueType);
+    }
+
+    public struct StructResoniteBridgeValue : ResoniteBridgeValue
+    {
+        public string valueStr;
+        public string assemblyName;
+        public string typeName;
+        public ResoniteBridgeValueType valueType;
+
+
+        public StructResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
         {
-
+            this.valueStr = valueStr;
+            this.assemblyName = assemblyName;
+            this.typeName = typeName;
+            this.valueType = valueType;
         }
-        public ResoniteBridgeValue(ResoniteBridgeValue other)
+
+        public StructResoniteBridgeValue(ResoniteBridgeValue other)
         {
-            this.valueStr = other.valueStr;
-            this.assemblyName = other.assemblyName;
-            this.typeName = other.typeName;
-            this.valueType = other.valueType;
+            this.valueStr = other.getValueStr();
+            this.assemblyName = other.getAssemblyName();
+            this.typeName = other.getTypeName();
+            this.valueType = other.getValueType();
         }
         public override string ToString()
         {
+            var thisObj = this;
             var fields = GetType()
                 .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(this)}");
+                .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(thisObj)}");
 
             return $"{GetType().Name}: {string.Join(", ", fields)}";
         }
+
+        public string getValueStr()
+        {
+            return valueStr;
+        }
+
+        public void setValueStr(string valueStr)
+        {
+            this.valueStr = valueStr;
+        }
+
+        public string getAssemblyName()
+        {
+            return assemblyName;
+        }
+
+        public void setAssemblyName(string assemblyName)
+        {
+            this.assemblyName = assemblyName;
+        }
+
+        public string getTypeName()
+        {
+            return typeName;
+        }
+
+        public void setTypeName(string typeName)
+        {
+            this.typeName = typeName;
+        }
+
+        public ResoniteBridgeValueType getValueType()
+        {
+            return valueType;
+        }
+
+        public void setValueType(ResoniteBridgeValueType valueType)
+        {
+            this.valueType = valueType;
+        }
     }
+
+    public class ClassResoniteBridgeValue : ResoniteBridgeValue
+    {
+        public string valueStr;
+        public string assemblyName;
+        public string typeName;
+        public ResoniteBridgeValueType valueType;
+
+
+        public ClassResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
+        {
+            this.valueStr = valueStr;
+            this.assemblyName = assemblyName;
+            this.typeName = typeName;
+            this.valueType = valueType;
+        }
+
+        public ClassResoniteBridgeValue(ResoniteBridgeValue other)
+        {
+            this.valueStr = other.getValueStr();
+            this.assemblyName = other.getAssemblyName();
+            this.typeName = other.getTypeName();
+            this.valueType = other.getValueType();
+        }
+        public override string ToString()
+        {
+            var thisObj = this;
+            var fields = GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(thisObj)}");
+
+            return $"{GetType().Name}: {string.Join(", ", fields)}";
+        }
+
+        public string getValueStr()
+        {
+            return valueStr;
+        }
+
+        public void setValueStr(string valueStr)
+        {
+            this.valueStr = valueStr;
+        }
+
+        public string getAssemblyName()
+        {
+            return assemblyName;
+        }
+
+        public void setAssemblyName(string assemblyName)
+        {
+            this.assemblyName = assemblyName;
+        }
+
+        public string getTypeName()
+        {
+            return typeName;
+        }
+
+        public void setTypeName(string typeName)
+        {
+            this.typeName = typeName;
+        }
+
+        public ResoniteBridgeValueType getValueType()
+        {
+            return valueType;
+        }
+
+        public void setValueType(ResoniteBridgeValueType valueType)
+        {
+            this.valueType = valueType;
+        }
+    }
+
     public class ResoniteBridgeMessage
     {
 
         public ResoniteBridgeMessageType messageType;
 
-        public ResoniteBridgeValue target = null;
+        public ResoniteBridgeValue target;
 
         public string name = null;
 

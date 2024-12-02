@@ -33,7 +33,7 @@ namespace ResoniteBridge
 
         public static object ParseUUIDObject(UnsupportedTypeLookup typeLookup, ResoniteBridgeValue value, Type type)
         {
-            Guid uuid = Guid.Parse(value.valueStr);
+            Guid uuid = Guid.Parse(value.getValueStr());
             if (typeLookup.TryGet(uuid, type, out object result))
             {
                 return result;
@@ -65,17 +65,17 @@ namespace ResoniteBridge
         public static object ParseInput(ResoniteBridgeServerData runner, ResoniteBridgeValue value)
         {
             // support null inputs
-            if (value == null)
+            if (value.getValueType() == ResoniteBridgeValueType.Null)
             {
                 return null;
             }
-            Type type = GetTypeFromAssembly(runner.assemblies, value.assemblyName, value.typeName);
-            switch (value.valueType)
+            Type type = GetTypeFromAssembly(runner.assemblies, value.getAssemblyName(), value.getTypeName());
+            switch (value.getValueType())
             {
                 case ResoniteBridgeValueType.Serialized:
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, type);
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject(value.getValueStr(), type);
                 case ResoniteBridgeValueType.UUID:
-                    if (Guid.TryParse(value.valueStr, out Guid guid))
+                    if (Guid.TryParse(value.getValueStr(), out Guid guid))
                     {
                         if (runner.uuidLookup.TryGet(guid, type, out object result))
                         {
@@ -83,19 +83,19 @@ namespace ResoniteBridge
                         }
                         else
                         {
-                            throw new ArgumentException("Invalid failed to lookup guid " + guid + " from object of type " + type + " from assembly " + value.assemblyName);
+                            throw new ArgumentException("Invalid failed to lookup guid " + guid + " from object of type " + type + " from assembly " + value.getAssemblyName());
                         }
                     }
                     else
                     {
-                        throw new ArgumentException("Invalid guid " + guid + " from object of type " + type + " from assembly " + value.assemblyName);
+                        throw new ArgumentException("Invalid guid " + guid + " from object of type " + type + " from assembly " + value.getAssemblyName());
                     }
                 case ResoniteBridgeValueType.Type:
                     return type;
                 case ResoniteBridgeValueType.SpecialKeyword:
-                    return ParseSpecialKeyword(runner, value.valueStr);
+                    return ParseSpecialKeyword(runner, value.getValueStr());
             }
-            throw new ArgumentException("Unknown ResoniteBridgeValueType " + value.valueType + " for type " + type + " from assembly " + value.assemblyName);
+            throw new ArgumentException("Unknown ResoniteBridgeValueType " + value.getValueType() + " for type " + type + " from assembly " + value.getAssemblyName());
         }
 
         public static object[] ParseInputs(ResoniteBridgeServerData runner, ResoniteBridgeValue[] inputs)
@@ -120,9 +120,9 @@ namespace ResoniteBridge
                 object result = EvaluateHelper(runner, message);
                 if (result == null)
                 {
-                    return null;
+                    return new StructResoniteBridgeValue(); // default value is null
                 }
-                ResoniteBridgeValue encodedResult = new ResoniteBridgeValue()
+                StructResoniteBridgeValue encodedResult = new StructResoniteBridgeValue()
                 {
                     assemblyName = ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(result.GetType())),
                     typeName = result.GetType().FullName
@@ -154,7 +154,7 @@ namespace ResoniteBridge
             // Return errors to them for easy debugging
             catch (Exception e)
             {
-                return new ResoniteBridgeValue()
+                return new StructResoniteBridgeValue()
                 {
                     typeName = e.GetType().Name,
                     valueStr = e.ToString() + "\n" + Environment.StackTrace,
@@ -167,7 +167,7 @@ namespace ResoniteBridge
         {
             object[] objInputs = ParseInputs(runner, message.inputs);
             object objTarget = null;
-            if (message.target != null)
+            if (message.target.getValueType() != ResoniteBridgeValueType.Null)
             {
                 objTarget = ParseInput(runner, message.target);
             }
