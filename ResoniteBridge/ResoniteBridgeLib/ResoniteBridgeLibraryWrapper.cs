@@ -31,7 +31,7 @@ namespace ResoniteBridge
                 get
                 {{
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
-                        ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue()
+                        ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.StructResoniteBridgeValue()
                             {{
                                 assemblyName = ""{assemblyName}"",
                                 typeName = ""{type.Name}"",
@@ -40,7 +40,7 @@ namespace ResoniteBridge
                 }}
                 set
                 {{
-                    ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue()
+                    ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.StructResoniteBridgeValue()
                     {{
                         assemblyName = ""{assemblyName}"",
                         typeName = ""{type.Name}"",
@@ -106,7 +106,7 @@ namespace ResoniteBridge
                 get
                 {{
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
-                        ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue()
+                        ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.StructResoniteBridgeValue()
                             {{
                                 assemblyName = ""{assemblyName}"",
                                 typeName = ""{type.Name}"",
@@ -115,7 +115,7 @@ namespace ResoniteBridge
                 }}
                 set
                 {{
-                    ResoniteBridge.ResoniteBridgeClientWrappers.SetField(new ResoniteBridge.ResoniteBridgeValue()
+                    ResoniteBridge.ResoniteBridgeClientWrappers.SetField(new ResoniteBridge.StructResoniteBridgeValue()
                     {{
                         assemblyName = ""{assemblyName}"",
                         typeName = ""{type.Name}"",
@@ -155,7 +155,7 @@ namespace ResoniteBridge
                     {{
                         return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
                                 ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
-                                new ResoniteBridge.ResoniteBridgeValue()
+                                new ResoniteBridge.StructResoniteBridgeValue()
                                 {{
                                     assemblyName = ""{assemblyName}"",
                                     typeName = ""{type.Name}"",
@@ -213,8 +213,10 @@ namespace ResoniteBridge
             }
             // & doesn't work in roslyn idk why
             typeName = typeName.Replace("&", "") + genericStr;
+            bool isGenericArray = type.IsArray && (type.GetElementType().IsGenericType || type.GetElementType().IsGenericTypeParameter);
+
             // generic type parameters we ignore adding namespace to (like <T>)
-            if (includeNamespace && !type.IsGenericTypeParameter)
+            if (includeNamespace && !type.IsGenericTypeParameter && !isGenericArray)
             {
                 string space = GetTypeNamespace(type);
                 typeName = space + "." + typeName;
@@ -276,7 +278,7 @@ namespace ResoniteBridge
                 body = $@"public string valueStr;
                             public string assemblyName;
                             public string typeName;
-                            public ResoniteBridgeValueType valueType;
+                            public ResoniteBridge.ResoniteBridgeValueType valueType;
 
                             public string getValueStr()
                             {{
@@ -308,12 +310,12 @@ namespace ResoniteBridge
                                 this.typeName = typeName;
                             }}
 
-                            public ResoniteBridgeValueType getValueType()
+                            public ResoniteBridge.ResoniteBridgeValueType getValueType()
                             {{
                                 return valueType;
                             }}
 
-                            public void setValueType(ResoniteBridgeValueType valueType)
+                            public void setValueType(ResoniteBridge.ResoniteBridgeValueType valueType)
                             {{
                                 this.valueType = valueType;
                             }}";
@@ -325,10 +327,10 @@ namespace ResoniteBridge
             {{
                 public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue value)
                 {{
-                    this.valueStr = value.valueStr;
-                    this.assemblyName = value.assemblyName;
-                    this.typeName = value.typeName;
-                    this.valueType = value.valueType;
+                    this.valueStr = value.getValueStr();
+                    this.assemblyName = value.getAssemblyName();
+                    this.typeName = value.getTypeName();
+                    this.valueType = value.getValueType();
                 }}
 
                 {body}
