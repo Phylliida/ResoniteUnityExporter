@@ -96,7 +96,6 @@ namespace ResoniteBridge
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             string dataType = GetWrappedDataType(field.FieldType);
-
             bool isStatic = field.IsStatic;
             string staticStr = isStatic ? "static " : "";
             string fieldCode = $@"
@@ -174,9 +173,10 @@ namespace ResoniteBridge
             return (MethodDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(fieldCode);
         }
         // non static are tricky, we need to store the data in the types somehow
-  
 
-        public static string GetTypeNameIncludingGenericArguments(System.Type type)
+
+
+        public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true)
         {
             string genericStr = "";
             if (type.IsGenericType)
@@ -185,13 +185,38 @@ namespace ResoniteBridge
 
                 foreach (Type genericType in type.GetGenericArguments())
                 {
-                    genericStrs.Add(GetTypeNameIncludingGenericArguments(genericType));
+                    // stuff like <T>
+                    if (type.IsGenericTypeDefinition)
+                    {
+                        genericStrs.Add(genericType.Name);
+                    }
+                    // specific types (like List<string>)
+                    else
+                    {
+                        genericStrs.Add(GetTypeNameIncludingGenericArguments(genericType));
+                    }
                 }
 
                 genericStr = "<" + String.Join(", ", genericStrs) + ">";
             }
             string space = GetTypeNamespace(type);
-            return space + "." + type.Name.Replace("`1", "").Replace("`2", "").Replace("`3", "").Replace("&", "") + genericStr;
+            string typeName = type.Name;
+            for (int i = 0; i < 10; i++)
+            {
+                typeName = typeName.Replace("`" + i, "");
+            }
+            // & doesn't work in roslyn idk why
+            typeName = typeName.Replace("&", "") + genericStr;
+            if (includeNamespace)
+            {
+                typeName = space + "." + typeName;
+            }
+            // this ensures we point to the correct System
+            if (typeName.StartsWith("System."))
+            {
+                typeName = typeName.Replace("System.", "global::System.");
+            }
+            return typeName;
         }
 
         public static string GetTypeNamespace(System.Type type)
@@ -229,7 +254,9 @@ namespace ResoniteBridge
 
         public static NamespaceDeclarationSyntax WrapType(System.Type type, HashSet<Tuple<string, string>> seenItems)
         {
-            string classCode = $@"public class {type.Name} : ResoniteBridge.ResoniteBridgeValue 
+            string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(type, includeNamespace: false);
+
+            string classCode = $@"public class {fullTypeNameWithoutNamespace} : ResoniteBridge.ResoniteBridgeValue 
             {{
                 public {type.Name}(ResoniteBridge.ResoniteBridgeValue value)
                 {{
@@ -248,6 +275,8 @@ namespace ResoniteBridge
             };
 
             string fullTypeName = GetTypeNameIncludingGenericArguments(type);
+            Console.WriteLine("Wrapping type " + fullTypeName);
+
             foreach (PropertyInfo property in type.GetProperties())
             {
                 if (property.Name.Contains("<") || property.Name.Contains(">") || property.Name.Contains("`"))
@@ -326,11 +355,11 @@ namespace ResoniteBridge
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            "FrooxEngine.Store",
-            "SkyFrost.Base.Models",
-            "SkyFrost.Base",
-            "Elements.Assets",
-            "Elements.Core",
+            //"FrooxEngine.Store",
+            //"SkyFrost.Base.Models",
+            //"SkyFrost.Base",
+            //"Elements.Assets",
+            //"Elements.Core",
             //"ProtoFlux.Nodes.FrooxEngine",
             //"ProtoFlux.Nodes.Core",
             //"ProtoFluxBindings",
@@ -361,7 +390,11 @@ namespace ResoniteBridge
             {
                 NamespaceDeclarationSyntax rootNamespace = WrapAssemblies(assemblies, rootNamespaceName);
                 CompilationUnitSyntax compilationUnit = SyntaxFactory.CompilationUnit()
-                    .AddMembers(rootNamespace);
+                 .AddUsings(
+                    SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System")),
+                    SyntaxFactory.UsingDirective(SyntaxFactory.ParseName("System.Collections.Generic"))
+                 )
+                .AddMembers(rootNamespace);
 
                 SyntaxTree syntaxTree = CSharpSyntaxTree.Create(compilationUnit);
 
@@ -380,6 +413,8 @@ namespace ResoniteBridge
                 {
                     "netstandard.dll",
                     "System.Runtime.dll",
+                    "System.Collections.dll",
+                    "mscorlib.dll"
                 };
 
                 var references = new List<MetadataReference>();
