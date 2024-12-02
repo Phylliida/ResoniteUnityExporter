@@ -11,6 +11,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
 using Microsoft.CodeAnalysis.Operations;
+using static ResoniteBridge.ResoniteBinaryWrapper;
 
 namespace ResoniteBridge
 {
@@ -19,30 +20,21 @@ namespace ResoniteBridge
         public static PropertyDeclarationSyntax CreateBridgeProperty(PropertyInfo property, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
-            bool useRawType = false;
-            if (assemblyName.StartsWith("System"))
-            {
-                useRawType = true;
-            }
-            string fullTypeName = FullTypeName(type);
-            if (useRawType)
-            {
-                fullTypeName = type.FullName;
-            }
+            string dataType = GetWrappedDataType(property.PropertyType);
             bool isStatic = property.GetAccessors(nonPublic: true)[0].IsStatic;
             string staticStr = isStatic ? "static " : "";
             string propertyCode = $@"
-            public {staticStr}{fullTypeName} {property.Name}
+            public {staticStr}{dataType} {property.Name}
             {{
                 get
                 {{
-                    return ({fullTypeName})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
+                    return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
                         ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue()
                             {{
                                 assemblyName = ""{assemblyName}"",
                                 typeName = ""{type.Name}"",
                                 valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                            }}, ""{property.Name}""), typeof({fullTypeName}));                
+                            }}, ""{property.Name}""), typeof({dataType}));                
                 }}
                 set
                 {{
@@ -54,7 +46,6 @@ namespace ResoniteBridge
                     }}, ""{property.Name}"", value);
                 }}
             }}";
-
             return (PropertyDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(propertyCode);
         }
 
@@ -76,7 +67,7 @@ namespace ResoniteBridge
             {
                 parsingType = ParsingType.AsType;
             }
-            // it's system
+            // it's system (and not a generic)
             else if (fieldTypeAssemblyName.StartsWith("System"))
             {
                 parsingType = ParsingType.AsRaw;
@@ -84,26 +75,27 @@ namespace ResoniteBridge
             return parsingType;
         }
 
+        public static string GetWrappedDataType(Type type)
+        {
+            ParsingType parsingType = GetParsingType(type);
+            switch (parsingType)
+            {
+                case ParsingType.AsResoniteBridgeValue:
+                    return "ResoniteBridge.ResoniteBridgeValue";
+                case ParsingType.AsType:
+                    return GetTypeNameIncludingGenericArguments(type);
+                case ParsingType.AsRaw:
+                    return GetTypeNameIncludingGenericArguments(type);
+            }
+            throw new ArgumentException("Unknown parsing type " + parsingType + " for type " + type.FullName);
+        }
+
+
         // we have to make fields properties in order to have custom getter and setters
         public static PropertyDeclarationSyntax CreateBridgeField(FieldInfo field, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
-            Type fieldType = field.FieldType;
-            ParsingType parsingType = GetParsingType(fieldType);
-
-            string dataType = null;
-            switch (parsingType)
-            {
-                case ParsingType.AsResoniteBridgeValue:
-                    dataType = "ResoniteBridge.ResoniteBridgeValue";
-                    break;
-                case ParsingType.AsType:
-                    dataType = FullTypeName(fieldType);
-                    break;
-                case ParsingType.AsRaw:
-                    dataType = type.Name;
-                    break;
-            }
+            string dataType = GetWrappedDataType(field.FieldType);
 
             bool isStatic = field.IsStatic;
             string staticStr = isStatic ? "static " : "";
@@ -112,13 +104,13 @@ namespace ResoniteBridge
             {{
                 get
                 {{
-                    return ({fullTypeName})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
+                    return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
                         ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue()
                             {{
                                 assemblyName = ""{assemblyName}"",
                                 typeName = ""{type.Name}"",
                                 valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                            }}, ""{field.Name}""), typeof({fullTypeName}));
+                            }}, ""{field.Name}""), typeof({dataType}));
                 }}
                 set
                 {{
@@ -135,41 +127,71 @@ namespace ResoniteBridge
         }
 
         
-        public static MethodDeclarationSyntax CreateStaticBridgeMethod(MethodInfo method, System.Type type)
+        public static MethodDeclarationSyntax CreateBridgeMethod(MethodInfo method, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             List<string> argumentStrs = new List<string>();
             List<string> variableStrs = new List<string>();
             string argumentNames = "abcdefghijklmnopqrstuvwxyz";
-            for (int i = 0; i < method.GetParameters().Length; i++)
+            foreach (ParameterInfo param in method.GetParameters())
             {
-                argumentStrs.Add("object " + argumentNames[i]);
-                variableStrs.Add("" + argumentNames[i]);
+                argumentStrs.Add("object " + param.Name);
+                variableStrs.Add("" + param.Name);
             }
+
+            string outputType = GetWrappedDataType(method.ReturnType);
+
             string argumentInputs = String.Join(", " + argumentNames);
             string variableInputs = String.Join(", " + variableStrs);
 
-            string fieldCode = $@"
-            public static ResoniteBridge.ResoniteBridgeValue {method.Name}({argumentStrs})
-            {{
-                return ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
-                    new ResoniteBridge.ResoniteBridgeValue()
+            if (variableInputs.Length > 0)
+            {
+                variableInputs = ", " + variableInputs;
+            }
+            string fieldCode = method.IsStatic
+                ? $@"
+                    public static {outputType} {method.Name}({argumentInputs})
                     {{
-                        assemblyName = ""{assemblyName}"",
-                        typeName = ""{type.Name}"",
-                        valueType = ResoniteBridge.ResoniteBridgeValueType.Type,
-                    }}, {method.Name}, {variableInputs});
-            }}";
+                        return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
+                                ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
+                                new ResoniteBridge.ResoniteBridgeValue()
+                                {{
+                                    assemblyName = ""{assemblyName}"",
+                                    typeName = ""{type.Name}"",
+                                    valueType = ResoniteBridge.ResoniteBridgeValueType.Type,
+                                }}, ""{method.Name}""{variableInputs}),
+                            typeof({outputType}));
+                    }}"
+                : $@"
+                    public {outputType} {method.Name}({argumentInputs})
+                    {{
+                        return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
+                            ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
+                            (ResoniteBridge.ResoniteBridgeValue)this, ""{method.Name}""{variableInputs}),
+                            typeof({outputType}));
+                    }}";
 
             return (MethodDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(fieldCode);
         }
         // non static are tricky, we need to store the data in the types somehow
   
 
-        public static string FullTypeName(System.Type type)
+        public static string GetTypeNameIncludingGenericArguments(System.Type type)
         {
+            string genericStr = "";
+            if (type.IsGenericType)
+            {
+                List<string> genericStrs = new List<string>();
+
+                foreach (Type genericType in type.GetGenericArguments())
+                {
+                    genericStrs.Add(GetTypeNameIncludingGenericArguments(genericType));
+                }
+
+                genericStr = "<" + String.Join(", ", genericStrs) + ">";
+            }
             string space = GetTypeNamespace(type);
-            return space + "." + type.Name;
+            return space + "." + type.Name.Replace("`1", "").Replace("`2", "").Replace("`3", "").Replace("&", "") + genericStr;
         }
 
         public static string GetTypeNamespace(System.Type type)
@@ -225,10 +247,14 @@ namespace ResoniteBridge
                 "interface"
             };
 
-            string fullTypeName = FullTypeName(type);
+            string fullTypeName = GetTypeNameIncludingGenericArguments(type);
             foreach (PropertyInfo property in type.GetProperties())
             {
-                if (property.Name != type.Name && // prevents "member names cannot be the same as their enclosing type"
+                if (property.Name.Contains("<") || property.Name.Contains(">") || property.Name.Contains("`"))
+                {
+
+                }
+                else if (property.Name != type.Name && // prevents "member names cannot be the same as their enclosing type"
                     !seenItems.Contains(new Tuple<string, string>(fullTypeName, property.Name)) // avoid duplicates
                                                                                                 )
                 {
@@ -261,16 +287,14 @@ namespace ResoniteBridge
 
             foreach (MethodInfo method in type.GetMethods())
             {
-                break;
                 if (method.Name != type.Name && // prevents "member names cannot be the same as their enclosing type"
-                    method.IsStatic &&
                     !seenItems.Contains(new Tuple<string, string>(fullTypeName, method.Name)) // avoid duplicates
                     && !method.Name.Contains("`")
                                                                                                 )
                 {
                     seenItems.Add(new Tuple<string, string>(fullTypeName, method.Name));
-                    MethodDeclarationSyntax wrappedField = CreateStaticBridgeMethod(method, type);
-                    classDeclaration = classDeclaration.AddMembers(wrappedField);
+                    //MethodDeclarationSyntax wrappedField = CreateBridgeMethod(method, type);
+                    //classDeclaration = classDeclaration.AddMembers(wrappedField);
                 }
             }
 
@@ -282,7 +306,7 @@ namespace ResoniteBridge
             HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
             foreach (System.Type typeInAssembly in assembly.GetTypes())
             {
-                string fullTypeName = FullTypeName(typeInAssembly);
+                string fullTypeName = GetTypeNameIncludingGenericArguments(typeInAssembly);
                 // prevent type shadowing, just use whichever we see first
                 if (!typesEncountered.Contains(fullTypeName))
                 {
