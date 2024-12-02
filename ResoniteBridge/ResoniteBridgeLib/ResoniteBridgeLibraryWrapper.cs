@@ -11,7 +11,11 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
 using Microsoft.CodeAnalysis.Operations;
+using System.Text.Json;
+using Newtonsoft.Json;
 using static ResoniteBridge.ResoniteBinaryWrapper;
+
+
 
 namespace ResoniteBridge
 {
@@ -33,18 +37,18 @@ namespace ResoniteBridge
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
                         ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.StructResoniteBridgeValue()
                             {{
-                                assemblyName = ""{assemblyName}"",
-                                typeName = ""{type.Name}"",
-                                valueType = ResoniteBridge.ResoniteBridgeValueType.Type
+                                __assemblyName = ""{assemblyName}"",
+                                __typeName = ""{type.Name}"",
+                                __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
                             }}, ""{property.Name}""), typeof({dataType}));                
                 }}
                 set
                 {{
                     ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.StructResoniteBridgeValue()
                     {{
-                        assemblyName = ""{assemblyName}"",
-                        typeName = ""{type.Name}"",
-                        valueType = ResoniteBridge.ResoniteBridgeValueType.Type
+                        __assemblyName = ""{assemblyName}"",
+                        __typeName = ""{type.Name}"",
+                        __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
                     }}, ""{property.Name}"", value);
                 }}
             }}";
@@ -108,18 +112,18 @@ namespace ResoniteBridge
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
                         ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.StructResoniteBridgeValue()
                             {{
-                                assemblyName = ""{assemblyName}"",
-                                typeName = ""{type.Name}"",
-                                valueType = ResoniteBridge.ResoniteBridgeValueType.Type
+                                __assemblyName = ""{assemblyName}"",
+                                __typeName = ""{type.Name}"",
+                                __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
                             }}, ""{field.Name}""), typeof({dataType}));
                 }}
                 set
                 {{
                     ResoniteBridge.ResoniteBridgeClientWrappers.SetField(new ResoniteBridge.StructResoniteBridgeValue()
                     {{
-                        assemblyName = ""{assemblyName}"",
-                        typeName = ""{type.Name}"",
-                        valueType = ResoniteBridge.ResoniteBridgeValueType.Type
+                        __assemblyName = ""{assemblyName}"",
+                        __typeName = ""{type.Name}"",
+                        __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
                     }}, ""{field.Name}"", value);
                 }}
             }}";
@@ -157,9 +161,9 @@ namespace ResoniteBridge
                                 ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
                                 new ResoniteBridge.StructResoniteBridgeValue()
                                 {{
-                                    assemblyName = ""{assemblyName}"",
-                                    typeName = ""{type.Name}"",
-                                    valueType = ResoniteBridge.ResoniteBridgeValueType.Type,
+                                    __assemblyName = ""{assemblyName}"",
+                                    __typeName = ""{type.Name}"",
+                                    __valueType = ResoniteBridge.ResoniteBridgeValueType.Type,
                                 }}, ""{method.Name}""{variableInputs}),
                             typeof({outputType}));
                     }}"
@@ -175,7 +179,6 @@ namespace ResoniteBridge
             return (MethodDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(fieldCode);
         }
         // non static are tricky, we need to store the data in the types somehow
-
 
 
         public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true, bool includeGenericArguments=true)
@@ -225,6 +228,39 @@ namespace ResoniteBridge
             return typeName;
         }
 
+        // cursed shit to make the generics line up
+        public static Type GetDeclaringTypeWithGenericArgs(Type type)
+        {
+            var declaringType = type.DeclaringType;
+            if (declaringType == null || !declaringType.IsGenericType)
+                return declaringType;
+
+            // Get the generic type definition of the declaring type
+            var declaringGenericDefinition = declaringType.GetGenericTypeDefinition();
+
+            // Get the generic parameters of the declaring type definition
+            var declaringGenericArguments = declaringGenericDefinition.GetGenericArguments();
+
+            // Map the generic arguments from the nested type to the declaring type's parameters
+            var genericArguments = new Type[declaringGenericArguments.Length];
+
+            for (int i = 0; i < declaringGenericArguments.Length; i++)
+            {
+                genericArguments[i] = declaringGenericArguments[i];
+                Type[] baseGenericArguments = type.GetGenericTypeDefinition().GetGenericArguments();
+                // look for matches to transfer over
+                for (int j = 0; j < baseGenericArguments.Length; j++)
+                {
+                    if (genericArguments[i].Name == baseGenericArguments[j].Name)
+                    {
+                        genericArguments[i] = baseGenericArguments[j];
+                    }
+                }
+            }
+
+            return declaringGenericDefinition.MakeGenericType(genericArguments);
+        }
+
         public static string GetTypeNamespace(System.Type type)
         {
             string space = type.Namespace;
@@ -233,6 +269,17 @@ namespace ResoniteBridge
             if (space == null || space == "")
             {
                 space = assemblyName;
+            }
+            if (type.DeclaringType != null)
+            {
+                Type declaringType = type.DeclaringType;
+                // we have to manually pass the generic arguments to get the right generic type
+                if (type.DeclaringType.IsGenericType)
+                {
+                    declaringType = GetDeclaringTypeWithGenericArgs(type);
+                }
+                // types in types
+                space = space + "." + GetTypeNameIncludingGenericArguments(declaringType, includeNamespace: false);
             }
             return space;
         }
@@ -275,49 +322,49 @@ namespace ResoniteBridge
             // manually implement interface since structs can't inherit from structs
             if (!type.IsClass)
             {
-                body = $@"public string valueStr;
-                            public string assemblyName;
-                            public string typeName;
-                            public ResoniteBridge.ResoniteBridgeValueType valueType;
+                body = $@"public string __valueStr;
+                            public string __assemblyName;
+                            public string __typeName;
+                            public ResoniteBridge.ResoniteBridgeValueType __valueType;
 
                             public string getValueStr()
                             {{
-                                return valueStr;
+                                return __valueStr;
                             }}
 
                             public void setValueStr(string valueStr)
                             {{
-                                this.valueStr = valueStr;
+                                this.__valueStr = valueStr;
                             }}
 
                             public string getAssemblyName()
                             {{
-                                return assemblyName;
+                                return __assemblyName;
                             }}
 
                             public void setAssemblyName(string assemblyName)
                             {{
-                                this.assemblyName = assemblyName;
+                                this.__assemblyName = assemblyName;
                             }}
 
                             public string getTypeName()
                             {{
-                                return typeName;
+                                return __typeName;
                             }}
 
                             public void setTypeName(string typeName)
                             {{
-                                this.typeName = typeName;
+                                this.__typeName = typeName;
                             }}
 
                             public ResoniteBridge.ResoniteBridgeValueType getValueType()
                             {{
-                                return valueType;
+                                return __valueType;
                             }}
 
                             public void setValueType(ResoniteBridge.ResoniteBridgeValueType valueType)
                             {{
-                                this.valueType = valueType;
+                                this.__valueType = valueType;
                             }}";
 
             }
@@ -327,10 +374,10 @@ namespace ResoniteBridge
             {{
                 public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue value)
                 {{
-                    this.valueStr = value.getValueStr();
-                    this.assemblyName = value.getAssemblyName();
-                    this.typeName = value.getTypeName();
-                    this.valueType = value.getValueType();
+                    this.__valueStr = value.getValueStr();
+                    this.__assemblyName = value.getAssemblyName();
+                    this.__typeName = value.getTypeName();
+                    this.__valueType = value.getValueType();
                 }}
 
                 {body}
@@ -478,6 +525,7 @@ namespace ResoniteBridge
             "SkyFrost.Base",
             "Elements.Assets",
             "Elements.Core",
+            "Elements.Quantity",
             //"ProtoFlux.Nodes.FrooxEngine",
             //"ProtoFlux.Nodes.Core",
             //"ProtoFluxBindings",
@@ -530,6 +578,8 @@ namespace ResoniteBridge
                     "mscorlib.dll"
                 };
 
+                
+
                 var references = new List<MetadataReference>();
                 foreach (var lib in coreLibs)
                 {
@@ -538,6 +588,11 @@ namespace ResoniteBridge
                 }
                 PortableExecutableReference bridgeLib = MetadataReference.CreateFromFile(typeof(ResoniteBridge.ResoniteBridgeClient).Assembly.Location);
                 references.Add(bridgeLib);
+                PortableExecutableReference newtonsoftJson = MetadataReference.CreateFromFile(typeof(Newtonsoft.Json.JsonConverter).Assembly.Location);
+                references.Add(newtonsoftJson);
+                PortableExecutableReference systemTextJson = MetadataReference.CreateFromFile(typeof(System.Text.Json.JsonDocument).Assembly.Location);
+                references.Add(systemTextJson);
+
 
 
                 string outPath = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\ResoniteBridgeStandalone\\" + rootNamespaceName + ".dll";
@@ -561,7 +616,7 @@ namespace ResoniteBridge
                                     using System.Runtime.Versioning;
                                     [assembly: TargetFramework("".NETStandard,Version=v2.1"")]
                                     ").GetRoot(),
-                           compilation.SyntaxTrees.First().Options);
+                            compilation.SyntaxTrees.First().Options);
 
                 compilation = compilation.AddSyntaxTrees(targetFrameworkAttribute);
                 string sourceCode = compilationUnit.ToFullString();

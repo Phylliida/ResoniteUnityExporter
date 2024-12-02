@@ -282,9 +282,9 @@ namespace ResoniteBridge
                                         {
                                             bridgeServer.outputMessages.Enqueue(new StructResoniteBridgeValue()
                                             {
-                                                typeName = ex.GetType().Name,
-                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                valueType = ResoniteBridgeValueType.Error
+                                                __typeName = ex.GetType().Name,
+                                                __valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                __valueType = ResoniteBridgeValueType.Error
                                             });
                                         }
                                     }

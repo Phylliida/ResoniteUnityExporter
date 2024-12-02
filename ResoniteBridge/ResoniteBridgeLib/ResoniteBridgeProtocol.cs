@@ -34,26 +34,26 @@ namespace ResoniteBridge
 
     public struct StructResoniteBridgeValue : ResoniteBridgeValue
     {
-        public string valueStr;
-        public string assemblyName;
-        public string typeName;
-        public ResoniteBridgeValueType valueType;
+        public string __valueStr;
+        public string __assemblyName;
+        public string __typeName;
+        public ResoniteBridgeValueType __valueType;
 
 
         public StructResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
         {
-            this.valueStr = valueStr;
-            this.assemblyName = assemblyName;
-            this.typeName = typeName;
-            this.valueType = valueType;
+            this.__valueStr = valueStr;
+            this.__assemblyName = assemblyName;
+            this.__typeName = typeName;
+            this.__valueType = valueType;
         }
 
         public StructResoniteBridgeValue(ResoniteBridgeValue other)
         {
-            this.valueStr = other.getValueStr();
-            this.assemblyName = other.getAssemblyName();
-            this.typeName = other.getTypeName();
-            this.valueType = other.getValueType();
+            this.__valueStr = other.getValueStr();
+            this.__assemblyName = other.getAssemblyName();
+            this.__typeName = other.getTypeName();
+            this.__valueType = other.getValueType();
         }
         public override string ToString()
         {
@@ -67,73 +67,73 @@ namespace ResoniteBridge
 
         public string getValueStr()
         {
-            return valueStr;
+            return __valueStr;
         }
 
         public void setValueStr(string valueStr)
         {
-            this.valueStr = valueStr;
+            this.__valueStr = valueStr;
         }
 
         public string getAssemblyName()
         {
-            return assemblyName;
+            return __assemblyName;
         }
 
         public void setAssemblyName(string assemblyName)
         {
-            this.assemblyName = assemblyName;
+            this.__assemblyName = assemblyName;
         }
 
         public string getTypeName()
         {
-            return typeName;
+            return __typeName;
         }
 
         public void setTypeName(string typeName)
         {
-            this.typeName = typeName;
+            this.__typeName = typeName;
         }
 
         public ResoniteBridgeValueType getValueType()
         {
-            return valueType;
+            return __valueType;
         }
 
         public void setValueType(ResoniteBridgeValueType valueType)
         {
-            this.valueType = valueType;
+            this.__valueType = valueType;
         }
     }
 
     public class ClassResoniteBridgeValue : ResoniteBridgeValue
     {
-        public string valueStr;
-        public string assemblyName;
-        public string typeName;
-        public ResoniteBridgeValueType valueType;
+        public string __valueStr;
+        public string __assemblyName;
+        public string __typeName;
+        public ResoniteBridgeValueType __valueType;
 
         public ClassResoniteBridgeValue() {
-            this.valueStr = null;
-            this.assemblyName = null;
-            this.typeName = null;
-            this.valueType = ResoniteBridgeValueType.Null;
+            this.__valueStr = null;
+            this.__assemblyName = null;
+            this.__typeName = null;
+            this.__valueType = ResoniteBridgeValueType.Null;
         }
 
         public ClassResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
         {
-            this.valueStr = valueStr;
-            this.assemblyName = assemblyName;
-            this.typeName = typeName;
-            this.valueType = valueType;
+            this.__valueStr = valueStr;
+            this.__assemblyName = assemblyName;
+            this.__typeName = typeName;
+            this.__valueType = valueType;
         }
 
         public ClassResoniteBridgeValue(ResoniteBridgeValue other)
         {
-            this.valueStr = other.getValueStr();
-            this.assemblyName = other.getAssemblyName();
-            this.typeName = other.getTypeName();
-            this.valueType = other.getValueType();
+            this.__valueStr = other.getValueStr();
+            this.__assemblyName = other.getAssemblyName();
+            this.__typeName = other.getTypeName();
+            this.__valueType = other.getValueType();
         }
         public override string ToString()
         {
@@ -147,42 +147,42 @@ namespace ResoniteBridge
 
         public string getValueStr()
         {
-            return valueStr;
+            return __valueStr;
         }
 
         public void setValueStr(string valueStr)
         {
-            this.valueStr = valueStr;
+            this.__valueStr = valueStr;
         }
 
         public string getAssemblyName()
         {
-            return assemblyName;
+            return __assemblyName;
         }
 
         public void setAssemblyName(string assemblyName)
         {
-            this.assemblyName = assemblyName;
+            this.__assemblyName = assemblyName;
         }
 
         public string getTypeName()
         {
-            return typeName;
+            return __typeName;
         }
 
         public void setTypeName(string typeName)
         {
-            this.typeName = typeName;
+            this.__typeName = typeName;
         }
 
         public ResoniteBridgeValueType getValueType()
         {
-            return valueType;
+            return __valueType;
         }
 
         public void setValueType(ResoniteBridgeValueType valueType)
         {
-            this.valueType = valueType;
+            this.__valueType = valueType;
         }
     }
 

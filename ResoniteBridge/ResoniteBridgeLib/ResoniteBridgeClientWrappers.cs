@@ -41,10 +41,10 @@ namespace ResoniteBridge
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 StructResoniteBridgeValue result = new StructResoniteBridgeValue()
                 {
-                    assemblyName = Assembly.GetAssembly(input.GetType()).GetName().Name,
-                    typeName = input.GetType().FullName,
-                    valueStr = serialized,
-                    valueType = ResoniteBridgeValueType.Serialized                    
+                    __assemblyName = Assembly.GetAssembly(input.GetType()).GetName().Name,
+                    __typeName = input.GetType().FullName,
+                    __valueStr = serialized,
+                    __valueType = ResoniteBridgeValueType.Serialized                    
                 };
                 return result;
             }
@@ -152,10 +152,10 @@ namespace ResoniteBridge
         {
             return new StructResoniteBridgeValue()
             {
-                assemblyName = assemblyName,
-                typeName = typeName,
-                valueStr = null,
-                valueType = ResoniteBridgeValueType.Type
+                __assemblyName = assemblyName,
+                __typeName = typeName,
+                __valueStr = null,
+                __valueType = ResoniteBridgeValueType.Type
             };
         }
 
@@ -164,10 +164,10 @@ namespace ResoniteBridge
             // no need to send any message as we already have all the needed data
             return new StructResoniteBridgeValue()
             {
-                assemblyName = target.getAssemblyName(),
-                typeName = target.getTypeName(),
-                valueStr = null,
-                valueType = ResoniteBridgeValueType.Type
+                __assemblyName = target.getAssemblyName(),
+                __typeName = target.getTypeName(),
+                __valueStr = null,
+                __valueType = ResoniteBridgeValueType.Type
             };
         }
 

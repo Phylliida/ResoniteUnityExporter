@@ -124,29 +124,29 @@ namespace ResoniteBridge
                 }
                 StructResoniteBridgeValue encodedResult = new StructResoniteBridgeValue()
                 {
-                    assemblyName = ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(result.GetType())),
-                    typeName = result.GetType().FullName
+                    __assemblyName = ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(result.GetType())),
+                    __typeName = result.GetType().FullName
                 };
 
                 if (IsType(result))
                 {
-                    encodedResult.valueStr = null;
-                    encodedResult.valueType = ResoniteBridgeValueType.Type;
+                    encodedResult.setValueStr(null);
+                    encodedResult.setValueType(ResoniteBridgeValueType.Type);
                 }
                 else
                 {
                     try
                     {
                         string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(result, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                        encodedResult.valueStr = encoded;
-                        encodedResult.valueType = ResoniteBridgeValueType.Serialized;
+                        encodedResult.setValueStr(encoded);
+                        encodedResult.setValueType(ResoniteBridgeValueType.Serialized);
                     }
                     catch (Newtonsoft.Json.JsonSerializationException)
                     {
                         // use guid since serialization failed
                         Guid guid = runner.uuidLookup.Add(result);
-                        encodedResult.valueStr = guid.ToString();
-                        encodedResult.valueType = ResoniteBridgeValueType.UUID;
+                        encodedResult.setValueStr(guid.ToString());
+                        encodedResult.setValueType(ResoniteBridgeValueType.UUID);
                     }
                 }
                 return encodedResult;
@@ -156,9 +156,9 @@ namespace ResoniteBridge
             {
                 return new StructResoniteBridgeValue()
                 {
-                    typeName = e.GetType().Name,
-                    valueStr = e.ToString() + "\n" + Environment.StackTrace,
-                    valueType = ResoniteBridgeValueType.Error
+                    __typeName = e.GetType().Name,
+                    __valueStr = e.ToString() + "\n" + Environment.StackTrace,
+                    __valueType = ResoniteBridgeValueType.Error
                 };
             }
         }
