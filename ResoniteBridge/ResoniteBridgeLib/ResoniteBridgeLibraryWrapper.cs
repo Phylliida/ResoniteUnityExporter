@@ -560,7 +560,7 @@ namespace ResoniteBridge
                         fullTypeName != "FrooxEngine.Locomotion" &&
                         typeNamespace != "FrooxEngine.Animation" &&
                         // Don't define this, we need to define it ourselves
-                        fullTypeName != "Runtime.CompilerServices.RefSafetyRulesAttribute"
+                        fullTypeName != "System.Runtime.CompilerServices.RefSafetyRulesAttribute"
                         )
                     {
                         NamespaceDeclarationSyntax wrappedType = WrapType(typeInAssembly, seenItems);
