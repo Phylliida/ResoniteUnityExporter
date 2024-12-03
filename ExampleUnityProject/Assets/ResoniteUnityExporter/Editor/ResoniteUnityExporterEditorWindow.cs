@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using ResoniteBridge;
+using ResoniteWrapper;
 using static ResoniteBridge.ResoniteBridgeClientWrappers;
 
 
@@ -82,17 +83,14 @@ namespace ResoniteBridgeUnity {
 			EditorGUILayout.BeginHorizontal();
 			if(GUILayout.Button("Button 1"))
 			{
-				ResoniteBridgeValue currentEngine = ResoniteWrapper.FrooxEngine.Engine.Current;
-                Debug.Log("Got current engine " + currentEngine);
-                if (currentEngine != null) {
-                    ResoniteBridgeValue worldManager = GetProperty(currentEngine, "WorldManager");
-					Debug.Log("Got world manager " + worldManager);
-                    ResoniteBridgeValue focusedWorld = GetProperty(worldManager, "FocusedWorld");
-					Debug.Log("Got focused world " + focusedWorld);
-					if (focusedWorld != null) {
-						ResoniteBridgeValue rootSlot = GetProperty(focusedWorld, "RootSlot");
-						Debug.Log("Got root slot " + rootSlot);
-						CallMethod(rootSlot, "AddSlot", "Heyo");
+				ResoniteWrapper.FrooxEngine.Engine engine = ResoniteWrapper.FrooxEngine.Engine.Current;
+                Debug.Log("Got current engine " + engine.UID);
+				if (engine != null)
+				{
+					ResoniteWrapper.FrooxEngine.World world = engine.WorldManager.FocusedWorld;
+					if (world != null)
+					{
+						CallMethod(world.RootSlot, "AddSlot", "Heyo");
 					}
 				}
 				Debug.Log("Button 1");
