@@ -19,12 +19,11 @@ namespace ResoniteBridge
 {
     public class FrooxEngineRunner
     {
-
+        
         // Modified from https://github.com/Lexevolution/Resonite-DataTree-Converter/blob/main/Program.cs
         public static string GetResoniteExePath(out Dictionary<string, Assembly> libraries)
         {
             string settingsLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TefssaCoil", "ResoniteDataWrapper", "app.config");
-
             bool success = false;
             libraries = new Dictionary<string, Assembly>();
             string resoniteExeLocation = "";
