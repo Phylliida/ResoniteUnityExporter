@@ -30,7 +30,7 @@ namespace ResoniteBridge
 
         public static DebugLogDelegate DebugLog;
 
-        static ResoniteBridgeValue EncodeInput(object input)
+        static ResoniteBridgeValue EncodeInput<T>(T input)
         {
             if (input.GetType() == typeof(ResoniteBridgeValue) ||
                 input.GetType().IsSubclassOf(typeof(ResoniteBridgeValue))) {
@@ -122,7 +122,7 @@ namespace ResoniteBridge
 
             return SendBridgeMessage(message);
         }
-        public static ResoniteBridgeValue SetField(ResoniteBridgeValue target, string fieldName, object value)
+        public static ResoniteBridgeValue SetField<T>(ResoniteBridgeValue target, string fieldName, T value)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {
@@ -135,7 +135,7 @@ namespace ResoniteBridge
             return SendBridgeMessage(message);
         }
 
-        public static ResoniteBridgeValue SetProperty(ResoniteBridgeValue target, string fieldName, object value)
+        public static ResoniteBridgeValue SetProperty<T>(ResoniteBridgeValue target, string fieldName, T value)
         {
             ResoniteBridgeMessage message = new ResoniteBridgeMessage()
             {

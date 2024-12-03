@@ -19,6 +19,8 @@ using static ResoniteBridge.ResoniteBinaryWrapper;
 
 namespace ResoniteBridge
 {
+    // probably a better option is to just send the code and generate dll on mod side
+    // but idk this gives us autocomplete and stuff which is kinda nice
     public class ResoniteBinaryWrapper
     {
 
@@ -66,8 +68,18 @@ namespace ResoniteBridge
 
         public static ParsingType GetParsingType(Type type)
         {
+            string fullTypeName = GetTypeNameIncludingGenericArguments(type);
             string fieldTypeAssemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             ParsingType parsingType = ParsingType.AsResoniteBridgeValue;
+            
+            // types we don't have support for
+            foreach (string blackListPrefix in blackList)
+            {
+                if (fullTypeName.StartsWith(blackListPrefix))
+                {
+                    return ParsingType.AsResoniteBridgeValue;
+                }
+            }
             // it's one of our data models
             if (whitelist.Contains(fieldTypeAssemblyName))
             {
@@ -214,8 +226,18 @@ namespace ResoniteBridge
             {
                 typeName = typeName.Replace("`" + i, "");
             }
+            // KeyCollection needs some special treatment
+            if (type.DeclaringType != null && type.Assembly.FullName.StartsWith("System.Collections"))
+            {
+                string declaring = GetTypeNameIncludingGenericArguments(GetDeclaringTypeWithGenericArgs(type), includeNamespace: includeNamespace, includeGenericArguments: includeGenericArguments);
+                typeName = declaring + "." + typeName;
+            }
+            else
+            {
+                typeName = typeName + genericStr;
+            }
             // & doesn't work in roslyn idk why
-            typeName = typeName.Replace("&", "") + genericStr;
+            typeName = typeName.Replace("&", "");
             bool isGenericArray = type.IsArray && (type.GetElementType().IsGenericType || type.GetElementType().IsGenericTypeParameter);
 
             // generic type parameters we ignore adding namespace to (like <T>)
@@ -224,8 +246,9 @@ namespace ResoniteBridge
                 string space = GetTypeNamespace(type);
                 typeName = space + "." + typeName;
             }
- 
-            return typeName;
+
+            // idk why these show up but they cause problems, remove them
+            return ReplaceNamespaceAliases(typeName);
         }
 
         // cursed shit to make the generics line up
@@ -247,13 +270,16 @@ namespace ResoniteBridge
             for (int i = 0; i < declaringGenericArguments.Length; i++)
             {
                 genericArguments[i] = declaringGenericArguments[i];
-                Type[] baseGenericArguments = type.GetGenericTypeDefinition().GetGenericArguments();
-                // look for matches to transfer over
-                for (int j = 0; j < baseGenericArguments.Length; j++)
+                if (type.IsGenericType)
                 {
-                    if (genericArguments[i].Name == baseGenericArguments[j].Name)
+                    Type[] baseGenericArguments = type.GetGenericTypeDefinition().GetGenericArguments();
+                    // look for matches to transfer over
+                    for (int j = 0; j < baseGenericArguments.Length; j++)
                     {
-                        genericArguments[i] = baseGenericArguments[j];
+                        if (genericArguments[i].Name == baseGenericArguments[j].Name)
+                        {
+                            genericArguments[i] = baseGenericArguments[j];
+                        }
                     }
                 }
             }
@@ -270,18 +296,21 @@ namespace ResoniteBridge
             {
                 space = assemblyName;
             }
-            if (type.DeclaringType != null)
-            {
-                Type declaringType = type.DeclaringType;
-                // we have to manually pass the generic arguments to get the right generic type
-                if (type.DeclaringType.IsGenericType)
-                {
-                    declaringType = GetDeclaringTypeWithGenericArgs(type);
-                }
-                // types in types
-                space = space + "." + GetTypeNameIncludingGenericArguments(declaringType, includeNamespace: false);
-            }
-            return space;
+            return ReplaceNamespaceAliases(NamespaceOnlyAliases(space));
+        }
+
+        public static string NamespaceOnlyAliases(string namespaceNames)
+        {
+            // these overlap with namespaces of the same name so rename them
+            return namespaceNames
+                .Replace("FrooxEngine.Interaction", "FrooxEngine.Interacting");
+        }
+
+        public static string ReplaceNamespaceAliases(string name)
+        {
+            return name.Replace("FrooxEngine.FrooxEngine", "FrooxEngine")
+                .Replace("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine", "FrooxEngine")
+                .Replace("FrooxEngine.ProtoFlux", "ProtoFlux");
         }
 
         public static NamespaceDeclarationSyntax CreateNamespaceForType(MemberDeclarationSyntax classDecleration, System.Type type)
@@ -317,6 +346,28 @@ namespace ResoniteBridge
             string structOrClass = type.IsClass
                 ? "class"
                 : "struct";
+
+            // specify nonnullable constraints (A : struct)
+            string constraints = "";
+            if (type.IsGenericType)
+            {
+                Type[] genericArguments = type.GetGenericArguments();
+                bool[] isGenericParamNonNullable = new bool[genericArguments.Length];
+                for (int i = 0; i < genericArguments.Length; i++)
+                {
+                    // we should also test for value type and enum but ehh it's ok
+                    isGenericParamNonNullable[i] = 
+                        (genericArguments[i].GenericParameterAttributes 
+                        & GenericParameterAttributes.NotNullableValueTypeConstraint) != 0;
+                }
+                for (int i = 0; i < genericArguments.Length; i++)
+                {
+                    if (isGenericParamNonNullable[i])
+                    {
+                        constraints += " where " + genericArguments[i].Name + " : struct ";
+                    }
+                }
+            }
 
             string body = "";
             // manually implement interface since structs can't inherit from structs
@@ -370,7 +421,7 @@ namespace ResoniteBridge
             }
 
 
-            string classCode = $@"public {structOrClass} {fullTypeNameWithoutNamespace} : {inheritFrom} 
+            string classCode = $@"public {structOrClass} {fullTypeNameWithoutNamespace} : {inheritFrom} {constraints}
             {{
                 public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue value)
                 {{
@@ -493,6 +544,7 @@ namespace ResoniteBridge
                 // prevent type shadowing, just use whichever we see first
                 if (!typesEncountered.Contains(fullTypeName))
                 {
+                    string typeNamespace = GetTypeNamespace(typeInAssembly);
                     string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(typeInAssembly, includeNamespace: false);
                     // ignore weird generic template things
                     if (!typeInAssembly.FullName.Contains("<>") &&
@@ -500,7 +552,16 @@ namespace ResoniteBridge
                         fullTypeName != "FrooxEngine.ProtoFlux" &&// namespace and class
                         !fullTypeNameWithoutNamespace.StartsWith("<") && // weird implementation things <SpawnEntity>, <PrivateImplementationDetails>, etc.
                         !fullTypeNameWithoutNamespace.StartsWith("__StaticArray") && // idk what these are but they break stuff
-                        fullTypeNameWithoutNamespace != "static")
+                        fullTypeNameWithoutNamespace != "static" &&
+                        !fullTypeName.StartsWith("FrooxEngine.Elements") && // these exist and seem useless and confuse other stuff
+                        fullTypeNameWithoutNamespace != "ProtoFlux" &&// some weird type idk what its doin
+                        // these 3 conflict with a namespace of the same name
+                        fullTypeName != "FrooxEngine.Interactions" && 
+                        fullTypeName != "FrooxEngine.Locomotion" &&
+                        typeNamespace != "FrooxEngine.Animation" &&
+                        // Don't define this, we need to define it ourselves
+                        fullTypeName != "Runtime.CompilerServices.RefSafetyRulesAttribute"
+                        )
                     {
                         NamespaceDeclarationSyntax wrappedType = WrapType(typeInAssembly, seenItems);
                         if (fullTypeName.StartsWith("System."))
@@ -518,6 +579,21 @@ namespace ResoniteBridge
             }
         }
 
+
+        // stuff I don't feel like directly supporting
+        // prefix matches
+        public static List<string> blackList = new List<string>()
+        {
+            "System.Collections.Generic.KeyCollection",
+            "System.Collections.Generic.ValueCollection",
+            "POpusCodec",
+            "QRCoder",
+            "FrooxEngine.Sync<POpusCodec",
+            "FrooxEngine.Sync<QRCoder",
+            "ProtoFlux.Core.ValueOutput<TwitchLib",
+            "System.Span<S>"
+        };
+
         public static HashSet<string> whitelist = new HashSet<string>()
         {
             "FrooxEngine.Store",
@@ -526,8 +602,9 @@ namespace ResoniteBridge
             "Elements.Assets",
             "Elements.Core",
             "Elements.Quantity",
-            //"ProtoFlux.Nodes.FrooxEngine",
-            //"ProtoFlux.Nodes.Core",
+            "ProtoFlux.Nodes.FrooxEngine",
+            "ProtoFlux.Nodes.Core",
+            "ProtoFlux.Core",
             //"ProtoFluxBindings",
             "FrooxEngine",
         };
@@ -578,8 +655,16 @@ namespace ResoniteBridge
                     "mscorlib.dll"
                 };
 
+                var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
+                    {
+                        [AttributeUsage(AttributeTargets.Assembly)]
+                        public sealed class RefSafetyRulesAttribute : Attribute
+                        {
+                            public RefSafetyRulesAttribute(int version) => Version = version;
+                            public int Version { get; }
+                        }
+                    }";
                 
-
                 var references = new List<MetadataReference>();
                 foreach (var lib in coreLibs)
                 {
@@ -600,7 +685,7 @@ namespace ResoniteBridge
                 // Create compilation
                 CSharpCompilation compilation = CSharpCompilation.Create(
                     rootNamespaceName,
-                    syntaxTrees: new[] { syntaxTree },
+                    syntaxTrees: new[] { CSharpSyntaxTree.ParseText(assemblyAttributeSource), syntaxTree },
                     references: references,
                     options: new CSharpCompilationOptions(
                         OutputKind.DynamicallyLinkedLibrary,
@@ -618,11 +703,24 @@ namespace ResoniteBridge
                                     ").GetRoot(),
                             compilation.SyntaxTrees.First().Options);
 
+
+
                 compilation = compilation.AddSyntaxTrees(targetFrameworkAttribute);
-                string sourceCode = compilationUnit.ToFullString();
+
+
+                //string sourceCode = compilationUnit.ToFullString();
                 string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + ".cs";
 
-                File.WriteAllText(outTxt, sourceCode);
+                //File.WriteAllText(outTxt, sourceCode);
+
+                // Option 1: Write directly to file instead of keeping in memory
+                using (var writer = new StreamWriter(outTxt))
+                {
+                    foreach (var syntaxTreef in compilation.SyntaxTrees)
+                    {
+                        writer.Write(syntaxTreef.ToString());
+                    }
+                }
 
                 Console.WriteLine("Emitting..." + outPath);
 
