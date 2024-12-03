@@ -19,42 +19,50 @@ namespace ResoniteBridge
         Error = 5,
     }
 
-    public interface ResoniteBridgeValue
+    public interface ResoniteBridgeValueHolder
     {
-        public string getValueStr();
-        public void setValueStr(string valueStr);
-        public string getAssemblyName();
-        public void setAssemblyName(string assemblyName);
-        public string getTypeName();
-        public void setTypeName(string typeName);
-
-        public ResoniteBridgeValueType getValueType();
-        public void setValueType(ResoniteBridgeValueType valueType);
+        public ResoniteBridgeValue __Backing { get; set; }
     }
 
-    public struct StructResoniteBridgeValue : ResoniteBridgeValue
+    public class ClassResoniteBridgeValueHolder : ResoniteBridgeValueHolder
     {
-        public string __valueStr;
-        public string __assemblyName;
-        public string __typeName;
-        public ResoniteBridgeValueType __valueType;
-
-
-        public StructResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
+        ResoniteBridgeValue __backing;
+        public ResoniteBridgeValue __Backing
         {
-            this.__valueStr = valueStr;
-            this.__assemblyName = assemblyName;
-            this.__typeName = typeName;
-            this.__valueType = valueType;
+            get
+            {
+                return __backing;
+            }
+            set
+            {
+                __backing = value;
+            }
+        }
+    }
+
+    public struct ResoniteBridgeValue
+    {
+        public string valueStr;
+        public string assemblyName;
+        public string typeName;
+        public ResoniteBridgeValueType valueType;
+
+        public ResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
+        {
+            this.valueStr = valueStr;
+            this.assemblyName = assemblyName;
+            this.typeName = typeName;
+            this.valueType = valueType;
         }
 
-        public StructResoniteBridgeValue(ResoniteBridgeValue other)
+        public ResoniteBridgeValue(ResoniteBridgeValue other)
         {
-            this.__valueStr = other.getValueStr();
-            this.__assemblyName = other.getAssemblyName();
-            this.__typeName = other.getTypeName();
-            this.__valueType = other.getValueType();
+            this.valueStr = other.valueStr;
+            this.assemblyName = other.assemblyName;
+            this.typeName = other.typeName;
+            this.valueType = other.valueType;
         }
+
         public override string ToString()
         {
             var thisObj = this;
@@ -63,126 +71,6 @@ namespace ResoniteBridge
                 .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(thisObj)}");
 
             return $"{GetType().Name}: {string.Join(", ", fields)}";
-        }
-
-        public string getValueStr()
-        {
-            return __valueStr;
-        }
-
-        public void setValueStr(string valueStr)
-        {
-            this.__valueStr = valueStr;
-        }
-
-        public string getAssemblyName()
-        {
-            return __assemblyName;
-        }
-
-        public void setAssemblyName(string assemblyName)
-        {
-            this.__assemblyName = assemblyName;
-        }
-
-        public string getTypeName()
-        {
-            return __typeName;
-        }
-
-        public void setTypeName(string typeName)
-        {
-            this.__typeName = typeName;
-        }
-
-        public ResoniteBridgeValueType getValueType()
-        {
-            return __valueType;
-        }
-
-        public void setValueType(ResoniteBridgeValueType valueType)
-        {
-            this.__valueType = valueType;
-        }
-    }
-
-    public class ClassResoniteBridgeValue : ResoniteBridgeValue
-    {
-        public string __valueStr;
-        public string __assemblyName;
-        public string __typeName;
-        public ResoniteBridgeValueType __valueType;
-
-        public ClassResoniteBridgeValue() {
-            this.__valueStr = null;
-            this.__assemblyName = null;
-            this.__typeName = null;
-            this.__valueType = ResoniteBridgeValueType.Null;
-        }
-
-        public ClassResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
-        {
-            this.__valueStr = valueStr;
-            this.__assemblyName = assemblyName;
-            this.__typeName = typeName;
-            this.__valueType = valueType;
-        }
-
-        public ClassResoniteBridgeValue(ResoniteBridgeValue other)
-        {
-            this.__valueStr = other.getValueStr();
-            this.__assemblyName = other.getAssemblyName();
-            this.__typeName = other.getTypeName();
-            this.__valueType = other.getValueType();
-        }
-        public override string ToString()
-        {
-            var thisObj = this;
-            var fields = GetType()
-                .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                .Select<FieldInfo, string>(f => $"{f.Name}={f.GetValue(thisObj)}");
-
-            return $"{GetType().Name}: {string.Join(", ", fields)}";
-        }
-
-        public string getValueStr()
-        {
-            return __valueStr;
-        }
-
-        public void setValueStr(string valueStr)
-        {
-            this.__valueStr = valueStr;
-        }
-
-        public string getAssemblyName()
-        {
-            return __assemblyName;
-        }
-
-        public void setAssemblyName(string assemblyName)
-        {
-            this.__assemblyName = assemblyName;
-        }
-
-        public string getTypeName()
-        {
-            return __typeName;
-        }
-
-        public void setTypeName(string typeName)
-        {
-            this.__typeName = typeName;
-        }
-
-        public ResoniteBridgeValueType getValueType()
-        {
-            return __valueType;
-        }
-
-        public void setValueType(ResoniteBridgeValueType valueType)
-        {
-            this.__valueType = valueType;
         }
     }
 

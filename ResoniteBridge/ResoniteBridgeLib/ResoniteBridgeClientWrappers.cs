@@ -32,21 +32,23 @@ namespace ResoniteBridge
 
         static ResoniteBridgeValue EncodeInput<T>(T input)
         {
-            if (input.GetType() == typeof(ResoniteBridgeValue) ||
-                input.GetType().IsSubclassOf(typeof(ResoniteBridgeValue))) {
+            if (input is ResoniteBridgeValueHolder valueHolder)
+            {
                 // already a value, just return it
-                return (ResoniteBridgeValue)input;
-            } else {                
+                return valueHolder.__Backing;
+            }
+            else if (input is ResoniteBridgeValue bridgeValue)
+            {
+                return bridgeValue;
+            }
+            else
+            {
                 // we need to serialize it
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                StructResoniteBridgeValue result = new StructResoniteBridgeValue()
-                {
-                    __assemblyName = Assembly.GetAssembly(input.GetType()).GetName().Name,
-                    __typeName = input.GetType().FullName,
-                    __valueStr = serialized,
-                    __valueType = ResoniteBridgeValueType.Serialized                    
-                };
-                return result;
+                return new ResoniteBridgeValue(serialized,
+                    Assembly.GetAssembly(input.GetType()).GetName().Name,
+                    input.GetType().FullName,
+                    ResoniteBridgeValueType.Serialized);
             }
         }
 
@@ -74,13 +76,13 @@ namespace ResoniteBridge
                 }
                 // We are on unity thread, can't sleep :(
             }
-            if (output.getValueType() == ResoniteBridgeValueType.Null){
+            if (output.valueType == ResoniteBridgeValueType.Null){
                 DebugLog("Got null output?");
                 throw new EvaluationException("Got null output?");
             }
-            if (output.getValueType() == ResoniteBridgeValueType.Error)
+            if (output.valueType == ResoniteBridgeValueType.Error)
             {
-                DebugLog("Got excfeption:" + output.getValueStr());
+                DebugLog("Got exception:" + output.valueStr);
             }
             return output;
         }
@@ -150,24 +152,24 @@ namespace ResoniteBridge
 
         public static ResoniteBridgeValue LookupType(string assemblyName, string typeName)
         {
-            return new StructResoniteBridgeValue()
+            return new ResoniteBridgeValue()
             {
-                __assemblyName = assemblyName,
-                __typeName = typeName,
-                __valueStr = null,
-                __valueType = ResoniteBridgeValueType.Type
+                assemblyName = assemblyName,
+                typeName = typeName,
+                valueStr = null,
+                valueType = ResoniteBridgeValueType.Type
             };
         }
 
         public static ResoniteBridgeValue LookupType(ResoniteBridgeValue target)
         {
             // no need to send any message as we already have all the needed data
-            return new StructResoniteBridgeValue()
+            return new ResoniteBridgeValue()
             {
-                __assemblyName = target.getAssemblyName(),
-                __typeName = target.getTypeName(),
-                __valueStr = null,
-                __valueType = ResoniteBridgeValueType.Type
+                assemblyName = target.assemblyName,
+                typeName = target.typeName,
+                valueStr = null,
+                valueType = ResoniteBridgeValueType.Type
             };
         }
 
@@ -185,7 +187,14 @@ namespace ResoniteBridge
 
         public static object CastValue(ResoniteBridgeValue value, Type typeToCastTo)
         {
-            return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, typeToCastTo.Name, value);
+            if (typeToCastTo.IsAssignableFrom(typeof(ResoniteBridgeValueHolder)))
+            {
+                return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, typeToCastTo.Name, value);
+            }
+            else
+            {
+                return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, typeToCastTo);
+            }
         }
     }
 }

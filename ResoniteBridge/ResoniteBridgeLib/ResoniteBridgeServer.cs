@@ -110,7 +110,7 @@ namespace ResoniteBridge
                 try
                 {
                     bool waitingForRequest = true;
-                    ResoniteBridgeValue response = new StructResoniteBridgeValue();
+                    ResoniteBridgeValue response = new ResoniteBridgeValue();
 
                     while (!stopToken.IsCancellationRequested)
                     {
@@ -167,7 +167,7 @@ namespace ResoniteBridge
 
                                     if (!waitingForRequest)
                                     {
-                                        if (response.getValueType() == ResoniteBridgeValueType.Null)
+                                        if (response.valueType == ResoniteBridgeValueType.Null)
                                         {
                                             // empty string is null
                                             ss.WriteString("", millisTimeout, stopToken.Token);

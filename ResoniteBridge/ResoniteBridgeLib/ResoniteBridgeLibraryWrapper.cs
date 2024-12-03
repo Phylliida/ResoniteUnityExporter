@@ -31,27 +31,26 @@ namespace ResoniteBridge
             bool isStatic = property.GetAccessors(nonPublic: true)[0].IsStatic;
             string staticStr = isStatic ? "static " : "";
 
+
+            string target = GetTarget(isStatic, assemblyName, type.Name);
+
             string propertyCode = $@"
             public {staticStr}{dataType} {property.Name}
             {{
                 get
                 {{
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
-                        ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.StructResoniteBridgeValue()
-                            {{
-                                __assemblyName = ""{assemblyName}"",
-                                __typeName = ""{type.Name}"",
-                                __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                            }}, ""{property.Name}""), typeof({dataType}));                
+                        ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(
+                            {target}, 
+                            ""{property.Name}""
+                        ), typeof({dataType}));
                 }}
                 set
                 {{
-                    ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.StructResoniteBridgeValue()
-                    {{
-                        __assemblyName = ""{assemblyName}"",
-                        __typeName = ""{type.Name}"",
-                        __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                    }}, ""{property.Name}"", value);
+                    ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(
+                            {target},
+                            ""{property.Name}"",
+                            value);
                 }}
             }}";
             return (PropertyDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(propertyCode);
@@ -108,6 +107,16 @@ namespace ResoniteBridge
             throw new ArgumentException("Unknown parsing type " + parsingType + " for type " + type.FullName);
         }
 
+        public static string GetTarget(bool isStatic, string assemblyName, string typeName)
+        {
+            return isStatic
+                        ? $@"new ResoniteBridge.ResoniteBridgeValue(
+                            null,
+                            ""{assemblyName}"",
+                            ""{typeName}"",
+                            ResoniteBridge.ResoniteBridgeValueType.Type)"
+                        : "this.__Backing";
+        }
 
         // we have to make fields properties in order to have custom getter and setters
         public static PropertyDeclarationSyntax CreateBridgeField(FieldInfo field, System.Type type)
@@ -116,27 +125,27 @@ namespace ResoniteBridge
             string dataType = GetWrappedDataType(field.FieldType);
             bool isStatic = field.IsStatic;
             string staticStr = isStatic ? "static " : "";
+
+
+            string target = GetTarget(field.IsStatic, assemblyName, type.Name);
+
             string fieldCode = $@"
             public {staticStr}{dataType} {field.Name}
             {{
                 get
                 {{
                     return ({dataType})ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(
-                        ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.StructResoniteBridgeValue()
-                            {{
-                                __assemblyName = ""{assemblyName}"",
-                                __typeName = ""{type.Name}"",
-                                __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                            }}, ""{field.Name}""), typeof({dataType}));
+                        ResoniteBridge.ResoniteBridgeClientWrappers.GetField(
+                            {target}, 
+                            ""{field.Name}""
+                        ), typeof({dataType}));
                 }}
                 set
                 {{
-                    ResoniteBridge.ResoniteBridgeClientWrappers.SetField(new ResoniteBridge.StructResoniteBridgeValue()
-                    {{
-                        __assemblyName = ""{assemblyName}"",
-                        __typeName = ""{type.Name}"",
-                        __valueType = ResoniteBridge.ResoniteBridgeValueType.Type
-                    }}, ""{field.Name}"", value);
+                    ResoniteBridge.ResoniteBridgeClientWrappers.SetField(
+                            {target},
+                            ""{field.Name}"",
+                            value);
                 }}
             }}";
 
@@ -152,7 +161,8 @@ namespace ResoniteBridge
             string argumentNames = "abcdefghijklmnopqrstuvwxyz";
             foreach (ParameterInfo param in method.GetParameters())
             {
-                argumentStrs.Add("object " + param.Name);
+                string wrappedType = GetWrappedDataType(param.ParameterType);
+                argumentStrs.Add(wrappedType + " " + param.Name);
                 variableStrs.Add("" + param.Name);
             }
 
@@ -165,30 +175,25 @@ namespace ResoniteBridge
             {
                 variableInputs = ", " + variableInputs;
             }
-            string fieldCode = method.IsStatic
-                ? $@"
-                    public static {outputType} {method.Name}({argumentInputs})
+
+            string staticStr = method.IsStatic
+                ? "static "
+                : "";
+            string target = GetTarget(method.IsStatic, assemblyName, type.Name);
+
+
+            string methodCode = $@"
+                    public {staticStr}{outputType} {method.Name}({argumentInputs})
                     {{
                         return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
                                 ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
-                                new ResoniteBridge.StructResoniteBridgeValue()
-                                {{
-                                    __assemblyName = ""{assemblyName}"",
-                                    __typeName = ""{type.Name}"",
-                                    __valueType = ResoniteBridge.ResoniteBridgeValueType.Type,
-                                }}, ""{method.Name}""{variableInputs}),
-                            typeof({outputType}));
-                    }}"
-                : $@"
-                    public {outputType} {method.Name}({argumentInputs})
-                    {{
-                        return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
-                            ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
-                            (ResoniteBridge.ResoniteBridgeValue)this, ""{method.Name}""{variableInputs}),
+                                {target}, 
+                                ""{method.Name}""
+                                {variableInputs}),
                             typeof({outputType}));
                     }}";
 
-            return (MethodDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(fieldCode);
+            return (MethodDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(methodCode);
         }
         // non static are tricky, we need to store the data in the types somehow
 
@@ -340,8 +345,8 @@ namespace ResoniteBridge
             string fullTypeNameWithoutGenerics = GetTypeNameIncludingGenericArguments(type, includeNamespace: false, includeGenericArguments: false);
 
             string inheritFrom = type.IsClass
-                ? "ResoniteBridge.ClassResoniteBridgeValue"
-                : "ResoniteBridge.ResoniteBridgeValue";
+                ? "ResoniteBridge.ClassResoniteBridgeValueHolder"
+                : "ResoniteBridge.ResoniteBridgeValueHolder";
 
             string structOrClass = type.IsClass
                 ? "class"
@@ -373,62 +378,28 @@ namespace ResoniteBridge
             // manually implement interface since structs can't inherit from structs
             if (!type.IsClass)
             {
-                body = $@"public string __valueStr;
-                            public string __assemblyName;
-                            public string __typeName;
-                            public ResoniteBridge.ResoniteBridgeValueType __valueType;
-
-                            public string getValueStr()
+                body = $@"
+                        ResoniteBridge.ResoniteBridgeValue __backing;
+                        public ResoniteBridge.ResoniteBridgeValue __Backing
+                        {{
+                            get
                             {{
-                                return __valueStr;
+                                return __backing;
                             }}
-
-                            public void setValueStr(string valueStr)
+                            set
                             {{
-                                this.__valueStr = valueStr;
+                                __backing = value;
                             }}
-
-                            public string getAssemblyName()
-                            {{
-                                return __assemblyName;
-                            }}
-
-                            public void setAssemblyName(string assemblyName)
-                            {{
-                                this.__assemblyName = assemblyName;
-                            }}
-
-                            public string getTypeName()
-                            {{
-                                return __typeName;
-                            }}
-
-                            public void setTypeName(string typeName)
-                            {{
-                                this.__typeName = typeName;
-                            }}
-
-                            public ResoniteBridge.ResoniteBridgeValueType getValueType()
-                            {{
-                                return __valueType;
-                            }}
-
-                            public void setValueType(ResoniteBridge.ResoniteBridgeValueType valueType)
-                            {{
-                                this.__valueType = valueType;
-                            }}";
+                        }}";
 
             }
 
 
             string classCode = $@"public {structOrClass} {fullTypeNameWithoutNamespace} : {inheritFrom} {constraints}
             {{
-                public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue value)
+                public {fullTypeNameWithoutGenerics}(ResoniteBridge.ResoniteBridgeValue backing)
                 {{
-                    this.__valueStr = value.getValueStr();
-                    this.__assemblyName = value.getAssemblyName();
-                    this.__typeName = value.getTypeName();
-                    this.__valueType = value.getValueType();
+                    this.__Backing = backing;
                 }}
 
                 {body}
