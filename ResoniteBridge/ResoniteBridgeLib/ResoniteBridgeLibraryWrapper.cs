@@ -152,23 +152,45 @@ namespace ResoniteBridge
             return (PropertyDeclarationSyntax)SyntaxFactory.ParseMemberDeclaration(fieldCode);
         }
 
+        public static HashSet<string> OverrideMethods = new HashSet<string>()
+        {
+            "ToString",
+            "GetHashCode",
+        };
+        public static bool IsOverrideMethod(string methodName)
+        {
+            return OverrideMethods.Contains(methodName);
+        }
         
         public static MethodDeclarationSyntax CreateBridgeMethod(MethodInfo method, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             List<string> argumentStrs = new List<string>();
             List<string> variableStrs = new List<string>();
-            string argumentNames = "abcdefghijklmnopqrstuvwxyz";
+
+            string genericStr = "";
+            string constraints = "";
+            if (method.IsGenericMethod)
+            {
+                List<string> genericTypeNames = new List<string>(); ;
+                foreach (Type genericType in method.GetGenericArguments())
+                {
+                    genericTypeNames.Add(genericType.Name);
+                }
+                genericStr = "<" + String.Join(", ", genericTypeNames) + ">";
+                constraints = GetGenericConstraints(method.GetGenericArguments());
+            }
+
             foreach (ParameterInfo param in method.GetParameters())
             {
                 string wrappedType = GetWrappedDataType(param.ParameterType);
-                argumentStrs.Add(wrappedType + " " + param.Name);
+                argumentStrs.Add(wrappedType  + " " + param.Name);
                 variableStrs.Add("" + param.Name);
             }
 
             string outputType = GetWrappedDataType(method.ReturnType);
 
-            string argumentInputs = String.Join(", " + argumentNames);
+            string argumentInputs = String.Join(", " + argumentStrs);
             string variableInputs = String.Join(", " + variableStrs);
 
             if (variableInputs.Length > 0)
@@ -179,13 +201,21 @@ namespace ResoniteBridge
             string staticStr = method.IsStatic
                 ? "static "
                 : "";
+
+            string overrideStr = IsOverrideMethod(method.Name)
+                ? "override "
+                : "";
             string target = GetTarget(method.IsStatic, assemblyName, type.Name);
 
+            // void has no return str
+            string returnStr = outputType == "void"
+                ? ""
+                : $@"return ({outputType})";
 
             string methodCode = $@"
-                    public {staticStr}{outputType} {method.Name}({argumentInputs})
+                    public {staticStr}{overrideStr}{outputType} {method.Name}{genericStr}({argumentInputs}) {constraints}
                     {{
-                        return ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
+                        {returnStr}ResoniteBridge.ResoniteBridgeClientWrappers.CastValue( 
                                 ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(
                                 {target}, 
                                 ""{method.Name}""
@@ -243,10 +273,10 @@ namespace ResoniteBridge
             }
             // & doesn't work in roslyn idk why
             typeName = typeName.Replace("&", "");
-            bool isGenericArray = type.IsArray && (type.GetElementType().IsGenericType || type.GetElementType().IsGenericTypeParameter);
+            bool isGenericArray = type.IsArray && (type.GetElementType().IsGenericType || type.GetElementType().IsGenericTypeParameter || type.GetElementType().IsGenericMethodParameter);
 
             // generic type parameters we ignore adding namespace to (like <T>)
-            if (includeNamespace && !type.IsGenericTypeParameter && !isGenericArray)
+            if (includeNamespace && !type.IsGenericTypeParameter && !isGenericArray && !type.IsGenericMethodParameter && !type.IsGenericParameter && type.Name != "T")
             {
                 string space = GetTypeNamespace(type);
                 typeName = space + "." + typeName;
@@ -315,7 +345,10 @@ namespace ResoniteBridge
         {
             return name.Replace("FrooxEngine.FrooxEngine", "FrooxEngine")
                 .Replace("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine", "FrooxEngine")
-                .Replace("FrooxEngine.ProtoFlux", "ProtoFlux");
+                .Replace("FrooxEngine.ProtoFlux", "ProtoFlux")
+                .Replace("System.Void", "void") // System.Void isn't a valid return type, void is
+                .Replace("ProtoFlux.Runtimes.Execution.T", "T") // generic stuff doesn't catch these for some reason
+                .Replace("ProtoFlux.Core.T", "T");
         }
 
         public static NamespaceDeclarationSyntax CreateNamespaceForType(MemberDeclarationSyntax classDecleration, System.Type type)
@@ -338,6 +371,22 @@ namespace ResoniteBridge
             return curNamespace;
         }
 
+        public static string GetGenericConstraints(System.Type[] genericArguments)
+        {
+            string constraints = "";
+            bool[] isGenericParamNonNullable = new bool[genericArguments.Length];
+            foreach (System.Type genericArgument in genericArguments)
+            {
+                // we should also test for value type and enum but ehh it's ok
+                if((genericArgument.GenericParameterAttributes
+                    & GenericParameterAttributes.NotNullableValueTypeConstraint) != 0)
+                {
+                    constraints += " where " + genericArgument.Name + " : struct ";
+                }
+            }
+            return constraints;
+        }
+
 
         public static NamespaceDeclarationSyntax WrapType(System.Type type, HashSet<Tuple<string, string>> seenItems)
         {
@@ -356,22 +405,7 @@ namespace ResoniteBridge
             string constraints = "";
             if (type.IsGenericType)
             {
-                Type[] genericArguments = type.GetGenericArguments();
-                bool[] isGenericParamNonNullable = new bool[genericArguments.Length];
-                for (int i = 0; i < genericArguments.Length; i++)
-                {
-                    // we should also test for value type and enum but ehh it's ok
-                    isGenericParamNonNullable[i] = 
-                        (genericArguments[i].GenericParameterAttributes 
-                        & GenericParameterAttributes.NotNullableValueTypeConstraint) != 0;
-                }
-                for (int i = 0; i < genericArguments.Length; i++)
-                {
-                    if (isGenericParamNonNullable[i])
-                    {
-                        constraints += " where " + genericArguments[i].Name + " : struct ";
-                    }
-                }
+                constraints = GetGenericConstraints(type.GetGenericArguments());
             }
 
             string body = "";
@@ -479,19 +513,23 @@ namespace ResoniteBridge
             {
                 if (method.Name != type.Name && // prevents "member names cannot be the same as their enclosing type"
                     !seenItems.Contains(new Tuple<string, string>(fullTypeName, method.Name)) // avoid duplicates
+                    // generics
                     && !method.Name.Contains("`")
-                                                                                                )
+                    // getters and setters, those are addressed in properties above
+                    && !method.Name.StartsWith("get_")
+                    && !method.Name.StartsWith("set_")
+                    // we don't need to bridge GetType
+                    && method.Name != "GetType")
                 {
                     seenItems.Add(new Tuple<string, string>(fullTypeName, method.Name));
-                    //MethodDeclarationSyntax wrappedField = CreateBridgeMethod(method, type);
-                    //classDeclaration = classDeclaration.AddMembers(wrappedField);
+                    MethodDeclarationSyntax wrappedMethod = CreateBridgeMethod(method, type);
                     if (type.IsClass)
                     {
-                        //classDeclaration = classDeclaration.AddMembers(wrappedField);
+                        classDeclaration = classDeclaration.AddMembers(wrappedMethod);
                     }
                     else
                     {
-                        //structDeclaration = structDeclaration.AddMembers(wrappedField);
+                        structDeclaration = structDeclaration.AddMembers(wrappedMethod);
                     }
                 }
             }
@@ -557,12 +595,15 @@ namespace ResoniteBridge
         {
             "System.Collections.Generic.KeyCollection",
             "System.Collections.Generic.ValueCollection",
+            "System.Collections.Generic.Enumerator",
             "POpusCodec",
             "QRCoder",
             "FrooxEngine.Sync<POpusCodec",
             "FrooxEngine.Sync<QRCoder",
             "ProtoFlux.Core.ValueOutput<TwitchLib",
-            "System.Span<S>"
+            "System.Span",
+            "System.Threading.Tasks",
+            "System.Collections.Generic.IEnumerable", // todo: this would be nice
         };
 
         public static HashSet<string> whitelist = new HashSet<string>()
