@@ -601,9 +601,11 @@ namespace ResoniteBridge
             "FrooxEngine.Sync<POpusCodec",
             "FrooxEngine.Sync<QRCoder",
             "ProtoFlux.Core.ValueOutput<TwitchLib",
-            "System.Span",
+            "System.Span", // give compilation issues
+            "System.ReadOnlySpan", // give compilation issues
             "System.Threading.Tasks",
             "System.Collections.Generic.IEnumerable", // todo: this would be nice
+            "System.Half", // not available in netstandard 2.1
         };
 
         public static HashSet<string> whitelist = new HashSet<string>()
@@ -740,7 +742,16 @@ namespace ResoniteBridge
                 EmitResult result = compilation.Emit(outPath);
                 if (!result.Success)
                 {
-                    var errors = string.Join("\n", result.Diagnostics.Select(d => d.ToString()));
+                    var errors = string.Join("\n", result.Diagnostics.Select(d => {
+                        if (d.Severity == DiagnosticSeverity.Error)
+                        {
+                            return d.ToString();
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    }));
                     throw new Exception($"Compilation failed: {errors}");
                 }
 
