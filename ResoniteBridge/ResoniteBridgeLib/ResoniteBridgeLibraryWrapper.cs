@@ -14,6 +14,9 @@ using Microsoft.CodeAnalysis.Operations;
 using System.Text.Json;
 using Newtonsoft.Json;
 using static ResoniteBridge.ResoniteBinaryWrapper;
+using System.Xml.Serialization;
+using System.CodeDom.Compiler;
+using System.CodeDom;
 
 
 
@@ -161,11 +164,23 @@ namespace ResoniteBridge
         {
             return OverrideMethods.Contains(methodName);
         }
+
+        public static Dictionary<string, string> ParameterNameReplacements = new Dictionary<string, string>()
+        {
+            // object is a keyword
+            {"object", "__object" },
+            {"namespace", "__namespace" }
+        };
+
+        public static Dictionary<string, string> ParameterTypeReplacements = new Dictionary<string, string>()
+        {
+            // nullable is not permitted as input type
+            {"System.Nullable", "System.Object" }
+        };
         
         public static MethodDeclarationSyntax CreateBridgeMethod(MethodInfo method, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
-
             string genericStr = "";
             string constraints = "";
             if (method.IsGenericMethod)
@@ -184,9 +199,19 @@ namespace ResoniteBridge
 
             foreach (ParameterInfo param in method.GetParameters())
             {
+                // stuff like "object" are keywords and confuse the compiler
+                string paramName = param.Name;
+                if (ParameterNameReplacements.ContainsKey(paramName))
+                {
+                    paramName = ParameterNameReplacements[paramName];
+                }
                 string wrappedType = GetWrappedDataType(param.ParameterType);
-                argumentStrs.Add(wrappedType  + " " + param.Name);
-                variableStrs.Add("" + param.Name);
+                if (ParameterTypeReplacements.ContainsKey(wrappedType))
+                {
+                    wrappedType = ParameterTypeReplacements[wrappedType];
+                }
+                argumentStrs.Add(wrappedType  + " " + paramName);
+                variableStrs.Add("" + paramName);
             }
 
             string outputType = GetWrappedDataType(method.ReturnType);
@@ -228,9 +253,53 @@ namespace ResoniteBridge
         }
         // non static are tricky, we need to store the data in the types somehow
 
+        // modified from https://stackoverflow.com/a/16466858
+        // This gives the code that represents the type
+        // Neither FullName or Name always give the right thing
+        // Wheras this will
+        public static string FriendlyName(Type type, bool includeNamespace)
+        {
+            string result;
+
+            using (var codeDomProvider = CodeDomProvider.CreateProvider("C#"))
+            {
+                CodeTypeReference reference = new CodeTypeReference(type);
+                // this makes it assume it has a reference so it doesn't add namespace
+                if (!includeNamespace)
+                {
+                    reference.Options = CodeTypeReferenceOptions.GlobalReference;
+                }
+                var typeReferenceExpression = new CodeTypeReferenceExpression(reference);
+                using (var writer = new StringWriter())
+                {
+                    codeDomProvider.GenerateCodeFromExpression(typeReferenceExpression, writer, new CodeGeneratorOptions());
+                    result = writer.GetStringBuilder().ToString();
+                }
+            }
+
+            return result;
+        }
 
         public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true, bool includeGenericArguments=true)
         {
+            string result = FriendlyName(type, includeNamespace: includeNamespace);
+            result = result.Replace("&", ""); // roslyn gets confused by these, we don't need them
+            return ReplaceNamespaceAliases(result);
+            if (!includeNamespace)
+            {
+                
+            }
+            if (includeNamespace && includeGenericArguments)
+            {
+                // use reflection to get the FullName not overriden since froox engine messes with it
+                string fullName = (string)typeof(Type).GetProperty("FullName", BindingFlags.Public | BindingFlags.Instance).GetValue(type);
+                // generics have null full name
+                if (fullName == null)
+                {
+                    fullName = type.Name;
+                }
+                return ReplaceNamespaceAliases(fullName);
+            }
             string genericStr = "";
             if (type.IsGenericType)
             {
@@ -325,14 +394,16 @@ namespace ResoniteBridge
 
         public static string GetTypeNamespace(System.Type type)
         {
-            string space = type.Namespace;
-            string assemblyName = ResoniteBridgeServer.GetAssemblyName(type.Assembly);
-
-            if (space == null || space == "")
+            string typeWithoutNamespace = FriendlyName(type, includeNamespace: false);
+            string typeWithNamespace = FriendlyName(type, includeNamespace: true);
+            int namespaceSize = typeWithoutNamespace.Length - typeWithNamespace.Length;
+            string namespaceString = typeWithNamespace.Substring(0, namespaceSize);
+            // remove trailing .
+            if (namespaceString.EndsWith("."))
             {
-                space = assemblyName;
+                namespaceString = namespaceString.Substring(0, namespaceString.Length - 1);
             }
-            return ReplaceNamespaceAliases(NamespaceOnlyAliases(space));
+            return namespaceString;            
         }
 
         public static string NamespaceOnlyAliases(string namespaceNames)
@@ -344,12 +415,23 @@ namespace ResoniteBridge
 
         public static string ReplaceNamespaceAliases(string name)
         {
+            return name;
             return name.Replace("FrooxEngine.FrooxEngine", "FrooxEngine")
                 .Replace("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine", "FrooxEngine")
                 .Replace("FrooxEngine.ProtoFlux", "ProtoFlux")
                 .Replace("System.Void", "void") // System.Void isn't a valid return type, void is
                 .Replace("ProtoFlux.Runtimes.Execution.T", "T") // generic stuff doesn't catch these for some reason
-                .Replace("ProtoFlux.Core.T", "T");
+                .Replace("ProtoFlux.Core.T", "T")
+                .Replace("FrooxEngine.T", "T")
+                .Replace("FrooxEngine.S", "S")
+                .Replace("FrooxEngine.G", "G")
+                .Replace("FrooxEngine.W", "W")
+                .Replace("Elements.Core.T", "T")
+                .Replace("Elements.Core.E", "E")
+                .Replace("Elements.Core.A", "A")
+                .Replace("Elements.Core.B", "B")
+                .Replace("Elements.Assets.T", "T")
+                .Replace("FrooxEngine.TShape", "TShape");
         }
 
         public static NamespaceDeclarationSyntax CreateNamespaceForType(MemberDeclarationSyntax classDecleration, System.Type type)
@@ -609,6 +691,7 @@ namespace ResoniteBridge
             "System.Threading.Tasks",
             "System.Collections.Generic.IEnumerable", // todo: this would be nice
             "System.Half", // not available in netstandard 2.1
+            "TwitchLib.",
         };
 
         public static HashSet<string> whitelist = new HashSet<string>()
@@ -733,10 +816,7 @@ namespace ResoniteBridge
                 // Option 1: Write directly to file instead of keeping in memory
                 using (var writer = new StreamWriter(outTxt))
                 {
-                    foreach (var syntaxTreef in compilation.SyntaxTrees)
-                    {
-                        writer.Write(syntaxTreef.ToString());
-                    }
+                    writer.Write(compilationUnit.ToFullString());
                 }
 
                 Console.WriteLine("Emitting..." + outPath);
@@ -745,17 +825,14 @@ namespace ResoniteBridge
                 EmitResult result = compilation.Emit(outPath);
                 if (!result.Success)
                 {
-                    var errors = string.Join("\n", result.Diagnostics.Select(d => {
-                        if (d.Severity == DiagnosticSeverity.Error)
+                    foreach (Diagnostic diagnostic in result.Diagnostics)
+                    {
+                        if (diagnostic.Severity == DiagnosticSeverity.Error)
                         {
-                            return d.ToString();
+                            Console.WriteLine(diagnostic.ToString());
                         }
-                        else
-                        {
-                            return "";
-                        }
-                    }));
-                    throw new Exception($"Compilation failed: {errors}");
+                    }
+                    throw new Exception($"Compilation failed");
                 }
 
                 Console.WriteLine("Done!");
