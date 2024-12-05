@@ -241,6 +241,11 @@ namespace ResoniteBridge
             };
         }
 
+        public static AstNode MakeEmptyStatement()
+        {
+            return new Comment("", CommentType.SingleLine);
+        }
+
         public static string WrapAssembly(Assembly assembly, out string usings)
         {
 
@@ -248,10 +253,12 @@ namespace ResoniteBridge
             var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
             Console.WriteLine("Decompiling");
             var decompTree = decompiler.DecompileWholeModuleAsSingleFile();
-            Console.WriteLine("Decompiled");
 
             // Get all the usings and replace them with empty
             // Because we need them all at the start
+
+            bool foundTypeDec = false;
+
             StringBuilder usingStatements = new StringBuilder();
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
@@ -259,7 +266,19 @@ namespace ResoniteBridge
                     astNode is UsingAliasDeclaration)
                 {
                     usingStatements.AppendLine(astNode.ToString());
-                    astNode.ReplaceWith(new EmptyStatement());
+                    astNode.ReplaceWith(MakeEmptyStatement());
+                }
+                else if(astNode is AttributeSection attrSection)
+                {
+                    // once we find type declare, all the dll attributes are done so we stop deleting them
+                    if (!foundTypeDec)
+                    {
+                        attrSection.ReplaceWith(MakeEmptyStatement());
+                    }
+                }
+                else if(astNode is TypeDeclaration typeDeclare)
+                {
+                    foundTypeDec = true;
                 }
             });
             usings = usingStatements.ToString();
@@ -268,15 +287,32 @@ namespace ResoniteBridge
             {
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
                 {
-                    // Add ResoniteBridgeValueHolder interface
-                    typeDeclare.BaseTypes.Add(new SimpleType("ResoniteBridge.ResoniteBridgeValueHolder"));
+                    string typeNamespace = GetTypeDeclarationNamespace(typeDeclare);
+                    // none of these spooky beasts
+                    if (ForbiddenNamespaces.Contains(typeNamespace))
+                    {
+                        typeDeclare.ReplaceWith(MakeEmptyStatement());
+                        return;
+                    }
+                    // don't mess with enums
+                    if (typeDeclare.ClassType != ClassType.Enum)
+                    {
+                        // Add ResoniteBridgeValueHolder interface
+                        typeDeclare.BaseTypes.Add(new SimpleType("ResoniteBridge.ResoniteBridgeValueHolder"));
 
-                    // implement ResoniteBridgeValueHolder interface
-                    AddBackingDeclaration(typeDeclare);
+                        // implement ResoniteBridgeValueHolder interface
+                        AddBackingDeclaration(typeDeclare);
 
-                    // implement constructor from ResoniteBridgeValue (needed for CastValue)
-                    var constructorDeclaration = CreateBackingConstructor(typeDeclare);
-                    typeDeclare.Members.Add(constructorDeclaration);
+                        // implement constructor from ResoniteBridgeValue (needed for CastValue)
+                        var constructorDeclaration = CreateBackingConstructor(typeDeclare);
+                        typeDeclare.Members.Add(constructorDeclaration);
+                    }
+                    // no static only classes so we can always implement interface
+                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Static))
+                    {
+                        typeDeclare.Modifiers &= ~Modifiers.Static;
+                    }
+
 
                     var staticTarget = new ObjectCreateExpression(
                         new SimpleType("ResoniteBridge.ResoniteBridgeValue"),
@@ -384,6 +420,13 @@ namespace ResoniteBridge
             return writer.ToString();
         }
 
+        public static HashSet<string> ForbiddenNamespaces = new HashSet<string>()
+        {
+            // Used for defining assembly metadata, but we are doing that ourselves
+            "Microsoft.CodeAnalysis",
+            "System.Runtime.CompilerServices"
+        };
+
         public static HashSet<string> whitelist = new HashSet<string>()
         {
             "FrooxEngine.Store",
@@ -419,17 +462,6 @@ namespace ResoniteBridge
             return outUsings.ToString() + "\n" + outCode.ToString();
         }
 
-        public static void DefineNamespaceAliases(CodeCompileUnit compileUnit)
-        {
-            var globalNamespace = new CodeNamespace("");
-            globalNamespace.Imports.Add(new CodeNamespaceImport("ProtoFlux"));
-            globalNamespace.Imports.Add(new CodeNamespaceImport("FrooxEngine"));
-            globalNamespace.Imports.Add(new CodeNamespaceImport("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine = FrooxEngine"));
-            globalNamespace.Imports.Add(new CodeNamespaceImport("FrooxEngine.ProtoFlux = ProtoFlux"));
-
-            compileUnit.Namespaces.Add(globalNamespace);
-        }
-
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             new Thread(() =>
@@ -440,11 +472,6 @@ namespace ResoniteBridge
             // Create CodeDom provider for C#
             using (var provider = CodeDomProvider.CreateProvider("CSharp"))
             {
-                // Create compilation unit
-                var compileUnit = new CodeCompileUnit();
-
-                DefineNamespaceAliases(compileUnit);
-
                 string allCode = WrapAssemblies(assemblies);
 
                 Console.WriteLine("Writing code to file");
