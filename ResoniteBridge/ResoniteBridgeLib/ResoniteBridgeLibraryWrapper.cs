@@ -40,6 +40,9 @@ namespace ResoniteBridge
     public class ResoniteBinaryWrapper
     {
 
+
+     
+
         public static void AddBackingDeclaration(TypeDeclaration typeDeclaration)
         {
             // Create backing field
@@ -411,13 +414,11 @@ namespace ResoniteBridge
                         typeDeclare.Modifiers &= ~Modifiers.Readonly;
                     }
 
-                    // we don't need to do anything else for interfaces and abstract classes, bail
-                    if (typeDeclare.ClassType == ClassType.Interface || typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                    // we don't need to do anything else for abstract classes, bail
+                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
                     {
                         return;
                     }
-
-
 
 
                     var staticTarget = new ObjectCreateExpression(
@@ -451,6 +452,11 @@ namespace ResoniteBridge
                             methodDeclare.NameToken.ToString().StartsWith("set_"))
                             {
                                 nodesToRemove.Add(methodDeclare);
+                            }
+                            // leave null bodies null (usually in interfaces)
+                            else if (methodDeclare.Body.IsNull)
+                            {
+
                             }
                             else
                             {
@@ -572,18 +578,22 @@ namespace ResoniteBridge
 
 
             // remove using statements 
-            
-            
+
             // replace all unresolved types with ResoniteBridgeValue
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
-                if(astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare )
+                if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                 {
                     ReplaceTypeIfUnresolved(methodDeclare.ReturnType, resolveContext, namespaceList);
                 }
                 else if (astNode is ParameterDeclaration paramDeclare)
                 {
-                    ReplaceTypeIfUnresolved(paramDeclare.Type, resolveContext, namespaceList);
+                    if (ReplaceTypeIfUnresolved(paramDeclare.Type, resolveContext, namespaceList))
+                    {
+                        // we can't have a default expression if we replaced it with BridgeValue
+                        paramDeclare.DefaultExpression = null;
+                    }
+                   
                 }
                 else if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.PropertyDeclaration propertyDeclare)
                 {
@@ -653,20 +663,34 @@ namespace ResoniteBridge
             decompTree.AcceptVisitor(visitor);
             return writer.ToString();
         }
-        
-        // these don't resolve but they are valid, pass them through
-        public static HashSet<string> primitiveTypes = new HashSet<string>()
-        {
-            "string",
-            "bool",
-            "int",
-            "double",
-            "float",
-            "void",
-        };
 
-        public static void ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList)
+
+        // these don't resolve but they are valid, pass them through
+        static Dictionary<string, Type> keywordTypes = new Dictionary<string, Type>()
         {
+            {"bool", typeof(System.Boolean)},
+            {"byte", typeof(System.Byte)},
+            {"char", typeof(System.Char)},
+            {"decimal", typeof(System.Decimal)},
+            {"double", typeof(System.Double)},
+            {"float", typeof(System.Single)},
+            {"int", typeof(System.Int32)},
+            {"long", typeof(System.Int64)},
+            {"object", typeof(System.Object)},
+            {"sbyte", typeof(System.SByte)},
+            {"short", typeof(System.Int16)},
+            {"string", typeof(System.String)},
+            {"uint", typeof(System.UInt32)},
+            {"ulong", typeof(System.UInt64)},
+            {"ushort", typeof(System.UInt16)}
+        };
+        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList)
+        {
+            // recurse (for generics)
+            foreach (AstType childType in astType.DescendantNodes().OfType<SimpleType>())
+            {
+                ReplaceTypeIfUnresolved(childType, resolveContext, namespaceList);
+            }
             // we have a few things we try for resolving types
 
             // remove nullable because that confuses typeof
@@ -689,11 +713,17 @@ namespace ResoniteBridge
             if (namespaceList.Contains(astType.ToString()))
             {
                 // it exists, we are happy
-                return;
+                return false;
             }
 
-            if (primitiveTypes.Contains(astType.ToString().Replace("@", ""))) {
-                return;
+            // fix up the @ that gets added to these
+            if (keywordTypes.TryGetValue(astType.ToString().Replace("@", ""), out Type keywordType))
+            {
+                AstType newType = new SimpleType(keywordType.FullName);
+                astType.ReplaceWith(newType);
+                astType = newType;
+                // keywords exist, we are done
+                return false;
             }
             
             ITypeReference typeReference = astType.ToTypeReference();
@@ -701,7 +731,7 @@ namespace ResoniteBridge
             // resolved, we are happy
             if (iType.Kind != ICSharpCode.Decompiler.TypeSystem.TypeKind.Unknown)
             {
-                return;
+                return false;
             }
 
             ResolveResult resolveResult = astType.GetResolveResult();
@@ -726,11 +756,12 @@ namespace ResoniteBridge
                     whitelist.Contains(assemblyName) ||
                     bonusList.Contains(assemblyName))
                 {
-                    return;
+                    return false;
                 }
             }
             // still didn't resolve, replace with ResoniteBridgeValue
             astType.ReplaceWith(new SimpleType("ResoniteBridge.ResoniteBridgeValue"));
+            return true;
         }
 
         public static HashSet<string> ForbiddenNamespaces = new HashSet<string>()
@@ -925,7 +956,7 @@ namespace ResoniteBridge
                         optimizationLevel: OptimizationLevel.Release
                     ));
 
-
+                
                 // weird stuff needed to force .NETStandard 2.1
                 var targetFrameworkAttribute = compilation.SyntaxTrees.First()
                             .WithFilePath("TargetFrameworkAttribute.cs")
