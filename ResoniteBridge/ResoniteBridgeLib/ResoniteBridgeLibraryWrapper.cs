@@ -27,6 +27,7 @@ using ICSharpCode.Decompiler.CSharp.OutputVisitor;
 using ICSharpCode.Decompiler.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using ICSharpCode.Decompiler.CSharp.Syntax.PatternMatching;
+using System.Text;
 
 namespace ResoniteBridge
 {
@@ -261,39 +262,6 @@ namespace ResoniteBridge
         }
         // non static are tricky, we need to store the data in the types somehow
 
-        public static CodeMethodInvokeExpression WrapSetter(bool isStatic, string setterName, CodeObjectCreateExpression staticTarget, CodeFieldReferenceExpression instanceTarget, string setMethodName)
-        {
-            var setterNameField = new CodePrimitiveExpression(setterName);
-            var clientWrappers = new CodeTypeReferenceExpression("ResoniteBridge.ResoniteBridgeClientWrappers");
-            var valueField = new CodeVariableReferenceExpression("value");
-            var setterCall = isStatic
-                ? new CodeMethodInvokeExpression(clientWrappers, setMethodName, staticTarget, setterNameField, valueField)
-                : new CodeMethodInvokeExpression(clientWrappers, setMethodName, instanceTarget, setterNameField, valueField);
-            return setterCall;
-        }
-
-        public static CodeMethodReturnStatement WrapGetter(bool isStatic, Type getterType, string getterName, CodeObjectCreateExpression staticTarget, CodeFieldReferenceExpression instanceTarget, string getMethodName)
-        {
-            var getterNameField = new CodePrimitiveExpression(getterName);
-            var clientWrappers = new CodeTypeReferenceExpression("ResoniteBridge.ResoniteBridgeClientWrappers");
-            var getterCall = isStatic
-                ? new CodeMethodInvokeExpression(clientWrappers, getMethodName, staticTarget, getterNameField)
-                : new CodeMethodInvokeExpression(clientWrappers, getMethodName, instanceTarget, getterNameField);
-
-            var castValueCall = new CodeMethodInvokeExpression(
-                clientWrappers,
-                "CastValue",
-                getterCall,
-                new CodeTypeOfExpression(getterType));
-
-            var castExpression = new CodeCastExpression(
-               getterType,
-               castValueCall
-            );
-
-            return new CodeMethodReturnStatement(castExpression);
-        }
-
         public static void AddBackingDeclaration(CodeTypeDeclaration typeDeclaration)
         {
             var backingField = new CodeMemberField(
@@ -366,6 +334,7 @@ namespace ResoniteBridge
             */
         }
 
+        /*
         public static CodeTypeDeclaration DeclareType(ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration syntaxTree, ITypeDefinition typeDef, Type sourceType)
         {
             string assemblyName = ResoniteBridgeServer.GetAssemblyName(sourceType.Assembly);
@@ -564,7 +533,7 @@ namespace ResoniteBridge
 
                 typeDeclaration.Members.Add(methodDecl);
             }
-            */
+            * /
 
             // recursively declare subtypes inside this
             //foreach (var subtype in sourceType.GetNestedTypes())
@@ -574,6 +543,7 @@ namespace ResoniteBridge
 
             return typeDeclaration;
         }
+        */
 
         public static void WrapType(CodeCompileUnit compileUnit, ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclaration, ITypeDefinition sourceType, Type type)
         {
@@ -587,9 +557,9 @@ namespace ResoniteBridge
             var codeNamespace = new CodeNamespace(sourceType.Namespace);
             compileUnit.Namespaces.Add(codeNamespace);
 
-            var typeDeclare = DeclareType(typeDeclaration, sourceType, type);
+           // var typeDeclare = DeclareType(typeDeclaration, sourceType, type);
 
-            codeNamespace.Types.Add(typeDeclare);
+            //codeNamespace.Types.Add(typeDeclare);
         }
         
 
@@ -1427,13 +1397,69 @@ namespace ResoniteBridge
                 .Select(n => n.Name));
         }
 
-        public static void WrapAssembly(CodeCompileUnit compileUnit, ref NamespaceDeclarationSyntax rootNamespace, ref CompilationUnitSyntax emptyHolder, Assembly assembly, HashSet<string> typesEncountered)
+        public static Accessor WrapSetter(bool isStatic, string setterName, Expression staticTarget, Expression instanceTarget, string setMethodName)
         {
+            var setterNameExp = new PrimitiveExpression(setterName);
+            var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
+            var valueExp = new IdentifierExpression("value");
+
+            InvocationExpression invocation = new InvocationExpression(
+                new MemberReferenceExpression(clientWrappers, setMethodName),
+                isStatic
+                    ? new Expression[] { staticTarget, setterNameExp, valueExp }
+                    : new Expression[] { instanceTarget, setterNameExp, valueExp }
+            );
+            return new Accessor
+            {
+                Body = new BlockStatement
+                {
+                    invocation
+                }
+            };
+        }
+
+
+        public static Accessor WrapGetter(bool isStatic, AstType getterType, string getterName, ObjectCreateExpression staticTarget, MemberReferenceExpression instanceTarget, string getMethodName)
+        {
+            var getterNameExp = new PrimitiveExpression(getterName);
+            var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
+
+            var getterCall = new InvocationExpression(
+                new MemberReferenceExpression(clientWrappers, getMethodName),
+                isStatic
+                    ? new Expression[] { staticTarget, getterNameExp }
+                    : new Expression[] { instanceTarget, getterNameExp }
+            );
+
+            var castValueCall = new InvocationExpression(
+                new MemberReferenceExpression(clientWrappers, "CastValue"),
+                getterCall,
+                new TypeOfExpression(getterType)
+            );
+
+            var castExpression = new CastExpression(
+                getterType,
+                castValueCall
+            );
+
+            return new Accessor
+            {
+                Body = new BlockStatement
+                {
+                    new ReturnStatement(castExpression)
+                }
+            };
+        }
+
+        public static string WrapAssembly(Assembly assembly)
+        {
+            string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
             var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
             Console.WriteLine("Decompiling");
             var decompTree = decompiler.DecompileWholeModuleAsSingleFile();
             Console.WriteLine("Decompiled");
-
+            
+            /*
             Dictionary<string, Tuple<ITypeDefinition, Type>> typeLookup = new Dictionary<string, Tuple<ITypeDefinition, Type>>();
             foreach (ITypeDefinition decompType in decompiler.TypeSystem.MainModule.Compilation.GetTopLevelTypeDefinitions())
             {
@@ -1443,24 +1469,97 @@ namespace ResoniteBridge
                     typeLookup[decompType.FullName] = new Tuple<ITypeDefinition, Type>(decompType, assemblyType);
                 }
             }
+            */
 
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
                 {
-                    string typeDeclareNamespace = GetTypeDeclarationNamespace(typeDeclare);
-                    string typeDeclareType = typeDeclare.NameToken.ToString();
-                    string fullTypeName = typeDeclareNamespace.Length == 0
-                        ? typeDeclareType
-                        : typeDeclareNamespace + "." + typeDeclareType;
-                    if (typeLookup.TryGetValue(fullTypeName, out Tuple<ITypeDefinition, Type> lookedup))
+                    var staticTarget = new ObjectCreateExpression(
+                        new SimpleType("ResoniteBridge.ResoniteBridgeValue"),
+                        new Expression[] {
+                            new PrimitiveExpression(null),
+                            new PrimitiveExpression(assemblyName),
+                            new PrimitiveExpression(typeDeclare.Name),
+                            new MemberReferenceExpression(
+                                new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeValueType")),
+                                "Type"
+                            )
+                        }
+                    );
+
+                    var instanceTarget = new MemberReferenceExpression(
+                        new ThisReferenceExpression(),
+                        "__Backing"
+                    );
+
+                    TraverseSyntaxNodes(astNode, (childNode) =>
                     {
-                        ITypeDefinition typeDefinition = lookedup.Item1;
-                        Type type = lookedup.Item2;
-                        WrapType(compileUnit, typeDeclare, typeDefinition, type);
-                    }
+                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
+                        {
+                            methodDeclare.Body.ReplaceWith(new EmptyStatement());
+                        }
+                        else if(childNode is PropertyDeclaration propertyDeclare)
+                        {
+                            string propertyName = propertyDeclare.NameToken.ToString();
+                            AstType returnType = propertyDeclare.ReturnType;
+
+                            bool isStatic = propertyDeclare.Modifiers.HasFlag(Modifiers.Static);
+                            Accessor getter = WrapGetter(isStatic,
+                                returnType,
+                                propertyName,
+                                staticTarget,
+                                instanceTarget,
+                                "GetProperty"
+                            );
+
+                            Accessor setter = WrapSetter(isStatic,
+                                propertyName,
+                                staticTarget,
+                                instanceTarget,
+                                "SetProperty");
+
+                            propertyDeclare.Getter.ReplaceWith(getter);
+                            propertyDeclare.Setter.ReplaceWith(setter);
+                        }
+                        else if(childNode is FieldDeclaration fieldDeclare)
+                        {
+                            string fieldName = fieldDeclare.NameToken.ToString();
+                            AstType returnType = fieldDeclare.ReturnType;
+
+                            bool isStatic = fieldDeclare.Modifiers.HasFlag(Modifiers.Static);
+                            Accessor getter = WrapGetter(isStatic,
+                                returnType,
+                                fieldName,
+                                staticTarget,
+                                instanceTarget,
+                                "GetField"
+                            );
+
+                            Accessor setter = WrapSetter(isStatic,
+                                fieldName,
+                                staticTarget,
+                                instanceTarget,
+                                "SetField");
+
+                            var fieldProperty = new PropertyDeclaration
+                            {
+                                Name = fieldDeclare.Name,
+                                ReturnType = fieldDeclare.ReturnType,
+                                Modifiers = fieldDeclare.Modifiers,
+                                Getter = getter,
+                                Setter = setter
+                            };
+                            fieldDeclare.ReplaceWith(fieldProperty);
+                        }
+                    });
                 }
             });
+
+            var writer = new StringWriter();
+            var visitor = new CSharpOutputVisitor(writer, FormattingOptionsFactory.CreateAllman());
+            decompTree.AcceptVisitor(visitor);
+            return writer.ToString();
             /*
             decompTree..Descendants.OfType < 
             HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
@@ -1561,11 +1660,10 @@ namespace ResoniteBridge
             //"FrooxEngine",
         };
 
-        public static CompilationUnitSyntax WrapAssemblies(CodeCompileUnit compileUnit, Dictionary<string, Assembly> assemblies, string rootNamespaceName)
+        public static CompilationUnitSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies)
         {
             HashSet<string> typesEncountered = new HashSet<string>();
-            NamespaceDeclarationSyntax rootNamespace = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespaceName));
-            CompilationUnitSyntax emptyHolder = SyntaxFactory.CompilationUnit();
+            StringBuilder outCode = new StringBuilder();
 
             // might be modified so have to make a copy
             foreach (KeyValuePair<string, Assembly> pair in new Dictionary<string, Assembly>(assemblies))
@@ -1574,11 +1672,12 @@ namespace ResoniteBridge
                 if (whitelist.Contains(ResoniteBridgeServer.GetAssemblyName(pair.Value)))
                 {
                     Console.WriteLine("Wrapping assembly " + pair.Key);
-                    WrapAssembly(compileUnit, ref rootNamespace, ref emptyHolder, assembly, typesEncountered);
+                    string outputCode = WrapAssembly(assembly);
+                    outCode.Append(outputCode);
                     Console.WriteLine("Done wrapping assembly " + pair.Key);
                 }
             }
-            return emptyHolder.AddMembers(rootNamespace);
+            return outCode;
         }
 
         public static void DefineNamespaceAliases(CodeCompileUnit compileUnit)
