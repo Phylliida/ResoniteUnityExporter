@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,8 +17,16 @@ using static ResoniteBridge.ResoniteBinaryWrapper;
 using System.Xml.Serialization;
 using System.CodeDom.Compiler;
 using System.CodeDom;
+using System.Xml.Linq;
 
-
+using ICSharpCode.Decompiler;
+using ICSharpCode.Decompiler.CSharp;
+using ICSharpCode.Decompiler.TypeSystem;
+using ICSharpCode.Decompiler.CSharp.Syntax;
+using ICSharpCode.Decompiler.CSharp.OutputVisitor;
+using ICSharpCode.Decompiler.Metadata;
+using System.Reflection.Metadata.Ecma335;
+using ICSharpCode.Decompiler.CSharp.Syntax.PatternMatching;
 
 namespace ResoniteBridge
 {
@@ -61,19 +69,19 @@ namespace ResoniteBridge
 
         public enum ParsingType
         {
-            AsResoniteBridgeValue=0,
-            AsType=1,
-            AsRaw=2
+            AsResoniteBridgeValue = 0,
+            AsType = 1,
+            AsRaw = 2
         }
 
 
 
         public static ParsingType GetParsingType(Type type)
         {
-            string fullTypeName = GetTypeNameIncludingGenericArguments(type);
+            string fullTypeName = GetTypeName(type);
             string fieldTypeAssemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
             ParsingType parsingType = ParsingType.AsResoniteBridgeValue;
-            
+
             // types we don't have support for
             foreach (string blackListPrefix in blackList)
             {
@@ -103,9 +111,9 @@ namespace ResoniteBridge
                 case ParsingType.AsResoniteBridgeValue:
                     return "ResoniteBridge.ResoniteBridgeValue";
                 case ParsingType.AsType:
-                    return GetTypeNameIncludingGenericArguments(type);
+                    return GetTypeName(type);
                 case ParsingType.AsRaw:
-                    return GetTypeNameIncludingGenericArguments(type);
+                    return GetTypeName(type);
             }
             throw new ArgumentException("Unknown parsing type " + parsingType + " for type " + type.FullName);
         }
@@ -177,7 +185,7 @@ namespace ResoniteBridge
             // nullable is not permitted as input type
             {"System.Nullable", "System.Object" }
         };
-        
+
         public static MethodDeclarationSyntax CreateBridgeMethod(MethodInfo method, System.Type type)
         {
             string assemblyName = ResoniteBridge.ResoniteBridgeServer.GetAssemblyName(type.Assembly);
@@ -210,7 +218,7 @@ namespace ResoniteBridge
                 {
                     wrappedType = ParameterTypeReplacements[wrappedType];
                 }
-                argumentStrs.Add(wrappedType  + " " + paramName);
+                argumentStrs.Add(wrappedType + " " + paramName);
                 variableStrs.Add("" + paramName);
             }
 
@@ -253,22 +261,350 @@ namespace ResoniteBridge
         }
         // non static are tricky, we need to store the data in the types somehow
 
+        public static CodeMethodInvokeExpression WrapSetter(bool isStatic, string setterName, CodeObjectCreateExpression staticTarget, CodeFieldReferenceExpression instanceTarget, string setMethodName)
+        {
+            var setterNameField = new CodePrimitiveExpression(setterName);
+            var clientWrappers = new CodeTypeReferenceExpression("ResoniteBridge.ResoniteBridgeClientWrappers");
+            var valueField = new CodeVariableReferenceExpression("value");
+            var setterCall = isStatic
+                ? new CodeMethodInvokeExpression(clientWrappers, setMethodName, staticTarget, setterNameField, valueField)
+                : new CodeMethodInvokeExpression(clientWrappers, setMethodName, instanceTarget, setterNameField, valueField);
+            return setterCall;
+        }
+
+        public static CodeMethodReturnStatement WrapGetter(bool isStatic, Type getterType, string getterName, CodeObjectCreateExpression staticTarget, CodeFieldReferenceExpression instanceTarget, string getMethodName)
+        {
+            var getterNameField = new CodePrimitiveExpression(getterName);
+            var clientWrappers = new CodeTypeReferenceExpression("ResoniteBridge.ResoniteBridgeClientWrappers");
+            var getterCall = isStatic
+                ? new CodeMethodInvokeExpression(clientWrappers, getMethodName, staticTarget, getterNameField)
+                : new CodeMethodInvokeExpression(clientWrappers, getMethodName, instanceTarget, getterNameField);
+
+            var castValueCall = new CodeMethodInvokeExpression(
+                clientWrappers,
+                "CastValue",
+                getterCall,
+                new CodeTypeOfExpression(getterType));
+
+            var castExpression = new CodeCastExpression(
+               getterType,
+               castValueCall
+            );
+
+            return new CodeMethodReturnStatement(castExpression);
+        }
+
+        public static void AddBackingDeclaration(CodeTypeDeclaration typeDeclaration)
+        {
+            var backingField = new CodeMemberField(
+                new CodeTypeReference("ResoniteBridge.ResoniteBridgeValue"),
+                "__backing");
+
+            backingField.Attributes = MemberAttributes.Private;
+
+            // Property declaration
+            var backingProperty = new CodeMemberProperty
+            {
+                Name = "__Backing",
+                Type = new CodeTypeReference("ResoniteBridge.ResoniteBridgeValue"),
+                Attributes = MemberAttributes.Public | MemberAttributes.Final,
+                HasGet = true,
+                HasSet = true
+            };
+
+            // Getter
+            backingProperty.GetStatements.Add(
+                new CodeMethodReturnStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(),
+                        "__backing")));
+
+            // Setter
+            backingProperty.SetStatements.Add(
+                new CodeAssignStatement(
+                    new CodeFieldReferenceExpression(
+                        new CodeThisReferenceExpression(),
+                        "__backing"),
+                    new CodePropertySetValueReferenceExpression()));
+
+            typeDeclaration.Members.Add(backingField);
+            typeDeclaration.Members.Add(backingProperty);
+        }
+        public static IEnumerable<Type> GetDirectInterfaces(Type type)
+        {
+            // get all interfaces
+            var allInterfaces = type.GetInterfaces();
+            // get all interfaces of those interfaces
+            var inheritedInterfaces = allInterfaces
+                .SelectMany(i => i.GetInterfaces());
+            var baseInherited = allInterfaces
+                .Select(i => i.BaseType);
+
+            var twoOrMoreLevelsUp = inheritedInterfaces.Union(baseInherited).Distinct();
+
+            // exclude those from all of them
+            // that way we only have direct (lowest level) ones
+            return allInterfaces
+                .Except(twoOrMoreLevelsUp);
+        }
+
+        public static string NodeToString(AstNode node)
+        {
+            return node.ToString();
+            /*
+            var writer = new StringWriter();
+            var tokenWriter = new TextTokenWriter(writer);
+            node.WriteAnnotatedTo(tokenWriter);
+            return writer.ToString();
+            */
+            /*
+            var output = new StringWriter();
+            var visitor = new CSharpOutputVisitor(output,
+                FormattingOptionsFactory.CreateAllman());  // or CreateMono() for alternative style
+            node.AcceptVisitor(visitor);
+            return output.ToString();
+            */
+        }
+
+        public static CodeTypeDeclaration DeclareType(ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration syntaxTree, ITypeDefinition typeDef, Type sourceType)
+        {
+            string assemblyName = ResoniteBridgeServer.GetAssemblyName(sourceType.Assembly);
+
+            string typeName = GetTypeName(sourceType, includeNamespace: false, includeGenerics: false, includeParentClasses: false);
+
+            TypeAttributes typeAttributes = TypeAttributes.Public;
+           
+            
+            // Create type declaration
+            var typeDeclaration = new CodeTypeDeclaration(typeName)
+            {
+                IsClass = typeDef.Kind == ICSharpCode.Decompiler.TypeSystem.TypeKind.Class,
+                IsInterface = typeDef.Kind == ICSharpCode.Decompiler.TypeSystem.TypeKind.Interface,
+                IsEnum = typeDef.Kind == ICSharpCode.Decompiler.TypeSystem.TypeKind.Enum,
+                IsStruct = typeDef.Kind == ICSharpCode.Decompiler.TypeSystem.TypeKind.Struct,
+                TypeAttributes = TypeAttributes.Public
+            };
+
+            // add generics
+            if (sourceType.IsGenericType)
+            {
+                // remove ` stuff
+                typeDeclaration.Name = sourceType.Name.Split('`')[0];
+
+                foreach (var genericArg in sourceType.GetGenericArguments())
+                {
+                    var typeParam = new CodeTypeParameter(genericArg.Name);
+
+                    // Add constraints
+                    var constraints = genericArg.GetGenericParameterConstraints();
+                    foreach (var constraint in constraints)
+                    {
+                        typeParam.Constraints.Add(new CodeTypeReference(constraint));
+                    }
+
+                    // Add special constraints ( : class, : struct, :new())
+                    var attributes = genericArg.GenericParameterAttributes;
+                    // unfortunately there's no easy to make : class and :struct so we just do a term with zero width space and replace it later
+                    // cursed but it works
+                    // we don't need this
+                    //if ((attributes & GenericParameterAttributes.ReferenceTypeConstraint) != 0)
+                    //    typeParam.Constraints.Add("CLASSCONSTRAINT");
+                    if ((attributes & GenericParameterAttributes.NotNullableValueTypeConstraint) != 0)
+                        typeParam.Constraints.Add("STRUCTCONSTRAINT");
+                    // we don't need this
+                    // if ((attributes & GenericParameterAttributes.DefaultConstructorConstraint) != 0)
+                    //    typeParam.HasConstructorConstraint = true;
+                    typeDeclaration.TypeParameters.Add(typeParam);
+                }
+            }
+
+
+            foreach (AstNode baseType in typeDeclaration.BaseTypes)
+            {
+                typeDeclaration.BaseTypes.Add(new CodeTypeReference(baseType.ToString()));
+            }
+
+            //var directlyDeclared = typeDef.DirectBaseTypes
+            //    .Where(t => !t.IsKnownType(KnownTypeCode.Object));
+
+            //foreach (IType interfaceType in directlyDeclared)
+            //{
+            //   interfaceType.ReflectionName));
+            //}
+
+            // Add base type if exists and not value type
+            //if (sourceType.BaseType != null && sourceType.BaseType != typeof(ValueType))
+            //{
+            //    typeDeclaration.BaseTypes.Add(new CodeTypeReference(sourceType.BaseType));
+            //}
+
+            // Add interfaces
+            //foreach (var interface_ in GetDirectInterfaces(sourceType))
+            //{
+            //    typeDeclaration.BaseTypes.Add(new CodeTypeReference(interface_));
+            //}
+
+
+
+            typeDeclaration.BaseTypes.Add(new CodeTypeReference(typeof(ResoniteBridge.ResoniteBridgeValueHolder)));
+            AddBackingDeclaration(typeDeclaration);
+
+            var staticTarget = new CodeObjectCreateExpression(
+                    "ResoniteBridge.ResoniteBridgeValue",
+                    new CodePrimitiveExpression(null),
+                    new CodePrimitiveExpression(assemblyName),
+                    new CodePrimitiveExpression(sourceType.Name),
+                    new CodeFieldReferenceExpression(
+                        new CodeTypeReferenceExpression("ResoniteBridge.ResoniteBridgeValueType"),
+                        "Type"
+                    )
+                );
+            var instanceTarget = new CodeFieldReferenceExpression(
+                    new CodeThisReferenceExpression(),
+                    "__Backing"
+            );
+
+
+            // Add properties
+            foreach (var prop in sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static))
+            {
+                // we don't support ref types yet, there's only 12 in all libraries so not a big deal
+                if (prop.PropertyType.IsByRef)
+                {
+                    continue;
+                }
+                bool isStatic = prop.GetAccessors(nonPublic: true)[0].IsStatic;
+                // final is needed to remove virtual which is added by default
+                MemberAttributes attributes = MemberAttributes.Public | MemberAttributes.Final;
+                if (isStatic)
+                {
+                    attributes |= MemberAttributes.Static;
+                }
+                var propertyDecl = new CodeMemberProperty
+                {
+                    Name = prop.Name,
+                    Type = new CodeTypeReference(prop.PropertyType),
+                    Attributes = attributes
+                };
+
+                if (prop.CanRead)
+                {
+                    propertyDecl.HasGet = true;
+                    var getter = WrapGetter(isStatic, prop.PropertyType, prop.Name, staticTarget, instanceTarget, "GetProperty");
+                    propertyDecl.GetStatements.Add(getter);
+                }
+                if (prop.CanWrite)
+                {
+                    propertyDecl.HasSet = true;
+                    var setter = WrapSetter(isStatic, prop.Name, staticTarget, instanceTarget, "SetProperty");
+                    propertyDecl.SetStatements.Add(setter);
+                }
+
+                typeDeclaration.Members.Add(propertyDecl);
+            }
+
+            // Add fields
+            foreach (var field in sourceType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static))
+            {
+                // we don't support ref types yet, there's only 12 in all libraries so not a big deal
+                if (field.FieldType.IsByRef)
+                {
+                    continue;
+                }
+                bool isStatic = field.IsStatic;
+                // final is needed to remove virtual which is added by default
+                MemberAttributes attributes = MemberAttributes.Public | MemberAttributes.Final;
+                if (isStatic)
+                {
+                    attributes |= MemberAttributes.Static;
+                }
+                var propertyDecl = new CodeMemberProperty
+                {
+                    Name = field.Name,
+                    Type = new CodeTypeReference(field.FieldType),
+                    Attributes = attributes
+                };
+
+
+                propertyDecl.HasGet = true;
+                var getter = WrapGetter(isStatic, field.FieldType, field.Name, staticTarget, instanceTarget, "GetField");
+                propertyDecl.GetStatements.Add(getter);
+                propertyDecl.HasSet = true;
+                var setter = WrapSetter(isStatic, field.Name, staticTarget, instanceTarget, "SetField");
+                propertyDecl.SetStatements.Add(setter);
+                typeDeclaration.Members.Add(propertyDecl);
+            }
+
+            /*
+            // Add methods
+            foreach (var method in sourceType.GetMethods(BindingFlags.Public | BindingFlags.Instance))
+            {
+                // Skip property accessors and special methods
+                if (method.IsSpecialName)
+                    continue;
+
+                var methodDecl = new CodeMemberMethod
+                {
+                    Name = method.Name,
+                    ReturnType = new CodeTypeReference(method.ReturnType),
+                    Attributes = MemberAttributes.Public
+                };
+
+                // Add parameters
+                foreach (var param in method.GetParameters())
+                {
+                    methodDecl.Parameters.Add(
+                        new CodeParameterDeclarationExpression(param.ParameterType, param.Name));
+                }
+
+                // Add method body (just throws NotImplementedException)
+                methodDecl.Statements.Add(
+                    new CodeThrowExceptionStatement(
+                        new CodeObjectCreateExpression(typeof(NotImplementedException))));
+
+                typeDeclaration.Members.Add(methodDecl);
+            }
+            */
+
+            // recursively declare subtypes inside this
+            //foreach (var subtype in sourceType.GetNestedTypes())
+            //{
+            //    typeDeclaration.Members.Add(DeclareType(subtype));
+            //}
+
+            return typeDeclaration;
+        }
+
+        public static void WrapType(CodeCompileUnit compileUnit, ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclaration, ITypeDefinition sourceType, Type type)
+        {
+            // we handle nested types seperately, inside the type that holds them
+            if (sourceType.DeclaringTypeDefinition != null)
+            {
+                return;
+            }
+
+            // Add namespace
+            var codeNamespace = new CodeNamespace(sourceType.Namespace);
+            compileUnit.Namespaces.Add(codeNamespace);
+
+            var typeDeclare = DeclareType(typeDeclaration, sourceType, type);
+
+            codeNamespace.Types.Add(typeDeclare);
+        }
+        
+
         // modified from https://stackoverflow.com/a/16466858
         // This gives the code that represents the type
         // Neither FullName or Name always give the right thing
         // Wheras this will
-        public static string FriendlyName(Type type, bool includeNamespace)
+        public static string GetTypeNameHelper(Type type, bool includeNamespace, bool includeGenerics)
         {
             string result;
 
             using (var codeDomProvider = CodeDomProvider.CreateProvider("C#"))
             {
                 CodeTypeReference reference = new CodeTypeReference(type);
-                // this makes it assume it has a reference so it doesn't add namespace
-                if (!includeNamespace)
-                {
-                    reference.Options = CodeTypeReferenceOptions.GlobalReference;
-                }
+                reference.Options = CodeTypeReferenceOptions.GenericTypeParameter;
                 var typeReferenceExpression = new CodeTypeReferenceExpression(reference);
                 using (var writer = new StringWriter())
                 {
@@ -276,134 +612,50 @@ namespace ResoniteBridge
                     result = writer.GetStringBuilder().ToString();
                 }
             }
-
+            if (!includeNamespace && type.Namespace != null)
+            {
+                string namespaceStr = type.Namespace;
+                if (!result.StartsWith(namespaceStr))
+                {
+                    throw new ArgumentException("Somehow it doesn't start with own namespace?");
+                }
+                // +1 because .
+                result = result.Substring(namespaceStr.Length + 1);
+            }
+            if (!includeGenerics && result.Contains("<"))
+            {
+                result = result.Substring(0, result.IndexOf("<"));
+            }
             return result;
         }
 
-        public static string GetTypeNameIncludingGenericArguments(System.Type type, bool includeNamespace=true, bool includeGenericArguments=true)
+        public static string GetTypeName(System.Type type, bool includeNamespace = true, bool includeGenerics = true, bool includeParentClasses = true)
         {
-            string result = FriendlyName(type, includeNamespace: includeNamespace);
+            string result = GetTypeNameHelper(type, includeNamespace: includeNamespace, includeGenerics: includeGenerics);
+            if (includeNamespace)
+            {
+                result = ReplaceNamespaceAliases(result);
+            }
             result = result.Replace("&", ""); // roslyn gets confused by these, we don't need them
-            return ReplaceNamespaceAliases(result);
-            if (!includeNamespace)
+            if (!includeParentClasses)
             {
-                
-            }
-            if (includeNamespace && includeGenericArguments)
-            {
-                // use reflection to get the FullName not overriden since froox engine messes with it
-                string fullName = (string)typeof(Type).GetProperty("FullName", BindingFlags.Public | BindingFlags.Instance).GetValue(type);
-                // generics have null full name
-                if (fullName == null)
+                // get everything after last .
+                if (result.Contains("."))
                 {
-                    fullName = type.Name;
-                }
-                return ReplaceNamespaceAliases(fullName);
-            }
-            string genericStr = "";
-            if (type.IsGenericType)
-            {
-                List<string> genericStrs = new List<string>();
-
-                foreach (Type genericType in type.GetGenericArguments())
-                {
-                    // stuff like <T>
-                    if (type.IsGenericTypeDefinition)
-                    {
-                        if (includeGenericArguments)
-                        {
-                            genericStrs.Add(genericType.Name);
-                        }
-                    }
-                    // specific types (like List<string>)
-                    else
-                    {
-                        genericStrs.Add(GetTypeNameIncludingGenericArguments(genericType));
-                    }
-                }
-                if (genericStrs.Count > 0 )
-                {
-                    genericStr = "<" + String.Join(", ", genericStrs) + ">";
+                    result = result.Substring(result.LastIndexOf(".") + 1);
                 }
             }
-            string typeName = type.Name;
-            for (int i = 0; i < 10; i++)
-            {
-                typeName = typeName.Replace("`" + i, "");
-            }
-            // KeyCollection needs some special treatment
-            if (type.DeclaringType != null && type.Assembly.FullName.StartsWith("System.Collections"))
-            {
-                string declaring = GetTypeNameIncludingGenericArguments(GetDeclaringTypeWithGenericArgs(type), includeNamespace: includeNamespace, includeGenericArguments: includeGenericArguments);
-                typeName = declaring + "." + typeName;
-            }
-            else
-            {
-                typeName = typeName + genericStr;
-            }
-            // & doesn't work in roslyn idk why
-            typeName = typeName.Replace("&", "");
-            bool isGenericArray = type.IsArray && (type.GetElementType().IsGenericType || type.GetElementType().IsGenericTypeParameter || type.GetElementType().IsGenericMethodParameter);
-
-            // generic type parameters we ignore adding namespace to (like <T>)
-            if (includeNamespace && !type.IsGenericTypeParameter && !isGenericArray && !type.IsGenericMethodParameter && !type.IsGenericParameter && type.Name != "T")
-            {
-                string space = GetTypeNamespace(type);
-                typeName = space + "." + typeName;
-            }
-
-            // idk why these show up but they cause problems, remove them
-            return ReplaceNamespaceAliases(typeName);
+            return result;
         }
 
-        // cursed shit to make the generics line up
-        public static Type GetDeclaringTypeWithGenericArgs(Type type)
-        {
-            var declaringType = type.DeclaringType;
-            if (declaringType == null || !declaringType.IsGenericType)
-                return declaringType;
-
-            // Get the generic type definition of the declaring type
-            var declaringGenericDefinition = declaringType.GetGenericTypeDefinition();
-
-            // Get the generic parameters of the declaring type definition
-            var declaringGenericArguments = declaringGenericDefinition.GetGenericArguments();
-
-            // Map the generic arguments from the nested type to the declaring type's parameters
-            var genericArguments = new Type[declaringGenericArguments.Length];
-
-            for (int i = 0; i < declaringGenericArguments.Length; i++)
-            {
-                genericArguments[i] = declaringGenericArguments[i];
-                if (type.IsGenericType)
-                {
-                    Type[] baseGenericArguments = type.GetGenericTypeDefinition().GetGenericArguments();
-                    // look for matches to transfer over
-                    for (int j = 0; j < baseGenericArguments.Length; j++)
-                    {
-                        if (genericArguments[i].Name == baseGenericArguments[j].Name)
-                        {
-                            genericArguments[i] = baseGenericArguments[j];
-                        }
-                    }
-                }
-            }
-
-            return declaringGenericDefinition.MakeGenericType(genericArguments);
-        }
 
         public static string GetTypeNamespace(System.Type type)
         {
-            string typeWithoutNamespace = FriendlyName(type, includeNamespace: false);
-            string typeWithNamespace = FriendlyName(type, includeNamespace: true);
-            int namespaceSize = typeWithoutNamespace.Length - typeWithNamespace.Length;
-            string namespaceString = typeWithNamespace.Substring(0, namespaceSize);
-            // remove trailing .
-            if (namespaceString.EndsWith("."))
+            if (type.Namespace == null)
             {
-                namespaceString = namespaceString.Substring(0, namespaceString.Length - 1);
+                return null;
             }
-            return namespaceString;            
+            return NamespaceOnlyAliases(type.Namespace);
         }
 
         public static string NamespaceOnlyAliases(string namespaceNames)
@@ -415,23 +667,10 @@ namespace ResoniteBridge
 
         public static string ReplaceNamespaceAliases(string name)
         {
-            return name;
             return name.Replace("FrooxEngine.FrooxEngine", "FrooxEngine")
                 .Replace("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine", "FrooxEngine")
                 .Replace("FrooxEngine.ProtoFlux", "ProtoFlux")
-                .Replace("System.Void", "void") // System.Void isn't a valid return type, void is
-                .Replace("ProtoFlux.Runtimes.Execution.T", "T") // generic stuff doesn't catch these for some reason
-                .Replace("ProtoFlux.Core.T", "T")
-                .Replace("FrooxEngine.T", "T")
-                .Replace("FrooxEngine.S", "S")
-                .Replace("FrooxEngine.G", "G")
-                .Replace("FrooxEngine.W", "W")
-                .Replace("Elements.Core.T", "T")
-                .Replace("Elements.Core.E", "E")
-                .Replace("Elements.Core.A", "A")
-                .Replace("Elements.Core.B", "B")
-                .Replace("Elements.Assets.T", "T")
-                .Replace("FrooxEngine.TShape", "TShape");
+                .Replace("System.Void", "void"); // System.Void isn't a valid return type, void is
         }
 
         public static NamespaceDeclarationSyntax CreateNamespaceForType(MemberDeclarationSyntax classDecleration, System.Type type)
@@ -471,10 +710,10 @@ namespace ResoniteBridge
         }
 
 
-        public static NamespaceDeclarationSyntax WrapType(System.Type type, HashSet<Tuple<string, string>> seenItems)
+        public static NamespaceDeclarationSyntax WrapTypeOld(System.Type type, HashSet<Tuple<string, string>> seenItems)
         {
-            string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(type, includeNamespace: false);
-            string fullTypeNameWithoutGenerics = GetTypeNameIncludingGenericArguments(type, includeNamespace: false, includeGenericArguments: false);
+            string fullTypeNameWithoutNamespace = GetTypeName(type, includeNamespace: false);
+            string fullTypeNameWithoutGenerics = GetTypeName(type, includeNamespace: false, includeGenerics: false);
 
             string inheritFrom = type.IsClass
                 ? "ResoniteBridge.ClassResoniteBridgeValueHolder"
@@ -539,7 +778,7 @@ namespace ResoniteBridge
                 "interface"
             };
 
-            string fullTypeName = GetTypeNameIncludingGenericArguments(type);
+            string fullTypeName = GetTypeName(type);
 
             foreach (PropertyInfo property in type.GetProperties())
             {
@@ -607,14 +846,14 @@ namespace ResoniteBridge
                     && !method.Name.StartsWith("<"))
                 {
                     seenItems.Add(new Tuple<string, string>(fullTypeName, method.Name));
-                    MethodDeclarationSyntax wrappedMethod = CreateBridgeMethod(method, type);
+                    //MethodDeclarationSyntax wrappedMethod = CreateBridgeMethod(method, type);
                     if (type.IsClass)
                     {
-                        classDeclaration = classDeclaration.AddMembers(wrappedMethod);
+                    //    classDeclaration = classDeclaration.AddMembers(wrappedMethod);
                     }
                     else
                     {
-                        structDeclaration = structDeclaration.AddMembers(wrappedMethod);
+                    //    structDeclaration = structDeclaration.AddMembers(wrappedMethod);
                     }
                 }
             }
@@ -629,19 +868,639 @@ namespace ResoniteBridge
             }
         }
 
-        public static void WrapAssembly(ref NamespaceDeclarationSyntax rootNamespace, ref CompilationUnitSyntax emptyHolder, Assembly assembly, HashSet<string> typesEncountered)
+
+
+        public class TypeCollector : IAstVisitor
         {
-            HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
-            foreach (System.Type typeInAssembly in assembly.GetTypes())
+            private readonly List<TypeDeclaration> _types = new List<TypeDeclaration>();
+            public IReadOnlyList<TypeDeclaration> Types => _types;
+
+            public void VisitAccessor(Accessor accessor)
             {
-                string fullTypeName = GetTypeNameIncludingGenericArguments(typeInAssembly);
+            }
+
+            public void VisitAnonymousMethodExpression(AnonymousMethodExpression anonymousMethodExpression)
+            {
+            }
+
+            public void VisitAnonymousTypeCreateExpression(AnonymousTypeCreateExpression anonymousTypeCreateExpression)
+            {
+            }
+
+            public void VisitArrayCreateExpression(ArrayCreateExpression arrayCreateExpression)
+            {
+            }
+
+            public void VisitArrayInitializerExpression(ArrayInitializerExpression arrayInitializerExpression)
+            {
+            }
+
+            public void VisitArraySpecifier(ArraySpecifier arraySpecifier)
+            {
+            }
+
+            public void VisitAsExpression(AsExpression asExpression)
+            {
+            }
+
+            public void VisitAssignmentExpression(AssignmentExpression assignmentExpression)
+            {
+            }
+
+            public void VisitAttribute(ICSharpCode.Decompiler.CSharp.Syntax.Attribute attribute)
+            {
+            }
+
+            public void VisitAttributeSection(AttributeSection attributeSection)
+            {
+            }
+
+            public void VisitBaseReferenceExpression(BaseReferenceExpression baseReferenceExpression)
+            {
+            }
+
+            public void VisitBinaryOperatorExpression(BinaryOperatorExpression binaryOperatorExpression)
+            {
+            }
+
+            public void VisitBlockStatement(BlockStatement blockStatement)
+            {
+            }
+
+            public void VisitBreakStatement(BreakStatement breakStatement)
+            {
+            }
+
+            public void VisitCaseLabel(CaseLabel caseLabel)
+            {
+            }
+
+            public void VisitCastExpression(CastExpression castExpression)
+            {
+            }
+
+            public void VisitCatchClause(CatchClause catchClause)
+            {
+            }
+
+            public void VisitCheckedExpression(CheckedExpression checkedExpression)
+            {
+            }
+
+            public void VisitCheckedStatement(CheckedStatement checkedStatement)
+            {
+            }
+
+            public void VisitComment(Comment comment)
+            {
+            }
+
+            public void VisitComposedType(ComposedType composedType)
+            {
+            }
+
+            public void VisitConditionalExpression(ConditionalExpression conditionalExpression)
+            {
+            }
+
+            public void VisitConstraint(Constraint constraint)
+            {
+            }
+
+            public void VisitConstructorDeclaration(ConstructorDeclaration constructorDeclaration)
+            {
+            }
+
+            public void VisitConstructorInitializer(ConstructorInitializer constructorInitializer)
+            {
+            }
+
+            public void VisitContinueStatement(ContinueStatement continueStatement)
+            {
+            }
+
+            public void VisitCSharpTokenNode(CSharpTokenNode cSharpTokenNode)
+            {
+            }
+
+            public void VisitCustomEventDeclaration(CustomEventDeclaration customEventDeclaration)
+            {
+            }
+
+            public void VisitDeclarationExpression(DeclarationExpression declarationExpression)
+            {
+            }
+
+            public void VisitDefaultValueExpression(DefaultValueExpression defaultValueExpression)
+            {
+            }
+
+            public void VisitDelegateDeclaration(DelegateDeclaration delegateDeclaration)
+            {
+            }
+
+            public void VisitDestructorDeclaration(DestructorDeclaration destructorDeclaration)
+            {
+            }
+
+            public void VisitDirectionExpression(DirectionExpression directionExpression)
+            {
+            }
+
+            public void VisitDocumentationReference(DocumentationReference documentationReference)
+            {
+            }
+
+            public void VisitDoWhileStatement(DoWhileStatement doWhileStatement)
+            {
+            }
+
+            public void VisitEmptyStatement(EmptyStatement emptyStatement)
+            {
+            }
+
+            public void VisitEnumMemberDeclaration(EnumMemberDeclaration enumMemberDeclaration)
+            {
+            }
+
+            public void VisitErrorNode(AstNode errorNode)
+            {
+            }
+
+            public void VisitEventDeclaration(EventDeclaration eventDeclaration)
+            {
+            }
+
+            public void VisitExpressionStatement(ExpressionStatement expressionStatement)
+            {
+            }
+
+            public void VisitExternAliasDeclaration(ExternAliasDeclaration externAliasDeclaration)
+            {
+            }
+
+            public void VisitFieldDeclaration(FieldDeclaration fieldDeclaration)
+            {
+            }
+
+            public void VisitFixedFieldDeclaration(FixedFieldDeclaration fixedFieldDeclaration)
+            {
+            }
+
+            public void VisitFixedStatement(FixedStatement fixedStatement)
+            {
+            }
+
+            public void VisitFixedVariableInitializer(FixedVariableInitializer fixedVariableInitializer)
+            {
+            }
+
+            public void VisitForeachStatement(ForeachStatement foreachStatement)
+            {
+            }
+
+            public void VisitForStatement(ForStatement forStatement)
+            {
+            }
+
+            public void VisitFunctionPointerType(FunctionPointerAstType functionPointerType)
+            {
+            }
+
+            public void VisitGotoCaseStatement(GotoCaseStatement gotoCaseStatement)
+            {
+            }
+
+            public void VisitGotoDefaultStatement(GotoDefaultStatement gotoDefaultStatement)
+            {
+            }
+
+            public void VisitGotoStatement(GotoStatement gotoStatement)
+            {
+            }
+
+            public void VisitIdentifier(Identifier identifier)
+            {
+            }
+
+            public void VisitIdentifierExpression(IdentifierExpression identifierExpression)
+            {
+            }
+
+            public void VisitIfElseStatement(IfElseStatement ifElseStatement)
+            {
+            }
+
+            public void VisitIndexerDeclaration(IndexerDeclaration indexerDeclaration)
+            {
+            }
+
+            public void VisitIndexerExpression(IndexerExpression indexerExpression)
+            {
+            }
+
+            public void VisitInterpolatedStringExpression(InterpolatedStringExpression interpolatedStringExpression)
+            {
+            }
+
+            public void VisitInterpolatedStringText(InterpolatedStringText interpolatedStringText)
+            {
+            }
+
+            public void VisitInterpolation(Interpolation interpolation)
+            {
+            }
+
+            public void VisitInvocationExpression(InvocationExpression invocationExpression)
+            {
+            }
+
+            public void VisitInvocationType(InvocationAstType invocationType)
+            {
+            }
+
+            public void VisitIsExpression(IsExpression isExpression)
+            {
+            }
+
+            public void VisitLabelStatement(LabelStatement labelStatement)
+            {
+            }
+
+            public void VisitLambdaExpression(LambdaExpression lambdaExpression)
+            {
+            }
+
+            public void VisitLocalFunctionDeclarationStatement(LocalFunctionDeclarationStatement localFunctionDeclarationStatement)
+            {
+            }
+
+            public void VisitLockStatement(LockStatement lockStatement)
+            {
+            }
+
+            public void VisitMemberReferenceExpression(MemberReferenceExpression memberReferenceExpression)
+            {
+            }
+
+            public void VisitMemberType(MemberType memberType)
+            {
+            }
+
+            public void VisitMethodDeclaration(MethodDeclaration methodDeclaration)
+            {
+            }
+
+            public void VisitNamedArgumentExpression(NamedArgumentExpression namedArgumentExpression)
+            {
+            }
+
+            public void VisitNamedExpression(NamedExpression namedExpression)
+            {
+            }
+
+            public void VisitNamespaceDeclaration(NamespaceDeclaration namespaceDeclaration)
+            {
+            }
+
+            public void VisitNullNode(AstNode nullNode)
+            {
+            }
+
+            public void VisitNullReferenceExpression(NullReferenceExpression nullReferenceExpression)
+            {
+            }
+
+            public void VisitObjectCreateExpression(ObjectCreateExpression objectCreateExpression)
+            {
+            }
+
+            public void VisitOperatorDeclaration(OperatorDeclaration operatorDeclaration)
+            {
+            }
+
+            public void VisitOutVarDeclarationExpression(OutVarDeclarationExpression outVarDeclarationExpression)
+            {
+            }
+
+            public void VisitParameterDeclaration(ParameterDeclaration parameterDeclaration)
+            {
+            }
+
+            public void VisitParenthesizedExpression(ParenthesizedExpression parenthesizedExpression)
+            {
+            }
+
+            public void VisitParenthesizedVariableDesignation(ParenthesizedVariableDesignation parenthesizedVariableDesignation)
+            {
+            }
+
+            public void VisitPatternPlaceholder(AstNode placeholder, Pattern pattern)
+            {
+            }
+
+            public void VisitPointerReferenceExpression(PointerReferenceExpression pointerReferenceExpression)
+            {
+            }
+
+            public void VisitPreProcessorDirective(PreProcessorDirective preProcessorDirective)
+            {
+            }
+
+            public void VisitPrimitiveExpression(PrimitiveExpression primitiveExpression)
+            {
+            }
+
+            public void VisitPrimitiveType(PrimitiveType primitiveType)
+            {
+            }
+
+            public void VisitPropertyDeclaration(PropertyDeclaration propertyDeclaration)
+            {
+            }
+
+            public void VisitQueryContinuationClause(QueryContinuationClause queryContinuationClause)
+            {
+            }
+
+            public void VisitQueryExpression(QueryExpression queryExpression)
+            {
+            }
+
+            public void VisitQueryFromClause(QueryFromClause queryFromClause)
+            {
+            }
+
+            public void VisitQueryGroupClause(QueryGroupClause queryGroupClause)
+            {
+            }
+
+            public void VisitQueryJoinClause(QueryJoinClause queryJoinClause)
+            {
+            }
+
+            public void VisitQueryLetClause(QueryLetClause queryLetClause)
+            {
+            }
+
+            public void VisitQueryOrderClause(QueryOrderClause queryOrderClause)
+            {
+            }
+
+            public void VisitQueryOrdering(QueryOrdering queryOrdering)
+            {
+            }
+
+            public void VisitQuerySelectClause(QuerySelectClause querySelectClause)
+            {
+            }
+
+            public void VisitQueryWhereClause(QueryWhereClause queryWhereClause)
+            {
+            }
+
+            public void VisitRecursivePatternExpression(RecursivePatternExpression recursivePatternExpression)
+            {
+            }
+
+            public void VisitReturnStatement(ReturnStatement returnStatement)
+            {
+            }
+
+            public void VisitSimpleType(SimpleType simpleType)
+            {
+            }
+
+            public void VisitSingleVariableDesignation(SingleVariableDesignation singleVariableDesignation)
+            {
+            }
+
+            public void VisitSizeOfExpression(SizeOfExpression sizeOfExpression)
+            {
+            }
+
+            public void VisitStackAllocExpression(StackAllocExpression stackAllocExpression)
+            {
+            }
+
+            public void VisitSwitchExpression(SwitchExpression switchExpression)
+            {
+            }
+
+            public void VisitSwitchExpressionSection(SwitchExpressionSection switchExpressionSection)
+            {
+            }
+
+            public void VisitSwitchSection(SwitchSection switchSection)
+            {
+            }
+
+            public void VisitSwitchStatement(SwitchStatement switchStatement)
+            {
+            }
+
+            public void VisitSyntaxTree(ICSharpCode.Decompiler.CSharp.Syntax.SyntaxTree syntaxTree)
+            {
+                syntaxTree.AcceptVisitor(this);
+            }
+
+            public void VisitThisReferenceExpression(ThisReferenceExpression thisReferenceExpression)
+            {
+            }
+
+            public void VisitThrowExpression(ThrowExpression throwExpression)
+            {
+            }
+
+            public void VisitThrowStatement(ThrowStatement throwStatement)
+            {
+            }
+
+            public void VisitTryCatchStatement(TryCatchStatement tryCatchStatement)
+            {
+            }
+
+            public void VisitTupleExpression(TupleExpression tupleExpression)
+            {
+            }
+
+            public void VisitTupleType(TupleAstType tupleType)
+            {
+            }
+
+            public void VisitTupleTypeElement(TupleTypeElement tupleTypeElement)
+            {
+            }
+
+            public void VisitTypeDeclaration(TypeDeclaration typeDeclaration)
+            {
+            }
+
+            public void VisitTypeOfExpression(TypeOfExpression typeOfExpression)
+            {
+            }
+
+            public void VisitTypeParameterDeclaration(TypeParameterDeclaration typeParameterDeclaration)
+            {
+            }
+
+            public void VisitTypeReferenceExpression(TypeReferenceExpression typeReferenceExpression)
+            {
+            }
+
+            public void VisitUnaryOperatorExpression(UnaryOperatorExpression unaryOperatorExpression)
+            {
+            }
+
+            public void VisitUncheckedExpression(UncheckedExpression uncheckedExpression)
+            {
+            }
+
+            public void VisitUncheckedStatement(UncheckedStatement uncheckedStatement)
+            {
+            }
+
+            public void VisitUndocumentedExpression(UndocumentedExpression undocumentedExpression)
+            {
+            }
+
+            public void VisitUnsafeStatement(UnsafeStatement unsafeStatement)
+            {
+            }
+
+            public void VisitUsingAliasDeclaration(UsingAliasDeclaration usingAliasDeclaration)
+            {
+            }
+
+            public void VisitUsingDeclaration(UsingDeclaration usingDeclaration)
+            {
+            }
+
+            public void VisitUsingStatement(UsingStatement usingStatement)
+            {
+            }
+
+            public void VisitVariableDeclarationStatement(VariableDeclarationStatement variableDeclarationStatement)
+            {
+            }
+
+            public void VisitVariableInitializer(VariableInitializer variableInitializer)
+            {
+            }
+
+            public void VisitWhileStatement(WhileStatement whileStatement)
+            {
+            }
+
+            public void VisitWithInitializerExpression(WithInitializerExpression withInitializerExpression)
+            {
+            }
+
+            public void VisitYieldBreakStatement(YieldBreakStatement yieldBreakStatement)
+            {
+            }
+
+            public void VisitYieldReturnStatement(YieldReturnStatement yieldReturnStatement)
+            {
+            }
+        }
+
+        public static void TraverseSyntaxNodes(AstNode node, Action<AstNode> action)
+        {
+            if (node == null)
+                return;
+
+            // Process current node
+            action(node);
+
+            // Recursively process all children
+            foreach (var child in node.Children)
+            {
+                TraverseSyntaxNodes(child, action);
+            }
+        }
+
+        public static string GetTypeDeclarationNamespace(ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclaration)
+        {
+            return String.Join(".",
+                typeDeclaration.Ancestors.OfType<ICSharpCode.Decompiler.CSharp.Syntax.NamespaceDeclaration>()
+                .Select(n => n.Name));
+        }
+
+        public static void WrapAssembly(CodeCompileUnit compileUnit, ref NamespaceDeclarationSyntax rootNamespace, ref CompilationUnitSyntax emptyHolder, Assembly assembly, HashSet<string> typesEncountered)
+        {
+            var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
+            Console.WriteLine("Decompiling");
+            var decompTree = decompiler.DecompileWholeModuleAsSingleFile();
+            Console.WriteLine("Decompiled");
+
+            Dictionary<string, Tuple<ITypeDefinition, Type>> typeLookup = new Dictionary<string, Tuple<ITypeDefinition, Type>>();
+            foreach (ITypeDefinition decompType in decompiler.TypeSystem.MainModule.Compilation.GetTopLevelTypeDefinitions())
+            {
+                Type assemblyType = assembly.GetType(decompType.ReflectionName);
+                if (assemblyType != null)
+                {
+                    typeLookup[decompType.FullName] = new Tuple<ITypeDefinition, Type>(decompType, assemblyType);
+                }
+            }
+
+            TraverseSyntaxNodes(decompTree, (astNode) =>
+            {
+                if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
+                {
+                    string typeDeclareNamespace = GetTypeDeclarationNamespace(typeDeclare);
+                    string typeDeclareType = typeDeclare.NameToken.ToString();
+                    string fullTypeName = typeDeclareNamespace.Length == 0
+                        ? typeDeclareType
+                        : typeDeclareNamespace + "." + typeDeclareType;
+                    if (typeLookup.TryGetValue(fullTypeName, out Tuple<ITypeDefinition, Type> lookedup))
+                    {
+                        ITypeDefinition typeDefinition = lookedup.Item1;
+                        Type type = lookedup.Item2;
+                        WrapType(compileUnit, typeDeclare, typeDefinition, type);
+                    }
+                }
+            });
+            /*
+            decompTree..Descendants.OfType < 
+            HashSet<Tuple<string, string>> seenItems = new HashSet<Tuple<string, string>>();
+            var allTypes = decompiler.TypeSystem.GetAllTypeDefinitions();
+            var tokens = allTypes.Select(t => decompiler.TypeSystem.FindType(t.FullTypeName));
+            var allSyntaxTrees = MetadataTokens.TypeDefinitionHandle()
+            var result = new Dictionary<ITypeDefinition, SyntaxTree>();
+
+            // Decompile in batch for better performance
+            var tokens = allTypes.Select(t => t.MetadataToken).ToArray();
+            var allSyntaxTrees = decompiler.DecompileTypes(tokens);
+
+            // Match each syntax tree back to its type
+            var typeDeclarations = allSyntaxTrees.Descendants.OfType<TypeDeclarationSyntax>();
+            foreach (var typeDecl in typeDeclarations)
+            {
+                var typeDefinition = typeDecl.GetSymbol() as ITypeDefinition;
+                if (typeDefinition != null)
+                {
+                    result[typeDefinition] = new SyntaxTree { Children = { typeDecl } };
+                }
+            }
+            foreach (ITypeDefinition decompType in decompiler.TypeSystem.MainModule.Compilation.GetTopLevelTypeDefinitions())
+            {
+                var syntaxTree = decompiler.DecompileType(decompType.FullTypeName);
+                var type = assembly.GetType(decompType.ReflectionName);
+                if (type != null)
+                {
+                    WrapType(compileUnit, syntaxTree, decompType, type);
+                }
+                /*
+                string fullTypeName = GetTypeName(typeInAssembly);
                 // prevent type shadowing, just use whichever we see first
                 if (!typesEncountered.Contains(fullTypeName))
                 {
                     string typeNamespace = GetTypeNamespace(typeInAssembly);
-                    string fullTypeNameWithoutNamespace = GetTypeNameIncludingGenericArguments(typeInAssembly, includeNamespace: false);
+                    string fullTypeNameWithoutNamespace = GetTypeName(typeInAssembly, includeNamespace: false);
                     // ignore weird generic template things
-                    if (!typeInAssembly.FullName.Contains("<>") &&
+                    if (typeNamespace != null &&
+                        !typeInAssembly.FullName.Contains("<>") &&
                         !typeInAssembly.FullName.Contains(">d") &&
                         fullTypeName != "FrooxEngine.ProtoFlux" &&// namespace and class
                         !fullTypeNameWithoutNamespace.StartsWith("<") && // weird implementation things <SpawnEntity>, <PrivateImplementationDetails>, etc.
@@ -657,20 +1516,13 @@ namespace ResoniteBridge
                         fullTypeName != "System.Runtime.CompilerServices.RefSafetyRulesAttribute"
                         )
                     {
-                        NamespaceDeclarationSyntax wrappedType = WrapType(typeInAssembly, seenItems);
-                        if (fullTypeName.StartsWith("System."))
-                        {
-                            emptyHolder = emptyHolder.AddMembers(wrappedType);
-                        }
-                        else
-                        {
-                            rootNamespace = rootNamespace.AddMembers(wrappedType);
-                        }
-                        rootNamespace = rootNamespace.AddMembers();
+                        WrapType(compileUnit, typeInAssembly);
                         typesEncountered.Add(fullTypeName);
                     }
                 }
+                * /
             }
+            */
         }
 
 
@@ -706,35 +1558,70 @@ namespace ResoniteBridge
             "ProtoFlux.Nodes.Core",
             "ProtoFlux.Core",
             //"ProtoFluxBindings",
-            "FrooxEngine",
+            //"FrooxEngine",
         };
 
-        public static CompilationUnitSyntax WrapAssemblies(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
+        public static CompilationUnitSyntax WrapAssemblies(CodeCompileUnit compileUnit, Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             HashSet<string> typesEncountered = new HashSet<string>();
             NamespaceDeclarationSyntax rootNamespace = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.ParseName(rootNamespaceName));
             CompilationUnitSyntax emptyHolder = SyntaxFactory.CompilationUnit();
 
-            foreach (KeyValuePair<string, Assembly> pair in assemblies)
+            // might be modified so have to make a copy
+            foreach (KeyValuePair<string, Assembly> pair in new Dictionary<string, Assembly>(assemblies))
             {
                 Assembly assembly = pair.Value;
                 if (whitelist.Contains(ResoniteBridgeServer.GetAssemblyName(pair.Value)))
                 {
                     Console.WriteLine("Wrapping assembly " + pair.Key);
-                    WrapAssembly(ref rootNamespace, ref emptyHolder, assembly, typesEncountered);
+                    WrapAssembly(compileUnit, ref rootNamespace, ref emptyHolder, assembly, typesEncountered);
                     Console.WriteLine("Done wrapping assembly " + pair.Key);
                 }
             }
             return emptyHolder.AddMembers(rootNamespace);
         }
 
+        public static void DefineNamespaceAliases(CodeCompileUnit compileUnit)
+        {
+            var globalNamespace = new CodeNamespace("");
+            globalNamespace.Imports.Add(new CodeNamespaceImport("ProtoFlux"));
+            globalNamespace.Imports.Add(new CodeNamespaceImport("FrooxEngine"));
+            globalNamespace.Imports.Add(new CodeNamespaceImport("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine = FrooxEngine"));
+            globalNamespace.Imports.Add(new CodeNamespaceImport("FrooxEngine.ProtoFlux = ProtoFlux"));
+
+            compileUnit.Namespaces.Add(globalNamespace);
+        }
+
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             new Thread(() =>
             {
-                CompilationUnitSyntax compilationUnit = WrapAssemblies(assemblies, rootNamespaceName);
+                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + ".cs";
 
-                SyntaxTree syntaxTree = CSharpSyntaxTree.Create(compilationUnit);
+                // Create CodeDom provider for C#
+                using (var provider = CodeDomProvider.CreateProvider("CSharp"))
+                {
+                    // Create compilation unit
+                    var compileUnit = new CodeCompileUnit();
+
+                    DefineNamespaceAliases(compileUnit);
+                 
+                    WrapAssemblies(compileUnit, assemblies, rootNamespaceName);
+
+                    // write to file
+                    Console.WriteLine("Writing to file");
+                    using (var writer = new StreamWriter(outTxt))
+                    {
+                        provider.GenerateCodeFromCompileUnit(compileUnit, writer, 
+                            new CodeGeneratorOptions { BracingStyle = "C" });
+                    }
+                    // hack to get :struct and :class constraints
+                    File.WriteAllText(outTxt, File.ReadAllText(outTxt).Replace("CLASSCONSTRAINT", "class").Replace("STRUCTCONSTRAINT", "struct")
+                        .Replace("ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.", "FrooxEngine."));
+                    Console.WriteLine("Done writing to file");
+                }
+
+                Microsoft.CodeAnalysis.SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(File.ReadAllText(outTxt));
 
                 // netstandard 2.1 core libs
                 string refPath = Path.Combine(
@@ -807,20 +1694,7 @@ namespace ResoniteBridge
 
                 compilation = compilation.AddSyntaxTrees(targetFrameworkAttribute);
 
-
-                //string sourceCode = compilationUnit.ToFullString();
-                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + ".cs";
-
-                //File.WriteAllText(outTxt, sourceCode);
-
-                // Option 1: Write directly to file instead of keeping in memory
-                using (var writer = new StreamWriter(outTxt))
-                {
-                    writer.Write(compilationUnit.ToFullString());
-                }
-
                 Console.WriteLine("Emitting..." + outPath);
-
 
                 EmitResult result = compilation.Emit(outPath);
                 if (!result.Success)

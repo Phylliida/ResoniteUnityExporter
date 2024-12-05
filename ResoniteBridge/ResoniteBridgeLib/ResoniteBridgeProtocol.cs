@@ -24,22 +24,6 @@ namespace ResoniteBridge
         public ResoniteBridgeValue __Backing { get; set; }
     }
 
-    public class ClassResoniteBridgeValueHolder : ResoniteBridgeValueHolder
-    {
-        ResoniteBridgeValue __backing;
-        public ResoniteBridgeValue __Backing
-        {
-            get
-            {
-                return __backing;
-            }
-            set
-            {
-                __backing = value;
-            }
-        }
-    }
-
     public struct ResoniteBridgeValue
     {
         public string valueStr;
