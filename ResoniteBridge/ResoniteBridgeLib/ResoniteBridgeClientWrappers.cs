@@ -191,6 +191,10 @@ namespace ResoniteBridge
             {
                 return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, typeToCastTo.Name, value);
             }
+            else if(typeToCastTo.IsEnum)
+            {
+                return Enum.Parse(typeToCastTo, value.valueStr);
+            }
             else
             {
                 return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, typeToCastTo);

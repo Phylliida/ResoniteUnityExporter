@@ -245,10 +245,15 @@ namespace ResoniteBridge
         {
             return new Comment("", CommentType.SingleLine);
         }
+        public static bool IsAttribute(TypeDeclaration typeDeclaration)
+        {
+            return typeDeclaration.BaseTypes
+                .Any(baseType => baseType.ToString() == "Attribute" ||
+                                baseType.ToString() == "System.Attribute");
+        }
 
         public static string WrapAssembly(Assembly assembly, out string usings)
         {
-
             string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
             var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
             Console.WriteLine("Decompiling");
@@ -294,23 +299,49 @@ namespace ResoniteBridge
                         typeDeclare.ReplaceWith(MakeEmptyStatement());
                         return;
                     }
-                    // don't mess with enums
-                    if (typeDeclare.ClassType != ClassType.Enum)
+                    // don't mess with enums, static classes, and attributes
+                    if (typeDeclare.ClassType != ClassType.Enum 
+                    && !typeDeclare.Modifiers.HasFlag(Modifiers.Static)
+                    && !IsAttribute(typeDeclare))
                     {
                         // Add ResoniteBridgeValueHolder interface
                         typeDeclare.BaseTypes.Add(new SimpleType("ResoniteBridge.ResoniteBridgeValueHolder"));
 
-                        // implement ResoniteBridgeValueHolder interface
-                        AddBackingDeclaration(typeDeclare);
+                        // interfaces and abstract classes don't need the implementations
+                        if (typeDeclare.ClassType != ClassType.Interface && !typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                        {
+                            // implement ResoniteBridgeValueHolder interface
+                            AddBackingDeclaration(typeDeclare);
 
-                        // implement constructor from ResoniteBridgeValue (needed for CastValue)
-                        var constructorDeclaration = CreateBackingConstructor(typeDeclare);
-                        typeDeclare.Members.Add(constructorDeclaration);
+                            // implement constructor from ResoniteBridgeValue (needed for CastValue)
+                            var constructorDeclaration = CreateBackingConstructor(typeDeclare);
+                            typeDeclare.Members.Add(constructorDeclaration);
+                        }
                     }
-                    // no static only classes so we can always implement interface
-                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Static))
+
+                    // replace : where T is unmanaged with : where T is struct to allow our hacky stuff
+                    foreach (var constraint in typeDeclare.Constraints)
                     {
-                        typeDeclare.Modifiers &= ~Modifiers.Static;
+                        TraverseSyntaxNodes(constraint, (constraintChildNode) =>
+                        {
+                            if (constraintChildNode is PrimitiveType primitiveType &&
+                                primitiveType.Keyword == "unmanaged")
+                            {
+                                primitiveType.ReplaceWith(new PrimitiveType("struct"));
+                            }
+                        });
+                    }
+
+                    // no readonly because we are just wrappers (and the backing could change)
+                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Readonly))
+                    {
+                        typeDeclare.Modifiers &= ~Modifiers.Readonly;
+                    }
+
+                    // we don't need to do anything else for interfaces and abstract classes, bail
+                    if (typeDeclare.ClassType == ClassType.Interface || typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                    {
+                        return;
                     }
 
 
@@ -367,6 +398,8 @@ namespace ResoniteBridge
 
                                 propertyDeclare.Getter = getter;
                                 propertyDeclare.Setter = setter;
+                                // we don't need these because they'll be called on frooxengine side
+                                propertyDeclare.Initializer = null;
                             }
                         }
                         else if(childNode is FieldDeclaration fieldDeclare)
@@ -399,6 +432,17 @@ namespace ResoniteBridge
                                     // (well, our wrapper ones can't be)
                                     fieldDeclare.Modifiers &= ~Modifiers.Const;
                                 }
+                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Readonly))
+                                {
+                                    // Don't allow readonly ones bc that confuses compiler
+                                    fieldDeclare.Modifiers &= ~Modifiers.Readonly;
+                                }
+                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Volatile))
+                                {
+                                    // Don't allow volatile ones bc no need since we are just a wrapper
+                                    fieldDeclare.Modifiers &= ~Modifiers.Volatile;
+                                }
+
                                 var fieldProperty = new PropertyDeclaration
                                 {
                                     Name = fieldName,
