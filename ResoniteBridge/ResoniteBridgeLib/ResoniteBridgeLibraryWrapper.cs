@@ -166,6 +166,66 @@ namespace ResoniteBridge
             }
         }
 
+        public static BlockStatement WrapOperator(bool isStatic, OperatorDeclaration operatorDeclaration, Expression staticTarget, Expression instanceTarget)
+        {
+            var operatorNameExp = new PrimitiveExpression(operatorDeclaration.Name);
+            var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
+
+            List<Expression> invocationParams = new List<Expression>();
+            invocationParams.Add(isStatic
+                ? staticTarget.Clone()
+                : instanceTarget.Clone());
+
+            invocationParams.Add(operatorNameExp);
+
+            foreach (var param in operatorDeclaration.Parameters)
+            {
+                invocationParams.Add(new IdentifierExpression(param.NameToken.ToString()));
+            }
+
+            InvocationExpression invocation = new InvocationExpression(
+                new MemberReferenceExpression(clientWrappers, "CallMethod"),
+                invocationParams);
+
+
+            if (operatorDeclaration.ReturnType.ToString() != "void")
+            {
+                var castValueCall = new InvocationExpression(
+                    new MemberReferenceExpression(clientWrappers.Clone(), "CastValue"),
+                    invocation,
+                    new TypeOfExpression(operatorDeclaration.ReturnType.Clone())
+                );
+
+                var castExpression = new CastExpression(
+                    operatorDeclaration.ReturnType.Clone(),
+                    castValueCall
+                );
+
+                return new BlockStatement {
+                    new ReturnStatement(castExpression)
+                };
+            }
+            else
+            {
+                return new BlockStatement
+                {
+                    invocation
+                };
+            }
+        }
+        
+        public static BinaryOperatorExpression CreateIsClause(Expression value, AstType castType, string variableName)
+        {
+            DeclarationExpression declare = new DeclarationExpression();
+            SingleVariableDesignation designation = new SingleVariableDesignation();
+            declare.Designation = designation;
+            designation.Identifier = variableName;
+            declare.Type = castType.Clone();
+            return new BinaryOperatorExpression(value,
+                BinaryOperatorType.IsPattern,
+                declare);
+        }
+
         public static BlockStatement WrapMethod(bool isStatic, MethodDeclaration methodDeclaration, Expression staticTarget, Expression instanceTarget)
         {
             var methodNameExp = new PrimitiveExpression(methodDeclaration.Name);
@@ -196,6 +256,34 @@ namespace ResoniteBridge
                     new TypeOfExpression(methodDeclaration.ReturnType.Clone())
                 );
 
+                // this mess of stuff does this:
+                // if ({castValueCall} is ReturnType __retCasted)
+                // {
+                //     return __retCasted;
+                // }
+                // throw new InvalidCastException("Cannot cast result to ReturnType");
+                return new BlockStatement {
+                    new IfElseStatement(
+                        CreateIsClause(castValueCall,
+                            methodDeclaration.ReturnType,
+                            "__retCasted"
+                        ),
+                        new BlockStatement {
+                            new ReturnStatement(new IdentifierExpression("__retCasted"))
+                        },
+                        new BlockStatement {
+                            new ThrowStatement(
+                                new ObjectCreateExpression(
+                                    new SimpleType("InvalidCastException"),
+                                    new PrimitiveExpression($"Cannot cast result to {methodDeclaration.ReturnType}")
+                                )
+                            )
+                        }
+                    )
+                };
+
+                /*
+                old version
                 var castExpression = new CastExpression(
                     methodDeclaration.ReturnType.Clone(),
                     castValueCall
@@ -204,6 +292,7 @@ namespace ResoniteBridge
                 return new BlockStatement {
                     new ReturnStatement(castExpression)
                 };
+                */
             }
             else
             {
@@ -377,6 +466,8 @@ namespace ResoniteBridge
 
                     int numConstructors = 0;
 
+                    List<EntityDeclaration> membersToAdd = new List<EntityDeclaration>();
+
                     // don't mess with enums, static classes, and attributes
                     if (typeDeclare.ClassType != ClassType.Enum
                     && !typeDeclare.Modifiers.HasFlag(Modifiers.Static)
@@ -396,7 +487,7 @@ namespace ResoniteBridge
                             {
                                 // implement constructor from ResoniteBridgeValue (needed for CastValue)
                                 var constructorDeclaration = CreateBackingConstructor(typeDeclare);
-                                typeDeclare.Members.Add(constructorDeclaration);
+                                membersToAdd.Add(constructorDeclaration);
                                 numConstructors -= 1;
                             }
                         }
@@ -412,12 +503,6 @@ namespace ResoniteBridge
                     if (typeDeclare.Modifiers.HasFlag(Modifiers.Readonly))
                     {
                         typeDeclare.Modifiers &= ~Modifiers.Readonly;
-                    }
-
-                    // we don't need to do anything else for abstract classes, bail
-                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
-                    {
-                        return;
                     }
 
 
@@ -443,13 +528,38 @@ namespace ResoniteBridge
                     {
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructor)
                         {
+                            // Todo: wrap constructors. Right now we just remove them all
+                            nodesToRemove.Add(childNode);
                             numConstructors += 1;
+                        }
+                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
+                        {
+                            // leave null bodies null (usually for abstract)
+                            if (operatorDeclare.IsNull)
+                            {
+
+                            }
+                            else
+                            {
+                                bool isStatic = operatorDeclare.Modifiers.HasFlag(Modifiers.Static);
+                                operatorDeclare.Body = WrapOperator(
+                                    isStatic,
+                                    operatorDeclare,
+                                    staticTarget,
+                                    instanceTarget);
+                            }
+
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
                             // no getters or setters, stap
                             if (methodDeclare.NameToken.ToString().StartsWith("get_") ||
-                            methodDeclare.NameToken.ToString().StartsWith("set_"))
+                            methodDeclare.NameToken.ToString().StartsWith("set_") ||
+                            // no operators, we handle those above
+                            methodDeclare.NameToken.ToString().StartsWith("op_") ||
+                            // we don't support async yet
+                            methodDeclare.Modifiers.HasFlag(Modifiers.Async)
+                            )
                             {
                                 nodesToRemove.Add(methodDeclare);
                             }
@@ -495,9 +605,19 @@ namespace ResoniteBridge
                                     staticTarget,
                                     instanceTarget,
                                     "SetProperty");
-
-                                propertyDeclare.Getter = getter;
-                                propertyDeclare.Setter = setter;
+                                // only wrap them if the original exists
+                                // or if expression body exists ( => ...)
+                                if (!propertyDeclare.Getter.IsNull ||
+                                !propertyDeclare.ExpressionBody.IsNull)
+                                {
+                                    propertyDeclare.Getter = getter;
+                                    // no more expression body, we wrapped it
+                                    propertyDeclare.ExpressionBody = null;
+                                }
+                                if (!propertyDeclare.Setter.IsNull)
+                                {
+                                    propertyDeclare.Setter = setter;
+                                }
                                 // we don't need these because they'll be called on frooxengine side
                                 propertyDeclare.Initializer = null;
                             }
@@ -571,8 +691,11 @@ namespace ResoniteBridge
                         && !typeDeclare.Modifiers.HasFlag(Modifiers.Static))
                     {
                         ConstructorDeclaration defaultConstructor = CreateDefaultConstructor(typeDeclare);
-                        typeDeclare.Members.Add(defaultConstructor);
+                        membersToAdd.Add(defaultConstructor);
                     }
+                    // we do this later so the constructor wrappers don't mess with us
+                    typeDeclare.Members.AddRange(membersToAdd);
+
                 }
             });
 
@@ -610,6 +733,11 @@ namespace ResoniteBridge
                 else if(astNode is TypeOfExpression typeOfExpr)
                 {
                     ReplaceTypeIfUnresolved(typeOfExpr.Type, resolveContext, namespaceList);
+                }
+                // occurs in if (a is Type b) statements
+                else if(astNode is DeclarationExpression declarationExpression)
+                {
+                    ReplaceTypeIfUnresolved(declarationExpression.Type, resolveContext, namespaceList);
                 }
             });
 
