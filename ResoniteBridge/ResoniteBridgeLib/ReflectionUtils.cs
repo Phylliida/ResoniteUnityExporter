@@ -97,12 +97,16 @@ namespace ResoniteBridge
 
         public static object CallConstructor(Assembly assembly, string typeName, params object[] parameters)
         {
+            return CallConstructorFromType(assembly.GetType(typeName), parameters);
+        }
+        public static object CallConstructorFromType(Type type, params object[] parameters)
+        {
             Type[] inputTypes = new Type[parameters.Length];
             for (int i = 0; i < parameters.Length; i++)
             {
                 inputTypes[i] = parameters[i].GetType();
             }
-            return assembly.GetType(typeName)
+            return type
                 .GetConstructor(inputTypes)
                 .Invoke(parameters);
         }

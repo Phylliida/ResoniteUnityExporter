@@ -74,11 +74,12 @@ namespace ResoniteBridge
     public enum ResoniteBridgeMessageType
     {
         CallMethod = 0,
-        GetField = 1,
-        SetField = 2,
-        GetProperty = 3,
-        SetProperty = 4,
-        GetEnum = 5,
+        CallConstructor = 1,
+        GetField = 2,
+        SetField = 3,
+        GetProperty = 4,
+        SetProperty = 5,
+        GetEnum = 6,
     }
 
 

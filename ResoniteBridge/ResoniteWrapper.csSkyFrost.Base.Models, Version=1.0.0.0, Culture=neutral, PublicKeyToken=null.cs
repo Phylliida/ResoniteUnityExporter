@@ -17,6 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Elements.Core;
 using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -38,7 +39,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -52,7 +60,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CompatibilityHash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CompatibilityHash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -87,7 +102,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Index"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Index"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -101,7 +123,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Key"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Key"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -143,7 +172,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -157,7 +193,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -171,7 +214,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Diff)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "State"), typeof(Diff));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "State"), typeof(Diff)) is Diff __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Diff");
+				}
 			}
 			set
 			{
@@ -185,7 +235,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (bool?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsUploaded"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsUploaded"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -201,7 +258,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -233,7 +290,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -247,7 +311,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -261,7 +332,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetHash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetHash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -275,7 +353,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (E)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entry"), typeof(E));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entry"), typeof(E)) is E __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to E");
+				}
 			}
 			set
 			{
@@ -289,7 +374,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (ComputationLock)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeLock"), typeof(ComputationLock));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeLock"), typeof(ComputationLock)) is ComputationLock __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ComputationLock");
+				}
 			}
 			set
 			{
@@ -325,7 +417,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -339,7 +438,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetHash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetHash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -353,7 +459,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -367,7 +480,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Free"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Free"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -381,7 +501,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsUploaded"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsUploaded"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -395,7 +522,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -409,7 +543,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (bool?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CountsAgainstMemberQuota"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CountsAgainstMemberQuota"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -442,7 +583,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -484,7 +632,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -498,7 +653,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Variant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Variant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -512,7 +674,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -526,7 +695,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -540,7 +716,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -554,7 +737,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChunkSize"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChunkSize"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -568,7 +758,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalChunks"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalChunks"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -584,7 +781,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (UploadState)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadState"), typeof(UploadState));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadState"), typeof(UploadState)) is UploadState __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to UploadState");
+				}
 			}
 			set
 			{
@@ -598,7 +802,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadKey"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadKey"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -612,7 +823,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadEndpoint"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadEndpoint"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -626,7 +844,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDirectUpload"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDirectUpload"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -640,7 +865,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxUploadConcurrency"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxUploadConcurrency"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -654,7 +886,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<AssetChunk>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Chunks"), typeof(List<AssetChunk>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Chunks"), typeof(List<AssetChunk>)) is List<AssetChunk> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<AssetChunk>");
+				}
 			}
 			set
 			{
@@ -668,7 +907,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreatedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreatedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -682,7 +928,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastChunkSize"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastChunkSize"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
@@ -694,7 +947,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -738,7 +991,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetSignature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetSignature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -752,7 +1012,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariantId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariantId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -768,7 +1035,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (AssetVariantEntityType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EntityType"), typeof(AssetVariantEntityType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EntityType"), typeof(AssetVariantEntityType)) is AssetVariantEntityType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to AssetVariantEntityType");
+				}
 			}
 			set
 			{
@@ -803,7 +1077,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Url"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Url"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -817,7 +1098,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -831,7 +1119,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Size"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Size"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -845,7 +1140,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContentType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContentType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -859,7 +1161,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModified"), typeof(DateTimeOffset));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModified"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -873,7 +1182,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DeleteToken"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DeleteToken"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -887,7 +1203,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsFree"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsFree"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -901,7 +1224,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReclassifiedVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReclassifiedVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -936,7 +1266,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Token"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Token"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -949,7 +1286,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpireTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpireTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -961,7 +1305,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLocked"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLocked"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -973,7 +1324,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -985,7 +1336,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -997,7 +1348,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1030,7 +1381,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Hash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1044,7 +1402,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -1079,7 +1444,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EntityId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EntityId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1093,7 +1465,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MetadataUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MetadataUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1107,7 +1486,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1121,7 +1507,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1135,7 +1528,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1149,7 +1549,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RestrictToUniverseIds"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RestrictToUniverseIds"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -1163,7 +1570,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SkipDateOfBirthRequirement"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SkipDateOfBirthRequirement"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -1177,7 +1591,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsernameClaims"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsernameClaims"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -1191,7 +1612,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EmailClaims"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EmailClaims"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -1205,7 +1633,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirthClaims"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirthClaims"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -1240,7 +1675,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1254,7 +1696,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1268,7 +1717,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (AppConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppConfiguration"), typeof(AppConfig));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppConfiguration"), typeof(AppConfig)) is AppConfig __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to AppConfig");
+				}
 			}
 			set
 			{
@@ -1282,7 +1738,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SplashScreenSignature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SplashScreenSignature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1329,7 +1792,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1341,7 +1804,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1353,7 +1816,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -1388,7 +1851,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildType"), typeof(BuildType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildType"), typeof(BuildType)) is BuildType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildType");
+				}
 			}
 			set
 			{
@@ -1404,7 +1874,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1442,7 +1912,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildApplication)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Application"), typeof(BuildApplication));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Application"), typeof(BuildApplication)) is BuildApplication __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildApplication");
+				}
 			}
 			set
 			{
@@ -1452,11 +1929,18 @@ namespace SkyFrost.Base
 
 		[JsonProperty(PropertyName = "version")]
 		[JsonPropertyName("version")]
-		public ResoniteBridge.ResoniteBridgeValue Version
+		public VersionNumber Version
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(VersionNumber)) is VersionNumber __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to VersionNumber");
+				}
 			}
 			set
 			{
@@ -1470,7 +1954,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateVersionNumber"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateVersionNumber"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1484,7 +1975,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MultiLanguageValue<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>)) is MultiLanguageValue<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<string>");
+				}
 			}
 			set
 			{
@@ -1494,11 +1992,18 @@ namespace SkyFrost.Base
 
 		[JsonProperty(PropertyName = "graphic")]
 		[JsonPropertyName("graphic")]
-		public MultiLanguageValue<ResoniteBridge.ResoniteBridgeValue> Graphic
+		public MultiLanguageValue<System.Uri> Graphic
 		{
 			get
 			{
-				return (MultiLanguageValue<ResoniteBridge.ResoniteBridgeValue>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Graphic"), typeof(MultiLanguageValue<ResoniteBridge.ResoniteBridgeValue>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Graphic"), typeof(MultiLanguageValue<System.Uri>)) is MultiLanguageValue<System.Uri> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<Uri>");
+				}
 			}
 			set
 			{
@@ -1512,7 +2017,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildChange>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Changes"), typeof(List<BuildChange>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Changes"), typeof(List<BuildChange>)) is List<BuildChange> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildChange>");
+				}
 			}
 			set
 			{
@@ -1526,7 +2038,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildNote>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KnownIssues"), typeof(List<BuildNote>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KnownIssues"), typeof(List<BuildNote>)) is List<BuildNote> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildNote>");
+				}
 			}
 			set
 			{
@@ -1540,7 +2059,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildNote>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Notes"), typeof(List<BuildNote>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Notes"), typeof(List<BuildNote>)) is List<BuildNote> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildNote>");
+				}
 			}
 			set
 			{
@@ -1554,7 +2080,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Branch"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Branch"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1568,7 +2101,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MergedBranch"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MergedBranch"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1611,7 +2151,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangeId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangeId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1625,7 +2172,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MultiLanguageValue<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>)) is MultiLanguageValue<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<string>");
+				}
 			}
 			set
 			{
@@ -1641,7 +2195,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildChangeType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(BuildChangeType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(BuildChangeType)) is BuildChangeType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildChangeType");
+				}
 			}
 			set
 			{
@@ -1655,7 +2216,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WorkInProgress"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WorkInProgress"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -1669,7 +2237,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BranchSpecific"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BranchSpecific"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -1683,7 +2258,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<IssueReference>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RelatedIssues"), typeof(List<IssueReference>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RelatedIssues"), typeof(List<IssueReference>)) is List<IssueReference> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<IssueReference>");
+				}
 			}
 			set
 			{
@@ -1697,7 +2279,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildUser>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contributors"), typeof(List<BuildUser>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contributors"), typeof(List<BuildUser>)) is List<BuildUser> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildUser>");
+				}
 			}
 			set
 			{
@@ -1711,7 +2300,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildUser>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Reporters"), typeof(List<BuildUser>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Reporters"), typeof(List<BuildUser>)) is List<BuildUser> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildUser>");
+				}
 			}
 			set
 			{
@@ -1725,7 +2321,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<BuildPlatform>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AffectedPlatforms"), typeof(HashSet<BuildPlatform>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AffectedPlatforms"), typeof(HashSet<BuildPlatform>)) is HashSet<BuildPlatform> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<BuildPlatform>");
+				}
 			}
 			set
 			{
@@ -1739,7 +2342,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<PublishingPlatform>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExcludedPublishingPlatforms"), typeof(HashSet<PublishingPlatform>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExcludedPublishingPlatforms"), typeof(HashSet<PublishingPlatform>)) is HashSet<PublishingPlatform> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<PublishingPlatform>");
+				}
 			}
 			set
 			{
@@ -1785,7 +2395,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildChannel", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateChannelId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildChannel", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateChannelId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -1795,7 +2412,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -1805,7 +2429,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChannelId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChannelId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1819,7 +2450,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1835,7 +2473,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildApplication)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Application"), typeof(BuildApplication));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Application"), typeof(BuildApplication)) is BuildApplication __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildApplication");
+				}
 			}
 			set
 			{
@@ -1851,7 +2496,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildReferenceType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildReferenceType"), typeof(BuildReferenceType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildReferenceType"), typeof(BuildReferenceType)) is BuildReferenceType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildReferenceType");
+				}
 			}
 			set
 			{
@@ -1865,7 +2517,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BuildId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1881,7 +2540,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (ConfigReferenceType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigReferenceType"), typeof(ConfigReferenceType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigReferenceType"), typeof(ConfigReferenceType)) is ConfigReferenceType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ConfigReferenceType");
+				}
 			}
 			set
 			{
@@ -1895,7 +2561,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1930,7 +2603,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsFolder"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsFolder"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -1940,7 +2620,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Signature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Signature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1954,7 +2641,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SizeBytes"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SizeBytes"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -1968,7 +2662,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2003,7 +2704,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NoteId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NoteId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2017,7 +2725,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MultiLanguageValue<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>)) is MultiLanguageValue<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<string>");
+				}
 			}
 			set
 			{
@@ -2052,7 +2767,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2066,7 +2788,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2080,7 +2809,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordHandle"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordHandle"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2094,7 +2830,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GithubHandle"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GithubHandle"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2147,7 +2890,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2159,7 +2902,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2171,7 +2914,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -2183,7 +2926,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariantId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariantId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -2195,7 +2945,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildStatus)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Status"), typeof(BuildStatus));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Status"), typeof(BuildStatus)) is BuildStatus __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildStatus");
+				}
 			}
 			set
 			{
@@ -2209,7 +2966,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<BuildFile>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Files"), typeof(List<BuildFile>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Files"), typeof(List<BuildFile>)) is List<BuildFile> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<BuildFile>");
+				}
 			}
 			set
 			{
@@ -2245,7 +3009,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Descriptor"), typeof(D));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Descriptor"), typeof(D)) is D __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to D");
+				}
 			}
 			set
 			{
@@ -2261,7 +3032,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2287,11 +3058,18 @@ namespace SkyFrost.Base
 	{
 		[JsonProperty(PropertyName = "versionNumber")]
 		[JsonPropertyName("versionNumber")]
-		public ResoniteBridge.ResoniteBridgeValue VersionNumber
+		public VersionNumber VersionNumber
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VersionNumber"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VersionNumber"), typeof(VersionNumber)) is VersionNumber __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to VersionNumber");
+				}
 			}
 			set
 			{
@@ -2305,7 +3083,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VersionString"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VersionString"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -2317,7 +3102,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BuildPlatform)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Platform"), typeof(BuildPlatform));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Platform"), typeof(BuildPlatform)) is BuildPlatform __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BuildPlatform");
+				}
 			}
 			set
 			{
@@ -2333,7 +3125,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2363,7 +3155,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Feature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Feature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2377,7 +3176,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2393,7 +3199,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2405,7 +3211,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2417,7 +3223,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2429,18 +3235,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(FeatureFlag left, FeatureFlag right)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FeatureFlag", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", left, right), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FeatureFlag", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", left, right), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(FeatureFlag left, FeatureFlag right)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FeatureFlag", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", left, right), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FeatureFlag", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", left, right), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2486,7 +3306,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueNumber"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueNumber"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2502,7 +3329,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IssueSystem)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "System"), typeof(IssueSystem));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "System"), typeof(IssueSystem)) is IssueSystem __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IssueSystem");
+				}
 			}
 			set
 			{
@@ -2518,7 +3352,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IssueAction)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Action"), typeof(IssueAction));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Action"), typeof(IssueAction)) is IssueAction __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IssueAction");
+				}
 			}
 			set
 			{
@@ -2559,7 +3400,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RegistrationRequest)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AdminUser"), typeof(RegistrationRequest));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AdminUser"), typeof(RegistrationRequest)) is RegistrationRequest __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RegistrationRequest");
+				}
 			}
 			set
 			{
@@ -2573,7 +3421,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppBotAccountLogin"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppBotAccountLogin"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -2587,7 +3442,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotAccountLogin"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotAccountLogin"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -2601,7 +3463,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeAccountLogin"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeAccountLogin"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -2615,7 +3484,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkAccountLogin"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkAccountLogin"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -2629,7 +3505,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2643,7 +3526,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountLogin"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountLogin"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -2657,7 +3547,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TestAccountCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2692,7 +3589,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Message"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Message"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2708,7 +3612,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2739,7 +3643,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2753,7 +3664,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HostUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HostUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2767,7 +3685,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "JoinedUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "JoinedUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2781,7 +3706,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2795,7 +3727,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HostUserSessionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HostUserSessionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2811,7 +3750,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SessionAccessLevel)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccessLevel"), typeof(SessionAccessLevel));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccessLevel"), typeof(SessionAccessLevel)) is SessionAccessLevel __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SessionAccessLevel");
+				}
 			}
 			set
 			{
@@ -2825,7 +3771,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionHidden"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionHidden"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2839,7 +3792,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionURLs"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionURLs"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -2874,7 +3834,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetMetadataJobs"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetMetadataJobs"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2888,7 +3855,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetVariantJobs"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetVariantJobs"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2902,7 +3876,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputedAssetMetadata"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputedAssetMetadata"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2916,7 +3897,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputedAssetVariants"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputedAssetVariants"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2930,7 +3918,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordPreprocessJobs"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordPreprocessJobs"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2944,7 +3939,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadJobs"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadJobs"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2958,7 +3960,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationTasksInQueue"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationTasksInQueue"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -2972,7 +3981,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationRecordsPerMinute"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationRecordsPerMinute"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -2986,7 +4002,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CaptureTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CaptureTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -3021,7 +4044,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariableOwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariableOwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3035,7 +4065,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3049,7 +4086,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Value"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Value"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3063,7 +4107,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -3079,7 +4130,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -3091,7 +4142,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -3122,7 +4173,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefinitionOwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefinitionOwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3136,7 +4194,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Subpath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Subpath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3150,7 +4215,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariableType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VariableType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3164,7 +4236,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultValue"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultValue"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3178,7 +4257,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadPermissions"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadPermissions"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3192,7 +4278,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WritePermissions"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WritePermissions"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3206,7 +4299,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ListPermissions"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ListPermissions"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3222,7 +4322,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -3253,7 +4353,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3267,7 +4374,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CommentId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CommentId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3281,7 +4395,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PostedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PostedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -3295,7 +4416,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CommentSenderId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CommentSenderId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3309,7 +4437,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReplyToCommentId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReplyToCommentId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3323,7 +4458,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3358,7 +4500,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3372,7 +4521,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3419,7 +4575,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Schema"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Schema"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3432,7 +4595,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UnsafeModeWhitelist"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UnsafeModeWhitelist"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3445,7 +4615,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (InputConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Inputs"), typeof(InputConfig));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Inputs"), typeof(InputConfig)) is InputConfig __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to InputConfig");
+				}
 			}
 			set
 			{
@@ -3458,7 +4635,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3472,7 +4656,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (NetworkNodePreference)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodePreference"), typeof(NetworkNodePreference));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodePreference"), typeof(NetworkNodePreference)) is NetworkNodePreference __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to NetworkNodePreference");
+				}
 			}
 			set
 			{
@@ -3486,7 +4677,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (EntityInterfacePreference)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseEntityPreference"), typeof(EntityInterfacePreference));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseEntityPreference"), typeof(EntityInterfacePreference)) is EntityInterfacePreference __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to EntityInterfacePreference");
+				}
 			}
 			set
 			{
@@ -3499,7 +4697,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseUniverseDash"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseUniverseDash"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3512,7 +4717,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseUniverseHomes"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseUniverseHomes"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3525,7 +4737,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (ProxyConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Proxy"), typeof(ProxyConfig));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Proxy"), typeof(ProxyConfig)) is ProxyConfig __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ProxyConfig");
+				}
 			}
 			set
 			{
@@ -3538,7 +4757,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (bool?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AnnounceLocalIPs"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AnnounceLocalIPs"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3551,7 +4777,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableAnnounceOnLAN"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableAnnounceOnLAN"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3564,7 +4797,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableIntroTutorial"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableIntroTutorial"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3577,7 +4817,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableCloudHomeAutoLoad"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableCloudHomeAutoLoad"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3590,7 +4837,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<WorldStartupParameters>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoStartWorlds"), typeof(List<WorldStartupParameters>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoStartWorlds"), typeof(List<WorldStartupParameters>)) is List<WorldStartupParameters> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<WorldStartupParameters>");
+				}
 			}
 			set
 			{
@@ -3603,7 +4857,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<SessionJoinParameters>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoJoinSessions"), typeof(List<SessionJoinParameters>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoJoinSessions"), typeof(List<SessionJoinParameters>)) is List<SessionJoinParameters> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<SessionJoinParameters>");
+				}
 			}
 			set
 			{
@@ -3616,7 +4877,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NoUI"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NoUI"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3629,7 +4897,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableDesktop"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisableDesktop"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3642,7 +4917,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<LoginMethods>?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AvailableLoginMethods"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AvailableLoginMethods"), typeof(List<LoginMethods>)) is List<LoginMethods> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<LoginMethods>");
+				}
 			}
 			set
 			{
@@ -3655,7 +4937,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PathWhitelist"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PathWhitelist"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3668,7 +4957,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LNLConfig?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LNLConfig"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LNLConfig"), typeof(LNLConfig)) is LNLConfig __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LNLConfig");
+				}
 			}
 			set
 			{
@@ -3681,7 +4977,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForceStartMicrophoneMuted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForceStartMicrophoneMuted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3715,7 +5018,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TriggerDeadzone"), typeof(System.Single));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TriggerDeadzone"), typeof(System.Single)) is System.Single __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
 			}
 			set
 			{
@@ -3728,7 +5038,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AxisDeadzone"), typeof(System.Single));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AxisDeadzone"), typeof(System.Single)) is System.Single __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
 			}
 			set
 			{
@@ -3762,7 +5079,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PortRange?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ports"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ports"), typeof(PortRange)) is PortRange __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PortRange");
+				}
 			}
 			set
 			{
@@ -3804,7 +5128,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoDetect"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoDetect"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3817,7 +5148,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalBypass"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalBypass"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3830,7 +5168,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BypassDomains"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BypassDomains"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -3840,11 +5185,18 @@ namespace SkyFrost.Base
 
 		[System.Text.Json.Serialization.JsonConverter(typeof(JsonUriConverter))]
 		[JsonPropertyName("address")]
-		public ResoniteBridge.ResoniteBridgeValue Address
+		public System.Uri Address
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Address"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Address"), typeof(System.Uri)) is System.Uri __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Uri");
+				}
 			}
 			set
 			{
@@ -3858,7 +5210,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (CredentialType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CredentialStore"), typeof(CredentialType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CredentialStore"), typeof(CredentialType)) is CredentialType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to CredentialType");
+				}
 			}
 			set
 			{
@@ -3871,7 +5230,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3884,7 +5250,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3897,7 +5270,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -3906,7 +5286,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShouldUseAutoDetect"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShouldUseAutoDetect"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -3933,11 +5320,18 @@ namespace SkyFrost.Base
 	{
 		[JsonProperty(PropertyName = "url")]
 		[JsonPropertyName("url")]
-		public ResoniteBridge.ResoniteBridgeValue URL
+		public System.Uri URL
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "URL"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "URL"), typeof(System.Uri)) is System.Uri __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Uri");
+				}
 			}
 			set
 			{
@@ -3951,7 +5345,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -3965,7 +5366,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LanOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LanOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3979,7 +5387,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HeadlessOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HeadlessOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -3993,7 +5408,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OnlyUniverseID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OnlyUniverseID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4007,7 +5429,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoFocus"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoFocus"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4021,7 +5450,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WaitForLogin"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WaitForLogin"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4035,7 +5471,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Processed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Processed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4051,7 +5494,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -4087,7 +5530,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsEnabled"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsEnabled"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4101,7 +5551,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4115,7 +5572,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomSessionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomSessionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4129,7 +5593,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4144,7 +5615,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -4160,7 +5638,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SessionAccessLevel)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccessLevel"), typeof(SessionAccessLevel));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccessLevel"), typeof(SessionAccessLevel)) is SessionAccessLevel __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SessionAccessLevel");
+				}
 			}
 			set
 			{
@@ -4174,7 +5659,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseCustomJoinVerifier"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseCustomJoinVerifier"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4188,7 +5680,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (bool?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HideFromPublicListing"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HideFromPublicListing"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4202,7 +5701,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -4216,7 +5722,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MobileFriendly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MobileFriendly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4230,7 +5743,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LoadWorldURL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LoadWorldURL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4244,7 +5764,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LoadWorldPresetName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LoadWorldPresetName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4258,7 +5785,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideCorrespondingWorldId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideCorrespondingWorldId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 			set
 			{
@@ -4272,7 +5806,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (ushort?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForcePort"), typeof(System.UInt16));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForcePort"), typeof(System.UInt16)) is System.UInt16 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ushort");
+				}
 			}
 			set
 			{
@@ -4286,7 +5827,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KeepOriginalRoles"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KeepOriginalRoles"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4300,7 +5848,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUserRoles"), typeof(Dictionary<string, string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUserRoles"), typeof(Dictionary<string, string>)) is Dictionary<string, string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, string>");
+				}
 			}
 			set
 			{
@@ -4314,7 +5869,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RoleCloudVariable"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RoleCloudVariable"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4328,7 +5890,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AllowUserCloudVariable"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AllowUserCloudVariable"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4342,7 +5911,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DenyUserCloudVariable"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DenyUserCloudVariable"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4356,7 +5932,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredUserJoinCloudVariable"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredUserJoinCloudVariable"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4370,7 +5953,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredUserJoinCloudVariableDenyMessage"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredUserJoinCloudVariableDenyMessage"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4384,7 +5974,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AwayKickMinutes"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AwayKickMinutes"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -4398,7 +5995,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ParentSessionIds"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ParentSessionIds"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -4412,7 +6016,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoInviteUsernames"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoInviteUsernames"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -4426,7 +6037,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoInviteMessage"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoInviteMessage"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4442,7 +6060,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SaveAsOwner?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SaveAsOwner"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SaveAsOwner"), typeof(SaveAsOwner)) is SaveAsOwner __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SaveAsOwner");
+				}
 			}
 			set
 			{
@@ -4456,7 +6081,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoRecover"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoRecover"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4470,7 +6102,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IdleRestartInterval"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IdleRestartInterval"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -4484,7 +6123,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForcedRestartInterval"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ForcedRestartInterval"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -4498,7 +6144,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SaveOnExit"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SaveOnExit"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4512,7 +6165,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoSaveInterval"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoSaveInterval"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -4526,7 +6186,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoSleep"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AutoSleep"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4540,7 +6207,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WaitForLogin"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WaitForLogin"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4554,7 +6228,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Processed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Processed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4590,7 +6271,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4604,7 +6292,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4618,7 +6313,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -4632,7 +6334,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateUsernames"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateUsernames"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -4648,7 +6357,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (ContactStatus)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactStatus"), typeof(ContactStatus));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ContactStatus"), typeof(ContactStatus)) is ContactStatus __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ContactStatus");
+				}
 			}
 			set
 			{
@@ -4662,7 +6378,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsAccepted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsAccepted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4676,7 +6399,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LatestMessageTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LatestMessageTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -4690,7 +6420,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (UserProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Profile"), typeof(UserProfile));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Profile"), typeof(UserProfile)) is UserProfile __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to UserProfile");
+				}
 			}
 			set
 			{
@@ -4704,7 +6441,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4718,7 +6462,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsCounterpartMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsCounterpartMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -4732,7 +6483,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSelfContact"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSelfContact"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4742,7 +6500,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPartiallyMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPartiallyMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4752,7 +6517,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsContactRequest"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsContactRequest"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4762,7 +6534,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CanBeInteractedWith"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CanBeInteractedWith"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4772,7 +6551,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4782,7 +6568,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShouldBeHidden"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShouldBeHidden"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -4818,7 +6611,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -4860,7 +6653,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BadgeType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeType"), typeof(BadgeType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeType"), typeof(BadgeType)) is BadgeType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BadgeType");
+				}
 			}
 			set
 			{
@@ -4874,7 +6674,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -4888,7 +6695,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -4900,7 +6714,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -4912,7 +6726,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -4954,7 +6768,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (CreditType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreditType"), typeof(CreditType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreditType"), typeof(CreditType)) is CreditType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to CreditType");
+				}
 			}
 			set
 			{
@@ -4966,19 +6787,26 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue GetTypeForAmount(System.Decimal dollars)
+		public static CreditType? GetTypeForAmount(System.Decimal dollars)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CreditsEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CreditsEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(CreditType)) is CreditType __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CreditType?");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -4990,7 +6818,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5002,7 +6830,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5035,7 +6863,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (CreditType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreditType"), typeof(CreditType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreditType"), typeof(CreditType)) is CreditType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to CreditType");
+				}
 			}
 			set
 			{
@@ -5069,7 +6904,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5081,7 +6923,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5093,7 +6935,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5133,7 +6975,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLifetime"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLifetime"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -5169,7 +7018,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLifetime"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLifetime"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -5179,7 +7035,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -5191,7 +7054,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5203,7 +7073,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5215,7 +7085,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5246,7 +7116,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -5259,7 +7136,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5271,7 +7155,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5283,7 +7167,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5312,7 +7196,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5324,7 +7215,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5336,7 +7227,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5376,7 +7267,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LaunchShoutoutType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShoutoutType"), typeof(LaunchShoutoutType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShoutoutType"), typeof(LaunchShoutoutType)) is LaunchShoutoutType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LaunchShoutoutType");
+				}
 			}
 			set
 			{
@@ -5388,19 +7286,26 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue GetTypeForAmount(System.Decimal dollars)
+		public static LaunchShoutoutType? GetTypeForAmount(System.Decimal dollars)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "LaunchShoutOutEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "LaunchShoutOutEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(LaunchShoutoutType)) is LaunchShoutoutType __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to LaunchShoutoutType?");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5412,7 +7317,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5424,7 +7329,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5457,7 +7362,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LaunchShoutoutType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShoutoutType"), typeof(LaunchShoutoutType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShoutoutType"), typeof(LaunchShoutoutType)) is LaunchShoutoutType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LaunchShoutoutType");
+				}
 			}
 			set
 			{
@@ -5492,7 +7404,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -5506,7 +7425,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (StorageShareLevel)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaximumShareLevel"), typeof(StorageShareLevel));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaximumShareLevel"), typeof(StorageShareLevel)) is StorageShareLevel __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to StorageShareLevel");
+				}
 			}
 			set
 			{
@@ -5520,7 +7446,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "StorageId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "StorageId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5534,7 +7467,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5548,7 +7488,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "StartsOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "StartsOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -5562,7 +7509,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpiresOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpiresOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -5576,7 +7530,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5590,7 +7551,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5603,7 +7571,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5615,7 +7590,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5627,7 +7602,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5658,7 +7633,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportSource"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportSource"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5672,7 +7654,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5686,7 +7675,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconURL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconURL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5700,7 +7696,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5714,7 +7717,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -5748,7 +7758,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerIds"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerIds"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -5761,7 +7778,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -5773,7 +7797,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5785,7 +7809,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5818,7 +7842,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5832,7 +7863,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5848,7 +7886,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5860,7 +7898,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5872,7 +7910,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5884,7 +7922,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5896,18 +7934,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to EntityId");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(EntityId a, EntityId b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(EntityId a, EntityId b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public override System.Int32 GetHashCode()
@@ -5918,7 +7970,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -5949,7 +8001,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageIndex"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -5963,7 +8022,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Message"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Message"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5977,7 +8043,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AddedByUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AddedByUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -5993,7 +8066,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6024,7 +8097,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6038,7 +8118,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PopReceipt"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PopReceipt"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6052,7 +8139,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BlobKey"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BlobKey"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6066,7 +8160,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Object"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Object"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -6080,7 +8181,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QueueName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QueueName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6135,7 +8243,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -6147,7 +8255,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Decimal)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Amount"), typeof(System.Decimal));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Amount"), typeof(System.Decimal)) is System.Decimal __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to decimal");
+				}
 			}
 			set
 			{
@@ -6161,7 +8276,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Currency"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Currency"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6175,7 +8297,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EventTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EventTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -6189,7 +8318,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValidityStart"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValidityStart"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -6203,7 +8339,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValidityEnd"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValidityEnd"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -6217,7 +8360,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsInvalidated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsInvalidated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -6231,7 +8381,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<Entitlement>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entitlements"), typeof(List<Entitlement>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entitlements"), typeof(List<Entitlement>)) is List<Entitlement> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<Entitlement>");
+				}
 			}
 			set
 			{
@@ -6245,7 +8402,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6259,7 +8423,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Note"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Note"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6273,7 +8444,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -6285,7 +8463,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6315,7 +8493,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6329,7 +8514,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PaymentTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PaymentTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -6343,7 +8535,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierAmountCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierAmountCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -6357,7 +8556,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatronId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatronId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6371,7 +8577,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6406,7 +8619,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6420,7 +8640,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6455,7 +8682,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6469,7 +8703,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubscriptionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubscriptionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6483,7 +8724,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InvoiceId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InvoiceId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6497,7 +8745,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TierId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6511,7 +8766,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EventId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EventId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6525,7 +8787,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLive"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsLive"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -6560,7 +8829,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6574,7 +8850,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AdminUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AdminUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6588,7 +8871,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6602,7 +8892,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -6617,7 +8914,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -6632,7 +8936,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -6678,7 +8989,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to OwnerType");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -6691,7 +9002,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GlobalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GlobalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -6705,7 +9023,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -6719,7 +9044,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModifyingUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModifyingUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6733,7 +9065,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModifyingMachineId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModifyingMachineId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6749,7 +9088,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to RecordVersion");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6761,7 +9100,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6773,7 +9112,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6785,7 +9124,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -6797,18 +9136,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(RecordVersion a, RecordVersion b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordVersion", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordVersion", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(RecordVersion a, RecordVersion b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordVersion", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordVersion", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6842,7 +9195,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6856,7 +9216,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationSource"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationSource"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6870,7 +9237,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigratedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigratedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -6884,7 +9258,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SourceVersion"), typeof(RecordVersion));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SourceVersion"), typeof(RecordVersion)) is RecordVersion __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordVersion");
+				}
 			}
 			set
 			{
@@ -6898,7 +9279,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordVersion?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetVersion"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetVersion"), typeof(RecordVersion)) is RecordVersion __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordVersion");
+				}
 			}
 			set
 			{
@@ -6912,7 +9300,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -6926,7 +9321,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PreviousMigration"), typeof(MigrationMetadata));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PreviousMigration"), typeof(MigrationMetadata)) is MigrationMetadata __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MigrationMetadata");
+				}
 			}
 			set
 			{
@@ -6959,7 +9361,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6971,7 +9380,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6983,7 +9399,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -6996,7 +9419,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 		}
 
@@ -7004,7 +9434,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion)) is RecordVersion __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordVersion");
+				}
 			}
 			set
 			{
@@ -7016,7 +9453,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7028,7 +9472,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7040,7 +9491,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7052,7 +9510,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7064,7 +9529,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -7076,7 +9548,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7088,7 +9567,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7100,7 +9586,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7112,7 +9605,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7124,7 +9624,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7136,7 +9643,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7148,7 +9662,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7160,7 +9681,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -7172,7 +9700,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -7184,7 +9719,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -7196,7 +9738,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata)) is MigrationMetadata __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MigrationMetadata");
+				}
 			}
 			set
 			{
@@ -7208,7 +9757,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7220,7 +9776,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7232,7 +9795,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7244,7 +9814,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -7270,7 +9847,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7282,7 +9859,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7294,7 +9871,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7306,7 +9883,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7318,7 +9895,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7330,7 +9907,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7347,7 +9924,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7356,31 +9933,31 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TakeIdentityFrom", record, source);
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue GetUrl(this IRecord record, IPlatformProfile platform)
+		public static System.Uri GetUrl(this IRecord record, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUrl", record, platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue GetWebUrl(this IRecord record, IPlatformProfile platform)
+		public static System.Uri GetWebUrl(this IRecord record, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetWebUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetWebUrl", record, platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static void SetUrl(this IRecord record, IPlatformProfile platform, ResoniteBridge.ResoniteBridgeValue url)
+		public static void SetUrl(this IRecord record, IPlatformProfile platform, System.Uri url)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SetUrl", record, platform, url);
 		}
@@ -7393,7 +9970,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7405,7 +9982,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7417,7 +9994,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7429,7 +10006,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7441,7 +10018,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7453,7 +10030,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -7463,7 +10040,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -7477,7 +10061,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7491,7 +10082,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ids"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ids"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -7505,7 +10103,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7521,7 +10126,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -7552,7 +10157,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7566,7 +10178,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7580,7 +10199,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7595,7 +10221,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -7610,7 +10243,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -7645,7 +10285,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7659,7 +10306,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7673,7 +10327,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7687,7 +10348,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7734,7 +10402,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_ID_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_ID_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -7747,7 +10422,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -7756,7 +10438,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SendStatus?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SendStatus"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SendStatus"), typeof(SendStatus)) is SendStatus __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SendStatus");
+				}
 			}
 			set
 			{
@@ -7770,7 +10459,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7784,7 +10480,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7798,7 +10501,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecipientId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecipientId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7812,7 +10522,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7826,7 +10543,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderUserSessionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SenderUserSessionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7842,7 +10566,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MessageType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageType"), typeof(MessageType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MessageType"), typeof(MessageType)) is MessageType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MessageType");
+				}
 			}
 			set
 			{
@@ -7856,7 +10587,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Content"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7870,7 +10608,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SendTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SendTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7884,7 +10629,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastUpdateTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastUpdateTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7898,7 +10650,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -7912,7 +10671,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMigrated"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7925,7 +10691,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSelfMessage"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSelfMessage"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -7934,7 +10707,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSent"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSent"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -7943,7 +10723,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReceived"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReceived"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -7952,7 +10739,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsRead"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsRead"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -7961,7 +10755,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OtherUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OtherUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -7974,7 +10775,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPreFetched"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPreFetched"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -7990,7 +10798,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8002,7 +10810,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8014,7 +10822,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to T");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8031,7 +10839,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8043,7 +10851,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Message");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8074,7 +10882,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PrimaryLocale"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PrimaryLocale"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8088,7 +10903,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValuesByLocale"), typeof(Dictionary<string, T>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValuesByLocale"), typeof(Dictionary<string, T>)) is Dictionary<string, T> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, T>");
+				}
 			}
 			set
 			{
@@ -8137,7 +10959,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "LNL_PROTOCOL_VERSION"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "LNL_PROTOCOL_VERSION"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8149,7 +10978,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "NetworkNodeInfo", ResoniteBridge.ResoniteBridgeValueType.Type), "INFO_EXPIRATION"), typeof(TimeSpan));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "NetworkNodeInfo", ResoniteBridge.ResoniteBridgeValueType.Type), "INFO_EXPIRATION"), typeof(TimeSpan)) is TimeSpan __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to TimeSpan");
+				}
 			}
 		}
 
@@ -8159,7 +10995,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8173,7 +11016,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTimeOffset));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -8187,7 +11037,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8201,7 +11058,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Address"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Address"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8215,7 +11079,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.UInt16)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Port"), typeof(System.UInt16));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Port"), typeof(System.UInt16)) is System.UInt16 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ushort");
+				}
 			}
 			set
 			{
@@ -8231,7 +11102,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (NetworkNodeType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeType"), typeof(NetworkNodeType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NodeType"), typeof(NetworkNodeType)) is NetworkNodeType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to NetworkNodeType");
+				}
 			}
 			set
 			{
@@ -8245,7 +11123,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ProtocolVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ProtocolVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8259,7 +11144,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8273,7 +11165,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Capacity"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Capacity"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8287,7 +11186,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasCapacity"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasCapacity"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -8297,7 +11203,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsShuttingDown"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsShuttingDown"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -8307,7 +11220,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniverseId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8323,7 +11243,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IPEndPoint");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8335,7 +11255,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8347,7 +11267,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8376,7 +11296,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8388,7 +11315,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8400,7 +11334,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientSecret"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientSecret"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8412,7 +11353,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ClientType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8424,7 +11372,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisplayName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisplayName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8436,7 +11391,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConsentType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConsentType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8448,7 +11410,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Permissions"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Permissions"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -8460,7 +11429,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PostLogoutRedirectUris"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PostLogoutRedirectUris"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -8472,7 +11448,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RedirectUris"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RedirectUris"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -8484,7 +11467,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Requirements"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Requirements"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -8496,7 +11486,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, JsonElement>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Properties"), typeof(Dictionary<string, JsonElement>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Properties"), typeof(Dictionary<string, JsonElement>)) is Dictionary<string, JsonElement> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, JsonElement>");
+				}
 			}
 			set
 			{
@@ -8529,7 +11526,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ApplicationId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ApplicationId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8541,7 +11545,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthorizationId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthorizationId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8553,7 +11564,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReferenceId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReferenceId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8565,7 +11583,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Status"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Status"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8577,7 +11602,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Subject"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Subject"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8589,7 +11621,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -8601,7 +11640,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationDate"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationDate"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -8613,7 +11659,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpirationDate"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpirationDate"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -8625,7 +11678,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RedemptionDate"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RedemptionDate"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -8637,7 +11697,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, JsonElement>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Properties"), typeof(Dictionary<string, JsonElement>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Properties"), typeof(Dictionary<string, JsonElement>)) is Dictionary<string, JsonElement> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, JsonElement>");
+				}
 			}
 			set
 			{
@@ -8672,7 +11739,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CaptureTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CaptureTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -8686,7 +11760,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<SessionAccessLevel, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VisibleSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VisibleSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>)) is Dictionary<SessionAccessLevel, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<SessionAccessLevel, int>");
+				}
 			}
 			set
 			{
@@ -8700,7 +11781,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<SessionAccessLevel, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HiddenSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HiddenSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>)) is Dictionary<SessionAccessLevel, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<SessionAccessLevel, int>");
+				}
 			}
 			set
 			{
@@ -8714,7 +11802,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<SessionAccessLevel, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveVisibleSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveVisibleSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>)) is Dictionary<SessionAccessLevel, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<SessionAccessLevel, int>");
+				}
 			}
 			set
 			{
@@ -8728,7 +11823,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<SessionAccessLevel, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveHiddenSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActiveHiddenSessionsByAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>)) is Dictionary<SessionAccessLevel, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<SessionAccessLevel, int>");
+				}
 			}
 			set
 			{
@@ -8742,7 +11844,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegisteredUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegisteredUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8756,7 +11865,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PresentUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PresentUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8770,7 +11886,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AwayUsers"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AwayUsers"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8784,7 +11907,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InstanceCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InstanceCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8798,7 +11928,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVR"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVR"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8812,7 +11949,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInScreen"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInScreen"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8826,7 +11970,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersOnDesktop"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersOnDesktop"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8840,7 +11991,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersOnMobile"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersOnMobile"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8854,7 +12012,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVisiblePublicSessions"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVisiblePublicSessions"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8868,7 +12033,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVisibleSemiAccessibleSessions"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInVisibleSemiAccessibleSessions"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8882,7 +12054,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInHiddenSessions"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInHiddenSessions"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8896,7 +12075,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInPrivateSessions"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersInPrivateSessions"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -8910,7 +12096,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<SessionAccessLevel, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersBySessionAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersBySessionAccessLevel"), typeof(Dictionary<SessionAccessLevel, int>)) is Dictionary<SessionAccessLevel, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<SessionAccessLevel, int>");
+				}
 			}
 			set
 			{
@@ -8924,7 +12117,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<UserSessionType, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersByClientType"), typeof(Dictionary<UserSessionType, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsersByClientType"), typeof(Dictionary<UserSessionType, int>)) is Dictionary<UserSessionType, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<UserSessionType, int>");
+				}
 			}
 			set
 			{
@@ -8940,7 +12140,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8952,7 +12152,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -8988,7 +12188,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IPlatformProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "DURIAN"), typeof(IPlatformProfile));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "DURIAN"), typeof(IPlatformProfile)) is IPlatformProfile __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IPlatformProfile");
+				}
 			}
 			set
 			{
@@ -9000,7 +12207,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<IPlatformProfile>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "_legacyProfiles"), typeof(List<IPlatformProfile>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "_legacyProfiles"), typeof(List<IPlatformProfile>)) is List<IPlatformProfile> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<IPlatformProfile>");
+				}
 			}
 			set
 			{
@@ -9012,7 +12226,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IPlatformProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "RESONITE"), typeof(IPlatformProfile));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "RESONITE"), typeof(IPlatformProfile)) is IPlatformProfile __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IPlatformProfile");
+				}
 			}
 			set
 			{
@@ -9024,7 +12245,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IEnumerable<IPlatformProfile>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "LegacyProfiles"), typeof(IEnumerable<IPlatformProfile>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "LegacyProfiles"), typeof(IEnumerable<IPlatformProfile>)) is IEnumerable<IPlatformProfile> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IEnumerable<IPlatformProfile>");
+				}
 			}
 		}
 
@@ -9033,7 +12261,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9046,7 +12281,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShortNamePrefix"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShortNamePrefix"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9059,7 +12301,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Abbreviation"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Abbreviation"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9072,7 +12321,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Domain"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Domain"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9085,7 +12341,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModerationUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModerationUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9098,7 +12361,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9111,7 +12381,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PoliciesPage"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PoliciesPage"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9124,7 +12401,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9137,7 +12421,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordInviteUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordInviteUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9150,7 +12441,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9163,7 +12461,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubProfile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubProfile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9176,7 +12481,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubIssuesRepository"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubIssuesRepository"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9189,7 +12501,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WebRecordEndpoint"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WebRecordEndpoint"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9202,7 +12521,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WebSessionEndpoint"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "WebSessionEndpoint"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9215,7 +12541,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9228,7 +12561,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TeamGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TeamGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9241,7 +12581,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9254,7 +12601,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9267,7 +12621,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9280,7 +12641,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9293,7 +12661,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9306,7 +12681,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9319,7 +12701,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9332,7 +12721,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9345,7 +12741,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9358,7 +12761,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9371,7 +12781,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9384,7 +12801,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9397,7 +12821,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DBScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DBScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9410,7 +12841,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9423,7 +12861,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9436,7 +12881,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserSessionScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserSessionScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -9449,7 +12901,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseInventoryUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseInventoryUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9457,7 +12916,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SteamAppId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SteamAppId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9465,7 +12931,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordAppId"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordAppId"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 		}
 
@@ -9474,7 +12947,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FavoriteVariableOverrides"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FavoriteVariableOverrides"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -9487,7 +12967,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IEnumerable<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformVariables"), typeof(IEnumerable<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformVariables"), typeof(IEnumerable<string>)) is IEnumerable<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IEnumerable<string>");
+				}
 			}
 		}
 
@@ -9504,7 +12991,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -9516,7 +13003,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -9528,151 +13015,151 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String ownerId, System.String recordId)
+		public System.Uri GetRecordUri(System.String ownerId, System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", ownerId, recordId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(System.String ownerId, System.String recordId)
+		public System.Uri GetRecordWebUri(System.String ownerId, System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", ownerId, recordId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(RecordId recordId)
+		public System.Uri GetRecordUri(RecordId recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(IRecord record)
+		public System.Uri GetRecordUri(IRecord record)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", record), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(RecordId recordId)
+		public System.Uri GetRecordWebUri(RecordId recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", recordId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(IRecord record)
+		public System.Uri GetRecordWebUri(IRecord record)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", record), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetInventoryItemUri(System.String itemPath)
+		public System.Uri GetInventoryItemUri(System.String itemPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInventoryItemUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInventoryItemUri", itemPath), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetSpawnObjectUri(System.String itemPath)
+		public System.Uri GetSpawnObjectUri(System.String itemPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordPath(System.String recordPath)
+		public System.Uri GetRecordPath(System.String recordPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordPath", recordPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordPath", recordPath), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String recordId)
+		public System.Uri GetRecordUri(System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetSessionUri(System.String sessionId)
+		public System.Uri GetSessionUri(System.String sessionId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionUri", sessionId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetSessionWebUri(System.String sessionId)
+		public System.Uri GetSessionWebUri(System.String sessionId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionWebUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionWebUri", sessionId), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -9702,7 +13189,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9710,7 +13204,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShortNamePrefix"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShortNamePrefix"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9718,7 +13219,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Abbreviation"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Abbreviation"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9726,7 +13234,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Domain"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Domain"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9734,7 +13249,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModerationUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModerationUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9742,7 +13264,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupportUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9750,7 +13279,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9758,7 +13294,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordInviteUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordInviteUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9766,7 +13309,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PoliciesPage"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PoliciesPage"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9774,7 +13324,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9782,7 +13339,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubProfile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubProfile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9790,7 +13354,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubIssuesRepository"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GitHubIssuesRepository"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9798,7 +13369,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9806,7 +13384,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TeamGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TeamGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9814,7 +13399,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9822,7 +13414,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9830,7 +13429,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9838,7 +13444,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9846,7 +13459,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9854,7 +13474,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUsername"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUsername"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9862,7 +13489,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9870,7 +13504,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DevBotUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9878,7 +13519,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ComputeUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9886,7 +13534,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NetworkUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9894,7 +13549,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AuthScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9902,7 +13564,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AppScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9910,7 +13579,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DBScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DBScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9918,7 +13594,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9926,7 +13609,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9934,7 +13624,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserSessionScheme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserSessionScheme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9942,7 +13639,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseInventoryUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseInventoryUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9950,7 +13654,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SteamAppId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SteamAppId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -9958,7 +13669,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordAppId"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscordAppId"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 		}
 
@@ -9966,35 +13684,42 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IEnumerable<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformVariables"), typeof(IEnumerable<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformVariables"), typeof(IEnumerable<string>)) is IEnumerable<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IEnumerable<string>");
+				}
 			}
 		}
 
 		System.Boolean IsPlatformOwnerId(System.String ownerId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String ownerId, System.String recordId);
+		System.Uri GetRecordUri(System.String ownerId, System.String recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordUri(RecordId recordId);
+		System.Uri GetRecordUri(RecordId recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordUri(IRecord recordId);
+		System.Uri GetRecordUri(IRecord recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(System.String ownerId, System.String recordId);
+		System.Uri GetRecordWebUri(System.String ownerId, System.String recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(RecordId recordId);
+		System.Uri GetRecordWebUri(RecordId recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(IRecord recordId);
+		System.Uri GetRecordWebUri(IRecord recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetInventoryItemUri(System.String itemPath);
+		System.Uri GetInventoryItemUri(System.String itemPath);
 
-		ResoniteBridge.ResoniteBridgeValue GetSpawnObjectUri(System.String itemPath);
+		System.Uri GetSpawnObjectUri(System.String itemPath);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordPath(System.String recordPath);
+		System.Uri GetRecordPath(System.String recordPath);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String recordId);
+		System.Uri GetRecordUri(System.String recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetSessionUri(System.String sessionId);
+		System.Uri GetSessionUri(System.String sessionId);
 
-		ResoniteBridge.ResoniteBridgeValue GetSessionWebUri(System.String sessionId);
+		System.Uri GetSessionWebUri(System.String sessionId);
 
 		System.String FavoriteVariable(FavoriteEntity entity);
 
@@ -10015,7 +13740,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Token"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Token"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10029,7 +13761,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FromUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FromUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10043,7 +13782,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ToUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ToUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10057,7 +13803,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Decimal)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Amount"), typeof(System.Decimal));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Amount"), typeof(System.Decimal)) is System.Decimal __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to decimal");
+				}
 			}
 			set
 			{
@@ -10071,7 +13824,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Comment"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Comment"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10087,7 +13847,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (TransferType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TransferType"), typeof(TransferType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TransferType"), typeof(TransferType)) is TransferType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to TransferType");
+				}
 			}
 			set
 			{
@@ -10101,7 +13868,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Anonymous"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Anonymous"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10135,7 +13909,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "TASK_KEY"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "TASK_KEY"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10147,7 +13928,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "PRIORITY_ISSUES_ID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "PRIORITY_ISSUES_ID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10161,7 +13949,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Title"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Title"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10175,7 +13970,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueNumber"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueNumber"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -10189,7 +13991,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueURL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IssueURL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10203,7 +14012,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VoteCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VoteCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -10217,7 +14033,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActivePledgeScore"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActivePledgeScore"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -10231,7 +14054,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LifetimePledgeScore"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LifetimePledgeScore"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -10266,7 +14096,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecipientId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecipientId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10280,7 +14117,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReadTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10294,7 +14138,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ids"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ids"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -10331,7 +14182,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10345,7 +14203,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10359,7 +14224,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10372,7 +14244,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 		}
 
@@ -10382,7 +14261,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion)) is RecordVersion __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordVersion");
+				}
 			}
 			set
 			{
@@ -10396,7 +14282,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10410,7 +14303,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10424,7 +14324,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10438,7 +14345,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10452,7 +14366,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -10466,7 +14387,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10480,7 +14408,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10494,7 +14429,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10508,7 +14450,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10522,7 +14471,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10536,7 +14492,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10550,7 +14513,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10564,7 +14534,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10578,7 +14555,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10592,7 +14576,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -10606,7 +14597,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -10620,7 +14618,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -10634,7 +14639,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -10648,7 +14660,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<Submission>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Submissions"), typeof(List<Submission>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Submissions"), typeof(List<Submission>)) is List<Submission> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<Submission>");
+				}
 			}
 			set
 			{
@@ -10661,7 +14680,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Manifest"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Manifest"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -10675,7 +14701,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -10689,7 +14722,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata)) is MigrationMetadata __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MigrationMetadata");
+				}
 			}
 			set
 			{
@@ -10702,7 +14742,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidOwnerId"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidOwnerId"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -10711,7 +14758,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidRecordId"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidRecordId"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -10723,7 +14777,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -10787,7 +14848,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -10819,7 +14880,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -10831,7 +14892,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Record");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -10843,7 +14904,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -10880,7 +14941,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordInfoOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Operation"), typeof(RecordInfoOperation));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Operation"), typeof(RecordInfoOperation)) is RecordInfoOperation __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordInfoOperation");
+				}
 			}
 			set
 			{
@@ -10894,7 +14962,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Created"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Created"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10908,7 +14983,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ParentRecord"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ParentRecord"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 			set
 			{
@@ -10922,7 +15004,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordInfo)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordInfo"), typeof(RecordInfo));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordInfo"), typeof(RecordInfo)) is RecordInfo __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordInfo");
+				}
 			}
 			set
 			{
@@ -10962,7 +15051,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -10976,7 +15072,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -10990,7 +15093,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11006,7 +15116,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Operation"), typeof(RecordOperation));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Operation"), typeof(RecordOperation)) is RecordOperation __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordOperation");
+				}
 			}
 			set
 			{
@@ -11020,7 +15137,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -11034,7 +15158,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11048,7 +15179,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingMachineId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingMachineId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11062,7 +15200,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingSource"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ModifyingSource"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11076,7 +15221,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalAssetURL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalAssetURL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11090,7 +15242,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11104,7 +15263,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalPath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalPath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11118,7 +15284,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalGlobalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalGlobalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -11132,7 +15305,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalLocalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalLocalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -11146,7 +15326,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalModifyingMachineId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalModifyingMachineId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11160,7 +15347,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalModifyingUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalModifyingUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11176,7 +15370,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11209,7 +15403,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11223,7 +15424,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11236,7 +15444,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -11248,7 +15463,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11260,7 +15475,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11272,7 +15487,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11284,7 +15499,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11296,7 +15511,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11308,7 +15523,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11320,7 +15535,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11332,18 +15547,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to RecordId");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(RecordId a, RecordId b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(RecordId a, RecordId b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11375,7 +15604,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11389,7 +15625,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11403,7 +15646,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11417,7 +15667,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11431,7 +15688,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11445,7 +15709,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GlobalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GlobalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -11486,7 +15757,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PreprocessId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PreprocessId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11500,7 +15778,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11514,7 +15799,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11530,7 +15822,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordPreprocessState)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "State"), typeof(RecordPreprocessState));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "State"), typeof(RecordPreprocessState)) is RecordPreprocessState __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordPreprocessState");
+				}
 			}
 			set
 			{
@@ -11544,7 +15843,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Progress"), typeof(System.Single));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Progress"), typeof(System.Single)) is System.Single __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
 			}
 			set
 			{
@@ -11558,7 +15864,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FailReason"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FailReason"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11572,7 +15885,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<AssetDiff>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ResultDiffs"), typeof(List<AssetDiff>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ResultDiffs"), typeof(List<AssetDiff>)) is List<AssetDiff> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<AssetDiff>");
+				}
 			}
 			set
 			{
@@ -11620,7 +15940,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_isNormalized"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_isNormalized"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -11634,7 +15961,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Count"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Count"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -11648,7 +15982,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Offset"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Offset"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -11662,7 +16003,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Private"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Private"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -11676,7 +16024,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ByOwner"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ByOwner"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11692,7 +16047,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (OwnerType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerType"), typeof(OwnerType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerType"), typeof(OwnerType)) is OwnerType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to OwnerType");
+				}
 			}
 			set
 			{
@@ -11706,7 +16068,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedTo"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedTo"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11720,7 +16089,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OnlyFeatured"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OnlyFeatured"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -11734,7 +16110,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -11748,7 +16131,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredTags"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RequiredTags"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -11762,7 +16152,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OptionalTags"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OptionalTags"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -11776,7 +16173,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExcludedTags"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExcludedTags"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -11790,7 +16194,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MinDate"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MinDate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -11804,7 +16215,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxDate"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxDate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -11820,7 +16238,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SearchSortParameter)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SortBy"), typeof(SearchSortParameter));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SortBy"), typeof(SearchSortParameter)) is SearchSortParameter __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SearchSortParameter");
+				}
 			}
 			set
 			{
@@ -11836,7 +16261,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SearchSortDirection)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SortDirection"), typeof(SearchSortDirection));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SortDirection"), typeof(SearchSortDirection)) is SearchSortDirection __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SearchSortDirection");
+				}
 			}
 			set
 			{
@@ -11850,7 +16282,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExtraSignatures"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExtraSignatures"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -11862,7 +16301,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -11879,7 +16325,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to List<string>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11891,7 +16337,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11903,7 +16349,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11915,18 +16361,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(SearchParameters a, SearchParameters b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(SearchParameters a, SearchParameters b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public override System.Int32 GetHashCode()
@@ -11937,7 +16397,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11949,7 +16409,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -11981,7 +16441,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<R>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Records"), typeof(List<R>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Records"), typeof(List<R>)) is List<R> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<R>");
+				}
 			}
 			set
 			{
@@ -11995,7 +16462,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasMoreResults"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasMoreResults"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -12030,7 +16504,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12044,7 +16525,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VerificationKey"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "VerificationKey"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12058,7 +16546,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contacts"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contacts"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -12101,7 +16596,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12115,7 +16617,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KeyId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "KeyId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12131,7 +16640,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (VerificationKeyUse)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Use"), typeof(VerificationKeyUse));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Use"), typeof(VerificationKeyUse)) is VerificationKeyUse __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to VerificationKeyUse");
+				}
 			}
 			set
 			{
@@ -12147,7 +16663,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12159,7 +16675,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12171,7 +16687,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12202,7 +16718,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Exponent"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Exponent"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12216,7 +16739,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Modulus"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Modulus"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12230,7 +16760,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "P"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "P"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12244,7 +16781,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Q"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Q"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12258,7 +16802,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DP"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DP"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12272,7 +16823,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DQ"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DQ"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12286,7 +16844,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InverseQ"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "InverseQ"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12300,7 +16865,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "D"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "D"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12310,12 +16882,26 @@ namespace SkyFrost.Base
 
 		public static implicit operator RSAParametersData(RSAParameters rsa)
 		{
-			return (RSAParametersData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RSAParametersData", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", rsa), typeof(RSAParametersData));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RSAParametersData", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", rsa), typeof(RSAParametersData)) is RSAParametersData __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to RSAParametersData");
+			}
 		}
 
 		public static implicit operator RSAParameters(RSAParametersData data)
 		{
-			return (RSAParameters)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RSAParametersData", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", data), typeof(RSAParameters));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RSAParametersData", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", data), typeof(RSAParameters)) is RSAParameters __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to RSAParameters");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12345,7 +16931,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12359,7 +16952,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretKeyBase32"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretKeyBase32"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12373,7 +16973,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecoveryCodes"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecoveryCodes"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -12387,7 +16994,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretKey"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretKey"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -12422,7 +17036,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastUpdate"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastUpdate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -12436,7 +17057,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ResponseTimeMilliseconds"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ResponseTimeMilliseconds"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12486,7 +17114,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<Contact>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contacts"), typeof(List<Contact>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Contacts"), typeof(List<Contact>)) is List<Contact> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<Contact>");
+				}
 			}
 			set
 			{
@@ -12532,7 +17167,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_SHARE_BYTES"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_SHARE_BYTES"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12546,7 +17188,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12560,7 +17209,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12574,7 +17230,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpiresOn"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExpiresOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -12588,7 +17251,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActivatesOn"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ActivatesOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -12602,7 +17272,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreatedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreatedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -12616,7 +17293,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12632,7 +17316,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (QuotaType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(QuotaType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Type"), typeof(QuotaType)) is QuotaType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to QuotaType");
+				}
 			}
 			set
 			{
@@ -12648,7 +17339,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (StorageShareLevel)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaximumShareLevel"), typeof(StorageShareLevel));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaximumShareLevel"), typeof(StorageShareLevel)) is StorageShareLevel __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to StorageShareLevel");
+				}
 			}
 			set
 			{
@@ -12662,7 +17360,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12676,7 +17381,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12690,7 +17402,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsExpired"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsExpired"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -12700,7 +17419,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActive"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActive"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -12712,7 +17438,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12724,7 +17450,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12736,7 +17462,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -12767,7 +17493,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetOwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetOwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12781,7 +17514,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShareRatio"), typeof(System.Single));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShareRatio"), typeof(System.Single)) is System.Single __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
 			}
 			set
 			{
@@ -12795,7 +17535,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxShareBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxShareBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12809,7 +17556,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CurrentShareBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CurrentShareBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12845,7 +17599,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12859,7 +17620,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -12873,7 +17641,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsedBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsedBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12887,7 +17662,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12901,7 +17683,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FullQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FullQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12915,7 +17704,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShareableQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ShareableQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -12929,7 +17725,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SharedQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SharedQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 		}
 
@@ -12939,7 +17742,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<QuotaSource>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaSources"), typeof(List<QuotaSource>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaSources"), typeof(List<QuotaSource>)) is List<QuotaSource> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<QuotaSource>");
+				}
 			}
 			set
 			{
@@ -12953,7 +17763,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<QuotaShare>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaShares"), typeof(List<QuotaShare>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaShares"), typeof(List<QuotaShare>)) is List<QuotaShare> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<QuotaShare>");
+				}
 			}
 			set
 			{
@@ -12989,7 +17806,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13003,7 +17827,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13017,7 +17848,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetRecordId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetRecordId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 			set
 			{
@@ -13031,7 +17869,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmissionTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmissionTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -13045,7 +17890,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedById"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedById"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13059,7 +17911,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedByName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SubmittedByName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13073,7 +17932,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Featured"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Featured"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -13087,7 +17953,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FeaturedByUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FeaturedByUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13101,7 +17974,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FeaturedTimestamp"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FeaturedTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -13136,7 +18016,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13150,7 +18037,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTimeOffset));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -13164,7 +18058,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderIP"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderIP"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13178,7 +18079,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13192,7 +18100,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderOwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploaderOwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13206,7 +18121,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Signature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Signature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13220,7 +18142,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadEndpoint"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UploadEndpoint"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13234,7 +18163,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SignatureDataString"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SignatureDataString"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -13244,7 +18180,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SignatureData"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SignatureData"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 		}
 
@@ -13256,7 +18199,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13292,7 +18235,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13306,7 +18256,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13320,7 +18277,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PrimaryGroupId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PrimaryGroupId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13336,55 +18300,55 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetBaseUri(IPlatformProfile platform)
+		public System.Uri GetBaseUri(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseUri", platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetBaseInventoryUri(IPlatformProfile platform)
+		public System.Uri GetBaseInventoryUri(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseInventoryUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseInventoryUri", platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetSpawnObjectUri(System.String itemPath, IPlatformProfile platform)
+		public System.Uri GetSpawnObjectUri(System.String itemPath, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath, platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordAtPath(System.String recordPath, IPlatformProfile platform)
+		public System.Uri GetRecordAtPath(System.String recordPath, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAtPath", recordPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAtPath", recordPath, platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13424,7 +18388,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13438,7 +18409,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionToken"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionToken"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13452,7 +18430,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionCreated"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionCreated"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -13466,7 +18451,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionExpire"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionExpire"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -13481,7 +18473,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineIdHash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineIdHash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13496,7 +18495,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineIdSalt"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineIdSalt"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13510,7 +18516,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UID_Hash"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UID_Hash"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13524,7 +18537,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UID_Salt"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UID_Salt"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13538,7 +18558,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RememberMe"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RememberMe"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -13552,7 +18579,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMachineBound"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMachineBound"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -13566,7 +18600,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LogoutUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LogoutUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13580,7 +18621,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LogoutUrlClientSide"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LogoutUrlClientSide"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -13596,7 +18644,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (SessionLoginType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalLoginType"), typeof(SessionLoginType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OriginalLoginType"), typeof(SessionLoginType)) is SessionLoginType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SessionLoginType");
+				}
 			}
 			set
 			{
@@ -13610,7 +18665,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionLoginCounter"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionLoginCounter"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -13623,7 +18685,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsExpired"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsExpired"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -13655,7 +18724,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entity"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entity"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -13669,7 +18745,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<ConfigFileData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigFiles"), typeof(List<ConfigFileData>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConfigFiles"), typeof(List<ConfigFileData>)) is List<ConfigFileData> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<ConfigFileData>");
+				}
 			}
 			set
 			{
@@ -13685,7 +18768,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IEnumerable");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13722,7 +18805,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BroadcastTarget)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "PUBLIC"), typeof(BroadcastTarget));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "PUBLIC"), typeof(BroadcastTarget)) is BroadcastTarget __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BroadcastTarget");
+				}
 			}
 			set
 			{
@@ -13734,7 +18824,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BroadcastTarget)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "ALL_CONTACTS"), typeof(BroadcastTarget));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "ALL_CONTACTS"), typeof(BroadcastTarget)) is BroadcastTarget __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BroadcastTarget");
+				}
 			}
 			set
 			{
@@ -13748,7 +18845,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BroadcastGroup)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(BroadcastGroup));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Group"), typeof(BroadcastGroup)) is BroadcastGroup __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BroadcastGroup");
+				}
 			}
 			set
 			{
@@ -13762,7 +18866,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetIds"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TargetIds"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -13778,7 +18889,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to BroadcastTarget");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13790,7 +18901,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13802,7 +18913,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13814,7 +18925,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13826,7 +18937,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -13838,18 +18949,32 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
 		public static bool operator ==(BroadcastTarget a, BroadcastTarget b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Equality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public static bool operator !=(BroadcastTarget a, BroadcastTarget b)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Inequality", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -13880,7 +19005,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -13894,7 +19026,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonRawCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonRawCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -13908,7 +19047,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DeltaCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DeltaCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -13922,7 +19068,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PledgeCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PledgeCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -13936,7 +19089,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -13950,7 +19110,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Timestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -13987,7 +19154,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14002,7 +19176,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPatreonEmail"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPatreonEmail"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14016,7 +19197,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPatreonSupporter"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPatreonSupporter"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14030,7 +19218,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14044,7 +19239,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPatreonPledgeCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPatreonPledgeCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14058,7 +19260,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTotalCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTotalCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14072,7 +19281,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MinimumTotalUnits"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MinimumTotalUnits"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14086,7 +19302,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExternalCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ExternalCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14100,7 +19323,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastExternalCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastExternalCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14114,7 +19344,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasSupported"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HasSupported"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14128,7 +19365,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RewardType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RewardType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14142,7 +19386,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomTier"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CustomTier"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14156,7 +19407,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PriorityIssue"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PriorityIssue"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14170,7 +19428,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastActivationTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastActivationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -14184,7 +19449,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPaidPledgeAmount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastPaidPledgeAmount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14199,7 +19471,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<LegacyPatreonSnapshot>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Snapshots"), typeof(List<LegacyPatreonSnapshot>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Snapshots"), typeof(List<LegacyPatreonSnapshot>)) is List<LegacyPatreonSnapshot> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<LegacyPatreonSnapshot>");
+				}
 			}
 			set
 			{
@@ -14235,7 +19514,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14249,7 +19535,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14263,7 +19556,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14277,7 +19577,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LoginAuthentication)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Authentication"), typeof(LoginAuthentication));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Authentication"), typeof(LoginAuthentication)) is LoginAuthentication __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LoginAuthentication");
+				}
 			}
 			set
 			{
@@ -14291,7 +19598,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14305,7 +19619,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RememberMe"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RememberMe"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14319,7 +19640,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineBound"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineBound"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14340,7 +19668,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to LoginCredentials");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -14398,7 +19726,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForRegistration"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForRegistration"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -14407,7 +19742,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForLogin"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForLogin"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -14417,7 +19759,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14430,7 +19779,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecoveryCode"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecoveryCode"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14463,7 +19819,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForLogin"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForLogin"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -14471,7 +19834,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForRegistration"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForRegistration"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -14481,7 +19851,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionToken"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SessionToken"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14516,7 +19893,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14530,7 +19914,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14544,7 +19935,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14558,7 +19956,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -14572,7 +19977,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsedBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UsedBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -14586,7 +19998,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, long>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytesSources"), typeof(Dictionary<string, long>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "QuotaBytesSources"), typeof(Dictionary<string, long>)) is Dictionary<string, long> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, long>");
+				}
 			}
 			set
 			{
@@ -14600,7 +20019,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegistrationDate"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegistrationDate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -14614,7 +20040,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LegacyUserPatreonData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonData"), typeof(LegacyUserPatreonData));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PatreonData"), typeof(LegacyUserPatreonData)) is LegacyUserPatreonData __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LegacyUserPatreonData");
+				}
 			}
 			set
 			{
@@ -14665,7 +20098,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14679,7 +20119,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14693,7 +20140,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Enabled"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Enabled"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14707,7 +20161,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14723,7 +20184,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (BadgeType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeType"), typeof(BadgeType));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BadgeType"), typeof(BadgeType)) is BadgeType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to BadgeType");
+				}
 			}
 			set
 			{
@@ -14737,7 +20205,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (bool?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PointFiltering"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PointFiltering"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14751,7 +20226,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MultiLanguageValue<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(MultiLanguageValue<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(MultiLanguageValue<string>)) is MultiLanguageValue<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<string>");
+				}
 			}
 			set
 			{
@@ -14765,7 +20247,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MultiLanguageValue<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(MultiLanguageValue<string>)) is MultiLanguageValue<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MultiLanguageValue<string>");
+				}
 			}
 			set
 			{
@@ -14799,7 +20288,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_DISPLAY_BADGES"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_DISPLAY_BADGES"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -14813,7 +20309,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconUrl"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IconUrl"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14827,7 +20330,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tagline"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tagline"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14841,7 +20351,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<EntityId>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisplayBadges"), typeof(List<EntityId>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DisplayBadges"), typeof(List<EntityId>)) is List<EntityId> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<EntityId>");
+				}
 			}
 			set
 			{
@@ -14855,7 +20372,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14871,7 +20395,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -14903,7 +20427,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14917,7 +20448,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -14931,7 +20469,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirth"), typeof(DateTimeOffset));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirth"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -14945,7 +20490,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PasswordLogin)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(PasswordLogin));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Password"), typeof(PasswordLogin)) is PasswordLogin __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PasswordLogin");
+				}
 			}
 			set
 			{
@@ -14959,7 +20511,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LoginCredentials)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationCredentials"), typeof(LoginCredentials));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationCredentials"), typeof(LoginCredentials)) is LoginCredentials __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LoginCredentials");
+				}
 			}
 			set
 			{
@@ -14973,7 +20532,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GenerateNewUserId"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "GenerateNewUserId"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -14986,7 +20552,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsEmailValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsEmailValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -14995,7 +20568,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDateOfBirthValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDateOfBirthValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15031,7 +20611,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActiveSupporter"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActiveSupporter"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -15045,7 +20632,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportMonths"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportMonths"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15059,7 +20653,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15073,7 +20674,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15087,7 +20695,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HighestTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HighestTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15101,7 +20716,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LowestTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LowestTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15115,7 +20737,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstSupportTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstSupportTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15129,7 +20758,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastSupportTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastSupportTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15143,7 +20779,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSupporter"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSupporter"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15153,27 +20796,48 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Priority"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Priority"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public override ResoniteBridge.ResoniteBridgeValue AccountNameOverride
+		public override LocaleString AccountNameOverride
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameOverride"), typeof(LocaleString)) is LocaleString __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LocaleString");
+				}
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public override ResoniteBridge.ResoniteBridgeValue? AccountNameColorOverride
+		public override colorX? AccountNameColorOverride
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameColorOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameColorOverride"), typeof(colorX)) is colorX __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to colorX");
+				}
 			}
 		}
 
@@ -15209,7 +20873,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActiveSupporter"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsActiveSupporter"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -15223,7 +20894,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportMonths"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportMonths"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15237,7 +20915,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TotalSupportCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15251,7 +20936,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15265,7 +20957,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HighestTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "HighestTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15279,7 +20978,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LowestTierCents"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LowestTierCents"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15293,7 +20999,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstSupportTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstSupportTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15307,7 +21020,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastSupportTimestamp"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastSupportTimestamp"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15321,7 +21041,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSupporter"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSupporter"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15331,27 +21058,48 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Priority"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Priority"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public override ResoniteBridge.ResoniteBridgeValue AccountNameOverride
+		public override LocaleString AccountNameOverride
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameOverride"), typeof(LocaleString)) is LocaleString __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LocaleString");
+				}
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public override ResoniteBridge.ResoniteBridgeValue? AccountNameColorOverride
+		public override colorX? AccountNameColorOverride
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameColorOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameColorOverride"), typeof(colorX)) is colorX __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to colorX");
+				}
 			}
 		}
 
@@ -15385,11 +21133,11 @@ namespace SkyFrost.Base
 	{
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract ResoniteBridge.ResoniteBridgeValue AccountNameOverride { get; }
+		public abstract LocaleString AccountNameOverride { get; }
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract ResoniteBridge.ResoniteBridgeValue? AccountNameColorOverride { get; }
+		public abstract colorX? AccountNameColorOverride { get; }
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
@@ -15405,7 +21153,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -15452,7 +21200,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Credential"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Credential"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15466,7 +21221,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15480,7 +21242,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangeSource"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ChangeSource"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15514,7 +21283,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_USERNAME_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_USERNAME_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15526,7 +21302,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MINIMUM_USER_AGE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MINIMUM_USER_AGE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15538,7 +21321,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAXIMUM_USER_AGE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAXIMUM_USER_AGE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -15552,7 +21342,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Id"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15566,7 +21363,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15580,7 +21384,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateNormalizedNames"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateNormalizedNames"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -15594,7 +21405,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Email"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15608,7 +21426,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateEmails"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AlternateEmails"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -15622,7 +21447,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<OldCredential>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OldUsernames"), typeof(List<OldCredential>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OldUsernames"), typeof(List<OldCredential>)) is List<OldCredential> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<OldCredential>");
+				}
 			}
 			set
 			{
@@ -15636,7 +21468,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<OldCredential>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OldEmails"), typeof(List<OldCredential>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OldEmails"), typeof(List<OldCredential>)) is List<OldCredential> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<OldCredential>");
+				}
 			}
 			set
 			{
@@ -15650,7 +21489,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTimeOffset?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirth"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DateOfBirth"), typeof(DateTimeOffset)) is DateTimeOffset __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTimeOffset");
+				}
 			}
 			set
 			{
@@ -15664,7 +21510,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegistrationDate"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RegistrationDate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15678,7 +21531,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsVerified"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsVerified"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -15692,7 +21552,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountBanExpiration"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountBanExpiration"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15706,7 +21573,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicBanExpiration"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicBanExpiration"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15722,7 +21596,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (PublicBanType?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicBanType"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicBanType"), typeof(PublicBanType)) is PublicBanType __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to PublicBanType");
+				}
 			}
 			set
 			{
@@ -15736,7 +21617,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SpectatorBanExpiration"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SpectatorBanExpiration"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15750,7 +21638,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MuteBanExpiration"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MuteBanExpiration"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15764,7 +21659,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ListingBanExpiration"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ListingBanExpiration"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -15777,7 +21679,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsAccountBanned"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsAccountBanned"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15786,7 +21695,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublicBanned"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublicBanned"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15795,7 +21711,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSpectatorBanned"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSpectatorBanned"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15804,7 +21727,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMuteBanned"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsMuteBanned"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15813,7 +21743,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListingBanned"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListingBanned"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -15823,7 +21760,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniqueDeviceIDs"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UniqueDeviceIDs"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -15837,7 +21781,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -15851,7 +21802,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReferrerUserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ReferrerUserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -15865,7 +21823,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (UserProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Profile"), typeof(UserProfile));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Profile"), typeof(UserProfile)) is UserProfile __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to UserProfile");
+				}
 			}
 			set
 			{
@@ -15879,7 +21844,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<SupporterMetadata>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupporterMetadata"), typeof(List<SupporterMetadata>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SupporterMetadata"), typeof(List<SupporterMetadata>)) is List<SupporterMetadata> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<SupporterMetadata>");
+				}
 			}
 			set
 			{
@@ -15893,7 +21865,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (List<Entitlement>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entitlements"), typeof(List<Entitlement>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Entitlements"), typeof(List<Entitlement>)) is List<Entitlement> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<Entitlement>");
+				}
 			}
 			set
 			{
@@ -15908,7 +21887,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LoginCredentials)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationCredentials"), typeof(LoginCredentials));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationCredentials"), typeof(LoginCredentials)) is LoginCredentials __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LoginCredentials");
+				}
 			}
 			set
 			{
@@ -15922,7 +21908,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (MigratedUserData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigratedData"), typeof(MigratedUserData));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigratedData"), typeof(MigratedUserData)) is MigratedUserData __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MigratedUserData");
+				}
 			}
 			set
 			{
@@ -15935,7 +21928,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EarliestRegistrationDate"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "EarliestRegistrationDate"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 		}
 
@@ -15946,7 +21946,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (LegacyUserPatreonData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyPatreonData"), typeof(LegacyUserPatreonData));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyPatreonData"), typeof(LegacyUserPatreonData)) is LegacyUserPatreonData __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LegacyUserPatreonData");
+				}
 			}
 			set
 			{
@@ -15961,7 +21968,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -15976,7 +21990,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (long?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyUsedBytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -15992,7 +22013,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, long>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytesSources"), typeof(Dictionary<string, long>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyQuotaBytesSources"), typeof(Dictionary<string, long>)) is Dictionary<string, long> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, long>");
+				}
 			}
 			set
 			{
@@ -16008,7 +22036,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16020,7 +22048,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16032,7 +22060,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16044,7 +22072,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16056,7 +22084,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16068,7 +22096,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16105,7 +22133,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Rankings"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Rankings"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -16117,7 +22152,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Categories"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Categories"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -16129,7 +22171,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[][])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Subcategories"), typeof(string[][]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Subcategories"), typeof(string[][])) is string[][] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[][]");
+				}
 			}
 			set
 			{
@@ -16141,7 +22190,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldSubCat"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldSubCat"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -16153,7 +22209,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarSubCat"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarSubCat"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -16165,7 +22228,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherSubCat"), typeof(string[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherSubCat"), typeof(string[])) is string[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string[]");
+				}
 			}
 			set
 			{
@@ -16177,7 +22247,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (Dictionary<string, string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "EventTags"), typeof(Dictionary<string, string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "EventTags"), typeof(Dictionary<string, string>)) is Dictionary<string, string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, string>");
+				}
 			}
 			set
 			{
@@ -16189,7 +22266,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Team"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Team"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16197,7 +22281,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Business"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Business"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16205,7 +22296,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Admin"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Admin"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16213,7 +22311,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Moderator"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Moderator"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16221,7 +22326,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ModerationLead"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ModerationLead"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16229,7 +22341,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Developer"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Developer"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16237,7 +22356,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Mentor"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Mentor"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16245,7 +22371,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Translator"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Translator"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16253,7 +22386,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MentorLead"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MentorLead"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16261,7 +22401,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "HTC_Vive"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "HTC_Vive"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16269,7 +22416,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "DiagnoseRecordSync"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "DiagnoseRecordSync"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16277,7 +22431,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "HearingImpaired"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "HearingImpaired"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16285,7 +22446,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VisuallyImpaired"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VisuallyImpaired"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16293,7 +22461,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ColorBlind"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ColorBlind"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16301,7 +22476,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Mute"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Mute"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16309,7 +22491,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Potato"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Potato"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16317,7 +22506,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "DurianTester"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "DurianTester"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16325,7 +22521,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "FoundingSupporter"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "FoundingSupporter"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16333,7 +22536,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "FirstPlace"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "FirstPlace"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16341,7 +22551,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "SecondPlace"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "SecondPlace"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16349,7 +22566,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ThirdPlace"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ThirdPlace"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16357,7 +22581,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16365,7 +22596,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Cow"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Cow"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16373,7 +22611,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Lips"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Lips"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16381,7 +22626,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_World"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_World"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16389,7 +22641,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Avatar"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Avatar"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16397,7 +22656,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Other"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC_Other"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16405,7 +22671,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VBLFC"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VBLFC"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16413,7 +22686,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VFE22"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VFE22"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16421,7 +22701,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa3"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa3"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16429,7 +22716,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa3Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa3Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16437,7 +22731,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa4Ambassador"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa4Ambassador"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16445,7 +22746,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa4Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Festa4Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16453,7 +22761,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta2023"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta2023"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16461,7 +22776,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16469,7 +22791,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Smile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Smile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16477,7 +22806,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Mouth"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Mouth"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16485,7 +22821,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_GrillCheeze"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_GrillCheeze"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16493,7 +22836,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_World"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_World"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16501,7 +22851,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Avatar"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Avatar"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16509,7 +22866,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Other"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Other"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16517,7 +22881,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Meme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_Meme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16525,7 +22896,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldSocial"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldSocial"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16533,7 +22911,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldGame"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldGame"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16541,7 +22926,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldMisc"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_WorldMisc"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16549,7 +22941,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarAvatars"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarAvatars"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16557,7 +22956,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarAccessories"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarAccessories"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16565,7 +22971,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarMisc"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_AvatarMisc"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16573,7 +22986,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherTAU"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherTAU"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16581,7 +23001,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherMisc"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC21_OtherMisc"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16589,7 +23016,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16597,7 +23031,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_HonorableMention"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_HonorableMention"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16605,7 +23046,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_World"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_World"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16613,7 +23061,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Avatar"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Avatar"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16621,7 +23076,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Art"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Art"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16629,7 +23091,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_ESD"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_ESD"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16637,7 +23106,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Meme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Meme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16645,7 +23121,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Other"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_Other"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16653,7 +23136,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_CheeseCoin"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_CheeseCoin"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16661,7 +23151,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_LitaLita"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_LitaLita"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16669,7 +23166,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_HolyWater"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC22_HolyWater"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16677,7 +23181,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16685,7 +23196,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_HonorableMention"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_HonorableMention"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16693,7 +23211,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Gifty"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Gifty"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16701,7 +23226,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_World"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_World"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16709,7 +23241,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Avatar"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Avatar"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16717,7 +23256,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Art"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Art"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16725,7 +23271,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_ESD"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_ESD"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16733,7 +23286,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Other"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Other"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16741,7 +23301,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Meme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Meme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16749,7 +23316,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Prime"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_Prime"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16757,7 +23331,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_LitaLita"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_LitaLita"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16765,7 +23346,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_HolyWater"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC23_HolyWater"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16773,7 +23361,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16781,7 +23376,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_HonorableMention"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_HonorableMention"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16789,7 +23391,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Gifty"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Gifty"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16797,7 +23406,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_World"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_World"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16805,7 +23421,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Avatar"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Avatar"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16813,7 +23436,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Art"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Art"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16821,7 +23451,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_ESD"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_ESD"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16829,7 +23466,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Other"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Other"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16837,7 +23481,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Meme"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Meme"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16845,7 +23496,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Narrative"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Narrative"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16853,7 +23511,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Prime"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Prime"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16861,7 +23526,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Froox"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Froox"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16869,7 +23541,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_HolyWater"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_HolyWater"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16877,7 +23556,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Litalita"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "MMC24_Litalita"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16885,7 +23571,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Halloween24_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Halloween24_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16893,7 +23586,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Halloween24_Winner"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "Halloween24_Winner"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16901,7 +23601,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VKet24_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "VKet24_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16909,7 +23616,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta24_Participant"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta24_Participant"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16917,7 +23631,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta24_Ambassador"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "UniFesta24_Ambassador"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -16929,7 +23650,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16941,7 +23662,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -16953,7 +23674,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -16970,7 +23691,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_SUBPATH_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_SUBPATH_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -16982,7 +23710,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_STRING_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_STRING_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -16994,7 +23729,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DEFAULT_MAX_STRING_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DEFAULT_MAX_STRING_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17006,7 +23748,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_URI_LENGTH"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_URI_LENGTH"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17018,7 +23767,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_VARIABLES_PER_USER"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_VARIABLES_PER_USER"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17030,7 +23786,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_VARIABLES_PER_GROUP"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MAX_VARIABLES_PER_GROUP"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17042,7 +23805,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DELIMITER"), typeof(System.Char));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DELIMITER"), typeof(System.Char)) is System.Char __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to char");
+				}
 			}
 			set
 			{
@@ -17054,7 +23824,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_ANYONE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_ANYONE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17066,7 +23843,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17078,7 +23862,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_UNSAFE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_UNSAFE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17090,7 +23881,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_ONLY_CONTACTS"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_ONLY_CONTACTS"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17102,7 +23900,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_ONLY_CONTACTS_UNSAFE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_VARIABLE_OWNER_ONLY_CONTACTS_UNSAFE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17114,7 +23919,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17126,7 +23938,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_UNSAFE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_UNSAFE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17138,7 +23957,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_CONTACTS"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_CONTACTS"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17150,7 +23976,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_CONTACTS_UNSAFE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_ONLY_CONTACTS_UNSAFE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17162,7 +23995,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17174,7 +24014,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_UNSAFE"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PERM_DEFINITION_OWNER_UNSAFE"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17186,7 +24033,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "_validPermissions"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "_validPermissions"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -17194,15 +24048,15 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue GetPermissionType(System.String name)
+		public static VariablePermissionType? GetPermissionType(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetPermissionType", name), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetPermissionType", name), typeof(VariablePermissionType)) is VariablePermissionType __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to VariablePermissionType?");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17214,7 +24068,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17226,7 +24080,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17238,7 +24092,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17250,7 +24104,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17262,7 +24116,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17274,7 +24128,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17286,7 +24140,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17298,7 +24152,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17310,7 +24164,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17322,7 +24176,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17334,7 +24188,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CloudVariableParser");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17346,7 +24200,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17358,7 +24212,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CloudVariableParser");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17370,7 +24224,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CloudVariableParser");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -17380,7 +24234,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "MAX_BATCH_SIZE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17394,7 +24255,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17408,7 +24276,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17424,7 +24299,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17455,7 +24330,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (V)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Variable"), typeof(V));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Variable"), typeof(V)) is V __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to V");
+				}
 			}
 			set
 			{
@@ -17469,7 +24351,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Definition"), typeof(D));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Definition"), typeof(D)) is D __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to D");
+				}
 			}
 			set
 			{
@@ -17505,7 +24394,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "URL"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "URL"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17519,7 +24415,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17533,7 +24436,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -17547,7 +24457,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Duration"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Duration"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -17561,7 +24478,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Start"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Start"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -17575,7 +24499,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "End"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "End"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -17589,7 +24520,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Referal"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Referal"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -17602,7 +24540,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValid"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -17631,7 +24576,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "DefaultValue"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "DefaultValue"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -17647,7 +24599,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to object");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17680,7 +24632,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "DefaultValue"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "DefaultValue"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -17696,7 +24655,19 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
+			}
+		}
+
+		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17730,7 +24701,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(System.Object));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(System.Object)) is System.Object __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to object");
+				}
 			}
 			set
 			{
@@ -17746,7 +24724,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to System.Text.Json.Serialization.JsonConverter");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17787,7 +24765,19 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
+			}
+		}
+
+		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17851,11 +24841,23 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public override void Write(Utf8JsonWriter writer, ResoniteBridge.ResoniteBridgeValue value, JsonSerializerOptions options)
+		public override System.Uri Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(System.Uri)) is System.Uri __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to returnTpe");
+			}
+		}
+
+		public override void Write(Utf8JsonWriter writer, System.Uri value, JsonSerializerOptions options)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", writer, value, options);
 		}
@@ -17891,7 +24893,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (HashSet<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "InUse"), typeof(HashSet<int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "InUse"), typeof(HashSet<int>)) is HashSet<int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<int>");
+				}
 			}
 			set
 			{
@@ -17903,7 +24912,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_lock"), typeof(System.Object));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_lock"), typeof(System.Object)) is System.Object __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to object");
+				}
 			}
 			set
 			{
@@ -17916,7 +24932,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Max"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Max"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
@@ -17925,7 +24948,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Min"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Min"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
@@ -17934,7 +24964,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Length"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Length"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 		}
 
@@ -17943,7 +24980,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IEnumerable<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Range"), typeof(IEnumerable<int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Range"), typeof(IEnumerable<int>)) is IEnumerable<int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IEnumerable<int>");
+				}
 			}
 		}
 
@@ -17952,7 +24996,14 @@ namespace SkyFrost.Base
 		{
 			get
 			{
-				return (IEnumerable<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AvailablePorts"), typeof(IEnumerable<int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AvailablePorts"), typeof(IEnumerable<int>)) is IEnumerable<int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IEnumerable<int>");
+				}
 			}
 		}
 
@@ -17969,7 +25020,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17981,7 +25032,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -17993,7 +25044,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18005,7 +25056,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18017,7 +25068,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18029,7 +25080,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18041,7 +25092,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18053,7 +25104,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to PortRange");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18065,7 +25116,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18102,7 +25153,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IEnumerable<TSource>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -18114,7 +25165,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IEnumerable<TSource>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -18135,7 +25186,7 @@ namespace SkyFrost.Base
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}

@@ -175,6 +175,8 @@ namespace ResoniteBridge
             {
                 case ResoniteBridgeMessageType.CallMethod:
                     return CallMethod(objTarget, message.name, objInputs);
+                case ResoniteBridgeMessageType.CallConstructor:
+                    return CallConstructorFromType((Type)objTarget, objInputs);
                 case ResoniteBridgeMessageType.GetField:
                     return GetField(objTarget, message.name);
                 case ResoniteBridgeMessageType.SetField:

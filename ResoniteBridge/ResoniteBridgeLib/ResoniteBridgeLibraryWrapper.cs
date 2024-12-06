@@ -167,6 +167,16 @@ namespace ResoniteBridge
             }
         }
 
+        public static AstType CleanType(AstType astType)
+        {
+            // grab the base type without ref or ?
+            if (astType.ToString().Contains("ref ") || astType.ToString().EndsWith("?"))
+            {
+                astType = ((ComposedType)astType).BaseType;
+            }
+            return astType;
+        }
+
         public static BlockStatement WrapOperator(bool isStatic, OperatorDeclaration operatorDeclaration, Expression staticTarget, Expression instanceTarget)
         {
             var operatorNameExp = new PrimitiveExpression(operatorDeclaration.Name);
@@ -191,20 +201,39 @@ namespace ResoniteBridge
 
             if (operatorDeclaration.ReturnType.ToString() != "void")
             {
+                AstType returnType = CleanType(operatorDeclaration.ReturnType);
                 var castValueCall = new InvocationExpression(
                     new MemberReferenceExpression(clientWrappers.Clone(), "CastValue"),
                     invocation,
-                    new TypeOfExpression(operatorDeclaration.ReturnType.Clone())
+                    new TypeOfExpression(returnType.Clone())
                 );
 
-                var castExpression = new CastExpression(
-                    operatorDeclaration.ReturnType.Clone(),
-                    castValueCall
-                );
-
+                // this mess of stuff does this:
+                // if ({castValueCall} is ReturnType __retCasted)
+                // {
+                //     return __retCasted;
+                // }
+                // throw new InvalidCastException("Cannot cast result to ReturnType");
                 return new BlockStatement {
-                    new ReturnStatement(castExpression)
+                    new IfElseStatement(
+                        CreateIsClause(castValueCall,
+                            returnType,
+                            "__retCasted"
+                        ),
+                        new BlockStatement {
+                            new ReturnStatement(new IdentifierExpression("__retCasted"))
+                        },
+                        new BlockStatement {
+                            new ThrowStatement(
+                                new ObjectCreateExpression(
+                                    new SimpleType("InvalidCastException"),
+                                    new PrimitiveExpression($"Cannot cast result to {returnType}")
+                                )
+                            )
+                        }
+                    )
                 };
+
             }
             else
             {
@@ -251,10 +280,12 @@ namespace ResoniteBridge
 
             if (methodDeclaration.ReturnType.ToString() != "void")
             {
+                AstType returnType = CleanType(methodDeclaration.ReturnType);
+
                 var castValueCall = new InvocationExpression(
                     new MemberReferenceExpression(clientWrappers.Clone(), "CastValue"),
                     invocation,
-                    new TypeOfExpression(methodDeclaration.ReturnType.Clone())
+                    new TypeOfExpression(returnType.Clone())
                 );
 
                 // this mess of stuff does this:
@@ -266,7 +297,7 @@ namespace ResoniteBridge
                 return new BlockStatement {
                     new IfElseStatement(
                         CreateIsClause(castValueCall,
-                            methodDeclaration.ReturnType,
+                            returnType,
                             "__retCasted"
                         ),
                         new BlockStatement {
@@ -276,7 +307,7 @@ namespace ResoniteBridge
                             new ThrowStatement(
                                 new ObjectCreateExpression(
                                     new SimpleType("InvalidCastException"),
-                                    new PrimitiveExpression($"Cannot cast result to {methodDeclaration.ReturnType}")
+                                    new PrimitiveExpression($"Cannot cast result to {"returnTpe"}")
                                 )
                             )
                         }
@@ -338,22 +369,41 @@ namespace ResoniteBridge
                     : new Expression[] { instanceTarget.Clone(), getterNameExp }
             );
 
+            getterType = CleanType(getterType);
+
             var castValueCall = new InvocationExpression(
                 new MemberReferenceExpression(clientWrappers, "CastValue"),
                 getterCall,
                 new TypeOfExpression(getterType.Clone())
             );
 
-            var castExpression = new CastExpression(
-                getterType.Clone(),
-                castValueCall
-            );
 
+            // this mess of stuff does this:
+            // if ({castValueCall} is ReturnType __retCasted)
+            // {
+            //     return __retCasted;
+            // }
+            // throw new InvalidCastException("Cannot cast result to ReturnType");
             return new Accessor
             {
-                Body = new BlockStatement
-                {
-                    new ReturnStatement(castExpression)
+                Body = new BlockStatement {
+                    new IfElseStatement(
+                        CreateIsClause(castValueCall,
+                            getterType,
+                            "__retCasted"
+                        ),
+                        new BlockStatement {
+                            new ReturnStatement(new IdentifierExpression("__retCasted"))
+                        },
+                        new BlockStatement {
+                            new ThrowStatement(
+                                new ObjectCreateExpression(
+                                    new SimpleType("InvalidCastException"),
+                                    new PrimitiveExpression($"Cannot cast result to {getterType}")
+                                )
+                            )
+                        }
+                    )
                 }
             };
         }
@@ -380,6 +430,33 @@ namespace ResoniteBridge
                         )
                     )
                 }
+            };
+        }
+
+        public static BlockStatement WrapConstructor(ConstructorDeclaration constructorDeclaration, Expression staticTarget)
+        {
+            var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
+
+            List<Expression> invocationParams = new List<Expression>();
+            invocationParams.Add(staticTarget);
+
+            foreach (var param in constructorDeclaration.Parameters)
+            {
+                invocationParams.Add(new IdentifierExpression(param.NameToken.ToString()));
+            }
+
+            InvocationExpression invocation = new InvocationExpression(
+                new MemberReferenceExpression(clientWrappers, "CallConstructor"),
+                invocationParams);
+
+            // set the backing to the constructed value
+            AssignmentExpression assignment = new AssignmentExpression(
+                new IdentifierExpression("__backing"),
+                new IdentifierExpression("value"));
+
+            return new BlockStatement
+            {
+                assignment
             };
         }
 
@@ -442,7 +519,6 @@ namespace ResoniteBridge
             // Because we need them all at the start
 
             bool foundTypeDec = false;
-
 
             List<AstNode> nodesToRemove = new List<AstNode>();
 
@@ -527,10 +603,9 @@ namespace ResoniteBridge
 
                     TraverseSyntaxNodes(astNode, (childNode) =>
                     {
-                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructor)
+                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
-                            // Todo: wrap constructors. Right now we just remove them all
-                            nodesToRemove.Add(childNode);
+                            constructorDeclare.Body = WrapConstructor(constructorDeclare, staticTarget);
                             numConstructors += 1;
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
@@ -558,13 +633,10 @@ namespace ResoniteBridge
                             methodDeclare.NameToken.ToString().StartsWith("set_") ||
                             // no operators, we handle those above
                             methodDeclare.NameToken.ToString().StartsWith("op_") ||
-                            // we don't support out/ref yet
+                            // we don't support out yet
                             methodDeclare.Parameters.Any(
                                 (p) => p.ParameterModifier.HasFlag(
-                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out)) ||
-                            methodDeclare.Parameters.Any(
-                                (p) => p.ParameterModifier.HasFlag(
-                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Ref))
+                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out))
                             )
                             {
                                 nodesToRemove.Add(methodDeclare);
@@ -727,6 +799,8 @@ namespace ResoniteBridge
                             }
                         }
                     });
+
+
                     // we need to add default constructor since we define a different alternative one
                     // but don't do it for enums, static classes, or interfaces
                     if (numConstructors == 0
@@ -837,6 +911,36 @@ namespace ResoniteBridge
             usings = "using ResoniteBridge;";
 
 
+            // remove duplicate constructors (they can occur if types get wrapped)
+            // like (BlahBlah a)
+            // and  (Juniper a)
+            // could both be wrapped as (ResoniteBridgeValue a)
+            // so then we need to remove one of them
+            TraverseSyntaxNodes(decompTree, (astNode) =>
+            {
+                if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
+                {
+                    HashSet<string> constructors = new HashSet<string>();
+                    TraverseSyntaxNodes(astNode, (childNode) =>
+                    {
+                        if (childNode is ConstructorDeclaration constructorDeclaration)
+                        {
+                            // key based on type
+                            string constructorKey = String.Join(",", constructorDeclaration.Parameters
+                                .Select(p => p.Type.ToString()));
+                            if (constructors.Contains(constructorKey))
+                            {
+                                nodesToRemove.Add(constructorDeclaration);
+                            }
+                            else
+                            {
+                                constructors.Add(constructorKey);
+                            }
+                        }
+                    });
+                }
+            });
+
             // we need to do this seperately to avoid modification in place changing order
             foreach (AstNode nodeToRemove in nodesToRemove)
             {
@@ -868,7 +972,8 @@ namespace ResoniteBridge
             {"string", typeof(System.String)},
             {"uint", typeof(System.UInt32)},
             {"ulong", typeof(System.UInt64)},
-            {"ushort", typeof(System.UInt16)}
+            {"ushort", typeof(System.UInt16)},
+            {"Uri", typeof(System.Uri) },
         };
         public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
         {
@@ -882,15 +987,16 @@ namespace ResoniteBridge
             }
             // we have a few things we try for resolving types
 
+
             if (removeNullable)
             {
                 // remove nullable because that confuses typeof
-                if (astType.ToString().Contains("?"))
-                {
-                    AstType newType = new SimpleType(astType.ToString().Replace("?", ""));
-                    astType.ReplaceWith(newType);
-                    astType = newType;
-                }
+                //if (astType.ToString().Contains("?"))
+                //{
+                //    AstType newType = new SimpleType(astType.ToString().Replace("?", ""));
+                //    astType.ReplaceWith(newType);
+                //    astType = newType;
+                //}
 
             }
 
@@ -902,55 +1008,61 @@ namespace ResoniteBridge
                 astType = newType;
             }
 
-            // namespaces require seperate resolution
-            if (namespaceList.Contains(astType.ToString()) ||
-                bonusList.Contains(astType.ToString()))
-            {
-                // it exists, we are happy
-                return false;
-            }
 
-            // fix up the @ that gets added to these
-            if (keywordTypes.TryGetValue(astType.ToString().Replace("@", ""), out Type keywordType))
+            // we need to wrap spans bc they don't convert nicely
+            // also (tuple, things) don't work, wrap those
+            if (!astType.ToString().Contains("Span<") && !astType.ToString().Contains("("))
             {
-                AstType newType = new SimpleType(keywordType.FullName);
-                astType.ReplaceWith(newType);
-                astType = newType;
-                // keywords exist, we are done
-                return false;
-            }
-            
-            ITypeReference typeReference = astType.ToTypeReference();
-            IType iType = typeReference.Resolve(resolveContext);
-            // resolved, we are happy
-            if (iType.Kind != ICSharpCode.Decompiler.TypeSystem.TypeKind.Unknown)
-            {
-                return false;
-            }
-
-            ResolveResult resolveResult = astType.GetResolveResult();
-
-            // @ confuses resolver, make a temporary version without @
-            if (resolveResult.IsError && astType.ToString().Contains("@"))
-            {
-                resolveResult = (new SimpleType(astType.ToString().Replace("@", ""))).GetResolveResult();
-            }
-
-            if (!resolveResult.IsError)
-            {
-                // resolve is too powerful and will fetch types from assemblies
-                // not in our lists, limit it a bit
-                string assemblyName = null;
-                if (resolveResult.Type.GetDefinition() != null)
+                // namespaces require seperate resolution
+                if (namespaceList.Contains(astType.ToString()) ||
+                    bonusList.Contains(astType.ToString()))
                 {
-                    assemblyName = resolveResult.Type.GetDefinition().ParentModule.AssemblyName;
+                    // it exists, we are happy
+                    return false;
                 }
-                // getdefinition is null for generic types, which we allow
-                if (resolveResult.Type.GetDefinition() == null ||
-                    whitelist.Contains(assemblyName) ||
-                    bonusList.Contains(assemblyName))
+
+                // fix up the @ that gets added to these
+                if (keywordTypes.TryGetValue(astType.ToString().Replace("@", ""), out Type keywordType))
+                {
+                    AstType newType = new SimpleType(keywordType.FullName);
+                    astType.ReplaceWith(newType);
+                    astType = newType;
+                    // keywords exist, we are done
+                    return false;
+                }
+
+                ITypeReference typeReference = astType.ToTypeReference();
+                IType iType = typeReference.Resolve(resolveContext);
+                // resolved, we are happy
+                if (iType.Kind != ICSharpCode.Decompiler.TypeSystem.TypeKind.Unknown)
                 {
                     return false;
+                }
+
+                ResolveResult resolveResult = astType.GetResolveResult();
+
+                // @ confuses resolver, make a temporary version without @
+                if (resolveResult.IsError && astType.ToString().Contains("@"))
+                {
+                    resolveResult = (new SimpleType(astType.ToString().Replace("@", ""))).GetResolveResult();
+                }
+
+                if (!resolveResult.IsError)
+                {
+                    // resolve is too powerful and will fetch types from assemblies
+                    // not in our lists, limit it a bit
+                    string assemblyName = null;
+                    if (resolveResult.Type.GetDefinition() != null)
+                    {
+                        assemblyName = resolveResult.Type.GetDefinition().ParentModule.AssemblyName;
+                    }
+                    // getdefinition is null for generic types, which we allow
+                    if (resolveResult.Type.GetDefinition() == null ||
+                        whitelist.Contains(assemblyName) ||
+                        bonusList.Contains(assemblyName))
+                    {
+                        return false;
+                    }
                 }
             }
             // still didn't resolve, replace with ResoniteBridgeValue
@@ -970,9 +1082,9 @@ namespace ResoniteBridge
             //"FrooxEngine.Store",
             "SkyFrost.Base.Models",
             "SkyFrost.Base",
-            //"Elements.Assets",
-            //"Elements.Core",
-            //"Elements.Quantity",
+            "Elements.Assets",
+            "Elements.Core",
+            "Elements.Quantity",
             //"ProtoFlux.Nodes.FrooxEngine",
             //"ProtoFlux.Nodes.Core",
             //"ProtoFlux.Core",
@@ -1005,7 +1117,6 @@ namespace ResoniteBridge
             "System.Net.Http.Headers",
             "System.Net.Sockets",
             "System.Net.WebSockets",
-            "System.Net.WebSockets.Managed",
             "System.Threading.Tasks.Dataflow",
             "Microsoft.AspNetCore.Http.Connections",
             "Microsoft.AspNetCore.Http.Connections.Client",
@@ -1192,7 +1303,8 @@ namespace ResoniteBridge
                     references: references,
                     options: new CSharpCompilationOptions(
                         OutputKind.DynamicallyLinkedLibrary,
-                        optimizationLevel: OptimizationLevel.Release
+                        optimizationLevel: OptimizationLevel.Release,
+                        allowUnsafe: true
                     ));
 
                 
@@ -1227,8 +1339,8 @@ namespace ResoniteBridge
                                 var location = diagnostic.Location;
                                 var lineSpan = location.GetLineSpan();
                                 var sourceText = location.SourceTree.GetText();
-                                var startLine = sourceText.Lines[lineSpan.StartLinePosition.Line];
-                                var endLine = sourceText.Lines[lineSpan.EndLinePosition.Line];
+                                var startLine = sourceText.Lines[lineSpan.StartLinePosition.Line-2];
+                                var endLine = sourceText.Lines[lineSpan.EndLinePosition.Line+2];
                                 var fullLines = sourceText.ToString(TextSpan.FromBounds(startLine.Start, endLine.End));
                                 allErrors.AppendLine(fullLines);
                             }

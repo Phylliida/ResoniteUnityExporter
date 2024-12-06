@@ -200,5 +200,17 @@ namespace ResoniteBridge
                 return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, typeToCastTo);
             }
         }
+
+        public static ResoniteBridgeValue CallConstructor(ResoniteBridgeValue targetType, params object[] inputs)
+        {
+            ResoniteBridgeMessage message = new ResoniteBridgeMessage()
+            {
+                inputs = EncodeInputs(inputs),
+                messageType = ResoniteBridgeMessageType.CallConstructor,
+                name = null,
+                target = targetType
+            };
+            return SendBridgeMessage(message);
+        }
     }
 }
