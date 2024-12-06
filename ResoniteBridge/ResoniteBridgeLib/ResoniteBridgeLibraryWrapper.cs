@@ -557,8 +557,13 @@ namespace ResoniteBridge
                             methodDeclare.NameToken.ToString().StartsWith("set_") ||
                             // no operators, we handle those above
                             methodDeclare.NameToken.ToString().StartsWith("op_") ||
-                            // we don't support async yet
-                            methodDeclare.Modifiers.HasFlag(Modifiers.Async)
+                            // we don't support out/ref yet
+                            methodDeclare.Parameters.Any(
+                                (p) => p.ParameterModifier.HasFlag(
+                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out)) ||
+                            methodDeclare.Parameters.Any(
+                                (p) => p.ParameterModifier.HasFlag(
+                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Ref))
                             )
                             {
                                 nodesToRemove.Add(methodDeclare);
@@ -570,13 +575,18 @@ namespace ResoniteBridge
                             }
                             else
                             {
+                                // we don't support async yet, just return the task
+                                if (methodDeclare.Modifiers.HasFlag(Modifiers.Async))
+                                {
+                                    methodDeclare.Modifiers &= ~Modifiers.Async;
+                                }
                                 bool isStatic = methodDeclare.Modifiers.HasFlag(Modifiers.Static);
+                                
                                 methodDeclare.Body = WrapMethod(
                                     isStatic,
                                     methodDeclare,
                                     staticTarget,
                                     instanceTarget);
-
 
                                 foreach (var constraint in methodDeclare.Constraints)
                                 {
@@ -681,14 +691,17 @@ namespace ResoniteBridge
                                     Setter = setter
                                 };
                                 fieldDeclare.ReplaceWith(fieldProperty);
+
                             }
                         }
                     });
                     // we need to add default constructor since we define a different alternative one
-                    // but don't do it for enums or static classes
+                    // but don't do it for enums, static classes, or interfaces
                     if (numConstructors == 0
                         && typeDeclare.ClassType != ClassType.Enum
-                        && !typeDeclare.Modifiers.HasFlag(Modifiers.Static))
+                        && !typeDeclare.Modifiers.HasFlag(Modifiers.Static)
+                        && typeDeclare.ClassType != ClassType.Interface
+                        )
                     {
                         ConstructorDeclaration defaultConstructor = CreateDefaultConstructor(typeDeclare);
                         membersToAdd.Add(defaultConstructor);
@@ -755,7 +768,9 @@ namespace ResoniteBridge
                         {
                             usingName = usingDec.DescendantNodesAndSelf().OfType<SimpleType>().First();
                         }
-                        ReplaceTypeIfUnresolved(usingName, resolveContext, namespaceList);
+
+                        // don't need to recurse so alsoChildren=false, no generics and that messes stuff up
+                        ReplaceTypeIfUnresolved(usingName, resolveContext, namespaceList, alsoChildren: false);
                         // the code above will replace unknown usings with this, but it's redundant we can remove it
                         if (astNode.ToString().Trim() == "using ResoniteBridge.ResoniteBridgeValue;")
                         {
@@ -776,7 +791,7 @@ namespace ResoniteBridge
                     foundTypeDec = true;
                 }
             });
-            usings = "using ResoniteBridge;\n";
+            usings = "using ResoniteBridge;";
 
 
             // we need to do this seperately to avoid modification in place changing order
@@ -812,12 +827,15 @@ namespace ResoniteBridge
             {"ulong", typeof(System.UInt64)},
             {"ushort", typeof(System.UInt16)}
         };
-        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList)
+        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true)
         {
-            // recurse (for generics)
-            foreach (AstType childType in astType.DescendantNodes().OfType<SimpleType>())
+            if (alsoChildren)
             {
-                ReplaceTypeIfUnresolved(childType, resolveContext, namespaceList);
+                // recurse (for generics)
+                foreach (AstType childType in astType.DescendantNodes().OfType<SimpleType>())
+                {
+                    ReplaceTypeIfUnresolved(childType, resolveContext, namespaceList);
+                }
             }
             // we have a few things we try for resolving types
 
@@ -978,7 +996,11 @@ namespace ResoniteBridge
                 }
                 foreach (Type type in assembly.GetTypes())
                 {
-                    namespaceList.Add(type.Namespace);
+                    if (!namespaceList.Contains(type.Namespace))
+                    {
+                        namespaceList.Add(type.Namespace);
+                        Console.WriteLine(type.Namespace);
+                    }
                     typeInfoLookup.types[type.FullName] = type;
                 }
             }

@@ -1,5 +1,4 @@
 using ResoniteBridge;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +15,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.CodeAnalysis;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Microsoft.CodeAnalysis
 {
@@ -191,7 +193,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -684,7 +686,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -963,7 +965,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean TryLock(TimeSpan duration)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryLock", duration), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryLock", duration), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -975,7 +977,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean TryExtend(System.String token, TimeSpan duration)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryExtend", token, duration), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryExtend", token, duration), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -987,7 +989,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean TryRelease(System.String token)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryRelease", token), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryRelease", token), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -1319,7 +1321,7 @@ namespace SkyFrost.Base
 	{
 		public static System.Boolean IsGraphicalClient(this BuildType type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsGraphicalClient", type), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsGraphicalClient", type), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -1331,7 +1333,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsHeadless(this BuildType type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHeadless", type), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHeadless", type), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -1343,7 +1345,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsAppClient(this BuildType type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsAppClient", type), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "AppBuildTypeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsAppClient", type), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -1394,7 +1396,7 @@ namespace SkyFrost.Base
 
 		public override System.String GetIdString(System.Boolean includeVersion, System.String separator = "-")
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -1899,11 +1901,6 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public void ExtractConfigId(out System.String ownerId, out System.String configId)
-		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractConfigId", ownerId, configId);
-		}
-
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -2142,7 +2139,7 @@ namespace SkyFrost.Base
 	{
 		public static System.Boolean IsWindows(this BuildPlatform platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsWindows", platform), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsWindows", platform), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2154,7 +2151,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsLinux(this BuildPlatform platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsLinux", platform), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsLinux", platform), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2166,7 +2163,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsDesktop(this BuildPlatform platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsDesktop", platform), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BuildPlatformExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsDesktop", platform), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2256,7 +2253,7 @@ namespace SkyFrost.Base
 
 		protected override System.String GetIdString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2328,7 +2325,7 @@ namespace SkyFrost.Base
 
 		public virtual System.String GetIdString(System.Boolean includeVersion, System.String separator = "-")
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2388,7 +2385,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(FeatureFlag other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2400,7 +2397,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2412,7 +2409,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2424,7 +2421,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -2703,7 +2700,7 @@ namespace SkyFrost.Base
 
 		public static System.String ExtractMessage(System.String content)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudMessage", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractMessage", content), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudMessage", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractMessage", content), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -3072,19 +3069,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public void GetDefinitionPath(out System.String ownerId, out System.String subpath)
-		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefinitionPath", ownerId, subpath);
-		}
-
-		public static void GetDefinitionPath(System.String path, out System.String ownerId, out System.String subpath)
-		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariable", ResoniteBridge.ResoniteBridgeValueType.Type), "GetDefinitionPath", path, ownerId, subpath);
-		}
-
 		public System.Boolean Equals(CloudVariable other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -3096,7 +3083,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -3227,7 +3214,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4056,7 +4043,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4823,7 +4810,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4905,7 +4892,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4917,7 +4904,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4983,7 +4970,7 @@ namespace SkyFrost.Base
 
 		public static ResoniteBridge.ResoniteBridgeValue GetTypeForAmount(System.Decimal dollars)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CreditsEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is CreditType? __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CreditsEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -4995,7 +4982,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5007,7 +4994,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5086,7 +5073,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5098,7 +5085,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5214,7 +5201,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5226,7 +5213,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5282,7 +5269,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement otherGroup)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", otherGroup), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", otherGroup), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5294,7 +5281,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5335,7 +5322,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5347,7 +5334,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5411,7 +5398,7 @@ namespace SkyFrost.Base
 
 		public static ResoniteBridge.ResoniteBridgeValue GetTypeForAmount(System.Decimal dollars)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "LaunchShoutOutEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is LaunchShoutoutType? __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "LaunchShoutOutEntitlement", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTypeForAmount", dollars), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5423,7 +5410,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5435,7 +5422,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5626,7 +5613,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5638,7 +5625,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5784,7 +5771,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CombineWith(Entitlement other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineWith", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5796,7 +5783,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean SanitizeOrRemove()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5859,7 +5846,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5871,7 +5858,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(EntityId other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5883,7 +5870,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(System.String other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -5895,25 +5882,13 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
 				throw new InvalidCastException("Cannot cast result to string");
-			}
-		}
-
-		public static System.Boolean TryParse(System.String compositeId, out EntityId entityId)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", compositeId, entityId), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
 			}
 		}
 
@@ -5941,7 +5916,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6016,7 +5991,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6158,7 +6133,7 @@ namespace SkyFrost.Base
 	{
 		public static System.Boolean IsPubliclyReadable(this FavoriteEntity entity)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FavoriteEntityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsPubliclyReadable", entity), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FavoriteEntityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsPubliclyReadable", entity), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6308,7 +6283,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsValidAtTime(DateTime time)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidAtTime", time), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidAtTime", time), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6784,7 +6759,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6796,7 +6771,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(RecordVersion other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6808,7 +6783,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -6820,7 +6795,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7288,16 +7263,12 @@ namespace SkyFrost.Base
 		void OverrideGlobalVersion(System.Int32 globalVersion);
 
 		void IncrementLocalVersion(System.String machineId, System.String userId);
-
-		public IRecord()
-		{
-		}
 	}
 	public static class RecordHelper
 	{
 		public static System.String GenerateRecordID()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateRecordID"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateRecordID"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7309,7 +7280,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidRecordID(System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidRecordID", recordId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidRecordID", recordId), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7321,7 +7292,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsSameVersion(this RecordVersion version, RecordVersion otherVersion)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameVersion", version, otherVersion), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameVersion", version, otherVersion), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7333,7 +7304,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean CanOverwrite(this RecordVersion source, RecordVersion target, System.Boolean sourceDeleted = false, System.Boolean targetDeleted = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanOverwrite", source, target, sourceDeleted, targetDeleted), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanOverwrite", source, target, sourceDeleted, targetDeleted), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7345,7 +7316,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsSameVersion(this IRecord record, IRecord other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameVersion", record, other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameVersion", record, other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7357,7 +7328,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsSameRecord(this IRecord record, IRecord other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameRecord", record, other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSameRecord", record, other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7374,7 +7345,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean CanOverwrite(this IRecord record, IRecord oldRecord)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanOverwrite", record, oldRecord), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanOverwrite", record, oldRecord), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7391,7 +7362,7 @@ namespace SkyFrost.Base
 
 		public static ResoniteBridge.ResoniteBridgeValue GetUrl(this IRecord record, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7403,7 +7374,7 @@ namespace SkyFrost.Base
 
 		public static ResoniteBridge.ResoniteBridgeValue GetWebUrl(this IRecord record, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetWebUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetWebUrl", record, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -7548,7 +7519,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8017,7 +7988,7 @@ namespace SkyFrost.Base
 
 		public static System.String GenerateId()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Message", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateId"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Message", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateId"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8029,7 +8000,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidId(System.String id)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Message", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", id), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Message", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", id), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8058,7 +8029,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8350,7 +8321,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue TryGetEndpoint()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetEndpoint"), typeof(ResoniteBridge.ResoniteBridgeValue)) is IPEndPoint __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetEndpoint"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8362,7 +8333,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean ShouldUse(System.Int32 protocolVersion = 2, ResoniteBridge.ResoniteBridgeValue preference, System.String universeId = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldUse", protocolVersion, preference, universeId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldUse", protocolVersion, preference, universeId), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8374,7 +8345,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8967,7 +8938,7 @@ namespace SkyFrost.Base
 
 		public System.Int32 GetUsersBySessionAccessLevel(SessionAccessLevel accessLevel)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUsersBySessionAccessLevel", accessLevel), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUsersBySessionAccessLevel", accessLevel), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -8979,7 +8950,7 @@ namespace SkyFrost.Base
 
 		public System.Int32 GetUsersByClientType(UserSessionType type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUsersByClientType", type), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUsersByClientType", type), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9531,7 +9502,7 @@ namespace SkyFrost.Base
 
 		public System.String FavoriteVariable(FavoriteEntity entity)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FavoriteVariable", entity), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FavoriteVariable", entity), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9543,7 +9514,7 @@ namespace SkyFrost.Base
 
 		public System.String VariablePath(System.String subpath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VariablePath", subpath), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VariablePath", subpath), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9555,7 +9526,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsPlatformOwnerId(System.String ownerId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPlatformOwnerId", ownerId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPlatformOwnerId", ownerId), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9567,7 +9538,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String ownerId, System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9579,7 +9550,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(System.String ownerId, System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", ownerId, recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9591,7 +9562,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(RecordId recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9603,7 +9574,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(IRecord record)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9615,7 +9586,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(RecordId recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9627,7 +9598,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordWebUri(IRecord record)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordWebUri", record), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9639,7 +9610,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetInventoryItemUri(System.String itemPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInventoryItemUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInventoryItemUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9651,7 +9622,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetSpawnObjectUri(System.String itemPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9663,7 +9634,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordPath(System.String recordPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordPath", recordPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordPath", recordPath), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9675,7 +9646,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordUri(System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordUri", recordId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9687,7 +9658,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetSessionUri(System.String sessionId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -9699,37 +9670,13 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetSessionWebUri(System.String sessionId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionWebUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionWebUri", sessionId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
 				throw new InvalidCastException("Cannot cast result to Uri");
-			}
-		}
-
-		public System.Boolean ExtractRecordID(ResoniteBridge.ResoniteBridgeValue recordUri, out System.String ownerId, out System.String recordId)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordID", recordUri, ownerId, recordId), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public System.Boolean ExtractRecordPath(ResoniteBridge.ResoniteBridgeValue recordUri, out System.String ownerId, out System.String recordPath)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordPath", recordUri, ownerId, recordPath), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
 			}
 		}
 
@@ -10053,17 +10000,9 @@ namespace SkyFrost.Base
 
 		ResoniteBridge.ResoniteBridgeValue GetSessionWebUri(System.String sessionId);
 
-		System.Boolean ExtractRecordID(ResoniteBridge.ResoniteBridgeValue recordUri, out System.String ownerId, out System.String recordId);
-
-		System.Boolean ExtractRecordPath(ResoniteBridge.ResoniteBridgeValue recordUri, out System.String ownerId, out System.String recordPath);
-
 		System.String FavoriteVariable(FavoriteEntity entity);
 
 		System.String VariablePath(System.String subpath);
-
-		public IPlatformProfile()
-		{
-		}
 	}
 	public enum TransferType
 	{
@@ -10846,7 +10785,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidId(System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Record", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", recordId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "Record", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", recordId), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -10902,7 +10841,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11235,7 +11174,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11307,7 +11246,7 @@ namespace SkyFrost.Base
 
 		public System.String ToURL(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToURL", platform), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToURL", platform), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11319,7 +11258,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11331,7 +11270,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11343,7 +11282,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(RecordId other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11355,7 +11294,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(System.String other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11367,7 +11306,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11379,19 +11318,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidId(System.String ownerId, System.String id)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", ownerId, id), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public static System.Boolean TryParse(System.String compositeId, out RecordId recordId)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", compositeId, recordId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", ownerId, id), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11962,7 +11889,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(SearchParameters other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11974,7 +11901,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(SearchParameters other, System.Boolean excludeOffsetAndCount)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, excludeOffsetAndCount), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, excludeOffsetAndCount), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -11986,7 +11913,7 @@ namespace SkyFrost.Base
 
 		private static System.Boolean ListsEqual(List<string> a, List<string> b)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "ListsEqual", a, b), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "ListsEqual", a, b), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12008,7 +11935,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12020,7 +11947,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12218,7 +12145,7 @@ namespace SkyFrost.Base
 
 		public static System.String GenerateId(System.String baseId = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateId", baseId), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateId", baseId), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12230,7 +12157,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidId(System.String id)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", id), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", id), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12242,7 +12169,7 @@ namespace SkyFrost.Base
 
 		public static System.String GenerateRecordAccessBaseId(System.String accessingOwnerId, System.String recordId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateRecordAccessBaseId", accessingOwnerId, recordId), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateRecordAccessBaseId", accessingOwnerId, recordId), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12783,7 +12710,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsActiveAtTime(DateTime timePoint)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsActiveAtTime", timePoint), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsActiveAtTime", timePoint), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12795,7 +12722,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsExpiredAtTime(DateTime timePoint)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsExpiredAtTime", timePoint), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsExpiredAtTime", timePoint), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -12807,7 +12734,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Overrides(QuotaSource otherSource)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Overrides", otherSource), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Overrides", otherSource), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13327,7 +13254,7 @@ namespace SkyFrost.Base
 
 		public static System.String GenerateID()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "ThumbnailInfo", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateID"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "ThumbnailInfo", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateID"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13407,7 +13334,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsPrimaryGroup(System.String groupId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPrimaryGroup", groupId), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPrimaryGroup", groupId), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13419,7 +13346,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetBaseUri(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13431,7 +13358,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetBaseInventoryUri(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseInventoryUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBaseInventoryUri", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13443,7 +13370,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetSpawnObjectUri(System.String itemPath, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSpawnObjectUri", itemPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13455,7 +13382,7 @@ namespace SkyFrost.Base
 
 		public ResoniteBridge.ResoniteBridgeValue GetRecordAtPath(System.String recordPath, IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAtPath", recordPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAtPath", recordPath, platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13861,7 +13788,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean RequiresTargetIds(BroadcastGroup group)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresTargetIds", group), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresTargetIds", group), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13873,7 +13800,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13885,7 +13812,7 @@ namespace SkyFrost.Base
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13897,7 +13824,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(BroadcastTarget other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -13909,7 +13836,7 @@ namespace SkyFrost.Base
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -14954,7 +14881,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsValid(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValid", platform), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValid", platform), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -15506,7 +15433,7 @@ namespace SkyFrost.Base
 
 		public System.Int32 CompareTo(SupporterMetadata other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16109,7 +16036,7 @@ namespace SkyFrost.Base
 
 		public static System.String BasicValidateUsername(System.String username)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "User", ResoniteBridge.ResoniteBridgeValueType.Type), "BasicValidateUsername", username), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "User", ResoniteBridge.ResoniteBridgeValueType.Type), "BasicValidateUsername", username), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16121,7 +16048,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsDateOfBirthValid(ResoniteBridge.ResoniteBridgeValue date)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "User", ResoniteBridge.ResoniteBridgeValueType.Type), "IsDateOfBirthValid", date), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "User", ResoniteBridge.ResoniteBridgeValueType.Type), "IsDateOfBirthValid", date), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16133,7 +16060,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean HasTag(System.String tag)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasTag", tag), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasTag", tag), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16145,7 +16072,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean HasEntitlement<T>(Predicate<T> filter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasEntitlement", filter), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasEntitlement", filter), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16157,7 +16084,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsSupporter<T>(Predicate<T> filter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsSupporter", filter), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsSupporter", filter), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -16167,21 +16094,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetAccountName(System.String platformName, out ResoniteBridge.ResoniteBridgeValue color)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAccountName", platformName, color), typeof(ResoniteBridge.ResoniteBridgeValue)) is LocaleString __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to LocaleString");
-			}
-		}
-
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17042,19 +16957,7 @@ namespace SkyFrost.Base
 
 		public static System.String CustomBadge(System.String dbSignature, System.Boolean pointFiltering)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "CustomBadge", dbSignature, pointFiltering), typeof(System.String)) is string __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to string");
-			}
-		}
-
-		public static System.String GetCustomBadge(System.String badge, out System.Boolean pointFiltering)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GetCustomBadge", badge, pointFiltering), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "CustomBadge", dbSignature, pointFiltering), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17066,7 +16969,7 @@ namespace SkyFrost.Base
 
 		public static System.String GetCustom3DBadge(System.String badge)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GetCustom3DBadge", badge), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GetCustom3DBadge", badge), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17078,7 +16981,7 @@ namespace SkyFrost.Base
 
 		public static System.String ComposeMMC21(System.String baseCategory, System.String subcategory, System.Int32 place)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ComposeMMC21", baseCategory, subcategory, place), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ComposeMMC21", baseCategory, subcategory, place), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17327,7 +17230,7 @@ namespace SkyFrost.Base
 
 		public static ResoniteBridge.ResoniteBridgeValue GetPermissionType(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetPermissionType", name), typeof(ResoniteBridge.ResoniteBridgeValue)) is VariablePermissionType? __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetPermissionType", name), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17339,7 +17242,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidPermissionList(VariablePermissionType permissionType, OwnerType owner, System.String permissions)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPermissionList", permissionType, owner, permissions), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPermissionList", permissionType, owner, permissions), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17351,7 +17254,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidPermission(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPermission", permission), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPermission", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17363,7 +17266,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidPath(System.String path)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPath", path), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidPath", path), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17375,31 +17278,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidSubpath(System.String subpath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidSubpath", subpath), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		private static System.Boolean PreprocessPath(System.String path, out System.Int32 separatorIndex)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PreprocessPath", path, separatorIndex), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public static System.Boolean SplitPath(System.String path, out System.String ownerId, out System.String subpath)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SplitPath", path, ownerId, subpath), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidSubpath", subpath), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17411,7 +17290,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean RequiresDefinitionOwner(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresDefinitionOwner", permission), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresDefinitionOwner", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17423,7 +17302,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean RequiresVariableOwner(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresVariableOwner", permission), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresVariableOwner", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17435,7 +17314,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean TargetContactsOnly(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TargetContactsOnly", permission), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TargetContactsOnly", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17447,7 +17326,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean TargetDefinitionOwnerOnly(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TargetDefinitionOwnerOnly", permission), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TargetDefinitionOwnerOnly", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17459,43 +17338,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean AllowsPublicAccess(System.String permission)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AllowsPublicAccess", permission), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public static System.Boolean ParseValue<T>(System.String encodedValue, System.String type, out T value)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseValue", encodedValue, type, value), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public static System.Boolean TryConvertTo<T>(System.Object value, out T converted)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryConvertTo", value, converted), typeof(System.Boolean)) is bool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public static System.Boolean TryConvertToColorX(System.Object value, out ResoniteBridge.ResoniteBridgeValue converted)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryConvertToColorX", value, converted), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AllowsPublicAccess", permission), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17507,7 +17350,7 @@ namespace SkyFrost.Base
 
 		public static System.String EncodeValue<T>(T value, System.String type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "EncodeValue", value, type), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "EncodeValue", value, type), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17531,7 +17374,7 @@ namespace SkyFrost.Base
 
 		public static System.Boolean IsValidValue(System.String type, System.String value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidValue", type, value), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidValue", type, value), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17609,7 +17452,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Equals(VariableReadRequest other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17832,7 +17675,7 @@ namespace SkyFrost.Base
 
 		public override System.Object ReadJson(JsonReader reader, Type objectType, System.Object existingValue, Newtonsoft.Json.JsonSerializer serializer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadJson", reader, objectType, existingValue, serializer), typeof(System.Object)) is object __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadJson", reader, objectType, existingValue, serializer), typeof(System.Object)) is System.Object __retCasted)
 			{
 				return __retCasted;
 			}
@@ -17881,25 +17724,13 @@ namespace SkyFrost.Base
 
 		public override System.Boolean CanConvert(Type typeToConvert)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
 				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to T");
 			}
 		}
 
@@ -17979,34 +17810,18 @@ namespace SkyFrost.Base
 	public interface ISanitizableCollection : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		IEnumerable EntitiesToSanitize();
-
-		public ISanitizableCollection()
-		{
-		}
 	}
 	public class JsonTransitionEnumConverter<T> : System.Text.Json.Serialization.JsonConverter<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
 		public override System.Boolean CanConvert(Type typeToConvert)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
 				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to T");
 			}
 		}
 
@@ -18064,25 +17879,13 @@ namespace SkyFrost.Base
 	{
 		public override System.Boolean CanConvert(Type typeToConvert)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
 				throw new InvalidCastException("Cannot cast result to bool");
-			}
-		}
-
-		public override ResoniteBridge.ResoniteBridgeValue Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(ResoniteBridge.ResoniteBridgeValue)) is Uri __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to Uri");
 			}
 		}
 
@@ -18194,7 +17997,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Contains(System.Int32 port)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", port), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", port), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18206,7 +18009,7 @@ namespace SkyFrost.Base
 
 		public System.Int32 UseNext()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UseNext"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UseNext"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18218,7 +18021,7 @@ namespace SkyFrost.Base
 
 		public System.Int32 Next()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Next"), typeof(System.Int32)) is int __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Next"), typeof(System.Int32)) is System.Int32 __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18230,7 +18033,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean IsInUse(System.Int32 port)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsInUse", port), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsInUse", port), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18242,7 +18045,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Use(System.Int32 port)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Use", port), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Use", port), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18254,7 +18057,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Free(System.Int32 port)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Free", port), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Free", port), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18266,7 +18069,7 @@ namespace SkyFrost.Base
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is string __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18290,7 +18093,7 @@ namespace SkyFrost.Base
 
 		public System.Boolean Try(Func<int, bool> startFunction)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Try", startFunction), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Try", startFunction), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
@@ -18360,7 +18163,7 @@ namespace SkyFrost.Base
 	{
 		public static System.Boolean IsValidEmail(System.String email)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "ValidationHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidEmail", email), typeof(System.Boolean)) is bool __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "ValidationHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidEmail", email), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
 				return __retCasted;
 			}
