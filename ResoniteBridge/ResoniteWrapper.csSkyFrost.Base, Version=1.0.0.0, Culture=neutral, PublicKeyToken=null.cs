@@ -21084,7 +21084,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		static CloudResult();
+		static CloudResult()
+		{
+		}
 
 		public CloudResult(T result, CloudResult sourceEntity)
 		{

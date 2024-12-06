@@ -947,7 +947,9 @@ namespace Elements.Assets
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "Init");
 		}
 
-		static AssetHelper();
+		static AssetHelper()
+		{
+		}
 
 		public static System.Boolean IsVideoStreamingService(System.Uri url)
 		{
@@ -10019,7 +10021,7 @@ namespace Elements.Assets
 			}
 		}
 
-		internal ref UV_Array GetRawUV_Array(System.Int32 uv)
+		internal UV_Array GetRawUV_Array(System.Int32 uv)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUV_Array", uv), typeof(UV_Array)) is UV_Array __retCasted)
 			{
@@ -10737,7 +10739,7 @@ namespace Elements.Assets
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveElements", elements, remove);
 		}
 
-		public ref readonly float3 GetPosition(System.Int32 index)
+		public float3 GetPosition(System.Int32 index)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPosition", index), typeof(float3)) is float3 __retCasted)
 			{
@@ -10749,7 +10751,7 @@ namespace Elements.Assets
 			}
 		}
 
-		public ref readonly float3 GetNormal(System.Int32 index)
+		public float3 GetNormal(System.Int32 index)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormal", index), typeof(float3)) is float3 __retCasted)
 			{
@@ -24558,7 +24560,9 @@ namespace Elements.Assets
 			}
 		}
 
-		static BlenderInterface();
+		static BlenderInterface()
+		{
+		}
 
 		public static void ExportToFBX(System.String input, System.String output)
 		{
@@ -24664,7 +24668,9 @@ namespace Elements.Assets
 			}
 		}
 
-		static FreeCADInterface();
+		static FreeCADInterface()
+		{
+		}
 
 		public static void Tesselate(System.String input, System.String output, System.Single tesselation)
 		{
@@ -30645,7 +30651,7 @@ namespace Elements.Assets
 			}
 		}
 
-		public ref RenderGlyph GetRenderGlyph(System.Int32 index)
+		public RenderGlyph GetRenderGlyph(System.Int32 index)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph)) is RenderGlyph __retCasted)
 			{
@@ -32446,7 +32452,7 @@ namespace Elements.Assets
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AppendGlyph", index, glyph);
 		}
 
-		public ref RenderGlyph GetRenderGlyph(System.Int32 index)
+		public RenderGlyph GetRenderGlyph(System.Int32 index)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph)) is RenderGlyph __retCasted)
 			{
@@ -40517,7 +40523,9 @@ namespace Elements.Assets
 
 		public static event Action<string> OnErrorMessage;
 
-		static TextureDecoder();
+		static TextureDecoder()
+		{
+		}
 
 		public static Bitmap2D GenerateErrorTexture(System.Int32 width, System.Int32 height, TextureFormat format)
 		{

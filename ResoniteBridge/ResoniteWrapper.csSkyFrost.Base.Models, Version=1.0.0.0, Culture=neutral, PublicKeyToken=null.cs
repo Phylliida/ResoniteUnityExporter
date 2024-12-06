@@ -13008,7 +13008,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		static PlatformProfile();
+		static PlatformProfile()
+		{
+		}
 
 		public static void LoadLegacyProfiles(System.String path)
 		{

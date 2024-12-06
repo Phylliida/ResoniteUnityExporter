@@ -2809,7 +2809,9 @@ namespace Elements.Quantity
 			}
 		}
 
-		static UnitSI();
+		static UnitSI()
+		{
+		}
 
 		public UnitSI(System.Int32 nFactor, System.String shortPrefix, System.String longPrefix)
 		{
@@ -3357,7 +3359,9 @@ namespace Elements.Quantity
 			}
 		}
 
-		static QuantityHelper();
+		static QuantityHelper()
+		{
+		}
 	}
 	public class UnitGroup : IEnumerable<IUnit>, IEnumerable, ResoniteBridge.ResoniteBridgeValueHolder
 	{

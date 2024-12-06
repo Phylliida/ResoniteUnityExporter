@@ -511,6 +511,15 @@ namespace ResoniteBridge
             });
         }
 
+        public static bool IsOwnedByTypeDeclaration(TypeDeclaration typeDeclaration, AstNode node)
+        {
+            foreach (TypeDeclaration typeDeclareParent in node.AncestorsAndSelf.OfType<TypeDeclaration>())
+            {
+                return typeDeclaration == typeDeclareParent;
+            }
+            return false;
+        }
+
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList, out string usings)
         {
             string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
@@ -606,6 +615,11 @@ namespace ResoniteBridge
 
                     TraverseSyntaxNodes(astNode, (childNode) =>
                     {
+                        // skip nodes of subchildren, we'll process them later
+                        if (!IsOwnedByTypeDeclaration(typeDeclare, childNode))
+                        {
+                            return;
+                        }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
                             // only wrap non-static constructors
@@ -613,7 +627,10 @@ namespace ResoniteBridge
                             // for static, just make them empty, they'll be called anyway on the other end
                             constructorDeclare.Body =
                                 constructorDeclare.Modifiers.HasFlag(Modifiers.Static)
-                                ? null
+                                ? new BlockStatement
+                                {
+
+                                }
                                 : WrapConstructor(constructorDeclare, staticTarget);
                             // No initializer (stuff like :base(...)) since we are just wrapping
                             constructorDeclare.Initializer = null;
@@ -933,7 +950,13 @@ namespace ResoniteBridge
                 {
                     HashSet<string> constructors = new HashSet<string>();
                     TraverseSyntaxNodes(astNode, (childNode) =>
-                    {
+                    { 
+                        // skip nodes of subchildren, we'll process them later
+                        if (!IsOwnedByTypeDeclaration(typeDeclare, childNode))
+                        {
+                            return;
+                        }
+
                         if (childNode is ConstructorDeclaration constructorDeclaration)
                         {
                             // key based on type
@@ -960,6 +983,12 @@ namespace ResoniteBridge
                     HashSet<string> methods = new HashSet<string>();
                     TraverseSyntaxNodes(astNode, (childNode) =>
                     {
+                        // skip nodes of subchildren, we'll process them later
+                        if (!IsOwnedByTypeDeclaration(typeDeclare, childNode))
+                        {
+                            return;
+                        }
+
                         if (childNode is MethodDeclaration methodDeclaration)
                         {
                             // key based on type and method name
