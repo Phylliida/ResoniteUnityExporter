@@ -25201,7 +25201,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override T Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
 			{
@@ -25326,7 +25326,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override T Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(T)) is T __retCasted)
 			{
@@ -25406,7 +25406,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public override System.Uri Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override System.Uri Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(System.Uri)) is System.Uri __retCasted)
 			{

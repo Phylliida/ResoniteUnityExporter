@@ -658,6 +658,75 @@ namespace ResoniteBridge
                             constructorDeclare.Initializer = null;
                             numConstructors += 1;
                         }
+                        if (childNode is IndexerDeclaration indexerDeclare)
+                        {
+                            AstType returnType = indexerDeclare.ReturnType;
+                            returnType = CleanType(returnType, removeNullable: false);
+                            indexerDeclare.ReturnType.ReplaceWith(returnType);
+
+                            string indexerName = indexerDeclare.Name;
+                            bool isStatic = indexerDeclare.Modifiers.HasFlag(Modifiers.Static) ||
+                                typeDeclare.Modifiers.HasFlag(Modifiers.Static);
+                            
+                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Const))
+                            {
+                                // we need to make it not const bc properties can't be const
+                                // (well, our wrapper ones can't be)
+                                indexerDeclare.Modifiers &= ~Modifiers.Const;
+                            }
+                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Readonly))
+                            {
+                                // Don't allow readonly ones bc that confuses compiler
+                                indexerDeclare.Modifiers &= ~Modifiers.Readonly;
+                            }
+                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Volatile))
+                            {
+                                // Don't allow volatile ones bc no need since we are just a wrapper
+                                indexerDeclare.Modifiers &= ~Modifiers.Volatile;
+                            }
+
+                            // inherit static from parent
+                            if (!indexerDeclare.Modifiers.HasFlag(Modifiers.Static) &&
+                                typeDeclare.Modifiers.HasFlag(Modifiers.Static))
+                            {
+                                indexerDeclare.Modifiers |= Modifiers.Static;
+                            }
+
+                            if (!indexerDeclare.Getter.IsNull)
+                            {
+                                indexerDeclare.Getter = WrapGetter(isStatic,
+                                    returnType,
+                                    indexerName,
+                                    staticTarget,
+                                    instanceTarget,
+                                    "GetProperty"
+                                );
+                            }
+
+                            if (!indexerDeclare.Setter.IsNull)
+                            {
+                                indexerDeclare.Setter = WrapSetter(isStatic,
+                                    indexerName,
+                                    staticTarget,
+                                    instanceTarget,
+                                    "SetProperty"
+                                );
+                            }
+
+                            // don't fill out bodies for abstract fields
+                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                            {
+                                indexerDeclare.Getter = indexerDeclare.Getter.IsNull
+                                ? null
+                                : new Accessor
+                                {
+
+                                };
+                                // don't require a setter 
+                                indexerDeclare.Setter = null;
+                            }
+                        }
+
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
                         {
                             // leave null bodies null (usually for abstract)
@@ -784,7 +853,8 @@ namespace ResoniteBridge
                             if (fieldName != "__backing")
                             {
                                 AstType returnType = fieldDeclare.ReturnType;
-                                returnType.ReplaceWith(CleanType(returnType, removeNullable: false));
+                                returnType = CleanType(returnType, removeNullable: false);
+                                fieldDeclare.ReturnType.ReplaceWith(returnType);
 
                                 bool isStatic = fieldDeclare.Modifiers.HasFlag(Modifiers.Static) ||
                                     typeDeclare.Modifiers.HasFlag(Modifiers.Static);
@@ -1067,6 +1137,16 @@ namespace ResoniteBridge
             {"ushort", typeof(System.UInt16)},
             {"Uri", typeof(System.Uri) },
         };
+
+        public static bool IsForbiddenType(AstType astType)
+        {
+            // spans don't convert well
+            return astType.ToString().Contains("Span<")
+                // tuples (a, b) don't work 
+                || astType.ToString().Contains("(")
+                || astType.ToString().Contains("Utf8JsonReader");
+        }
+
         public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
         {
             if (alsoChildren)
@@ -1103,7 +1183,7 @@ namespace ResoniteBridge
 
             // we need to wrap spans bc they don't convert nicely
             // also (tuple, things) don't work, wrap those
-            if (!astType.ToString().Contains("Span<") && !astType.ToString().Contains("("))
+            if (!IsForbiddenType(astType))
             {
                 // namespaces require seperate resolution
                 if (namespaceList.Contains(astType.ToString()) ||
@@ -1171,17 +1251,17 @@ namespace ResoniteBridge
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            //"FrooxEngine.Store",
+            "FrooxEngine.Store",
             "SkyFrost.Base.Models",
             "SkyFrost.Base",
             "Elements.Assets",
             "Elements.Core",
             "Elements.Quantity",
-            //"ProtoFlux.Nodes.FrooxEngine",
-            //"ProtoFlux.Nodes.Core",
-            //"ProtoFlux.Core",
+            "ProtoFlux.Nodes.FrooxEngine",
+            "ProtoFlux.Nodes.Core",
+            "ProtoFlux.Core",
             //"ProtoFluxBindings",
-            //"FrooxEngine",
+            "FrooxEngine",
         };
 
         public static HashSet<string> bonusList = new HashSet<string>()

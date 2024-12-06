@@ -243,7 +243,7 @@ namespace Elements.Assets
 			}
 		}
 
-		public override AnimationTrack Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override AnimationTrack Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(AnimationTrack)) is AnimationTrack __retCasted)
 			{
@@ -4267,7 +4267,20 @@ namespace Elements.Assets
 			}
 		}
 
-		float this[System.Int32 ch] { get; }
+		float this[System.Int32 ch]
+		{
+			get
+			{
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(System.Single)) is System.Single __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
+			}
+		}
 
 		System.Single AbsoluteAmplitude
 		{
@@ -5328,11 +5341,14 @@ namespace Elements.Assets
 		{
 			get
 			{
-				if (((System.UInt32)channel & (true ? 1u : 0u)) != 0)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(System.Single)) is System.Single __retCasted)
 				{
-					return right;
+					return __retCasted;
 				}
-				return left;
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float");
+				}
 			}
 		}
 
@@ -12035,7 +12051,20 @@ namespace Elements.Assets
 	}
 	public interface ISubmesh<P> : ResoniteBridge.ResoniteBridgeValueHolder where P : IMeshXPrimitive
 	{
-		P this[System.Int32 index] { get; }
+		P this[System.Int32 index]
+		{
+			get
+			{
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(P)) is P __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to P");
+				}
+			}
+		}
 	}
 	public abstract class Submesh : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -13895,16 +13924,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				Point point = _points[index];
-				if (point.UpdateIndex())
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(Point)) is Point __retCasted)
 				{
-					_points[index] = point;
+					return __retCasted;
 				}
-				return point;
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Point");
+				}
 			}
 			set
 			{
-				_points[index] = value;
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -19120,11 +19151,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return curvePoints[pointIndex];
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(float3)) is float3 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to float3");
+				}
 			}
 			set
 			{
-				curvePoints[pointIndex] = value;
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -23113,11 +23151,14 @@ namespace Elements.Assets
 		{
 			get
 			{
-				if (index < 0 || index >= count)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(Triangle)) is Triangle __retCasted)
 				{
-					throw new ArgumentOutOfRangeException("index");
+					return __retCasted;
 				}
-				return collection[offset + index];
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Triangle");
+				}
 			}
 		}
 
@@ -23223,16 +23264,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				Triangle triangle = _triangles[index];
-				if (triangle.UpdateIndex())
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(Triangle)) is Triangle __retCasted)
 				{
-					_triangles[index] = triangle;
+					return __retCasted;
 				}
-				return triangle;
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Triangle");
+				}
 			}
 			set
 			{
-				_triangles[index] = value;
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -24772,16 +24815,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				Vertex vertex = _vertices[index];
-				if (vertex.UpdateIndex())
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(Vertex)) is Vertex __retCasted)
 				{
-					_vertices[index] = vertex;
+					return __retCasted;
 				}
-				return vertex;
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Vertex");
+				}
 			}
 			set
 			{
-				_vertices[index] = value;
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -31316,11 +31361,14 @@ namespace Elements.Assets
 		{
 			get
 			{
-				if (index < 0 || index >= Length)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(System.Char)) is System.Char __retCasted)
 				{
-					throw new ArgumentOutOfRangeException("index");
+					return __retCasted;
 				}
-				return base.Root.String[base.StartIndex + index];
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to char");
+				}
 			}
 		}
 
@@ -34393,11 +34441,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return GetPixel(x, y);
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(color)) is color __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to color");
+				}
 			}
 			set
 			{
-				SetPixel(x, y, in value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -34407,11 +34462,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return GetPixel(point.x, point.y);
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(color)) is color __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to color");
+				}
 			}
 			set
 			{
-				SetPixel(point.x, point.y, in value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -35652,11 +35714,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return GetPixel(pos.x, pos.y, pos.z);
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(color)) is color __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to color");
+				}
 			}
 			set
 			{
-				SetPixel(pos.x, pos.y, pos.z, in value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -35664,11 +35733,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return GetPixel(x, y, z);
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(color)) is color __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to color");
+				}
 			}
 			set
 			{
-				SetPixel(x, y, z, in value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
@@ -36196,11 +36272,18 @@ namespace Elements.Assets
 		{
 			get
 			{
-				return GetPixel(x, y, face);
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Item"), typeof(color)) is color __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to color");
+				}
 			}
 			set
 			{
-				SetPixel(x, y, face, value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Item", value);
 			}
 		}
 
