@@ -151,10 +151,6 @@ namespace ResoniteBridge
             {
                 astType = ((ComposedType)astType).BaseType;
             }
-            if (astType.IsNull)
-            {
-                int i = 0; i += 1;
-            }
             return astType;
         }
 
@@ -290,6 +286,7 @@ namespace ResoniteBridge
                 //     return __retCasted;
                 // }
                 // throw new InvalidCastException("Cannot cast result to ReturnType");
+                /*
                 return new BlockStatement {
                     new IfElseStatement(
                         CreateIsClause(castValueCall,
@@ -308,10 +305,10 @@ namespace ResoniteBridge
                             )
                         }
                     )
-                };
+                };*/
 
-                /*
-                old version
+                
+                //old version
                 var castExpression = new CastExpression(
                     methodDeclaration.ReturnType.Clone(),
                     castValueCall
@@ -320,7 +317,7 @@ namespace ResoniteBridge
                 return new BlockStatement {
                     new ReturnStatement(castExpression)
                 };
-                */
+                
             }
             else
             {
@@ -513,6 +510,26 @@ namespace ResoniteBridge
             return false;
         }
 
+        // this probably double counts but that's ok
+        public static List<ITypeDefinition> GetAllBaseTypeDefinitions(TypeDeclaration typeDeclaration)
+        {
+            List<ITypeDefinition> allBaseTypeDefinitions = new List<ITypeDefinition>();
+
+            foreach (var baseType in typeDeclaration.BaseTypes)
+            {
+                ResolveResult resolvedType = baseType.GetResolveResult();
+                if (!resolvedType.IsError)
+                {
+                    allBaseTypeDefinitions.Add(resolvedType.Type.GetDefinition());
+                    foreach (var baseTypeDef in resolvedType.Type.GetAllBaseTypeDefinitions())
+                    {
+                        allBaseTypeDefinitions.Add(baseTypeDef);
+                    }
+                }
+            }
+            return allBaseTypeDefinitions;
+        }
+
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList, out string usings)
         {
             string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
@@ -529,6 +546,16 @@ namespace ResoniteBridge
 
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
+                // these can be in namespaces, outside of types
+                if (astNode is DelegateDeclaration delegateDeclare)
+                {
+                    // replace unmanaged with stuct in delegates so the replacements below also work
+                    foreach (var constraint in delegateDeclare.Constraints)
+                    {
+                        ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
+                    }
+                }
+                // process and wrap type declarations
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
                 {
                     string typeNamespace = GetTypeDeclarationNamespace(typeDeclare);
@@ -544,6 +571,12 @@ namespace ResoniteBridge
                     {
                         nodesToRemove.Add(typeDeclare);
                         return;
+                    }
+
+                    // no ref structs, they confuse the wrappers
+                    if (typeDeclare.Modifiers.HasFlag(Modifiers.Ref))
+                    {
+                        typeDeclare.Modifiers &= ~Modifiers.Ref;
                     }
 
                     int numConstructors = 0;
@@ -601,6 +634,15 @@ namespace ResoniteBridge
                         }
                     );
 
+                    bool lostForbiddenBaseClass = false;
+                    // remove "forbidden" base classes, these are things that cause issues due to their requirements
+                    var typesToRemove = typeDeclare.BaseTypes.Where(t => IsForbiddenBaseClass(t.ToString()));
+                    foreach (var typeToRemove in typesToRemove)
+                    {
+                        typeToRemove.Remove();
+                        lostForbiddenBaseClass = true;
+                    }
+
                     var instanceTarget = new IdentifierExpression(
                         "__Backing"
                     );
@@ -614,6 +656,7 @@ namespace ResoniteBridge
                         {
                             return;
                         }
+                        
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
                             if (constructorDeclare.Parameters.Count == 0)
@@ -723,6 +766,14 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
+                            // certain things we need to remove override
+                            // if the thing they override no longer exists
+                            if (lostForbiddenBaseClass &&
+                                methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
+                                ForbiddenBaseClassOverrideMethodNames.Contains(methodDeclare.NameToken.ToString()))
+                            {
+                                methodDeclare.Modifiers &= ~Modifiers.Override;
+                            }
                             // no getters or setters, stap
                             if (methodDeclare.NameToken.ToString().StartsWith("get_") ||
                             methodDeclare.NameToken.ToString().StartsWith("set_") ||
@@ -919,6 +970,8 @@ namespace ResoniteBridge
 
             // remove using statements 
 
+            List<MethodDeclaration> modifiedMethods = new List<MethodDeclaration>();
+
             // replace all unresolved types with ResoniteBridgeValue
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
@@ -938,8 +991,12 @@ namespace ResoniteBridge
                         {
                             paramDeclare.DefaultExpression = new DefaultValueExpression(paramDeclare.Type.Clone());
                         }
+                        MethodDeclaration parentMethod = paramDeclare.Ancestors.OfType<MethodDeclaration>().FirstOrDefault();
+                        if (parentMethod != null && parentMethod.Body != null && parentMethod.Modifiers.HasFlag(Modifiers.Override))
+                        {
+                            modifiedMethods.Add(parentMethod);
+                        }
                     }
-                   
                 }
                 else if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.PropertyDeclaration propertyDeclare)
                 {
@@ -965,6 +1022,19 @@ namespace ResoniteBridge
                     ReplaceTypeIfUnresolved(declarationExpression.Type, resolveContext, namespaceList, removeNullable: true);
                 }
             });
+
+            foreach (MethodDeclaration modifiedMethod in modifiedMethods)
+            {
+                if (modifiedMethod.Modifiers.HasFlag(Modifiers.Override))
+                {
+                    TypeDeclaration parentType = modifiedMethod.Ancestors.OfType<TypeDeclaration>().First();
+                    string parentTypeName = GetTypeDeclarationName(parentType);
+                    string methodName = GetMethodName(modifiedMethod);
+
+                    List<ITypeDefinition> baseTypeDefs = GetAllBaseTypeDefinitions(parentType);
+                    // todo: check to see if base type was modified or not (how? might be in different file, need to recheck if types resolve I guess)
+                }
+            }
 
 
             StringBuilder usingStatements = new StringBuilder();
@@ -1123,6 +1193,34 @@ namespace ResoniteBridge
                 || astType.ToString().Contains("Utf8JsonReader");
         }
 
+        // these cause some problems, ignore them
+        static HashSet<string> ForbiddenBaseClasses = new HashSet<string>()
+        {
+            // these have issues with ref struct UtfJsonReader
+            "JsonConverter",
+            "System.Text.Json.Serialization.JsonConverter",
+
+            // these have issues with not the right constructor
+            "BinaryReader"
+        };
+
+        static HashSet<string> ForbiddenBaseClassOverrideMethodNames = new HashSet<string>()
+        {
+            "CanConvert",
+            "Read",
+            "Write"
+        };
+
+        public static bool IsForbiddenBaseClass(string baseClass)
+        {
+            string noGenerics = baseClass;
+            if (noGenerics.Contains("<"))
+            {
+                noGenerics = noGenerics.Substring(0, noGenerics.IndexOf("<"));
+            }
+            return ForbiddenBaseClasses.Contains(noGenerics);
+        }
+
         public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
         {
             if (alsoChildren)
@@ -1227,17 +1325,17 @@ namespace ResoniteBridge
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            "FrooxEngine.Store",
+            //"FrooxEngine.Store",
             "SkyFrost.Base.Models",
             "SkyFrost.Base",
             "Elements.Assets",
             "Elements.Core",
             "Elements.Quantity",
-            "ProtoFlux.Nodes.FrooxEngine",
-            "ProtoFlux.Nodes.Core",
-            "ProtoFlux.Core",
+            //"ProtoFlux.Nodes.FrooxEngine",
+            //"ProtoFlux.Nodes.Core",
+            //"ProtoFlux.Core",
             //"ProtoFluxBindings",
-            "FrooxEngine",
+            //"FrooxEngine",
         };
 
         public static HashSet<string> bonusList = new HashSet<string>()
@@ -1292,6 +1390,11 @@ namespace ResoniteBridge
             "TwitchLib.Communication.Events",
             "TwitchLib.PubSub",
             "TwitchLib.PubSub.Events",
+
+            // things that fail to resolve even though they should resolve
+            "RetryContext",
+            "WebRequest",
+
         }; 
 
         public class TypeInfoLookup

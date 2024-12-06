@@ -108,50 +108,22 @@ namespace Elements.Assets
 	{
 		public static AnimX ImportFromFile(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "ImportFromFile", file), typeof(AnimX)) is AnimX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "ImportFromFile", file), typeof(AnimX));
 		}
 
 		public static ValueTask<AnimX> Import(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", stream), typeof(ValueTask<AnimX>)) is ValueTask<AnimX> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ValueTask<AnimX>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", stream), typeof(ValueTask<AnimX>));
 		}
 
 		public static AnimX ImportFromJSON(System.String json)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "ImportFromJSON", json), typeof(AnimX)) is AnimX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "ImportFromJSON", json), typeof(AnimX));
 		}
 
 		public static AnimX CreateFrom(Animation animation)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFrom", animation), typeof(AnimX)) is AnimX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AnimJImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFrom", animation), typeof(AnimX));
 		}
 	}
 	public class Animation : ResoniteBridge.ResoniteBridgeValueHolder
@@ -239,33 +211,19 @@ namespace Elements.Assets
 		{
 		}
 	}
-	public class AnimationTrackConverter : System.Text.Json.Serialization.JsonConverter<AnimationTrack>, ResoniteBridge.ResoniteBridgeValueHolder
+	public class AnimationTrackConverter : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public override System.Boolean CanConvert(Type typeToConvert)
+		public System.Boolean CanConvert(Type typeToConvert)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean));
 		}
 
-		public override AnimationTrack Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
+		public AnimationTrack Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(AnimationTrack)) is AnimationTrack __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimationTrack)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", reader, typeToConvert, options), typeof(AnimationTrack));
 		}
 
-		public override void Write(Utf8JsonWriter writer, AnimationTrack value, JsonSerializerOptions options)
+		public void Write(Utf8JsonWriter writer, AnimationTrack value, JsonSerializerOptions options)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", writer, value, options);
 		}
@@ -422,14 +380,7 @@ namespace Elements.Assets
 
 		internal override System.Single AddTo(AnimX animx)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -637,14 +588,7 @@ namespace Elements.Assets
 
 		internal override System.Single AddTo(AnimX animx)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -811,14 +755,7 @@ namespace Elements.Assets
 
 		internal override System.Single AddTo(AnimX animx)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTo", animx), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -905,26 +842,12 @@ namespace Elements.Assets
 
 		public static AnimX Import(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SubtitleImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", file), typeof(AnimX)) is AnimX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SubtitleImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", file), typeof(AnimX));
 		}
 
 		public static AnimX Import(Stream stream, System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SubtitleImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", stream, name), typeof(AnimX)) is AnimX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AnimX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SubtitleImporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Import", stream, name), typeof(AnimX));
 		}
 
 		public static void Import(Stream stream, AnimX anim, System.String node, System.String property)
@@ -1000,96 +923,47 @@ namespace Elements.Assets
 
 		public static System.Boolean IsVideoStreamingService(System.Uri url)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsVideoStreamingService", url), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsVideoStreamingService", url), typeof(System.Boolean));
 		}
 
 		public static AssetClass IdentifyClass(System.String path)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IdentifyClass", path), typeof(AssetClass)) is AssetClass __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AssetClass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IdentifyClass", path), typeof(AssetClass));
 		}
 
 		public static AssetClass ClassifyExtension(System.String ext)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ClassifyExtension", ext), typeof(AssetClass)) is AssetClass __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AssetClass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ClassifyExtension", ext), typeof(AssetClass));
 		}
 
 		public static AssetClass ClassifyMime(System.String mime)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ClassifyMime", mime), typeof(AssetClass)) is AssetClass __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AssetClass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ClassifyMime", mime), typeof(AssetClass));
 		}
 
 		public static colorX GetClassColor(AssetClass assetClass)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetClassColor", assetClass), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetClassColor", assetClass), typeof(colorX));
 		}
 
 		public static System.Boolean IsStreamingProtocol(System.Uri uri)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsStreamingProtocol", uri), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsStreamingProtocol", uri), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsStreamingProtocol(System.String scheme)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsStreamingProtocol", scheme), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsStreamingProtocol", scheme), typeof(System.Boolean));
 		}
 	}
 	public delegate float RawSampleFilter(System.Int32 index, System.Int32 channel, System.Single amplitude);
 	public delegate void RawSampleHandler(System.Int32 index, System.Int32 channel, System.Single amplitude);
-	public delegate void SampleHandler<S>(System.Int32 index, S sample) where S : unmanaged, IAudioSample<S>;
-	public delegate S SampleFilter<S>(System.Int32 index, S sample) where S : unmanaged, IAudioSample<S>;
-	public delegate void SampleChunkFilter<S>(ref ResoniteBridge.ResoniteBridgeValue chunk, System.Boolean isLastChunk) where S : unmanaged, IAudioSample<S>;
+	public delegate void SampleHandler<S>(System.Int32 index, S sample) where S : struct, IAudioSample<S>;
+	public delegate S SampleFilter<S>(System.Int32 index, S sample) where S : struct, IAudioSample<S>;
+	public delegate void SampleChunkFilter<S>(ref ResoniteBridge.ResoniteBridgeValue chunk, System.Boolean isLastChunk) where S : struct, IAudioSample<S>;
 	public class AudioX : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ref struct SourceData<S> : ResoniteBridge.ResoniteBridgeValueHolder where S : struct, IAudioSample<S>
+		private struct SourceData<S> : ResoniteBridge.ResoniteBridgeValueHolder where S : struct, IAudioSample<S>
 		{
 			public ResoniteBridge.ResoniteBridgeValue data
 			{
@@ -1484,38 +1358,17 @@ namespace Elements.Assets
 
 		public System.Int32 Read<T>(ResoniteBridge.ResoniteBridgeValue target, System.Double position, System.Double rate = 1.0, System.Boolean loop = false) where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, position, rate, loop), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, position, rate, loop), typeof(System.Int32));
 		}
 
 		private SourceData<S> GetSource<S>(System.Int32 offset, System.Int32 count) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSource", offset, count), typeof(SourceData<S>)) is SourceData<S> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (SourceData<S>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSource", offset, count), typeof(SourceData<S>));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue GetRawBuffer<S>() where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawBuffer"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawBuffer"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public unsafe void WriteSample<S>(S sample) where S : struct, IAudioSample<S>
@@ -1580,26 +1433,12 @@ namespace Elements.Assets
 
 		public static System.String SetExtension(System.String file, AudioEncodeSettings settings)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AudioX", ResoniteBridge.ResoniteBridgeValueType.Type), "SetExtension", file, settings), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AudioX", ResoniteBridge.ResoniteBridgeValueType.Type), "SetExtension", file, settings), typeof(System.String));
 		}
 
 		public static ISampleEncoder CreateEncoder(Stream stream, AudioEncodeSettings settings)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AudioX", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncoder", stream, settings), typeof(ISampleEncoder)) is ISampleEncoder __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ISampleEncoder)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AudioX", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncoder", stream, settings), typeof(ISampleEncoder));
 		}
 
 		public void Encode(System.String file, AudioEncodeSettings settings)
@@ -1629,14 +1468,7 @@ namespace Elements.Assets
 
 		private System.Int32 ForeachRawSampleInBlock<S>(System.Int32 offset, RawSampleHandler onRead) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForeachRawSampleInBlock", offset, onRead), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForeachRawSampleInBlock", offset, onRead), typeof(System.Int32));
 		}
 
 		public void ForeachSample<S>(SampleHandler<S> onRead) where S : struct, IAudioSample<S>
@@ -1646,14 +1478,7 @@ namespace Elements.Assets
 
 		private System.Int32 ForeachSampleInBlock<S>(System.Int32 offset, SampleHandler<S> onRead) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForeachSampleInBlock", offset, onRead), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForeachSampleInBlock", offset, onRead), typeof(System.Int32));
 		}
 
 		public void Trim(System.Int32 start, System.Int32 count)
@@ -1703,38 +1528,17 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public System.Single ComputeMaximumAmplitude()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaximumAmplitude"), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaximumAmplitude"), typeof(System.Single));
 		}
 
 		public System.Single ComputeMaximumAmplitude<S>(Func<S, S> sampleFilter) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaximumAmplitude", sampleFilter), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaximumAmplitude", sampleFilter), typeof(System.Single));
 		}
 
 		public void Normalize()
@@ -1962,26 +1766,12 @@ namespace Elements.Assets
 
 		public BufferBlock RequestBlock(AudioX clip, System.Int32 position)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestBlock", clip, position), typeof(BufferBlock)) is BufferBlock __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BufferBlock)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestBlock", clip, position), typeof(BufferBlock));
 		}
 
 		public BufferBlock RequestBlock(in BufferBlockKey key)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestBlock", key), typeof(BufferBlock)) is BufferBlock __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BufferBlock)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestBlock", key), typeof(BufferBlock));
 		}
 
 		public void ReturnBlock(BufferBlock block)
@@ -1991,14 +1781,7 @@ namespace Elements.Assets
 
 		private BufferBlock GetFreshBlock()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFreshBlock"), typeof(BufferBlock)) is BufferBlock __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BufferBlock)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFreshBlock"), typeof(BufferBlock));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2196,38 +1979,17 @@ namespace Elements.Assets
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public System.Boolean Equals(BufferBlockKey other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public static bool operator ==(BufferBlockKey left, BufferBlockKey right)
@@ -2481,14 +2243,7 @@ namespace Elements.Assets
 
 		public System.Int32 AvailableSamples(System.Int64 lastIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AvailableSamples", lastIndex), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AvailableSamples", lastIndex), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2572,62 +2327,27 @@ namespace Elements.Assets
 
 		public System.Int32 Read<T>(ResoniteBridge.ResoniteBridgeValue target, ref System.Int64 globalPosition, System.Double rate = 1.0) where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, globalPosition, rate), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, globalPosition, rate), typeof(System.Int32));
 		}
 
 		public System.Int32 Read<T>(ResoniteBridge.ResoniteBridgeValue target, ref CircularBufferReadState<S> state, System.Double rate) where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, state, rate), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, state, rate), typeof(System.Int32));
 		}
 
 		public System.Int32 Read<T>(ResoniteBridge.ResoniteBridgeValue target, ref System.Int64 globalPosition, System.Double rate, ref System.Double position, ref S lastSample) where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, globalPosition, rate, position, lastSample), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", target, globalPosition, rate, position, lastSample), typeof(System.Int32));
 		}
 
 		public IEnumerator<S> GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<S>)) is IEnumerator<S> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<S>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<S>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2665,26 +2385,12 @@ namespace Elements.Assets
 	{
 		public static System.Int32 ChannelCount(this ChannelConfiguration channelConfiguration)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ChannelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ChannelCount", channelConfiguration), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ChannelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ChannelCount", channelConfiguration), typeof(System.Int32));
 		}
 
 		public static Type SampleType(this ChannelConfiguration channelConfiguration)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ChannelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SampleType", channelConfiguration), typeof(Type)) is Type __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ChannelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SampleType", channelConfiguration), typeof(Type));
 		}
 	}
 	public class CSCoreSampleDecoder : ISampleDecoder, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
@@ -2848,14 +2554,7 @@ namespace Elements.Assets
 
 		public System.Int32 Read(float[] buffer, System.Int32 offset, System.Int32 count)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", buffer, offset, count), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", buffer, offset, count), typeof(System.Int32));
 		}
 
 		public CSCoreSampleDecoder(System.String file)
@@ -3295,26 +2994,12 @@ namespace Elements.Assets
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public void UpdateFrom(AudioX audio)
@@ -3348,14 +3033,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public abstract System.String ToString(System.Boolean includeBaseInfo);
@@ -3445,26 +3123,12 @@ namespace Elements.Assets
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public static bool operator ==(FlacEncodeSettings left, FlacEncodeSettings right)
@@ -3493,14 +3157,7 @@ namespace Elements.Assets
 
 		public override System.String ToString(System.Boolean includeBaseInfo)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3602,26 +3259,12 @@ namespace Elements.Assets
 
 		public static System.Single BitrateToQuality(System.Single bitrate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VorbisEncodeSettings", ResoniteBridge.ResoniteBridgeValueType.Type), "BitrateToQuality", bitrate), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VorbisEncodeSettings", ResoniteBridge.ResoniteBridgeValueType.Type), "BitrateToQuality", bitrate), typeof(System.Single));
 		}
 
 		public static System.Single QualityToBitrate(System.Single quality)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VorbisEncodeSettings", ResoniteBridge.ResoniteBridgeValueType.Type), "QualityToBitrate", quality), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VorbisEncodeSettings", ResoniteBridge.ResoniteBridgeValueType.Type), "QualityToBitrate", quality), typeof(System.Single));
 		}
 
 		public void EnsureValidSettings()
@@ -3631,26 +3274,12 @@ namespace Elements.Assets
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public static bool operator ==(VorbisEncodeSettings left, VorbisEncodeSettings right)
@@ -3679,14 +3308,7 @@ namespace Elements.Assets
 
 		public override System.String ToString(System.Boolean includeBaseInfo)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3774,26 +3396,12 @@ namespace Elements.Assets
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public static bool operator ==(WavEncodeSettings left, WavEncodeSettings right)
@@ -3822,14 +3430,7 @@ namespace Elements.Assets
 
 		public override System.String ToString(System.Boolean includeBaseInfo)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString", includeBaseInfo), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4068,170 +3669,72 @@ namespace Elements.Assets
 
 		public static System.Int32 GetSampleChannelCount(this Type type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetSampleChannelCount", type), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetSampleChannelCount", type), typeof(System.Int32));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsMonoBuffer(this float[] buffer, System.Int32 offset = 0, System.Int32 count = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsMonoBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsMonoBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsStereoBuffer(this float[] buffer, System.Int32 offset = 0, System.Int32 count = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsStereoBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsStereoBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsQuadBuffer(this float[] buffer, System.Int32 offset = 0, System.Int32 count = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsQuadBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsQuadBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsSurround51Buffer(this float[] buffer, System.Int32 offset = 0, System.Int32 count = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsSurround51Buffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsSurround51Buffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsAudioBuffer<S>(this float[] buffer, System.Int32 offset = 0, System.Int32 count = -1) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsAudioBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsAudioBuffer", buffer, offset, count), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsMonoBuffer(this ResoniteBridge.ResoniteBridgeValue buffer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsMonoBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsMonoBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsStereoBuffer(this ResoniteBridge.ResoniteBridgeValue buffer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsStereoBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsStereoBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsQuadBuffer(this ResoniteBridge.ResoniteBridgeValue buffer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsQuadBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsQuadBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsSurround51Buffer(this ResoniteBridge.ResoniteBridgeValue buffer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsSurround51Buffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsSurround51Buffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue AsAudioBuffer<S>(this ResoniteBridge.ResoniteBridgeValue buffer) where S : struct, IAudioSample<S>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsAudioBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "AsAudioBuffer", buffer), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static System.Int32 TransitionSampleBlock<S, T>(ResoniteBridge.ResoniteBridgeValue target, ref System.Double startOffset, S lastSample, S nextSample, System.Double rate = 1.0) where S : struct, IAudioSample<S> where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TransitionSampleBlock", target, startOffset, lastSample, nextSample, rate), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TransitionSampleBlock", target, startOffset, lastSample, nextSample, rate), typeof(System.Int32));
 		}
 
 		public static System.Int32 CopySamples<S, T>(this ResoniteBridge.ResoniteBridgeValue source, ResoniteBridge.ResoniteBridgeValue target) where S : struct, IAudioSample<S> where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CopySamples", source, target), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CopySamples", source, target), typeof(System.Int32));
 		}
 
 		public static System.Int32 CopySamples<S, T>(this ResoniteBridge.ResoniteBridgeValue source, ResoniteBridge.ResoniteBridgeValue target, ref System.Double sourcePosition, ref S lastSample, System.Double rate = 1.0) where S : struct, IAudioSample<S> where T : struct, IAudioSample<T>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CopySamples", source, target, sourcePosition, lastSample, rate), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "SampleHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CopySamples", source, target, sourcePosition, lastSample, rate), typeof(System.Int32));
 		}
 
 		public static void Multiply<S>(this ResoniteBridge.ResoniteBridgeValue buffer, System.Single gain) where S : struct, IAudioSample<S>
@@ -4418,14 +3921,7 @@ namespace Elements.Assets
 
 		public MonoSample SetChannel(System.Int32 channel, System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(MonoSample));
 		}
 
 		public MonoSample(System.Single amplitude)
@@ -4579,130 +4075,60 @@ namespace Elements.Assets
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample Multiply(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample Bias(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample Add(MonoSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample Subtract(MonoSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample LerpTo(MonoSample next, System.Single lerp)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample ToMono()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample ToStereo()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample ToQuad()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample ToSurround51()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4926,14 +4352,7 @@ namespace Elements.Assets
 
 		public QuadSample SetChannel(System.Int32 channel, System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(QuadSample));
 		}
 
 		public QuadSample(System.Single amplitude)
@@ -4953,14 +4372,7 @@ namespace Elements.Assets
 
 		public QuadSample ExtractSides()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractSides"), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractSides"), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -5109,130 +4521,60 @@ namespace Elements.Assets
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample Multiply(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample Bias(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample Add(QuadSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample Subtract(QuadSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample LerpTo(QuadSample next, System.Single lerp)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample ToMono()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample ToStereo()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample ToQuad()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample ToSurround51()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5394,14 +4736,7 @@ namespace Elements.Assets
 
 		public StereoSample SetChannel(System.Int32 channel, System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(StereoSample));
 		}
 
 		public StereoSample(System.Single amplitude)
@@ -5416,14 +4751,7 @@ namespace Elements.Assets
 
 		public StereoSample ExtractSides()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractSides"), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractSides"), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -5559,130 +4887,60 @@ namespace Elements.Assets
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample Multiply(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample Bias(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample Add(StereoSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample Subtract(StereoSample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample LerpTo(StereoSample next, System.Single lerp)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample ToMono()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample ToStereo()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample ToQuad()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample ToSurround51()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5946,14 +5204,7 @@ namespace Elements.Assets
 
 		public Surround51Sample SetChannel(System.Int32 channel, System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetChannel", channel, value), typeof(Surround51Sample));
 		}
 
 		public Surround51Sample(System.Single amplitude)
@@ -6117,130 +5368,60 @@ namespace Elements.Assets
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample Multiply(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", value), typeof(Surround51Sample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample Bias(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Bias", value), typeof(Surround51Sample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample Add(Surround51Sample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", sample), typeof(Surround51Sample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample Subtract(Surround51Sample sample)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", sample), typeof(Surround51Sample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample LerpTo(Surround51Sample next, System.Single lerp)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LerpTo", next, lerp), typeof(Surround51Sample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public MonoSample ToMono()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample)) is MonoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MonoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToMono"), typeof(MonoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public StereoSample ToStereo()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample)) is StereoSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StereoSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToStereo"), typeof(StereoSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public QuadSample ToQuad()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample)) is QuadSample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadSample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToQuad"), typeof(QuadSample));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Surround51Sample ToSurround51()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample)) is Surround51Sample __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Surround51Sample)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToSurround51"), typeof(Surround51Sample));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6540,14 +5721,7 @@ namespace Elements.Assets
 
 		public IDocumentPage GetPage(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPage", index), typeof(IDocumentPage)) is IDocumentPage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IDocumentPage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPage", index), typeof(IDocumentPage));
 		}
 
 		public void Dispose()
@@ -6730,14 +5904,7 @@ namespace Elements.Assets
 
 		public IDocumentPage GetPage(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPage", index), typeof(IDocumentPage)) is IDocumentPage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IDocumentPage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPage", index), typeof(IDocumentPage));
 		}
 
 		public void Dispose()
@@ -6920,14 +6087,7 @@ namespace Elements.Assets
 
 		private static RenderFormat? ToPDFium(TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PDF_Page", ResoniteBridge.ResoniteBridgeValueType.Type), "ToPDFium", format), typeof(RenderFormat)) is RenderFormat __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RenderFormat?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PDF_Page", ResoniteBridge.ResoniteBridgeValueType.Type), "ToPDFium", format), typeof(RenderFormat));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6957,14 +6117,7 @@ namespace Elements.Assets
 	{
 		public static System.String DetectMime(System.String path)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FileUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "DetectMime", path), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FileUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "DetectMime", path), typeof(System.String));
 		}
 	}
 	public class LocaleData : ResoniteBridge.ResoniteBridgeValueHolder
@@ -7227,86 +6380,37 @@ namespace Elements.Assets
 
 		public static System.String GetMainLanguage(System.String localeCode)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LocaleResource", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMainLanguage", localeCode), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LocaleResource", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMainLanguage", localeCode), typeof(System.String));
 		}
 
 		public System.Int32 CountMessages(Predicate<string> filter)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CountMessages", filter), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CountMessages", filter), typeof(System.Int32));
 		}
 
 		public System.String Format(System.String key, Dictionary<string, object> arguments)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Format", key, arguments), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Format", key, arguments), typeof(System.String));
 		}
 
 		public System.String GetKeyLocaleCode(System.String key)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKeyLocaleCode", key), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKeyLocaleCode", key), typeof(System.String));
 		}
 
 		public System.Boolean HasKey(System.String key)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasKey", key), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasKey", key), typeof(System.Boolean));
 		}
 
 		public System.String GetMessagePattern(System.String key)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessagePattern", key), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessagePattern", key), typeof(System.String));
 		}
 
 		public Task LoadAdditively(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadAdditively", file), typeof(Task)) is Task __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadAdditively", file), typeof(Task));
 		}
 
 		public void LoadDataAdditively(System.String json)
@@ -7421,14 +6525,7 @@ namespace Elements.Assets
 	{
 		public static TextureType DetermineTextureType(System.String filename)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MaterialHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DetermineTextureType", filename), typeof(TextureType)) is TextureType __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextureType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MaterialHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DetermineTextureType", filename), typeof(TextureType));
 		}
 	}
 	[DataModelType]
@@ -7569,38 +6666,17 @@ namespace Elements.Assets
 
 		public static ResoniteBridge.ResoniteBridgeValue BuildEmptyConvexHull(ResoniteBridge.ResoniteBridgeValue bufferPool)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "BuildEmptyConvexHull", bufferPool), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "BuildEmptyConvexHull", bufferPool), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static System.Boolean IsValid(ResoniteBridge.ResoniteBridgeValue points)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", points), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", points), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsValid(Vector3 v)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", v), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", v), typeof(System.Boolean));
 		}
 	}
 	public class BlendShape : ResoniteBridge.ResoniteBridgeValueHolder
@@ -7787,38 +6863,17 @@ namespace Elements.Assets
 
 		public BlendShapeFrame AddFrame(System.Single weight)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddFrame", weight), typeof(BlendShapeFrame)) is BlendShapeFrame __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShapeFrame)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddFrame", weight), typeof(BlendShapeFrame));
 		}
 
 		public BlendShapeFrame InsertFrame(System.Int32 index, System.Single weight)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertFrame", index, weight), typeof(BlendShapeFrame)) is BlendShapeFrame __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShapeFrame)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertFrame", index, weight), typeof(BlendShapeFrame));
 		}
 
 		public System.Boolean RemoveFrame(BlendShapeFrame frame)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveFrame", frame), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveFrame", frame), typeof(System.Boolean));
 		}
 
 		public void RemoveFrameAt(System.Int32 index)
@@ -8063,38 +7118,17 @@ namespace Elements.Assets
 
 		public float3 GetPositionDelta(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPositionDelta", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPositionDelta", index), typeof(float3));
 		}
 
 		public float3 GetNormalDelta(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormalDelta", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormalDelta", index), typeof(float3));
 		}
 
 		public float3 GetTangentDelta(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTangentDelta", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTangentDelta", index), typeof(float3));
 		}
 
 		public void SetPositionDelta(System.Int32 index, float3 delta)
@@ -8149,14 +7183,7 @@ namespace Elements.Assets
 
 		public System.Boolean RecalculateTangentsMikktspace(System.Int32 uvChannel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangentsMikktspace", uvChannel), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangentsMikktspace", uvChannel), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8465,14 +7492,7 @@ namespace Elements.Assets
 
 		public System.Int32 GetBoneIndex(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBoneIndex", index), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBoneIndex", index), typeof(System.Int32));
 		}
 
 		public void SetBoneIndex(System.Int32 index, System.Int32 boneIndex)
@@ -8482,26 +7502,12 @@ namespace Elements.Assets
 
 		public System.Int32 AddBone(Bone bone, System.Single weight)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", bone, weight), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", bone, weight), typeof(System.Int32));
 		}
 
 		public System.Int32 AddBone(System.Int32 index, System.Single weight)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", index, weight), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", index, weight), typeof(System.Int32));
 		}
 
 		public void Sort()
@@ -8541,14 +7547,7 @@ namespace Elements.Assets
 
 		public System.Single GetWeight(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetWeight", index), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetWeight", index), typeof(System.Single));
 		}
 
 		public void VerifyBoneIndexes(MeshX meshx)
@@ -8578,50 +7577,22 @@ namespace Elements.Assets
 
 		public Bone GetBone(MeshX meshx, System.Int32 bindingIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBone", meshx, bindingIndex), typeof(Bone)) is Bone __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bone)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBone", meshx, bindingIndex), typeof(Bone));
 		}
 
 		public float3 TransformPosition(MeshX meshx, in float3 position, ResoniteBridge.ResoniteBridgeValue boneTransforms)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformPosition", meshx, position, boneTransforms), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformPosition", meshx, position, boneTransforms), typeof(float3));
 		}
 
 		public float3 TransformDirection(MeshX meshx, in float3 direction, ResoniteBridge.ResoniteBridgeValue boneTransforms)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformDirection", meshx, direction, boneTransforms), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformDirection", meshx, direction, boneTransforms), typeof(float3));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8952,14 +7923,7 @@ namespace Elements.Assets
 
 			public System.Boolean MoveNext()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean)) is System.Boolean __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean));
 			}
 
 			public void Reset()
@@ -9073,14 +8037,7 @@ namespace Elements.Assets
 
 			public System.Boolean MoveNext()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean)) is System.Boolean __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean));
 			}
 
 			public void Reset()
@@ -9166,38 +8123,17 @@ namespace Elements.Assets
 
 			public System.Boolean Equals(SubmeshMergeKey other)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 			}
 
 			public override System.Boolean Equals(System.Object obj)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 			}
 
 			public override System.Int32 GetHashCode()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 			}
 
 			public static bool operator ==(SubmeshMergeKey left, SubmeshMergeKey right)
@@ -10207,122 +9143,52 @@ namespace Elements.Assets
 
 		public ResoniteBridge.ResoniteBridgeValue AccessRawPositions()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawPositions"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawPositions"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue AccessRawNormals()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawNormals"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawNormals"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue AccessRawTangents()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawTangents"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawTangents"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue AccessRawColors()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawColors"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawColors"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue AccessRawUVs(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawUVs", index), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AccessRawUVs", index), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		internal UV_Array GetRawUV_Array(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUV_Array", uv), typeof(UV_Array)) is UV_Array __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (UV_Array)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUV_Array", uv), typeof(UV_Array));
 		}
 
 		internal UV_Array TryGetRawUV_Array(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetRawUV_Array", uv), typeof(UV_Array)) is UV_Array __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (UV_Array)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetRawUV_Array", uv), typeof(UV_Array));
 		}
 
 		public float2[] GetRawUVs(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs", uv), typeof(float2[])) is float2[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs", uv), typeof(float2[]));
 		}
 
 		public float3[] GetRawUVs_3D(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs_3D", uv), typeof(float3[])) is float3[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs_3D", uv), typeof(float3[]));
 		}
 
 		public float4[] GetRawUVs_4D(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs_4D", uv), typeof(float4[])) is float4[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float4[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawUVs_4D", uv), typeof(float4[]));
 		}
 
 		public void TrimUVChannels()
@@ -10347,14 +9213,7 @@ namespace Elements.Assets
 
 		public System.Int32 GetUV_Dimension(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV_Dimension", uv), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV_Dimension", uv), typeof(System.Int32));
 		}
 
 		public void SetUV_Dimension(System.Int32 uv, System.Int32 dimension)
@@ -10364,38 +9223,17 @@ namespace Elements.Assets
 
 		public System.Boolean HasUV_2D(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_2D", uv), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_2D", uv), typeof(System.Boolean));
 		}
 
 		public System.Boolean HasUV_3D(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_3D", uv), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_3D", uv), typeof(System.Boolean));
 		}
 
 		public System.Boolean HasUV_4D(System.Int32 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_4D", uv), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUV_4D", uv), typeof(System.Boolean));
 		}
 
 		public void SetHasUV(System.Int32 uv, System.Boolean state)
@@ -10439,74 +9277,32 @@ namespace Elements.Assets
 
 		public Submesh GetSubmesh(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSubmesh", index), typeof(Submesh)) is Submesh __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Submesh)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSubmesh", index), typeof(Submesh));
 		}
 
 		public Submesh GetSubmeshForFace(System.Int32 faceIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSubmeshForFace", faceIndex), typeof(Submesh)) is Submesh __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Submesh)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSubmeshForFace", faceIndex), typeof(Submesh));
 		}
 
 		public System.Int32 IndexOfSubmesh(Submesh submesh)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfSubmesh", submesh), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfSubmesh", submesh), typeof(System.Int32));
 		}
 
 		public Submesh AddSubmesh(SubmeshTopology topology)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSubmesh", topology), typeof(Submesh)) is Submesh __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Submesh)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSubmesh", topology), typeof(Submesh));
 		}
 
 		public T AddSubmesh<T>() where T : Submesh
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSubmesh"), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSubmesh"), typeof(T));
 		}
 
 		public T InsertSubmesh<T>(System.Int32 index) where T : Submesh
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertSubmesh", index), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertSubmesh", index), typeof(T));
 		}
 
 		public void RemoveSubmesh(System.Int32 index)
@@ -10521,134 +9317,57 @@ namespace Elements.Assets
 
 		public T TryGetSubmesh<T>(System.Int32 index = 0) where T : Submesh
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetSubmesh", index), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetSubmesh", index), typeof(T));
 		}
 
 		public Submesh TryGetSubmesh(SubmeshTopology topology, System.Int32 index = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetSubmesh", topology, index), typeof(Submesh)) is Submesh __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Submesh)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetSubmesh", topology, index), typeof(Submesh));
 		}
 
 		private T InstantiateSubmesh<T>() where T : Submesh
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InstantiateSubmesh"), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InstantiateSubmesh"), typeof(T));
 		}
 
 		public BlendShape AddBlendShape(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBlendShape", name), typeof(BlendShape)) is BlendShape __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShape)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBlendShape", name), typeof(BlendShape));
 		}
 
 		public BlendShape InsertBlendshapeAt(System.String name, System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertBlendshapeAt", name, index), typeof(BlendShape)) is BlendShape __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShape)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertBlendshapeAt", name, index), typeof(BlendShape));
 		}
 
 		public BlendShape GetBlendShape(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShape", index), typeof(BlendShape)) is BlendShape __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShape)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShape", index), typeof(BlendShape));
 		}
 
 		public BlendShape GetBlendShape(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShape", name), typeof(BlendShape)) is BlendShape __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShape)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShape", name), typeof(BlendShape));
 		}
 
 		public System.Int32 IndexOfBlendShape(BlendShape blendShape)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfBlendShape", blendShape), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfBlendShape", blendShape), typeof(System.Int32));
 		}
 
 		public System.Boolean HasBlendShape(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasBlendShape", name), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasBlendShape", name), typeof(System.Boolean));
 		}
 
 		public System.Int32 BlendShapeIndex(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlendShapeIndex", name), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlendShapeIndex", name), typeof(System.Int32));
 		}
 
 		public BlendShape TryGetBlendShape(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetBlendShape", name), typeof(BlendShape)) is BlendShape __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BlendShape)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetBlendShape", name), typeof(BlendShape));
 		}
 
 		public void RemoveBlendShape(System.Int32 index)
@@ -10658,26 +9377,12 @@ namespace Elements.Assets
 
 		public System.Boolean RemoveBlendShape(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBlendShape", name), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBlendShape", name), typeof(System.Boolean));
 		}
 
 		public System.Boolean RemoveBlendShape(BlendShape blendshape)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBlendShape", blendshape), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBlendShape", blendshape), typeof(System.Boolean));
 		}
 
 		public MeshX()
@@ -10722,26 +9427,12 @@ namespace Elements.Assets
 
 		public AppendResult Append(MeshX source, System.Boolean appendSubmeshes = true, in float4x4? transform = null, Func<Submesh, int> submeshMapper = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Append", source, appendSubmeshes, transform, submeshMapper), typeof(AppendResult)) is AppendResult __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AppendResult)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Append", source, appendSubmeshes, transform, submeshMapper), typeof(AppendResult));
 		}
 
 		public System.Boolean SetVertexCount(System.Int32 count)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetVertexCount", count), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetVertexCount", count), typeof(System.Boolean));
 		}
 
 		public void IncreaseVertexCount(System.Int32 count)
@@ -10771,50 +9462,22 @@ namespace Elements.Assets
 
 		public System.Boolean EnsureVertexCount(System.Int32 count)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureVertexCount", count), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureVertexCount", count), typeof(System.Boolean));
 		}
 
 		public Vertex AddVertex()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex"), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex"), typeof(Vertex));
 		}
 
 		public Vertex AddVertex(in float3 pos)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex", pos), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex", pos), typeof(Vertex));
 		}
 
 		public Triangle AddTriangle(System.Int32 submesh = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", submesh), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", submesh), typeof(Triangle));
 		}
 
 		public void AddTriangles(System.Int32 count, System.Int32 submesh = 0, TriangleCollection trigs = null)
@@ -10824,38 +9487,17 @@ namespace Elements.Assets
 
 		public Triangle AddTriangle(System.Int32 v0, System.Int32 v1, System.Int32 v2, System.Int32 submesh = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, submesh), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, submesh), typeof(Triangle));
 		}
 
 		public Triangle AddTriangle(Vertex v0, Vertex v1, Vertex v2, System.Int32 submesh = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, submesh), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, submesh), typeof(Triangle));
 		}
 
 		public Point AddPoint(System.Int32 submesh)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint", submesh), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint", submesh), typeof(Point));
 		}
 
 		public void AddPoints(System.Int32 count, System.Int32 submesh, PointCollection points = null)
@@ -10865,62 +9507,27 @@ namespace Elements.Assets
 
 		public Vertex GetVertex(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", index), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", index), typeof(Vertex));
 		}
 
 		public Triangle GetTriangle(System.Int32 index, System.Int32 submesh = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangle", index, submesh), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangle", index, submesh), typeof(Triangle));
 		}
 
 		public Point GetPoint(System.Int32 index, System.Int32 submesh = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index, submesh), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index, submesh), typeof(Point));
 		}
 
 		public Triangle GetTriangleByFaceIndex(System.Int32 faceIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleByFaceIndex", faceIndex), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleByFaceIndex", faceIndex), typeof(Triangle));
 		}
 
 		public Triangle GetTriangleFromAllTriangleSubmeshes(System.Int32 triangleIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleFromAllTriangleSubmeshes", triangleIndex), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleFromAllTriangleSubmeshes", triangleIndex), typeof(Triangle));
 		}
 
 		public void RemoveVertices(System.Int32 index, System.Int32 count, System.Boolean updateSubmeshes = true)
@@ -10995,26 +9602,12 @@ namespace Elements.Assets
 
 		public float3 GetPosition(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPosition", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPosition", index), typeof(float3));
 		}
 
 		public float3 GetNormal(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormal", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormal", index), typeof(float3));
 		}
 
 		public void SetVertex(System.Int32 index, in float3 position)
@@ -11049,50 +9642,22 @@ namespace Elements.Assets
 
 		public Bone GetBone(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBone", index), typeof(Bone)) is Bone __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bone)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBone", index), typeof(Bone));
 		}
 
 		public Bone FindBone(Func<Bone, bool> filter)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindBone", filter), typeof(Bone)) is Bone __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bone)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindBone", filter), typeof(Bone));
 		}
 
 		public System.Int32 IndexOfBone(Bone bone)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfBone", bone), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOfBone", bone), typeof(System.Int32));
 		}
 
 		public Bone AddBone(System.String name = "Bone")
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", name), typeof(Bone)) is Bone __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bone)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBone", name), typeof(Bone));
 		}
 
 		public void RemoveBoneAt(System.Int32 index, System.Boolean autoUpdateBindings = true)
@@ -11102,14 +9667,7 @@ namespace Elements.Assets
 
 		public System.Boolean RemoveBone(Bone bone, System.Boolean autoUpdateBindings = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBone", bone, autoUpdateBindings), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveBone", bone, autoUpdateBindings), typeof(System.Boolean));
 		}
 
 		public void ClearBones(System.Boolean autoUpdateBindings = true)
@@ -11194,14 +9752,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public void RecalculateBlendshapeNormals()
@@ -11241,38 +9792,17 @@ namespace Elements.Assets
 
 		public System.Boolean RecalculateTangentsMikktspace(TriangleCollection triangles = null, System.Int32 uvChannel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangentsMikktspace", triangles, uvChannel), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangentsMikktspace", triangles, uvChannel), typeof(System.Boolean));
 		}
 
 		public static System.Byte MAGIC_HEADER_BYTE(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "MAGIC_HEADER_BYTE", index), typeof(System.Byte)) is System.Byte __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Byte)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "MAGIC_HEADER_BYTE", index), typeof(System.Byte));
 		}
 
 		public byte[] SaveToArray(Encoding encoding = Encoding.LZ4)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveToArray", encoding), typeof(byte[])) is byte[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveToArray", encoding), typeof(byte[]));
 		}
 
 		public void SaveToFile(System.String file, Encoding encoding = Encoding.LZ4)
@@ -11297,14 +9827,7 @@ namespace Elements.Assets
 
 		private static System.Boolean HasMagicHeader(BinaryReader reader)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "HasMagicHeader", reader), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "HasMagicHeader", reader), typeof(System.Boolean));
 		}
 
 		public void Decode(Stream stream)
@@ -11314,14 +9837,7 @@ namespace Elements.Assets
 
 		internal static System.Boolean ReadFlag(ref System.UInt32 data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadFlag", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadFlag", data), typeof(System.Boolean));
 		}
 
 		private static void Write(BinaryWriter bw, ref BoneBinding binding)
@@ -11331,26 +9847,12 @@ namespace Elements.Assets
 
 		private static BoneBinding ReadBoneBinding(BinaryReader br)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadBoneBinding", br), typeof(BoneBinding)) is BoneBinding __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BoneBinding)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadBoneBinding", br), typeof(BoneBinding));
 		}
 
 		public float3 TransformVertex(System.Int32 index, ResoniteBridge.ResoniteBridgeValue boneTransforms)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformVertex", index, boneTransforms), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransformVertex", index, boneTransforms), typeof(float3));
 		}
 
 		public void TransformAllVertices(ResoniteBridge.ResoniteBridgeValue targetPoses, ResoniteBridge.ResoniteBridgeValue boneTransforms)
@@ -11375,14 +9877,7 @@ namespace Elements.Assets
 
 		public Elements.Core.BoundingBox ComputeSkinnedBounds(ResoniteBridge.ResoniteBridgeValue boneTransforms)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeSkinnedBounds", boneTransforms), typeof(Elements.Core.BoundingBox)) is Elements.Core.BoundingBox __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeSkinnedBounds", boneTransforms), typeof(Elements.Core.BoundingBox));
 		}
 
 		private void VerifySkinnedTransormation(ResoniteBridge.ResoniteBridgeValue boneTransforms)
@@ -11402,14 +9897,7 @@ namespace Elements.Assets
 
 		public System.Boolean CompareTriangleIndicies(int[] array, System.Int32 arrayOffset, TriangleSubmesh triangles)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTriangleIndicies", array, arrayOffset, triangles), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTriangleIndicies", array, arrayOffset, triangles), typeof(System.Boolean));
 		}
 
 		public void GetTriangleIndicies(int[] array)
@@ -11419,50 +9907,22 @@ namespace Elements.Assets
 
 		public System.Boolean CompareTriangleIndicies(int[] array)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTriangleIndicies", array), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTriangleIndicies", array), typeof(System.Boolean));
 		}
 
 		public Vertex AddVertex(Vertex vertex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex", vertex), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddVertex", vertex), typeof(Vertex));
 		}
 
 		public Vertex DuplicateVertex(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DuplicateVertex", index), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DuplicateVertex", index), typeof(Vertex));
 		}
 
 		public Triangle AddTriangle(Triangle triangle)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", triangle), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", triangle), typeof(Triangle));
 		}
 
 		public void FlipNormals()
@@ -11497,14 +9957,7 @@ namespace Elements.Assets
 
 		public System.Boolean RecalculateTangents(TriangleCollection triangles = null, System.Int32 uvChannel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangents", triangles, uvChannel), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecalculateTangents", triangles, uvChannel), typeof(System.Boolean));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -11516,14 +9969,7 @@ namespace Elements.Assets
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static float4 CalcTangent(in float3 nor, in float3 tan0, in float3 tan1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "CalcTangent", nor, tan0, tan1), typeof(float4)) is float4 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float4)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "CalcTangent", nor, tan0, tan1), typeof(float4));
 		}
 
 		public void SortBoneWeights()
@@ -11553,50 +9999,22 @@ namespace Elements.Assets
 
 		public System.Int32 StripEmptySubmeshes(List<int> indexRemap)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptySubmeshes", indexRemap), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptySubmeshes", indexRemap), typeof(System.Int32));
 		}
 
 		public System.Int32 StripEmptyBones()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones"), typeof(System.Int32));
 		}
 
 		public System.Int32 StripEmptyBones(List<int> remapIndex, Predicate<Bone> filter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones", remapIndex, filter), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones", remapIndex, filter), typeof(System.Int32));
 		}
 
 		public System.Int32 StripEmptyBones(IReadOnlyList<BoneMetadata> precomputedMetadata, List<int> remapIndex, Predicate<Bone> filter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones", precomputedMetadata, remapIndex, filter), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StripEmptyBones", precomputedMetadata, remapIndex, filter), typeof(System.Int32));
 		}
 
 		public void StripBlendshapeNormals()
@@ -11631,14 +10049,7 @@ namespace Elements.Assets
 
 		private static System.Boolean IsValidBlendshapeValue(in float3 value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidBlendshapeValue", value), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidBlendshapeValue", value), typeof(System.Boolean));
 		}
 
 		public void SplitBlenshapeByAxis(System.Int32 blendshapeIndex, Axis3D axis, System.Single center, System.Single transition, System.String negativeSuffix, System.String positiveSuffix)
@@ -11668,74 +10079,32 @@ namespace Elements.Assets
 
 		public float3 AverageVertexCenter()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageVertexCenter"), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageVertexCenter"), typeof(float3));
 		}
 
 		public Elements.Core.BoundingBox CalculateBoundingBox()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox"), typeof(Elements.Core.BoundingBox)) is Elements.Core.BoundingBox __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox"), typeof(Elements.Core.BoundingBox));
 		}
 
 		public List<SubmeshMetadata> CalculateSubmeshMetadata()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateSubmeshMetadata"), typeof(List<SubmeshMetadata>)) is List<SubmeshMetadata> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<SubmeshMetadata>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateSubmeshMetadata"), typeof(List<SubmeshMetadata>));
 		}
 
 		public List<BoneMetadata> CalculateBoneMetadata()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoneMetadata"), typeof(List<BoneMetadata>)) is List<BoneMetadata> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<BoneMetadata>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoneMetadata"), typeof(List<BoneMetadata>));
 		}
 
 		public List<ApproximateBoneBounds> CalculateApproximateBoneBounds()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateApproximateBoneBounds"), typeof(List<ApproximateBoneBounds>)) is List<ApproximateBoneBounds> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ApproximateBoneBounds>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateApproximateBoneBounds"), typeof(List<ApproximateBoneBounds>));
 		}
 
 		public List<ApproximateBoneBounds> CalculateApproximateBoneBounds(IReadOnlyList<BoneMetadata> metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateApproximateBoneBounds", metadata), typeof(List<ApproximateBoneBounds>)) is List<ApproximateBoneBounds> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ApproximateBoneBounds>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateApproximateBoneBounds", metadata), typeof(List<ApproximateBoneBounds>));
 		}
 
 		public void GenerateFlatShadingTriangles(VertexCollection newVertices = null, VertexCollection originalVertices = null)
@@ -11765,50 +10134,22 @@ namespace Elements.Assets
 
 		public MeshX SeparateGeometryUnaffectedByBlendshapes()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SeparateGeometryUnaffectedByBlendshapes"), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SeparateGeometryUnaffectedByBlendshapes"), typeof(MeshX));
 		}
 
 		public List<MeshX> SplitSubmeshes()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SplitSubmeshes"), typeof(List<MeshX>)) is List<MeshX> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<MeshX>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SplitSubmeshes"), typeof(List<MeshX>));
 		}
 
 		public MeshX GetConvexHull()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetConvexHull"), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetConvexHull"), typeof(MeshX));
 		}
 
 		public MeshX GetMergedDoubles(System.Double cellSize = 0.001)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMergedDoubles", cellSize), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMergedDoubles", cellSize), typeof(MeshX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11903,50 +10244,22 @@ namespace Elements.Assets
 
 		public static QuadTriangles AddQuadAsTriangles(this TriangleSubmesh triangles, Vertex v0, Vertex v1, Vertex v2, Vertex v3, System.Boolean reverse = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", triangles, v0, v1, v2, v3, reverse), typeof(QuadTriangles)) is QuadTriangles __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadTriangles)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", triangles, v0, v1, v2, v3, reverse), typeof(QuadTriangles));
 		}
 
 		public static QuadTriangles AddQuadAsTriangles(this TriangleSubmesh triangles, System.Int32 v0, System.Int32 v1, System.Int32 v2, System.Int32 v3, System.Boolean reverse = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", triangles, v0, v1, v2, v3, reverse), typeof(QuadTriangles)) is QuadTriangles __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadTriangles)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", triangles, v0, v1, v2, v3, reverse), typeof(QuadTriangles));
 		}
 
 		public static QuadTriangles AddQuadAsTriangles(this MeshX mesh, Vertex v0, Vertex v1, Vertex v2, Vertex v3, System.Int32 submesh = 0, System.Boolean reverse = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", mesh, v0, v1, v2, v3, submesh, reverse), typeof(QuadTriangles)) is QuadTriangles __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadTriangles)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", mesh, v0, v1, v2, v3, submesh, reverse), typeof(QuadTriangles));
 		}
 
 		public static QuadTriangles AddQuadAsTriangles(this MeshX mesh, System.Int32 v0, System.Int32 v1, System.Int32 v2, System.Int32 v3, System.Int32 submesh = 0, System.Boolean reverse = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", mesh, v0, v1, v2, v3, submesh, reverse), typeof(QuadTriangles)) is QuadTriangles __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (QuadTriangles)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX_Extensions", ResoniteBridge.ResoniteBridgeValueType.Type), "AddQuadAsTriangles", mesh, v0, v1, v2, v3, submesh, reverse), typeof(QuadTriangles));
 		}
 
 		public static void SetQuadAsTriangles(this TriangleSubmesh triangles, System.Int32 v0, System.Int32 v1, System.Int32 v2, System.Int32 v3, System.Int32 t0, System.Int32 t1, System.Boolean reverse = false)
@@ -12268,14 +10581,7 @@ namespace Elements.Assets
 
 		public System.Boolean SetCountAndSequence(System.Int32 count, System.Int32 sequenceStart = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCountAndSequence", count, sequenceStart), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCountAndSequence", count, sequenceStart), typeof(System.Boolean));
 		}
 
 		public void Clear()
@@ -12285,14 +10591,7 @@ namespace Elements.Assets
 
 		public System.Boolean SetCount(System.Int32 count)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCount", count), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCount", count), typeof(System.Boolean));
 		}
 
 		public void IncreaseCount(System.Int32 count)
@@ -12332,14 +10631,7 @@ namespace Elements.Assets
 
 		internal System.Boolean UpdateIndex(ref System.Int32 version, ref System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex", version, index), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex", version, index), typeof(System.Boolean));
 		}
 
 		internal void VerticesRemoved(System.Int32 index, System.Int32 count)
@@ -12364,26 +10656,12 @@ namespace Elements.Assets
 
 		public Elements.Core.BoundingBox CalculateBoundingBox()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox"), typeof(Elements.Core.BoundingBox)) is Elements.Core.BoundingBox __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox"), typeof(Elements.Core.BoundingBox));
 		}
 
 		public SubmeshMetadata CalculateMetadata()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateMetadata"), typeof(SubmeshMetadata)) is SubmeshMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (SubmeshMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateMetadata"), typeof(SubmeshMetadata));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12827,14 +11105,7 @@ namespace Elements.Assets
 
 		public System.Int32 GetVertexCount(System.Int32 weightIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertexCount", weightIndex), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertexCount", weightIndex), typeof(System.Int32));
 		}
 
 		public void SetVertexCount(System.Int32 weightIndex, System.Int32 count)
@@ -12844,26 +11115,12 @@ namespace Elements.Assets
 
 		public static BoneMetadata CreateEmpty()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BoneMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEmpty"), typeof(BoneMetadata)) is BoneMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BoneMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BoneMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEmpty"), typeof(BoneMetadata));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -13250,50 +11507,22 @@ namespace Elements.Assets
 
 		public System.Boolean Remove(Vertex v)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean));
 		}
 
 		public IEnumerator<Vertex> GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<Vertex>)) is IEnumerator<Vertex> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<Vertex>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<Vertex>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		public float2 GetUV(System.Int32 channel)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV", channel), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV", channel), typeof(float2));
 		}
 
 		public void SetUV(System.Int32 channel, in float2 uv)
@@ -13313,14 +11542,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapePositionDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapePositionDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapePositionDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapePositionDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -13330,14 +11552,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapeNormalDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeNormalDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeNormalDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapeNormalDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -13347,14 +11562,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapeTangentDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeTangentDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeTangentDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapeTangentDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -13832,14 +12040,7 @@ namespace Elements.Assets
 
 		internal System.Boolean UpdateIndex()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -13981,14 +12182,7 @@ namespace Elements.Assets
 
 		public System.Boolean Remove(Point v)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean));
 		}
 
 		public void RemoveAt(System.Int32 index)
@@ -14003,38 +12197,17 @@ namespace Elements.Assets
 
 		public IEnumerator<Point> GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<Point>)) is IEnumerator<Point> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<Point>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<Point>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		public System.Int32 IndexOf(Point item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32));
 		}
 
 		public void Insert(System.Int32 index, Point item)
@@ -14049,14 +12222,7 @@ namespace Elements.Assets
 
 		public System.Boolean Contains(Point item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean));
 		}
 
 		public void CopyTo(Point[] array, System.Int32 arrayIndex)
@@ -14129,26 +12295,12 @@ namespace Elements.Assets
 
 		public Point AddPoint()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint"), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint"), typeof(Point));
 		}
 
 		public Point AddPoint(System.Int32 vIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint", vIndex), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint", vIndex), typeof(Point));
 		}
 
 		public void AddPoints(System.Int32 count, PointCollection points = null)
@@ -14158,14 +12310,7 @@ namespace Elements.Assets
 
 		public Point GetPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(Point));
 		}
 
 		public void SetPoint(System.Int32 index, System.Int32 vIndex)
@@ -14272,14 +12417,7 @@ namespace Elements.Assets
 
 		public float3 GetNormal(in float3 position)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormal", position), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNormal", position), typeof(float3));
 		}
 
 		public void AssignNormal(Vertex vertex)
@@ -14805,14 +12943,7 @@ namespace Elements.Assets
 
 		private static color DEBUG_COLOR(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BevelBox", ResoniteBridge.ResoniteBridgeValueType.Type), "DEBUG_COLOR", index), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BevelBox", ResoniteBridge.ResoniteBridgeValueType.Type), "DEBUG_COLOR", index), typeof(color));
 		}
 
 		public BevelBox(TriangleSubmesh submesh)
@@ -15003,14 +13134,7 @@ namespace Elements.Assets
 
 		public static Vertex AddCubeGeometry(TriangleSubmesh submesh, TriangleCollection triangles = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Box", ResoniteBridge.ResoniteBridgeValueType.Type), "AddCubeGeometry", submesh, triangles), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Box", ResoniteBridge.ResoniteBridgeValueType.Type), "AddCubeGeometry", submesh, triangles), typeof(Vertex));
 		}
 
 		public override void Update()
@@ -15025,14 +13149,7 @@ namespace Elements.Assets
 
 		private static float3 GetVertexOffset(in float2 v, in float3 halfSize, System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Box", ResoniteBridge.ResoniteBridgeValueType.Type), "GetVertexOffset", v, halfSize, index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Box", ResoniteBridge.ResoniteBridgeValueType.Type), "GetVertexOffset", v, halfSize, index), typeof(float3));
 		}
 
 		public static void UpdateAxisAlignedBoxVertices(MeshX mesh, System.Int32 index, in float3 from, in float3 to, in float3 uvScale, in colorX? color)
@@ -16146,14 +14263,7 @@ namespace Elements.Assets
 
 		public Point AddPoint()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint"), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddPoint"), typeof(Point));
 		}
 
 		public void RemovePoint(Point point)
@@ -16168,50 +14278,22 @@ namespace Elements.Assets
 
 		public Point GetPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(Point)) is Point __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Point)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(Point));
 		}
 
 		private Vertex GetPointFillVertex(System.Int32 pointIndex, System.Boolean top)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPointFillVertex", pointIndex, top), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPointFillVertex", pointIndex, top), typeof(Vertex));
 		}
 
 		private Vertex GetPointEdgeVertex(System.Int32 pointIndex, System.Int32 vertexIndex, System.Boolean connectingToEdge)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPointEdgeVertex", pointIndex, vertexIndex, connectingToEdge), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPointEdgeVertex", pointIndex, vertexIndex, connectingToEdge), typeof(Vertex));
 		}
 
 		private System.Int32 GetProfileVertexIndex(System.Int32 actualVertexSubindex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProfileVertexIndex", actualVertexSubindex), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProfileVertexIndex", actualVertexSubindex), typeof(System.Int32));
 		}
 
 		public void CalculatePointNormals()
@@ -16745,14 +14827,7 @@ namespace Elements.Assets
 
 		private System.Single ComputeBorderWidth(System.Single thickness)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeBorderWidth", thickness), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeBorderWidth", thickness), typeof(System.Single));
 		}
 
 		public BevelPlane(MeshX meshx)
@@ -17180,14 +15255,7 @@ namespace Elements.Assets
 
 		private System.Single ComputeBorderWidth(System.Single thickness)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeBorderWidth", thickness), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeBorderWidth", thickness), typeof(System.Single));
 		}
 
 		public BevelStripe(MeshX meshx)
@@ -17202,26 +15270,12 @@ namespace Elements.Assets
 
 		private System.Single CalculateSlantOffset(System.Single angle)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateSlantOffset", angle), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateSlantOffset", angle), typeof(System.Single));
 		}
 
 		public static System.Single CalculateSlantOffset(System.Single angle, System.Single height)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BevelStripe", ResoniteBridge.ResoniteBridgeValueType.Type), "CalculateSlantOffset", angle, height), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BevelStripe", ResoniteBridge.ResoniteBridgeValueType.Type), "CalculateSlantOffset", angle, height), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17606,26 +15660,12 @@ namespace Elements.Assets
 
 		private static System.Boolean IsValidQuadCoord(in int2 coord, in int2 quads)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Grid", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidQuadCoord", coord, quads), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Grid", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidQuadCoord", coord, quads), typeof(System.Boolean));
 		}
 
 		private static System.Int32 QuadOffset(in int2 coord, in int2 quads)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Grid", ResoniteBridge.ResoniteBridgeValueType.Type), "QuadOffset", coord, quads), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Grid", ResoniteBridge.ResoniteBridgeValueType.Type), "QuadOffset", coord, quads), typeof(System.Int32));
 		}
 
 		public void GetVerticesForPoint(in int2 point, in int2 quads, RawList<Vertex> vertices)
@@ -17805,26 +15845,12 @@ namespace Elements.Assets
 
 		private System.Int32 GetMiddlePoint(System.Int32 p0, System.Int32 p1, Dictionary<ulong, int> middlePointCache)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMiddlePoint", p0, p1, middlePointCache), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMiddlePoint", p0, p1, middlePointCache), typeof(System.Int32));
 		}
 
 		private System.Int32 GetUnique(System.Int32 index, HashSet<int> inUse)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnique", index, inUse), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnique", index, inUse), typeof(System.Int32));
 		}
 
 		public override void Update()
@@ -18734,14 +16760,7 @@ namespace Elements.Assets
 
 		public colorX GetColor(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetColor", index), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetColor", index), typeof(colorX));
 		}
 
 		public override void Remove()
@@ -18936,26 +16955,12 @@ namespace Elements.Assets
 
 		public Vertex InnerRingVertex(System.Int32 segment)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InnerRingVertex", segment), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InnerRingVertex", segment), typeof(Vertex));
 		}
 
 		public Vertex OuterRingVertex(System.Int32 segment)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OuterRingVertex", segment), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OuterRingVertex", segment), typeof(Vertex));
 		}
 
 		public Ring(MeshX meshx, System.Int32 segments)
@@ -19193,14 +17198,7 @@ namespace Elements.Assets
 
 		public Vertex GetVertex(System.Int32 segment, System.Int32 point)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", segment, point), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", segment, point), typeof(Vertex));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19504,14 +17502,7 @@ namespace Elements.Assets
 
 		public override float3 GetPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPoint", index), typeof(float3));
 		}
 
 		public void SetPoint(System.Int32 index, in float3 point)
@@ -19604,14 +17595,7 @@ namespace Elements.Assets
 
 		protected override float3 ComputeLocalPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -20240,14 +18224,7 @@ namespace Elements.Assets
 
 		public System.Single GetCircumferenceToVertex(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCircumferenceToVertex", index), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCircumferenceToVertex", index), typeof(System.Single));
 		}
 
 		internal virtual void Setup(SegmentedBuilder builder, System.Int32 index)
@@ -20262,14 +18239,7 @@ namespace Elements.Assets
 
 		public float3 ComputePoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputePoint", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputePoint", index), typeof(float3));
 		}
 
 		protected abstract float3 ComputeLocalPoint(System.Int32 index);
@@ -20306,38 +18276,17 @@ namespace Elements.Assets
 
 		private VertexCollection GetConnectAtVertices(Segment connectingSegment)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetConnectAtVertices", connectingSegment), typeof(VertexCollection)) is VertexCollection __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (VertexCollection)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetConnectAtVertices", connectingSegment), typeof(VertexCollection));
 		}
 
 		private TriangleCollection GenerateTriangles()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTriangles"), typeof(TriangleCollection)) is TriangleCollection __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TriangleCollection)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTriangles"), typeof(TriangleCollection));
 		}
 
 		private VertexCollection GenerateVertices()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVertices"), typeof(VertexCollection)) is VertexCollection __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (VertexCollection)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVertices"), typeof(VertexCollection));
 		}
 
 		internal void ClearDirty()
@@ -20352,26 +18301,12 @@ namespace Elements.Assets
 
 		public System.Int32 CompareTo(Segment other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32));
 		}
 
 		public System.Int32 CompareTo(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", obj), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", obj), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -20940,14 +18875,7 @@ namespace Elements.Assets
 
 		public override Segment GetSegment(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSegment", index), typeof(Segment)) is Segment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Segment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSegment", index), typeof(Segment));
 		}
 
 		internal override void RegisterDirtySegment(Segment segment)
@@ -20977,14 +18905,7 @@ namespace Elements.Assets
 
 		public S AddSegment(float3? pos = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSegment", pos), typeof(S)) is S __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (S)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddSegment", pos), typeof(S));
 		}
 
 		public void RemoveLastSegment()
@@ -21274,14 +19195,7 @@ namespace Elements.Assets
 
 		public float3[] GetOffsetsArray()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOffsetsArray"), typeof(float3[])) is float3[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOffsetsArray"), typeof(float3[]));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21407,14 +19321,7 @@ namespace Elements.Assets
 
 		protected override float3 ComputeLocalPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21757,14 +19664,7 @@ namespace Elements.Assets
 
 		protected override float3 ComputeLocalPoint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeLocalPoint", index), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22401,14 +20301,7 @@ namespace Elements.Assets
 
 		private floatQ GenerateRotation(System.Single segmentIndex, System.Single ringIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateRotation", segmentIndex, ringIndex), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateRotation", segmentIndex, ringIndex), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22920,26 +20813,12 @@ namespace Elements.Assets
 
 		public Vertex GetVertex(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", index), typeof(Vertex)) is Vertex __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Vertex)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertex", index), typeof(Vertex));
 		}
 
 		public System.Int32 GetVertexIndexUnsafe(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertexIndexUnsafe", index), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVertexIndexUnsafe", index), typeof(System.Int32));
 		}
 
 		public void Set(Vertex v0, Vertex v1, Vertex v2)
@@ -22959,110 +20838,47 @@ namespace Elements.Assets
 
 		public float3 GetBarycentricCoordinate(in float3 point)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBarycentricCoordinate", point), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBarycentricCoordinate", point), typeof(float3));
 		}
 
 		public float3 GetBarycentricCoordinateFromUV0(in float2 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBarycentricCoordinateFromUV0", uv), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBarycentricCoordinateFromUV0", uv), typeof(float3));
 		}
 
 		public float3 InterpolatePosition(in float3 barycentricCoordinate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolatePosition", barycentricCoordinate), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolatePosition", barycentricCoordinate), typeof(float3));
 		}
 
 		public float3 InterpolateNormal(in float3 barycentricCoordinate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateNormal", barycentricCoordinate), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateNormal", barycentricCoordinate), typeof(float3));
 		}
 
 		public color InterpolateColor(in float3 barycentricCoordinate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateColor", barycentricCoordinate), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateColor", barycentricCoordinate), typeof(color));
 		}
 
 		public float4 InterpolateTangent(in float3 barycentricCoordinate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateTangent", barycentricCoordinate), typeof(float4)) is float4 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float4)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateTangent", barycentricCoordinate), typeof(float4));
 		}
 
 		public float2 InterpolateUV0(in float3 barycentricCoordinate)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateUV0", barycentricCoordinate), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InterpolateUV0", barycentricCoordinate), typeof(float2));
 		}
 
 		internal System.Boolean UpdateIndex()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23321,14 +21137,7 @@ namespace Elements.Assets
 
 		public System.Boolean Remove(Triangle v)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean));
 		}
 
 		public void RemoveAt(System.Int32 index)
@@ -23343,50 +21152,22 @@ namespace Elements.Assets
 
 		public List<Triangle>.Enumerator GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<Triangle>.Enumerator)) is List<Triangle>.Enumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<Triangle>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<Triangle>.Enumerator));
 		}
 
 		IEnumerator<Triangle> IEnumerable<Triangle>.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<Triangle>.GetEnumerator"), typeof(IEnumerator<Triangle>)) is IEnumerator<Triangle> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<Triangle>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<Triangle>.GetEnumerator"), typeof(IEnumerator<Triangle>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		public System.Int32 IndexOf(Triangle item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32));
 		}
 
 		public void Insert(System.Int32 index, Triangle item)
@@ -23401,14 +21182,7 @@ namespace Elements.Assets
 
 		public System.Boolean Contains(Triangle item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean));
 		}
 
 		public void CopyTo(Triangle[] array, System.Int32 arrayIndex)
@@ -23573,14 +21347,7 @@ namespace Elements.Assets
 
 		public Triangle AddTriangle()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle"), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle"), typeof(Triangle));
 		}
 
 		public void AddTriangles(System.Int32 count, TriangleCollection trigs = null)
@@ -23590,38 +21357,17 @@ namespace Elements.Assets
 
 		public Triangle AddTriangle(System.Int32 v0, System.Int32 v1, System.Int32 v2)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2), typeof(Triangle));
 		}
 
 		public Triangle AddTriangle(System.Int32 v0, System.Int32 v1, System.Int32 v2, System.Boolean reverse)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, reverse), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2, reverse), typeof(Triangle));
 		}
 
 		public Triangle AddTriangle(Vertex v0, Vertex v1, Vertex v2)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddTriangle", v0, v1, v2), typeof(Triangle));
 		}
 
 		public void SetTriangle(System.Int32 index, System.Int32 v0, System.Int32 v1, System.Int32 v2)
@@ -23631,26 +21377,12 @@ namespace Elements.Assets
 
 		public Triangle GetTriangle(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangle", index), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangle", index), typeof(Triangle));
 		}
 
 		public Triangle GetTriangleUnsafe(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleUnsafe", index), typeof(Triangle)) is Triangle __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Triangle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTriangleUnsafe", index), typeof(Triangle));
 		}
 
 		public void Remove(Triangle t)
@@ -24403,26 +22135,12 @@ namespace Elements.Assets
 
 		public float2 GetUV(System.Int32 uvChannel)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV", uvChannel), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV", uvChannel), typeof(float2));
 		}
 
 		public float4 GetUV_Auto(System.Int32 uvChannel)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV_Auto", uvChannel), typeof(float4)) is float4 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float4)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUV_Auto", uvChannel), typeof(float4));
 		}
 
 		public void SetUV(System.Int32 uvChannel, in float2 uv)
@@ -24432,14 +22150,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapePositionDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapePositionDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapePositionDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapePositionDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -24449,14 +22160,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapeNormalDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeNormalDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeNormalDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapeNormalDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -24466,14 +22170,7 @@ namespace Elements.Assets
 
 		public float3 GetBlendShapeTangentDelta(System.String key, System.Int32 frame = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeTangentDelta", key, frame), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBlendShapeTangentDelta", key, frame), typeof(float3));
 		}
 
 		public void SetBlendShapeTangentDelta(System.String key, in float3 delta, System.Int32 frame = 0)
@@ -24513,14 +22210,7 @@ namespace Elements.Assets
 
 		internal System.Boolean UpdateIndex()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateIndex"), typeof(System.Boolean));
 		}
 
 		void IVertex.SetUV(System.Int32 channel, in float2 uv)
@@ -24867,14 +22557,7 @@ namespace Elements.Assets
 
 		public System.Boolean Remove(Vertex v)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Remove", v), typeof(System.Boolean));
 		}
 
 		public void RemoveAt(System.Int32 index)
@@ -24889,50 +22572,22 @@ namespace Elements.Assets
 
 		public List<Vertex>.Enumerator GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<Vertex>.Enumerator)) is List<Vertex>.Enumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<Vertex>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<Vertex>.Enumerator));
 		}
 
 		IEnumerator<Vertex> IEnumerable<Vertex>.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<Vertex>.GetEnumerator"), typeof(IEnumerator<Vertex>)) is IEnumerator<Vertex> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<Vertex>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<Vertex>.GetEnumerator"), typeof(IEnumerator<Vertex>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		public System.Int32 IndexOf(Vertex item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IndexOf", item), typeof(System.Int32));
 		}
 
 		public void Insert(System.Int32 index, Vertex item)
@@ -24947,14 +22602,7 @@ namespace Elements.Assets
 
 		public System.Boolean Contains(Vertex item)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Contains", item), typeof(System.Boolean));
 		}
 
 		public void CopyTo(Vertex[] array, System.Int32 arrayIndex)
@@ -25209,14 +22857,7 @@ namespace Elements.Assets
 
 		public static System.String Preimport(System.String model, System.String tempPath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ModelPreimporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Preimport", model, tempPath), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ModelPreimporter", ResoniteBridge.ResoniteBridgeValueType.Type), "Preimport", model, tempPath), typeof(System.String));
 		}
 	}
 	public class ComputedConvexHull : ResoniteBridge.ResoniteBridgeValueHolder
@@ -25783,14 +23424,7 @@ namespace Elements.Assets
 
 		public static Task<List<ComputedConvexHull>> Decompose(MeshX mesh, System.Int32 resolution = 100000, System.Int32 depth = 20, System.Single concavity = 0.0025f, System.Int32 planeDownsampling = 4, System.Int32 convexHullDownsampling = 4, System.Single alpha = 0.05f, System.Single beta = 0.05f, System.Single gamma = 0.00125f, System.Single delta = 0.05f, System.Boolean pca = false, DecompositionMode mode = DecompositionMode.Voxel, System.Int32 maxVerticesPerHull = 64, System.Single minVolumePerHull = 0.0001f, System.Boolean convexHullApproximation = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VHACDInterface", ResoniteBridge.ResoniteBridgeValueType.Type), "Decompose", mesh, resolution, depth, concavity, planeDownsampling, convexHullDownsampling, alpha, beta, gamma, delta, pca, mode, maxVerticesPerHull, minVolumePerHull, convexHullApproximation), typeof(Task<List<ComputedConvexHull>>)) is Task<List<ComputedConvexHull>> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<List<ComputedConvexHull>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VHACDInterface", ResoniteBridge.ResoniteBridgeValueType.Type), "Decompose", mesh, resolution, depth, concavity, planeDownsampling, convexHullDownsampling, alpha, beta, gamma, delta, pca, mode, maxVerticesPerHull, minVolumePerHull, convexHullApproximation), typeof(Task<List<ComputedConvexHull>>));
 		}
 
 		private static void ExtractHulls(ResoniteBridge.ResoniteBridgeValue node, List<ComputedConvexHull> hulls)
@@ -26113,110 +23747,47 @@ namespace Elements.Assets
 
 		public static System.Uri GetAssetURL(System.String signature)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAssetURL", signature), typeof(System.Uri)) is System.Uri __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAssetURL", signature), typeof(System.Uri));
 		}
 
 		public static System.String GetAssetSignature(System.Uri uri)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAssetSignature", uri), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAssetSignature", uri), typeof(System.String));
 		}
 
 		public static RecordPackage Decode(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file), typeof(RecordPackage)) is RecordPackage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RecordPackage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file), typeof(RecordPackage));
 		}
 
 		public static RecordPackage Decode(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(RecordPackage)) is RecordPackage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RecordPackage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(RecordPackage));
 		}
 
 		public static RecordPackage Create(Stream writeStream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Create", writeStream), typeof(RecordPackage)) is RecordPackage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RecordPackage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RecordPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "Create", writeStream), typeof(RecordPackage));
 		}
 
 		public System.Boolean HasAsset(System.String signature)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasAsset", signature), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasAsset", signature), typeof(System.Boolean));
 		}
 
 		public System.Boolean HasVariant(System.String signature, System.String variantIdentifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasVariant", signature, variantIdentifier), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasVariant", signature, variantIdentifier), typeof(System.Boolean));
 		}
 
 		public IEnumerable<string> EnumerateVariantsForAsset(System.String signature)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateVariantsForAsset", signature), typeof(IEnumerable<string>)) is IEnumerable<string> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerable<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateVariantsForAsset", signature), typeof(IEnumerable<string>));
 		}
 
 		public IAssetMetadata TryGetMetadata(System.String signature)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetMetadata", signature), typeof(IAssetMetadata)) is IAssetMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAssetMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetMetadata", signature), typeof(IAssetMetadata));
 		}
 
 		public void WriteRecord(Record record)
@@ -26261,26 +23832,12 @@ namespace Elements.Assets
 
 		public Stream ReadAsset(System.String signature)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadAsset", signature), typeof(Stream)) is Stream __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Stream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadAsset", signature), typeof(Stream));
 		}
 
 		public Stream ReadVariant(System.String signature, System.String variantIdentifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariant", signature, variantIdentifier), typeof(Stream)) is Stream __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Stream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariant", signature, variantIdentifier), typeof(Stream));
 		}
 
 		public void WriteVariant(System.String signature, System.String variantIdentifier, System.String file)
@@ -26300,14 +23857,7 @@ namespace Elements.Assets
 
 		private Stream Read(Dictionary<string, ResoniteBridge.ResoniteBridgeValue> entries, System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", entries, identifier), typeof(Stream)) is Stream __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Stream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", entries, identifier), typeof(Stream));
 		}
 
 		private void Write(Dictionary<string, ResoniteBridge.ResoniteBridgeValue> entries, System.String folder, System.String identifier, Stream sourceData)
@@ -26352,38 +23902,17 @@ namespace Elements.Assets
 	{
 		public static MeshX Decode(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file), typeof(MeshX));
 		}
 
 		public static MeshX DecodeASCII_PTS(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DecodeASCII_PTS", file), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DecodeASCII_PTS", file), typeof(MeshX));
 		}
 
 		public static MeshX DecodeLAZ(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DecodeLAZ", file), typeof(MeshX)) is MeshX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PointCloudDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DecodeLAZ", file), typeof(MeshX));
 		}
 	}
 	public class ShaderPackage : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
@@ -26462,14 +23991,7 @@ namespace Elements.Assets
 
 		public static ShaderPackage CreateFromSource(System.String shaderSourceFile, Stream targetStream, System.String origin)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSource", shaderSourceFile, targetStream, origin), typeof(ShaderPackage)) is ShaderPackage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderPackage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSource", shaderSourceFile, targetStream, origin), typeof(ShaderPackage));
 		}
 
 		public ShaderPackage(System.String file)
@@ -26499,14 +24021,7 @@ namespace Elements.Assets
 
 		public ShaderSource ReadSource(System.String filename)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadSource", filename), typeof(ShaderSource)) is ShaderSource __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderSource)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadSource", filename), typeof(ShaderSource));
 		}
 
 		public void WriteVariant(System.String platform, System.UInt32 variant, Stream stream)
@@ -26516,38 +24031,17 @@ namespace Elements.Assets
 
 		public byte[] ReadVariant(System.String platform, System.UInt32 variant)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariant", platform, variant), typeof(byte[])) is byte[] __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariant", platform, variant), typeof(byte[]));
 		}
 
 		public static System.String VariantPath(System.String platform, System.UInt32 variant)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "VariantPath", platform, variant), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "VariantPath", platform, variant), typeof(System.String));
 		}
 
 		public static System.String SourcePath(System.String sourceSubpath)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "SourcePath", sourceSubpath), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderPackage", ResoniteBridge.ResoniteBridgeValueType.Type), "SourcePath", sourceSubpath), typeof(System.String));
 		}
 
 		public void Dispose()
@@ -26924,14 +24418,7 @@ namespace Elements.Assets
 
 		public static List<ShaderSource> CollectSources(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "CollectSources", file), typeof(List<ShaderSource>)) is List<ShaderSource> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ShaderSource>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "CollectSources", file), typeof(List<ShaderSource>));
 		}
 
 		private static void ProcessIncludes(ShaderSource source, Dictionary<string, ShaderSource> dependencies)
@@ -26951,26 +24438,12 @@ namespace Elements.Assets
 
 		public System.String GetSource()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSource"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSource"), typeof(System.String));
 		}
 
 		public System.String GetVariantSource(List<string> keywords, System.UInt32 variantIndex, System.String renderers)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariantSource", keywords, variantIndex, renderers), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariantSource", keywords, variantIndex, renderers), typeof(System.String));
 		}
 
 		private static void InjectDefine(StringBuilder str, System.String keyword)
@@ -26980,14 +24453,7 @@ namespace Elements.Assets
 
 		public System.String ComputeSourceHash()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeSourceHash"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeSourceHash"), typeof(System.String));
 		}
 
 		internal void ResolveIncludes()
@@ -27007,26 +24473,12 @@ namespace Elements.Assets
 
 		private static System.String ProcessVariant(System.String variant)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessVariant", variant), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessVariant", variant), typeof(System.String));
 		}
 
 		private static System.String GetRawLine(System.String line, ref System.Boolean insideComment)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "GetRawLine", line, insideComment), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderSource", ResoniteBridge.ResoniteBridgeValueType.Type), "GetRawLine", line, insideComment), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27272,74 +24724,32 @@ namespace Elements.Assets
 
 		public int2 GetDefaultGlyphResolution(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2));
 		}
 
 		public GlyphMetrics GetGlyphMetrics(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphMetrics", glyphId), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphMetrics", glyphId), typeof(GlyphMetrics));
 		}
 
 		public System.Boolean GetGlyphTintable(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean));
 		}
 
 		public GlyphMetrics GetCharMetrics(System.Char ch)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharMetrics", ch), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharMetrics", ch), typeof(GlyphMetrics));
 		}
 
 		public GlyphMetrics GetCharMetrics(System.UInt32 charcode)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharMetrics", charcode), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharMetrics", charcode), typeof(GlyphMetrics));
 		}
 
 		public System.UInt32 GetGlyphIdFromName(System.String glyphName)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphIdFromName", glyphName), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphIdFromName", glyphName), typeof(System.UInt32));
 		}
 
 		public void ClearCachedCharMapping(System.UInt32 charcode)
@@ -27349,38 +24759,17 @@ namespace Elements.Assets
 
 		public float2 GetKerning(System.UInt32 leftGlyphId, System.UInt32 rightGlyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKerning", leftGlyphId, rightGlyphId), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKerning", leftGlyphId, rightGlyphId), typeof(float2));
 		}
 
 		public System.UInt32 CharToGlyphId(System.Char ch)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", ch), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", ch), typeof(System.UInt32));
 		}
 
 		public GlyphOutline GetOutline(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutline", glyphId), typeof(GlyphOutline)) is GlyphOutline __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphOutline)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutline", glyphId), typeof(GlyphOutline));
 		}
 
 		public void AssignGlyphName(System.String name, System.UInt32 glyphId, System.Boolean replaceExisting)
@@ -27395,14 +24784,7 @@ namespace Elements.Assets
 
 		public static FontX Load(System.String file, System.String extension = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FontX", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file, extension), typeof(FontX)) is FontX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FontX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FontX", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file, extension), typeof(FontX));
 		}
 
 		public void Dispose()
@@ -27412,38 +24794,17 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public unsafe System.Boolean RenderGlyphMSDF(System.UInt32 glyphId, Bitmap2D bitmap, Rect region, System.Int32 pixelRange, System.Boolean rotated)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RenderGlyphMSDF", glyphId, bitmap, region, pixelRange, rotated), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RenderGlyphMSDF", glyphId, bitmap, region, pixelRange, rotated), typeof(System.Boolean));
 		}
 
 		public System.Boolean RenderGlyphRaster(System.UInt32 glyphId, Bitmap2D bitmap, Rect region, System.Boolean rotated)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RenderGlyphRaster", glyphId, bitmap, region, rotated), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RenderGlyphRaster", glyphId, bitmap, region, rotated), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27838,50 +25199,22 @@ namespace Elements.Assets
 
 		public GlyphAtlasData GetGlyphData(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphData", glyphId), typeof(GlyphAtlasData)) is GlyphAtlasData __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphAtlasData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphData", glyphId), typeof(GlyphAtlasData));
 		}
 
 		public System.Boolean HasGlyphData(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasGlyphData", glyphId), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasGlyphData", glyphId), typeof(System.Boolean));
 		}
 
 		public System.Int32 Pack(List<GlyphPackData> glyphs, System.Int32 offset = 0, System.Boolean allowPartialPack = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pack", glyphs, offset, allowPartialPack), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pack", glyphs, offset, allowPartialPack), typeof(System.Int32));
 		}
 
 		public System.Boolean Pack(in GlyphPackData glyph)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pack", glyph), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pack", glyph), typeof(System.Boolean));
 		}
 
 		public void AllocateBitmap(System.Boolean mipmaps)
@@ -28266,14 +25599,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28361,14 +25687,7 @@ namespace Elements.Assets
 
 		public float2 GetOriginPoint(System.Int32 segmentIndex)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOriginPoint", segmentIndex), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOriginPoint", segmentIndex), typeof(float2));
 		}
 
 		public void AddLine(in float2 point)
@@ -28500,38 +25819,17 @@ namespace Elements.Assets
 
 		public static GlyphSegment Line(in float2 point)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Line", point), typeof(GlyphSegment)) is GlyphSegment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphSegment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Line", point), typeof(GlyphSegment));
 		}
 
 		public static GlyphSegment Conic(in float2 point, in float2 controlPoint)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Conic", point, controlPoint), typeof(GlyphSegment)) is GlyphSegment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphSegment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Conic", point, controlPoint), typeof(GlyphSegment));
 		}
 
 		public static GlyphSegment Cubic(in float2 point, in float2 controlPoint0, in float2 controlPoint1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Cubic", point, controlPoint0, controlPoint1), typeof(GlyphSegment)) is GlyphSegment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphSegment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "Cubic", point, controlPoint0, controlPoint1), typeof(GlyphSegment));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28612,14 +25910,7 @@ namespace Elements.Assets
 
 		public GlyphContour AddContour(in float2 origin)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddContour", origin), typeof(GlyphContour)) is GlyphContour __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphContour)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddContour", origin), typeof(GlyphContour));
 		}
 
 		public void AddContour(GlyphContour contour)
@@ -28634,38 +25925,17 @@ namespace Elements.Assets
 
 		public List<GlyphContour>.Enumerator GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<GlyphContour>.Enumerator)) is List<GlyphContour>.Enumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<GlyphContour>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(List<GlyphContour>.Enumerator));
 		}
 
 		IEnumerator<GlyphContour> IEnumerable<GlyphContour>.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<GlyphContour>.GetEnumerator"), typeof(IEnumerator<GlyphContour>)) is IEnumerator<GlyphContour> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<GlyphContour>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<GlyphContour>.GetEnumerator"), typeof(IEnumerator<GlyphContour>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		public void FixArtifacts()
@@ -28957,14 +26227,7 @@ namespace Elements.Assets
 
 		public System.UInt32 CharToGlyphId(System.UInt32 charcode)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", charcode), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", charcode), typeof(System.UInt32));
 		}
 
 		public void Dispose()
@@ -28974,50 +26237,22 @@ namespace Elements.Assets
 
 		public System.Boolean GetGlyphTintable(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean));
 		}
 
 		public GlyphMetrics ExtractGlyphMetrics(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphMetrics", glyphId), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphMetrics", glyphId), typeof(GlyphMetrics));
 		}
 
 		public int2 GetDefaultGlyphResolution(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2));
 		}
 
 		public GlyphOutline ExtractGlyphOutline(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphOutline", glyphId), typeof(GlyphOutline)) is GlyphOutline __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphOutline)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphOutline", glyphId), typeof(GlyphOutline));
 		}
 
 		public void RenderRawGlyphBitmap(System.UInt32 glyphId, Bitmap2D target, IntRect rect, System.Boolean rotated)
@@ -29027,38 +26262,17 @@ namespace Elements.Assets
 
 		public System.Boolean SupportsRenderMethod(GlyphRenderMethod method)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SupportsRenderMethod", method), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SupportsRenderMethod", method), typeof(System.Boolean));
 		}
 
 		public float2 ExtractKerning(System.UInt32 leftGlyphId, System.UInt32 rightGlyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractKerning", leftGlyphId, rightGlyphId), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractKerning", leftGlyphId, rightGlyphId), typeof(float2));
 		}
 
 		public System.Boolean LoadFrom(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadFrom", file), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadFrom", file), typeof(System.Boolean));
 		}
 
 		public void AddSpriteGlyph(System.UInt32 glyphId, System.UInt32 unicodeCodepoint, SpriteGlyph spriteGlyph)
@@ -29351,86 +26565,37 @@ namespace Elements.Assets
 
 		public int2 GetDefaultGlyphResolution(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultGlyphResolution", glyphId), typeof(int2));
 		}
 
 		public System.UInt32 CharToGlyphId(System.UInt32 charcode)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", charcode), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CharToGlyphId", charcode), typeof(System.UInt32));
 		}
 
 		public System.Boolean GetGlyphTintable(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphTintable", glyphId), typeof(System.Boolean));
 		}
 
 		public float2 ExtractKerning(System.UInt32 leftGlyphId, System.UInt32 rightGlyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractKerning", leftGlyphId, rightGlyphId), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractKerning", leftGlyphId, rightGlyphId), typeof(float2));
 		}
 
 		public GlyphMetrics ExtractGlyphMetrics(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphMetrics", glyphId), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphMetrics", glyphId), typeof(GlyphMetrics));
 		}
 
 		public GlyphOutline ExtractGlyphOutline(System.UInt32 glyphId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphOutline", glyphId), typeof(GlyphOutline)) is GlyphOutline __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (GlyphOutline)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractGlyphOutline", glyphId), typeof(GlyphOutline));
 		}
 
 		public System.Boolean SupportsRenderMethod(GlyphRenderMethod method)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SupportsRenderMethod", method), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SupportsRenderMethod", method), typeof(System.Boolean));
 		}
 
 		public void RenderRawGlyphBitmap(System.UInt32 glyphId, Bitmap2D target, IntRect rect, System.Boolean rotated)
@@ -29440,126 +26605,56 @@ namespace Elements.Assets
 
 		private System.Int32 MoveTo(ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveTo", point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveTo", point, userData), typeof(System.Int32));
 		}
 
 		private System.Int32 LineTo(ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LineTo", point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LineTo", point, userData), typeof(System.Int32));
 		}
 
 		private System.Int32 ConicTo(ref ResoniteBridge.ResoniteBridgeValue controlPoint, ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConicTo", controlPoint, point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConicTo", controlPoint, point, userData), typeof(System.Int32));
 		}
 
 		private System.Int32 CubicTo(ref ResoniteBridge.ResoniteBridgeValue controlPoint0, ref ResoniteBridge.ResoniteBridgeValue controlPoint1, ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CubicTo", controlPoint0, controlPoint1, point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CubicTo", controlPoint0, controlPoint1, point, userData), typeof(System.Int32));
 		}
 
 		private float2 ToEngine(ref ResoniteBridge.ResoniteBridgeValue vector)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToEngine", vector), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToEngine", vector), typeof(float2));
 		}
 
 		[Elements.Core.MonoPInvokeCallback(typeof(ResoniteBridge.ResoniteBridgeValue))]
 		private static System.Int32 MoveToStatic(ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "MoveToStatic", point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "MoveToStatic", point, userData), typeof(System.Int32));
 		}
 
 		[Elements.Core.MonoPInvokeCallback(typeof(ResoniteBridge.ResoniteBridgeValue))]
 		private static System.Int32 LineToStatic(ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "LineToStatic", point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "LineToStatic", point, userData), typeof(System.Int32));
 		}
 
 		[Elements.Core.MonoPInvokeCallback(typeof(ResoniteBridge.ResoniteBridgeValue))]
 		private static System.Int32 ConicToStatic(ref ResoniteBridge.ResoniteBridgeValue controlPoint, ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "ConicToStatic", controlPoint, point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "ConicToStatic", controlPoint, point, userData), typeof(System.Int32));
 		}
 
 		[Elements.Core.MonoPInvokeCallback(typeof(ResoniteBridge.ResoniteBridgeValue))]
 		private static System.Int32 CubicToStatic(ref ResoniteBridge.ResoniteBridgeValue controlPoint0, ref ResoniteBridge.ResoniteBridgeValue controlPoint1, ref ResoniteBridge.ResoniteBridgeValue point, IntPtr userData)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "CubicToStatic", controlPoint0, controlPoint1, point, userData), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "CubicToStatic", controlPoint0, controlPoint1, point, userData), typeof(System.Int32));
 		}
 
 		private static float2 ToEngineStatic(ref ResoniteBridge.ResoniteBridgeValue vector)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "ToEngineStatic", vector), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "FreeTypeFont", ResoniteBridge.ResoniteBridgeValueType.Type), "ToEngineStatic", vector), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29684,26 +26779,12 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public System.Char FilterCharacter(System.Char ch, System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterCharacter", ch, index), typeof(System.Char)) is System.Char __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterCharacter", ch, index), typeof(System.Char));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29772,38 +26853,17 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public static StringAlignmentNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringAlignmentNode)) is StringAlignmentNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringAlignmentNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringAlignmentNode));
 		}
 
 		private static System.Boolean IsParameter(ResoniteBridge.ResoniteBridgeValue parameter, System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentNode", ResoniteBridge.ResoniteBridgeValueType.Type), "IsParameter", parameter, name), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentNode", ResoniteBridge.ResoniteBridgeValueType.Type), "IsParameter", parameter, name), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29866,38 +26926,17 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public System.Char FilterCharacter(System.Char ch, System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterCharacter", ch, index), typeof(System.Char)) is System.Char __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterCharacter", ch, index), typeof(System.Char));
 		}
 
 		public System.Single FilterSize(System.Single size, System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterSize", size, index), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterSize", size, index), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29932,14 +26971,7 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30043,38 +27075,17 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public static StringColorNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Boolean alphaOnly, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringColorNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, alphaOnly, startIndex, parent), typeof(StringColorNode)) is StringColorNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringColorNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringColorNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, alphaOnly, startIndex, parent), typeof(StringColorNode));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30104,14 +27115,7 @@ namespace Elements.Assets
 	{
 		public static colorX GetFontColor(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringColorExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontColor", node), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringColorExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontColor", node), typeof(colorX));
 		}
 	}
 	public class StringFontNode : StringContainerNode, ResoniteBridge.ResoniteBridgeValueHolder
@@ -30185,14 +27189,7 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public void ResolveFont()
@@ -30202,14 +27199,7 @@ namespace Elements.Assets
 
 		public static StringFontNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFontNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringFontNode)) is StringFontNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringFontNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFontNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringFontNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30239,14 +27229,7 @@ namespace Elements.Assets
 	{
 		public static FontSet GetFontSet(this StringNode node, System.Boolean spriteFontSet = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFontExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontSet", node, spriteFontSet), typeof(FontSet)) is FontSet __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FontSet)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFontExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontSet", node, spriteFontSet), typeof(FontSet));
 		}
 	}
 	public struct StringFormatting : ResoniteBridge.ResoniteBridgeValueHolder
@@ -30386,26 +27369,12 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30435,14 +27404,7 @@ namespace Elements.Assets
 	{
 		public static StringFormatting GetFontFormatting(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontFormatting", node), typeof(StringFormatting)) is StringFormatting __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringFormatting)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontFormatting", node), typeof(StringFormatting));
 		}
 
 		public static void GetFontFormatting(this StringNode node, ref StringFormatting formatting)
@@ -30545,14 +27507,7 @@ namespace Elements.Assets
 
 		public override System.Char GetCharacter(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char)) is System.Char __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char));
 		}
 
 		public StringGlyphNode(System.UInt32 glyphId, System.String glyphName, System.Int32 startIndex, bool? tint, StringContainerNode parent)
@@ -30572,26 +27527,12 @@ namespace Elements.Assets
 
 		public static StringGlyphNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringGlyphNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringGlyphNode)) is StringGlyphNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringGlyphNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringGlyphNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringGlyphNode));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30640,14 +27581,7 @@ namespace Elements.Assets
 
 		public color Sample(System.Single normalizedPosition)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Sample", normalizedPosition), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Sample", normalizedPosition), typeof(color));
 		}
 
 		public StringHorizontalGradientNode(List<color> colors, System.Int32 startIndex, StringContainerNode parent)
@@ -30657,26 +27591,12 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public static StringHorizontalGradientNode Parse(ResoniteBridge.ResoniteBridgeValue parameters, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringHorizontalGradientNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameters, startIndex, parent), typeof(StringHorizontalGradientNode)) is StringHorizontalGradientNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringHorizontalGradientNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringHorizontalGradientNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameters, startIndex, parent), typeof(StringHorizontalGradientNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30726,14 +27646,7 @@ namespace Elements.Assets
 
 		public override System.Char GetCharacter(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char)) is System.Char __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char));
 		}
 
 		public override void GetRawString(StringBuilder str)
@@ -30797,26 +27710,12 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public static StringLineHeightNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringLineHeightNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringLineHeightNode)) is StringLineHeightNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringLineHeightNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringLineHeightNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringLineHeightNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30846,14 +27745,7 @@ namespace Elements.Assets
 	{
 		public static System.Single GetLineHeight(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringLineHeightExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetLineHeight", node), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringLineHeightExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetLineHeight", node), typeof(System.Single));
 		}
 	}
 	public class StringMarkNode : StringContainerNode, ResoniteBridge.ResoniteBridgeValueHolder
@@ -30884,26 +27776,12 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public static StringMarkNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringMarkNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringMarkNode)) is StringMarkNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringMarkNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringMarkNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringMarkNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30933,14 +27811,7 @@ namespace Elements.Assets
 	{
 		public static colorX? GetMarkColor(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringMarkExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMarkColor", node), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringMarkExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMarkColor", node), typeof(colorX));
 		}
 	}
 	public class StringNoLineBreakNode : StringContainerNode, ResoniteBridge.ResoniteBridgeValueHolder
@@ -30952,14 +27823,7 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30989,14 +27853,7 @@ namespace Elements.Assets
 	{
 		public static System.Boolean DisableLineBreaking(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNoLineBreakExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "DisableLineBreaking", node), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNoLineBreakExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "DisableLineBreaking", node), typeof(System.Boolean));
 		}
 	}
 	public class StringNoParseNode : StringContainerNode, ResoniteBridge.ResoniteBridgeValueHolder
@@ -31067,38 +27924,17 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public override System.Boolean IsValidNestedNode(StringContainerNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidNestedNode", node), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidNestedNode", node), typeof(System.Boolean));
 		}
 
 		public static StringNoParseNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNoParseNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringNoParseNode)) is StringNoParseNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringNoParseNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNoParseNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringNoParseNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31206,38 +28042,17 @@ namespace Elements.Assets
 
 		public System.Int32 AppendRenderGlyph(ref RenderGlyph glyph)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AppendRenderGlyph", glyph), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AppendRenderGlyph", glyph), typeof(System.Int32));
 		}
 
 		public RenderGlyph GetRenderGlyph(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph)) is RenderGlyph __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RenderGlyph)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph));
 		}
 
 		public System.String GetStringBetween(System.Int32 startGlyph, System.Int32 endGlyph)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStringBetween", startGlyph, endGlyph), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStringBetween", startGlyph, endGlyph), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31296,14 +28111,7 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31389,14 +28197,7 @@ namespace Elements.Assets
 
 		public override System.Char GetCharacter(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char)) is System.Char __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Char)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCharacter", index), typeof(System.Char));
 		}
 
 		public StringSegmentNode(System.Int32 startIndex, System.Int32 length, StringContainerNode parent)
@@ -31411,14 +28212,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public override void GetRawString(StringBuilder str)
@@ -31502,38 +28296,17 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public static StringSizeNode Parse(ResoniteBridge.ResoniteBridgeValue parameter, System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringSizeNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringSizeNode)) is StringSizeNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringSizeNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringSizeNode", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", parameter, startIndex, parent), typeof(StringSizeNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31563,14 +28336,7 @@ namespace Elements.Assets
 	{
 		public static System.Single GetFontSize(this StringNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringSizeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontSize", node), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringSizeExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFontSize", node), typeof(System.Single));
 		}
 	}
 	public struct TextEditingVisuals : ResoniteBridge.ResoniteBridgeValueHolder
@@ -31941,14 +28707,7 @@ namespace Elements.Assets
 
 		private static System.Int32 MatchStringPositionToGlyph(StringRenderTree renderTree, System.Int32 stringPosition)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphAtlasMeshGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "MatchStringPositionToGlyph", renderTree, stringPosition), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphAtlasMeshGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "MatchStringPositionToGlyph", renderTree, stringPosition), typeof(System.Int32));
 		}
 
 		private static void Mark(StringRenderTree renderTree, MeshX mesh, TriangleSubmesh submesh, in LineSegment lineSegment, in color markColor, in float2 offset)
@@ -32099,14 +28858,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32844,14 +29596,7 @@ namespace Elements.Assets
 
 		public static System.Boolean AllowsLineBreak(System.Char ch)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "AllowsLineBreak", ch), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "AllowsLineBreak", ch), typeof(System.Boolean));
 		}
 
 		public void HorizontalAutoSize()
@@ -32861,14 +29606,7 @@ namespace Elements.Assets
 
 		public System.Boolean AutoSizeLayout(System.Single min = 0f, System.Single max = float.PositiveInfinity)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AutoSizeLayout", min, max), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AutoSizeLayout", min, max), typeof(System.Boolean));
 		}
 
 		public void ComputeLines()
@@ -32888,14 +29626,7 @@ namespace Elements.Assets
 
 		private System.Boolean ExceedsHorizontalBounds(ref RenderGlyph glyph)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExceedsHorizontalBounds", glyph), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExceedsHorizontalBounds", glyph), typeof(System.Boolean));
 		}
 
 		private void GenerateLines(GlyphPositioner glyphPositionOverride = null)
@@ -32920,26 +29651,12 @@ namespace Elements.Assets
 
 		public System.Single ComputeMaxWordWidth()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaxWordWidth"), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaxWordWidth"), typeof(System.Single));
 		}
 
 		public System.Single ComputeMaxLineWidth()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaxLineWidth"), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeMaxLineWidth"), typeof(System.Single));
 		}
 
 		private void UpdateMaxWordWidth(StringRenderGlyphSegmentNode segment, ref System.Single maxLength, int? startGlyph, int? endGlyph)
@@ -32949,14 +29666,7 @@ namespace Elements.Assets
 
 		public System.Single ComputeTotalLineHeight(AlignmentMode alignmentMode)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTotalLineHeight", alignmentMode), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTotalLineHeight", alignmentMode), typeof(System.Single));
 		}
 
 		private void PerformVerticalAlignment()
@@ -32966,14 +29676,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public void ClearShaping()
@@ -32988,26 +29691,12 @@ namespace Elements.Assets
 
 		public FontSet GetFontSet(System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFontSet", name), typeof(FontSet)) is FontSet __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FontSet)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFontSet", name), typeof(FontSet));
 		}
 
 		public FontSet GetFontSet(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFontSet", index), typeof(FontSet)) is FontSet __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FontSet)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFontSet", index), typeof(FontSet));
 		}
 
 		public StringRenderTree(System.String str, FontSet fontSet, Func<StringContainerNode, StringContainerNode> initRootNodes = null, System.Boolean parse = true)
@@ -33022,14 +29711,7 @@ namespace Elements.Assets
 
 		public override StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode)) is StringContainerNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringContainerNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone", startIndex, parent), typeof(StringContainerNode));
 		}
 
 		internal void AppendGlyph(System.Int32 index, ref RenderGlyph glyph)
@@ -33039,26 +29721,12 @@ namespace Elements.Assets
 
 		public RenderGlyph GetRenderGlyph(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph)) is RenderGlyph __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RenderGlyph)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRenderGlyph", index), typeof(RenderGlyph));
 		}
 
 		public StringLine GetLine(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLine", index), typeof(StringLine)) is StringLine __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringLine)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLine", index), typeof(StringLine));
 		}
 
 		private void Parse(System.String str, Func<StringContainerNode, StringContainerNode> initRootNodes = null)
@@ -33073,38 +29741,17 @@ namespace Elements.Assets
 
 		private static StringNode CreateNode(System.Int32 startIndex, StringContainerNode parent, in StringSegment tag, in StringSegment parameter)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateNode", startIndex, parent, tag, parameter), typeof(StringNode)) is StringNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StringNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateNode", startIndex, parent, tag, parameter), typeof(StringNode));
 		}
 
 		private static System.Boolean IsTag(in StringSegment tag, System.String name)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "IsTag", tag, name), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "IsTag", tag, name), typeof(System.Boolean));
 		}
 
 		private static System.Boolean IsTagCharacter(System.Char ch)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "IsTagCharacter", ch), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "IsTagCharacter", ch), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33183,14 +29830,7 @@ namespace Elements.Assets
 
 		public virtual System.Boolean IsValidNestedNode(StringContainerNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidNestedNode", node), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidNestedNode", node), typeof(System.Boolean));
 		}
 
 		public abstract StringContainerNode Clone(System.Int32 startIndex, StringContainerNode parent);
@@ -33202,26 +29842,12 @@ namespace Elements.Assets
 
 		public IEnumerator<StringRenderGlyphSegmentNode> GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<StringRenderGlyphSegmentNode>)) is IEnumerator<StringRenderGlyphSegmentNode> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator<StringRenderGlyphSegmentNode>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<StringRenderGlyphSegmentNode>));
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33513,14 +30139,7 @@ namespace Elements.Assets
 
 		public System.String GetRawString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawString"), typeof(System.String));
 		}
 
 		public void GetParentNodes<T>(List<T> nodes) where T : class
@@ -33530,26 +30149,12 @@ namespace Elements.Assets
 
 		public T GetParentNode<T>() where T : class
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetParentNode"), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetParentNode"), typeof(T));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue ExtractRawParameter(ResoniteBridge.ResoniteBridgeValue parameter)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNode", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractRawParameter", parameter), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNode", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractRawParameter", parameter), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33575,14 +30180,7 @@ namespace Elements.Assets
 	{
 		public static System.String SanitizeFormatTags(System.String str)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringParsingHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SanitizeFormatTags", str), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringParsingHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SanitizeFormatTags", str), typeof(System.String));
 		}
 	}
 	public class FontSet : ResoniteBridge.ResoniteBridgeValueHolder
@@ -33659,26 +30257,12 @@ namespace Elements.Assets
 	{
 		public static TextHorizontalAlignment GetHorizontalText(this Alignment align)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextRenderHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetHorizontalText", align), typeof(TextHorizontalAlignment)) is TextHorizontalAlignment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextHorizontalAlignment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextRenderHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetHorizontalText", align), typeof(TextHorizontalAlignment));
 		}
 
 		public static TextVerticalAlignment GetVerticalText(this Alignment align)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextRenderHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetVerticalText", align), typeof(TextVerticalAlignment)) is TextVerticalAlignment __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextVerticalAlignment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextRenderHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetVerticalText", align), typeof(TextVerticalAlignment));
 		}
 	}
 	internal class AnimatedTexture : ResoniteBridge.ResoniteBridgeValueHolder
@@ -34019,26 +30603,12 @@ namespace Elements.Assets
 
 		public color32 DecodePixel32(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DecodePixel32", index), typeof(color32)) is color32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DecodePixel32", index), typeof(color32));
 		}
 
 		public color DecodePixel(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DecodePixel", index), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DecodePixel", index), typeof(color));
 		}
 
 		public void EncodePixel(System.Int32 index, in color color)
@@ -34083,50 +30653,22 @@ namespace Elements.Assets
 
 		private System.UInt32 ReadUint(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadUint", index), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadUint", index), typeof(System.UInt32));
 		}
 
 		private System.UInt16 ReadUShort(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadUShort", index), typeof(System.UInt16)) is System.UInt16 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt16)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadUShort", index), typeof(System.UInt16));
 		}
 
 		public unsafe static System.UInt32 SingleToUint32(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap", ResoniteBridge.ResoniteBridgeValueType.Type), "SingleToUint32", value), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap", ResoniteBridge.ResoniteBridgeValueType.Type), "SingleToUint32", value), typeof(System.UInt32));
 		}
 
 		public unsafe static System.Single Uint32ToSingle(System.UInt32 value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap", ResoniteBridge.ResoniteBridgeValueType.Type), "Uint32ToSingle", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap", ResoniteBridge.ResoniteBridgeValueType.Type), "Uint32ToSingle", value), typeof(System.Single));
 		}
 
 		public void Clear(color color)
@@ -34151,38 +30693,17 @@ namespace Elements.Assets
 
 		public System.Boolean HasTransparentPixels(System.Single threshold = 1f)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasTransparentPixels", threshold), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasTransparentPixels", threshold), typeof(System.Boolean));
 		}
 
 		public colorX AverageColor(System.Boolean inLinearSpace = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageColor", inLinearSpace), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageColor", inLinearSpace), typeof(colorX));
 		}
 
 		public colorX AverageColor(Predicate<color> filter, System.Boolean inLinearSpace = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageColor", filter, inLinearSpace), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageColor", filter, inLinearSpace), typeof(colorX));
 		}
 
 		public void FillFrom(Bitmap source)
@@ -34506,86 +31027,37 @@ namespace Elements.Assets
 
 		public float2 PixelToUV(System.Int32 x, System.Int32 y)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelToUV", x, y), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelToUV", x, y), typeof(float2));
 		}
 
 		public float2 PixelToUV(in int2 point)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelToUV", point), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelToUV", point), typeof(float2));
 		}
 
 		public int2 UVToPixel(in float2 uv)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UVToPixel", uv), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UVToPixel", uv), typeof(int2));
 		}
 
 		public color SampleUV(in float2 uv, WrapMode wrap = WrapMode.Clamp, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleUV", uv, wrap, mipLevel), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleUV", uv, wrap, mipLevel), typeof(color));
 		}
 
 		public color GetPixelBilinear(System.Single x, System.Single y, WrapMode wrap = WrapMode.Clamp, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", x, y, wrap, mipLevel), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", x, y, wrap, mipLevel), typeof(color));
 		}
 
 		public color GetPixel(System.Int32 x, System.Int32 y, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, mipLevel), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, mipLevel), typeof(color));
 		}
 
 		public color32 GetPixel32(System.Int32 x, System.Int32 y, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, mipLevel), typeof(color32)) is color32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, mipLevel), typeof(color32));
 		}
 
 		public void SetPixel(System.Int32 x, System.Int32 y, in color color, System.Int32 mipLevel = 0)
@@ -34600,14 +31072,7 @@ namespace Elements.Assets
 
 		public System.Boolean VerifyRegion(System.Int32 x, System.Int32 y, System.Int32 width, System.Int32 height, System.Int32 mip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VerifyRegion", x, y, width, height, mip), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VerifyRegion", x, y, width, height, mip), typeof(System.Boolean));
 		}
 
 		public void GetMipMapBuffers(List<Memory<byte>> mipbuffers)
@@ -34627,38 +31092,17 @@ namespace Elements.Assets
 
 		public static System.Int32 ComputeTotalPixels(in int2 size, System.Boolean mipmaps)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeTotalPixels", size, mipmaps), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeTotalPixels", size, mipmaps), typeof(System.Int32));
 		}
 
 		public Bitmap2D ExtractMipMap(System.Int32 mip, System.Boolean includeLowerMips = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractMipMap", mip, includeLowerMips), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractMipMap", mip, includeLowerMips), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D ConvertTo(TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(Bitmap2D));
 		}
 
 		public void FillFrom(BitmapCube cubemap, BitmapCube.Face face, System.Int32 miplevel = 0)
@@ -34668,14 +31112,7 @@ namespace Elements.Assets
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public void Fill(System.Int32 x, System.Int32 y, System.Int32 width, System.Int32 height, color color, System.Int32 mip = 0)
@@ -34685,50 +31122,22 @@ namespace Elements.Assets
 
 		public static Bitmap2D Load(System.String file, bool? generateMipmaps, AlphaHandling alphaHandling = AlphaHandling.KeepOriginal, System.Int32 maxSize = int.MaxValue, System.Single sizeRatio = 1f)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file, generateMipmaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file, generateMipmaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D Load(Stream stream, System.String extension, bool? generateMipmaps, AlphaHandling alphaHandling = AlphaHandling.KeepOriginal, System.Int32 maxSize = int.MaxValue, System.Single sizeRatio = 1f)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", stream, extension, generateMipmaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", stream, extension, generateMipmaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D LoadRaw(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadRaw", file), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadRaw", file), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D LoadRaw(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadRaw", stream), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadRaw", stream), typeof(Bitmap2D));
 		}
 
 		public void SaveRaw(System.String file, RawBitmapEncoding encoding = RawBitmapEncoding.LZMA)
@@ -34743,74 +31152,32 @@ namespace Elements.Assets
 
 		public System.Boolean Save(System.String file, System.Int32 quality = 85, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Save", file, quality, preserveColorInAlpha), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Save", file, quality, preserveColorInAlpha), typeof(System.Boolean));
 		}
 
 		public System.Boolean Save(Stream stream, System.String extension, System.Int32 quality = 85, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Save", stream, extension, quality, preserveColorInAlpha), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Save", stream, extension, quality, preserveColorInAlpha), typeof(System.Boolean));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue ToFreeImage()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToFreeImage"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToFreeImage"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue ToFreeImage(IntRect region, System.Int32 sourceMip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToFreeImage", region, sourceMip), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToFreeImage", region, sourceMip), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public color GetPixelBoxClamp(System.Int32 x, System.Int32 y, System.Int32 mip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBoxClamp", x, y, mip), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBoxClamp", x, y, mip), typeof(color));
 		}
 
 		public color GetPixelBoxRepeat(System.Int32 x, System.Int32 y, System.Int32 mip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBoxRepeat", x, y, mip), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBoxRepeat", x, y, mip), typeof(color));
 		}
 
 		public void GenerateMipmapsBox()
@@ -34830,134 +31197,57 @@ namespace Elements.Assets
 
 		public Bitmap2D GetRescaled(System.Int32 longestSize, bool? mipmaps = null, System.Boolean forceRescale = false, Filtering filtering = Filtering.Box)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", longestSize, mipmaps, forceRescale, filtering), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", longestSize, mipmaps, forceRescale, filtering), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D GetRescaled(System.Int32 width, System.Int32 height, bool? mipmaps = null, System.Boolean forceRescale = false, Filtering filtering = Filtering.Box)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", width, height, mipmaps, forceRescale, filtering), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", width, height, mipmaps, forceRescale, filtering), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D GetRescaled(int2 size, bool? mipmaps = null, System.Boolean forceRescale = false, Filtering filtering = Filtering.Box)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", size, mipmaps, forceRescale, filtering), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", size, mipmaps, forceRescale, filtering), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D GetRescaled(IntRect region, System.Int32 sourceMip, int2 size, bool? mipmaps = null, System.Boolean forceRescale = false, Filtering filtering = Filtering.Box)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", region, sourceMip, size, mipmaps, forceRescale, filtering), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRescaled", region, sourceMip, size, mipmaps, forceRescale, filtering), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Crop(Rect rect)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", rect), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", rect), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Crop(int2 position, int2 size)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", position, size), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", position, size), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Crop(System.Int32 x, System.Int32 y, System.Int32 width, System.Int32 height)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", x, y, width, height), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Crop", x, y, width, height), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D CropCenter(int2 newSize)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropCenter", newSize), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropCenter", newSize), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D CropSquareCenter()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropSquareCenter"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropSquareCenter"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D CropAspectRatioCenter(float2 ratio)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropAspectRatioCenter", ratio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropAspectRatioCenter", ratio), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D CropAspectRatioCenter(System.Single ratio)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropAspectRatioCenter", ratio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CropAspectRatioCenter", ratio), typeof(Bitmap2D));
 		}
 
 		public void CopyFrom(Bitmap2D source, System.Int32 sourceX, System.Int32 sourceY, System.Int32 destX, System.Int32 destY, System.Int32 width, System.Int32 height)
@@ -34967,86 +31257,37 @@ namespace Elements.Assets
 
 		public Bitmap2D MakeSquare()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MakeSquare"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MakeSquare"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Trim(Pixel2DPredicate isForeground)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", isForeground), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", isForeground), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Trim(color c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", c), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", c), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Trim(color32 c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", c), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trim", c), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D TrimTransparent()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrimTransparent"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrimTransparent"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D TrimByCornerColor()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrimByCornerColor"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrimByCornerColor"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Pad(int2 targetSize, bool? overrideMipmaps = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pad", targetSize, overrideMipmaps), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Pad", targetSize, overrideMipmaps), typeof(Bitmap2D));
 		}
 
 		public void AlphaBlend(Bitmap2D other)
@@ -35091,50 +31332,22 @@ namespace Elements.Assets
 
 		public Bitmap2D Rotate90CW()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate90CW"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate90CW"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Rotate90CCW()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate90CCW"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate90CCW"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D Rotate180()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate180"), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rotate180"), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D RemapPositions(int2 newSize, Func<int2, int2, int2> remappingFunction)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemapPositions", newSize, remappingFunction), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemapPositions", newSize, remappingFunction), typeof(Bitmap2D));
 		}
 
 		public void ForEachPixel(Func<color, color> filter, IntRect rect, System.Int32 miplevel = 0)
@@ -35149,26 +31362,12 @@ namespace Elements.Assets
 
 		public Bitmap2D GenerateTileableLoop(float2 transitionRatio)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTileableLoop", transitionRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTileableLoop", transitionRatio), typeof(Bitmap2D));
 		}
 
 		public Bitmap2D GenerateTileableMirrored(float2 transitionRatio)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTileableMirrored", transitionRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateTileableMirrored", transitionRatio), typeof(Bitmap2D));
 		}
 
 		public void BleedColorToAlpha()
@@ -35178,74 +31377,32 @@ namespace Elements.Assets
 
 		public color? AverageRGBFromVisibleSurroundings(System.Int32 x, System.Int32 y, Bit2DArray overrides = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageRGBFromVisibleSurroundings", x, y, overrides), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AverageRGBFromVisibleSurroundings", x, y, overrides), typeof(color));
 		}
 
 		public static System.Boolean SupportsBlockCompression(TextureFormat targetFormat)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean));
 		}
 
 		public Bitmap2D BlockCompress(TextureFormat targetFormat, System.Single quality = 0.5f, System.Int32 maxThreads = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlockCompress", targetFormat, quality, maxThreads), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlockCompress", targetFormat, quality, maxThreads), typeof(Bitmap2D));
 		}
 
 		public System.Boolean CrunchCompress(System.String file, TextureFormat targetFormat, System.Boolean normalMap, System.Boolean perceptual, System.Int32 maxThreads = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CrunchCompress", file, targetFormat, normalMap, perceptual, maxThreads), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CrunchCompress", file, targetFormat, normalMap, perceptual, maxThreads), typeof(System.Boolean));
 		}
 
 		public static Bitmap2D LoadCRN(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadCRN", file), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadCRN", file), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D LoadCRN(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadCRN", stream), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadCRN", stream), typeof(Bitmap2D));
 		}
 
 		public void DrawPixelSquare(IntRect rect, color color, System.Boolean dotted = false)
@@ -35448,50 +31605,22 @@ namespace Elements.Assets
 
 		public System.Int32 PixelStart(System.Int32 x, System.Int32 y, System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, mip), typeof(System.Int32));
 		}
 
 		public System.Int32 MipmapByteOrigin(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapByteOrigin", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapByteOrigin", mip), typeof(System.Int32));
 		}
 
 		public System.Int32 MipmapTotalBytes(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalBytes", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalBytes", mip), typeof(System.Int32));
 		}
 
 		public override System.Int32 MipmapOrigin(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32));
 		}
 
 		protected void GetMipMapBuffers(List<Memory<byte>> mipBuffers, System.Int32 offset)
@@ -35506,86 +31635,37 @@ namespace Elements.Assets
 
 		protected override System.Int32 InitMipmapLevels()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32));
 		}
 
 		public override System.Int32 MipmapTotalPixels(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalPixels", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalPixels", mip), typeof(System.Int32));
 		}
 
 		public int2 MipMapSize(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipMapSize", mip), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipMapSize", mip), typeof(int2));
 		}
 
 		public static System.Boolean IsSizeAligned(in int2 size, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSizeAligned", size, format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsSizeAligned", size, format), typeof(System.Boolean));
 		}
 
 		public static int2 AlignSize(in int2 size, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "AlignSize", size, format), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "AlignSize", size, format), typeof(int2));
 		}
 
 		public static System.Int32 MipmapLevelCount(int2 size)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevelCount", size), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevelCount", size), typeof(System.Int32));
 		}
 
 		public static System.Int32 MipmapLevels(in int2 size, List<int2> sizes)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap2DBase", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35631,14 +31711,7 @@ namespace Elements.Assets
 	{
 		public static TextureFormat ConvertLegacyFormat(this LegacyTextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LegacyHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ConvertLegacyFormat", format), typeof(TextureFormat)) is TextureFormat __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextureFormat)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LegacyHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ConvertLegacyFormat", format), typeof(TextureFormat));
 		}
 	}
 	public class Bitmap3D : Bitmap, IBitmap<Bitmap3D>, IBitmap, ResoniteBridge.ResoniteBridgeValueHolder
@@ -35775,26 +31848,12 @@ namespace Elements.Assets
 
 		public color GetPixel(System.Int32 x, System.Int32 y, System.Int32 z, System.Int32 mip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, z, mip), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, z, mip), typeof(color));
 		}
 
 		public color GetPixel32(System.Int32 x, System.Int32 y, System.Int32 z, System.Int32 mip = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, z, mip), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, z, mip), typeof(color));
 		}
 
 		public void SetPixel(System.Int32 x, System.Int32 y, System.Int32 z, in color color, System.Int32 mip = 0)
@@ -35804,146 +31863,62 @@ namespace Elements.Assets
 
 		public color SampleUVW(in float3 uvw)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleUVW", uvw), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleUVW", uvw), typeof(color));
 		}
 
 		public color GetPixelBilinear(System.Single x, System.Single y, System.Single z)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", x, y, z), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", x, y, z), typeof(color));
 		}
 
 		public color GetPixelBilinear(in float3 position)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", position), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixelBilinear", position), typeof(color));
 		}
 
 		private color SampleBilinearLayer(in int3 pos, in float2 ratio)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleBilinearLayer", pos, ratio), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SampleBilinearLayer", pos, ratio), typeof(color));
 		}
 
 		protected override System.Int32 InitMipmapLevels()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32));
 		}
 
 		public override System.Int32 MipmapTotalPixels(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalPixels", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalPixels", mip), typeof(System.Int32));
 		}
 
 		public override System.Int32 MipmapOrigin(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32));
 		}
 
 		public int3 MipMapSize(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipMapSize", mip), typeof(int3)) is int3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipMapSize", mip), typeof(int3));
 		}
 
 		private System.Int32 PixelStart(System.Int32 x, System.Int32 y, System.Int32 z, System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, z, mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, z, mip), typeof(System.Int32));
 		}
 
 		public static System.Int32 MipmapLevels(in int3 size, List<int3> sizes)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32));
 		}
 
 		public static int3 AlignSize(in int3 size, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "AlignSize", size, format), typeof(int3)) is int3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "AlignSize", size, format), typeof(int3));
 		}
 
 		public Bitmap3D ConvertTo(TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(Bitmap3D));
 		}
 
 		public void ForEachPixelUVW(Func<float3, color> filter)
@@ -35958,14 +31933,7 @@ namespace Elements.Assets
 
 		private static Bitmap3D Decode(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(Bitmap3D));
 		}
 
 		public void Save(System.String file)
@@ -35975,26 +31943,12 @@ namespace Elements.Assets
 
 		public static Bitmap3D Load(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file), typeof(Bitmap3D));
 		}
 
 		public static Bitmap3D LoadFromCUBE(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadFromCUBE", file), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadFromCUBE", file), typeof(Bitmap3D));
 		}
 
 		public void SaveToCUBE(System.String file, System.String title = null)
@@ -36004,38 +31958,17 @@ namespace Elements.Assets
 
 		public static Bitmap3D CreateFromSlices(List<string> paths, TextureFormat format, TextureSize sizehandling)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", paths, format, sizehandling), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", paths, format, sizehandling), typeof(Bitmap3D));
 		}
 
 		public static Bitmap3D CreateFromSlices(List<Bitmap2D> slices, TextureFormat format, TextureSize sizehandling)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", slices, format, sizehandling), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", slices, format, sizehandling), typeof(Bitmap3D));
 		}
 
 		private static Bitmap3D CreateFromSlices(SliceAccessor slices, TextureFormat format, TextureSize sizeHandling)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", slices, format, sizeHandling), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateFromSlices", slices, format, sizeHandling), typeof(Bitmap3D));
 		}
 
 		public void FillFromSlices(List<Bitmap2D> slices, System.Boolean scale)
@@ -36055,14 +31988,7 @@ namespace Elements.Assets
 
 		private static color SampleSlices(SliceAccessor slices, float3 uvw)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "SampleSlices", slices, uvw), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Bitmap3D", ResoniteBridge.ResoniteBridgeValueType.Type), "SampleSlices", slices, uvw), typeof(color));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -36179,26 +32105,12 @@ namespace Elements.Assets
 	{
 		public static System.Boolean SupportsBlockCompression(TextureFormat targetFormat)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean));
 		}
 
 		public static System.Boolean NeedsToConvertForBlockCompression(ref TextureFormat sourceFormat, TextureFormat targetFormat)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "NeedsToConvertForBlockCompression", sourceFormat, targetFormat), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "NeedsToConvertForBlockCompression", sourceFormat, targetFormat), typeof(System.Boolean));
 		}
 
 		public unsafe static void BlockCompress(List<MipMapBuffer> sourceBuffers, List<MipMapBuffer> targetBuffers, TextureFormat sourceFormat, TextureFormat targetFormat, System.Single quality = 0.5f, System.Int32 maxThreads = 0)
@@ -36208,14 +32120,7 @@ namespace Elements.Assets
 
 		private static ResoniteBridge.ResoniteBridgeValue ToCompressonator(TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "ToCompressonator", format), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapBlockCompression", ResoniteBridge.ResoniteBridgeValueType.Type), "ToCompressonator", format), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 	}
 	public class BitmapCube : Bitmap2DBase, ResoniteBridge.ResoniteBridgeValueHolder
@@ -36321,86 +32226,37 @@ namespace Elements.Assets
 
 		protected override System.Int32 InitMipmapLevels()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitMipmapLevels"), typeof(System.Int32));
 		}
 
 		public override System.Int32 MipmapOrigin(System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapOrigin", mip), typeof(System.Int32));
 		}
 
 		public System.Int32 FaceByteOrigin(Face face)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FaceByteOrigin", face), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FaceByteOrigin", face), typeof(System.Int32));
 		}
 
 		public System.Int32 FaceStart(Face face)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FaceStart", face), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FaceStart", face), typeof(System.Int32));
 		}
 
 		public System.Int32 PixelStart(System.Int32 x, System.Int32 y, Face face, System.Int32 mip)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, face, mip), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PixelStart", x, y, face, mip), typeof(System.Int32));
 		}
 
 		public System.Int32 MipmapByteOrigin(System.Int32 mip, Face face)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapByteOrigin", mip, face), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapByteOrigin", mip, face), typeof(System.Int32));
 		}
 
 		public System.Int32 MipmapTotalBytes(System.Int32 mip, Face face)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalBytes", mip, face), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MipmapTotalBytes", mip, face), typeof(System.Int32));
 		}
 
 		public void GetMipMapBuffers(List<Memory<byte>> mipbuffers)
@@ -36415,26 +32271,12 @@ namespace Elements.Assets
 
 		public color GetPixel(System.Int32 x, System.Int32 y, Face face, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, face, mipLevel), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel", x, y, face, mipLevel), typeof(color));
 		}
 
 		public color32 GetPixel32(System.Int32 x, System.Int32 y, Face face, System.Int32 mipLevel = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, face, mipLevel), typeof(color32)) is color32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPixel32", x, y, face, mipLevel), typeof(color32));
 		}
 
 		public void SetPixel(System.Int32 x, System.Int32 y, Face face, color color, System.Int32 mipLevel = 0)
@@ -36449,74 +32291,32 @@ namespace Elements.Assets
 
 		public static System.Int32 MipmapLevels(int2 size, List<int2> sizes)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "MipmapLevels", size, sizes), typeof(System.Int32));
 		}
 
 		public static System.Int32 ComputeTotalPixels(int2 size, System.Boolean mipmaps)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeTotalPixels", size, mipmaps), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeTotalPixels", size, mipmaps), typeof(System.Int32));
 		}
 
 		public BitmapCube ExtractMipMap(System.Int32 mip, System.Boolean includeChildMips)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractMipMap", mip, includeChildMips), typeof(BitmapCube)) is BitmapCube __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapCube)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractMipMap", mip, includeChildMips), typeof(BitmapCube));
 		}
 
 		public BitmapCube ConvertTo(TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(BitmapCube)) is BitmapCube __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapCube)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", format), typeof(BitmapCube));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public Bitmap2D GetFaceAsBitmap2D(Face face, System.Boolean mipmaps = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFaceAsBitmap2D", face, mipmaps), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetFaceAsBitmap2D", face, mipmaps), typeof(Bitmap2D));
 		}
 
 		public void FillFrom(Bitmap2D bitmap, Face face, System.Boolean mipmaps = true)
@@ -36536,14 +32336,7 @@ namespace Elements.Assets
 
 		public static BitmapCube Load(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file), typeof(BitmapCube)) is BitmapCube __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapCube)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "Load", file), typeof(BitmapCube));
 		}
 
 		public void Encode(Stream stream, RawBitmapEncoding encoding = RawBitmapEncoding.LZMA)
@@ -36553,38 +32346,17 @@ namespace Elements.Assets
 
 		public static BitmapCube Decode(Stream stream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(BitmapCube)) is BitmapCube __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapCube)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", stream), typeof(BitmapCube));
 		}
 
 		public static System.Boolean SupportsBlockCompression(TextureFormat targetFormat)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapCube", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsBlockCompression", targetFormat), typeof(System.Boolean));
 		}
 
 		public BitmapCube BlockCompress(TextureFormat targetFormat, System.Single quality = 0.5f, System.Int32 maxThreads = 0)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlockCompress", targetFormat, quality, maxThreads), typeof(BitmapCube)) is BitmapCube __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapCube)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BlockCompress", targetFormat, quality, maxThreads), typeof(BitmapCube));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -36614,14 +32386,7 @@ namespace Elements.Assets
 	{
 		public static Bitmap2D Generate(System.String payload, QRCodeGenerator.ECCLevel eccLevel = QRCodeGenerator.ECCLevel.Q, TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapQRCodeGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", payload, eccLevel, format, trueColor, falseColor), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapQRCodeGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", payload, eccLevel, format, trueColor, falseColor), typeof(Bitmap2D));
 		}
 
 		public static void Generate(ref Bitmap2D bitmap, System.String payload, QRCodeGenerator.ECCLevel eccLevel = QRCodeGenerator.ECCLevel.Q, TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
@@ -36846,14 +32611,7 @@ namespace Elements.Assets
 
 		public Bitmap2D GetSlice(System.Int32 layer)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSlice", layer), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSlice", layer), typeof(Bitmap2D));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39271,146 +35029,62 @@ namespace Elements.Assets
 
 		public static color ToColor<P>(this P pixel) where P : IPixel
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToColor", pixel), typeof(color)) is color __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (color)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToColor", pixel), typeof(color));
 		}
 
 		public static System.UInt16 ToUshort(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToUshort", value), typeof(System.UInt16)) is System.UInt16 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt16)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToUshort", value), typeof(System.UInt16));
 		}
 
 		public static System.Byte ToByte(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToByte", value), typeof(System.Byte)) is System.Byte __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Byte)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToByte", value), typeof(System.Byte));
 		}
 
 		public static System.Byte To4Bits(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To4Bits", value), typeof(System.Byte)) is System.Byte __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Byte)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To4Bits", value), typeof(System.Byte));
 		}
 
 		public static System.Byte To5Bits(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To5Bits", value), typeof(System.Byte)) is System.Byte __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Byte)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To5Bits", value), typeof(System.Byte));
 		}
 
 		public static System.Byte To6Bits(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To6Bits", value), typeof(System.Byte)) is System.Byte __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Byte)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "To6Bits", value), typeof(System.Byte));
 		}
 
 		public static System.UInt16 ToHalf(System.Single value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToHalf", value), typeof(System.UInt16)) is System.UInt16 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt16)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ToHalf", value), typeof(System.UInt16));
 		}
 
 		public static System.Single FromUshort(System.UInt16 value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromUshort", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromUshort", value), typeof(System.Single));
 		}
 
 		public static System.Single FromByte(System.Byte value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromByte", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromByte", value), typeof(System.Single));
 		}
 
 		public static System.Single From6Bits(System.Byte value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From6Bits", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From6Bits", value), typeof(System.Single));
 		}
 
 		public static System.Single From5Bits(System.Byte value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From5Bits", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From5Bits", value), typeof(System.Single));
 		}
 
 		public static System.Single From4Bits(System.Byte value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From4Bits", value), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PixelHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "From4Bits", value), typeof(System.Single));
 		}
 	}
 	public struct PixelRA16 : IPixel, ResoniteBridge.ResoniteBridgeValueHolder
@@ -41290,26 +36964,12 @@ namespace Elements.Assets
 
 		public static Bitmap2D GenerateErrorTexture(System.Int32 width, System.Int32 height, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateErrorTexture", width, height, format), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateErrorTexture", width, height, format), typeof(Bitmap2D));
 		}
 
 		public static Bitmap3D GenerateErrorTexture(System.Int32 width, System.Int32 height, System.Int32 depth, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateErrorTexture", width, height, depth, format), typeof(Bitmap3D)) is Bitmap3D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap3D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateErrorTexture", width, height, depth, format), typeof(Bitmap3D));
 		}
 
 		public static void FillErrorTexture(Bitmap2D bitmap)
@@ -41339,14 +36999,7 @@ namespace Elements.Assets
 
 		public static ResoniteBridge.ResoniteBridgeValue DetectFormat(System.String extension)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DetectFormat", extension), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "DetectFormat", extension), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static void DibLoaded(ResoniteBridge.ResoniteBridgeValue dib)
@@ -41361,14 +37014,7 @@ namespace Elements.Assets
 
 		public static Bitmap2D FromDDS(Stream stream, bool? generateMipMaps)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FromDDS", stream, generateMipMaps), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FromDDS", stream, generateMipMaps), typeof(Bitmap2D));
 		}
 
 		public static void ConvertDDSData(ResoniteBridge.ResoniteBridgeValue dds, ResoniteBridge.ResoniteBridgeValue data, System.Int32 mip, Bitmap2D bitmap)
@@ -41383,62 +37029,27 @@ namespace Elements.Assets
 
 		public static TextureFormat GetFormat(ResoniteBridge.ResoniteBridgeValue format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFormat", format), typeof(TextureFormat)) is TextureFormat __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextureFormat)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFormat", format), typeof(TextureFormat));
 		}
 
 		public static Bitmap2D FromFreeImage(ref ResoniteBridge.ResoniteBridgeValue dib, System.Boolean generateMipMaps, AlphaHandling alphaHandling, System.Int32 maxSize = int.MaxValue, System.Single sizeRatio = 1f, System.String originalFormat = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FromFreeImage", dib, generateMipMaps, alphaHandling, maxSize, sizeRatio, originalFormat), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FromFreeImage", dib, generateMipMaps, alphaHandling, maxSize, sizeRatio, originalFormat), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D Decode(System.String file, bool? generateMipMaps, AlphaHandling alphaHandling = AlphaHandling.KeepOriginal, System.Int32 maxSize = int.MaxValue, System.Single sizeRatio = 1f)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file, generateMipMaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", file, generateMipMaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D));
 		}
 
 		public static Bitmap2D Decode(Stream fStream, System.String extension, bool? generateMipMaps, AlphaHandling alphaHandling = AlphaHandling.KeepOriginal, System.Int32 maxSize = int.MaxValue, System.Single sizeRatio = 1f)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", fStream, extension, generateMipMaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D)) is Bitmap2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Bitmap2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", fStream, extension, generateMipMaps, alphaHandling, maxSize, sizeRatio), typeof(Bitmap2D));
 		}
 
 		public static System.String FreeImageFormatToMIME(ResoniteBridge.ResoniteBridgeValue format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FreeImageFormatToMIME", format), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureDecoder", ResoniteBridge.ResoniteBridgeValueType.Type), "FreeImageFormatToMIME", format), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41464,38 +37075,17 @@ namespace Elements.Assets
 	{
 		public static System.Boolean Encode(ResoniteBridge.ResoniteBridgeValue dib, System.String file, System.Int32 quality = 85, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", dib, file, quality, preserveColorInAlpha), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", dib, file, quality, preserveColorInAlpha), typeof(System.Boolean));
 		}
 
 		public static System.Boolean Encode(ResoniteBridge.ResoniteBridgeValue dib, Stream stream, System.String extension, System.Int32 quality = 85, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", dib, stream, extension, quality, preserveColorInAlpha), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", dib, stream, extension, quality, preserveColorInAlpha), typeof(System.Boolean));
 		}
 
 		public static System.Boolean Encode(byte[] data, System.Int32 width, System.Int32 height, System.Int32 channels, System.String outputFile, System.Int32 quality = 75, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", data, width, height, channels, outputFile, quality, preserveColorInAlpha), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Encode", data, width, height, channels, outputFile, quality, preserveColorInAlpha), typeof(System.Boolean));
 		}
 
 		public static void ConvertToPNG(System.String inputFile, System.String outputFile, System.Int32 maxSize = -1)
@@ -41525,38 +37115,17 @@ namespace Elements.Assets
 
 		public static System.Boolean ClearMetadata(System.String inputFile, System.String outputFile)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", inputFile, outputFile), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", inputFile, outputFile), typeof(System.Boolean));
 		}
 
 		public static System.Boolean ClearMetadata(Stream data, System.String outputFile)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", data, outputFile), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", data, outputFile), typeof(System.Boolean));
 		}
 
 		private static System.Boolean ClearMetadata(ResoniteBridge.ResoniteBridgeValue dib)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", dib), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "ClearMetadata", dib), typeof(System.Boolean));
 		}
 
 		public static void ConvertToEXR(Stream data, System.String outputFile, System.Int32 maxSize = -1)
@@ -41566,38 +37135,17 @@ namespace Elements.Assets
 
 		public static ResoniteBridge.ResoniteBridgeValue EnsureNonHDR(ResoniteBridge.ResoniteBridgeValue dib, System.Boolean unloadOld = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "EnsureNonHDR", dib, unloadOld), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "EnsureNonHDR", dib, unloadOld), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue Ensure24BPP(ResoniteBridge.ResoniteBridgeValue dib, System.Boolean unloadOld = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Ensure24BPP", dib, unloadOld), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Ensure24BPP", dib, unloadOld), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static ResoniteBridge.ResoniteBridgeValue Rescale(ResoniteBridge.ResoniteBridgeValue dib, System.Int32 maxSize = -1)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Rescale", dib, maxSize), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureEncoder", ResoniteBridge.ResoniteBridgeValueType.Type), "Rescale", dib, maxSize), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		public static void ConvertToJPG(Stream data, System.String outputFile, System.Int32 maxSize = -1)
@@ -41650,134 +37198,57 @@ namespace Elements.Assets
 	{
 		public static System.Boolean SupportsRead(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsRead", format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsRead", format), typeof(System.Boolean));
 		}
 
 		public static System.Boolean SupportsWrite(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsWrite", format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsWrite", format), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsBlockCompressed(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsBlockCompressed", format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsBlockCompressed", format), typeof(System.Boolean));
 		}
 
 		public static int2 BlockSize(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "BlockSize", format), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "BlockSize", format), typeof(int2));
 		}
 
 		public static int3 BlockSize3D(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "BlockSize3D", format), typeof(int3)) is int3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "BlockSize3D", format), typeof(int3));
 		}
 
 		public static System.Boolean IsHDR(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", format), typeof(System.Boolean));
 		}
 
 		public static System.Double GetBitsPerPixel(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBitsPerPixel", format), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBitsPerPixel", format), typeof(System.Double));
 		}
 
 		public static System.Int32 GetBytesPerPixel(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBytesPerPixel", format), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBytesPerPixel", format), typeof(System.Int32));
 		}
 
 		public static System.Int32 GetBytesPerChannel(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBytesPerChannel", format), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetBytesPerChannel", format), typeof(System.Int32));
 		}
 
 		public static System.Int32 GetChannels(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetChannels", format), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetChannels", format), typeof(System.Int32));
 		}
 
 		public static System.Boolean SupportsAlpha(this TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsAlpha", format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureFormatExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "SupportsAlpha", format), typeof(System.Boolean));
 		}
 	}
 	public enum VersionComparison
@@ -41886,74 +37357,32 @@ namespace Elements.Assets
 
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, IAssetVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 
 		public static D FromIdentifier<D>(System.String identifier) where D : class, IAssetVariantDescriptor
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(D)) is D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(D));
 		}
 
 		public static AssetVariantType DescriptorToVariantType(Type type)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DescriptorToVariantType", type), typeof(AssetVariantType)) is AssetVariantType __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AssetVariantType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DescriptorToVariantType", type), typeof(AssetVariantType));
 		}
 
 		public static IAssetVariantDescriptor FromIdentifier(Type type, System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", type, identifier), typeof(IAssetVariantDescriptor)) is IAssetVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAssetVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", type, identifier), typeof(IAssetVariantDescriptor));
 		}
 
 		public static IAssetVariantDescriptor FromIdentifier(AssetVariantType type, System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", type, identifier), typeof(IAssetVariantDescriptor)) is IAssetVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAssetVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", type, identifier), typeof(IAssetVariantDescriptor));
 		}
 
 		public static System.Boolean VersionEquals(IAssetVariantDescriptor a, IAssetVariantDescriptor b, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "VersionEquals", a, b, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetVariantHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "VersionEquals", a, b, versionComparison), typeof(System.Boolean));
 		}
 	}
 	public class CubemapVariantDescriptor : TextureVariantDescriptor<CubemapVariantDescriptor, CubemapMetadata>, ResoniteBridge.ResoniteBridgeValueHolder
@@ -42049,26 +37478,12 @@ namespace Elements.Assets
 
 		public override System.String ValidateCloudVariant(CubemapMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		public override System.Boolean IsPotentialAlternative(CubemapVariantDescriptor other, TextureCompression? requireCompression)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean));
 		}
 
 		public CubemapVariantDescriptor()
@@ -42083,14 +37498,7 @@ namespace Elements.Assets
 
 		private System.String GenerateVariantIdentifier(System.Int32 size, System.Boolean mips)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", size, mips), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", size, mips), typeof(System.String));
 		}
 
 		public override void EnsureCurrentVersion()
@@ -42100,38 +37508,17 @@ namespace Elements.Assets
 
 		public static CubemapVariantDescriptor FromIdentifier(System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(CubemapVariantDescriptor)) is CubemapVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CubemapVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(CubemapVariantDescriptor));
 		}
 
 		public override System.Boolean Equals(CubemapVariantDescriptor other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public static bool operator ==(CubemapVariantDescriptor left, CubemapVariantDescriptor right)
@@ -42160,26 +37547,12 @@ namespace Elements.Assets
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public override List<CubemapVariantDescriptor> GenerateCloudChain()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<CubemapVariantDescriptor>)) is List<CubemapVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<CubemapVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<CubemapVariantDescriptor>));
 		}
 
 		public override void GenerateLoadChain(List<string> chain)
@@ -42379,14 +37752,7 @@ namespace Elements.Assets
 
 		public static MeshVariantDescriptor FromIdentifier(System.String query)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", query), typeof(MeshVariantDescriptor)) is MeshVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", query), typeof(MeshVariantDescriptor));
 		}
 
 		public void EnsureCurrentVersion()
@@ -42396,50 +37762,22 @@ namespace Elements.Assets
 
 		public System.Boolean Equals(MeshVariantDescriptor other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public System.Boolean Equals(MeshVariantDescriptor other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
 		public List<IAssetVariantDescriptor> GenerateCloudChainNonGeneric()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>)) is List<IAssetVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<IAssetVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>));
 		}
 
 		public List<MeshVariantDescriptor> GenerateCloudChain()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<MeshVariantDescriptor>)) is List<MeshVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<MeshVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<MeshVariantDescriptor>));
 		}
 
 		public void GenerateLoadChain(List<string> chain)
@@ -42449,26 +37787,12 @@ namespace Elements.Assets
 
 		public List<MeshVariantDescriptor> GetBestAlternateChain(List<MeshVariantDescriptor> availableDescriptors, Predicate<MeshVariantDescriptor> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<MeshVariantDescriptor>)) is List<MeshVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<MeshVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<MeshVariantDescriptor>));
 		}
 
 		public System.String ValidateCloudVariant(MeshMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42504,14 +37828,7 @@ namespace Elements.Assets
 	{
 		public static System.String PackageName(this ShaderTargetPlatform targetPlatform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderTargetPlatformHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PackageName", targetPlatform), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderTargetPlatformHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PackageName", targetPlatform), typeof(System.String));
 		}
 	}
 	public class ShaderVariantDescriptor : IAssetVariantDescriptor<ShaderVariantDescriptor, ShaderMetadata>, IAssetVariantDescriptor, IEquatable<ShaderVariantDescriptor>, ResoniteBridge.ResoniteBridgeValueHolder
@@ -42672,62 +37989,27 @@ namespace Elements.Assets
 
 		public static ShaderVariantDescriptor FromIdentifier(System.String query)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", query), typeof(ShaderVariantDescriptor)) is ShaderVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", query), typeof(ShaderVariantDescriptor));
 		}
 
 		public System.Boolean Equals(ShaderVariantDescriptor other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public System.Boolean Equals(ShaderVariantDescriptor other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
 		public List<IAssetVariantDescriptor> GenerateCloudChainNonGeneric()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>)) is List<IAssetVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<IAssetVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>));
 		}
 
 		public List<ShaderVariantDescriptor> GenerateCloudChain()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<ShaderVariantDescriptor>)) is List<ShaderVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ShaderVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<ShaderVariantDescriptor>));
 		}
 
 		public void GenerateLoadChain(List<string> chain)
@@ -42737,26 +38019,12 @@ namespace Elements.Assets
 
 		public List<ShaderVariantDescriptor> GetBestAlternateChain(List<ShaderVariantDescriptor> availableDescriptors, Predicate<ShaderVariantDescriptor> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<ShaderVariantDescriptor>)) is List<ShaderVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ShaderVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<ShaderVariantDescriptor>));
 		}
 
 		public System.String ValidateCloudVariant(ShaderMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42920,26 +38188,12 @@ namespace Elements.Assets
 
 		public override System.String ValidateCloudVariant(BitmapMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		public System.Boolean IsValidCloudSize(BitmapMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidCloudSize", metadata), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidCloudSize", metadata), typeof(System.Boolean));
 		}
 
 		public Texture2DVariantDescriptor()
@@ -42959,74 +38213,32 @@ namespace Elements.Assets
 
 		public static Texture2DVariantDescriptor FromIdentifier(System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture2DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(Texture2DVariantDescriptor)) is Texture2DVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Texture2DVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture2DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(Texture2DVariantDescriptor));
 		}
 
 		private System.String GenerateVariantIdentifier(System.Int32 width, System.Int32 height, System.Boolean mips)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", width, height, mips), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", width, height, mips), typeof(System.String));
 		}
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Boolean Equals(Texture2DVariantDescriptor other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public static bool operator ==(Texture2DVariantDescriptor left, Texture2DVariantDescriptor right)
@@ -43060,26 +38272,12 @@ namespace Elements.Assets
 
 		public override System.Single GetAlternativeScore(Texture2DVariantDescriptor other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single));
 		}
 
 		public override List<Texture2DVariantDescriptor> GenerateCloudChain()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<Texture2DVariantDescriptor>)) is List<Texture2DVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<Texture2DVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<Texture2DVariantDescriptor>));
 		}
 
 		private void GenerateChain(ChainSegmentGenerator onGeneratedSegment)
@@ -43089,14 +38287,7 @@ namespace Elements.Assets
 
 		public override System.Boolean IsPotentialAlternative(Texture2DVariantDescriptor other, TextureCompression? requireCompression = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43254,26 +38445,12 @@ namespace Elements.Assets
 
 		public override System.String ValidateCloudVariant(VolumeMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		public System.Boolean IsValidCloudSize(VolumeMetadata metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidCloudSize", metadata), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidCloudSize", metadata), typeof(System.Boolean));
 		}
 
 		public Texture3DVariantDescriptor()
@@ -43293,74 +38470,32 @@ namespace Elements.Assets
 
 		public static Texture3DVariantDescriptor FromIdentifier(System.String identifier)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(Texture3DVariantDescriptor)) is Texture3DVariantDescriptor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Texture3DVariantDescriptor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "FromIdentifier", identifier), typeof(Texture3DVariantDescriptor));
 		}
 
 		private System.String GenerateVariantIdentifier(System.Int32 width, System.Int32 height, System.Int32 depth, System.Boolean mips)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", width, height, depth, mips), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateVariantIdentifier", width, height, depth, mips), typeof(System.String));
 		}
 
 		public override System.Boolean Equals(System.Object obj)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
 		public override System.Boolean Equals(Texture3DVariantDescriptor other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		public static bool operator ==(Texture3DVariantDescriptor left, Texture3DVariantDescriptor right)
@@ -43394,26 +38529,12 @@ namespace Elements.Assets
 
 		public override System.Single GetAlternativeScore(Texture3DVariantDescriptor other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single));
 		}
 
 		public override List<Texture3DVariantDescriptor> GenerateCloudChain()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<Texture3DVariantDescriptor>)) is List<Texture3DVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<Texture3DVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChain"), typeof(List<Texture3DVariantDescriptor>));
 		}
 
 		private void GenerateChain(ChainSegmentGenerator onGeneratedSegment)
@@ -43423,26 +38544,12 @@ namespace Elements.Assets
 
 		public override System.Boolean IsPotentialAlternative(Texture3DVariantDescriptor other, TextureCompression? requireCompression = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean));
 		}
 
 		public static int3 GetMaxLimitedSize(in int3 originalSize, System.Int32 maxSize = 16384)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMaxLimitedSize", originalSize, maxSize), typeof(int3)) is int3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMaxLimitedSize", originalSize, maxSize), typeof(int3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43533,38 +38640,17 @@ namespace Elements.Assets
 	{
 		public static System.Boolean IsRaw(this TextureCompression compression)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsRaw", compression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsRaw", compression), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsHDR(this TextureCompression compression)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", compression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", compression), typeof(System.Boolean));
 		}
 
 		public static TextureFormat ToFormat(this TextureCompression compression, ImageMetadataBase metadata = null, System.Boolean threeChannelSupported = false, ColorProfile profile = ColorProfile.sRGB)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "ToFormat", compression, metadata, threeChannelSupported, profile), typeof(TextureFormat)) is TextureFormat __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TextureFormat)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureCompressionExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "ToFormat", compression, metadata, threeChannelSupported, profile), typeof(TextureFormat));
 		}
 	}
 	public abstract class TextureVariantDescriptor : IAssetVariantDescriptor, ResoniteBridge.ResoniteBridgeValueHolder
@@ -43828,26 +38914,12 @@ namespace Elements.Assets
 
 		public static int2 GetMaxLimitedSize(in int2 originalSize, System.Int32 maxSize = 16384)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMaxLimitedSize", originalSize, maxSize), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMaxLimitedSize", originalSize, maxSize), typeof(int2));
 		}
 
 		public static int2 GetMinLimitedSize(in int2 currentSize, in int2 maxSize, System.Int32 minSize)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMinLimitedSize", currentSize, maxSize, minSize), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMinLimitedSize", currentSize, maxSize, minSize), typeof(int2));
 		}
 
 		public TextureVariantDescriptor()
@@ -43862,112 +38934,49 @@ namespace Elements.Assets
 
 		public virtual System.Boolean IsPotentialAlternative(D other, TextureCompression? requireCompression)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPotentialAlternative", other, requireCompression), typeof(System.Boolean));
 		}
 
 		public List<D> GetBestAlternateChain(List<D> availableDescriptors, Predicate<D> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<D>)) is List<D> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<D>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateChain", availableDescriptors, variantFilter), typeof(List<D>));
 		}
 
 		public D GetBestAlternateDescriptor(List<D> availableDescriptors, TextureCompression? requireCompression = null, Predicate<D> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateDescriptor", availableDescriptors, requireCompression, variantFilter), typeof(D)) is D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBestAlternateDescriptor", availableDescriptors, requireCompression, variantFilter), typeof(D));
 		}
 
 		public virtual System.Single GetAlternativeScore(D other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAlternativeScore", other), typeof(System.Single));
 		}
 
 		public System.Boolean Equals(D other)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
 		public virtual System.Boolean Equals(D other, VersionComparison versionComparison)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, versionComparison), typeof(System.Boolean));
 		}
 
 		public virtual System.String ValidateCloudVariant(M metadata)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidateCloudVariant", metadata), typeof(System.String));
 		}
 
 		public override List<IAssetVariantDescriptor> GenerateCloudChainNonGeneric()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>)) is List<IAssetVariantDescriptor> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<IAssetVariantDescriptor>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateCloudChainNonGeneric"), typeof(List<IAssetVariantDescriptor>));
 		}
 
 		public abstract List<D> GenerateCloudChain();
 
 		public override System.Int32 GetHashCode()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44023,28 +39032,14 @@ namespace Elements.Assets
 	{
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, CubemapVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 	}
 	public static class MeshVariantGenerator
 	{
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, MeshVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 
 		private static void ComputeMeshCollider(System.String file, MeshX meshx, MeshCompression compression, System.Boolean dualSided)
@@ -44066,56 +39061,28 @@ namespace Elements.Assets
 	{
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, ShaderVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 	}
 	public static class Texture2DVariantGenerator
 	{
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, Texture2DVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture2DVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture2DVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 	}
 	public static class Texture3DVariantGenerator
 	{
 		public static List<ComputedVariantResult> GenerateVariants(System.String file, Texture3DVariantDescriptor variantDescriptor, System.Int32 maxThreads = -1, VariantGeneratedHandler variantGenerated = null, Predicate<string> variantFilter = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>)) is List<ComputedVariantResult> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (List<ComputedVariantResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "Texture3DVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateVariants", file, variantDescriptor, maxThreads, variantGenerated, variantFilter), typeof(List<ComputedVariantResult>));
 		}
 	}
 	internal static class TextureVariantGenerator
 	{
 		public static B Preprocess<B>(B bitmap, TextureCompression compression, ColorPreprocess colorPreprocess, AlphaPreprocess alphaPreprocess, System.Boolean allowARGB) where B : Bitmap, IBitmap<B>
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Preprocess", bitmap, compression, colorPreprocess, alphaPreprocess, allowARGB), typeof(B)) is B __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (B)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Preprocess", bitmap, compression, colorPreprocess, alphaPreprocess, allowARGB), typeof(B));
 		}
 	}
 	[DataModelType]
@@ -44216,26 +39183,12 @@ namespace Elements.Assets
 	{
 		public static AssetVariantType MetadataToAssetType(Type metadataType)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MetadataToAssetType", metadataType), typeof(AssetVariantType)) is AssetVariantType __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AssetVariantType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "MetadataToAssetType", metadataType), typeof(AssetVariantType));
 		}
 
 		public static T ComputeMetadata<T>(System.String file) where T : class, IAssetMetadata
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeMetadata", file), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "AssetMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeMetadata", file), typeof(T));
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -44373,26 +39326,12 @@ namespace Elements.Assets
 
 		public static BitmapMetadata GenerateMetadata(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(BitmapMetadata)) is BitmapMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(BitmapMetadata));
 		}
 
 		public static BitmapMetadata GenerateMetadata(Bitmap2D bitmap)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", bitmap), typeof(BitmapMetadata)) is BitmapMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BitmapMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", bitmap), typeof(BitmapMetadata));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44518,26 +39457,12 @@ namespace Elements.Assets
 
 		public static CubemapMetadata GenerateMetadata(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(CubemapMetadata)) is CubemapMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CubemapMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(CubemapMetadata));
 		}
 
 		public static CubemapMetadata GenerateMetadata(BitmapCube cube)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", cube), typeof(CubemapMetadata)) is CubemapMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CubemapMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "CubemapMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", cube), typeof(CubemapMetadata));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44782,62 +39707,27 @@ namespace Elements.Assets
 	{
 		public static System.Boolean HasColors(this ColorChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "HasColors", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "HasColors", data), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsGrayscaleOnly(this ColorChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsGrayscaleOnly", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsGrayscaleOnly", data), typeof(System.Boolean));
 		}
 
 		public static System.Boolean IsHDR(this ColorChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsHDR", data), typeof(System.Boolean));
 		}
 
 		public static System.Boolean CanUseOneBitAlpha(this AlphaChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanUseOneBitAlpha", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanUseOneBitAlpha", data), typeof(System.Boolean));
 		}
 
 		public static System.Boolean HasTransparency(this AlphaChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "HasTransparency", data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "HasTransparency", data), typeof(System.Boolean));
 		}
 	}
 	public abstract class ImageMetadataBase : IAssetMetadata, ResoniteBridge.ResoniteBridgeValueHolder
@@ -45152,62 +40042,27 @@ namespace Elements.Assets
 
 		internal System.Boolean UpdateColorData(in color c, TextureFormat format)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateColorData", c, format), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateColorData", c, format), typeof(System.Boolean));
 		}
 
 		protected static ColorChannelData GetColorDataType(in color c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "GetColorDataType", c), typeof(ColorChannelData)) is ColorChannelData __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ColorChannelData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "GetColorDataType", c), typeof(ColorChannelData));
 		}
 
 		protected static AlphaChannelData GetAlphaDataType(in color c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAlphaDataType", c), typeof(AlphaChannelData)) is AlphaChannelData __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (AlphaChannelData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "GetAlphaDataType", c), typeof(AlphaChannelData));
 		}
 
 		protected static System.Boolean IsMaxDataLevel(TextureFormat format, ColorChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsMaxDataLevel", format, data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsMaxDataLevel", format, data), typeof(System.Boolean));
 		}
 
 		protected static System.Boolean IsMaxDataLevel(TextureFormat format, AlphaChannelData data)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsMaxDataLevel", format, data), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ImageMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), "IsMaxDataLevel", format, data), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45914,38 +40769,17 @@ namespace Elements.Assets
 
 		public static MeshMetadata GenerateMetadata(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(MeshMetadata)) is MeshMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(MeshMetadata));
 		}
 
 		public static MeshMetadata GenerateMetadata(MeshX mesh)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", mesh), typeof(MeshMetadata)) is MeshMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (MeshMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", mesh), typeof(MeshMetadata));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46028,26 +40862,12 @@ namespace Elements.Assets
 
 		public ShaderSourceFile Clone()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(ShaderSourceFile)) is ShaderSourceFile __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderSourceFile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(ShaderSourceFile));
 		}
 
 		public override System.String ToString()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46298,14 +41118,7 @@ namespace Elements.Assets
 
 		public static ShaderMetadata LoadFromJSON(System.String json)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadFromJSON", json), typeof(ShaderMetadata)) is ShaderMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadFromJSON", json), typeof(ShaderMetadata));
 		}
 
 		public ShaderMetadata(System.String origin, ShaderSourceFile sourceFile, List<List<string>> variantGroups, List<ShaderSourceFile> includes)
@@ -46315,14 +41128,7 @@ namespace Elements.Assets
 
 		public static ShaderMetadata GenerateMetadata(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(ShaderMetadata)) is ShaderMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ShaderMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "ShaderMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(ShaderMetadata));
 		}
 
 		public void CopyFrom(IAssetMetadata metadata)
@@ -46337,62 +41143,27 @@ namespace Elements.Assets
 
 		public IEnumerable<List<string>> EnumerateAllVariants(System.Boolean returnCopy = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateAllVariants", returnCopy), typeof(IEnumerable<List<string>>)) is IEnumerable<List<string>> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerable<List<string>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateAllVariants", returnCopy), typeof(IEnumerable<List<string>>));
 		}
 
 		private IEnumerable<List<string>> EnumerateVariants(List<string> baseVariants, System.Int32 groupIndex, System.Boolean returnCopy = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateVariants", baseVariants, groupIndex, returnCopy), typeof(IEnumerable<List<string>>)) is IEnumerable<List<string>> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IEnumerable<List<string>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateVariants", baseVariants, groupIndex, returnCopy), typeof(IEnumerable<List<string>>));
 		}
 
 		public System.UInt32 GetVariantIndex(List<string> keywords)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariantIndex", keywords), typeof(System.UInt32)) is System.UInt32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariantIndex", keywords), typeof(System.UInt32));
 		}
 
 		public System.Int32 GetKeywordIndex(System.String keyword)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKeywordIndex", keyword), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKeywordIndex", keyword), typeof(System.Int32));
 		}
 
 		public System.Boolean IsValidIndex(System.UInt32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidIndex", index), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidIndex", index), typeof(System.Boolean));
 		}
 
 		public void GenerateUniqueKeywords()
@@ -46554,26 +41325,12 @@ namespace Elements.Assets
 
 		public static VolumeMetadata GenerateMetadata(System.String file)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VolumeMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(VolumeMetadata)) is VolumeMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (VolumeMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VolumeMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", file), typeof(VolumeMetadata));
 		}
 
 		public static VolumeMetadata GenerateMetadata(Bitmap3D bitmap)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VolumeMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", bitmap), typeof(VolumeMetadata)) is VolumeMetadata __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (VolumeMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VolumeMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMetadata", bitmap), typeof(VolumeMetadata));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
