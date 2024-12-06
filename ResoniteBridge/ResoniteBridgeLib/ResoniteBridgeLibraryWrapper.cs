@@ -438,7 +438,7 @@ namespace ResoniteBridge
             var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
 
             List<Expression> invocationParams = new List<Expression>();
-            invocationParams.Add(staticTarget);
+            invocationParams.Add(staticTarget.Clone());
 
             foreach (var param in constructorDeclaration.Parameters)
             {
@@ -452,7 +452,7 @@ namespace ResoniteBridge
             // set the backing to the constructed value
             AssignmentExpression assignment = new AssignmentExpression(
                 new IdentifierExpression("__backing"),
-                new IdentifierExpression("value"));
+                invocation);
 
             return new BlockStatement
             {
