@@ -14,8 +14,8 @@ namespace BepuPhysics.CollisionDetection
     public static class WideRayTester
     {
         public unsafe static void Test<TRaySource, TShape, TShapeWide, TRayHitHandler>(ref TShape shape, in RigidPose pose, ref TRaySource raySource, ref TRayHitHandler rayHitHandler)
-            where TShape : unmanaged, IConvexShape
-            where TShapeWide : unmanaged, IShapeWide<TShape>
+            where TShape : struct, IConvexShape
+            where TShapeWide : struct, IShapeWide<TShape>
             where TRaySource : IRaySource
             where TRayHitHandler : struct, IShapeRayHitHandler
         {

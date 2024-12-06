@@ -19,6 +19,10 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Assimp;
+using BepuPhysics.Collidables;
+using BepuPhysics.Trees;
+using BepuUtilities;
+using BepuUtilities.Memory;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.Codecs.FLAC;
@@ -6531,11 +6535,11 @@ namespace Elements.Assets
 	[DataModelType]
 	public struct ConvexHullBepuData : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ResoniteBridge.ResoniteBridgeValue convexHull
+		public ConvexHull convexHull
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "convexHull"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "convexHull"), typeof(ConvexHull)) is ConvexHull __retCasted)
 				{
 					return __retCasted;
 				}
@@ -6634,42 +6638,47 @@ namespace Elements.Assets
 			}
 		}
 
-		public static void SerializeMeshCollider(ref ResoniteBridge.ResoniteBridgeValue mesh, Stream stream)
+		public static void SerializeMeshCollider(ref BepuPhysics.Collidables.Mesh mesh, Stream stream)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SerializeMeshCollider", mesh, stream);
 		}
 
-		public static void SerializeTree(ref ResoniteBridge.ResoniteBridgeValue tree, Stream stream)
+		public static void SerializeTree(ref Tree tree, Stream stream)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SerializeTree", tree, stream);
 		}
 
-		public static void DeserializeTree(Stream stream, ResoniteBridge.ResoniteBridgeValue bufferPool, ref ResoniteBridge.ResoniteBridgeValue tree)
+		public static void DeserializeTree(Stream stream, BufferPool bufferPool, ref Tree tree)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeTree", stream, bufferPool, tree);
 		}
 
-		private static void SerializeNodeChild(ref ResoniteBridge.ResoniteBridgeValue nodeChild, BinaryWriter writer)
+		private static void SerializeNodeChild(ref NodeChild nodeChild, BinaryWriter writer)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SerializeNodeChild", nodeChild, writer);
 		}
 
-		private static void DeserializeNodeChild(ref ResoniteBridge.ResoniteBridgeValue nodeChild, BinaryReader reader)
+		private static void DeserializeNodeChild(ref NodeChild nodeChild, BinaryReader reader)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeNodeChild", nodeChild, reader);
 		}
 
-		public static void SerializeConvexHull(ref ResoniteBridge.ResoniteBridgeValue convexHull, in float3 center, Stream stream)
+		public static void SerializeConvexHull(ref ConvexHull convexHull, in float3 center, Stream stream)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SerializeConvexHull", convexHull, center, stream);
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue BuildEmptyConvexHull(ResoniteBridge.ResoniteBridgeValue bufferPool)
+		public static ConvexHull BuildEmptyConvexHull(BufferPool bufferPool)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "BuildEmptyConvexHull", bufferPool), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (ConvexHull)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "BuildEmptyConvexHull", bufferPool), typeof(ConvexHull));
 		}
 
 		public static System.Boolean IsValid(ResoniteBridge.ResoniteBridgeValue points)
+		{
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", points), typeof(System.Boolean));
+		}
+
+		public static System.Boolean IsValid(Buffer<Vector3> points)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValid", points), typeof(System.Boolean));
 		}
@@ -39047,7 +39056,7 @@ namespace Elements.Assets
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeMeshCollider", file, meshx, compression, dualSided);
 		}
 
-		private static void ComputeColliderData(System.String file, MeshCompression compression, Action<Stream, ResoniteBridge.ResoniteBridgeValue> compute)
+		private static void ComputeColliderData(System.String file, MeshCompression compression, Action<Stream, BufferPool> compute)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshVariantGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeColliderData", file, compression, compute);
 		}

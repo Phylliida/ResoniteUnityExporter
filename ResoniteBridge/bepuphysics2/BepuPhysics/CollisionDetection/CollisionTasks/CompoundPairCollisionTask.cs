@@ -11,7 +11,7 @@ namespace BepuPhysics.CollisionDetection.CollisionTasks
 {
     public interface ICompoundPairOverlapFinder
     {
-        void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out CompoundPairOverlaps overlaps) where TOverlapTestingOptions : unmanaged, IOverlapTestingOptions;
+        void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out CompoundPairOverlaps overlaps) where TOverlapTestingOptions : struct, IOverlapTestingOptions;
     }
 
     public unsafe interface ICompoundPairContinuationHandler<TContinuation> where TContinuation : struct, ICollisionTestContinuation
@@ -31,8 +31,8 @@ namespace BepuPhysics.CollisionDetection.CollisionTasks
     }
 
     public class CompoundPairCollisionTask<TCompoundA, TCompoundB, TOverlapFinder, TContinuationHandler, TContinuation> : CollisionTask
-        where TCompoundA : unmanaged, IShape, IBoundsQueryableCompound
-        where TCompoundB : unmanaged, IShape, IBoundsQueryableCompound
+        where TCompoundA : struct, IShape, IBoundsQueryableCompound
+        where TCompoundB : struct, IShape, IBoundsQueryableCompound
         where TOverlapFinder : struct, ICompoundPairOverlapFinder
         where TContinuationHandler : struct, ICompoundPairContinuationHandler<TContinuation>
         where TContinuation : struct, ICollisionTestContinuation

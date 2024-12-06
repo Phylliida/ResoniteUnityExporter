@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 namespace BepuUtilities.Collections
 {
     /// <summary>
-    /// Container supporting list-like behaviors built on top of unmanaged buffers.
+    /// Container supporting list-like behaviors built on top of struct buffers.
     /// </summary>
     /// <remarks>
     /// Be very careful when using this type. It has sacrificed a lot upon the altar of performance; a few notable issues include:
@@ -21,7 +21,7 @@ namespace BepuUtilities.Collections
     /// it does not (and is incapable of) checking that provided memory gets returned to the same pool that it came from.
     /// </remarks>
     /// <typeparam name="T">Type of the elements in the list.</typeparam>
-    public struct QuickList<T> where T : unmanaged
+    public struct QuickList<T> where T : struct
     {
         /// <summary>
         /// Backing memory containing the elements of the list.
@@ -79,7 +79,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool to pull a span from.</param>
         /// <param name="minimumInitialCount">The minimum size of the region to be pulled from the pool. Actual span may be larger.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickList(int minimumInitialCount, IUnmanagedMemoryPool pool)
+        public QuickList(int minimumInitialCount, IstructMemoryPool pool)
         {
             pool.TakeAtLeast(minimumInitialCount, out Span);
             Count = 0;
@@ -113,7 +113,7 @@ namespace BepuUtilities.Collections
         /// <param name="newSize">Minimum number of elements required in the new backing array. Actual capacity of the created span may exceed this size.</param>
         /// <param name="pool">Pool to pull a new span from and return the old span to.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Resize(int newSize, IUnmanagedMemoryPool pool)
+        public void Resize(int newSize, IstructMemoryPool pool)
         {
             var targetSize = pool.GetCapacityForCount<T>(newSize);
             if (targetSize != Span.Length)
@@ -126,11 +126,11 @@ namespace BepuUtilities.Collections
         }
 
         /// <summary>
-        /// Returns the resources associated with the list to pools. Any managed references still contained within the list are cleared (and some unmanaged resources may also be cleared).
+        /// Returns the resources associated with the list to pools. Any managed references still contained within the list are cleared (and some struct resources may also be cleared).
         /// </summary>
         /// <param name="pool">Pool used for element spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Dispose(IUnmanagedMemoryPool pool)
+        public void Dispose(IstructMemoryPool pool)
         {
             pool.Return(ref Span);
         }
@@ -141,7 +141,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements to hold.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void EnsureCapacity(int count, IUnmanagedMemoryPool pool)
+        public void EnsureCapacity(int count, IstructMemoryPool pool)
         {
             if (Span.Allocated)
             {
@@ -159,7 +159,7 @@ namespace BepuUtilities.Collections
         /// <summary>
         /// Compacts the internal buffer to the minimum size required for the number of elements in the list.
         /// </summary>
-        public void Compact(IUnmanagedMemoryPool pool)
+        public void Compact(IstructMemoryPool pool)
         {
             Validate();
             var targetLength = pool.GetCapacityForCount<T>(Count);
@@ -190,7 +190,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in Buffer<T> span, int start, int count, IUnmanagedMemoryPool pool)
+        public void AddRange(in Buffer<T> span, int start, int count, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + count, pool);
             AddRangeUnsafely(span, start, count);
@@ -216,7 +216,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in Buffer<T> span, IUnmanagedMemoryPool pool)
+        public void AddRange(in Buffer<T> span, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + span.Length, pool);
             AddRangeUnsafely(span, 0, span.Length);
@@ -245,7 +245,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in Span<T> span, int start, int count, IUnmanagedMemoryPool pool)
+        public void AddRange(in Span<T> span, int start, int count, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + count, pool);
             AddRangeUnsafely(span, start, count);
@@ -271,7 +271,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in Span<T> span, IUnmanagedMemoryPool pool)
+        public void AddRange(in Span<T> span, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + span.Length, pool);
             AddRangeUnsafely(span, 0, span.Length);
@@ -300,7 +300,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in ReadOnlySpan<T> span, int start, int count, IUnmanagedMemoryPool pool)
+        public void AddRange(in ReadOnlySpan<T> span, int start, int count, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + count, pool);
             AddRangeUnsafely(span, start, count);
@@ -326,7 +326,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements in the added range.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void AddRange(in ReadOnlySpan<T> span, IUnmanagedMemoryPool pool)
+        public void AddRange(in ReadOnlySpan<T> span, IstructMemoryPool pool)
         {
             EnsureCapacity(Count + span.Length, pool);
             AddRangeUnsafely(span, 0, span.Length);
@@ -366,7 +366,7 @@ namespace BepuUtilities.Collections
         /// <returns>Reference to the allocated space.</returns>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref T Allocate(IUnmanagedMemoryPool pool)
+        public ref T Allocate(IstructMemoryPool pool)
         {
             if (Count == Span.Length)
                 Resize(Count * 2, pool);
@@ -380,7 +380,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements to allocate space for.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref T Allocate(int count, IUnmanagedMemoryPool pool)
+        public ref T Allocate(int count, IstructMemoryPool pool)
         {
             var newCount = Count + count;
             if (newCount > Span.Length)
@@ -408,7 +408,7 @@ namespace BepuUtilities.Collections
         /// <param name="element">Item to add.</param>
         /// <param name="pool">Pool used to obtain a new span if needed.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Add(in T element, IUnmanagedMemoryPool pool)
+        public void Add(in T element, IstructMemoryPool pool)
         {
             Validate();
             if (Count == Span.Length)

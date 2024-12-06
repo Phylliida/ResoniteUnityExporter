@@ -7,8 +7,8 @@ using BepuUtilities.Memory;
 namespace BepuPhysics.CollisionDetection.SweepTasks
 {
     public class CompoundPairSweepTask<TCompoundA, TCompoundB, TOverlapFinder> : SweepTask
-        where TCompoundA : unmanaged, ICompoundShape
-        where TCompoundB : unmanaged, ICompoundShape
+        where TCompoundA : struct, ICompoundShape
+        where TCompoundB : struct, ICompoundShape
         where TOverlapFinder : struct, ICompoundPairSweepOverlapFinder<TCompoundA, TCompoundB>
     {
         public CompoundPairSweepTask()

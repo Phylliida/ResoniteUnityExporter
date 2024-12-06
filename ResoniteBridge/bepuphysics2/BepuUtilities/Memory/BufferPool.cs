@@ -9,10 +9,10 @@ using System.Runtime.InteropServices;
 namespace BepuUtilities.Memory
 {
     /// <summary>
-    /// Unmanaged memory pool that creates pinned blocks of memory for use in spans.
+    /// struct memory pool that creates pinned blocks of memory for use in spans.
     /// </summary>
     /// <remarks>This currently works by allocating large managed arrays and pinning them under the assumption that they'll end up in the large object heap.</remarks>
-    public class BufferPool : IUnmanagedMemoryPool, IDisposable
+    public class BufferPool : IstructMemoryPool, IDisposable
     {
         unsafe struct Block
         {
@@ -345,7 +345,7 @@ namespace BepuUtilities.Memory
         /// <param name="count">Desired minimum capacity of the buffer in typed elements.</param>
         /// <param name="buffer">Buffer large enough to contain the requested number of elements.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void TakeAtLeast<T>(int count, out Buffer<T> buffer) where T : unmanaged
+        public void TakeAtLeast<T>(int count, out Buffer<T> buffer) where T : struct
         {
             //Avoid returning a zero length span because 1 byte / Unsafe.SizeOf<T>() happens to be zero.
             if (count == 0)
@@ -361,7 +361,7 @@ namespace BepuUtilities.Memory
         /// <param name="count">Desired capacity of the buffer in typed elements.</param>
         /// <param name="buffer">Typed buffer of the requested size.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Take<T>(int count, out Buffer<T> buffer) where T : unmanaged
+        public void Take<T>(int count, out Buffer<T> buffer) where T : struct
         {
             TakeAtLeast(count, out buffer);
             buffer.length = count;
@@ -421,7 +421,7 @@ namespace BepuUtilities.Memory
         /// </summary>
         /// <param name="buffer">Buffer to return to the pool.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public unsafe void Return<T>(ref Buffer<T> buffer) where T : unmanaged
+        public unsafe void Return<T>(ref Buffer<T> buffer) where T : struct
         {
             ReturnUnsafely(buffer.Id);
             buffer = default;
@@ -492,7 +492,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetSize">Number of elements to resize the buffer for.</param>
         /// <param name="copyCount">Number of elements to copy into the new buffer from the old buffer.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ResizeToAtLeast<T>(ref Buffer<T> buffer, int targetSize, int copyCount) where T : unmanaged
+        public void ResizeToAtLeast<T>(ref Buffer<T> buffer, int targetSize, int copyCount) where T : struct
         {
             //Only do anything if the new size is actually different from the current size.
             Debug.Assert(copyCount <= targetSize && copyCount <= buffer.Length, "Can't copy more elements than exist in the source or target buffers.");
@@ -523,7 +523,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetSize">Number of elements to resize the buffer for.</param>
         /// <param name="copyCount">Number of elements to copy into the new buffer from the old buffer.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Resize<T>(ref Buffer<T> buffer, int targetSize, int copyCount) where T : unmanaged
+        public void Resize<T>(ref Buffer<T> buffer, int targetSize, int copyCount) where T : struct
         {
             ResizeToAtLeast(ref buffer, targetSize, copyCount);
             buffer.length = targetSize;
@@ -641,7 +641,7 @@ namespace BepuUtilities.Memory
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int IUnmanagedMemoryPool.GetCapacityForCount<T>(int count)
+        int IstructMemoryPool.GetCapacityForCount<T>(int count)
         {
             return GetCapacityForCount<T>(count);
         }

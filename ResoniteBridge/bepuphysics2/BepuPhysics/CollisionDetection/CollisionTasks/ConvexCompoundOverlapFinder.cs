@@ -35,7 +35,7 @@ namespace BepuPhysics.CollisionDetection.CollisionTasks
     public struct DontUseEpsilonBoundsExpansion : IOverlapTestingOptions { public readonly bool EpsilonExpandBounds => false; }
     public interface IConvexCompoundOverlapFinder
     {
-        void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out ConvexCompoundTaskOverlaps overlaps) where TOverlapTestingOptions : unmanaged, IOverlapTestingOptions;
+        void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out ConvexCompoundTaskOverlaps overlaps) where TOverlapTestingOptions : struct, IOverlapTestingOptions;
     }
 
     public struct ConvexCompoundOverlapFinder<TConvex, TConvexWide, TCompound> : IConvexCompoundOverlapFinder
@@ -43,7 +43,7 @@ namespace BepuPhysics.CollisionDetection.CollisionTasks
         where TConvexWide : struct, IShapeWide<TConvex>
         where TCompound : struct, IBoundsQueryableCompound
     {
-        public unsafe void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out ConvexCompoundTaskOverlaps overlaps) where TOverlapTestingOptions : unmanaged, IOverlapTestingOptions
+        public unsafe void FindLocalOverlaps<TOverlapTestingOptions>(ref Buffer<BoundsTestedPair> pairs, int pairCount, BufferPool pool, Shapes shapes, float dt, out ConvexCompoundTaskOverlaps overlaps) where TOverlapTestingOptions : struct, IOverlapTestingOptions
         {
             overlaps = new ConvexCompoundTaskOverlaps(pool, pairCount);
             ref var pairsToTest = ref overlaps.subpairQueries;

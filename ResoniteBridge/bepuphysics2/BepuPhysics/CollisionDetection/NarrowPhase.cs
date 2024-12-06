@@ -349,7 +349,7 @@ namespace BepuPhysics.CollisionDetection
         {
             var threadCount = threadDispatcher == null ? 1 : threadDispatcher.ThreadCount;
             //Resizes should be very rare, and having a single extra very small array isn't concerning.
-            //(It's not an unmanaged type because it contains nonblittable references.)
+            //(It's not an struct type because it contains nonblittable references.)
             if (overlapWorkers == null || overlapWorkers.Length < threadCount)
                 Array.Resize(ref overlapWorkers, threadCount);
             for (int i = 0; i < threadCount; ++i)

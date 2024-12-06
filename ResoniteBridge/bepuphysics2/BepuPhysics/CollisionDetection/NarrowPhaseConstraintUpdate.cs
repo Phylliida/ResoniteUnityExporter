@@ -146,7 +146,7 @@ namespace BepuPhysics.CollisionDetection
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         unsafe void RequestAddConstraint<TDescription, TBodyHandles, TContactImpulses>(int workerIndex, int manifoldConstraintType,
             ref CollidablePair pair, PairCacheIndex constraintCacheIndex, ref TContactImpulses newImpulses,
-            ref TDescription description, TBodyHandles bodyHandles) where TDescription : unmanaged, IConstraintDescription<TDescription>
+            ref TDescription description, TBodyHandles bodyHandles) where TDescription : struct, IConstraintDescription<TDescription>
         {
             //Note that this branch is (was?) JIT constant.
             if (typeof(TBodyHandles) != typeof(TwoBodyHandles) && typeof(TBodyHandles) != typeof(int))
@@ -159,10 +159,10 @@ namespace BepuPhysics.CollisionDetection
         public unsafe void UpdateConstraint<TBodyHandles, TDescription, TContactImpulses, TCollisionCache, TConstraintCache>(int workerIndex, ref CollidablePair pair,
             int manifoldTypeAsConstraintType, ref TConstraintCache newConstraintCache, ref TCollisionCache collisionCache,
             ref TDescription description, TBodyHandles bodyHandles)
-            where TConstraintCache : unmanaged, IPairCacheEntry
-            where TCollisionCache : unmanaged, IPairCacheEntry
-            where TDescription : unmanaged, IConstraintDescription<TDescription>
-            where TContactImpulses : unmanaged
+            where TConstraintCache : struct, IPairCacheEntry
+            where TCollisionCache : struct, IPairCacheEntry
+            where TDescription : struct, IConstraintDescription<TDescription>
+            where TContactImpulses : struct
         {
             var index = PairCache.IndexOf(ref pair);
             if (index >= 0)
@@ -271,7 +271,7 @@ namespace BepuPhysics.CollisionDetection
         //TODO: If you end up changing the NarrowPhasePendingConstraintAdds and PairCache hardcoded type handling, you should change this too. This is getting silly.
         unsafe void UpdateConstraintForManifold<TContactManifold, TCollisionCache, TBodyHandles>(
             int workerIndex, ref CollidablePair pair, ref TContactManifold manifold, ref TCollisionCache collisionCache, ref PairMaterialProperties material, TBodyHandles bodyHandles)
-            where TCollisionCache : unmanaged, IPairCacheEntry
+            where TCollisionCache : struct, IPairCacheEntry
         {
             //Note that this function has two responsibilities:
             //1) Create the description of the constraint that should represent the new manifold.
@@ -310,8 +310,8 @@ namespace BepuPhysics.CollisionDetection
         }
 
         public unsafe void UpdateConstraintsForPair<TContactManifold, TCollisionCache>(int workerIndex, ref CollidablePair pair, ref TContactManifold manifold, ref TCollisionCache collisionCache) 
-            where TCollisionCache : unmanaged, IPairCacheEntry
-            where TContactManifold : unmanaged, IContactManifold<TContactManifold>
+            where TCollisionCache : struct, IPairCacheEntry
+            where TContactManifold : struct, IContactManifold<TContactManifold>
         {
             //Note that we do not check for the pair being between two statics before reporting it. The assumption is that, if the initial broadphase pair filter allowed such a pair
             //to reach this point, the user probably wants to receive some information about the resulting contact manifold.

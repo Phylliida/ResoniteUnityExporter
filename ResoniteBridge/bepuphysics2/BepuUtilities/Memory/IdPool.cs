@@ -44,7 +44,7 @@ namespace BepuUtilities.Memory
         /// </summary>
         public bool Allocated => availableIds.Allocated;
 
-        public IdPool(int initialCapacity, IUnmanagedMemoryPool pool)
+        public IdPool(int initialCapacity, IstructMemoryPool pool)
         {
             nextIndex = 0;
             availableIdCount = 0;
@@ -62,7 +62,7 @@ namespace BepuUtilities.Memory
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Return(int id, IUnmanagedMemoryPool pool)
+        public void Return(int id, IstructMemoryPool pool)
         {
             Debug.Assert(availableIds.Allocated);
             if (availableIdCount == availableIds.Length)
@@ -95,7 +95,7 @@ namespace BepuUtilities.Memory
             availableIdCount = 0;
         }
 
-        void InternalResize(int newSize, IUnmanagedMemoryPool pool)
+        void InternalResize(int newSize, IstructMemoryPool pool)
         {
             var oldAvailableIds = availableIds;
             pool.TakeAtLeast(newSize, out availableIds);
@@ -109,7 +109,7 @@ namespace BepuUtilities.Memory
         /// </summary>
         /// <param name="count">Number of elements to preallocate space for in the available ids queue.</param>
         /// <param name="pool">Pool to pull resized spans from.</param>
-        public void EnsureCapacity(int count, IUnmanagedMemoryPool pool)
+        public void EnsureCapacity(int count, IstructMemoryPool pool)
         {
             if (!availableIds.Allocated)
             {
@@ -127,7 +127,7 @@ namespace BepuUtilities.Memory
         /// Shrinks the available ids queue to the smallest size that can fit the given count and the current available id count.
         /// </summary>
         /// <param name="minimumCount">Number of elements to guarantee space for in the available ids queue.</param>
-        public void Compact(int minimumCount, IUnmanagedMemoryPool pool)
+        public void Compact(int minimumCount, IstructMemoryPool pool)
         {
             Debug.Assert(availableIds.Allocated);
             var targetLength = BufferPool.GetCapacityForCount<int>(Math.Max(minimumCount, availableIdCount));
@@ -141,7 +141,7 @@ namespace BepuUtilities.Memory
         /// Resizes the underlying buffer to the smallest size required to hold the given count and the current available id count.
         /// </summary>
         /// <param name="count">Number of elements to guarantee space for in the available ids queue.</param>
-        public void Resize(int count, IUnmanagedMemoryPool pool)
+        public void Resize(int count, IstructMemoryPool pool)
         {
             if (!availableIds.Allocated)
             {
@@ -163,7 +163,7 @@ namespace BepuUtilities.Memory
         /// </summary>
         /// <remarks>The IdPool can be reused only if EnsureCapacity or Resize is called.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Dispose(IUnmanagedMemoryPool pool)
+        public void Dispose(IstructMemoryPool pool)
         {
             pool.Return(ref availableIds);
             //This simplifies reuse and makes it harder to use invalid data.

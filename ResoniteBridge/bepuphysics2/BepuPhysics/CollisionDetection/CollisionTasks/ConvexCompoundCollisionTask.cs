@@ -23,8 +23,8 @@ namespace BepuPhysics.CollisionDetection.CollisionTasks
     }
 
     public class ConvexCompoundCollisionTask<TConvex, TCompound, TOverlapFinder, TContinuationHandler, TContinuation> : CollisionTask
-        where TConvex : unmanaged, IConvexShape
-        where TCompound : unmanaged, IShape, IBoundsQueryableCompound
+        where TConvex : struct, IConvexShape
+        where TCompound : struct, IShape, IBoundsQueryableCompound
         where TOverlapFinder : struct, IConvexCompoundOverlapFinder
         where TContinuationHandler : struct, IConvexCompoundContinuationHandler<TContinuation>
         where TContinuation : struct, ICollisionTestContinuation

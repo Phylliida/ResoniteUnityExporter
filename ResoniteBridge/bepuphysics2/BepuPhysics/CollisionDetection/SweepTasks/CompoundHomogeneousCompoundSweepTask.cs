@@ -7,10 +7,10 @@ using BepuUtilities.Memory;
 namespace BepuPhysics.CollisionDetection.SweepTasks
 {
     public class CompoundHomogeneousCompoundSweepTask<TCompoundA, TCompoundB, TChildShapeB, TChildShapeWideB, TOverlapFinder> : SweepTask
-        where TCompoundA : unmanaged, ICompoundShape
-        where TCompoundB : unmanaged, IHomogeneousCompoundShape<TChildShapeB, TChildShapeWideB>
-        where TChildShapeB : unmanaged, IConvexShape
-        where TChildShapeWideB : unmanaged, IShapeWide<TChildShapeB>
+        where TCompoundA : struct, ICompoundShape
+        where TCompoundB : struct, IHomogeneousCompoundShape<TChildShapeB, TChildShapeWideB>
+        where TChildShapeB : struct, IConvexShape
+        where TChildShapeWideB : struct, IShapeWide<TChildShapeB>
         where TOverlapFinder : struct, ICompoundPairSweepOverlapFinder<TCompoundA, TCompoundB>
     {
         public CompoundHomogeneousCompoundSweepTask()

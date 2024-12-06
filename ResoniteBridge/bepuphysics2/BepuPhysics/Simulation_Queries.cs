@@ -278,7 +278,7 @@ namespace BepuPhysics
         /// <param name="maximumIterationCount">Maximum number of iterations to use in iterative sweep tests.</param>
         public unsafe void Sweep<TShape, TSweepHitHandler>(TShape shape, in RigidPose pose, in BodyVelocity velocity, float maximumT, BufferPool pool, ref TSweepHitHandler hitHandler,
             float minimumProgression, float convergenceThreshold, int maximumIterationCount, bool checkOnly = false)
-            where TShape : unmanaged, IConvexShape where TSweepHitHandler : ISweepHitHandler
+            where TShape : struct, IConvexShape where TSweepHitHandler : ISweepHitHandler
         {
             //Build a bounding box.
             shape.ComputeAngularExpansionData(out var maximumRadius, out var maximumAngularExpansion);
@@ -319,7 +319,7 @@ namespace BepuPhysics
         /// <param name="hitHandler">Callbacks executed when a sweep impacts an object in the scene.</param>
         /// <remarks>Simulation objects are treated as stationary during the sweep.</remarks>
         public unsafe void Sweep<TShape, TSweepHitHandler>(in TShape shape, in RigidPose pose, in BodyVelocity velocity, float maximumT, BufferPool pool, ref TSweepHitHandler hitHandler, bool checkOnly = false)
-            where TShape : unmanaged, IConvexShape where TSweepHitHandler : ISweepHitHandler
+            where TShape : struct, IConvexShape where TSweepHitHandler : ISweepHitHandler
         {
             ComputeSweepParameters(shape, velocity, maximumT, out var minimumProgressionT, out var convergenceThresholdT);
             var maximumIterationCount = 25;
@@ -329,7 +329,7 @@ namespace BepuPhysics
         public void ComputeSweepParameters<TShape>(in TShape shape, in BodyVelocity velocity, float maximumT,
             out float minimumProgressionT, out float convergenceThresholdT,
             float progressionDistanceRatio = 0.1f, float convergenceThresholdDistanceRatio = 1e-5f)
-            where TShape : unmanaged, IConvexShape
+            where TShape : struct, IConvexShape
         {
             //Estimate some reasonable termination conditions for iterative sweeps based on the input shape size.
             shape.ComputeAngularExpansionData(out var maximumRadius, out var maximumAngularExpansion);

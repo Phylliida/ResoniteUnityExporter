@@ -10,7 +10,7 @@ namespace BepuUtilities.Memory
     /// Manages a pool of identifier values. Grabbing an id from the pool picks a number that has been picked and returned before, 
     /// or if none of those are available, the minimum value greater than any existing id.
     /// </summary>
-    /// <remarks>This contrasts with the IdPool which operates on unmanaged memory. This version only exists to support use cases where the unmanaged version can't be used-
+    /// <remarks>This contrasts with the IdPool which operates on struct memory. This version only exists to support use cases where the struct version can't be used-
     /// for example, in the BufferPool. While the implementation can be shared, doing so involves creating enough supporting infrastructure that it's simpler to have a managed-only version.</remarks>
     public class ManagedIdPool
     {

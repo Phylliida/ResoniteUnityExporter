@@ -96,7 +96,7 @@ namespace BepuPhysics.CollisionDetection
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,
             ref CollidablePair pair, ref TContactManifold manifoldPointer, ref TCollisionCache collisionCache, ref PairMaterialProperties material, TCallBodyHandles bodyHandles)
             where TCallbacks : struct, INarrowPhaseCallbacks
-            where TCollisionCache : unmanaged, IPairCacheEntry;
+            where TCollisionCache : struct, IPairCacheEntry;
 
         /// <summary>
         /// Extracts references to data from a contact constraint of the accessor's type.
@@ -145,10 +145,10 @@ namespace BepuPhysics.CollisionDetection
 
     //Note that the vast majority of the 'work' done by these accessor implementations is just type definitions used to call back into some other functions that need that type knowledge.
     public abstract class ContactConstraintAccessor<TConstraintDescription, TBodyHandles, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache> : ContactConstraintAccessor
-        where TConstraintDescription : unmanaged, IConstraintDescription<TConstraintDescription>
-        where TContactImpulses : unmanaged
-        where TConstraintCache : unmanaged, IPairCacheEntry
-        where TPrestepData : unmanaged
+        where TConstraintDescription : struct, IConstraintDescription<TConstraintDescription>
+        where TContactImpulses : struct
+        where TConstraintCache : struct, IPairCacheEntry
+        where TPrestepData : struct
     {
         protected ContactConstraintAccessor()
         {
@@ -215,7 +215,7 @@ namespace BepuPhysics.CollisionDetection
         protected static unsafe void UpdateConstraint<TCallbacks, TCollisionCache, TCallBodyHandles>(
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,
             ref CollidablePair pair, ref TConstraintCache constraintCache, ref TCollisionCache collisionCache, ref TConstraintDescription description, TCallBodyHandles bodyHandles)
-            where TCallbacks : struct, INarrowPhaseCallbacks where TCollisionCache : unmanaged, IPairCacheEntry
+            where TCallbacks : struct, INarrowPhaseCallbacks where TCollisionCache : struct, IPairCacheEntry
         {
             //Note that we let the user pass in a body handles type to a generic function, rather than requiring that the top level abstract class define the type.
             //That allows a type inconsistency, but it's easy to catch.
@@ -275,11 +275,11 @@ namespace BepuPhysics.CollisionDetection
 
     public class ConvexOneBodyAccessor<TConstraintDescription, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache> :
         ContactConstraintAccessor<TConstraintDescription, int, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache>
-        where TConstraintDescription : unmanaged, IConvexOneBodyContactConstraintDescription<TConstraintDescription>
-        where TContactImpulses : unmanaged
-        where TConstraintCache : unmanaged, IPairCacheEntry
-        where TPrestepData : unmanaged, IConvexContactPrestep<TPrestepData>
-        where TAccumulatedImpulses : unmanaged, IConvexContactAccumulatedImpulses<TAccumulatedImpulses>
+        where TConstraintDescription : struct, IConvexOneBodyContactConstraintDescription<TConstraintDescription>
+        where TContactImpulses : struct
+        where TConstraintCache : struct, IPairCacheEntry
+        where TPrestepData : struct, IConvexContactPrestep<TPrestepData>
+        where TAccumulatedImpulses : struct, IConvexContactAccumulatedImpulses<TAccumulatedImpulses>
     {
         public override void UpdateConstraintForManifold<TContactManifold, TCollisionCache, TCallBodyHandles, TCallbacks>(
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,
@@ -334,11 +334,11 @@ namespace BepuPhysics.CollisionDetection
 
     public class ConvexTwoBodyAccessor<TConstraintDescription, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache> :
         ContactConstraintAccessor<TConstraintDescription, TwoBodyHandles, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache>
-        where TConstraintDescription : unmanaged, IConvexTwoBodyContactConstraintDescription<TConstraintDescription>
-        where TContactImpulses : unmanaged
-        where TConstraintCache : unmanaged, IPairCacheEntry
-        where TPrestepData : unmanaged, ITwoBodyConvexContactPrestep<TPrestepData>
-        where TAccumulatedImpulses : unmanaged, IConvexContactAccumulatedImpulses<TAccumulatedImpulses>
+        where TConstraintDescription : struct, IConvexTwoBodyContactConstraintDescription<TConstraintDescription>
+        where TContactImpulses : struct
+        where TConstraintCache : struct, IPairCacheEntry
+        where TPrestepData : struct, ITwoBodyConvexContactPrestep<TPrestepData>
+        where TAccumulatedImpulses : struct, IConvexContactAccumulatedImpulses<TAccumulatedImpulses>
     {
         public override void UpdateConstraintForManifold<TContactManifold, TCollisionCache, TCallBodyHandles, TCallbacks>(
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,
@@ -403,11 +403,11 @@ namespace BepuPhysics.CollisionDetection
 
     public class NonconvexOneBodyAccessor<TConstraintDescription, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache> :
         ContactConstraintAccessor<TConstraintDescription, int, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache>
-        where TConstraintDescription : unmanaged, INonconvexOneBodyContactConstraintDescription<TConstraintDescription>
-        where TContactImpulses : unmanaged
-        where TConstraintCache : unmanaged, IPairCacheEntry
-        where TPrestepData : unmanaged, INonconvexContactPrestep<TPrestepData>
-        where TAccumulatedImpulses : unmanaged, INonconvexContactAccumulatedImpulses<TAccumulatedImpulses>
+        where TConstraintDescription : struct, INonconvexOneBodyContactConstraintDescription<TConstraintDescription>
+        where TContactImpulses : struct
+        where TConstraintCache : struct, IPairCacheEntry
+        where TPrestepData : struct, INonconvexContactPrestep<TPrestepData>
+        where TAccumulatedImpulses : struct, INonconvexContactAccumulatedImpulses<TAccumulatedImpulses>
     {
         public override void UpdateConstraintForManifold<TContactManifold, TCollisionCache, TCallBodyHandles, TCallbacks>(
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,
@@ -450,11 +450,11 @@ namespace BepuPhysics.CollisionDetection
 
     public class NonconvexTwoBodyAccessor<TConstraintDescription, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache> :
         ContactConstraintAccessor<TConstraintDescription, TwoBodyHandles, TPrestepData, TAccumulatedImpulses, TContactImpulses, TConstraintCache>
-        where TConstraintDescription : unmanaged, INonconvexTwoBodyContactConstraintDescription<TConstraintDescription>
-        where TContactImpulses : unmanaged
-        where TConstraintCache : unmanaged, IPairCacheEntry
-        where TPrestepData : unmanaged, ITwoBodyNonconvexContactPrestep<TPrestepData>
-        where TAccumulatedImpulses : unmanaged, INonconvexContactAccumulatedImpulses<TAccumulatedImpulses>
+        where TConstraintDescription : struct, INonconvexTwoBodyContactConstraintDescription<TConstraintDescription>
+        where TContactImpulses : struct
+        where TConstraintCache : struct, IPairCacheEntry
+        where TPrestepData : struct, ITwoBodyNonconvexContactPrestep<TPrestepData>
+        where TAccumulatedImpulses : struct, INonconvexContactAccumulatedImpulses<TAccumulatedImpulses>
     {
         public override void UpdateConstraintForManifold<TContactManifold, TCollisionCache, TCallBodyHandles, TCallbacks>(
             NarrowPhase<TCallbacks> narrowPhase, int manifoldTypeAsConstraintType, int workerIndex,

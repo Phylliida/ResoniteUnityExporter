@@ -65,7 +65,7 @@ namespace BepuPhysics.CollisionDetection
             }
 
 
-            struct ContinuationCache<T> where T : unmanaged
+            struct ContinuationCache<T> where T : struct
             {
                 public IdPool Ids;
                 public Buffer<T> Caches;
@@ -127,7 +127,7 @@ namespace BepuPhysics.CollisionDetection
             }
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public unsafe void OnPairCompleted<TManifold>(int pairId, ref TManifold manifoldReference) where TManifold : unmanaged, IContactManifold<TManifold>
+            public unsafe void OnPairCompleted<TManifold>(int pairId, ref TManifold manifoldReference) where TManifold : struct, IContactManifold<TManifold>
             {
                 var todoTestCollisionCache = default(EmptyCollisionCache);
                 CCDContinuationIndex continuationId = new CCDContinuationIndex(pairId);

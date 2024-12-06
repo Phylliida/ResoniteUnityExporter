@@ -221,8 +221,8 @@ namespace BepuPhysics.CollisionDetection
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public SweepTask GetTask<TShapeA, TShapeB>()
-            where TShapeA : unmanaged, IShape
-            where TShapeB : unmanaged, IShape
+            where TShapeA : struct, IShape
+            where TShapeB : struct, IShape
         {
             return GetTask(default(TShapeA).TypeId, default(TShapeB).TypeId);
         }

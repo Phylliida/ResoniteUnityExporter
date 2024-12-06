@@ -11,10 +11,10 @@ using System.Runtime.InteropServices;
 namespace BepuUtilities.Memory
 {
     /// <summary>
-    /// Span over an unmanaged memory region.
+    /// Span over an struct memory region.
     /// </summary>
     /// <typeparam name="T">Type of the memory exposed by the span.</typeparam>
-    public unsafe struct Buffer<T> where T : unmanaged
+    public unsafe struct Buffer<T> where T : struct
     {
         public T* Memory;
         internal int length;

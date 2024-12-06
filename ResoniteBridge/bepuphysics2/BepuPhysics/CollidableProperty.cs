@@ -14,7 +14,7 @@ namespace BepuPhysics
     /// </summary>
     /// <typeparam name="T">Type of the data to store.</typeparam>
     /// <remarks>This is built for use cases relying on random access like the narrow phase. For maximum performance with sequential access, an index-aligned structure would be better.</remarks>
-    public class CollidableProperty<T> : IDisposable where T : unmanaged
+    public class CollidableProperty<T> : IDisposable where T : struct
     {
         //Bodies and statics each have 'handle spaces', like namespaces. A body and static can have the same integer valued handle.
         //So, we need to have two different buffers for data.

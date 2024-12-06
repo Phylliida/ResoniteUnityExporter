@@ -21,7 +21,7 @@ namespace BepuUtilities.Collections
     /// it does not (and is incapable of) checking that provided memory gets returned to the same pool that it came from.
     /// </remarks>
     /// <typeparam name="T">Type of the elements in the queue.</typeparam>
-    public struct QuickQueue<T> where T : unmanaged
+    public struct QuickQueue<T> where T : struct
     {
         /// <summary>
         /// Number of elements in the queue.
@@ -105,7 +105,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool to pull a span from.</param>
         /// <param name="minimumInitialCount">The minimum size of the region to be pulled from the pool. Actual span may be larger.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickQueue(int minimumInitialCount, IUnmanagedMemoryPool pool)
+        public QuickQueue(int minimumInitialCount, IstructMemoryPool pool)
         {
             pool.TakeAtLeast(minimumInitialCount, out Span);
             Count = 0;
@@ -164,7 +164,7 @@ namespace BepuUtilities.Collections
         /// <param name="newSize">Minimum number of elements required in the new backing array. Actual capacity of the created span may exceed this size.</param>
         /// <param name="pool">Pool to pull a new span from and return the old span to.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Resize(int newSize, IUnmanagedMemoryPool pool)
+        public void Resize(int newSize, IstructMemoryPool pool)
         {
             var targetCapacity = pool.GetCapacityForCount<T>(newSize);
             if (targetCapacity != Span.Length)
@@ -177,11 +177,11 @@ namespace BepuUtilities.Collections
         }
 
         /// <summary>
-        /// Returns the resources associated with the queue to pools. Any managed references still contained within the queue are cleared (and some unmanaged resources may also be cleared).
+        /// Returns the resources associated with the queue to pools. Any managed references still contained within the queue are cleared (and some struct resources may also be cleared).
         /// </summary>
         /// <param name="pool">Pool used for element spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Dispose(IUnmanagedMemoryPool pool)
+        public void Dispose(IstructMemoryPool pool)
         {
             pool.Return(ref Span);
         }
@@ -191,7 +191,7 @@ namespace BepuUtilities.Collections
         /// <param name="count">Number of elements to hold.</param>
         /// <param name="pool">Pool to pull a new span from and return the old span to.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void EnsureCapacity(int count, IUnmanagedMemoryPool pool)
+        public void EnsureCapacity(int count, IstructMemoryPool pool)
         {
             if (count >= CapacityMask)
             {
@@ -203,7 +203,7 @@ namespace BepuUtilities.Collections
         /// Compacts the internal buffer to the minimum size required for the number of elements in the queue.
         /// </summary>
         /// <param name="pool">Pool to pull from if necessary.</param>
-        public void Compact(IUnmanagedMemoryPool pool)
+        public void Compact(IstructMemoryPool pool)
         {
             Validate();
             var targetCapacity = pool.GetCapacityForCount<T>(Count);
@@ -242,7 +242,7 @@ namespace BepuUtilities.Collections
         /// </summary>
         /// <param name="element">Item to enqueue.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Enqueue(in T element, IUnmanagedMemoryPool pool)
+        public void Enqueue(in T element, IstructMemoryPool pool)
         {
             Validate();
             if (Count == Span.Length)
@@ -255,7 +255,7 @@ namespace BepuUtilities.Collections
         /// </summary>
         /// <param name="element">Item to enqueue.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void EnqueueFirst(in T element, IUnmanagedMemoryPool pool)
+        public void EnqueueFirst(in T element, IstructMemoryPool pool)
         {
             Validate();
             if (Count == Span.Length)

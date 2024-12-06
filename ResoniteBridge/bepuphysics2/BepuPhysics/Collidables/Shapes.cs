@@ -108,7 +108,7 @@ namespace BepuPhysics.Collidables
 
     }
 
-    public abstract class ShapeBatch<TShape> : ShapeBatch where TShape : unmanaged, IShape
+    public abstract class ShapeBatch<TShape> : ShapeBatch where TShape : struct, IShape
     {
         internal Buffer<TShape> shapes;
 
@@ -199,8 +199,8 @@ namespace BepuPhysics.Collidables
 
 
     public class ConvexShapeBatch<TShape, TShapeWide> : ShapeBatch<TShape>
-        where TShape : unmanaged, IConvexShape
-        where TShapeWide : unmanaged, IShapeWide<TShape>
+        where TShape : struct, IConvexShape
+        where TShapeWide : struct, IShapeWide<TShape>
     {
         public ConvexShapeBatch(BufferPool pool, int initialShapeCount) : base(pool, initialShapeCount)
         {
@@ -262,7 +262,7 @@ namespace BepuPhysics.Collidables
     }
 
 
-    public class HomogeneousCompoundShapeBatch<TShape, TChildShape, TChildShapeWide> : ShapeBatch<TShape> where TShape : unmanaged, IHomogeneousCompoundShape<TChildShape, TChildShapeWide>
+    public class HomogeneousCompoundShapeBatch<TShape, TChildShape, TChildShapeWide> : ShapeBatch<TShape> where TShape : struct, IHomogeneousCompoundShape<TChildShape, TChildShapeWide>
         where TChildShape : IConvexShape
         where TChildShapeWide : IShapeWide<TChildShape>
     {
@@ -303,7 +303,7 @@ namespace BepuPhysics.Collidables
         }
     }
 
-    public class CompoundShapeBatch<TShape> : ShapeBatch<TShape> where TShape : unmanaged, ICompoundShape
+    public class CompoundShapeBatch<TShape> : ShapeBatch<TShape> where TShape : struct, ICompoundShape
     {
         Shapes shapeBatches;
 
@@ -390,14 +390,14 @@ namespace BepuPhysics.Collidables
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ref TShape GetShape<TShape>(int shapeIndex) where TShape : unmanaged, IShape
+        public ref TShape GetShape<TShape>(int shapeIndex) where TShape : struct, IShape
         {
             var typeId = default(TShape).TypeId;
             return ref Unsafe.As<ShapeBatch, ShapeBatch<TShape>>(ref batches[typeId])[shapeIndex];
         }
 
 
-        public TypedIndex Add<TShape>(in TShape shape) where TShape : unmanaged, IShape
+        public TypedIndex Add<TShape>(in TShape shape) where TShape : struct, IShape
         {
             var typeId = default(TShape).TypeId;
             if (RegisteredTypeSpan <= typeId)

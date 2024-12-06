@@ -136,7 +136,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexDynamic<TConvexShape>(
             in RigidPose pose, in BodyVelocity velocity, float mass, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             var description = new BodyDescription
             {
@@ -161,7 +161,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexDynamic<TConvexShape>(
             in Vector3 position, in BodyVelocity velocity, float mass, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexDynamic(new RigidPose(position), velocity, mass, shapes, shape);
         }
@@ -177,7 +177,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexDynamic<TConvexShape>(
             in RigidPose pose, float mass, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexDynamic(pose, default, mass, shapes, shape);
         }
@@ -193,7 +193,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexDynamic<TConvexShape>(
             in Vector3 position, float mass, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexDynamic(new RigidPose(position), default, mass, shapes, shape);
         }
@@ -259,7 +259,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexKinematic<TConvexShape>(
             in RigidPose pose, in BodyVelocity velocity, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             var description = new BodyDescription
             {
@@ -282,7 +282,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexKinematic<TConvexShape>(
             in Vector3 position, in BodyVelocity velocity, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexKinematic(new RigidPose(position), velocity, shapes, shape);
         }
@@ -297,7 +297,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexKinematic<TConvexShape>(
             in RigidPose pose, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexKinematic(pose, default, shapes, shape);
         }
@@ -312,7 +312,7 @@ namespace BepuPhysics
         /// <returns>Constructed description for the body.</returns>
         public static BodyDescription CreateConvexKinematic<TConvexShape>(
             in Vector3 position, Shapes shapes, in TConvexShape shape)
-            where TConvexShape : unmanaged, IConvexShape
+            where TConvexShape : struct, IConvexShape
         {
             return CreateConvexKinematic(new RigidPose(position), default, shapes, shape);
         }

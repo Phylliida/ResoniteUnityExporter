@@ -62,7 +62,7 @@ namespace BepuUtilities.Collections
     /// <typeparam name="TKey">Type of key held by the container.</typeparam>
     /// <typeparam name="TValue">Type of value held by the container.</typeparam>
     /// <typeparam name="TEqualityComparer">Type of the equality tester and hash calculator used.</typeparam>
-    public struct QuickDictionary<TKey, TValue, TEqualityComparer> where TKey : unmanaged where TValue : unmanaged where TEqualityComparer : IEqualityComparerRef<TKey>
+    public struct QuickDictionary<TKey, TValue, TEqualityComparer> where TKey : struct where TValue : struct where TEqualityComparer : IEqualityComparerRef<TKey>
     {
         /// <summary>
         /// Gets the number of elements in the dictionary.
@@ -172,7 +172,7 @@ namespace BepuUtilities.Collections
         /// <param name="comparer">Comparer to use in the dictionary.</param>
         /// <param name="pool">Pool used for spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickDictionary(int initialCapacity, int tableSizePower, IUnmanagedMemoryPool pool, TEqualityComparer comparer)
+        public QuickDictionary(int initialCapacity, int tableSizePower, IstructMemoryPool pool, TEqualityComparer comparer)
         {
             pool.TakeAtLeast<TKey>(initialCapacity, out var keySpan);
             pool.TakeAtLeast<TValue>(keySpan.Length, out var valueSpan);
@@ -190,7 +190,7 @@ namespace BepuUtilities.Collections
         /// <param name="comparer">Comparer to use in the dictionary.</param>
         /// <param name="pool">Pool used for spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickDictionary(int initialCapacity, int tableSizePower, IUnmanagedMemoryPool pool)
+        public QuickDictionary(int initialCapacity, int tableSizePower, IstructMemoryPool pool)
             : this(initialCapacity, tableSizePower, pool, default)
         {
         }
@@ -202,7 +202,7 @@ namespace BepuUtilities.Collections
         /// <param name="comparer">Comparer to use in the dictionary.</param>
         /// <param name="pool">Pool used for spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickDictionary(int initialCapacity, IUnmanagedMemoryPool pool)
+        public QuickDictionary(int initialCapacity, IstructMemoryPool pool)
             : this(initialCapacity, 2, pool, default)
         {
         }
@@ -254,7 +254,7 @@ namespace BepuUtilities.Collections
         /// <param name="newSize">Minimum size of the new object memory block. Actual size may be larger.</param>
         /// <param name="pool">Pool used for spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Resize(int newSize, IUnmanagedMemoryPool pool)
+        public void Resize(int newSize, IstructMemoryPool pool)
         {
             var targetKeyCapacity = pool.GetCapacityForCount<TKey>(newSize);
             if (targetKeyCapacity != Keys.Length)
@@ -280,7 +280,7 @@ namespace BepuUtilities.Collections
         /// <typeparam name="TValuePool">Type of the pool used for value spans.</typeparam>
         /// <typeparam name="TTablePool">Type of the pool used for table spans.</typeparam>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Dispose(IUnmanagedMemoryPool pool)
+        public void Dispose(IstructMemoryPool pool)
         {
             pool.Return(ref Keys);
             pool.Return(ref Values);
@@ -293,7 +293,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <param name="count">Number of elements to hold.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void EnsureCapacity(int count, IUnmanagedMemoryPool pool)
+        public void EnsureCapacity(int count, IstructMemoryPool pool)
         {
             if (count > Keys.Length)
             {
@@ -306,7 +306,7 @@ namespace BepuUtilities.Collections
         /// </summary>
         /// <param name="pool">Pool used for spans.</param>   
         /// <param name="element">Element to add.</param>
-        public void Compact(IUnmanagedMemoryPool pool)
+        public void Compact(IstructMemoryPool pool)
         {
             Validate();
             var targetKeyCapacity = pool.GetCapacityForCount<TKey>(Count);
@@ -517,7 +517,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the pair was added to the dictionary, false if the key was already present and its pair was replaced.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddAndReplaceRef(ref TKey key, in TValue value, IUnmanagedMemoryPool pool)
+        public bool AddAndReplaceRef(ref TKey key, in TValue value, IstructMemoryPool pool)
         {
             if (Count == Keys.Length)
             {
@@ -540,7 +540,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the pair was added to the dictionary, false if the key was already present and its pair was replaced.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddAndReplace(TKey key, in TValue value, IUnmanagedMemoryPool pool)
+        public bool AddAndReplace(TKey key, in TValue value, IstructMemoryPool pool)
         {
             return AddAndReplaceRef(ref key, value, pool);
         }
@@ -554,7 +554,7 @@ namespace BepuUtilities.Collections
         /// <typeparam name="TPool">Type of the pool used for spans.</typeparam>
         /// <returns>True if the pair was added to the dictionary, false if the key was already present.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddRef(ref TKey key, in TValue value, IUnmanagedMemoryPool pool)
+        public bool AddRef(ref TKey key, in TValue value, IstructMemoryPool pool)
         {
             Validate();
 
@@ -579,7 +579,7 @@ namespace BepuUtilities.Collections
         /// <typeparam name="TPool">Type of the pool to use.</typeparam>
         /// <returns>True if the pair was added to the dictionary, false if the key was already present.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Add(TKey key, in TValue value, IUnmanagedMemoryPool pool)
+        public bool Add(TKey key, in TValue value, IstructMemoryPool pool)
         {
             return AddRef(ref key, value, pool);
         }

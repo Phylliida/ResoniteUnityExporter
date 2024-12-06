@@ -9,11 +9,11 @@ using BepuUtilities.Memory;
 namespace BepuPhysics.CollisionDetection.SweepTasks
 {
     public class ConvexHomogeneousCompoundSweepTask<TConvex, TConvexWide, TCompound, TChildType, TChildTypeWide, TOverlapFinder> : SweepTask
-        where TConvex : unmanaged, IConvexShape
-        where TConvexWide : unmanaged, IShapeWide<TConvex>
-        where TCompound : unmanaged, IHomogeneousCompoundShape<TChildType, TChildTypeWide>
-        where TChildType : unmanaged, IConvexShape
-        where TChildTypeWide : unmanaged, IShapeWide<TChildType>
+        where TConvex : struct, IConvexShape
+        where TConvexWide : struct, IShapeWide<TConvex>
+        where TCompound : struct, IHomogeneousCompoundShape<TChildType, TChildTypeWide>
+        where TChildType : struct, IConvexShape
+        where TChildTypeWide : struct, IShapeWide<TChildType>
         where TOverlapFinder : struct, IConvexCompoundSweepOverlapFinder<TConvex, TCompound>
 
     {

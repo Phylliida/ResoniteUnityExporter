@@ -130,7 +130,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetIndex">Index in the buffer to start putting elements into.</param>
         /// <param name="count">Number of elements to copy.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void Copy<T>(in Buffer<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : unmanaged
+        public static unsafe void Copy<T>(in Buffer<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : struct
         {
             Debug.Assert(targetIndex >= 0 && targetIndex + count <= target.Length, "Can't perform a copy that extends beyond the target span.");
             Debug.Assert(sourceIndex >= 0 && sourceIndex + count <= source.Length, "Can't perform a copy that extends beyond the source span.");
@@ -147,7 +147,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetIndex">Index in the span to start putting elements into.</param>
         /// <param name="count">Number of elements to copy.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void Copy<T>(in Buffer<T> source, int sourceIndex, Span<T> target, int targetIndex, int count) where T : unmanaged
+        public static unsafe void Copy<T>(in Buffer<T> source, int sourceIndex, Span<T> target, int targetIndex, int count) where T : struct
         {
             Debug.Assert(targetIndex >= 0 && targetIndex + count <= target.Length, "Can't perform a copy that extends beyond the target span.");
             Debug.Assert(sourceIndex >= 0 && sourceIndex + count <= source.Length, "Can't perform a copy that extends beyond the source span.");
@@ -164,7 +164,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetIndex">Index in the buffer to start putting elements into.</param>
         /// <param name="count">Number of elements to copy.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void Copy<T>(in Span<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : unmanaged
+        public static unsafe void Copy<T>(in Span<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : struct
         {
             Debug.Assert(targetIndex >= 0 && targetIndex + count <= target.Length, "Can't perform a copy that extends beyond the target span.");
             Debug.Assert(sourceIndex >= 0 && sourceIndex + count <= source.Length, "Can't perform a copy that extends beyond the source span.");
@@ -181,7 +181,7 @@ namespace BepuUtilities.Memory
         /// <param name="targetIndex">Index in the buffer to start putting elements into.</param>
         /// <param name="count">Number of elements to copy.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void Copy<T>(in ReadOnlySpan<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : unmanaged
+        public static unsafe void Copy<T>(in ReadOnlySpan<T> source, int sourceIndex, in Buffer<T> target, int targetIndex, int count) where T : struct
         {
             Debug.Assert(targetIndex >= 0 && targetIndex + count <= target.Length, "Can't perform a copy that extends beyond the target span.");
             Debug.Assert(sourceIndex >= 0 && sourceIndex + count <= source.Length, "Can't perform a copy that extends beyond the source span.");

@@ -15,10 +15,10 @@ namespace BepuPhysics.CollisionDetection.SweepTasks
     }
 
     public class ConvexPairSweepTask<TShapeA, TShapeWideA, TShapeB, TShapeWideB, TPairDistanceTester> : SweepTask
-            where TShapeA : unmanaged, IConvexShape
-            where TShapeB : unmanaged, IConvexShape
-            where TShapeWideA : unmanaged, IShapeWide<TShapeA>
-            where TShapeWideB : unmanaged, IShapeWide<TShapeB>
+            where TShapeA : struct, IConvexShape
+            where TShapeB : struct, IConvexShape
+            where TShapeWideA : struct, IShapeWide<TShapeA>
+            where TShapeWideB : struct, IShapeWide<TShapeB>
             where TPairDistanceTester : struct, IPairDistanceTester<TShapeWideA, TShapeWideB>
     {
         public ConvexPairSweepTask()

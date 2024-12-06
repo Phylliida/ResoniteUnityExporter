@@ -26,7 +26,7 @@ namespace BepuUtilities.Collections
     /// A generous table capacity is recommended; this trades some memory for simplicity and runtime performance.</para></remarks>
     /// <typeparam name="T">Type of element held by the container.</typeparam>
     /// <typeparam name="TEqualityComparer">Type of the equality tester and hash calculator used.</typeparam>
-    public struct QuickSet<T, TEqualityComparer> where TEqualityComparer : IEqualityComparerRef<T> where T : unmanaged
+    public struct QuickSet<T, TEqualityComparer> where TEqualityComparer : IEqualityComparerRef<T> where T : struct
     {
         /// <summary>
         /// Gets the number of elements in the set.
@@ -116,7 +116,7 @@ namespace BepuUtilities.Collections
         /// <param name="tableSizePower">Target capacity relative to the initial capacity in terms of a power of 2. The size of the initial table buffer will be at least 2^tableSizePower times larger than the initial capacity.</param>
         /// <param name="comparer">Comparer to use in the set.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickSet(int initialCapacity, int tableSizePower, IUnmanagedMemoryPool pool, TEqualityComparer comparer)
+        public QuickSet(int initialCapacity, int tableSizePower, IstructMemoryPool pool, TEqualityComparer comparer)
         {
             pool.TakeAtLeast<T>(initialCapacity, out var span);
             pool.TakeAtLeast<int>(span.Length << tableSizePower, out var tableSpan);
@@ -132,7 +132,7 @@ namespace BepuUtilities.Collections
         /// <param name="initialCapacity">Initial target size of the key and value spans. The size of the initial buffer will be at least as large as the initialCapacity.</param>
         /// <param name="tableSizePower">Target capacity relative to the initial capacity in terms of a power of 2. The size of the initial table buffer will be at least 2^tableSizePower times larger than the initial capacity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickSet(int initialCapacity, int tableSizePower, IUnmanagedMemoryPool pool)
+        public QuickSet(int initialCapacity, int tableSizePower, IstructMemoryPool pool)
             : this(initialCapacity, tableSizePower, pool, default)
         {
         }
@@ -143,7 +143,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool to pull spans from.</param>   
         /// <param name="initialCapacity">Initial target size of the key and value spans. The size of the initial buffer will be at least as large as the initialCapacity.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public QuickSet(int initialCapacity, IUnmanagedMemoryPool pool)
+        public QuickSet(int initialCapacity, IstructMemoryPool pool)
             : this(initialCapacity, 2, pool, default)
         {
         }
@@ -189,7 +189,7 @@ namespace BepuUtilities.Collections
         /// <param name="newSize">Minimum size of the new object memory block. Actual size may be larger.</param>
         /// <param name="pool">Pool to take spans from.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Resize(int newSize, IUnmanagedMemoryPool pool)
+        public void Resize(int newSize, IstructMemoryPool pool)
         {
             var targetCapacity = pool.GetCapacityForCount<T>(newSize);
             if (targetCapacity != Span.Length)
@@ -205,11 +205,11 @@ namespace BepuUtilities.Collections
         }
 
         /// <summary>
-        /// Returns the resources associated with the set to pools. Any managed references still contained within the set are cleared (and some unmanaged resources may also be cleared).
+        /// Returns the resources associated with the set to pools. Any managed references still contained within the set are cleared (and some struct resources may also be cleared).
         /// </summary>
         /// <param name="pool">Pool used for element spans.</param>   
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Dispose(IUnmanagedMemoryPool pool)
+        public void Dispose(IstructMemoryPool pool)
         {
             pool.Return(ref Span);
             pool.Return(ref Table);
@@ -221,7 +221,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <param name="count">Number of elements to hold.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void EnsureCapacity(int count, IUnmanagedMemoryPool pool)
+        public void EnsureCapacity(int count, IstructMemoryPool pool)
         {
             if (count > Span.Length)
             {
@@ -234,7 +234,7 @@ namespace BepuUtilities.Collections
         /// </summary>
         /// <param name="element">Element to add.</param>
         /// <param name="pool">Pool used for spans.</param>   
-        public void Compact(IUnmanagedMemoryPool pool)
+        public void Compact(IstructMemoryPool pool)
         {
             Validate();
             var targetCapacity = pool.GetCapacityForCount<T>(Count);
@@ -400,7 +400,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the element was added to the set, false if the element was already present and was instead replaced.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddAndReplaceRef(ref T element, IUnmanagedMemoryPool pool)
+        public bool AddAndReplaceRef(ref T element, IstructMemoryPool pool)
         {
             if (Count == Span.Length)
             {
@@ -422,7 +422,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the element was added to the set, false if the element was already present.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddRef(ref T element, IUnmanagedMemoryPool pool)
+        public bool AddRef(ref T element, IstructMemoryPool pool)
         {
             if (Count == Span.Length)
             {
@@ -445,7 +445,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the element was added to the set, false if the element was already present and was instead replaced.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool AddAndReplace(T element, IUnmanagedMemoryPool pool)
+        public bool AddAndReplace(T element, IstructMemoryPool pool)
         {
             return AddAndReplaceUnsafelyRef(ref element);
         }
@@ -458,7 +458,7 @@ namespace BepuUtilities.Collections
         /// <param name="pool">Pool used for spans.</param>   
         /// <returns>True if the element was added to the set, false if the element was already present.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Add(T element, IUnmanagedMemoryPool pool)
+        public bool Add(T element, IstructMemoryPool pool)
         {
             return AddRef(ref element, pool);
         }

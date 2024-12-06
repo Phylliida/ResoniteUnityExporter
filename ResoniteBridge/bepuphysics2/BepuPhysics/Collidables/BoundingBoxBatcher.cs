@@ -75,7 +75,7 @@ namespace BepuPhysics
         public BoundsContinuation Continuation;
     }
 
-    public struct BoundingBoxInstanceWide<TShape, TShapeWide> where TShape : unmanaged, IShape where TShapeWide : unmanaged, IShapeWide<TShape>
+    public struct BoundingBoxInstanceWide<TShape, TShapeWide> where TShape : struct, IShape where TShapeWide : struct, IShapeWide<TShape>
     {
         public TShapeWide Shape;
         public Vector<float> MaximumExpansion;
@@ -114,7 +114,7 @@ namespace BepuPhysics
             maximumBatchIndex = -1;
         }
 
-        public unsafe void ExecuteConvexBatch<TShape, TShapeWide>(ConvexShapeBatch<TShape, TShapeWide> shapeBatch) where TShape : unmanaged, IConvexShape where TShapeWide : unmanaged, IShapeWide<TShape>
+        public unsafe void ExecuteConvexBatch<TShape, TShapeWide>(ConvexShapeBatch<TShape, TShapeWide> shapeBatch) where TShape : struct, IConvexShape where TShapeWide : struct, IShapeWide<TShape>
         {
             var instanceBundle = default(BoundingBoxInstanceWide<TShape, TShapeWide>);
             if (instanceBundle.Shape.InternalAllocationSize > 0) //TODO: Check to make sure the JIT omits the branch.
@@ -184,7 +184,7 @@ namespace BepuPhysics
         }
 
         public unsafe void ExecuteHomogeneousCompoundBatch<TShape, TChildShape, TChildShapeWide>(HomogeneousCompoundShapeBatch<TShape, TChildShape, TChildShapeWide> shapeBatch)
-            where TShape : unmanaged, IHomogeneousCompoundShape<TChildShape, TChildShapeWide>
+            where TShape : struct, IHomogeneousCompoundShape<TChildShape, TChildShapeWide>
             where TChildShape : IConvexShape
             where TChildShapeWide : IShapeWide<TChildShape>
         {
@@ -212,7 +212,7 @@ namespace BepuPhysics
             }
         }
 
-        public unsafe void ExecuteCompoundBatch<TShape>(CompoundShapeBatch<TShape> shapeBatch) where TShape : unmanaged, ICompoundShape
+        public unsafe void ExecuteCompoundBatch<TShape>(CompoundShapeBatch<TShape> shapeBatch) where TShape : struct, ICompoundShape
         {
             ref var batch = ref batches[shapeBatch.TypeId];
             ref var activeSet = ref bodies.ActiveSet;
