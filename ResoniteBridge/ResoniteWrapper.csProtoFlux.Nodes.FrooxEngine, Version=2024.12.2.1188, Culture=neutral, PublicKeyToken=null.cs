@@ -87,14 +87,7 @@ namespace ProtoFlux.Nodes.FrooxEngine
 
 		public static ProtoFluxTypeMapping MapNode(System.String name, System.String @namespace)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "ProtoFluxMapper", ResoniteBridge.ResoniteBridgeValueType.Type), "MapNode", name, @namespace), typeof(ProtoFluxTypeMapping)) is ProtoFluxTypeMapping __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ProtoFluxTypeMapping)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "ProtoFluxMapper", ResoniteBridge.ResoniteBridgeValueType.Type), "MapNode", name, @namespace), typeof(ProtoFluxTypeMapping));
 		}
 	}
 }
@@ -297,14 +290,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected override void RunUpdate(FrooxEngineContext context)
@@ -363,14 +349,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		protected override T Lerp(ref T current, ref T target, ref T intermediate, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -402,14 +381,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		protected override floatQ Lerp(ref floatQ current, ref floatQ target, ref floatQ intermediate, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -441,14 +413,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		protected override doubleQ Lerp(ref doubleQ current, ref doubleQ target, ref doubleQ intermediate, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(doubleQ)) is doubleQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(doubleQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -555,14 +520,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected override void RunUpdate(FrooxEngineContext context)
@@ -622,14 +580,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		protected override T Lerp(ref T current, ref T target, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -662,14 +613,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		protected override floatQ Lerp(ref floatQ current, ref floatQ target, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -702,14 +646,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		protected override doubleQ Lerp(ref doubleQ current, ref doubleQ target, System.Single delta)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(doubleQ)) is doubleQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(doubleQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -801,14 +738,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds
 
 		protected override BoundingBox Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BoundingBox)) is BoundingBox __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BoundingBox));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -916,14 +846,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds
 
 		protected override BoundingBox Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BoundingBox)) is BoundingBox __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BoundingBox));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1031,19 +954,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		protected abstract ResoniteBridge.ResoniteBridgeValue RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink);
+		protected abstract Task<IOperation> RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink);
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
@@ -1294,16 +1210,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink)
+		protected override Task<IOperation> RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunWorldAction", context, url, worldLink), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunWorldAction", context, url, worldLink), typeof(Task<IOperation>));
 		}
 
 		public OpenWorld()
@@ -1389,28 +1298,14 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink)
+		protected override Task<IOperation> RunWorldAction(FrooxEngineContext context, System.Uri url, IWorldLink worldLink)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunWorldAction", context, url, worldLink), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunWorldAction", context, url, worldLink), typeof(Task<IOperation>));
 		}
 
 		private static System.Boolean IsAllowedToFocus(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "FocusWorld", ResoniteBridge.ResoniteBridgeValueType.Type), "IsAllowedToFocus", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "FocusWorld", ResoniteBridge.ResoniteBridgeValueType.Type), "IsAllowedToFocus", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1441,11 +1336,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue OnSaved
+			public Action OnSaved
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSaved"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSaved"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1472,26 +1367,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1580,11 +1461,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Joined
+			public Action<global::FrooxEngine.User> Joined
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Joined"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Joined"), typeof(Action<global::FrooxEngine.User>)) is Action<global::FrooxEngine.User> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1599,11 +1480,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue QueuedEvents
+			internal List<global::FrooxEngine.User> QueuedEvents
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "QueuedEvents"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "QueuedEvents"), typeof(List<global::FrooxEngine.User>)) is List<global::FrooxEngine.User> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1630,26 +1511,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1792,11 +1659,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Left
+			public Action<global::FrooxEngine.User> Left
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Left"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Left"), typeof(Action<global::FrooxEngine.User>)) is Action<global::FrooxEngine.User> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1823,26 +1690,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1985,11 +1838,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			internal ResoniteBridge.ResoniteBridgeValue Spawn
+			internal Action<global::FrooxEngine.User> Spawn
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Spawn"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Spawn"), typeof(Action<global::FrooxEngine.User>)) is Action<global::FrooxEngine.User> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -2004,11 +1857,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue QueuedEvents
+			internal List<global::FrooxEngine.User> QueuedEvents
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "QueuedEvents"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "QueuedEvents"), typeof(List<global::FrooxEngine.User>)) is List<global::FrooxEngine.User> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -2035,26 +1888,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2198,14 +2037,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2237,14 +2069,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2275,14 +2100,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2313,14 +2131,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2351,14 +2162,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2390,14 +2194,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2429,14 +2226,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2468,14 +2258,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2507,14 +2290,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2546,14 +2322,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override SessionAccessLevel Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(SessionAccessLevel)) is SessionAccessLevel __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (SessionAccessLevel)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(SessionAccessLevel));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2585,14 +2354,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2624,14 +2386,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2663,14 +2418,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2700,16 +2448,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	[ContinuouslyChanging]
 	public class WorldAwayKickInterval : ValueFunctionNode<FrooxEngineContext, TimeSpan>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override TimeSpan Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2740,14 +2481,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2778,14 +2512,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2816,14 +2543,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3093,14 +2813,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3151,14 +2864,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3209,14 +2915,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3267,14 +2966,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3325,14 +3017,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3383,14 +3068,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3469,14 +3147,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		protected abstract void Set(Slot instance, FrooxEngineContext context);
@@ -4592,14 +4263,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4669,14 +4333,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4765,14 +4422,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4842,14 +4492,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4919,14 +4562,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5015,14 +4651,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5092,14 +4721,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5169,14 +4791,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5265,14 +4880,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5357,14 +4965,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5449,14 +5050,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5560,14 +5154,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5637,14 +5224,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5714,14 +5294,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5810,14 +5383,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5944,16 +5510,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -5984,14 +5543,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	{
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6022,14 +5574,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	{
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6061,14 +5606,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	{
 		protected override UserRoot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot)) is UserRoot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (UserRoot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6100,14 +5638,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	{
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6139,14 +5670,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	{
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6196,14 +5720,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6253,14 +5770,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6310,14 +5820,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6367,14 +5870,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6425,14 +5921,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6483,14 +5972,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6541,14 +6023,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6599,14 +6074,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6657,14 +6125,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6715,14 +6176,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6774,14 +6228,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6832,14 +6279,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override Chirality Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Chirality)) is Chirality __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Chirality)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Chirality));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6889,14 +6329,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -6947,14 +6380,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override VoiceMode Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(VoiceMode)) is VoiceMode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (VoiceMode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(VoiceMode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7005,14 +6431,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7063,14 +6482,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override IViewTargettingController Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IViewTargettingController)) is IViewTargettingController __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IViewTargettingController)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IViewTargettingController));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7121,14 +6533,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7179,14 +6584,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7237,14 +6635,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7295,14 +6686,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7353,14 +6737,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override UserRoot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot)) is UserRoot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (UserRoot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7411,14 +6788,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7469,14 +6839,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7527,14 +6890,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7585,14 +6941,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7643,14 +6992,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7701,14 +7043,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7759,14 +7094,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7817,14 +7145,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7875,14 +7196,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -7954,14 +7268,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override T? Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8032,14 +7339,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8090,14 +7390,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8148,14 +7441,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8206,14 +7492,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.UInt64 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.UInt64)) is System.UInt64 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.UInt64));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8264,14 +7543,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.UInt64 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.UInt64)) is System.UInt64 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.UInt64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.UInt64));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8322,14 +7594,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8380,14 +7645,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8438,14 +7696,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8496,14 +7747,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8553,14 +7797,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override Platform Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Platform)) is Platform __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Platform)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Platform));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8610,14 +7847,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override HeadOutputDevice Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(HeadOutputDevice)) is HeadOutputDevice __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (HeadOutputDevice)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(HeadOutputDevice));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8668,14 +7898,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8745,14 +7968,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8841,14 +8057,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8877,16 +8086,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 	[NodeCategory("Users/Info")]
 	public class LocalTimeOffset : ValueFunctionNode<FrooxEngineContext, TimeSpan>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override TimeSpan Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8934,16 +8136,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override TimeSpan Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -8992,16 +8187,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override DateTime Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(DateTime));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9055,14 +8243,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9113,14 +8294,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9190,14 +8364,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9267,14 +8434,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9325,14 +8485,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9383,14 +8536,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9441,14 +8587,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9499,14 +8638,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9557,14 +8689,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9615,14 +8740,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9673,14 +8791,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9731,14 +8842,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9789,14 +8893,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9847,14 +8944,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9905,14 +8995,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -9963,14 +9046,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10021,14 +9097,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10093,14 +9162,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		protected abstract void Set(UserRoot root, FrooxEngineContext context);
@@ -10563,14 +9625,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalScreen
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10655,14 +9710,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalScreen
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10697,14 +9745,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10736,14 +9777,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10775,14 +9809,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10814,14 +9841,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10853,14 +9873,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10892,14 +9905,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10931,14 +9937,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override floatQ Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -10970,14 +9969,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11009,14 +10001,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11069,14 +10054,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11145,14 +10123,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11221,14 +10192,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11328,11 +10292,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 	{
 		public class Proxy : ProtoFluxEngineProxy, IWorldUserJoinVerifier, IUserJoinVerifier, IWorldElement, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Handler
+			public Func<SessionConnection, Task<JoinGrant?>> Handler
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Handler"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Handler"), typeof(Func<SessionConnection, Task<JoinGrant?>>)) is Func<SessionConnection, Task<JoinGrant?>> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -11347,16 +10311,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 				}
 			}
 
-			public ResoniteBridge.ResoniteBridgeValue VerifyJoinRequest(SessionConnection request)
+			public Task<JoinGrant?> VerifyJoinRequest(SessionConnection request)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VerifyJoinRequest", request), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Task<JoinGrant?>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VerifyJoinRequest", request), typeof(Task<JoinGrant?>));
 			}
 
 			protected override void InitializeSyncMembers()
@@ -11366,26 +10323,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11674,16 +10617,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue Execute(SessionConnection connection, JoinRequestHandle handle, FrooxEngineContext context)
+		private Task Execute(SessionConnection connection, JoinRequestHandle handle, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", connection, handle, context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", connection, handle, context), typeof(Task));
 		}
 
 		protected override void ProxyAdded(Proxy proxy, FrooxEngineContext context)
@@ -11785,14 +10721,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -11999,14 +10928,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12075,14 +10997,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12151,14 +11066,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12227,14 +11135,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12303,14 +11204,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12379,14 +11273,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12439,14 +11326,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interactions
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12593,14 +11473,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility
 
 		protected T GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T));
 		}
 
 		protected abstract T EvaluateCurrent(FrooxEngineContext context);
@@ -12670,14 +11543,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility
 
 		protected override T EvaluateCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateCurrent", context), typeof(T));
 		}
 
 		protected override void ComputeOutputs(FrooxEngineContext context)
@@ -12751,14 +11617,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility
 
 		protected override T EvaluateCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateCurrent", context), typeof(T));
 		}
 
 		protected override void ComputeOutputs(FrooxEngineContext context)
@@ -12793,11 +11652,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility
 	[NodeCategory("Utility")]
 	public class TypeColor : ValueFunctionNode<ExecutionContext, colorX>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ObjectArgument<ResoniteBridge.ResoniteBridgeValue> Type
+		public ObjectArgument<Type> Type
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Type"), typeof(ObjectArgument<ResoniteBridge.ResoniteBridgeValue>)) is ObjectArgument<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Type"), typeof(ObjectArgument<Type>)) is ObjectArgument<Type> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -12814,14 +11673,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility
 
 		protected override colorX Compute(ExecutionContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -13024,16 +11876,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public RenderToTextureAsset()
@@ -13232,14 +12077,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		public FlashHighlightHierarchy()
@@ -13364,16 +12202,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public BakeReflectionProbe()
@@ -13612,16 +12443,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public BakeReflectionProbes()
@@ -13803,16 +12627,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public SampleColorX()
@@ -13885,14 +12702,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -13961,14 +12771,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14018,14 +12821,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14075,14 +12871,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14135,14 +12924,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14192,14 +12974,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override CharacterController Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController)) is CharacterController __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CharacterController)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14249,14 +13024,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14307,14 +13075,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override CharacterController Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController)) is CharacterController __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CharacterController)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14365,14 +13126,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override CharacterController Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController)) is CharacterController __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (CharacterController)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(CharacterController));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14423,14 +13177,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override float3 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3)) is float3 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(float3));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14481,14 +13228,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14629,14 +13369,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override ICollider Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ICollider)) is ICollider __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ICollider)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ICollider));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14724,14 +13457,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14819,14 +13545,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14895,14 +13614,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14971,14 +13683,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -16256,11 +14961,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 			}
 		}
 
-		private static ResoniteBridge.ResoniteBridgeValue _userFilter
+		private static Predicate<ICollider> _userFilter
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RaycastOne", ResoniteBridge.ResoniteBridgeValueType.Type), "_userFilter"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RaycastOne", ResoniteBridge.ResoniteBridgeValueType.Type), "_userFilter"), typeof(Predicate<ICollider>)) is Predicate<ICollider> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -16277,26 +14982,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		private static System.Boolean UserFilter(ICollider c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RaycastOne", ResoniteBridge.ResoniteBridgeValueType.Type), "UserFilter", c), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RaycastOne", ResoniteBridge.ResoniteBridgeValueType.Type), "UserFilter", c), typeof(System.Boolean));
 		}
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		public RaycastOne()
@@ -16554,11 +15245,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 			}
 		}
 
-		private static ResoniteBridge.ResoniteBridgeValue _userFilter
+		private static Predicate<ICollider> _userFilter
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Raycaster", ResoniteBridge.ResoniteBridgeValueType.Type), "_userFilter"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Raycaster", ResoniteBridge.ResoniteBridgeValueType.Type), "_userFilter"), typeof(Predicate<ICollider>)) is Predicate<ICollider> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -16575,14 +15266,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics
 
 		private static System.Boolean UserFilter(ICollider c)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Raycaster", ResoniteBridge.ResoniteBridgeValueType.Type), "UserFilter", c), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Raycaster", ResoniteBridge.ResoniteBridgeValueType.Type), "UserFilter", c), typeof(System.Boolean));
 		}
 
 		protected override void ComputeOutputs(FrooxEngineContext context)
@@ -16700,14 +15384,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected override void RunUpdate(FrooxEngineContext context)
@@ -16759,14 +15436,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 
 		protected override T Delta(ref T current, ref T previous)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -16797,14 +15467,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 	{
 		protected override floatQ Delta(ref floatQ current, ref floatQ previous)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(floatQ)) is floatQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(floatQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -16835,14 +15498,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 	{
 		protected override doubleQ Delta(ref doubleQ current, ref doubleQ previous)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(doubleQ)) is doubleQ __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(doubleQ));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -16910,14 +15566,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -16985,14 +15634,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17085,14 +15727,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17163,14 +15798,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17258,19 +15886,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		protected abstract ResoniteBridge.ResoniteBridgeValue Request(FrooxEngineContext context);
+		protected abstract Task<HostAccessPermission?> Request(FrooxEngineContext context);
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
@@ -17373,16 +15994,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Request(FrooxEngineContext context)
+		protected override Task<HostAccessPermission?> Request(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Request", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<HostAccessPermission?>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Request", context), typeof(Task<HostAccessPermission?>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17467,16 +16081,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Request(FrooxEngineContext context)
+		protected override Task<HostAccessPermission?> Request(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Request", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<HostAccessPermission?>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Request", context), typeof(Task<HostAccessPermission?>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17619,16 +16226,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		protected abstract HttpRequestMessage CreateRequest(FrooxEngineContext context, System.Uri url);
@@ -17684,26 +16284,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 
 		protected override ResoniteBridge.ResoniteBridgeValue ProcessResponse(FrooxEngineContext context, HttpResponseMessage response)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessResponse", context, response), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessResponse", context, response), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		protected override ResoniteBridge.ResoniteBridgeValue ProcessError(FrooxEngineContext context, HttpRequestException exception)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessError", context, exception), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessError", context, exception), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
 		protected StringResponseWebRequest()
@@ -17735,14 +16321,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 	{
 		protected override HttpRequestMessage CreateRequest(FrooxEngineContext context, System.Uri url)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateRequest", context, url), typeof(HttpRequestMessage)) is HttpRequestMessage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (HttpRequestMessage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateRequest", context, url), typeof(HttpRequestMessage));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17811,14 +16390,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 
 		protected override HttpRequestMessage CreateRequest(FrooxEngineContext context, System.Uri url)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateRequest", context, url), typeof(HttpRequestMessage)) is HttpRequestMessage __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (HttpRequestMessage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateRequest", context, url), typeof(HttpRequestMessage));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17906,14 +16478,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -18037,16 +16602,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -18188,11 +16746,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _connected
+		private ObjectStore<Action<WebsocketClient>> _connected
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_connected"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_connected"), typeof(ObjectStore<Action<WebsocketClient>>)) is ObjectStore<Action<WebsocketClient>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -18207,11 +16765,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _disconnected
+		private ObjectStore<Action<WebsocketClient>> _disconnected
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_disconnected"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_disconnected"), typeof(ObjectStore<Action<WebsocketClient>>)) is ObjectStore<Action<WebsocketClient>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -18314,11 +16872,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<WebsocketClient, string>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<WebsocketClient, string>>)) is ObjectStore<Action<WebsocketClient, string>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -18913,14 +17471,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -18989,14 +17540,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19063,11 +17607,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<IGrabbable>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<IGrabbable>>)) is ObjectStore<Action<IGrabbable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -19087,9 +17631,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGrabbableChanged", grabbable, context);
 		}
 
-		protected abstract void Register(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler);
+		protected abstract void Register(IGrabbable grabbable, Action<IGrabbable> handler);
 
-		protected abstract void Unregister(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler);
+		protected abstract void Unregister(IGrabbable grabbable, Action<IGrabbable> handler);
 
 		protected abstract void Handle(IGrabbable grabbable, FrooxEngineContext context);
 
@@ -19138,12 +17682,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		protected override void Register(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler)
+		protected override void Register(IGrabbable grabbable, Action<IGrabbable> handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Register", grabbable, handler);
 		}
 
-		protected override void Unregister(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler)
+		protected override void Unregister(IGrabbable grabbable, Action<IGrabbable> handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Unregister", grabbable, handler);
 		}
@@ -19197,12 +17741,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		protected override void Register(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler)
+		protected override void Register(IGrabbable grabbable, Action<IGrabbable> handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Register", grabbable, handler);
 		}
 
-		protected override void Unregister(IGrabbable grabbable, ResoniteBridge.ResoniteBridgeValue handler)
+		protected override void Unregister(IGrabbable grabbable, Action<IGrabbable> handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Unregister", grabbable, handler);
 		}
@@ -19279,14 +17823,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19337,14 +17874,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected abstract T Get(IGrabbable grabbable);
@@ -19397,14 +17927,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected abstract T Get(IGrabbable grabbable);
@@ -19436,14 +17959,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 	{
 		protected override System.Boolean Get(IGrabbable grabbable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19473,14 +17989,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 	{
 		protected override System.Boolean Get(IGrabbable grabbable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19510,14 +18019,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 	{
 		protected override System.Boolean Get(IGrabbable grabbable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19547,14 +18049,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 	{
 		protected override System.Int32 Get(IGrabbable grabbable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19584,14 +18079,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 	{
 		protected override Grabber Get(IGrabbable grabbable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(Grabber)) is Grabber __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Grabber)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Get", grabbable), typeof(Grabber));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19715,11 +18203,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<IGrabbable, Grabber>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<IGrabbable, Grabber>>)) is ObjectStore<Action<IGrabbable, Grabber>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -19826,14 +18314,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override Grabber Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Grabber)) is Grabber __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Grabber)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Grabber));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -19883,14 +18364,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 
 		protected override BodyNode Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BodyNode)) is BodyNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BodyNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BodyNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -20033,11 +18507,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _started
+		private ObjectStore<Action<TextEditor>> _started
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_started"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_started"), typeof(ObjectStore<Action<TextEditor>>)) is ObjectStore<Action<TextEditor>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -20052,11 +18526,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _changed
+		private ObjectStore<Action<TextEditor>> _changed
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_changed"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_changed"), typeof(ObjectStore<Action<TextEditor>>)) is ObjectStore<Action<TextEditor>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -20071,11 +18545,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _finished
+		private ObjectStore<Action<TextEditor>> _finished
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_finished"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_finished"), typeof(ObjectStore<Action<TextEditor>>)) is ObjectStore<Action<TextEditor>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -20090,11 +18564,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _submit
+		private ObjectStore<Action<TextEditor>> _submit
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_submit"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_submit"), typeof(ObjectStore<Action<TextEditor>>)) is ObjectStore<Action<TextEditor>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -20538,14 +19012,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -20672,14 +19139,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -20785,11 +19245,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _equipped
+		private ObjectStore<Action> _equipped
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_equipped"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_equipped"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -20804,11 +19264,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _dequipped
+		private ObjectStore<Action> _dequipped
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_dequipped"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_dequipped"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21075,11 +19535,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _update
+		private ObjectStore<Action> _update
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_update"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_update"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21094,11 +19554,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _equipped
+		private ObjectStore<Action> _equipped
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_equipped"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_equipped"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21113,11 +19573,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _dequipped
+		private ObjectStore<Action> _dequipped
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_dequipped"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_dequipped"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21132,11 +19592,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _primaryPressed
+		private ObjectStore<Action> _primaryPressed
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryPressed"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryPressed"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21151,11 +19611,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _primaryHeld
+		private ObjectStore<Action> _primaryHeld
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryHeld"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryHeld"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21170,11 +19630,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _primaryReleased
+		private ObjectStore<Action> _primaryReleased
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryReleased"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_primaryReleased"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21189,11 +19649,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _secondaryPressed
+		private ObjectStore<Action> _secondaryPressed
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryPressed"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryPressed"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21208,11 +19668,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _secondaryHeld
+		private ObjectStore<Action> _secondaryHeld
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryHeld"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryHeld"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21227,11 +19687,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _secondaryReleased
+		private ObjectStore<Action> _secondaryReleased
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryReleased"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_secondaryReleased"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -21513,14 +19973,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override ITool Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ITool)) is ITool __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ITool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ITool));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21606,14 +20059,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21665,14 +20111,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21724,14 +20163,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21783,14 +20215,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -21842,14 +20267,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools
 
 		protected override Chirality Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Chirality)) is Chirality __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Chirality)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Chirality));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22050,14 +20468,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22107,14 +20518,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22196,14 +20600,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22238,14 +20635,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected abstract T GetState(InputInterface input);
@@ -22277,14 +20667,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22314,14 +20697,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22351,14 +20727,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22388,14 +20757,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22425,14 +20787,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22462,14 +20817,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22499,14 +20847,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22536,14 +20877,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22573,14 +20907,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Boolean GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22610,14 +20937,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override System.Single GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22647,14 +20967,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override float2 GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22684,14 +20997,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override float2 GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22721,14 +21027,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override float2 GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22758,14 +21057,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override float2 GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22795,14 +21087,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse
 	{
 		protected override float2 GetState(InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2)) is float2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (float2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetState", input), typeof(float2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22835,14 +21120,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 	{
 		public static System.Boolean CanReadKeyboard(this FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "KeyboardNodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanReadKeyboard", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "KeyboardNodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CanReadKeyboard", context), typeof(System.Boolean));
 		}
 	}
 	[NodeCategory("Devices/Keyboard")]
@@ -22851,14 +21129,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 	{
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22909,14 +21180,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		protected abstract System.Boolean GetStatus(Key key, InputInterface input);
@@ -22948,14 +21212,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 	{
 		protected override System.Boolean GetStatus(Key key, InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -22985,14 +21242,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 	{
 		protected override System.Boolean GetStatus(Key key, InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23022,14 +21272,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard
 	{
 		protected override System.Boolean GetStatus(Key key, InputInterface input)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStatus", key, input), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23212,14 +21455,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Haptics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23303,14 +21539,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Haptics
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23344,14 +21573,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Display
 	{
 		protected override int2 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(int2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23383,14 +21605,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Display
 	{
 		protected override int2 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(int2)) is int2 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (int2)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(int2));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23422,14 +21637,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Display
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -23518,11 +21726,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers
 			}
 		}
 
-		public ObjectOutput<ResoniteBridge.ResoniteBridgeValue> Type
+		public ObjectOutput<Type> Type
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Type"), typeof(ObjectOutput<ResoniteBridge.ResoniteBridgeValue>)) is ObjectOutput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Type"), typeof(ObjectOutput<Type>)) is ObjectOutput<Type> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -25425,16 +23633,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Experimental
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -25469,14 +23670,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26585,14 +24779,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging
 	{
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26645,14 +24832,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26702,14 +24882,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26759,14 +24932,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26816,14 +24982,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26873,14 +25032,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -26952,14 +25104,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27028,14 +25173,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27104,14 +25242,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27180,14 +25311,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27256,14 +25380,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27332,14 +25449,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27408,14 +25518,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		public DuplicateSlot()
@@ -27504,14 +25607,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27599,14 +25695,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27694,14 +25783,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27732,11 +25814,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Start
+			public Action Start
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Start"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Start"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -27782,26 +25864,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -27909,11 +25977,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Duplicate
+			public Action Duplicate
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duplicate"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duplicate"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -27959,26 +26027,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28067,11 +26121,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Paste
+			public Action Paste
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Paste"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Paste"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28117,26 +26171,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28225,11 +26265,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Activated
+			public Action Activated
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Activated"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Activated"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28275,26 +26315,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28402,11 +26428,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Deactivated
+			public Action Deactivated
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Deactivated"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Deactivated"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28452,26 +26478,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28579,11 +26591,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public new ResoniteBridge.ResoniteBridgeValue Destroy
+			public new Action Destroy
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Destroy"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Destroy"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28610,26 +26622,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28732,11 +26730,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Destroying
+			public Action Destroying
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Destroying"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Destroying"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28763,26 +26761,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -28866,11 +26850,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Saving
+			public Action Saving
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Saving"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Saving"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28897,26 +26881,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29000,11 +26970,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Loaded
+			public Action Loaded
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Loaded"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Loaded"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -29050,26 +27020,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29158,11 +27114,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, IPackageImportEventReceiver, IWorker, IWorldElement, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue Imported
+			public Action Imported
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Imported"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Imported"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -29208,26 +27164,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29517,14 +27459,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		private System.Boolean ShouldUserHandleEvent(FrooxEngineContext context, System.Boolean canMakeSynchronousChanges)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldUserHandleEvent", context, canMakeSynchronousChanges), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldUserHandleEvent", context, canMakeSynchronousChanges), typeof(System.Boolean));
 		}
 
 		public SlotChildrenEvents()
@@ -29556,14 +27491,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29613,14 +27541,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29690,14 +27611,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29748,14 +27662,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29805,14 +27712,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29862,14 +27762,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29919,14 +27812,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -29976,14 +27862,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30033,14 +27912,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30090,14 +27962,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30166,14 +28031,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30224,14 +28082,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30301,14 +28152,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30359,14 +28203,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30417,14 +28254,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override UserRoot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot)) is UserRoot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (UserRoot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(UserRoot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30475,14 +28305,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30532,14 +28355,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Int64 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int64)) is System.Int64 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int64));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30572,11 +28388,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 	{
 		public class Proxy : ProtoFluxEngineProxy, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public new ResoniteBridge.ResoniteBridgeValue Changed
+			public new Action<Slot> Changed
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Changed"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Changed"), typeof(Action<Slot>)) is Action<Slot> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -30613,26 +28429,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30671,14 +28473,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30766,14 +28561,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30899,14 +28687,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -30994,14 +28775,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31127,14 +28901,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31222,14 +28989,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31282,14 +29042,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31339,14 +29092,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References
 
 		protected override RefID Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(RefID)) is RefID __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RefID)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(RefID));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31396,14 +29142,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31456,14 +29195,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		protected abstract void Perform(IPlayable playable, FrooxEngineContext context);
@@ -31701,16 +29433,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -31796,16 +29521,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32021,14 +29739,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected abstract T GetProperty(IPlayable playable);
@@ -32060,14 +29771,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Boolean GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32097,14 +29801,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Boolean GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32134,14 +29831,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Single GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32171,14 +29861,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Single GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32208,14 +29891,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Single GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32246,14 +29922,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Single GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32284,14 +29953,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback
 	{
 		protected override System.Double GetProperty(IPlayable playable)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetProperty", playable), typeof(System.Double));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32599,26 +30261,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32685,14 +30333,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 
 		private IOperation DoReset(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation));
 		}
 
 		protected ElapsedTime()
@@ -32723,14 +30364,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32760,14 +30394,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Double Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Double));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32795,16 +30422,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	}
 	public class ElapsedTimeTimeSpan : ElapsedTime<TimeSpan>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override TimeSpan Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -32866,26 +30486,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33066,38 +30672,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 
 		private IOperation DoStart(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoStart", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoStart", context), typeof(IOperation));
 		}
 
 		private IOperation DoStop(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoStop", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoStop", context), typeof(IOperation));
 		}
 
 		private IOperation DoReset(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation));
 		}
 
 		protected override void ComputeOutputs(FrooxEngineContext context)
@@ -33136,14 +30721,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33176,14 +30754,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33216,14 +30787,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33256,14 +30820,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33296,14 +30853,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33336,14 +30886,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Double Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Double));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33376,14 +30919,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33416,14 +30952,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33456,14 +30985,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33496,14 +31018,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time
 	{
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33635,38 +31150,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		private IOperation DoSet(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoSet", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoSet", context), typeof(IOperation));
 		}
 
 		private IOperation DoReset(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation));
 		}
 
 		private IOperation DoToggle(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoToggle", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoToggle", context), typeof(IOperation));
 		}
 
 		public DataModelBooleanToggle()
@@ -33719,11 +31213,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -33755,26 +31249,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33828,38 +31308,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		public T Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T));
 		}
 
 		public System.Boolean Write(T value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -33911,11 +31370,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -33947,26 +31406,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34020,38 +31465,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		public T Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T));
 		}
 
 		public System.Boolean Write(T value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34103,11 +31527,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -34139,26 +31563,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34195,40 +31605,19 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProxyRemoved", proxy, context, inUseByAnotherInstance);
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Compute(FrooxEngineContext context)
+		protected override Type Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Type));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue Read(FrooxEngineContext context)
+		public Type Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(Type));
 		}
 
-		public System.Boolean Write(ResoniteBridge.ResoniteBridgeValue value, FrooxEngineContext context)
+		public System.Boolean Write(Type value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34280,11 +31669,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -34316,26 +31705,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34374,38 +31749,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		public T Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(T));
 		}
 
 		public System.Boolean Write(T value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34457,11 +31811,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -34493,26 +31847,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34551,38 +31891,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		public global::FrooxEngine.User Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(global::FrooxEngine.User));
 		}
 
 		public System.Boolean Write(global::FrooxEngine.User value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34634,11 +31953,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 				}
 			}
 
-			internal ResoniteBridge.ResoniteBridgeValue ValueChanged
+			internal Action ValueChanged
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "ValueChanged"), typeof(Action)) is Action __retCasted)
 					{
 						return __retCasted;
 					}
@@ -34670,26 +31989,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Store __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store)) is Store __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Store)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Store", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Store));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34728,38 +32033,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IAssetProvider<T> Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IAssetProvider<T>)) is IAssetProvider<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAssetProvider<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IAssetProvider<T>));
 		}
 
 		public IAssetProvider<T> Read(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(IAssetProvider<T>)) is IAssetProvider<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAssetProvider<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", context), typeof(IAssetProvider<T>));
 		}
 
 		public System.Boolean Write(IAssetProvider<T> value, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -34847,14 +32131,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		protected abstract IOperation DoAction(DynamicVariableSpace space, System.String variableName, Slot target, FrooxEngineContext context);
@@ -34926,14 +32203,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation DoAction(DynamicVariableSpace space, System.String variableName, Slot target, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation));
 		}
 
 		protected abstract T GetValueToWrite(FrooxEngineContext context);
@@ -34984,14 +32254,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetValueToWrite(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35040,14 +32303,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetValueToWrite(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35174,14 +32430,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation DoAction(DynamicVariableSpace space, System.String variableName, Slot target, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation));
 		}
 
 		protected abstract T GetInitialValue(FrooxEngineContext context);
@@ -35232,14 +32481,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetInitialValue(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInitialValue", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInitialValue", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35288,14 +32530,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetInitialValue(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInitialValue", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetInitialValue", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35422,14 +32657,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation DoAction(DynamicVariableSpace space, System.String variableName, Slot target, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation));
 		}
 
 		protected abstract T GetValue(FrooxEngineContext context);
@@ -35480,14 +32708,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetValue(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35536,14 +32757,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override T GetValue(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35592,14 +32806,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation DoAction(DynamicVariableSpace space, System.String variableName, Slot target, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoAction", space, variableName, target, context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35725,14 +32932,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		protected abstract System.Int32 Clear(DynamicVariableSpace space, FrooxEngineContext context);
@@ -35765,14 +32965,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 	{
 		protected override System.Int32 Clear(DynamicVariableSpace space, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", space, context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", space, context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35802,14 +32995,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 	{
 		protected override System.Int32 Clear(DynamicVariableSpace space, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", space, context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", space, context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -35837,11 +33023,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 	}
 	public class DynamicVariableInputProxy<T> : ProtoFluxEngineProxy, IDynamicVariable<T>, IDynamicVariable, IWorldElement, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		internal ResoniteBridge.ResoniteBridgeValue OnChanged
+		internal Action OnChanged
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnChanged"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnChanged"), typeof(Action)) is Action __retCasted)
 				{
 					return __retCasted;
 				}
@@ -35856,11 +33042,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 			}
 		}
 
-		internal ResoniteBridge.ResoniteBridgeValue OnSpaceLinked
+		internal Action OnSpaceLinked
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSpaceLinked"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSpaceLinked"), typeof(Action)) is Action __retCasted)
 				{
 					return __retCasted;
 				}
@@ -35875,11 +33061,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 			}
 		}
 
-		internal ResoniteBridge.ResoniteBridgeValue OnSpaceUnlinked
+		internal Action OnSpaceUnlinked
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSpaceUnlinked"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "OnSpaceUnlinked"), typeof(Action)) is Action __retCasted)
 				{
 					return __retCasted;
 				}
@@ -36022,14 +33208,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		public System.Boolean UpdateLinking()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateLinking"), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateLinking"), typeof(System.Boolean));
 		}
 
 		private void MarkDirty()
@@ -36054,26 +33233,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables
 
 		public override ISyncMember GetSyncMember(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 		}
 
 		public static DynamicVariableInputProxy<T> __New()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicVariableInputProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(DynamicVariableInputProxy<T>)) is DynamicVariableInputProxy<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (DynamicVariableInputProxy<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicVariableInputProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(DynamicVariableInputProxy<T>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -36902,14 +34067,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Components
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -36978,14 +34136,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Components
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -37112,16 +34263,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		protected abstract System.Boolean Process(CloudVariableProxy proxy, FrooxEngineContext context);
@@ -37155,14 +34299,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud
 	{
 		protected override System.Boolean Process(CloudVariableProxy proxy, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Process", proxy, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Process", proxy, context), typeof(System.Boolean));
 		}
 
 		protected abstract void SetValue(T value, FrooxEngineContext context);
@@ -37296,14 +34433,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud
 	{
 		protected override System.Boolean Process(CloudVariableProxy proxy, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Process", proxy, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Process", proxy, context), typeof(System.Boolean));
 		}
 
 		protected abstract T GetValueToWrite(FrooxEngineContext context);
@@ -37354,14 +34484,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud
 
 		protected override T GetValueToWrite(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -37410,14 +34533,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud
 
 		protected override T GetValueToWrite(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValueToWrite", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -37862,11 +34978,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<OnMessageReceivedArgs>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<OnMessageReceivedArgs>>)) is ObjectStore<Action<OnMessageReceivedArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38117,11 +35233,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _newSub
+		private ObjectStore<Action<OnNewSubscriberArgs>> _newSub
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_newSub"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_newSub"), typeof(ObjectStore<Action<OnNewSubscriberArgs>>)) is ObjectStore<Action<OnNewSubscriberArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38136,11 +35252,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _reSub
+		private ObjectStore<Action<OnReSubscriberArgs>> _reSub
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_reSub"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_reSub"), typeof(ObjectStore<Action<OnReSubscriberArgs>>)) is ObjectStore<Action<OnReSubscriberArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38155,11 +35271,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _gifted
+		private ObjectStore<Action<OnGiftedSubscriptionArgs>> _gifted
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_gifted"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_gifted"), typeof(ObjectStore<Action<OnGiftedSubscriptionArgs>>)) is ObjectStore<Action<OnGiftedSubscriptionArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38292,11 +35408,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<OnFollowArgs>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<OnFollowArgs>>)) is ObjectStore<Action<OnFollowArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38414,11 +35530,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		public ValueOutput<ResoniteBridge.ResoniteBridgeValue> TimeStamp
+		public ValueOutput<DateTime> TimeStamp
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "TimeStamp"), typeof(ValueOutput<ResoniteBridge.ResoniteBridgeValue>)) is ValueOutput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "TimeStamp"), typeof(ValueOutput<DateTime>)) is ValueOutput<DateTime> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38528,11 +35644,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<OnRewardRedeemedArgs>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<OnRewardRedeemedArgs>>)) is ObjectStore<Action<OnRewardRedeemedArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38707,11 +35823,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _handler
+		private ObjectStore<Action<OnRaidNotificationArgs>> _handler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_handler"), typeof(ObjectStore<Action<OnRaidNotificationArgs>>)) is ObjectStore<Action<OnRaidNotificationArgs>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38798,14 +35914,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion
 
 		protected override ILocomotionModule Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ILocomotionModule)) is ILocomotionModule __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ILocomotionModule)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(ILocomotionModule));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -38893,14 +36002,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39026,14 +36128,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39083,14 +36178,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion
 
 		protected override LocomotionArchetype? Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(LocomotionArchetype)) is LocomotionArchetype __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (LocomotionArchetype?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(LocomotionArchetype));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39442,14 +36530,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39518,14 +36599,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39594,14 +36668,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override Slot Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot)) is Slot __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Slot)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Slot));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -39652,14 +36719,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override IFingerPoseSourceComponent Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IFingerPoseSourceComponent)) is IFingerPoseSourceComponent __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IFingerPoseSourceComponent)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IFingerPoseSourceComponent));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -40766,14 +37826,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -40824,14 +37877,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		protected override System.Single Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single)) is System.Single __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Single)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Single));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -40884,38 +37930,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 
 		protected override T Compute(ExecutionContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		protected virtual T Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(T));
 		}
 
 		protected virtual T Convert(BodyNode node, ExecutionContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node, context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node, context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -40945,14 +37970,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override Chirality Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(Chirality)) is Chirality __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Chirality)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(Chirality));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -40982,14 +38000,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override BodyNode Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(BodyNode)) is BodyNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BodyNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(BodyNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41019,14 +38030,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override System.Int32 Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41056,14 +38060,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override System.Boolean Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41093,14 +38090,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override BodyNode Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(BodyNode)) is BodyNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BodyNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(BodyNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41149,14 +38139,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 
 		protected override BodyNode Convert(BodyNode node, ExecutionContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node, context), typeof(BodyNode)) is BodyNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BodyNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node, context), typeof(BodyNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41186,14 +38169,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override FingerType Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(FingerType)) is FingerType __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FingerType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(FingerType));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41223,14 +38199,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 	{
 		protected override FingerSegmentType Convert(BodyNode node)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(FingerSegmentType)) is FingerSegmentType __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (FingerSegmentType)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Convert", node), typeof(FingerSegmentType));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41318,14 +38287,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes
 
 		protected override BodyNode Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BodyNode)) is BodyNode __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (BodyNode)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(BodyNode));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41871,14 +38833,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override global::FrooxEngine.User Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User)) is global::FrooxEngine.User __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (global::FrooxEngine.User)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(global::FrooxEngine.User));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41929,14 +38884,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override IAvatarAnchor Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IAvatarAnchor)) is IAvatarAnchor __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IAvatarAnchor)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(IAvatarAnchor));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -41987,14 +38935,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42045,14 +38986,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override System.Boolean Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42159,14 +39093,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42254,14 +39181,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -42675,14 +39595,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		public PlayOneShot()
@@ -43111,16 +40024,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public PlayOneShotAndWait()
@@ -43198,16 +40104,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeforeUpdate", context);
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Do(FrooxEngineContext context)
+		protected override Task Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(Task));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43427,18 +40326,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeforeDelay", context);
 		}
 
-		protected abstract ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context);
+		protected abstract TimeSpan GetDuration(FrooxEngineContext context);
 
-		protected override ResoniteBridge.ResoniteBridgeValue Do(FrooxEngineContext context)
+		protected override Task Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(Task));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43485,16 +40377,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43541,16 +40426,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43597,16 +40475,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43634,11 +40505,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 	}
 	public class DelayUpdatesOrTimeSpan : DelayUpdatesOrTime, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ValueInput<ResoniteBridge.ResoniteBridgeValue> Duration
+		public ValueInput<TimeSpan> Duration
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<ResoniteBridge.ResoniteBridgeValue>)) is ValueInput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<TimeSpan>)) is ValueInput<TimeSpan> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -43653,16 +40524,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43761,11 +40625,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 	}
 	public class DelayUpdatesOrTimeWithValueTimeSpan<T> : DelayUpdatesOrTimeWithValue<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		public ValueInput<ResoniteBridge.ResoniteBridgeValue> Duration
+		public ValueInput<TimeSpan> Duration
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<ResoniteBridge.ResoniteBridgeValue>)) is ValueInput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<TimeSpan>)) is ValueInput<TimeSpan> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -43780,16 +40644,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43836,16 +40693,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43892,16 +40742,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -43948,16 +40791,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44056,11 +40892,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 	}
 	public class DelayUpdatesOrTimeWithObjectTimeSpan<T> : DelayUpdatesOrTimeWithObject<T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ValueInput<ResoniteBridge.ResoniteBridgeValue> Duration
+		public ValueInput<TimeSpan> Duration
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<ResoniteBridge.ResoniteBridgeValue>)) is ValueInput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Duration"), typeof(ValueInput<TimeSpan>)) is ValueInput<TimeSpan> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -44075,16 +40911,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44131,16 +40960,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44187,16 +41009,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44243,16 +41058,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetDuration(FrooxEngineContext context)
+		protected override TimeSpan GetDuration(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44340,14 +41148,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async
 
 		protected override IOperation Run(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44438,14 +41239,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44533,14 +41327,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override T Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44628,14 +41415,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44810,14 +41590,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override A Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(A)) is A __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (A)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(A));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -44924,14 +41697,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		protected abstract A Attach(Slot root, System.Uri url, System.Boolean getExisting);
@@ -44964,14 +41730,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 	{
 		protected override StaticTexture2D Attach(Slot root, System.Uri url, System.Boolean getExisting)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticTexture2D)) is StaticTexture2D __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StaticTexture2D)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticTexture2D));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45001,14 +41760,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 	{
 		protected override SpriteProvider Attach(Slot root, System.Uri url, System.Boolean getExisting)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(SpriteProvider)) is SpriteProvider __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (SpriteProvider)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(SpriteProvider));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45038,14 +41790,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 	{
 		protected override StaticMesh Attach(Slot root, System.Uri url, System.Boolean getExisting)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticMesh)) is StaticMesh __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StaticMesh)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticMesh));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45075,14 +41820,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 	{
 		protected override StaticAudioClip Attach(Slot root, System.Uri url, System.Boolean getExisting)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticAudioClip)) is StaticAudioClip __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (StaticAudioClip)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Attach", root, url, getExisting), typeof(StaticAudioClip));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45151,14 +41889,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override System.String Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String)) is System.String __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.String));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45208,14 +41939,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override System.Int32 Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45453,16 +42177,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		public BakeMeshes()
@@ -45567,14 +42284,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override colorX Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45678,14 +42388,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override colorX Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45864,14 +42567,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override colorX Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -45975,14 +42671,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets
 
 		protected override colorX Compute(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX)) is colorX __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(colorX));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46276,16 +42965,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Animation
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue RunAsync(FrooxEngineContext context)
+		protected override Task<IOperation> RunAsync(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46487,26 +43169,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46662,26 +43330,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -46871,26 +43525,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47107,19 +43747,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Do(FrooxEngineContext context)
+		protected override Task<bool> Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(Task<bool>));
 		}
 
-		protected abstract ResoniteBridge.ResoniteBridgeValue Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context);
+		protected abstract Task<int> Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context);
 
 		protected AsyncDynamicImpulseTriggerBase()
 		{
@@ -47148,16 +43781,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	[NodeName("Asyncs Dynamic Impulse Trigger", false)]
 	public class AsyncDynamicImpulseTrigger : AsyncDynamicImpulseTriggerBase, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override ResoniteBridge.ResoniteBridgeValue Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
+		protected override Task<int> Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(Task<int>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47206,16 +43832,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
+		protected override Task<int> Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(Task<int>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47264,16 +43883,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
+		protected override Task<int> Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(Task<int>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47326,122 +43938,52 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public System.Int32 TriggerDynamicImpulse(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerDynamicImpulse", hierarchy, tag, excludeDisabled, sourceContext), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerDynamicImpulse", hierarchy, tag, excludeDisabled, sourceContext), typeof(System.Int32));
 		}
 
 		public System.Int32 TriggerDynamicImpulseWithArgument<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerDynamicImpulseWithArgument", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerDynamicImpulseWithArgument", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue TriggerAsyncDynamicImpulse(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext sourceContext = null)
+		public Task<int> TriggerAsyncDynamicImpulse(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerAsyncDynamicImpulse", hierarchy, tag, excludeDisabled, sourceContext), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerAsyncDynamicImpulse", hierarchy, tag, excludeDisabled, sourceContext), typeof(Task<int>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue TriggerAsyncDynamicImpulseWithArgument<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
+		public Task<int> TriggerAsyncDynamicImpulseWithArgument<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerAsyncDynamicImpulseWithArgument", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TriggerAsyncDynamicImpulseWithArgument", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(Task<int>));
 		}
 
 		internal static System.Int32 TriggerDynamicImpulseWithValue<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null) where T : struct
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulseWithValue", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulseWithValue", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32));
 		}
 
 		internal static System.Int32 TriggerDynamicImpulseWithObject<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulseWithObject", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulseWithObject", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(System.Int32));
 		}
 
-		internal static System.Int32 TriggerDynamicImpulse<P>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, ResoniteBridge.ResoniteBridgeValue trigger) where P : class, IDynamicImpulseTarget
+		internal static System.Int32 TriggerDynamicImpulse<P>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, Action<P> trigger) where P : class, IDynamicImpulseTarget
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulse", hierarchy, tag, excludeDisabled, trigger), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerDynamicImpulse", hierarchy, tag, excludeDisabled, trigger), typeof(System.Int32));
 		}
 
-		internal static ResoniteBridge.ResoniteBridgeValue TriggerAsyncDynamicImpulseWithValue<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null) where T : struct
+		internal static Task<int> TriggerAsyncDynamicImpulseWithValue<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null) where T : struct
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulseWithValue", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulseWithValue", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(Task<int>));
 		}
 
-		internal static ResoniteBridge.ResoniteBridgeValue TriggerAsyncDynamicImpulseWithObject<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
+		internal static Task<int> TriggerAsyncDynamicImpulseWithObject<T>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, T value, FrooxEngineContext sourceContext = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulseWithObject", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulseWithObject", hierarchy, tag, excludeDisabled, value, sourceContext), typeof(Task<int>));
 		}
 
-		internal static ResoniteBridge.ResoniteBridgeValue TriggerAsyncDynamicImpulse<P>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, ResoniteBridge.ResoniteBridgeValue trigger) where P : class, IDynamicImpulseTarget
+		internal static Task<int> TriggerAsyncDynamicImpulse<P>(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, Func<P, Task> trigger) where P : class, IDynamicImpulseTarget
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulse", hierarchy, tag, excludeDisabled, trigger), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "DynamicImpulseHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TriggerAsyncDynamicImpulse", hierarchy, tag, excludeDisabled, trigger), typeof(Task<int>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47532,26 +44074,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47707,26 +44235,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -47916,26 +44430,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 			public override ISyncMember GetSyncMember(System.Int32 index)
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 			}
 
 			public static Proxy __New()
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy)) is Proxy __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to returnTpe");
-				}
+				return (Proxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "Proxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(Proxy));
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48153,14 +44653,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		protected abstract System.Int32 Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context);
@@ -48194,14 +44687,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	{
 		protected override System.Int32 Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48253,14 +44739,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Int32 Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48312,14 +44791,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Int32 Trigger(Slot hierarchy, System.String tag, System.Boolean excludeDisabled, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32)) is System.Int32 __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Trigger", hierarchy, tag, excludeDisabled, context), typeof(System.Int32));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48413,26 +44885,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public override ISyncMember GetSyncMember(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 		}
 
 		public static ValueProxy<T> __New()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "ValueProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(ValueProxy<T>)) is ValueProxy<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ValueProxy<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "ValueProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(ValueProxy<T>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48505,26 +44963,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public override ISyncMember GetSyncMember(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 		}
 
 		public static RefProxy<T> __New()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RefProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(RefProxy<T>)) is RefProxy<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (RefProxy<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "RefProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(RefProxy<T>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48571,11 +45015,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		ResoniteBridge.ResoniteBridgeValue ILastValueProxy<Type>.Last
+		Type ILastValueProxy<Type>.Last
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Last"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Last"), typeof(Type)) is Type __retCasted)
 				{
 					return __retCasted;
 				}
@@ -48597,26 +45041,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public override ISyncMember GetSyncMember(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember)) is ISyncMember __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (ISyncMember)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSyncMember", index), typeof(ISyncMember));
 		}
 
 		public static TypeProxy __New()
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "TypeProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(TypeProxy)) is TypeProxy __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (TypeProxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Nodes.FrooxEngine", "TypeProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "__New"), typeof(TypeProxy));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48684,11 +45114,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _enabledChangedHandler
+		private ObjectStore<Action<IChangeable>> _enabledChangedHandler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<Action<IChangeable>>)) is ObjectStore<Action<IChangeable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -48758,14 +45188,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		private System.Boolean ShouldListen(P proxy)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", proxy), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", proxy), typeof(System.Boolean));
 		}
 
 		protected override void ProxyAdded(P proxy, FrooxEngineContext context)
@@ -48790,28 +45213,14 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		private System.Boolean DetectChanges(P proxy, FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DetectChanges", proxy, context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DetectChanges", proxy, context), typeof(System.Boolean));
 		}
 
 		protected abstract T GetCurrent(FrooxEngineContext context);
 
 		protected virtual System.Boolean ShouldFire(T value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48876,14 +45285,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override T GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -48963,14 +45365,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override T GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49035,14 +45430,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override T GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T)) is T __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49071,11 +45459,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	[NodeOverload("Engine.FireOnChange")]
 	public class FireOnTypeChange : FireOnChange<Type, TypeProxy>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ObjectInput<ResoniteBridge.ResoniteBridgeValue> Value
+		public ObjectInput<Type> Value
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Value"), typeof(ObjectInput<ResoniteBridge.ResoniteBridgeValue>)) is ObjectInput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Value"), typeof(ObjectInput<Type>)) is ObjectInput<Type> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -49105,16 +45493,9 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		protected override ResoniteBridge.ResoniteBridgeValue GetCurrent(FrooxEngineContext context)
+		protected override Type GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(Type));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49179,26 +45560,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Boolean GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(System.Boolean));
 		}
 
 		protected override System.Boolean ShouldFire(System.Boolean value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49263,26 +45630,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Boolean GetCurrent(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCurrent", context), typeof(System.Boolean));
 		}
 
 		protected override System.Boolean ShouldFire(System.Boolean value)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", value), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49387,11 +45740,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _enabledChangedHandler
+		private ObjectStore<Action<IChangeable>> _enabledChangedHandler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<Action<IChangeable>>)) is ObjectStore<Action<IChangeable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -49463,14 +45816,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected System.Boolean ShouldListen(global::FrooxEngine.Component component)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean));
 		}
 
 		protected void UpdateListenerState(FrooxEngineContext context)
@@ -49506,14 +45852,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	{
 		protected override System.Boolean ShouldFire(System.Boolean state)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", state), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", state), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49544,14 +45883,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	{
 		protected override System.Boolean ShouldFire(System.Boolean state)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", state), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldFire", state), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -49657,11 +45989,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _enabledChangedHandler
+		private ObjectStore<Action<IChangeable>> _enabledChangedHandler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<Action<IChangeable>>)) is ObjectStore<Action<IChangeable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -49731,14 +46063,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected System.Boolean ShouldListen(global::FrooxEngine.Component component)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean));
 		}
 
 		protected void UpdateListenerState(FrooxEngineContext context)
@@ -49849,11 +46174,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _enabledChangedHandler
+		private ObjectStore<Action<IChangeable>> _enabledChangedHandler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<Action<IChangeable>>)) is ObjectStore<Action<IChangeable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -49923,14 +46248,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected System.Boolean ShouldListen(global::FrooxEngine.Component component)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldListen", component), typeof(System.Boolean));
 		}
 
 		protected void UpdateListenerState(FrooxEngineContext context)
@@ -50192,14 +46510,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected IOperation DoTrigger(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoTrigger", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoTrigger", context), typeof(IOperation));
 		}
 
 		protected void DoReset(FrooxEngineContext context)
@@ -50256,14 +46567,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Double EvaluateTimeout(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateTimeout", context), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateTimeout", context), typeof(System.Double));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -50291,11 +46595,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 	}
 	public class LocalImpulseTimeoutTimeSpan : LocalImpulseTimeout, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public ValueInput<ResoniteBridge.ResoniteBridgeValue> Timeout
+		public ValueInput<TimeSpan> Timeout
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Timeout"), typeof(ValueInput<ResoniteBridge.ResoniteBridgeValue>)) is ValueInput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Timeout"), typeof(ValueInput<TimeSpan>)) is ValueInput<TimeSpan> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -50312,14 +46616,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Double EvaluateTimeout(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateTimeout", context), typeof(System.Double)) is System.Double __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateTimeout", context), typeof(System.Double));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -50538,11 +46835,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _cancellation
+		private ObjectStore<CancellationTokenSource> _cancellation
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cancellation"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cancellation"), typeof(ObjectStore<CancellationTokenSource>)) is ObjectStore<CancellationTokenSource> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -50557,11 +46854,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _scheduler
+		private ObjectStore<Action> _scheduler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_scheduler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_scheduler"), typeof(ObjectStore<Action>)) is ObjectStore<Action> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -50626,26 +46923,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		private NodeContextPath GetPath(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPath", context), typeof(NodeContextPath)) is NodeContextPath __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (NodeContextPath)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPath", context), typeof(NodeContextPath));
 		}
 
 		protected IOperation DoTrigger(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoTrigger", context), typeof(IOperation)) is IOperation __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoTrigger", context), typeof(IOperation));
 		}
 
 		private void HandleDelay(FrooxEngineContext context, System.Object data)
@@ -50767,14 +47050,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Boolean Do(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(System.Boolean));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -51067,11 +47343,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		private ObjectStore<ResoniteBridge.ResoniteBridgeValue> _enabledChangedHandler
+		private ObjectStore<Action<IChangeable>> _enabledChangedHandler
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<ResoniteBridge.ResoniteBridgeValue>)) is ObjectStore<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_enabledChangedHandler"), typeof(ObjectStore<Action<IChangeable>>)) is ObjectStore<Action<IChangeable>> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -51122,14 +47398,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected virtual System.Boolean ShouldRegister(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldRegister", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldRegister", context), typeof(System.Boolean));
 		}
 
 		protected void UpdateRegistration(FrooxEngineContext context)
@@ -51219,11 +47488,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue OutputType
+		public Type OutputType
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OutputType"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OutputType"), typeof(Type)) is Type __retCasted)
 				{
 					return __retCasted;
 				}
@@ -51266,38 +47535,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public override IOutput GetOutput(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutput", index), typeof(IOutput)) is IOutput __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOutput)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutput", index), typeof(IOutput));
 		}
 
-		public override ResoniteBridge.ResoniteBridgeValue GetOutputType(System.Int32 index)
+		public override Type GetOutputType(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputType", index), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputType", index), typeof(Type));
 		}
 
 		public override DataClass GetOutputTypeClass(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputTypeClass", index), typeof(DataClass)) is DataClass __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (DataClass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputTypeClass", index), typeof(DataClass));
 		}
 
 		public sealed override void Evaluate(FrooxEngineContext context)
@@ -51362,11 +47610,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue OutputType
+		public Type OutputType
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OutputType"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OutputType"), typeof(Type)) is Type __retCasted)
 				{
 					return __retCasted;
 				}
@@ -51409,38 +47657,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		public override IOutput GetOutput(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutput", index), typeof(IOutput)) is IOutput __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (IOutput)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutput", index), typeof(IOutput));
 		}
 
-		public override ResoniteBridge.ResoniteBridgeValue GetOutputType(System.Int32 index)
+		public override Type GetOutputType(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputType", index), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputType", index), typeof(Type));
 		}
 
 		public override DataClass GetOutputTypeClass(System.Int32 index)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputTypeClass", index), typeof(DataClass)) is DataClass __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (DataClass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputTypeClass", index), typeof(DataClass));
 		}
 
 		public sealed override void Evaluate(FrooxEngineContext context)
@@ -51525,14 +47752,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 
 		protected override System.Boolean ShouldRegister(FrooxEngineContext context)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldRegister", context), typeof(System.Boolean)) is System.Boolean __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
+			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldRegister", context), typeof(System.Boolean));
 		}
 
 		protected UserUpdateBase()

@@ -766,6 +766,11 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
+                            if (typeDeclare.NameToken.ToString().Contains("IExecutionRuntime")) {
+                                
+                                int i = 0;
+                                i += 1;
+                            }
                             // certain things we need to remove override
                             // if the thing they override no longer exists
                             if (lostForbiddenBaseClass &&
@@ -790,7 +795,11 @@ namespace ResoniteBridge
                             // leave null bodies null (usually in interfaces)
                             else if (methodDeclare.Body.IsNull)
                             {
-
+                                // still replace the constraints though
+                                foreach (var constraint in methodDeclare.Constraints)
+                                {
+                                    ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
+                                }
                             }
                             else
                             {
@@ -1325,22 +1334,30 @@ namespace ResoniteBridge
 
         public static HashSet<string> whitelist = new HashSet<string>()
         {
-            //"FrooxEngine.Store",
+            "FrooxEngine.Store",
             "SkyFrost.Base.Models",
             "SkyFrost.Base",
             "Elements.Assets",
             "Elements.Core",
             "Elements.Quantity",
-            //"ProtoFlux.Nodes.FrooxEngine",
-            //"ProtoFlux.Nodes.Core",
-            //"ProtoFlux.Core",
+            "ProtoFlux.Nodes.FrooxEngine",
+            "ProtoFlux.Nodes.Core",
+            "ProtoFlux.Core",
             //"ProtoFluxBindings",
-            //"FrooxEngine",
+            "FrooxEngine",
         };
 
         public static HashSet<string> bonusList = new HashSet<string>()
         {
             "Assimp",
+            "BepuPhysics",
+            "BepuPhysics.Collidables",
+            "BepuPhysics.CollisionDetection",
+            "BepuPhysics.Constraints",
+            "BepuPhysics.Trees",
+            "BepuUtilities",
+            "BepuUtilities.Collections",
+            "BepuUtilities.Memory",
             "ICSharpCode.Decompiler",
             "Microsoft.CodeAnalysis.Analyzers",
             "Microsoft.CodeAnalysis",
@@ -1390,6 +1407,7 @@ namespace ResoniteBridge
             "TwitchLib.Communication.Events",
             "TwitchLib.PubSub",
             "TwitchLib.PubSub.Events",
+            "mscorlib",
 
             // things that fail to resolve even though they should resolve
             "RetryContext",
