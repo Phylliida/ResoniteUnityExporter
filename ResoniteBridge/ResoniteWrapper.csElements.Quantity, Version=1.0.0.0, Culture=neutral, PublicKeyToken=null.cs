@@ -1,56 +1,16 @@
+using ResoniteBridge;
 using System;
-
 using System.Collections;
-
 using System.Collections.Generic;
-
 using System.Diagnostics;
-
 using System.Globalization;
-
-using System.Linq;
-
 using System.Reflection;
-
 using System.Runtime.CompilerServices;
-
 using System.Runtime.InteropServices;
-
 using System.Runtime.Versioning;
-
 using System.Text;
-
 using Microsoft.CodeAnalysis;
 
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 namespace Microsoft.CodeAnalysis
 {
 }
@@ -73,47 +33,47 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Unit"), typeof(Unit<T>));
+					return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Unit"), typeof(Unit<T>));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Unit", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Unit", value);
 				}
 			}
 
-			public string OverrideUnitName
+			public System.String OverrideUnitName
 			{
 				get
 				{
-					return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OverrideUnitName"), typeof(string));
+					return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideUnitName"), typeof(System.String));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OverrideUnitName", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OverrideUnitName", value);
 				}
 			}
 
-			public string OverrideSeparator
+			public System.String OverrideSeparator
 			{
 				get
 				{
-					return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OverrideSeparator"), typeof(string));
+					return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideSeparator"), typeof(System.String));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OverrideSeparator", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OverrideSeparator", value);
 				}
 			}
 
-			public string OverrideNumberFormat
+			public System.String OverrideNumberFormat
 			{
 				get
 				{
-					return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OverrideNumberFormat"), typeof(string));
+					return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideNumberFormat"), typeof(System.String));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OverrideNumberFormat", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OverrideNumberFormat", value);
 				}
 			}
 
@@ -121,21 +81,12 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					return (CompoundZeroHandling?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OverrideZeroHandling"), typeof(CompoundZeroHandling?));
+					return (CompoundZeroHandling?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OverrideZeroHandling"), typeof(ResoniteBridge.ResoniteBridgeValue));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OverrideZeroHandling", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OverrideZeroHandling", value);
 				}
-			}
-
-			public Info(Unit<T> unit, string overrideUnitName = null, string overrideSeparator = null, string overrideNumberFormat = null, CompoundZeroHandling? overrideZeroHandling = null)
-			{
-				Unit = unit;
-				OverrideUnitName = overrideUnitName;
-				OverrideSeparator = overrideSeparator;
-				OverrideNumberFormat = overrideNumberFormat;
-				OverrideZeroHandling = overrideZeroHandling;
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -144,29 +95,33 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					return this.__backing;
+					return __backing;
 				}
 				set
 				{
-					this.__backing = value;
+					__backing = value;
 				}
 			}
 
 			public Info(ResoniteBridge.ResoniteBridgeValue value)
 			{
-				this.__Backing = value;
+				__backing = value;
+			}
+
+			public Info()
+			{
 			}
 		}
 
-		private string defaultSeparator
+		private System.String defaultSeparator
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "defaultSeparator"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultSeparator"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "defaultSeparator", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "defaultSeparator", value);
 			}
 		}
 
@@ -174,35 +129,35 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (Info[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "formatInfo"), typeof(Info[]));
+				return (Info[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "formatInfo"), typeof(Info[]));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "formatInfo", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "formatInfo", value);
 			}
 		}
 
-		public string LastNumberFormat
+		public System.String LastNumberFormat
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LastNumberFormat"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastNumberFormat"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LastNumberFormat", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LastNumberFormat", value);
 			}
 		}
 
-		public string NumberFormat
+		public System.String NumberFormat
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "NumberFormat"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "NumberFormat"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "NumberFormat", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "NumberFormat", value);
 			}
 		}
 
@@ -210,91 +165,128 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (CompoundZeroHandling)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "ZeroHandling"), typeof(CompoundZeroHandling));
+				return (CompoundZeroHandling)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ZeroHandling"), typeof(CompoundZeroHandling));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "ZeroHandling", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "ZeroHandling", value);
 			}
 		}
 
-		public bool UseLongNames
+		public System.Boolean UseLongNames
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "UseLongNames"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UseLongNames"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "UseLongNames", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "UseLongNames", value);
 			}
 		}
 
-		public bool DiscardLastFraction
+		public System.Boolean DiscardLastFraction
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "DiscardLastFraction"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DiscardLastFraction"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "DiscardLastFraction", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "DiscardLastFraction", value);
 			}
 		}
 
-		public int UnitCount => formatInfo.Length;
-
-		public CompoundFormatInfo(string defaultSeparator, string lastNumberFormat, CompoundZeroHandling zeroHandling, bool useLongNames, bool discardLastFraction, params Info[] formatInfo)
-			: this(defaultSeparator, lastNumberFormat, zeroHandling, useLongNames, discardLastFraction, (IEnumerable<Info>)formatInfo)
+		public System.Int32 UnitCount
 		{
+			get
+			{
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UnitCount"), typeof(System.Int32));
+			}
 		}
 
-		public CompoundFormatInfo(string defaultSeparator, string lastNumberFormat, CompoundZeroHandling zeroHandling, bool useLongNames, bool discardLastFraction, IEnumerable<Info> formatInfo)
+		public Unit<T> GetUnit(System.Int32 index)
 		{
-			ZeroHandling = zeroHandling;
-			UseLongNames = useLongNames;
-			LastNumberFormat = lastNumberFormat;
-			DiscardLastFraction = discardLastFraction;
-			this.defaultSeparator = defaultSeparator;
-			List<Info> list = new List<Info>(formatInfo);
-			list.Sort((Info a, Info b) => a.Unit.CompareTo(b.Unit));
-			list.Reverse();
-			this.formatInfo = list.ToArray();
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnit", index), typeof(Unit<T>)) is Unit<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Unit<T>");
+			}
 		}
 
-		public Unit<T> GetUnit(int index)
+		public System.String GetSeparator(System.Int32 index)
 		{
-			return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetUnit", index), typeof(Unit<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSeparator", index), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string GetSeparator(int index)
+		public System.String GetUnitName(System.Int32 index)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetSeparator", index), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnitName", index), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string GetUnitName(int index)
+		public System.String GetNumberFormat(System.Int32 index)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetUnitName", index), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNumberFormat", index), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string GetNumberFormat(int index)
+		public CompoundZeroHandling GetZeroHandling(System.Int32 index)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetNumberFormat", index), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetZeroHandling", index), typeof(CompoundZeroHandling)) is CompoundZeroHandling __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to CompoundZeroHandling");
+			}
 		}
 
-		public CompoundZeroHandling GetZeroHandling(int index)
+		public CompoundFormatInfo<T> OverrideLastNumberFormat(System.String format)
 		{
-			return (CompoundZeroHandling)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetZeroHandling", index), typeof(CompoundZeroHandling));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OverrideLastNumberFormat", format), typeof(CompoundFormatInfo<T>)) is CompoundFormatInfo<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to CompoundFormatInfo<T>");
+			}
 		}
 
-		public CompoundFormatInfo<T> OverrideLastNumberFormat(string format)
+		public CompoundFormatInfo<T> OverrideSeparator(System.String separator)
 		{
-			return (CompoundFormatInfo<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "OverrideLastNumberFormat", format), typeof(CompoundFormatInfo<T>));
-		}
-
-		public CompoundFormatInfo<T> OverrideSeparator(string separator)
-		{
-			return (CompoundFormatInfo<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "OverrideSeparator", separator), typeof(CompoundFormatInfo<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OverrideSeparator", separator), typeof(CompoundFormatInfo<T>)) is CompoundFormatInfo<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to CompoundFormatInfo<T>");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -303,68 +295,68 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public CompoundFormatInfo(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public class SmartQuantityException : Exception, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public SmartQuantityException(string message, Exception innerException = null)
-			: base(message, innerException)
-		{
-		}
-
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public SmartQuantityException(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public SmartQuantityException()
+		{
 		}
 	}
 	public class UnitNameNotFoundException : SmartQuantityException, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public string UnitName
+		public System.String UnitName
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "UnitName"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UnitName"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "UnitName", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "UnitName", value);
 			}
 		}
 
-		public UnitNameNotFoundException(string unitName, Exception innerException = null)
-			: base("Specified unit name isn't defined by any of the units.", innerException)
+		public override System.String ToString()
 		{
-			UnitName = unitName;
-		}
-
-		public override string ToString()
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -373,17 +365,21 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public UnitNameNotFoundException(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public UnitNameNotFoundException()
+		{
 		}
 	}
 	public struct QVector3<T> : ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
@@ -392,11 +388,11 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "x"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "x"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "x", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "x", value);
 			}
 		}
 
@@ -404,11 +400,11 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "y"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "y"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "y", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "y", value);
 			}
 		}
 
@@ -416,21 +412,39 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "z"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "z"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "z", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "z", value);
 			}
 		}
 
-		public T SqrMagnitude => default(T).New(x.BaseValue * x.BaseValue + y.BaseValue * y.BaseValue + z.BaseValue * z.BaseValue);
+		public T SqrMagnitude
+		{
+			get
+			{
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SqrMagnitude"), typeof(T));
+			}
+		}
 
-		public T Magnitude => default(T).New(Math.Sqrt(SqrMagnitude.BaseValue));
+		public T Magnitude
+		{
+			get
+			{
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Magnitude"), typeof(T));
+			}
+		}
 
-		public QVector3<T> Normalized => this / Magnitude.BaseValue;
+		public QVector3<T> Normalized
+		{
+			get
+			{
+				return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Normalized"), typeof(QVector3<T>));
+			}
+		}
 
-		public T this[int axis] => axis switch
+		public T this[System.Int32 axis] => axis switch
 		{
 			0 => x, 
 			1 => y, 
@@ -438,53 +452,64 @@ namespace Elements.Quantity
 			_ => throw new Exception("Wrong QVector3 axis index. Must be between 0 and 2"), 
 		};
 
-		public static QVector3<T> Zero => new QVector3<T>(0.0, 0.0, 0.0);
-
-		public static QVector3<T> One => new QVector3<T>(1.0, 1.0, 1.0);
-
-		public QVector3(double x, double y, double z)
+		public static QVector3<T> Zero
 		{
-			T val = default(T);
-			this.x = val.New(x);
-			this.y = val.New(y);
-			this.z = val.New(z);
+			get
+			{
+				return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "Zero"), typeof(QVector3<T>));
+			}
 		}
 
-		public QVector3(T x, T y, T z)
+		public static QVector3<T> One
 		{
-			this.x = x;
-			this.y = y;
-			this.z = z;
+			get
+			{
+				return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "One"), typeof(QVector3<T>));
+			}
 		}
 
-		public string FormatAs(Unit<T> unit, string formatNum = null, bool longName = false)
+		public System.String FormatAs(Unit<T> unit, System.String formatNum = null, System.Boolean longName = false)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FormatAs", unit, formatNum, longName), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FormatAs", unit, formatNum, longName), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string FormatAuto(string formatNum = null, bool longName = false, List<UnitGroup> unitGroups = null)
+		public System.String FormatAuto(System.String formatNum = null, System.Boolean longName = false, List<UnitGroup> unitGroups = null)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FormatAuto", formatNum, longName, unitGroups), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FormatAuto", formatNum, longName, unitGroups), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		public static QVector3<T> operator +(QVector3<T> a, QVector3<T> b)
 		{
-			return new QVector3<T>(a.x.Add(b.x), a.y.Add(b.y), a.z.Add(b.z));
+			return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(QVector3<T>));
 		}
 
 		public static QVector3<T> operator -(QVector3<T> a, QVector3<T> b)
 		{
-			return new QVector3<T>(a.x.Subtract(b.x), a.y.Subtract(b.y), a.z.Subtract(b.z));
+			return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(QVector3<T>));
 		}
 
-		public static QVector3<T> operator *(QVector3<T> v, double n)
+		public static QVector3<T> operator *(QVector3<T> v, System.Double n)
 		{
-			return new QVector3<T>(v.x.Multiply(n), v.y.Multiply(n), v.z.Multiply(n));
+			return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", v, n), typeof(QVector3<T>));
 		}
 
-		public static QVector3<T> operator /(QVector3<T> v, double n)
+		public static QVector3<T> operator /(QVector3<T> v, System.Double n)
 		{
-			return new QVector3<T>(v.x.Divide(n), v.y.Divide(n), v.z.Divide(n));
+			return (QVector3<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", v, n), typeof(QVector3<T>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -493,17 +518,17 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public QVector3(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public static class SI<T> where T : struct, IQuantitySI<T>
@@ -802,11 +827,11 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (Func<double, double>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "convertToFunc"), typeof(Func<double, double>));
+				return (Func<double, double>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "convertToFunc"), typeof(Func<double, double>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "convertToFunc", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "convertToFunc", value);
 			}
 		}
 
@@ -814,29 +839,36 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (Func<double, double>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "convertFromFunc"), typeof(Func<double, double>));
+				return (Func<double, double>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "convertFromFunc"), typeof(Func<double, double>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "convertFromFunc", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "convertFromFunc", value);
 			}
 		}
 
-		public UnitNonLinear(Func<double, double> convertToFunc, Func<double, double> convertFromFunc, ICollection<UnitGroup> unitGroups, string[] shortNames, string[] longNames)
-			: base(0.0, unitGroups, shortNames, longNames)
+		public override T ConvertFrom(System.Double val)
 		{
-			this.convertToFunc = convertToFunc;
-			this.convertFromFunc = convertFromFunc;
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertFrom", val), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
-		public override T ConvertFrom(double val)
+		public override System.Double ConvertTo(T q)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ConvertFrom", val), typeof(T));
-		}
-
-		public override double ConvertTo(T q)
-		{
-			return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ConvertTo", q), typeof(double));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", q), typeof(System.Double)) is System.Double __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to double");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -845,30 +877,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public UnitNonLinear(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public UnitNonLinear()
+		{
 		}
 	}
 	public struct Acceleration : IQuantity<Acceleration>, IQuantity, IComparable<Acceleration>, IEquatable<Acceleration>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -884,124 +920,223 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public Unit<Acceleration> DefaultUnit => MetersPerSecondPerSecond;
-
-		public Acceleration(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Acceleration);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Acceleration other)
+		public Unit<Acceleration> DefaultUnit
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (Unit<Acceleration>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Acceleration>));
+			}
 		}
 
-		public int CompareTo(Acceleration other)
+		public System.Boolean Equals(Acceleration other)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Acceleration other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
-		public Acceleration New(double baseVal)
+		public Acceleration New(System.Double baseVal)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public Acceleration Add(Acceleration q)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public Acceleration Subtract(Acceleration q)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
-		public Acceleration Multiply(double n)
+		public Acceleration Multiply(System.Double n)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public Acceleration Multiply(Acceleration a, Ratio r)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public Acceleration Multiply(Ratio r, Acceleration a)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
-		public Acceleration Divide(double n)
+		public Acceleration Divide(System.Double n)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Acceleration));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public Ratio Divide(Acceleration q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Acceleration Parse(string str, Unit<Acceleration> defaultUnit = null)
+		public static Acceleration Parse(System.String str, Unit<Acceleration> defaultUnit = null)
 		{
-			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Acceleration));
-		}
-
-		public static bool TryParse(string str, out Acceleration q, Unit<Acceleration> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Acceleration)) is Acceleration __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Acceleration");
+			}
 		}
 
 		public static Acceleration operator +(Acceleration a, Acceleration b)
 		{
-			return a.Add(b);
+			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Acceleration));
 		}
 
 		public static Acceleration operator -(Acceleration a, Acceleration b)
 		{
-			return a.Subtract(b);
+			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Acceleration));
 		}
 
-		public static Acceleration operator *(Acceleration a, double n)
+		public static Acceleration operator *(Acceleration a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Acceleration));
 		}
 
-		public static Acceleration operator /(Acceleration a, double n)
+		public static Acceleration operator /(Acceleration a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Acceleration));
 		}
 
 		public static Ratio operator /(Acceleration a, Acceleration b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Acceleration operator -(Acceleration a)
 		{
-			return a.Multiply(-1.0);
+			return (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Acceleration));
 		}
 
 		public static Velocity operator *(Acceleration a, Time t)
 		{
-			return new Velocity(a.BaseValue * t.BaseValue);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, t), typeof(Velocity));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1010,30 +1145,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Acceleration(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Acceleration()
+		{
 		}
 	}
 	public struct Angle : IQuantitySI<Angle>, IQuantitySI, IQuantity<Angle>, IQuantity, IComparable<Angle>, IEquatable<Angle>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -1097,131 +1236,250 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Angle> DefaultUnit => Radian;
-
-		public Angle(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Angle);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Angle other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Angle other)
+		public Unit<Angle> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Angle>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Angle>));
+			}
+		}
+
+		public System.Boolean Equals(Angle other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Angle other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Angle New(double baseVal)
+		public Angle New(System.Double baseVal)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public Angle Add(Angle q)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public Angle Subtract(Angle q)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
-		public Angle Multiply(double n)
+		public Angle Multiply(System.Double n)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public Angle Multiply(Angle a, Ratio r)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public Angle Multiply(Ratio r, Angle a)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
-		public Angle Divide(double n)
+		public Angle Divide(System.Double n)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Angle));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public Ratio Divide(Angle q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Angle Parse(string str, Unit<Angle> defaultUnit = null)
+		public static Angle Parse(System.String str, Unit<Angle> defaultUnit = null)
 		{
-			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Angle));
-		}
-
-		public static bool TryParse(string str, out Angle q, Unit<Angle> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Angle)) is Angle __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Angle");
+			}
 		}
 
 		public static Angle operator +(Angle a, Angle b)
 		{
-			return a.Add(b);
+			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Angle));
 		}
 
 		public static Angle operator -(Angle a, Angle b)
 		{
-			return a.Subtract(b);
+			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Angle));
 		}
 
-		public static Angle operator *(Angle a, double n)
+		public static Angle operator *(Angle a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Angle));
 		}
 
-		public static Angle operator /(Angle a, double n)
+		public static Angle operator /(Angle a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Angle));
 		}
 
 		public static Ratio operator /(Angle a, Angle b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Angle operator -(Angle a)
 		{
-			return a.Multiply(-1.0);
+			return (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Angle));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1230,30 +1488,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Angle(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Angle()
+		{
 		}
 	}
 	public struct Distance : IQuantitySI<Distance>, IQuantitySI, IQuantity<Distance>, IQuantity, IComparable<Distance>, IEquatable<Distance>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -1413,136 +1675,255 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Distance> DefaultUnit => Meter;
-
-		public Distance(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Distance);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Distance other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Distance other)
+		public Unit<Distance> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Distance>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Distance>));
+			}
+		}
+
+		public System.Boolean Equals(Distance other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Distance other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Distance New(double baseVal)
+		public Distance New(System.Double baseVal)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public Distance Add(Distance q)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public Distance Subtract(Distance q)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
-		public Distance Multiply(double n)
+		public Distance Multiply(System.Double n)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public Distance Multiply(Distance a, Ratio r)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public Distance Multiply(Ratio r, Distance a)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
-		public Distance Divide(double n)
+		public Distance Divide(System.Double n)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Distance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public Ratio Divide(Distance q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Distance Parse(string str, Unit<Distance> defaultUnit = null)
+		public static Distance Parse(System.String str, Unit<Distance> defaultUnit = null)
 		{
-			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Distance));
-		}
-
-		public static bool TryParse(string str, out Distance q, Unit<Distance> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Distance)) is Distance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Distance");
+			}
 		}
 
 		public static Distance operator +(Distance a, Distance b)
 		{
-			return a.Add(b);
+			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Distance));
 		}
 
 		public static Distance operator -(Distance a, Distance b)
 		{
-			return a.Subtract(b);
+			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Distance));
 		}
 
-		public static Distance operator *(Distance a, double n)
+		public static Distance operator *(Distance a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Distance));
 		}
 
-		public static Distance operator /(Distance a, double n)
+		public static Distance operator /(Distance a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Distance));
 		}
 
 		public static Ratio operator /(Distance a, Distance b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Distance operator -(Distance a)
 		{
-			return a.Multiply(-1.0);
+			return (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Distance));
 		}
 
 		public static Velocity operator /(Distance l, Time t)
 		{
-			return Velocity.MetersPerSecond * (l.BaseValue / t.BaseValue);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", l, t), typeof(Velocity));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1551,22 +1932,32 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Distance(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Distance()
+		{
 		}
 	}
 	public interface IQuantity : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		double BaseValue { get; }
+		System.Double BaseValue
+		{
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
+		}
 
 		string[] GetShortBaseNames();
 
@@ -1574,23 +1965,35 @@ namespace Elements.Quantity
 	}
 	public interface IQuantity<T> : IQuantity, IComparable<T>, IEquatable<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
-		Unit<T> DefaultUnit { get; }
+		Unit<T> DefaultUnit
+		{
+			get
+			{
+				return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<T>));
+			}
+		}
 
-		T New(double baseValue);
+		T New(System.Double baseValue);
 
 		T Add(T q);
 
 		T Subtract(T q);
 
-		T Multiply(double n);
+		T Multiply(System.Double n);
 
-		T Divide(double n);
+		T Divide(System.Double n);
 
 		Ratio Divide(T q);
 	}
 	public interface IQuantitySI : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		double SIPower { get; }
+		System.Double SIPower
+		{
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
+		}
 
 		IUnit[] GetCommonSIUnits();
 
@@ -1601,38 +2004,15 @@ namespace Elements.Quantity
 	}
 	public class UnitSI<T> : Unit<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantitySI<T>
 	{
-		private static double SIPower
+		private static System.Double SIPower
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), "SIPower"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), "SIPower"), typeof(System.Double));
 			}
 			set
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), "SIPower", value);
-			}
-		}
-
-		static UnitSI()
-		{
-			SIPower = default(T).SIPower;
-		}
-
-		public UnitSI(int nFactor, string shortPrefix, string longPrefix)
-			: base(Math.Pow(Math.Pow(10.0, nFactor), SIPower), (ICollection<UnitGroup>)new UnitGroup[1] { UnitGroup.Metric }, new string[1] { " " + shortPrefix + "{0}" }, new string[1] { " " + longPrefix + "{0}" })
-		{
-			if (nFactor % 3 == 0)
-			{
-				UnitGroup.MetricThousands.RegisterUnit(this);
-			}
-		}
-
-		public UnitSI(int nFactor, string[] shortPrefixes, string[] longPrefixes)
-			: base(Math.Pow(Math.Pow(10.0, nFactor), SIPower), (ICollection<UnitGroup>)new UnitGroup[1] { UnitGroup.Metric }, shortPrefixes.Select((string p) => " " + p + "{0}").ToArray(), longPrefixes.Select((string p) => " " + p + "{0}").ToArray())
-		{
-			if (nFactor % 3 == 0)
-			{
-				UnitGroup.MetricThousands.RegisterUnit(this);
 			}
 		}
 
@@ -1642,24 +2022,36 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public UnitSI(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public interface IUnit : IComparable<IUnit>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		double Ratio { get; }
+		System.Double Ratio
+		{
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ratio"), typeof(System.Double));
+			}
+		}
 
-		Type ValueType { get; }
+		Type ValueType
+		{
+			get
+			{
+				return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValueType"), typeof(Type));
+			}
+		}
 
 		ICollection<string> GetUnitNames();
 	}
@@ -1669,11 +2061,11 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "shortNames"), typeof(string[]));
+				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "shortNames"), typeof(string[]));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "shortNames", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "shortNames", value);
 			}
 		}
 
@@ -1681,19 +2073,19 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "longNames"), typeof(string[]));
+				return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "longNames"), typeof(string[]));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "longNames", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "longNames", value);
 			}
 		}
 
-		private static string shortBaseName
+		private static System.String shortBaseName
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "shortBaseName"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "shortBaseName"), typeof(System.String));
 			}
 			set
 			{
@@ -1701,11 +2093,11 @@ namespace Elements.Quantity
 			}
 		}
 
-		private static string longBaseName
+		private static System.String longBaseName
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "longBaseName"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "longBaseName"), typeof(System.String));
 			}
 			set
 			{
@@ -1713,108 +2105,142 @@ namespace Elements.Quantity
 			}
 		}
 
-		public double Ratio
+		public System.Double Ratio
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Ratio"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Ratio"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Ratio", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Ratio", value);
 			}
 		}
 
-		public Type ValueType => typeof(T);
-
-		public int CompareTo(IUnit other)
+		public Type ValueType
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ValueType"), typeof(Type));
+			}
+		}
+
+		public System.Int32 CompareTo(IUnit other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public ICollection<string> GetUnitNames()
 		{
-			return (ICollection<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetUnitNames"), typeof(ICollection<string>));
-		}
-
-		public Unit(double baseRatio, ICollection<UnitGroup> unitGroups, string[] shortNames, string[] longNames)
-		{
-			Ratio = baseRatio;
-			this.shortNames = shortNames;
-			this.longNames = longNames;
-			if (unitGroups == null)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnitNames"), typeof(ICollection<string>)) is ICollection<string> __retCasted)
 			{
-				return;
+				return __retCasted;
 			}
-			foreach (UnitGroup unitGroup in unitGroups)
+			else
 			{
-				unitGroup.RegisterUnit(this);
+				throw new InvalidCastException("Cannot cast result to ICollection<string>");
 			}
 		}
 
-		public virtual double ConvertTo(T q)
+		public virtual System.Double ConvertTo(T q)
 		{
-			return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ConvertTo", q), typeof(double));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", q), typeof(System.Double)) is System.Double __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to double");
+			}
 		}
 
 		public T ConvertFrom(T q)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ConvertFrom", q), typeof(T));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertFrom", q), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
-		public virtual T ConvertFrom(double val)
+		public virtual T ConvertFrom(System.Double val)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ConvertFrom", val), typeof(T));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertFrom", val), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
-		public static T Parse(string str, NumberStyles numberStyles, IFormatProvider formatProvider, Unit<T> defaultUnit = null)
+		public static T Parse(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, Unit<T> defaultUnit = null)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, numberStyles, formatProvider, defaultUnit), typeof(T));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, numberStyles, formatProvider, defaultUnit), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
-		public static T Parse(string str, Unit<T> defaultUnit = null)
+		public static T Parse(System.String str, Unit<T> defaultUnit = null)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(T));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
-		public static bool TryParse(string str, out T quantity, Unit<T> defaultUnit = null)
+		private static System.Int32 IndexOfNumberEnd(System.String str)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, quantity, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "IndexOfNumberEnd", str), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
-		public static bool TryParse(string str, NumberStyles numberStyles, IFormatProvider formatProvider, out T quantity, Unit<T> defaultUnit = null)
+		public System.String FormatAs(T q, System.String formatNum = null, System.Boolean longName = false, System.String overrideName = null)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, numberStyles, formatProvider, quantity, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FormatAs", q, formatNum, longName, overrideName), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		private static bool ParseIntern(string str, NumberStyles numberStyles, IFormatProvider formatProvider, out T quantity, Unit<T> defaultUnit, bool throwOnFail)
+		public static T operator *(Unit<T> unit, System.Double n)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseIntern", str, numberStyles, formatProvider, quantity, defaultUnit, throwOnFail), typeof(bool));
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", unit, n), typeof(T));
 		}
 
-		private static IUnit GetUnitFromSubstring(string str, out int unitEndIndex, bool byLetter = false)
+		public static T operator *(System.Double n, Unit<T> unit)
 		{
-			return (IUnit)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnitFromSubstring", str, unitEndIndex, byLetter), typeof(IUnit));
-		}
-
-		private static int IndexOfNumberEnd(string str)
-		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "IndexOfNumberEnd", str), typeof(int));
-		}
-
-		public string FormatAs(T q, string formatNum = null, bool longName = false, string overrideName = null)
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FormatAs", q, formatNum, longName, overrideName), typeof(string));
-		}
-
-		public static T operator *(Unit<T> unit, double n)
-		{
-			return unit.ConvertFrom(n);
-		}
-
-		public static T operator *(double n, Unit<T> unit)
-		{
-			return unit.ConvertFrom(n);
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", n, unit), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1823,20 +2249,24 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Unit(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Unit()
+		{
 		}
 	}
-	public delegate bool NumberTryParseHandler<T>(string str, NumberStyles numberStyles, IFormatProvider formatProvider, out T value);
+	public delegate bool NumberTryParseHandler<T>(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out T value);
 	public static class QuantityHelper
 	{
 		public static CultureInfo Culture
@@ -1887,130 +2317,135 @@ namespace Elements.Quantity
 			}
 		}
 
-		public static bool TryParse(string str, NumberStyles numberStyles, IFormatProvider formatProvider, out double value)
+		public static System.Double ConvertTo<T>(this T q, Unit<T> unit) where T : struct, IQuantity<T>
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, numberStyles, formatProvider, value), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ConvertTo", q, unit), typeof(System.Double)) is System.Double __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to double");
+			}
 		}
 
-		public static double ConvertTo<T>(this T q, Unit<T> unit) where T : struct, IQuantity<T>
+		public static System.String FormatAs<T>(this T q, Unit<T> unit, System.String formatNum = null, System.Boolean longName = false, System.String overrideName = null) where T : struct, IQuantity<T>
 		{
-			return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ConvertTo", q, unit), typeof(double));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAs", q, unit, formatNum, longName, overrideName), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static string FormatAs<T>(this T q, Unit<T> unit, string formatNum = null, bool longName = false, string overrideName = null) where T : struct, IQuantity<T>
+		public static System.String FormatAs<T>(this T q, System.String unitName, System.String formatNum = null, System.Boolean longName = false) where T : struct, IQuantity<T>
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAs", q, unit, formatNum, longName, overrideName), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAs", q, unitName, formatNum, longName), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static string FormatAs<T>(this T q, string unitName, string formatNum = null, bool longName = false) where T : struct, IQuantity<T>
+		public static System.String FormatAuto<T>(this T q, System.String formatNum, System.Boolean longName, UnitGroup unitGroup, Unit<T> defaultUnit = null) where T : struct, IQuantity<T>
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAs", q, unitName, formatNum, longName), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAuto", q, formatNum, longName, unitGroup, defaultUnit), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static string FormatAuto<T>(this T q, string formatNum, bool longName, UnitGroup unitGroup, Unit<T> defaultUnit = null) where T : struct, IQuantity<T>
+		public static System.String FormatAuto<T>(this T q, System.String formatNum = null, System.Boolean longName = false, List<UnitGroup> groups = null, Unit<T> defaultUnit = null) where T : struct, IQuantity<T>
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAuto", q, formatNum, longName, unitGroup, defaultUnit), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAuto", q, formatNum, longName, groups, defaultUnit), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static string FormatAuto<T>(this T q, string formatNum = null, bool longName = false, List<UnitGroup> groups = null, Unit<T> defaultUnit = null) where T : struct, IQuantity<T>
+		public static System.String FormatCompound<T>(this T q, ICollection<Unit<T>> units, System.String separator = " ", CompoundZeroHandling zeroHandling = CompoundZeroHandling.RemoveAny, System.String lastNumberFormat = null, System.Boolean longNames = false, System.Boolean discardLastFraction = false) where T : struct, IQuantity<T>
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatAuto", q, formatNum, longName, groups, defaultUnit), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatCompound", q, units, separator, zeroHandling, lastNumberFormat, longNames, discardLastFraction), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static string FormatCompound<T>(this T q, ICollection<Unit<T>> units, string separator = " ", CompoundZeroHandling zeroHandling = CompoundZeroHandling.RemoveAny, string lastNumberFormat = null, bool longNames = false, bool discardLastFraction = false) where T : struct, IQuantity<T>
+		public static System.String FormatCompound<T>(this T q, CompoundFormatInfo<T> formatInfo) where T : struct, IQuantity<T>
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatCompound", q, units, separator, zeroHandling, lastNumberFormat, longNames, discardLastFraction), typeof(string));
-		}
-
-		public static string FormatCompound<T>(this T q, CompoundFormatInfo<T> formatInfo) where T : struct, IQuantity<T>
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatCompound", q, formatInfo), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FormatCompound", q, formatInfo), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		public static IEnumerable<IUnit> GetUnits<T>()
 		{
-			return (IEnumerable<IUnit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnits"), typeof(IEnumerable<IUnit>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnits"), typeof(IEnumerable<IUnit>)) is IEnumerable<IUnit> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IEnumerable<IUnit>");
+			}
 		}
 
 		public static Unit<T> SelectBestUnit<T>(this T q, List<UnitGroup> groups) where T : struct, IQuantity<T>
 		{
-			return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectBestUnit", q, groups), typeof(Unit<T>));
-		}
-
-		private static bool ContainsUnit(IUnit unit, List<UnitGroup> groups)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ContainsUnit", unit, groups), typeof(bool));
-		}
-
-		public static IUnit GetUnitByName<T>(string name)
-		{
-			return (IUnit)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnitByName", name), typeof(IUnit));
-		}
-
-		static QuantityHelper()
-		{
-			Culture = CultureInfo.InvariantCulture;
-			unitCache = new Dictionary<Type, List<IUnit>>();
-			unitNameCache = new Dictionary<Type, Dictionary<string, IUnit>>();
-			Type[] types = typeof(QuantityHelper).Assembly.GetTypes();
-			foreach (Type type in types)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectBestUnit", q, groups), typeof(Unit<T>)) is Unit<T> __retCasted)
 			{
-				if (!typeof(IQuantity).IsAssignableFrom(type) || !type.IsValueType)
-				{
-					continue;
-				}
-				IQuantity quantity = (IQuantity)Activator.CreateInstance(type);
-				List<IUnit> list = new List<IUnit>();
-				unitCache.Add(type, list);
-				bool flag = false;
-				Type[] interfaces = type.GetInterfaces();
-				foreach (Type type2 in interfaces)
-				{
-					if (type2.IsGenericType && type2.GetGenericTypeDefinition() == typeof(IQuantitySI<>))
-					{
-						flag = true;
-						break;
-					}
-				}
-				BindingFlags bindingAttr = BindingFlags.Static | BindingFlags.Public;
-				List<FieldInfo[]> list2 = new List<FieldInfo[]> { type.GetFields(bindingAttr) };
-				if (flag)
-				{
-					IQuantitySI quantitySI = (IQuantitySI)quantity;
-					IUnit[] commonSIUnits = quantitySI.GetCommonSIUnits();
-					foreach (IUnit unit in commonSIUnits)
-					{
-						UnitGroup.Common.RegisterUnit(unit);
-						UnitGroup.CommonMetric.RegisterUnit(unit);
-					}
-					commonSIUnits = quantitySI.GetExludedSIUnits();
-					foreach (IUnit unit2 in commonSIUnits)
-					{
-						UnitGroup.Metric.RemoveUnit(unit2);
-					}
-					Type type3 = typeof(SI<>).MakeGenericType(type);
-					list2.Add(type3.GetFields(bindingAttr));
-				}
-				foreach (FieldInfo[] item in list2)
-				{
-					foreach (FieldInfo fieldInfo in item)
-					{
-						if (typeof(IUnit).IsAssignableFrom(fieldInfo.FieldType))
-						{
-							list.Add((IUnit)fieldInfo.GetValue(null));
-						}
-					}
-				}
-				list.Sort();
-				Dictionary<string, IUnit> dictionary = new Dictionary<string, IUnit>();
-				unitNameCache.Add(type, dictionary);
-				foreach (IUnit item2 in list)
-				{
-					foreach (string unitName in item2.GetUnitNames())
-					{
-						dictionary.Add(unitName.Trim(), item2);
-					}
-				}
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Unit<T>");
+			}
+		}
+
+		private static System.Boolean ContainsUnit(IUnit unit, List<UnitGroup> groups)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ContainsUnit", unit, groups), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public static IUnit GetUnitByName<T>(System.String name)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnitByName", name), typeof(IUnit)) is IUnit __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit");
 			}
 		}
 	}
@@ -2018,66 +2453,78 @@ namespace Elements.Quantity
 	{
 		public struct Enumerator : IEnumerator<IUnit>, IDisposable, IEnumerator, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private bool firstDone
+			private System.Boolean firstDone
 			{
 				get
 				{
-					return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "firstDone"), typeof(bool));
+					return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "firstDone"), typeof(System.Boolean));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "firstDone", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "firstDone", value);
 				}
 			}
 
-			private Dictionary<Type, SortedSet<IUnit>>.Enumerator dictEnum
+			private Dictionary<Type, ResoniteBridge.ResoniteBridgeValue>.Enumerator dictEnum
 			{
 				get
 				{
-					return (Dictionary<Type, SortedSet<IUnit>>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "dictEnum"), typeof(Dictionary<Type, SortedSet<IUnit>>.Enumerator));
+					return (Dictionary<Type, ResoniteBridge.ResoniteBridgeValue>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "dictEnum"), typeof(Dictionary<Type, ResoniteBridge.ResoniteBridgeValue>.Enumerator));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "dictEnum", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "dictEnum", value);
 				}
 			}
 
-			private SortedSet<IUnit>.Enumerator setEnum
+			private ResoniteBridge.ResoniteBridgeValue setEnum
 			{
 				get
 				{
-					return (SortedSet<IUnit>.Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "setEnum"), typeof(SortedSet<IUnit>.Enumerator));
+					return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "setEnum"), typeof(ResoniteBridge.ResoniteBridgeValue));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "setEnum", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "setEnum", value);
 				}
 			}
 
-			public IUnit Current => setEnum.Current;
-
-			object IEnumerator.Current => Current;
-
-			public Enumerator(UnitGroup group)
+			public IUnit Current
 			{
-				dictEnum = group.units.GetEnumerator();
-				setEnum = default(SortedSet<IUnit>.Enumerator);
-				firstDone = false;
+				get
+				{
+					return (IUnit)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Current"), typeof(IUnit));
+				}
+			}
+
+			System.Object IEnumerator.Current
+			{
+				get
+				{
+					return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Current"), typeof(System.Object));
+				}
 			}
 
 			public void Dispose()
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Dispose");
+				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
 			}
 
-			public bool MoveNext()
+			public System.Boolean MoveNext()
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "MoveNext"), typeof(bool));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 
 			public void Reset()
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Reset");
+				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2086,17 +2533,21 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					return this.__backing;
+					return __backing;
 				}
 				set
 				{
-					this.__backing = value;
+					__backing = value;
 				}
 			}
 
 			public Enumerator(ResoniteBridge.ResoniteBridgeValue value)
 			{
-				this.__Backing = value;
+				__backing = value;
+			}
+
+			public Enumerator()
+			{
 			}
 		}
 
@@ -2244,68 +2695,86 @@ namespace Elements.Quantity
 			}
 		}
 
-		private Dictionary<Type, SortedSet<IUnit>> units
+		private Dictionary<Type, ResoniteBridge.ResoniteBridgeValue> units
 		{
 			get
 			{
-				return (Dictionary<Type, SortedSet<IUnit>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "units"), typeof(Dictionary<Type, SortedSet<IUnit>>));
+				return (Dictionary<Type, ResoniteBridge.ResoniteBridgeValue>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "units"), typeof(Dictionary<Type, ResoniteBridge.ResoniteBridgeValue>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "units", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "units", value);
 			}
-		}
-
-		static UnitGroup()
-		{
-			DefaultUnitGroups = new List<UnitGroup>();
-			Common = new UnitGroup();
-			Metric = new UnitGroup();
-			MetricThousands = new UnitGroup();
-			CommonMetric = new UnitGroup();
-			Scientific = new UnitGroup();
-			Astronomical = new UnitGroup();
-			Molecular = new UnitGroup();
-			Meteorological = new UnitGroup();
-			Aviation = new UnitGroup();
-			Maritime = new UnitGroup();
-			Imperial = new UnitGroup();
-			DefaultUnitGroups.Add(Common);
 		}
 
 		public void RegisterUnit(IUnit unit)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "RegisterUnit", unit);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterUnit", unit);
 		}
 
 		public void RemoveUnit(IUnit unit)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "RemoveUnit", unit);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveUnit", unit);
 		}
 
-		public bool HasUnit(IUnit unit)
+		public System.Boolean HasUnit(IUnit unit)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "HasUnit", unit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUnit", unit), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
-		internal SortedSet<IUnit> GetSetForType(Type type, bool createIfNotExists = true)
+		internal ResoniteBridge.ResoniteBridgeValue GetSetForType(Type type, System.Boolean createIfNotExists = true)
 		{
-			return (SortedSet<IUnit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetSetForType", type, createIfNotExists), typeof(SortedSet<IUnit>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetForType", type, createIfNotExists), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to SortedSet<IUnit>");
+			}
 		}
 
 		public Enumerator GetEnumerator()
 		{
-			return (Enumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetEnumerator"), typeof(Enumerator));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(Enumerator)) is Enumerator __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Enumerator");
+			}
 		}
 
 		IEnumerator<IUnit> IEnumerable<IUnit>.GetEnumerator()
 		{
-			return (IEnumerator<IUnit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetEnumerator"), typeof(IEnumerator<IUnit>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<IUnit>)) is IEnumerator<IUnit> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IEnumerator<IUnit>");
+			}
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetEnumerator"), typeof(IEnumerator));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IEnumerator");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2314,30 +2783,30 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public UnitGroup(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public struct Mass : IQuantitySI<Mass>, IQuantitySI, IQuantity<Mass>, IQuantity, IComparable<Mass>, IEquatable<Mass>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -2473,131 +2942,250 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Mass> DefaultUnit => SI<Mass>.Kilo;
-
-		public Mass(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Mass);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Mass other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Mass other)
+		public Unit<Mass> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Mass>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Mass>));
+			}
+		}
+
+		public System.Boolean Equals(Mass other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Mass other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Mass New(double baseVal)
+		public Mass New(System.Double baseVal)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public Mass Add(Mass q)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public Mass Subtract(Mass q)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
-		public Mass Multiply(double n)
+		public Mass Multiply(System.Double n)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public Mass Multiply(Mass a, Ratio r)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public Mass Multiply(Ratio r, Mass a)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
-		public Mass Divide(double n)
+		public Mass Divide(System.Double n)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Mass));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public Ratio Divide(Mass q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Mass Parse(string str, Unit<Mass> defaultUnit = null)
+		public static Mass Parse(System.String str, Unit<Mass> defaultUnit = null)
 		{
-			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Mass));
-		}
-
-		public static bool TryParse(string str, out Mass q, Unit<Mass> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Mass)) is Mass __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Mass");
+			}
 		}
 
 		public static Mass operator +(Mass a, Mass b)
 		{
-			return a.Add(b);
+			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Mass));
 		}
 
 		public static Mass operator -(Mass a, Mass b)
 		{
-			return a.Subtract(b);
+			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Mass));
 		}
 
-		public static Mass operator *(Mass a, double n)
+		public static Mass operator *(Mass a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Mass));
 		}
 
-		public static Mass operator /(Mass a, double n)
+		public static Mass operator /(Mass a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Mass));
 		}
 
 		public static Ratio operator /(Mass a, Mass b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Mass operator -(Mass a)
 		{
-			return a.Multiply(-1.0);
+			return (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Mass));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2606,30 +3194,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Mass(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Mass()
+		{
 		}
 	}
 	public struct Ratio : IQuantity<Ratio>, IQuantity, IComparable<Ratio>, IEquatable<Ratio>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -2657,114 +3249,206 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public Unit<Ratio> DefaultUnit => RatioValue;
-
-		public Ratio(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Ratio);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Ratio other)
+		public Unit<Ratio> DefaultUnit
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (Unit<Ratio>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Ratio>));
+			}
 		}
 
-		public int CompareTo(Ratio other)
+		public System.Boolean Equals(Ratio other)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Ratio other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
-		public Ratio New(double baseVal)
+		public Ratio New(System.Double baseVal)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
 		public Ratio Add(Ratio q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
 		public Ratio Subtract(Ratio q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public Ratio Multiply(double n)
+		public Ratio Multiply(System.Double n)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
 		public Ratio Multiply(Ratio a, Ratio r)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public Ratio Divide(double n)
+		public Ratio Divide(System.Double n)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
 		public Ratio Divide(Ratio q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Ratio Parse(string str, Unit<Ratio> defaultUnit = null)
+		public static Ratio Parse(System.String str, Unit<Ratio> defaultUnit = null)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Ratio));
-		}
-
-		public static bool TryParse(string str, out Ratio q, Unit<Ratio> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
 		public static Ratio operator +(Ratio a, Ratio b)
 		{
-			return a.Add(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Ratio));
 		}
 
 		public static Ratio operator -(Ratio a, Ratio b)
 		{
-			return a.Subtract(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Ratio));
 		}
 
-		public static Ratio operator *(Ratio a, double n)
+		public static Ratio operator *(Ratio a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Ratio));
 		}
 
-		public static Ratio operator /(Ratio a, double n)
+		public static Ratio operator /(Ratio a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Ratio));
 		}
 
 		public static Ratio operator /(Ratio a, Ratio b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Ratio operator -(Ratio a)
 		{
-			return a.Multiply(-1.0);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Ratio));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2773,30 +3457,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Ratio(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Ratio()
+		{
 		}
 	}
 	public struct Temperature : IQuantity<Temperature>, IQuantity, IComparable<Temperature>, IEquatable<Temperature>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -2836,119 +3524,218 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public Unit<Temperature> DefaultUnit => Kelvin;
-
-		public Temperature(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Temperature);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Temperature other)
+		public Unit<Temperature> DefaultUnit
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (Unit<Temperature>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Temperature>));
+			}
 		}
 
-		public int CompareTo(Temperature other)
+		public System.Boolean Equals(Temperature other)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Temperature other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
-		public Temperature New(double baseVal)
+		public Temperature New(System.Double baseVal)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public Temperature Add(Temperature q)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public Temperature Subtract(Temperature q)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
-		public Temperature Multiply(double n)
+		public Temperature Multiply(System.Double n)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public Temperature Multiply(Temperature a, Ratio r)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public Temperature Multiply(Ratio r, Temperature a)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
-		public Temperature Divide(double n)
+		public Temperature Divide(System.Double n)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Temperature));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public Ratio Divide(Temperature q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Temperature Parse(string str, Unit<Temperature> defaultUnit = null)
+		public static Temperature Parse(System.String str, Unit<Temperature> defaultUnit = null)
 		{
-			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Temperature));
-		}
-
-		public static bool TryParse(string str, out Temperature q, Unit<Temperature> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Temperature)) is Temperature __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Temperature");
+			}
 		}
 
 		public static Temperature operator +(Temperature a, Temperature b)
 		{
-			return a.Add(b);
+			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Temperature));
 		}
 
 		public static Temperature operator -(Temperature a, Temperature b)
 		{
-			return a.Subtract(b);
+			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Temperature));
 		}
 
-		public static Temperature operator *(Temperature a, double n)
+		public static Temperature operator *(Temperature a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Temperature));
 		}
 
-		public static Temperature operator /(Temperature a, double n)
+		public static Temperature operator /(Temperature a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Temperature));
 		}
 
 		public static Ratio operator /(Temperature a, Temperature b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Temperature operator -(Temperature a)
 		{
-			return a.Multiply(-1.0);
+			return (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Temperature));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2957,30 +3744,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Temperature(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Temperature()
+		{
 		}
 	}
 	public struct Time : IQuantity<Time>, IQuantity, IComparable<Time>, IEquatable<Time>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -3140,119 +3931,218 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public Unit<Time> DefaultUnit => Second;
-
-		public Time(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Time);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Time other)
+		public Unit<Time> DefaultUnit
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (Unit<Time>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Time>));
+			}
 		}
 
-		public int CompareTo(Time other)
+		public System.Boolean Equals(Time other)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Time other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
-		public Time New(double baseVal)
+		public Time New(System.Double baseVal)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public Time Add(Time q)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public Time Subtract(Time q)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
-		public Time Multiply(double n)
+		public Time Multiply(System.Double n)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public Time Multiply(Time a, Ratio r)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public Time Multiply(Ratio r, Time a)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
-		public Time Divide(double n)
+		public Time Divide(System.Double n)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Time));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public Ratio Divide(Time q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Time Parse(string str, Unit<Time> defaultUnit = null)
+		public static Time Parse(System.String str, Unit<Time> defaultUnit = null)
 		{
-			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Time));
-		}
-
-		public static bool TryParse(string str, out Time q, Unit<Time> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Time)) is Time __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Time");
+			}
 		}
 
 		public static Time operator +(Time a, Time b)
 		{
-			return a.Add(b);
+			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Time));
 		}
 
 		public static Time operator -(Time a, Time b)
 		{
-			return a.Subtract(b);
+			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Time));
 		}
 
-		public static Time operator *(Time a, double n)
+		public static Time operator *(Time a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Time));
 		}
 
-		public static Time operator /(Time a, double n)
+		public static Time operator /(Time a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Time));
 		}
 
 		public static Ratio operator /(Time a, Time b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Time operator -(Time a)
 		{
-			return a.Multiply(-1.0);
+			return (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Time));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3261,30 +4151,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Time(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Time()
+		{
 		}
 	}
 	public struct Velocity : IQuantity<Velocity>, IQuantity, IComparable<Velocity>, IEquatable<Velocity>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -3348,119 +4242,218 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public Unit<Velocity> DefaultUnit => MetersPerSecond;
-
-		public Velocity(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Velocity);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Velocity other)
+		public Unit<Velocity> DefaultUnit
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (Unit<Velocity>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Velocity>));
+			}
 		}
 
-		public int CompareTo(Velocity other)
+		public System.Boolean Equals(Velocity other)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Velocity other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
-		public Velocity New(double baseVal)
+		public Velocity New(System.Double baseVal)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public Velocity Add(Velocity q)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public Velocity Subtract(Velocity q)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
-		public Velocity Multiply(double n)
+		public Velocity Multiply(System.Double n)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public Velocity Multiply(Velocity a, Ratio r)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public Velocity Multiply(Ratio r, Velocity a)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
-		public Velocity Divide(double n)
+		public Velocity Divide(System.Double n)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Velocity));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public Ratio Divide(Velocity q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Velocity Parse(string str, Unit<Velocity> defaultUnit = null)
+		public static Velocity Parse(System.String str, Unit<Velocity> defaultUnit = null)
 		{
-			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Velocity));
-		}
-
-		public static bool TryParse(string str, out Velocity q, Unit<Velocity> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Velocity)) is Velocity __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Velocity");
+			}
 		}
 
 		public static Velocity operator +(Velocity a, Velocity b)
 		{
-			return a.Add(b);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Velocity));
 		}
 
 		public static Velocity operator -(Velocity a, Velocity b)
 		{
-			return a.Subtract(b);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Velocity));
 		}
 
-		public static Velocity operator *(Velocity a, double n)
+		public static Velocity operator *(Velocity a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Velocity));
 		}
 
-		public static Velocity operator /(Velocity a, double n)
+		public static Velocity operator /(Velocity a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Velocity));
 		}
 
 		public static Ratio operator /(Velocity a, Velocity b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Velocity operator -(Velocity a)
 		{
-			return a.Multiply(-1.0);
+			return (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Velocity));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3469,30 +4462,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Velocity(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Velocity()
+		{
 		}
 	}
 	public struct Current : IQuantitySI<Current>, IQuantitySI, IQuantity<Current>, IQuantity, IComparable<Current>, IEquatable<Current>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -3508,131 +4505,250 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Current> DefaultUnit => Ampere;
-
-		public Current(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Current);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Current other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Current other)
+		public Unit<Current> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Current>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Current>));
+			}
+		}
+
+		public System.Boolean Equals(Current other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Current other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Current New(double baseVal)
+		public Current New(System.Double baseVal)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public Current Add(Current q)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public Current Subtract(Current q)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
-		public Current Multiply(double n)
+		public Current Multiply(System.Double n)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public Current Multiply(Current a, Ratio r)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public Current Multiply(Ratio r, Current a)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
-		public Current Divide(double n)
+		public Current Divide(System.Double n)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Current));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public Ratio Divide(Current q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Current Parse(string str, Unit<Current> defaultUnit = null)
+		public static Current Parse(System.String str, Unit<Current> defaultUnit = null)
 		{
-			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Current));
-		}
-
-		public static bool TryParse(string str, out Current q, Unit<Current> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Current)) is Current __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Current");
+			}
 		}
 
 		public static Current operator +(Current a, Current b)
 		{
-			return a.Add(b);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Current));
 		}
 
 		public static Current operator -(Current a, Current b)
 		{
-			return a.Subtract(b);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Current));
 		}
 
-		public static Current operator *(Current a, double n)
+		public static Current operator *(Current a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Current));
 		}
 
-		public static Current operator /(Current a, double n)
+		public static Current operator /(Current a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Current));
 		}
 
 		public static Ratio operator /(Current a, Current b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Current operator -(Current a)
 		{
-			return a.Multiply(-1.0);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Current));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3641,30 +4757,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Current(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Current()
+		{
 		}
 	}
 	public struct Resistance : IQuantitySI<Resistance>, IQuantitySI, IQuantity<Resistance>, IQuantity, IComparable<Resistance>, IEquatable<Resistance>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -3680,141 +4800,260 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Resistance> DefaultUnit => Ohm;
-
-		public Resistance(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Resistance);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Resistance other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Resistance other)
+		public Unit<Resistance> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Resistance>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Resistance>));
+			}
+		}
+
+		public System.Boolean Equals(Resistance other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Resistance other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Resistance New(double baseVal)
+		public Resistance New(System.Double baseVal)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public Resistance Add(Resistance q)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public Resistance Subtract(Resistance q)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
-		public Resistance Multiply(double n)
+		public Resistance Multiply(System.Double n)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public Resistance Multiply(Resistance a, Ratio r)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public Resistance Multiply(Ratio r, Resistance a)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
-		public Resistance Divide(double n)
+		public Resistance Divide(System.Double n)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Resistance));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public Ratio Divide(Resistance q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Resistance Parse(string str, Unit<Resistance> defaultUnit = null)
+		public static Resistance Parse(System.String str, Unit<Resistance> defaultUnit = null)
 		{
-			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Resistance));
-		}
-
-		public static bool TryParse(string str, out Resistance q, Unit<Resistance> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Resistance)) is Resistance __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Resistance");
+			}
 		}
 
 		public static Resistance operator +(Resistance a, Resistance b)
 		{
-			return a.Add(b);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Resistance));
 		}
 
 		public static Resistance operator -(Resistance a, Resistance b)
 		{
-			return a.Subtract(b);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Resistance));
 		}
 
-		public static Resistance operator *(Resistance a, double n)
+		public static Resistance operator *(Resistance a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Resistance));
 		}
 
-		public static Resistance operator /(Resistance a, double n)
+		public static Resistance operator /(Resistance a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Resistance));
 		}
 
 		public static Ratio operator /(Resistance a, Resistance b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Resistance operator -(Resistance a)
 		{
-			return a.Multiply(-1.0);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Resistance));
 		}
 
 		public static Voltage operator *(Resistance r, Current i)
 		{
-			return new Voltage(r.BaseValue * i.BaseValue);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", r, i), typeof(Voltage));
 		}
 
 		public static Voltage operator *(Current i, Resistance r)
 		{
-			return new Voltage(r.BaseValue * i.BaseValue);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", i, r), typeof(Voltage));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -3823,30 +5062,34 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Resistance(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Resistance()
+		{
 		}
 	}
 	public struct Voltage : IQuantitySI<Voltage>, IQuantitySI, IQuantity<Voltage>, IQuantity, IComparable<Voltage>, IEquatable<Voltage>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public double BaseValue
+		public System.Double BaseValue
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "BaseValue"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "BaseValue"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "BaseValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "BaseValue", value);
 			}
 		}
 
@@ -3862,141 +5105,260 @@ namespace Elements.Quantity
 			}
 		}
 
-		double IQuantity.BaseValue => BaseValue;
-
-		public double SIPower => 1.0;
-
-		public Unit<Voltage> DefaultUnit => Volt;
-
-		public Voltage(double baseValue = 0.0)
+		System.Double IQuantity.BaseValue
 		{
-			this = default(Voltage);
-			BaseValue = baseValue;
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "BaseValue"), typeof(System.Double));
+			}
 		}
 
-		public bool Equals(Voltage other)
+		public System.Double SIPower
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Equals", other), typeof(bool));
+			get
+			{
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SIPower"), typeof(System.Double));
+			}
 		}
 
-		public int CompareTo(Voltage other)
+		public Unit<Voltage> DefaultUnit
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CompareTo", other), typeof(int));
+			get
+			{
+				return (Unit<Voltage>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DefaultUnit"), typeof(Unit<Voltage>));
+			}
+		}
+
+		public System.Boolean Equals(Voltage other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public System.Int32 CompareTo(Voltage other)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
 		public string[] GetShortBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetShortBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetShortBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public string[] GetLongBaseNames()
 		{
-			return (string[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLongBaseNames"), typeof(string[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLongBaseNames"), typeof(string[])) is string[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string[]");
+			}
 		}
 
 		public IUnit[] GetCommonSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetCommonSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetCommonSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
 		public IUnit[] GetExludedSIUnits()
 		{
-			return (IUnit[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExludedSIUnits"), typeof(IUnit[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExludedSIUnits"), typeof(IUnit[])) is IUnit[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IUnit[]");
+			}
 		}
 
-		public Voltage New(double baseVal)
+		public Voltage New(System.Double baseVal)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "New", baseVal), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "New", baseVal), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public Voltage Add(Voltage q)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Add", q), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", q), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public Voltage Subtract(Voltage q)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Subtract", q), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Subtract", q), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
-		public Voltage Multiply(double n)
+		public Voltage Multiply(System.Double n)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", n), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", n), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public Voltage Multiply(Voltage a, Ratio r)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", a, r), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", a, r), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public Voltage Multiply(Ratio r, Voltage a)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Multiply", r, a), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Multiply", r, a), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
-		public Voltage Divide(double n)
+		public Voltage Divide(System.Double n)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", n), typeof(Voltage));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", n), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public Ratio Divide(Voltage q)
 		{
-			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Divide", q), typeof(Ratio));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Divide", q), typeof(Ratio)) is Ratio __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Ratio");
+			}
 		}
 
-		public static Voltage Parse(string str, Unit<Voltage> defaultUnit = null)
+		public static Voltage Parse(System.String str, Unit<Voltage> defaultUnit = null)
 		{
-			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Voltage));
-		}
-
-		public static bool TryParse(string str, out Voltage q, Unit<Voltage> defaultUnit = null)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", str, q, defaultUnit), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(Voltage)) is Voltage __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Voltage");
+			}
 		}
 
 		public static Voltage operator +(Voltage a, Voltage b)
 		{
-			return a.Add(b);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Addition", a, b), typeof(Voltage));
 		}
 
 		public static Voltage operator -(Voltage a, Voltage b)
 		{
-			return a.Subtract(b);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Subtraction", a, b), typeof(Voltage));
 		}
 
-		public static Voltage operator *(Voltage a, double n)
+		public static Voltage operator *(Voltage a, System.Double n)
 		{
-			return a.Multiply(n);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Multiply", a, n), typeof(Voltage));
 		}
 
-		public static Voltage operator /(Voltage a, double n)
+		public static Voltage operator /(Voltage a, System.Double n)
 		{
-			return a.Divide(n);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, n), typeof(Voltage));
 		}
 
 		public static Ratio operator /(Voltage a, Voltage b)
 		{
-			return a.Divide(b);
+			return (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", a, b), typeof(Ratio));
 		}
 
 		public static Voltage operator -(Voltage a)
 		{
-			return a.Multiply(-1.0);
+			return (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_UnaryNegation", a), typeof(Voltage));
 		}
 
 		public static Current operator /(Voltage v, Resistance r)
 		{
-			return new Current(v.BaseValue / r.BaseValue);
+			return (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", v, r), typeof(Current));
 		}
 
 		public static Resistance operator /(Voltage v, Current c)
 		{
-			return new Resistance(v.BaseValue / c.BaseValue);
+			return (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Division", v, c), typeof(Resistance));
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -4005,17 +5367,21 @@ namespace Elements.Quantity
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Voltage(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public Voltage()
+		{
 		}
 	}
 }

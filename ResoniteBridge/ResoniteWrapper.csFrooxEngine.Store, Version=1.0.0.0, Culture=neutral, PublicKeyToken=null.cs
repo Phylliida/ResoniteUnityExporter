@@ -1,104 +1,27 @@
+using ResoniteBridge;
 using System;
-
 using System.Collections.Generic;
-
 using System.Diagnostics;
-
 using System.Globalization;
-
 using System.IO;
-
-using System.Linq;
-
-using System.Linq.Expressions;
-
 using System.Reflection;
-
 using System.Runtime.CompilerServices;
-
 using System.Runtime.InteropServices;
-
 using System.Runtime.Versioning;
-
 using System.Security;
-
 using System.Security.Cryptography;
-
 using System.Security.Permissions;
-
 using System.Text;
-
 using System.Text.Json;
-
 using System.Text.Json.Serialization;
-
 using System.Threading;
-
 using System.Threading.Tasks;
-
 using Elements.Assets;
-
 using Elements.Core;
-
-using LiteDB;
-
-using LiteDB.Async;
-
 using Microsoft.CodeAnalysis;
-
 using Newtonsoft.Json;
-
 using SkyFrost.Base;
 
-using Wiry.Base32;
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 namespace Microsoft.CodeAnalysis
 {
 }
@@ -109,75 +32,75 @@ namespace FrooxEngine.Store
 {
 	public class AssetRecord : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public int id
+		public System.Int32 id
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "id"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "id", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "id", value);
 			}
 		}
 
-		public string url
+		public System.String url
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "url"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "url", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "url", value);
 			}
 		}
 
-		public string path
+		public System.String path
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "path"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "path", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "path", value);
 			}
 		}
 
-		public string signature
+		public System.String signature
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "signature"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "signature"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "signature", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "signature", value);
 			}
 		}
 
-		public string cloudsig
+		public System.String cloudsig
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "cloudsig"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "cloudsig"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "cloudsig", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "cloudsig", value);
 			}
 		}
 
-		public long bytes
+		public System.Int64 bytes
 		{
 			get
 			{
-				return (long)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "bytes"), typeof(long));
+				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "bytes"), typeof(System.Int64));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "bytes", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "bytes", value);
 			}
 		}
 
@@ -185,11 +108,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "encryptionKey"), typeof(byte[]));
+				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "encryptionKey"), typeof(byte[]));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "encryptionKey", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "encryptionKey", value);
 			}
 		}
 
@@ -199,17 +122,17 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public AssetRecord(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public class LocalDatabaseAccountDataStore : IAccountDataStore, ResoniteBridge.ResoniteBridgeValueHolder
@@ -218,11 +141,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "Database"), typeof(LocalDB));
+				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Database"), typeof(LocalDB));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "Database", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "Database", value);
 			}
 		}
 
@@ -230,11 +153,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Dictionary<string, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_fetchedRecords"), typeof(Dictionary<string, int>));
+				return (Dictionary<string, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_fetchedRecords"), typeof(Dictionary<string, int>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_fetchedRecords", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_fetchedRecords", value);
 			}
 		}
 
@@ -242,259 +165,502 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (IPlatformProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "PlatformProfile"), typeof(IPlatformProfile));
+				return (IPlatformProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformProfile"), typeof(IPlatformProfile));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "PlatformProfile", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "PlatformProfile", value);
 			}
 		}
 
-		public string MigrationId
+		public System.String MigrationId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "MigrationId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "MigrationId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "MigrationId", value);
 			}
 		}
 
-		public string Name => "LocalDB Data Store";
-
-		public string UserId
+		public System.String Name
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "UserId"), typeof(string));
-			}
-			set
-			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "UserId", value);
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
 			}
 		}
 
-		public string Username
+		public System.String UserId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Username"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Username", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "UserId", value);
 			}
 		}
 
-		public int FetchedGroupCount
+		public System.String Username
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "FetchedGroupCount"), typeof(int));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "FetchedGroupCount", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Username", value);
 			}
 		}
 
-		public bool MachineOwnerOnly
+		public System.Int32 FetchedGroupCount
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "MachineOwnerOnly"), typeof(bool));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedGroupCount"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "MachineOwnerOnly", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "FetchedGroupCount", value);
+			}
+		}
+
+		public System.Boolean MachineOwnerOnly
+		{
+			get
+			{
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineOwnerOnly"), typeof(System.Boolean));
+			}
+			set
+			{
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "MachineOwnerOnly", value);
 			}
 		}
 
 		public event Action<string> ProgressMessage;
 
-		public LocalDatabaseAccountDataStore(LocalDB database, IPlatformProfile platform, bool machineOwnerOnly)
-		{
-			Database = database;
-			PlatformProfile = platform;
-			MachineOwnerOnly = machineOwnerOnly;
-			UserId = "M-" + database.MachineID;
-		}
-
 		public Task Complete()
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Complete"), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Complete"), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<User> GetUser()
+		public Task<User> GetUser()
 		{
-			return (Task<User>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetUser"), typeof(Task<User>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUser"), typeof(Task<User>)) is Task<User> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<User>");
+			}
 		}
 
-		public async Task<List<ExitMessage>> GetExitMessages()
+		public Task<List<ExitMessage>> GetExitMessages()
 		{
-			return (Task<List<ExitMessage>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetExitMessages"), typeof(Task<List<ExitMessage>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExitMessages"), typeof(Task<List<ExitMessage>>)) is Task<List<ExitMessage>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<ExitMessage>>");
+			}
 		}
 
-		public async Task<List<PatreonFundingEvent>> GetPatreonFundingEvents()
+		public Task<List<PatreonFundingEvent>> GetPatreonFundingEvents()
 		{
-			return (Task<List<PatreonFundingEvent>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetPatreonFundingEvents"), typeof(Task<List<PatreonFundingEvent>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPatreonFundingEvents"), typeof(Task<List<PatreonFundingEvent>>)) is Task<List<PatreonFundingEvent>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<PatreonFundingEvent>>");
+			}
 		}
 
-		public async IAsyncEnumerable<RecordAuditInfo> GetRecordAuditLog(string ownerId)
+		public ResoniteBridge.ResoniteBridgeValue GetRecordAuditLog(System.String ownerId)
 		{
-			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<RecordAuditInfo>");
+			}
 		}
 
-		public async Task DownloadAsset(string hash, string targetPath)
+		public Task DownloadAsset(System.String hash, System.String targetPath)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DownloadAsset", hash, targetPath), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DownloadAsset", hash, targetPath), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public int FetchedRecordCount(string ownerId)
+		public System.Int32 FetchedRecordCount(System.String ownerId)
 		{
-			return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FetchedRecordCount", ownerId), typeof(int));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FetchedRecordCount", ownerId), typeof(System.Int32)) is System.Int32 __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to int");
+			}
 		}
 
-		public async Task<string> GetAsset(string hash)
+		public Task<string> GetAsset(System.String hash)
 		{
-			return (Task<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetAsset", hash), typeof(Task<string>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAsset", hash), typeof(Task<string>)) is Task<string> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<string>");
+			}
 		}
 
-		public async Task<long> GetAssetSize(string hash)
+		public Task<long> GetAssetSize(System.String hash)
 		{
-			return (Task<long>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetAssetSize", hash), typeof(Task<long>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAssetSize", hash), typeof(Task<long>)) is Task<long> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<long>");
+			}
 		}
 
-		private async Task<AssetRecord> GetAssetRecord(string hash)
+		private Task<AssetRecord> GetAssetRecord(System.String hash)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetAssetRecord", hash), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAssetRecord", hash), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
 		public Task<List<Contact>> GetContacts()
 		{
-			return (Task<List<Contact>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetContacts"), typeof(Task<List<Contact>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetContacts"), typeof(Task<List<Contact>>)) is Task<List<Contact>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<Contact>>");
+			}
 		}
 
-		public async IAsyncEnumerable<GroupData> GetGroups()
+		public ResoniteBridge.ResoniteBridgeValue GetGroups()
 		{
-			return (IAsyncEnumerable<GroupData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetGroups"), typeof(IAsyncEnumerable<GroupData>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<GroupData>");
+			}
 		}
 
-		public Task<DateTime> GetLatestMessageTime(string contactId)
+		public Task<DateTime> GetLatestMessageTime(System.String contactId)
 		{
-			return (Task<DateTime>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLatestMessageTime", contactId), typeof(Task<DateTime>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLatestMessageTime", contactId), typeof(Task<DateTime>)) is Task<DateTime> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<DateTime>");
+			}
 		}
 
-		public Task<DateTime?> GetLatestRecordTime(string ownerId)
+		public ResoniteBridge.ResoniteBridgeValue GetLatestRecordTime(System.String ownerId)
 		{
-			return (Task<DateTime?>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetLatestRecordTime", ownerId), typeof(Task<DateTime?>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLatestRecordTime", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<DateTime?>");
+			}
 		}
 
-		public Task<List<MemberData>> GetMembers(string groupId)
+		public Task<List<MemberData>> GetMembers(System.String groupId)
 		{
-			return (Task<List<MemberData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetMembers", groupId), typeof(Task<List<MemberData>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMembers", groupId), typeof(Task<List<MemberData>>)) is Task<List<MemberData>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<MemberData>>");
+			}
 		}
 
-		public IAsyncEnumerable<Message> GetMessages(string contactId, DateTime? from)
+		public ResoniteBridge.ResoniteBridgeValue GetMessages(System.String contactId, DateTime? from)
 		{
-			return (IAsyncEnumerable<Message>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetMessages", contactId, from), typeof(IAsyncEnumerable<Message>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<Message>");
+			}
 		}
 
-		public async Task<SkyFrost.Base.Record> GetRecord(string ownerId, string recordId)
+		public Task<SkyFrost.Base.Record> GetRecord(System.String ownerId, System.String recordId)
 		{
-			return (Task<SkyFrost.Base.Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetRecord", ownerId, recordId), typeof(Task<SkyFrost.Base.Record>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecord", ownerId, recordId), typeof(Task<SkyFrost.Base.Record>)) is Task<SkyFrost.Base.Record> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<SkyFrost.Base.Record>");
+			}
 		}
 
-		private async Task ComputeManifest(Record record)
+		private Task ComputeManifest(Record record)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ComputeManifest", record), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeManifest", record), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async IAsyncEnumerable<SkyFrost.Base.Record> GetRecords(string ownerId, DateTime? from, Action<string> searchProgressReport = null)
+		public ResoniteBridge.ResoniteBridgeValue GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
 		{
-			return (IAsyncEnumerable<SkyFrost.Base.Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(IAsyncEnumerable<SkyFrost.Base.Record>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<SkyFrost.Base.Record>");
+			}
 		}
 
-		public Task<CloudVariable> GetVariable(string ownerId, string path)
+		public Task<CloudVariable> GetVariable(System.String ownerId, System.String path)
 		{
-			return (Task<CloudVariable>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetVariable", ownerId, path), typeof(Task<CloudVariable>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", ownerId, path), typeof(Task<CloudVariable>)) is Task<CloudVariable> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<CloudVariable>");
+			}
 		}
 
-		public Task<List<CloudVariableDefinition>> GetVariableDefinitions(string ownerId)
+		public Task<List<CloudVariableDefinition>> GetVariableDefinitions(System.String ownerId)
 		{
-			return (Task<List<CloudVariableDefinition>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetVariableDefinitions", ownerId), typeof(Task<List<CloudVariableDefinition>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariableDefinitions", ownerId), typeof(Task<List<CloudVariableDefinition>>)) is Task<List<CloudVariableDefinition>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<CloudVariableDefinition>>");
+			}
 		}
 
-		public Task<List<CloudVariable>> GetVariables(string ownerId)
+		public Task<List<CloudVariable>> GetVariables(System.String ownerId)
 		{
-			return (Task<List<CloudVariable>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetVariables", ownerId), typeof(Task<List<CloudVariable>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariables", ownerId), typeof(Task<List<CloudVariable>>)) is Task<List<CloudVariable>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<CloudVariable>>");
+			}
 		}
 
 		public Task Prepare()
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Prepare"), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Prepare"), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public Task<AssetData> ReadAsset(string hash)
+		public Task<AssetData> ReadAsset(System.String hash)
 		{
-			return (Task<AssetData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReadAsset", hash), typeof(Task<AssetData>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadAsset", hash), typeof(Task<AssetData>)) is Task<AssetData> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetData>");
+			}
 		}
 
 		public Task StoreContact(Contact contact, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreContact", contact, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreContact", contact, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreDefinitions(List<CloudVariableDefinition> definition, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreDefinitions", definition, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreDefinitions", definition, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreGroup(Group group, Storage storage, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreGroup", group, storage, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreGroup", group, storage, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreMember(Group group, Member member, Storage storage, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreMember", group, member, storage, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreMember", group, member, storage, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreMessage(Message message, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreMessage", message, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreMessage", message, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public Task<StoreResultData> StoreRecord(SkyFrost.Base.Record record, IAccountDataStore source, RecordStatusCallbacks statusCallbacks = null, bool forceConflictOverwrite = false)
+		public Task<StoreResultData> StoreRecord(SkyFrost.Base.Record record, IAccountDataStore source, RecordStatusCallbacks statusCallbacks = null, System.Boolean forceConflictOverwrite = false)
 		{
-			return (Task<StoreResultData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreRecord", record, source, statusCallbacks, forceConflictOverwrite), typeof(Task<StoreResultData>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreRecord", record, source, statusCallbacks, forceConflictOverwrite), typeof(Task<StoreResultData>)) is Task<StoreResultData> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<StoreResultData>");
+			}
 		}
 
 		public Task StoreVariables(List<CloudVariable> variable, IAccountDataStore source)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreVariables", variable, source), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreVariables", variable, source), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreUserData(User user)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreUserData", user), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreUserData", user), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreExitMessage(ExitMessage exitMessage)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreExitMessage", exitMessage), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreExitMessage", exitMessage), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreFundingEvent(PatreonFundingEvent patreonFunding)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreFundingEvent", patreonFunding), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreFundingEvent", patreonFunding), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Task StoreRecordAudit(RecordAuditInfo info)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreRecordAudit", info), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreRecordAudit", info), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -503,17 +669,21 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalDatabaseAccountDataStore(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public LocalDatabaseAccountDataStore()
+		{
 		}
 	}
 	public class LocalDB : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
@@ -531,30 +701,24 @@ namespace FrooxEngine.Store
 			{
 				get
 				{
-					return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "value"), typeof(T));
+					return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "value"), typeof(T));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "value", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "value", value);
 				}
 			}
 
-			public bool hasValue
+			public System.Boolean hasValue
 			{
 				get
 				{
-					return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "hasValue"), typeof(bool));
+					return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "hasValue"), typeof(System.Boolean));
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "hasValue", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "hasValue", value);
 				}
-			}
-
-			public VariableResult(T value)
-			{
-				this.value = value;
-				hasValue = true;
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -563,17 +727,21 @@ namespace FrooxEngine.Store
 			{
 				get
 				{
-					return this.__backing;
+					return __backing;
 				}
 				set
 				{
-					this.__backing = value;
+					__backing = value;
 				}
 			}
 
 			public VariableResult(ResoniteBridge.ResoniteBridgeValue value)
 			{
-				this.__Backing = value;
+				__backing = value;
+			}
+
+			public VariableResult()
+			{
 			}
 		}
 
@@ -589,99 +757,99 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private bool markedForRepair
+		private System.Boolean markedForRepair
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "markedForRepair"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "markedForRepair"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "markedForRepair", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "markedForRepair", value);
 			}
 		}
 
-		private string initSubphase
+		private System.String initSubphase
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "initSubphase"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "initSubphase"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "initSubphase", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "initSubphase", value);
 			}
 		}
 
-		private LiteDatabaseAsync appDB
+		private ResoniteBridge.ResoniteBridgeValue appDB
 		{
 			get
 			{
-				return (LiteDatabaseAsync)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "appDB"), typeof(LiteDatabaseAsync));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "appDB"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "appDB", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "appDB", value);
 			}
 		}
 
-		private ILiteCollectionAsync<AssetRecord> assets
+		private ResoniteBridge.ResoniteBridgeValue assets
 		{
 			get
 			{
-				return (ILiteCollectionAsync<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "assets"), typeof(ILiteCollectionAsync<AssetRecord>));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assets"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "assets", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "assets", value);
 			}
 		}
 
-		private ILiteCollectionAsync<Record> records
+		private ResoniteBridge.ResoniteBridgeValue records
 		{
 			get
 			{
-				return (ILiteCollectionAsync<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "records"), typeof(ILiteCollectionAsync<Record>));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "records"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "records", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "records", value);
 			}
 		}
 
-		private ILiteCollectionAsync<LocalVariable> variables
+		private ResoniteBridge.ResoniteBridgeValue variables
 		{
 			get
 			{
-				return (ILiteCollectionAsync<LocalVariable>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "variables"), typeof(ILiteCollectionAsync<LocalVariable>));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variables"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "variables", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "variables", value);
 			}
 		}
 
-		private ILiteCollectionAsync<LocalVisit> visits
+		private ResoniteBridge.ResoniteBridgeValue visits
 		{
 			get
 			{
-				return (ILiteCollectionAsync<LocalVisit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "visits"), typeof(ILiteCollectionAsync<LocalVisit>));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "visits"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "visits", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "visits", value);
 			}
 		}
 
-		private ILiteCollectionAsync<LocalMetadata> assetMetadata
+		private ResoniteBridge.ResoniteBridgeValue assetMetadata
 		{
 			get
 			{
-				return (ILiteCollectionAsync<LocalMetadata>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "assetMetadata"), typeof(ILiteCollectionAsync<LocalMetadata>));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assetMetadata"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "assetMetadata", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "assetMetadata", value);
 			}
 		}
 
@@ -689,47 +857,47 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_precachePaths"), typeof(HashSet<string>));
+				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_precachePaths"), typeof(HashSet<string>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_precachePaths", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_precachePaths", value);
 			}
 		}
 
-		private string RepairMarkFile
+		private System.String RepairMarkFile
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "RepairMarkFile"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "RepairMarkFile"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "RepairMarkFile", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "RepairMarkFile", value);
 			}
 		}
 
-		private RSACryptoServiceProvider _machineCryptoProvider
+		private ResoniteBridge.ResoniteBridgeValue _machineCryptoProvider
 		{
 			get
 			{
-				return (RSACryptoServiceProvider)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_machineCryptoProvider"), typeof(RSACryptoServiceProvider));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_machineCryptoProvider"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_machineCryptoProvider", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_machineCryptoProvider", value);
 			}
 		}
 
-		private RSAParameters _localMachineKey
+		private ResoniteBridge.ResoniteBridgeValue _localMachineKey
 		{
 			get
 			{
-				return (RSAParameters)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_localMachineKey"), typeof(RSAParameters));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_localMachineKey"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_localMachineKey", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_localMachineKey", value);
 			}
 		}
 
@@ -761,35 +929,35 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Dictionary<string, List<Action>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "variableListeners"), typeof(Dictionary<string, List<Action>>));
+				return (Dictionary<string, List<Action>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variableListeners"), typeof(Dictionary<string, List<Action>>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "variableListeners", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "variableListeners", value);
 			}
 		}
 
-		public int IV_SIZE
+		public System.Int32 IV_SIZE
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "IV_SIZE"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "IV_SIZE"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "IV_SIZE", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "IV_SIZE", value);
 			}
 		}
 
-		public int KEY_SIZE
+		public System.Int32 KEY_SIZE
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "KEY_SIZE"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "KEY_SIZE"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "KEY_SIZE", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "KEY_SIZE", value);
 			}
 		}
 
@@ -797,127 +965,151 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (SkyFrostInterface)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Cloud"), typeof(SkyFrostInterface));
+				return (SkyFrostInterface)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Cloud"), typeof(SkyFrostInterface));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Cloud", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Cloud", value);
 			}
 		}
 
-		public bool DatabaseCorrupted => markedForRepair;
-
-		public string PermanentPath
+		public System.Boolean DatabaseCorrupted
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "PermanentPath"), typeof(string));
-			}
-			set
-			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "PermanentPath", value);
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseCorrupted"), typeof(System.Boolean));
 			}
 		}
 
-		public string TemporaryPath
+		public System.String PermanentPath
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "TemporaryPath"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PermanentPath"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "TemporaryPath", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "PermanentPath", value);
 			}
 		}
 
-		public string AssetCachePath
+		public System.String TemporaryPath
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "AssetCachePath"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TemporaryPath"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "AssetCachePath", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "TemporaryPath", value);
 			}
 		}
 
-		public string AssetStoragePath
+		public System.String AssetCachePath
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "AssetStoragePath"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetCachePath"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "AssetStoragePath", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "AssetCachePath", value);
 			}
 		}
 
-		public string DatabaseFile
+		public System.String AssetStoragePath
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "DatabaseFile"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetStoragePath"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "DatabaseFile", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "AssetStoragePath", value);
 			}
 		}
 
-		public string LocalKeyFile
+		public System.String DatabaseFile
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LocalKeyFile"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseFile"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LocalKeyFile", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "DatabaseFile", value);
 			}
 		}
 
-		public string MachineID
+		public System.String LocalKeyFile
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "MachineID"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalKeyFile"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "MachineID", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LocalKeyFile", value);
 			}
 		}
 
-		public string SecretMachineID
+		public System.String MachineID
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "SecretMachineID"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineID"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "SecretMachineID", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "MachineID", value);
 			}
 		}
 
-		public string LocalOwnerID => "M-" + MachineID;
-
-		public byte[] PublicKeyExponent => _localMachineKey.Exponent;
-
-		public byte[] PublicKeyModulus => _localMachineKey.Modulus;
-
-		public bool IsDisposed
+		public System.String SecretMachineID
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsDisposed"), typeof(bool));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineID"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsDisposed", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "SecretMachineID", value);
+			}
+		}
+
+		public System.String LocalOwnerID
+		{
+			get
+			{
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalOwnerID"), typeof(System.String));
+			}
+		}
+
+		public byte[] PublicKeyExponent
+		{
+			get
+			{
+				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyExponent"), typeof(byte[]));
+			}
+		}
+
+		public byte[] PublicKeyModulus
+		{
+			get
+			{
+				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyModulus"), typeof(byte[]));
+			}
+		}
+
+		public System.Boolean IsDisposed
+		{
+			get
+			{
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDisposed"), typeof(System.Boolean));
+			}
+			set
+			{
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsDisposed", value);
 			}
 		}
 
@@ -950,387 +1142,817 @@ namespace FrooxEngine.Store
 
 		public byte[] SignHash(byte[] hash)
 		{
-			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SignHash", hash), typeof(byte[]));
-		}
-
-		public static string GenerateGUIDSignature()
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateGUIDSignature"), typeof(string));
-		}
-
-		public static bool IsValidMachineId(string machineId)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidMachineId", machineId), typeof(bool));
-		}
-
-		public static string GenerateMachineID(RSAParameters rsa)
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMachineID", rsa), typeof(string));
-		}
-
-		public static bool MachineIdMatches(string machineId, RSAParameters rsa)
-		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "MachineIdMatches", machineId, rsa), typeof(bool));
-		}
-
-		public static byte[] HashPublicKey(RSAParameters rsa)
-		{
-			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "HashPublicKey", rsa), typeof(byte[]));
-		}
-
-		public static string ProcessUrl(Uri url)
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessUrl", url), typeof(string));
-		}
-
-		public static string ProcessUrl(string url)
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessUrl", url), typeof(string));
-		}
-
-		public async Task<int> GetRecordCount()
-		{
-			return (Task<int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetRecordCount"), typeof(Task<int>));
-		}
-
-		public unsafe static string ProcessConnection(string connection, string seed)
-		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessConnection", connection, seed), typeof(string));
-		}
-
-		public async Task Initialize(IProgressIndicator progress)
-		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Initialize", progress), typeof(Task));
-		}
-
-		public LocalDB(SkyFrostInterface cloud, string permanentPath, string temporaryPath, HashSet<string> precachePaths)
-		{
-			if (cloud != null)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SignHash", hash), typeof(byte[])) is byte[] __retCasted)
 			{
-				AssignCloud(cloud);
+				return __retCasted;
 			}
-			if (permanentPath == null)
+			else
 			{
-				throw new ArgumentNullException("permanentPath");
+				throw new InvalidCastException("Cannot cast result to byte[]");
 			}
-			if (temporaryPath == null)
+		}
+
+		public static System.String GenerateGUIDSignature()
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateGUIDSignature"), typeof(System.String)) is System.String __retCasted)
 			{
-				throw new ArgumentNullException("temporaryPath");
+				return __retCasted;
 			}
-			Cloud = cloud;
-			PermanentPath = permanentPath;
-			TemporaryPath = temporaryPath;
-			_precachePaths = precachePaths;
-			AssetCachePath = Path.Combine(TemporaryPath, "Cache");
-			AssetStoragePath = Path.Combine(PermanentPath, "Assets");
-			LocalKeyFile = Path.Combine(PermanentPath, "LocalKey.bin");
-			DatabaseFile = Path.Combine(PermanentPath, "Data.litedb");
-			RepairMarkFile = Path.Combine(PermanentPath, "DatabaseRepair.mark");
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
+		}
+
+		public static System.Boolean IsValidMachineId(System.String machineId)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidMachineId", machineId), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public static System.String GenerateMachineID(ResoniteBridge.ResoniteBridgeValue rsa)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMachineID", rsa), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
+		}
+
+		public static System.Boolean MachineIdMatches(System.String machineId, ResoniteBridge.ResoniteBridgeValue rsa)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "MachineIdMatches", machineId, rsa), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
+		}
+
+		public static byte[] HashPublicKey(ResoniteBridge.ResoniteBridgeValue rsa)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "HashPublicKey", rsa), typeof(byte[])) is byte[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to byte[]");
+			}
+		}
+
+		public static System.String ProcessUrl(ResoniteBridge.ResoniteBridgeValue url)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessUrl", url), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
+		}
+
+		public static System.String ProcessUrl(System.String url)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessUrl", url), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
+		}
+
+		public Task<int> GetRecordCount()
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordCount"), typeof(Task<int>)) is Task<int> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<int>");
+			}
+		}
+
+		public unsafe static System.String ProcessConnection(System.String connection, System.String seed)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessConnection", connection, seed), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
+		}
+
+		public Task Initialize(IProgressIndicator progress)
+		{
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", progress), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public void AssignCloud(SkyFrostInterface cloud)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "AssignCloud", cloud);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AssignCloud", cloud);
 		}
 
 		public void Dispose()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Dispose");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
 		}
 
 		public void CheckValid()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "CheckValid");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CheckValid");
 		}
 
-		public string GetTempFileName(string extension)
+		public System.String GetTempFileName(System.String extension)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetTempFileName", extension), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTempFileName", extension), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string GetTempFilePath(string extension)
+		public System.String GetTempFilePath(System.String extension)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetTempFilePath", extension), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTempFilePath", extension), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public string GetTempFilePath()
+		public System.String GetTempFilePath()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetTempFilePath"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTempFilePath"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public bool IsPathWithinDatabase(string path)
+		public System.Boolean IsPathWithinDatabase(System.String path)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "IsPathWithinDatabase", path), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPathWithinDatabase", path), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
-		private async Task MarkDatabaseForRepair(Exception ex)
+		private Task MarkDatabaseForRepair(Exception ex)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "MarkDatabaseForRepair", ex), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkDatabaseForRepair", ex), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public List<T> RepairExtractAllEntries<T>(LiteDatabase database, string collectionName, Func<T, string> uniqueKeySelector = null)
+		public List<T> RepairExtractAllEntries<T>(ResoniteBridge.ResoniteBridgeValue database, System.String collectionName, Func<T, string> uniqueKeySelector = null)
 		{
-			return (List<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "RepairExtractAllEntries", database, collectionName, uniqueKeySelector), typeof(List<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RepairExtractAllEntries", database, collectionName, uniqueKeySelector), typeof(List<T>)) is List<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to List<T>");
+			}
 		}
 
-		public Uri GenerateLocalURL(string extension, string signature = null)
+		public ResoniteBridge.ResoniteBridgeValue GenerateLocalURL(System.String extension, System.String signature = null)
 		{
-			return (Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GenerateLocalURL", extension, signature), typeof(Uri));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateLocalURL", extension, signature), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Uri");
+			}
 		}
 
-		public async Task<Uri> ImportLocalAssetAsync(string path, ImportLocation location, string forceSignature = null, string cloudSig = null)
+		public Task<ResoniteBridge.ResoniteBridgeValue> ImportLocalAssetAsync(System.String path, ImportLocation location, System.String forceSignature = null, System.String cloudSig = null)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ImportLocalAssetAsync", path, location, forceSignature, cloudSig), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ImportLocalAssetAsync", path, location, forceSignature, cloudSig), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public async Task<List<AssetRecord>> GetAllVariantsAsync(Uri assetURL)
+		public Task<List<AssetRecord>> GetAllVariantsAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
 		{
-			return (Task<List<AssetRecord>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetAllVariantsAsync", assetURL), typeof(Task<List<AssetRecord>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAllVariantsAsync", assetURL), typeof(Task<List<AssetRecord>>)) is Task<List<AssetRecord>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<AssetRecord>>");
+			}
 		}
 
-		public async Task<string> StoreCacheRecordAsync(Uri assetURL, string path, bool encrypt = false)
+		public Task<string> StoreCacheRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.String path, System.Boolean encrypt = false)
 		{
-			return (Task<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreCacheRecordAsync", assetURL, path, encrypt), typeof(Task<string>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreCacheRecordAsync", assetURL, path, encrypt), typeof(Task<string>)) is Task<string> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<string>");
+			}
 		}
 
-		public async Task DeleteCacheRecordAsync(Uri assetURL)
+		public Task DeleteCacheRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DeleteCacheRecordAsync", assetURL), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteCacheRecordAsync", assetURL), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task StoreAssetRecordAsync(Uri assetURL, string path, byte[] encryptionKey = null)
+		public Task StoreAssetRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.String path, byte[] encryptionKey = null)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreAssetRecordAsync", assetURL, path, encryptionKey), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreAssetRecordAsync", assetURL, path, encryptionKey), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		private async Task InsertAssetRecordAsync(AssetRecord assetRecord)
+		private Task InsertAssetRecordAsync(AssetRecord assetRecord)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "InsertAssetRecordAsync", assetRecord), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertAssetRecordAsync", assetRecord), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		private async Task InsertRecordAsync(Record record)
+		private Task InsertRecordAsync(Record record)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "InsertRecordAsync", record), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertRecordAsync", record), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<Uri> EnsurePermanentStorageAsync(Uri assetURL, bool ignoreMissing = false)
+		public Task<ResoniteBridge.ResoniteBridgeValue> EnsurePermanentStorageAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.Boolean ignoreMissing = false)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "EnsurePermanentStorageAsync", assetURL, ignoreMissing), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsurePermanentStorageAsync", assetURL, ignoreMissing), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public async Task<AssetRecord> TryFetchAssetBySignatureAsync(string signature)
+		public Task<AssetRecord> TryFetchAssetBySignatureAsync(System.String signature)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetBySignatureAsync", signature), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetBySignatureAsync", signature), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
-		public async Task<AssetRecord> TryFetchAssetByCloudSignatureAsync(string hash)
+		public Task<AssetRecord> TryFetchAssetByCloudSignatureAsync(System.String hash)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetByCloudSignatureAsync", hash), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetByCloudSignatureAsync", hash), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
-		private async Task<AssetRecord> FindAssetRecordWithExistingAsset(Expression<Func<AssetRecord, bool>> predicate)
+		private Task<AssetRecord> FindAssetRecordWithExistingAsset(ResoniteBridge.ResoniteBridgeValue predicate)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FindAssetRecordWithExistingAsset", predicate), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindAssetRecordWithExistingAsset", predicate), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
-		public async Task<AssetRecord> TryFetchAssetRecordAsync(Uri assetURL)
+		public Task<AssetRecord> TryFetchAssetRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetRecordAsync", assetURL), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetRecordAsync", assetURL), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
-		public async Task<Stream> TryOpenAsset(Uri assetURL)
+		public Task<Stream> TryOpenAsset(ResoniteBridge.ResoniteBridgeValue assetURL)
 		{
-			return (Task<Stream>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryOpenAsset", assetURL), typeof(Task<Stream>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryOpenAsset", assetURL), typeof(Task<Stream>)) is Task<Stream> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Stream>");
+			}
 		}
 
-		public async Task<AssetRecord> TryFetchAssetRecordWithMetadataAsync(Uri assetURL)
+		public Task<AssetRecord> TryFetchAssetRecordWithMetadataAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
 		{
-			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetRecordWithMetadataAsync", assetURL), typeof(Task<AssetRecord>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetRecordWithMetadataAsync", assetURL), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+			}
 		}
 
 		private void UnpackAssetRecord(AssetRecord record)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "UnpackAssetRecord", record);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnpackAssetRecord", record);
 		}
 
 		private void PackAssetRecord(AssetRecord record)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "PackAssetRecord", record);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PackAssetRecord", record);
 		}
 
-		public async Task<IAssetMetadata> TryFetchAssetMetadataAsync(string identifier)
+		public Task<IAssetMetadata> TryFetchAssetMetadataAsync(System.String identifier)
 		{
-			return (Task<IAssetMetadata>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetMetadataAsync", identifier), typeof(Task<IAssetMetadata>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetMetadataAsync", identifier), typeof(Task<IAssetMetadata>)) is Task<IAssetMetadata> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<IAssetMetadata>");
+			}
 		}
 
-		public async Task<T> TryFetchAssetMetadataAsync<T>(string identifier) where T : class, IAssetMetadata
+		public Task<T> TryFetchAssetMetadataAsync<T>(System.String identifier) where T : class, IAssetMetadata
 		{
-			return (Task<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchAssetMetadataAsync", identifier), typeof(Task<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetMetadataAsync", identifier), typeof(Task<T>)) is Task<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<T>");
+			}
 		}
 
-		public string MetadataIdentifier(IAssetMetadata metadata)
+		public System.String MetadataIdentifier(IAssetMetadata metadata)
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "MetadataIdentifier", metadata), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MetadataIdentifier", metadata), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public async Task SaveAssetMetadataAsync(IAssetMetadata metadata)
+		public Task SaveAssetMetadataAsync(IAssetMetadata metadata)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetMetadataAsync", metadata), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetMetadataAsync", metadata), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<Record> TryFetchRecordAsync(string ownerId, string recordId)
+		public Task<Record> TryFetchRecordAsync(System.String ownerId, System.String recordId)
 		{
-			return (Task<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryFetchRecordAsync", ownerId, recordId), typeof(Task<Record>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchRecordAsync", ownerId, recordId), typeof(Task<Record>)) is Task<Record> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Record>");
+			}
 		}
 
-		public async Task<bool> StoreRecordAsync(Record record, Func<Record, bool> overwriteCheck = null)
+		public Task<bool> StoreRecordAsync(Record record, Func<Record, bool> overwriteCheck = null)
 		{
-			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "StoreRecordAsync", record, overwriteCheck), typeof(Task<bool>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreRecordAsync", record, overwriteCheck), typeof(Task<bool>)) is Task<bool> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<bool>");
+			}
 		}
 
-		public async Task<bool> DeleteRecordAsync(Uri recordUri)
+		public Task<bool> DeleteRecordAsync(ResoniteBridge.ResoniteBridgeValue recordUri)
 		{
-			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DeleteRecordAsync", recordUri), typeof(Task<bool>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteRecordAsync", recordUri), typeof(Task<bool>)) is Task<bool> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<bool>");
+			}
 		}
 
-		public async Task<bool> DeleteRecordAsync(string ownerId, string recordId)
+		public Task<bool> DeleteRecordAsync(System.String ownerId, System.String recordId)
 		{
-			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DeleteRecordAsync", ownerId, recordId), typeof(Task<bool>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteRecordAsync", ownerId, recordId), typeof(Task<bool>)) is Task<bool> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<bool>");
+			}
 		}
 
-		public async Task<bool> DeleteRecordAsync(Record record)
+		public Task<bool> DeleteRecordAsync(Record record)
 		{
-			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DeleteRecordAsync", record), typeof(Task<bool>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteRecordAsync", record), typeof(Task<bool>)) is Task<bool> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<bool>");
+			}
 		}
 
-		public async Task UpdateRecordAsync(string ownerId, string recordId, Func<Record, bool> updateFunc)
+		public Task UpdateRecordAsync(System.String ownerId, System.String recordId, Func<Record, bool> updateFunc)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "UpdateRecordAsync", ownerId, recordId, updateFunc), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateRecordAsync", ownerId, recordId, updateFunc), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<List<Record>> FetchRecordsAsync(Expression<Func<Record, bool>> predicate)
+		public Task<List<Record>> FetchRecordsAsync(ResoniteBridge.ResoniteBridgeValue predicate)
 		{
-			return (Task<List<Record>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FetchRecordsAsync", predicate), typeof(Task<List<Record>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FetchRecordsAsync", predicate), typeof(Task<List<Record>>)) is Task<List<Record>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<List<Record>>");
+			}
 		}
 
-		public async Task<Record> FetchRecordAsync(Expression<Func<Record, bool>> predicate)
+		public Task<Record> FetchRecordAsync(ResoniteBridge.ResoniteBridgeValue predicate)
 		{
-			return (Task<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "FetchRecordAsync", predicate), typeof(Task<Record>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FetchRecordAsync", predicate), typeof(Task<Record>)) is Task<Record> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Record>");
+			}
 		}
 
-		public async Task<Uri> SaveAssetAsync(Bitmap2D texture, string extension = "webp", int quality = int.MaxValue, bool preserveColorInAlpha = true)
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(Bitmap2D texture, System.String extension = "webp", System.Int32 quality = int.MaxValue, System.Boolean preserveColorInAlpha = true)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", texture, extension, quality, preserveColorInAlpha), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension, quality, preserveColorInAlpha), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public Task<Uri> SaveAssetAsync(Bitmap3D texture, string extension = "3dtex")
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(Bitmap3D texture, System.String extension = "3dtex")
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", texture, extension), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public Task<Uri> SaveAssetAsync(MeshX mesh, MeshX.Encoding encoding = MeshX.Encoding.LZ4)
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(MeshX mesh, MeshX.Encoding encoding = MeshX.Encoding.LZ4)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", mesh, encoding), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", mesh, encoding), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public Task<Uri> SaveAssetAsync(AnimX anim, AnimX.Encoding encoding = AnimX.Encoding.LZMA)
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(AnimX anim, AnimX.Encoding encoding = AnimX.Encoding.LZMA)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", anim, encoding), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", anim, encoding), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public Task<Uri> SaveAssetAsync(BitmapCube texture)
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(BitmapCube texture)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", texture), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public Task<Uri> SaveAssetAsync(AudioX audio, AudioEncodeSettings encodeSettings = null)
+		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(AudioX audio, AudioEncodeSettings encodeSettings = null)
 		{
-			return (Task<Uri>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "SaveAssetAsync", audio, encodeSettings), typeof(Task<Uri>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", audio, encodeSettings), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+			}
 		}
 
-		public void RegisterVariableListener(string path, Action callback)
+		public void RegisterVariableListener(System.String path, Action callback)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "RegisterVariableListener", path, callback);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterVariableListener", path, callback);
 		}
 
-		public void UnregisterVariableListener(string path, Action callback)
+		public void UnregisterVariableListener(System.String path, Action callback)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "UnregisterVariableListener", path, callback);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnregisterVariableListener", path, callback);
 		}
 
-		public async Task<LocalVariable> GetVariableAsync(string path)
+		public Task<LocalVariable> GetVariableAsync(System.String path)
 		{
-			return (Task<LocalVariable>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetVariableAsync", path), typeof(Task<LocalVariable>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariableAsync", path), typeof(Task<LocalVariable>)) is Task<LocalVariable> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<LocalVariable>");
+			}
 		}
 
-		public async Task<T> ReadVariableOrCreateAsync<T>(string path, T def = default(T))
+		public Task<T> ReadVariableOrCreateAsync<T>(System.String path, T def = default(T))
 		{
-			return (Task<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReadVariableOrCreateAsync", path, def), typeof(Task<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariableOrCreateAsync", path, def), typeof(Task<T>)) is Task<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<T>");
+			}
 		}
 
-		public async Task<T> ReadVariableAsync<T>(string path, T def = default(T))
+		public Task<T> ReadVariableAsync<T>(System.String path, T def = default(T))
 		{
-			return (Task<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReadVariableAsync", path, def), typeof(Task<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariableAsync", path, def), typeof(Task<T>)) is Task<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<T>");
+			}
 		}
 
-		public async Task<VariableResult<T>> TryReadVariableAsync<T>(string path)
+		public Task<VariableResult<T>> TryReadVariableAsync<T>(System.String path)
 		{
-			return (Task<VariableResult<T>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "TryReadVariableAsync", path), typeof(Task<VariableResult<T>>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryReadVariableAsync", path), typeof(Task<VariableResult<T>>)) is Task<VariableResult<T>> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<VariableResult<T>>");
+			}
 		}
 
-		public async Task<T> ReadOrInitVariableAsync<T>(string path, T initValue)
+		public Task<T> ReadOrInitVariableAsync<T>(System.String path, T initValue)
 		{
-			return (Task<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReadOrInitVariableAsync", path, initValue), typeof(Task<T>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadOrInitVariableAsync", path, initValue), typeof(Task<T>)) is Task<T> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<T>");
+			}
 		}
 
-		public async Task WriteVariableAsync<T>(string path, T value)
+		public Task WriteVariableAsync<T>(System.String path, T value)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "WriteVariableAsync", path, value), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WriteVariableAsync", path, value), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<string> ReadVariableAsync(string path)
+		public Task<string> ReadVariableAsync(System.String path)
 		{
-			return (Task<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReadVariableAsync", path), typeof(Task<string>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariableAsync", path), typeof(Task<string>)) is Task<string> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<string>");
+			}
 		}
 
-		public async Task WriteVariableAsync(string path, string value)
+		public Task WriteVariableAsync(System.String path, System.String value)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "WriteVariableAsync", path, value), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WriteVariableAsync", path, value), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
-		public async Task<bool> DeleteVariableAsync(string path)
+		public Task<bool> DeleteVariableAsync(System.String path)
 		{
-			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "DeleteVariableAsync", path), typeof(Task<bool>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteVariableAsync", path), typeof(Task<bool>)) is Task<bool> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<bool>");
+			}
 		}
 
-		public async Task<LocalVisit> GetVisitAsync(string url)
+		public Task<LocalVisit> GetVisitAsync(System.String url)
 		{
-			return (Task<LocalVisit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetVisitAsync", url), typeof(Task<LocalVisit>));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVisitAsync", url), typeof(Task<LocalVisit>)) is Task<LocalVisit> __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task<LocalVisit>");
+			}
 		}
 
-		public async Task LogVisitAsync(string url, int globalVersion = 0)
+		public Task LogVisitAsync(System.String url, System.Int32 globalVersion = 0)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "LogVisitAsync", url, globalVersion), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LogVisitAsync", url, globalVersion), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 
 		public Stream OpenAssetRead(AssetRecord record)
 		{
-			return (Stream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "OpenAssetRead", record), typeof(Stream));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OpenAssetRead", record), typeof(Stream)) is Stream __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Stream");
+			}
 		}
 
 		public static byte[] GenerateKey()
 		{
-			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateKey"), typeof(byte[]));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateKey"), typeof(byte[])) is byte[] __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to byte[]");
+			}
 		}
 
-		public static CryptoStream CreateEncryptionStream(byte[] key, Stream outputStream)
+		public static ResoniteBridge.ResoniteBridgeValue CreateEncryptionStream(byte[] key, Stream outputStream)
 		{
-			return (CryptoStream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncryptionStream", key, outputStream), typeof(CryptoStream));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncryptionStream", key, outputStream), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to CryptoStream");
+			}
 		}
 
-		public static CryptoStream CreateDecryptionStream(byte[] key, Stream inputStream)
+		public static ResoniteBridge.ResoniteBridgeValue CreateDecryptionStream(byte[] key, Stream inputStream)
 		{
-			return (CryptoStream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateDecryptionStream", key, inputStream), typeof(CryptoStream));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateDecryptionStream", key, inputStream), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to CryptoStream");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1339,61 +1961,68 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalDB(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public static class LocalDBUtility
 	{
-		public static async Task ExportData(string persistentPath, string tempPath, string exportPath)
+		public static Task ExportData(System.String persistentPath, System.String tempPath, System.String exportPath)
 		{
-			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDBUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "ExportData", persistentPath, tempPath, exportPath), typeof(Task));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDBUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "ExportData", persistentPath, tempPath, exportPath), typeof(Task)) is Task __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Task");
+			}
 		}
 	}
 	public class LocalMetadata : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public int id
+		public System.Int32 id
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "id"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "id", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "id", value);
 			}
 		}
 
-		public string MetadataId
+		public System.String MetadataId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "MetadataId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MetadataId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "MetadataId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "MetadataId", value);
 			}
 		}
 
-		public string Metadata
+		public System.String Metadata
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Metadata"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Metadata"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Metadata", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Metadata", value);
 			}
 		}
 
@@ -1403,54 +2032,54 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalMetadata(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public class LocalVariable : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public int id
+		public System.Int32 id
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "id"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "id", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "id", value);
 			}
 		}
 
-		public string path
+		public System.String path
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "path"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "path", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "path", value);
 			}
 		}
 
-		public string value
+		public System.String value
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "value"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "value"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "value", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "value", value);
 			}
 		}
 
@@ -1460,30 +2089,30 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalVariable(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	public class LocalVariableProxy<T> : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private string path
+		private System.String path
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "path"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "path"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "path", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "path", value);
 			}
 		}
 
@@ -1491,11 +2120,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "currentValue"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "currentValue"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "currentValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "currentValue", value);
 			}
 		}
 
@@ -1503,11 +2132,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "defaultValue"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "defaultValue", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "defaultValue", value);
 			}
 		}
 
@@ -1515,11 +2144,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "db"), typeof(LocalDB));
+				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "db"), typeof(LocalDB));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "db", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "db", value);
 			}
 		}
 
@@ -1527,40 +2156,37 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Value"), typeof(T));
+				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Value"), typeof(T));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Value", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Value", value);
 			}
 		}
 
-		public string Path => path;
+		public System.String Path
+		{
+			get
+			{
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+			}
+		}
 
 		public event Action<LocalVariableProxy<T>> OnChanged;
 
-		public LocalVariableProxy(LocalDB db, string path, T defaultValue)
-		{
-			this.db = db;
-			this.path = path;
-			this.defaultValue = defaultValue;
-			db.RegisterVariableListener(path, OnVariableChanged);
-			OnVariableChanged();
-		}
-
 		private void OnVariableChanged()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "OnVariableChanged");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnVariableChanged");
 		}
 
 		public void Dispose()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Dispose");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
 		}
 
 		public static implicit operator T(LocalVariableProxy<T> proxy)
 		{
-			return proxy.Value;
+			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalVariableProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", proxy), typeof(T));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -1569,54 +2195,58 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalVariableProxy(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
+		}
+
+		public LocalVariableProxy()
+		{
 		}
 	}
 	public class LocalVisit : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public int id
+		public System.Int32 id
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "id"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "id", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "id", value);
 			}
 		}
 
-		public string url
+		public System.String url
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "url"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "url", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "url", value);
 			}
 		}
 
-		public int globalVersion
+		public System.Int32 globalVersion
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "globalVersion"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "globalVersion"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "globalVersion", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "globalVersion", value);
 			}
 		}
 
@@ -1624,11 +2254,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "lastVisit"), typeof(DateTime));
+				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "lastVisit"), typeof(DateTime));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "lastVisit", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "lastVisit", value);
 			}
 		}
 
@@ -1638,17 +2268,17 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public LocalVisit(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 	[Serializable]
@@ -1656,97 +2286,103 @@ namespace FrooxEngine.Store
 	[DataModelType]
 	public class Record : IRecord, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Uri _cachedURL
+		private ResoniteBridge.ResoniteBridgeValue _cachedURL
 		{
 			get
 			{
-				return (Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_cachedURL"), typeof(Uri));
+				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_cachedURL", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_cachedURL", value);
 			}
 		}
 
-		private string _cachedURL_OwnerId
+		private System.String _cachedURL_OwnerId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_cachedURL_OwnerId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_OwnerId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_cachedURL_OwnerId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_cachedURL_OwnerId", value);
 			}
 		}
 
-		private string _cachedURL_RecordId
+		private System.String _cachedURL_RecordId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(this.__Backing, "_cachedURL_RecordId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_RecordId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(this.__Backing, "_cachedURL_RecordId", value);
-			}
-		}
-
-		[System.Text.Json.Serialization.JsonIgnore]
-		public int id
-		{
-			get
-			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "id"), typeof(int));
-			}
-			set
-			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "id", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_cachedURL_RecordId", value);
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
-		public RecordId CombinedRecordId => new RecordId(OwnerId, RecordId);
+		public System.Int32 id
+		{
+			get
+			{
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+			}
+			set
+			{
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "id", value);
+			}
+		}
+
+		[System.Text.Json.Serialization.JsonIgnore]
+		public RecordId CombinedRecordId
+		{
+			get
+			{
+				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId));
+			}
+		}
 
 		[JsonProperty(PropertyName = "id")]
 		[JsonPropertyName("id")]
-		public string RecordId
+		public System.String RecordId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "RecordId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "RecordId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "RecordId", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "ownerId")]
 		[JsonPropertyName("ownerId")]
-		public string OwnerId
+		public System.String OwnerId
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OwnerId"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OwnerId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OwnerId", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "assetUri")]
 		[JsonPropertyName("assetUri")]
-		public string AssetURI
+		public System.String AssetURI
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "AssetURI"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "AssetURI", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "AssetURI", value);
 			}
 		}
 
@@ -1756,24 +2392,24 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Version"), typeof(RecordVersion));
+				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Version", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Version", value);
 			}
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
-		public bool IsSynced
+		public System.Boolean IsSynced
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsSynced"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSynced"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsSynced", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsSynced", value);
 			}
 		}
 
@@ -1782,11 +2418,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Record)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "ConflictingCloudVersion"), typeof(Record));
+				return (Record)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConflictingCloudVersion"), typeof(Record));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "ConflictingCloudVersion", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "ConflictingCloudVersion", value);
 			}
 		}
 
@@ -1795,67 +2431,67 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "FetchedOn"), typeof(DateTime));
+				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedOn"), typeof(DateTime));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "FetchedOn", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "FetchedOn", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "name")]
 		[JsonPropertyName("name")]
-		public string Name
+		public System.String Name
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Name"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Name", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Name", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "description", NullValueHandling = NullValueHandling.Ignore)]
 		[JsonPropertyName("description")]
-		public string Description
+		public System.String Description
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Description"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Description", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Description", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "recordType")]
 		[JsonPropertyName("recordType")]
-		public string RecordType
+		public System.String RecordType
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "RecordType"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "RecordType", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "RecordType", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "ownerName")]
 		[JsonPropertyName("ownerName")]
-		public string OwnerName
+		public System.String OwnerName
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "OwnerName"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "OwnerName", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "OwnerName", value);
 			}
 		}
 
@@ -1865,95 +2501,95 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Tags"), typeof(HashSet<string>));
+				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Tags", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Tags", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "path")]
 		[JsonPropertyName("path")]
-		public string Path
+		public System.String Path
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Path"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Path", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Path", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "thumbnailUri", NullValueHandling = NullValueHandling.Ignore)]
 		[JsonPropertyName("thumbnailUri")]
-		public string ThumbnailURI
+		public System.String ThumbnailURI
 		{
 			get
 			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "ThumbnailURI"), typeof(string));
+				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "ThumbnailURI", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "ThumbnailURI", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "isPublic")]
 		[JsonPropertyName("isPublic")]
-		public bool IsPublic
+		public System.Boolean IsPublic
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsPublic"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsPublic", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsPublic", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "isForPatrons")]
 		[JsonPropertyName("isForPatrons")]
-		public bool IsForPatrons
+		public System.Boolean IsForPatrons
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsForPatrons"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsForPatrons", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsForPatrons", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "isListed")]
 		[JsonPropertyName("isListed")]
-		public bool IsListed
+		public System.Boolean IsListed
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsListed"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsListed", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsListed", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "isReadOnly")]
 		[JsonPropertyName("isReadOnly")]
-		public bool IsReadOnly
+		public System.Boolean IsReadOnly
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsReadOnly"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsReadOnly", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsReadOnly", value);
 			}
 		}
 
@@ -1963,11 +2599,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LastModificationTime"), typeof(DateTime));
+				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LastModificationTime", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LastModificationTime", value);
 			}
 		}
 
@@ -1977,11 +2613,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "RootRecordId"), typeof(RecordId));
+				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RootRecordId"), typeof(RecordId));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "RootRecordId", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "RootRecordId", value);
 			}
 		}
 
@@ -1991,11 +2627,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "CreationTime"), typeof(DateTime?));
+				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "CreationTime", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "CreationTime", value);
 			}
 		}
 
@@ -2005,67 +2641,67 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "FirstPublishTime"), typeof(DateTime?));
+				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "FirstPublishTime", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "FirstPublishTime", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "isDeleted")]
 		[JsonPropertyName("isDeleted")]
-		public bool IsDeleted
+		public System.Boolean IsDeleted
 		{
 			get
 			{
-				return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "IsDeleted"), typeof(bool));
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "IsDeleted", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "IsDeleted", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "visits")]
 		[JsonPropertyName("visits")]
-		public int Visits
+		public System.Int32 Visits
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Visits"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Visits", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Visits", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "rating")]
 		[JsonPropertyName("rating")]
-		public double Rating
+		public System.Double Rating
 		{
 			get
 			{
-				return (double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Rating"), typeof(double));
+				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Rating", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Rating", value);
 			}
 		}
 
 		[JsonProperty(PropertyName = "randomOrder")]
 		[JsonPropertyName("randomOrder")]
-		public int RandomOrder
+		public System.Int32 RandomOrder
 		{
 			get
 			{
-				return (int)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "RandomOrder"), typeof(int));
+				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "RandomOrder", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "RandomOrder", value);
 			}
 		}
 
@@ -2075,11 +2711,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<Submission>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Submissions"), typeof(List<Submission>));
+				return (List<Submission>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Submissions"), typeof(List<Submission>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Submissions", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Submissions", value);
 			}
 		}
 
@@ -2089,11 +2725,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "MigrationMetadata"), typeof(MigrationMetadata));
+				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "MigrationMetadata", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "MigrationMetadata", value);
 			}
 		}
 
@@ -2102,11 +2738,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "Manifest"), typeof(List<string>));
+				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Manifest"), typeof(List<string>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "Manifest", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Manifest", value);
 			}
 		}
 
@@ -2116,17 +2752,29 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "AssetManifest"), typeof(List<DBAsset>));
+				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "AssetManifest", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "AssetManifest", value);
 			}
 		}
 
-		public bool IsValidOwnerId => IdUtil.GetOwnerType(OwnerId) != OwnerType.INVALID;
+		public System.Boolean IsValidOwnerId
+		{
+			get
+			{
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidOwnerId"), typeof(System.Boolean));
+			}
+		}
 
-		public bool IsValidRecordId => RecordHelper.IsValidRecordID(RecordId);
+		public System.Boolean IsValidRecordId
+		{
+			get
+			{
+				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidRecordId"), typeof(System.Boolean));
+			}
+		}
 
 		[Obsolete]
 		[JsonProperty(PropertyName = "neosDBmanifest", NullValueHandling = NullValueHandling.Ignore)]
@@ -2135,11 +2783,11 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LegacyManifest"), typeof(List<DBAsset>));
+				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyManifest"), typeof(List<DBAsset>));
 			}
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LegacyManifest", value);
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LegacyManifest", value);
 			}
 		}
 
@@ -2150,11 +2798,7 @@ namespace FrooxEngine.Store
 		{
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LegacyGlobalVersion", value);
-			}
-			get
-			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LegacyGlobalVersion"), typeof(int?));
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LegacyGlobalVersion", value);
 			}
 		}
 
@@ -2165,97 +2809,120 @@ namespace FrooxEngine.Store
 		{
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LegacyLocalVersion", value);
-			}
-			get
-			{
-				return (int?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LegacyLocalVersion"), typeof(int?));
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LegacyLocalVersion", value);
 			}
 		}
 
 		[Obsolete]
 		[JsonProperty(PropertyName = "lastModifyingUserId")]
 		[JsonPropertyName("lastModifyingUserId")]
-		public string LegacyLastModifyingUserId
+		public System.String LegacyLastModifyingUserId
 		{
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LegacyLastModifyingUserId", value);
-			}
-			get
-			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LegacyLastModifyingUserId"), typeof(string));
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LegacyLastModifyingUserId", value);
 			}
 		}
 
 		[Obsolete]
 		[JsonProperty(PropertyName = "lastModifyingMachineId")]
 		[JsonPropertyName("lastModifyingMachineId")]
-		public string LegacyLastModifyingMachineId
+		public System.String LegacyLastModifyingMachineId
 		{
 			set
 			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(this.__Backing, "LegacyLastModifyingMachineId", value);
-			}
-			get
-			{
-				return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(this.__Backing, "LegacyLastModifyingMachineId"), typeof(string));
+				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LegacyLastModifyingMachineId", value);
 			}
 		}
 
-		public void ReplaceInTags(string oldString, string newString)
+		public void ReplaceInTags(System.String oldString, System.String newString)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ReplaceInTags", oldString, newString);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReplaceInTags", oldString, newString);
 		}
 
 		public void ClearRecordSpecificMetadata()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ClearRecordSpecificMetadata");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearRecordSpecificMetadata");
 		}
 
-		public Uri GetUrl(IPlatformProfile platform)
+		public ResoniteBridge.ResoniteBridgeValue GetUrl(IPlatformProfile platform)
 		{
-			return (Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetUrl", platform), typeof(Uri));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUrl", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Uri");
+			}
 		}
 
-		public Uri GetWebURL(IPlatformProfile platform)
+		public ResoniteBridge.ResoniteBridgeValue GetWebURL(IPlatformProfile platform)
 		{
-			return (Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "GetWebURL", platform), typeof(Uri));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetWebURL", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to Uri");
+			}
 		}
 
-		public override string ToString()
+		public override System.String ToString()
 		{
-			return (string)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ToString"), typeof(string));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to string");
+			}
 		}
 
-		public static bool IsValidId(string recordId)
+		public static System.Boolean IsValidId(System.String recordId)
 		{
-			return (bool)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "Record", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", recordId), typeof(bool));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "Record", ResoniteBridge.ResoniteBridgeValueType.Type), "IsValidId", recordId), typeof(System.Boolean)) is System.Boolean __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to bool");
+			}
 		}
 
 		public void ResetVersioning()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "ResetVersioning");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResetVersioning");
 		}
 
-		public void OverrideGlobalVersion(int globalVersion)
+		public void OverrideGlobalVersion(System.Int32 globalVersion)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "OverrideGlobalVersion", globalVersion);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OverrideGlobalVersion", globalVersion);
 		}
 
 		public void IncrementGlobalVersion()
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "IncrementGlobalVersion");
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IncrementGlobalVersion");
 		}
 
-		public void IncrementLocalVersion(string machineId, string userId)
+		public void IncrementLocalVersion(System.String machineId, System.String userId)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "IncrementLocalVersion", machineId, userId);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IncrementLocalVersion", machineId, userId);
 		}
 
 		public R Clone<R>() where R : class, IRecord, new()
 		{
-			return (R)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(this.__Backing, "Clone"), typeof(R));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(R)) is R __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to R");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2264,17 +2931,17 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return this.__backing;
+				return __backing;
 			}
 			set
 			{
-				this.__backing = value;
+				__backing = value;
 			}
 		}
 
 		public Record(ResoniteBridge.ResoniteBridgeValue value)
 		{
-			this.__Backing = value;
+			__backing = value;
 		}
 	}
 }

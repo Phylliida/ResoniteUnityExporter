@@ -32,6 +32,7 @@ using Microsoft.CodeAnalysis.Text;
 using ICSharpCode.Decompiler.TypeSystem.Implementation;
 using ICSharpCode.Decompiler.IL.Patterns;
 using ICSharpCode.Decompiler.Semantics;
+using System.Runtime.InteropServices;
 
 namespace ResoniteBridge
 {
@@ -751,14 +752,20 @@ namespace ResoniteBridge
             {
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                 {
-                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, resolveContext, namespaceList);
+                    // we can't have nullable return type with our wrappers, it confuses type system
+                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, resolveContext, namespaceList, removeNullable: true);
                 }
                 else if (astNode is ParameterDeclaration paramDeclare)
                 {
                     if (ReplaceTypeIfUnresolved(paramDeclare.Type, resolveContext, namespaceList))
                     {
-                        // we can't have a default expression if we replaced it with BridgeValue
-                        paramDeclare.DefaultExpression = null;
+                        // just fallback to null default
+                        // Todo: make this more detailed
+                        // we need default because previous ones might be
+                        if (!paramDeclare.DefaultExpression.IsNull)
+                        {
+                            paramDeclare.DefaultExpression = new DefaultValueExpression(paramDeclare.Type.Clone());
+                        }
                     }
                    
                 }
@@ -776,12 +783,14 @@ namespace ResoniteBridge
                 }
                 else if(astNode is TypeOfExpression typeOfExpr)
                 {
+                    // remove nullable for typeof, it confuses it
                     ReplaceTypeIfUnresolved(typeOfExpr.Type, resolveContext, namespaceList, removeNullable: true);
                 }
                 // occurs in if (a is Type b) statements
                 else if(astNode is DeclarationExpression declarationExpression)
                 {
-                    ReplaceTypeIfUnresolved(declarationExpression.Type, resolveContext, namespaceList);
+                    // remove nullable for these is expressions
+                    ReplaceTypeIfUnresolved(declarationExpression.Type, resolveContext, namespaceList, removeNullable: true);
                 }
             });
 
@@ -801,7 +810,10 @@ namespace ResoniteBridge
                         }
 
                         // don't need to recurse so alsoChildren=false, no generics and that messes stuff up
-                        ReplaceTypeIfUnresolved(usingName, resolveContext, namespaceList, alsoChildren: false);
+                        if(ReplaceTypeIfUnresolved(usingName, resolveContext, namespaceList, alsoChildren: false))
+                        {
+                            Console.WriteLine("Removing using: " + usingName);
+                        }
                         // the code above will replace unknown usings with this, but it's redundant we can remove it
                         if (astNode.ToString().Trim() == "using ResoniteBridge.ResoniteBridgeValue;")
                         {
@@ -891,7 +903,8 @@ namespace ResoniteBridge
             }
 
             // namespaces require seperate resolution
-            if (namespaceList.Contains(astType.ToString()))
+            if (namespaceList.Contains(astType.ToString()) ||
+                bonusList.Contains(astType.ToString()))
             {
                 // it exists, we are happy
                 return false;
@@ -977,7 +990,30 @@ namespace ResoniteBridge
             "System.CodeDom",
             "System.Text.Json",
             "System.Private.CoreLib",
-        };
+            "System.Security.Cryptography",
+            "System.Runtime.Serialization.Formatters.Binary",
+            "System.Net.Http",
+            "System",
+            "System.Collections",
+            "System.Collections.Generic",
+            "System.ComponentModel",
+            "System.Diagnostics",
+            "System.Globalization",
+            "System.IO",
+            "System.Linq",
+            "System.Net.Http",
+            "System.Net.Http.Headers",
+            "System.Net.Sockets",
+            "System.Net.WebSockets",
+            "System.Net.WebSockets.Managed",
+            "System.Threading.Tasks.Dataflow",
+            "Microsoft.AspNetCore.Http.Connections",
+            "Microsoft.AspNetCore.Http.Connections.Client",
+            "Microsoft.AspNetCore.SignalR",
+            "Microsoft.AspNetCore.SignalR.Client",
+            "EnumsNET",
+            "SignalR.Strong",
+        }; 
 
         public class TypeInfoLookup
         {
@@ -987,15 +1023,25 @@ namespace ResoniteBridge
         }
 
         // extra assemblies we depend on
-        public static List<Assembly> GetExtraAssemblies()
+        public static List<Assembly> GetExtraAssemblies(out List<string> extraAssemblyPaths)
         {
+            extraAssemblyPaths = new List<string>();
+            Console.WriteLine("START GET EXTRA");
             List<Assembly> result = new List<Assembly>();
-            result.Add(typeof(ResoniteBridge.ResoniteBridgeValue).Assembly);
-            result.Add(typeof(Newtonsoft.Json.JsonConvert).Assembly);
-            result.Add(typeof(System.Text.Json.JsonDocument).Assembly);
-            result.Add(typeof(object).Assembly);// system runtime
-            result.Add(typeof(List<int>).Assembly); // generics
+            foreach (var dllFile in Directory.GetFiles(@"C:\Users\yams\Desktop\prog\ResoniteUnityExporter\ResoniteBridge\ResoniteBridgeLib\bin\Debug\netstandard2.1", "*.dll"))
+            {
+                Console.WriteLine("EXTRA Found assembly" + dllFile);
+                result.Add(Assembly.LoadFrom(dllFile));
+                extraAssemblyPaths.Add(dllFile);
+            }
+            result.Add(typeof(object).Assembly);
+            extraAssemblyPaths.Add(typeof(object).Assembly.Location);
             return result;
+        }
+
+        public static string GetAssemblyPath(Assembly assembly)
+        {
+            return new System.Uri(assembly.CodeBase).LocalPath;
         }
 
         public static IEnumerable<Tuple<Assembly, string>> WrapAssemblies(Dictionary<string, Assembly> assemblies)
@@ -1018,25 +1064,34 @@ namespace ResoniteBridge
             // for type lookup, include extra assemblies
             List<Assembly> allAssemblies = new List<Assembly>();
             allAssemblies.AddRange(whitelistedAssemblies);
-            allAssemblies.AddRange(GetExtraAssemblies());
+            allAssemblies.AddRange(GetExtraAssemblies(out List<string> assemblyPathsExtra));
+            List<string> assemblyPaths = whitelistedAssemblies.Select(x => x.Location).ToList();
+            assemblyPaths.AddRange(assemblyPathsExtra);
             HashSet<string> namespaceList = new HashSet<string>();
-            foreach (Assembly assembly in allAssemblies)
+            for (int i = 0; i < allAssemblies.Count; i++)
             {
-                Console.WriteLine("Loading assembly " + assembly.Location);
-                var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
-                iModules.Add(decompiler.TypeSystem.MainModule.PEFile);
-                foreach (ITypeDefinition definition in decompiler.TypeSystem.GetAllTypeDefinitions())
+                Assembly assembly = allAssemblies[i];
+                string assemblyPath = assemblyPaths[i];
+                try
                 {
-                    typeInfoLookup.typeDefinitions[definition.FullName] = definition;
-                }
-                foreach (Type type in assembly.GetTypes())
-                {
-                    if (!namespaceList.Contains(type.Namespace))
+                    var decompiler = new CSharpDecompiler(assemblyPath, new DecompilerSettings());
+                    iModules.Add(decompiler.TypeSystem.MainModule.PEFile);
+                    foreach (ITypeDefinition definition in decompiler.TypeSystem.GetAllTypeDefinitions())
                     {
-                        namespaceList.Add(type.Namespace);
-                        Console.WriteLine(type.Namespace);
+                        typeInfoLookup.typeDefinitions[definition.FullName] = definition;
                     }
-                    typeInfoLookup.types[type.FullName] = type;
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        if (!namespaceList.Contains(type.Namespace))
+                        {
+                            namespaceList.Add(type.Namespace);
+                        }
+                        typeInfoLookup.types[type.FullName] = type;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("FAiled to load assembly " + assemblyPath);
                 }
             }
 
@@ -1053,7 +1108,7 @@ namespace ResoniteBridge
 
             foreach (Assembly assembly in whitelistedAssemblies)
             {
-                var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
+                var decompiler = new CSharpDecompiler(GetAssemblyPath(assembly), new DecompilerSettings());
                 string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
                 Console.WriteLine("Wrapping assembly " + assemblyName);
                 string outputCode = WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList, out string usings);
@@ -1120,13 +1175,12 @@ namespace ResoniteBridge
                     var path = Path.Combine(refPath, lib);
                     references.Add(MetadataReference.CreateFromFile(path));
                 }
-                PortableExecutableReference bridgeLib = MetadataReference.CreateFromFile(typeof(ResoniteBridge.ResoniteBridgeClient).Assembly.Location);
-                references.Add(bridgeLib);
-                PortableExecutableReference newtonsoftJson = MetadataReference.CreateFromFile(typeof(Newtonsoft.Json.JsonConverter).Assembly.Location);
-                references.Add(newtonsoftJson);
-                PortableExecutableReference systemTextJson = MetadataReference.CreateFromFile(typeof(System.Text.Json.JsonDocument).Assembly.Location);
-                references.Add(systemTextJson);
 
+                foreach (var dllFile in Directory.GetFiles(@"C:\Users\yams\Desktop\prog\ResoniteUnityExporter\ResoniteBridge\ResoniteBridgeLib\bin\Debug\netstandard2.1", "*.dll"))
+                {
+                    Console.WriteLine("extra Found assembly" + dllFile);
+                    references.Add(MetadataReference.CreateFromFile(dllFile));
+                }
                 syntaxTrees.Insert(0, CSharpSyntaxTree.ParseText(assemblyAttributeSource));
 
                 string outPath = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\ResoniteBridgeStandalone\\" + rootNamespaceName + ".dll";

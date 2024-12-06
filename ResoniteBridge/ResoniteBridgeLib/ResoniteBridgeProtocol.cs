@@ -31,6 +31,8 @@ namespace ResoniteBridge
         public string typeName;
         public ResoniteBridgeValueType valueType;
 
+        public static readonly ResoniteBridgeValue Null = new ResoniteBridgeValue();
+
         public ResoniteBridgeValue(string valueStr, string assemblyName, string typeName, ResoniteBridgeValueType valueType)
         {
             this.valueStr = valueStr;
