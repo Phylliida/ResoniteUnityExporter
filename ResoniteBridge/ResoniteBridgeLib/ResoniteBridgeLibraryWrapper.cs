@@ -257,9 +257,27 @@ namespace ResoniteBridge
                 declare);
         }
 
+        public static string GetMethodName(MethodDeclaration methodDeclaration)
+        {
+            // Need to do this to get stuff like IEnumerator.GetEnumerator()
+            if (!methodDeclaration.PrivateImplementationType.IsNull)
+            {
+                return methodDeclaration.PrivateImplementationType.ToString() + "." + methodDeclaration.Name;
+            }
+            else
+            {
+                return methodDeclaration.Name;
+            }
+        }
+
         public static BlockStatement WrapMethod(bool isStatic, MethodDeclaration methodDeclaration, Expression staticTarget, Expression instanceTarget)
         {
-            var methodNameExp = new PrimitiveExpression(methodDeclaration.Name);
+            if (methodDeclaration.Name == "GetEnumerator")
+            {
+                int i = 0;
+                i += 1;
+            }
+            var methodNameExp = new PrimitiveExpression(GetMethodName(methodDeclaration));
             var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
 
             List<Expression> invocationParams = new List<Expression>();
@@ -992,7 +1010,7 @@ namespace ResoniteBridge
                         if (childNode is MethodDeclaration methodDeclaration)
                         {
                             // key based on type and method name
-                            string methodKey = methodDeclaration.NameToken.ToString() +
+                            string methodKey = GetMethodName(methodDeclaration) +
                                 String.Join(",", methodDeclaration.Parameters
                                     .Select(p => p.Type.ToString()));
                             if (methods.Contains(methodKey))

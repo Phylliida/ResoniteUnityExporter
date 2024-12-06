@@ -1048,7 +1048,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "data"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "data"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1059,7 +1059,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "data", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "data", value);
 				}
 			}
 
@@ -1067,7 +1067,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "block"), typeof(BufferBlock)) is BufferBlock __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "block"), typeof(BufferBlock)) is BufferBlock __retCasted)
 					{
 						return __retCasted;
 					}
@@ -1078,7 +1078,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "block", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "block", value);
 				}
 			}
 
@@ -1649,6 +1649,11 @@ namespace Elements.Assets
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrimAndProcess", start, count, sampleFilter, chunkFilter, rawFilter);
 		}
 
+		public void Dispose()
+		{
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
+		}
+
 		public override System.String ToString()
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
@@ -1762,6 +1767,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public AudioX(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 	}
 	public class AudioBufferPool : ResoniteBridge.ResoniteBridgeValueHolder
@@ -6629,7 +6639,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "format"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "format"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
 					{
 						return __retCasted;
 					}
@@ -6640,7 +6650,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "format", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "format", value);
 				}
 			}
 
@@ -6648,7 +6658,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "reverseByteOrder"), typeof(System.Boolean)) is System.Boolean __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "reverseByteOrder"), typeof(System.Boolean)) is System.Boolean __retCasted)
 					{
 						return __retCasted;
 					}
@@ -6659,7 +6669,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "reverseByteOrder", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "reverseByteOrder", value);
 				}
 			}
 
@@ -6756,6 +6766,11 @@ namespace Elements.Assets
 			}
 		}
 
+		public PDF_Page(ResoniteBridge.ResoniteBridgeValue page)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PDF_Page", ResoniteBridge.ResoniteBridgeValueType.Type), page);
+		}
+
 		public void RenderTo(Bitmap2D bitmap)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RenderTo", bitmap);
@@ -6790,6 +6805,10 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public PDF_Page()
+		{
 		}
 	}
 	public static class FileUtility
@@ -6895,7 +6914,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "localeCode"), typeof(System.String)) is System.String __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "localeCode"), typeof(System.String)) is System.String __retCasted)
 					{
 						return __retCasted;
 					}
@@ -6906,7 +6925,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "localeCode", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "localeCode", value);
 				}
 			}
 
@@ -6914,7 +6933,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "messagePattern"), typeof(System.String)) is System.String __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "messagePattern"), typeof(System.String)) is System.String __retCasted)
 					{
 						return __retCasted;
 					}
@@ -6925,7 +6944,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "messagePattern", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "messagePattern", value);
 				}
 			}
 
@@ -7166,6 +7185,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public LocaleResource(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 	}
 	public enum TextureType
@@ -8569,7 +8593,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "uv_2D"), typeof(float2[])) is float2[] __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "uv_2D"), typeof(float2[])) is float2[] __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8580,7 +8604,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "uv_2D", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "uv_2D", value);
 				}
 			}
 
@@ -8588,7 +8612,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "uv_3D"), typeof(float3[])) is float3[] __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "uv_3D"), typeof(float3[])) is float3[] __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8599,7 +8623,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "uv_3D", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "uv_3D", value);
 				}
 			}
 
@@ -8607,7 +8631,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "uv_4D"), typeof(float4[])) is float4[] __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "uv_4D"), typeof(float4[])) is float4[] __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8618,7 +8642,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "uv_4D", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "uv_4D", value);
 				}
 			}
 
@@ -8663,7 +8687,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "_submeshEnumerator"), typeof(List<Submesh>.Enumerator)) is List<Submesh>.Enumerator __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_submeshEnumerator"), typeof(List<Submesh>.Enumerator)) is List<Submesh>.Enumerator __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8674,7 +8698,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "_submeshEnumerator", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_submeshEnumerator", value);
 				}
 			}
 
@@ -8682,7 +8706,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "_currentIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_currentIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8693,7 +8717,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "_currentIndex", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_currentIndex", value);
 				}
 			}
 
@@ -8701,7 +8725,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "_currentSubmesh"), typeof(ISubmesh<T>)) is ISubmesh<T> __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_currentSubmesh"), typeof(ISubmesh<T>)) is ISubmesh<T> __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8712,7 +8736,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "_currentSubmesh", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_currentSubmesh", value);
 				}
 			}
 
@@ -8787,6 +8811,11 @@ namespace Elements.Assets
 				}
 			}
 
+			public PrimitiveEnumerator(ResoniteBridge.ResoniteBridgeValue value)
+			{
+				__backing = value;
+			}
+
 			public PrimitiveEnumerator()
 			{
 			}
@@ -8798,7 +8827,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "meshx"), typeof(MeshX)) is MeshX __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "meshx"), typeof(MeshX)) is MeshX __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8809,7 +8838,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "meshx", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "meshx", value);
 				}
 			}
 
@@ -8817,7 +8846,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "_index"), typeof(System.Int32)) is System.Int32 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_index"), typeof(System.Int32)) is System.Int32 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8828,7 +8857,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "_index", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_index", value);
 				}
 			}
 
@@ -8862,6 +8891,33 @@ namespace Elements.Assets
 				}
 			}
 
+			public VertexEnumerator(MeshX meshx)
+			{
+				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "VertexEnumerator", ResoniteBridge.ResoniteBridgeValueType.Type), meshx);
+			}
+
+			public void Dispose()
+			{
+				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
+			}
+
+			public System.Boolean MoveNext()
+			{
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MoveNext"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to returnTpe");
+				}
+			}
+
+			public void Reset()
+			{
+				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
+			}
+
 			private ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -8874,6 +8930,15 @@ namespace Elements.Assets
 				{
 					__backing = value;
 				}
+			}
+
+			public VertexEnumerator(ResoniteBridge.ResoniteBridgeValue value)
+			{
+				__backing = value;
+			}
+
+			public VertexEnumerator()
+			{
 			}
 		}
 
@@ -8890,7 +8955,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "key"), typeof(System.Object)) is System.Object __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "key"), typeof(System.Object)) is System.Object __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8901,7 +8966,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "key", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "key", value);
 				}
 			}
 
@@ -8909,7 +8974,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "topology"), typeof(SubmeshTopology)) is SubmeshTopology __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "topology"), typeof(SubmeshTopology)) is SubmeshTopology __retCasted)
 					{
 						return __retCasted;
 					}
@@ -8920,7 +8985,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "topology", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "topology", value);
 				}
 			}
 
@@ -9001,6 +9066,15 @@ namespace Elements.Assets
 				{
 					__backing = value;
 				}
+			}
+
+			public SubmeshMergeKey(ResoniteBridge.ResoniteBridgeValue value)
+			{
+				__backing = value;
+			}
+
+			public SubmeshMergeKey()
+			{
 			}
 		}
 
@@ -10436,6 +10510,16 @@ namespace Elements.Assets
 			}
 		}
 
+		public MeshX()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public MeshX(MeshX clone)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), clone);
+		}
+
 		public void EnsureFreeCapacity(System.Int32 capacity)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureFreeCapacity", capacity);
@@ -11570,16 +11654,21 @@ namespace Elements.Assets
 				__backing = value;
 			}
 		}
+
+		public MeshX(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
 	}
 	public static class MeshX_Extensions
 	{
 		public struct QuadTriangles : ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public static Triangle first
+			public Triangle first
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "QuadTriangles", ResoniteBridge.ResoniteBridgeValueType.Type), "first"), typeof(Triangle)) is Triangle __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "first"), typeof(Triangle)) is Triangle __retCasted)
 					{
 						return __retCasted;
 					}
@@ -11590,15 +11679,15 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "QuadTriangles", ResoniteBridge.ResoniteBridgeValueType.Type), "first", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "first", value);
 				}
 			}
 
-			public static Triangle second
+			public Triangle second
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "QuadTriangles", ResoniteBridge.ResoniteBridgeValueType.Type), "second"), typeof(Triangle)) is Triangle __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "second"), typeof(Triangle)) is Triangle __retCasted)
 					{
 						return __retCasted;
 					}
@@ -11609,7 +11698,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "QuadTriangles", ResoniteBridge.ResoniteBridgeValueType.Type), "second", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "second", value);
 				}
 			}
 
@@ -15568,7 +15657,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Position"), typeof(float2)) is float2 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Position"), typeof(float2)) is float2 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -15579,7 +15668,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Position", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "Position", value);
 				}
 			}
 
@@ -15587,7 +15676,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Normal"), typeof(float2)) is float2 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Normal"), typeof(float2)) is float2 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -15598,7 +15687,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "Normal", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "Normal", value);
 				}
 			}
 
@@ -16995,7 +17084,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "color"), typeof(color)) is color __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "color"), typeof(color)) is color __retCasted)
 					{
 						return __retCasted;
 					}
@@ -17006,7 +17095,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "color", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "color", value);
 				}
 			}
 
@@ -17014,7 +17103,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "offset"), typeof(float3)) is float3 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "offset"), typeof(float3)) is float3 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -17025,7 +17114,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "offset", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "offset", value);
 				}
 			}
 
@@ -17290,6 +17379,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public Grid(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public Grid()
@@ -28156,7 +28250,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "file"), typeof(System.String)) is System.String __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "file"), typeof(System.String)) is System.String __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28167,7 +28261,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "file", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "file", value);
 				}
 			}
 
@@ -28175,7 +28269,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "metrics"), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "metrics"), typeof(GlyphMetrics)) is GlyphMetrics __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28186,7 +28280,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "metrics", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "metrics", value);
 				}
 			}
 
@@ -28194,7 +28288,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "tintable"), typeof(System.Boolean)) is System.Boolean __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "tintable"), typeof(System.Boolean)) is System.Boolean __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28205,7 +28299,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "tintable", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "tintable", value);
 				}
 			}
 
@@ -28213,7 +28307,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "_cachedSize"), typeof(int2)) is int2 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedSize"), typeof(int2)) is int2 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -28224,7 +28318,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "_cachedSize", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "_cachedSize", value);
 				}
 			}
 
@@ -28535,6 +28629,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public DynamicBitmapFileFont(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 	}
 	public class FreeTypeFont : IFontDataSource, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
@@ -31234,11 +31333,11 @@ namespace Elements.Assets
 	{
 		private struct LineSegment : ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public static StringLine line
+			public StringLine line
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "line"), typeof(StringLine)) is StringLine __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "line"), typeof(StringLine)) is StringLine __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31249,15 +31348,15 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "line", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "line", value);
 				}
 			}
 
-			public static System.Int32 startGlyphIndex
+			public System.Int32 startGlyphIndex
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "startGlyphIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "startGlyphIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31268,15 +31367,15 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "startGlyphIndex", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "startGlyphIndex", value);
 				}
 			}
 
-			public static System.Int32 endGlyphIndex
+			public System.Int32 endGlyphIndex
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "endGlyphIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "endGlyphIndex"), typeof(System.Int32)) is System.Int32 __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31287,15 +31386,15 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "endGlyphIndex", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "endGlyphIndex", value);
 				}
 			}
 
-			public static RenderGlyph startGlyph
+			public RenderGlyph startGlyph
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "startGlyph"), typeof(RenderGlyph)) is RenderGlyph __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "startGlyph"), typeof(RenderGlyph)) is RenderGlyph __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31306,15 +31405,15 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "startGlyph", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "startGlyph", value);
 				}
 			}
 
-			public static RenderGlyph endGlyph
+			public RenderGlyph endGlyph
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "endGlyph"), typeof(RenderGlyph)) is RenderGlyph __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "endGlyph"), typeof(RenderGlyph)) is RenderGlyph __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31325,7 +31424,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "LineSegment", ResoniteBridge.ResoniteBridgeValueType.Type), "endGlyph", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "endGlyph", value);
 				}
 			}
 
@@ -31562,7 +31661,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "tag"), typeof(StringSegment)) is StringSegment __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "tag"), typeof(StringSegment)) is StringSegment __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31573,7 +31672,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "tag", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "tag", value);
 				}
 			}
 
@@ -31581,7 +31680,7 @@ namespace Elements.Assets
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "node"), typeof(StringContainerNode)) is StringContainerNode __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "node"), typeof(StringContainerNode)) is StringContainerNode __retCasted)
 					{
 						return __retCasted;
 					}
@@ -31592,7 +31691,7 @@ namespace Elements.Assets
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "node", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "node", value);
 				}
 			}
 
@@ -32534,6 +32633,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public StringRenderTree(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 	}
 	public abstract class StringContainerNode : StringNode, IEnumerable<StringRenderGlyphSegmentNode>, IEnumerable, ResoniteBridge.ResoniteBridgeValueHolder

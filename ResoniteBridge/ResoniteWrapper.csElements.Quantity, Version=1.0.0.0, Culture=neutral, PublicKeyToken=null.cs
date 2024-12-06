@@ -409,6 +409,11 @@ namespace Elements.Quantity
 				__backing = value;
 			}
 		}
+
+		public CompoundFormatInfo(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
 	}
 	public class SmartQuantityException : Exception, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3371,7 +3376,7 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "firstDone"), typeof(System.Boolean)) is System.Boolean __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "firstDone"), typeof(System.Boolean)) is System.Boolean __retCasted)
 					{
 						return __retCasted;
 					}
@@ -3382,7 +3387,7 @@ namespace Elements.Quantity
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "firstDone", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "firstDone", value);
 				}
 			}
 
@@ -3390,7 +3395,7 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "dictEnum"), typeof(Dictionary<Type, SortedSet<IUnit>>.Enumerator)) is Dictionary<Type, SortedSet<IUnit>>.Enumerator __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "dictEnum"), typeof(Dictionary<Type, SortedSet<IUnit>>.Enumerator)) is Dictionary<Type, SortedSet<IUnit>>.Enumerator __retCasted)
 					{
 						return __retCasted;
 					}
@@ -3401,7 +3406,7 @@ namespace Elements.Quantity
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "dictEnum", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "dictEnum", value);
 				}
 			}
 
@@ -3409,7 +3414,7 @@ namespace Elements.Quantity
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "setEnum"), typeof(SortedSet<IUnit>.Enumerator)) is SortedSet<IUnit>.Enumerator __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "setEnum"), typeof(SortedSet<IUnit>.Enumerator)) is SortedSet<IUnit>.Enumerator __retCasted)
 					{
 						return __retCasted;
 					}
@@ -3420,7 +3425,7 @@ namespace Elements.Quantity
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "setEnum", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "setEnum", value);
 				}
 			}
 
@@ -3752,6 +3757,10 @@ namespace Elements.Quantity
 			}
 		}
 
+		static UnitGroup()
+		{
+		}
+
 		public void RegisterUnit(IUnit unit)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterUnit", unit);
@@ -3810,6 +3819,11 @@ namespace Elements.Quantity
 			{
 				__backing = value;
 			}
+		}
+
+		public UnitGroup(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 	}
 	public struct Mass : IQuantitySI<Mass>, IQuantitySI, IQuantity<Mass>, IQuantity, IComparable<Mass>, IEquatable<Mass>, ResoniteBridge.ResoniteBridgeValueHolder
