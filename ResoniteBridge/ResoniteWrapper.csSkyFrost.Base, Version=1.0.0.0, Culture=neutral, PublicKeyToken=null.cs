@@ -3099,13 +3099,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public abstract System.Int32 MaxParallelChunks
-		{
-			get
-			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MaxParallelChunks"), typeof(System.Int32));
-			}
-		}
+		public abstract System.Int32 MaxParallelChunks { get; }
 
 		public void InitializeWithFile(SkyFrostInterface cloud, System.String ownerId, System.String signature, System.String variant, System.String assetPath, ResoniteBridge.ResoniteBridgeValue progress, System.Int32 retries = 5)
 		{

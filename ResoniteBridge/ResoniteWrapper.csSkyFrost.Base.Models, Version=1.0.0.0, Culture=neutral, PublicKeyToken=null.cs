@@ -5137,13 +5137,7 @@ namespace SkyFrost.Base
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract System.String FriendlyDescription
-		{
-			get
-			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FriendlyDescription"), typeof(System.String));
-			}
-		}
+		public abstract System.String FriendlyDescription { get; }
 
 		public abstract System.Boolean CombineWith(Entitlement other);
 
@@ -14372,22 +14366,10 @@ namespace SkyFrost.Base
 	public abstract class LoginAuthentication : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		[System.Text.Json.Serialization.JsonIgnore]
-		public abstract System.Boolean IsValidForLogin
-		{
-			get
-			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForLogin"), typeof(System.Boolean));
-			}
-		}
+		public abstract System.Boolean IsValidForLogin { get; }
 
 		[System.Text.Json.Serialization.JsonIgnore]
-		public abstract System.Boolean IsValidForRegistration
-		{
-			get
-			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidForRegistration"), typeof(System.Boolean));
-			}
-		}
+		public abstract System.Boolean IsValidForRegistration { get; }
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
@@ -15401,33 +15383,15 @@ namespace SkyFrost.Base
 	{
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract ResoniteBridge.ResoniteBridgeValue AccountNameOverride
-		{
-			get
-			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
-			}
-		}
+		public abstract ResoniteBridge.ResoniteBridgeValue AccountNameOverride { get; }
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract ResoniteBridge.ResoniteBridgeValue AccountNameColorOverride
-		{
-			get
-			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AccountNameColorOverride"), typeof(ResoniteBridge.ResoniteBridgeValue));
-			}
-		}
+		public abstract ResoniteBridge.ResoniteBridgeValue AccountNameColorOverride { get; }
 
 		[System.Text.Json.Serialization.JsonIgnore]
 		[Newtonsoft.Json.JsonIgnore]
-		public abstract System.Int32 Priority
-		{
-			get
-			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Priority"), typeof(System.Int32));
-			}
-		}
+		public abstract System.Int32 Priority { get; }
 
 		public abstract void Sanitize();
 

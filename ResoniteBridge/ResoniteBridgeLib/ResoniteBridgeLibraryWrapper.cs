@@ -582,12 +582,14 @@ namespace ResoniteBridge
                                 }
                                 bool isStatic = methodDeclare.Modifiers.HasFlag(Modifiers.Static);
                                 
-                                methodDeclare.Body = WrapMethod(
-                                    isStatic,
-                                    methodDeclare,
-                                    staticTarget,
-                                    instanceTarget);
-
+                                // don't fill out body for abstract methods 
+                                if (!methodDeclare.Modifiers.HasFlag(Modifiers.Abstract)) { 
+                                    methodDeclare.Body = WrapMethod(
+                                        isStatic,
+                                        methodDeclare,
+                                        staticTarget,
+                                        instanceTarget);
+                                }
                                 foreach (var constraint in methodDeclare.Constraints)
                                 {
                                     ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
@@ -630,6 +632,23 @@ namespace ResoniteBridge
                                 }
                                 // we don't need these because they'll be called on frooxengine side
                                 propertyDeclare.Initializer = null;
+
+                                // don't fill out bodies for abstract properties
+                                if (propertyDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                                {
+                                    propertyDeclare.Getter = propertyDeclare.Getter.IsNull
+                                    ? null
+                                    : new Accessor
+                                    {
+
+                                    };
+                                    propertyDeclare.Setter = propertyDeclare.Setter.IsNull
+                                    ? null
+                                    : new Accessor
+                                    {
+
+                                    };
+                                }
                             }
                         }
                         else if (childNode is FieldDeclaration fieldDeclare)
@@ -692,6 +711,18 @@ namespace ResoniteBridge
                                 };
                                 fieldDeclare.ReplaceWith(fieldProperty);
 
+                                // don't fill out bodies for abstract fields
+                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                                {
+                                    fieldProperty.Getter = fieldProperty.Getter.IsNull
+                                    ? null
+                                    : new Accessor
+                                    {
+
+                                    };
+                                    // don't require a setter 
+                                    fieldProperty.Setter = null;
+                                }
                             }
                         }
                     });
@@ -745,7 +776,7 @@ namespace ResoniteBridge
                 }
                 else if(astNode is TypeOfExpression typeOfExpr)
                 {
-                    ReplaceTypeIfUnresolved(typeOfExpr.Type, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(typeOfExpr.Type, resolveContext, namespaceList, removeNullable: true);
                 }
                 // occurs in if (a is Type b) statements
                 else if(astNode is DeclarationExpression declarationExpression)
@@ -827,7 +858,7 @@ namespace ResoniteBridge
             {"ulong", typeof(System.UInt64)},
             {"ushort", typeof(System.UInt16)}
         };
-        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true)
+        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
         {
             if (alsoChildren)
             {
@@ -839,12 +870,16 @@ namespace ResoniteBridge
             }
             // we have a few things we try for resolving types
 
-            // remove nullable because that confuses typeof
-            if (astType.ToString().Contains("?"))
+            if (removeNullable)
             {
-                AstType newType = new SimpleType(astType.ToString().Replace("?", ""));
-                astType.ReplaceWith(newType);
-                astType = newType;
+                // remove nullable because that confuses typeof
+                if (astType.ToString().Contains("?"))
+                {
+                    AstType newType = new SimpleType(astType.ToString().Replace("?", ""));
+                    astType.ReplaceWith(newType);
+                    astType = newType;
+                }
+
             }
 
             // @int don't resolve propertly
