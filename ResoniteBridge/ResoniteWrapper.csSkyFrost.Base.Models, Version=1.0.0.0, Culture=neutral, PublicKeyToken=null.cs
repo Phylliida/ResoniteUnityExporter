@@ -93,6 +93,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AssemblyInfo()
+		{
+		}
 	}
 	public class AssetChunk : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -155,6 +159,10 @@ namespace SkyFrost.Base
 		public AssetChunk(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetChunk()
+		{
 		}
 	}
 	public class AssetDiff : ResoniteBridge.ResoniteBridgeValueHolder
@@ -279,6 +287,10 @@ namespace SkyFrost.Base
 		public AssetDiff(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetDiff()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -406,6 +418,10 @@ namespace SkyFrost.Base
 		public AssetEntry(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetEntry()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -576,6 +592,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AssetInfo()
+		{
+		}
 	}
 	public class AssetMetadataRequest : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -615,6 +635,10 @@ namespace SkyFrost.Base
 		public AssetMetadataRequest(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetMetadataRequest()
+		{
 		}
 	}
 	public enum UploadState
@@ -969,6 +993,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AssetUploadData()
+		{
+		}
 	}
 	public enum AssetVariantEntityType
 	{
@@ -1067,6 +1095,10 @@ namespace SkyFrost.Base
 		public AssetVariantComputationTask(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetVariantComputationTask()
+		{
 		}
 	}
 	public class BlobMetadata : ResoniteBridge.ResoniteBridgeValueHolder
@@ -1257,6 +1289,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BlobMetadata()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public struct ComputationLock : ResoniteBridge.ResoniteBridgeValueHolder
@@ -1370,6 +1406,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ComputationLock()
+		{
+		}
 	}
 	[Serializable]
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -1434,6 +1474,10 @@ namespace SkyFrost.Base
 		public DBAsset(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public DBAsset()
+		{
 		}
 	}
 	public class SamlIdentityProvider : ResoniteBridge.ResoniteBridgeValueHolder
@@ -1666,6 +1710,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public SamlIdentityProvider()
+		{
+		}
 	}
 	public class AppBuildConfiguration : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -1771,6 +1819,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AppBuildConfiguration()
+		{
+		}
 	}
 	public enum BuildType
 	{
@@ -1840,6 +1892,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AppBuildVariant()
+		{
+		}
 	}
 	public class AppBuildVariantDescriptor : BuildVariantDescriptor, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -1895,6 +1951,10 @@ namespace SkyFrost.Base
 		public AppBuildVariantDescriptor(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AppBuildVariantDescriptor()
+		{
 		}
 	}
 	public enum BuildApplication
@@ -2133,6 +2193,10 @@ namespace SkyFrost.Base
 		public Build(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Build()
+		{
 		}
 	}
 	public enum BuildChangeType
@@ -2375,6 +2439,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BuildChange()
+		{
+		}
 	}
 	public enum BuildReferenceType
 	{
@@ -2594,6 +2662,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BuildChannel()
+		{
+		}
 	}
 	public class BuildFile : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -2695,6 +2767,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BuildFile()
+		{
+		}
 	}
 	public class BuildNote : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -2757,6 +2833,10 @@ namespace SkyFrost.Base
 		public BuildNote(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public BuildNote()
+		{
 		}
 	}
 	public class BuildUser : ResoniteBridge.ResoniteBridgeValueHolder
@@ -2862,6 +2942,10 @@ namespace SkyFrost.Base
 		public BuildUser(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public BuildUser()
+		{
 		}
 	}
 	public enum BuildStatus
@@ -2997,6 +3081,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public BuildVariant(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
 		public BuildVariant()
 		{
 		}
@@ -3048,6 +3137,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public BuildVariant(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public BuildVariant()
@@ -3141,6 +3235,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public BuildVariantDescriptor(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public BuildVariantDescriptor()
@@ -3390,6 +3489,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public IssueReference()
+		{
+		}
 	}
 	public enum PublishingPlatform
 	{
@@ -3585,6 +3688,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CloudBootstrap()
+		{
+		}
 	}
 	public class CloudMessage : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3638,6 +3745,10 @@ namespace SkyFrost.Base
 		public CloudMessage(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CloudMessage()
+		{
 		}
 	}
 	public class CloudSessionMetadata : ResoniteBridge.ResoniteBridgeValueHolder
@@ -3829,6 +3940,10 @@ namespace SkyFrost.Base
 		public CloudSessionMetadata(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CloudSessionMetadata()
+		{
 		}
 	}
 	public class CloudStats : ResoniteBridge.ResoniteBridgeValueHolder
@@ -4040,6 +4155,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CloudStats()
+		{
+		}
 	}
 	public class CloudVariable : IEquatable<CloudVariable>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -4168,6 +4287,10 @@ namespace SkyFrost.Base
 		public CloudVariable(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CloudVariable()
+		{
 		}
 	}
 	public class CloudVariableDefinition : ResoniteBridge.ResoniteBridgeValueHolder
@@ -4349,6 +4472,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CloudVariableDefinition()
+		{
+		}
 	}
 	public class Comment : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -4496,6 +4623,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public Comment()
+		{
+		}
 	}
 	public class ConfigFileData : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -4558,6 +4689,10 @@ namespace SkyFrost.Base
 		public ConfigFileData(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public ConfigFileData()
+		{
 		}
 	}
 	[System.Text.Json.Serialization.JsonConverter(typeof(JsonStringEnumConverter))]
@@ -5015,6 +5150,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AppConfig()
+		{
+		}
 	}
 	public class InputConfig : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -5076,6 +5215,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public InputConfig()
+		{
+		}
 	}
 	public class LNLConfig : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -5116,6 +5259,10 @@ namespace SkyFrost.Base
 		public LNLConfig(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public LNLConfig()
+		{
 		}
 	}
 	public class ProxyConfig : ResoniteBridge.ResoniteBridgeValueHolder
@@ -5320,6 +5467,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ProxyConfig()
+		{
+		}
 	}
 	public class SessionJoinParameters : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -5520,6 +5671,10 @@ namespace SkyFrost.Base
 		public SessionJoinParameters(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public SessionJoinParameters()
+		{
 		}
 	}
 	public enum SaveAsOwner
@@ -6266,6 +6421,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public WorldStartupParameters()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class Contact : ResoniteBridge.ResoniteBridgeValueHolder
@@ -6638,6 +6797,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public Contact()
+		{
+		}
 	}
 	public enum ContactStatus
 	{
@@ -6753,6 +6916,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BadgeEntitlement()
+		{
+		}
 	}
 	[DataModelType]
 	[OldAssembly("SkyFrost.Base")]
@@ -6857,6 +7024,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CreditsEntitlement()
+		{
+		}
 	}
 	public class CreditUser : SupporterBase, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6900,6 +7071,10 @@ namespace SkyFrost.Base
 		public CreditUser(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CreditUser()
+		{
 		}
 	}
 	public class DeleteRecoveryEntitlement : Entitlement, ResoniteBridge.ResoniteBridgeValueHolder
@@ -6962,6 +7137,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public DeleteRecoveryEntitlement()
+		{
+		}
 	}
 	[JsonDerivedType(typeof(DeleteRecoveryEntitlement), "deleteRecovery")]
 	[JsonDerivedType(typeof(GroupCreationEntitlement), "groupCreation")]
@@ -7011,6 +7190,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public Entitlement(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public Entitlement()
@@ -7112,6 +7296,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ExitMessageEntitlement()
+		{
+		}
 	}
 	public class GroupCreationEntitlement : Entitlement, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -7194,6 +7382,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public GroupCreationEntitlement()
+		{
+		}
 	}
 	public class HeadlessServerEntitlement : Entitlement, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -7253,6 +7445,10 @@ namespace SkyFrost.Base
 		public HeadlessServerEntitlement(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public HeadlessServerEntitlement()
+		{
 		}
 	}
 	public enum LaunchShoutoutType
@@ -7356,6 +7552,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public LaunchShoutOutEntitlement()
+		{
+		}
 	}
 	public class ShoutOutUser : SupporterBase, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -7399,6 +7599,10 @@ namespace SkyFrost.Base
 		public ShoutOutUser(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public ShoutOutUser()
+		{
 		}
 	}
 	public class StorageSpaceEntitlement : Entitlement, ResoniteBridge.ResoniteBridgeValueHolder
@@ -7629,6 +7833,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public StorageSpaceEntitlement()
+		{
+		}
 	}
 	public abstract class SupporterBase : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -7751,6 +7959,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public SupporterBase(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
 		public SupporterBase()
 		{
 		}
@@ -7835,6 +8048,10 @@ namespace SkyFrost.Base
 		public WorldAccessEntitlement(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public WorldAccessEntitlement()
+		{
 		}
 	}
 	[Serializable]
@@ -8103,6 +8320,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ExitMessage()
+		{
+		}
 	}
 	public class ExternalQueueObject<T> : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -8228,6 +8449,10 @@ namespace SkyFrost.Base
 		public ExternalQueueObject(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public ExternalQueueObject()
+		{
 		}
 	}
 	public enum FavoriteEntity
@@ -8496,6 +8721,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public FundingEvent(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
 		public FundingEvent()
 		{
 		}
@@ -8625,6 +8855,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public PatreonFundingEvent()
+		{
+		}
 	}
 	public class StripeCustomerProperty : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -8687,6 +8921,10 @@ namespace SkyFrost.Base
 		public StripeCustomerProperty(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public StripeCustomerProperty()
+		{
 		}
 	}
 	public class StripeFundingEvent : FundingEvent, ResoniteBridge.ResoniteBridgeValueHolder
@@ -8834,6 +9072,10 @@ namespace SkyFrost.Base
 		public StripeFundingEvent(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public StripeFundingEvent()
+		{
 		}
 	}
 	public class Group : ResoniteBridge.ResoniteBridgeValueHolder
@@ -8983,6 +9225,10 @@ namespace SkyFrost.Base
 		public Group(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Group()
+		{
 		}
 	}
 	[DataModelType]
@@ -9373,6 +9619,10 @@ namespace SkyFrost.Base
 		public MigrationMetadata(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public MigrationMetadata()
+		{
 		}
 	}
 	public interface IRecord : ResoniteBridge.ResoniteBridgeValueHolder
@@ -9856,6 +10106,15 @@ namespace SkyFrost.Base
 		void OverrideGlobalVersion(System.Int32 globalVersion);
 
 		void IncrementLocalVersion(System.String machineId, System.String userId);
+
+		public IRecord(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IRecord()
+		{
+		}
 	}
 	public static class RecordHelper
 	{
@@ -10168,6 +10427,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public MarkReadBatch()
+		{
+		}
 	}
 	public class Member : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -10296,6 +10559,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public Member()
+		{
+		}
 	}
 	public class Membership : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -10400,6 +10667,10 @@ namespace SkyFrost.Base
 		public Membership(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Membership()
+		{
 		}
 	}
 	public enum MessageType
@@ -10893,6 +11164,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public Message()
+		{
+		}
 	}
 	public class MultiLanguageValue<T> : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -11319,6 +11594,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public NetworkNodeInfo()
+		{
+		}
 	}
 	public class OAuthApplication : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -11549,6 +11828,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public OAuthApplication()
+		{
+		}
 	}
 	public class OAuthToken : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -11759,6 +12042,10 @@ namespace SkyFrost.Base
 		public OAuthToken(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public OAuthToken()
+		{
 		}
 	}
 	public class OnlineStats : ResoniteBridge.ResoniteBridgeValueHolder
@@ -12203,6 +12490,10 @@ namespace SkyFrost.Base
 		public OnlineStats(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public OnlineStats()
+		{
 		}
 	}
 	public enum OutputDevice
@@ -13763,6 +14054,15 @@ namespace SkyFrost.Base
 		System.String FavoriteVariable(FavoriteEntity entity);
 
 		System.String VariablePath(System.String subpath);
+
+		public IPlatformProfile(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IPlatformProfile()
+		{
+		}
 	}
 	public enum TransferType
 	{
@@ -13939,6 +14239,10 @@ namespace SkyFrost.Base
 		public PointTransfer(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public PointTransfer()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -14126,6 +14430,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public PriorityIssue()
+		{
+		}
 	}
 	public class ReadMessageBatch : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -14209,6 +14517,10 @@ namespace SkyFrost.Base
 		public ReadMessageBatch(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public ReadMessageBatch()
+		{
 		}
 	}
 	[Serializable]
@@ -14953,6 +15265,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public Record()
+		{
+		}
 	}
 	public class ChildRecordDiff : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -15063,6 +15379,10 @@ namespace SkyFrost.Base
 		public ChildRecordDiff(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public ChildRecordDiff()
+		{
 		}
 	}
 	public enum RecordOperation
@@ -15418,6 +15738,10 @@ namespace SkyFrost.Base
 		public RecordAuditInfo(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public RecordAuditInfo()
+		{
 		}
 	}
 	[Serializable]
@@ -15779,6 +16103,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public RecordInfo()
+		{
+		}
 	}
 	public enum RecordPreprocessState
 	{
@@ -15954,6 +16282,10 @@ namespace SkyFrost.Base
 		public RecordPreprocessStatus(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public RecordPreprocessStatus()
+		{
 		}
 	}
 	public enum SearchSortParameter
@@ -16468,6 +16800,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public SearchParameters()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class SearchResults<R> : ResoniteBridge.ResoniteBridgeValueHolder where R : class, IRecord, new()
@@ -16626,6 +16962,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CheckContactData()
+		{
+		}
 	}
 	public enum VerificationKeyUse
 	{
@@ -16755,6 +17095,10 @@ namespace SkyFrost.Base
 		public OneTimeVerificationKey(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public OneTimeVerificationKey()
+		{
 		}
 	}
 	public class RSAParametersData : ResoniteBridge.ResoniteBridgeValueHolder
@@ -16969,6 +17313,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public RSAParametersData()
+		{
+		}
 	}
 	public class TOTP_Key : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -17074,6 +17422,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public TOTP_Key()
+		{
+		}
 	}
 	public class ServerStatistics : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -17137,6 +17489,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ServerStatistics()
+		{
+		}
 	}
 	[DataModelType]
 	[OldAssembly("SkyFrost.Base")]
@@ -17193,6 +17549,10 @@ namespace SkyFrost.Base
 		public StatusInitializationResult(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public StatusInitializationResult()
+		{
 		}
 	}
 	public enum QuotaType
@@ -17531,6 +17891,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public QuotaSource()
+		{
+		}
 	}
 	public class QuotaShare : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -17635,6 +17999,10 @@ namespace SkyFrost.Base
 		public QuotaShare(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public QuotaShare()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -17842,6 +18210,10 @@ namespace SkyFrost.Base
 		public Storage(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Storage()
+		{
 		}
 	}
 	[Serializable]
@@ -18053,6 +18425,10 @@ namespace SkyFrost.Base
 		public Submission(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Submission()
+		{
 		}
 	}
 	public class ThumbnailInfo : ResoniteBridge.ResoniteBridgeValueHolder
@@ -18273,6 +18649,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public ThumbnailInfo()
+		{
+		}
 	}
 	public class Universe : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -18416,6 +18796,10 @@ namespace SkyFrost.Base
 		public Universe(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Universe()
+		{
 		}
 	}
 	public enum SessionLoginType
@@ -18761,6 +19145,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public UserSession()
+		{
+		}
 	}
 	[SensitiveEntity]
 	public class UserSessionResult<T> : ISanitizableCollection, ResoniteBridge.ResoniteBridgeValueHolder
@@ -18836,6 +19224,10 @@ namespace SkyFrost.Base
 		public UserSessionResult(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public UserSessionResult()
+		{
 		}
 	}
 	public enum BroadcastGroup
@@ -19210,6 +19602,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public LegacyPatreonSnapshot()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class LegacyUserPatreonData : ResoniteBridge.ResoniteBridgeValueHolder
@@ -19571,6 +19967,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public LegacyUserPatreonData()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class LoginCredentials : ResoniteBridge.ResoniteBridgeValueHolder
@@ -19757,6 +20157,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public LoginCredentials()
+		{
+		}
 	}
 	[JsonDerivedType(typeof(PasswordLogin), "password")]
 	[JsonDerivedType(typeof(SessionTokenLogin), "sessionToken")]
@@ -19780,6 +20184,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public LoginAuthentication(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public LoginAuthentication()
@@ -20160,6 +20569,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public MigratedUserData()
+		{
+		}
 	}
 	[DataModelType]
 	[OldAssembly("SkyFrost.Base")]
@@ -20367,6 +20780,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public BadgeDefinition()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class UserProfile : ResoniteBridge.ResoniteBridgeValueHolder
@@ -20503,6 +20920,10 @@ namespace SkyFrost.Base
 		public UserProfile(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public UserProfile()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -20688,6 +21109,10 @@ namespace SkyFrost.Base
 		public RegistrationRequest(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public RegistrationRequest()
+		{
 		}
 	}
 	public class PatreonSupporter : SupporterMetadata, ResoniteBridge.ResoniteBridgeValueHolder
@@ -20951,6 +21376,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public PatreonSupporter()
+		{
+		}
 	}
 	public class StripeSupporter : SupporterMetadata, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -21213,6 +21642,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public StripeSupporter()
+		{
+		}
 	}
 	[JsonDerivedType(typeof(PatreonSupporter), "patreon")]
 	[JsonDerivedType(typeof(StripeSupporter), "stripe")]
@@ -21256,6 +21689,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public SupporterMetadata(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public SupporterMetadata()
@@ -21361,6 +21799,10 @@ namespace SkyFrost.Base
 		public OldCredential(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public OldCredential()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -22204,6 +22646,10 @@ namespace SkyFrost.Base
 		public User(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public User()
+		{
 		}
 	}
 	public enum UserSessionType
@@ -24408,6 +24854,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public VariableReadRequest()
+		{
+		}
 	}
 	public class VariableReadResult<V, D> : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -24470,6 +24920,10 @@ namespace SkyFrost.Base
 		public VariableReadResult(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public VariableReadResult()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -24655,6 +25109,10 @@ namespace SkyFrost.Base
 		public Visit(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Visit()
+		{
 		}
 	}
 	public class NewtonDefaultingStringEnumConverter<T> : StringEnumConverter, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, Enum
@@ -24861,6 +25319,15 @@ namespace SkyFrost.Base
 	public interface ISanitizableCollection : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		IEnumerable EntitiesToSanitize();
+
+		public ISanitizableCollection(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public ISanitizableCollection()
+		{
+		}
 	}
 	public class JsonTransitionEnumConverter<T> : System.Text.Json.Serialization.JsonConverter<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
@@ -24947,6 +25414,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public NewtonsoftJsonTransitionEnumConverter()
+		{
+		}
 	}
 	public class JsonUriConverter : System.Text.Json.Serialization.JsonConverter<Uri>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -24996,6 +25467,10 @@ namespace SkyFrost.Base
 		public JsonUriConverter(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public JsonUriConverter()
+		{
 		}
 	}
 	public class NullOnExternalAttribute : Attribute

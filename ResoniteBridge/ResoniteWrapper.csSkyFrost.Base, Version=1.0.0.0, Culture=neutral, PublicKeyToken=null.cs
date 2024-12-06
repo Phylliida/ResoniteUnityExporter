@@ -1498,6 +1498,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public RecordStatusCallbacks()
+		{
+		}
 	}
 	public interface IAccountDataStore : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -1662,6 +1666,15 @@ namespace SkyFrost.Base
 		Task StoreContact(Contact contact, IAccountDataStore source);
 
 		Task StoreMessage(Message message, IAccountDataStore source);
+
+		public IAccountDataStore(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IAccountDataStore()
+		{
+		}
 	}
 	public class LocalAccountDataStore : IAccountDataStore, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3364,6 +3377,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public AssetInterface(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
 		public AssetInterface()
 		{
 		}
@@ -3775,6 +3793,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public AssetUploadTask(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
 		public AssetUploadTask()
 		{
 		}
@@ -3877,6 +3900,10 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+
+			public UploadChunkBuffer()
+			{
+			}
 		}
 
 		private void EnqueueChunk(UploadChunkBuffer buffer, List<UploadChunkBuffer> processingBuffers)
@@ -3964,6 +3991,11 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public AssetUploadTask(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public AssetUploadTask()
@@ -4084,6 +4116,10 @@ namespace SkyFrost.Base
 		public AssetVariantIdentifier(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public AssetVariantIdentifier()
+		{
 		}
 	}
 	public class AzureAssetInterface : AssetInterface, ResoniteBridge.ResoniteBridgeValueHolder
@@ -4423,6 +4459,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AzureAssetUploadTask()
+		{
+		}
 	}
 	public class CloudflareAssetInterface : AssetInterface, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -4657,6 +4697,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public CloudflareChunkResult()
+		{
+		}
 	}
 	public class CloudflareAssetUploadTask : AssetUploadTask<CloudflareChunkResult>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -4800,6 +4844,10 @@ namespace SkyFrost.Base
 		public CloudflareAssetUploadTask(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CloudflareAssetUploadTask()
+		{
 		}
 	}
 	public static class LegacyAssetMap
@@ -5522,6 +5570,15 @@ namespace SkyFrost.Base
 		Task<CloudVariable> ReadLocalVariable(System.String path, System.String defaultValue);
 
 		Task WriteLocalVariable(CloudVariable variable);
+
+		public ILocalVariableAccessor(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public ILocalVariableAccessor()
+		{
+		}
 	}
 	public class CloudVariableProxy : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6731,12 +6788,29 @@ namespace SkyFrost.Base
 	}
 	public interface IHubClient : IHubDebugClient, IHubMessagingClient, IModerationClient, IHubStatusClient, IHubNetworkingClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
+		public IHubClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubClient()
+		{
+		}
 	}
 	public interface IHubDebugClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		Task Pong(System.Int32 index);
 
 		Task Debug(System.String message);
+
+		public IHubDebugClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubDebugClient()
+		{
+		}
 	}
 	public interface IHubMessagingClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6745,6 +6819,15 @@ namespace SkyFrost.Base
 		Task MessageSent(Message message);
 
 		Task MessagesRead(ReadMessageBatch readBatch);
+
+		public IHubMessagingClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubMessagingClient()
+		{
+		}
 	}
 	public interface IModerationClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6753,6 +6836,15 @@ namespace SkyFrost.Base
 		Task UserMuteBanned(System.String userId);
 
 		Task UserSpectatorBanned(System.String userId);
+
+		public IModerationClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IModerationClient()
+		{
+		}
 	}
 	public interface IHubStatusClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6767,10 +6859,28 @@ namespace SkyFrost.Base
 		Task RemoveSession(System.String sessionId, DateTime timestamp);
 
 		Task KeyListenerAdded(System.String broadcastKey, System.String connectionId);
+
+		public IHubStatusClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubStatusClient()
+		{
+		}
 	}
 	public interface IHubNetworkingClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		Task PokeOverLNL(System.String connectionUrl, System.String address, System.Int32 port);
+
+		public IHubNetworkingClient(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubNetworkingClient()
+		{
+		}
 	}
 	public interface IHubServer : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6802,6 +6912,15 @@ namespace SkyFrost.Base
 		Task ListenForLNLPokeRequests(System.String universeId, System.String connectionUrl);
 
 		Task RequestLNLPoke(System.String universeId, System.String connectionUrl, System.String address, System.Int32 port);
+
+		public IHubServer(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IHubServer()
+		{
+		}
 	}
 	public interface ISessionListingSettings : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6836,6 +6955,15 @@ namespace SkyFrost.Base
 		}
 
 		System.Boolean AcceptSession(SessionInfo sessionInfo);
+
+		public ISessionListingSettings(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public ISessionListingSettings()
+		{
+		}
 	}
 	public interface IUserStatusSource : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6970,6 +7098,15 @@ namespace SkyFrost.Base
 		void FinishUpdate();
 
 		System.Boolean UpdateSessions(UserStatus status, System.Boolean forceUpdate);
+
+		public IUserStatusSource(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public IUserStatusSource()
+		{
+		}
 	}
 	public class AppsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -9356,6 +9493,15 @@ namespace SkyFrost.Base
 		ValueTask<NetworkNodeInfo> TryGetNodeWithRefetch(System.String id);
 
 		void Update();
+
+		public INetworkNodeManager(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public INetworkNodeManager()
+		{
+		}
 	}
 	public delegate void LNL_PokeRequestHandler(System.String connectionUrl, System.String targetAddress, System.Int32 targetPort);
 	public class NetworkNodeManager : INetworkNodeManager, IHubNetworkingClient, ResoniteBridge.ResoniteBridgeValueHolder
@@ -9573,6 +9719,10 @@ namespace SkyFrost.Base
 		public NetworkNodeManager(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public NetworkNodeManager()
+		{
 		}
 	}
 	public class ProfileManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
@@ -10908,6 +11058,10 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+
+			public SessionInfoData()
+			{
+			}
 		}
 
 		private System.Object _lock
@@ -11423,6 +11577,10 @@ namespace SkyFrost.Base
 		public DefaultSessionListingSettings(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public DefaultSessionListingSettings()
+		{
 		}
 	}
 	public class StatisticsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
@@ -12993,6 +13151,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AccountMigrationConfig()
+		{
+		}
 	}
 	public class AccountMigrationStatus : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -13571,6 +13733,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AccountMigrationStatus()
+		{
+		}
 	}
 	[DataModelType]
 	public enum MigrationState
@@ -13932,6 +14098,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AccountMigrationTask()
+		{
+		}
 	}
 	public class GroupMigrationStatus : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -14057,6 +14227,10 @@ namespace SkyFrost.Base
 		public GroupMigrationStatus(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public GroupMigrationStatus()
+		{
 		}
 	}
 	public class MigrationInitialization : ResoniteBridge.ResoniteBridgeValueHolder
@@ -14226,6 +14400,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public MigrationInitialization()
+		{
+		}
 	}
 	public class RecordMigrationFailure : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -14351,6 +14529,10 @@ namespace SkyFrost.Base
 		public RecordMigrationFailure(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public RecordMigrationFailure()
+		{
 		}
 	}
 	public class RecordMigrationStatus : ResoniteBridge.ResoniteBridgeValueHolder
@@ -14647,6 +14829,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public RecordMigrationStatus()
+		{
+		}
 	}
 	public class VariableMigrationStatus : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -14709,6 +14895,10 @@ namespace SkyFrost.Base
 		public VariableMigrationStatus(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public VariableMigrationStatus()
+		{
 		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -16101,6 +16291,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public SessionUpdate()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class SessionUser : IEquatable<SessionUser>, ResoniteBridge.ResoniteBridgeValueHolder
@@ -16258,6 +16452,10 @@ namespace SkyFrost.Base
 		public SessionUser(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public SessionUser()
+		{
 		}
 	}
 	public class SkyFrostConfig : ResoniteBridge.ResoniteBridgeValueHolder
@@ -17016,6 +17214,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public SkyFrostConfig()
+		{
+		}
 	}
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class UserSessionMetadata : IEquatable<UserSessionMetadata>, ResoniteBridge.ResoniteBridgeValueHolder
@@ -17156,6 +17358,10 @@ namespace SkyFrost.Base
 		public UserSessionMetadata(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public UserSessionMetadata()
+		{
 		}
 	}
 	public static class OnlineStatusHelper
@@ -17684,6 +17890,10 @@ namespace SkyFrost.Base
 		public UserStatus(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public UserStatus()
+		{
 		}
 	}
 	public static class RecordTags
@@ -19622,6 +19832,15 @@ namespace SkyFrost.Base
 				__backing = value;
 			}
 		}
+
+		public SkyFrostModule(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public SkyFrostModule()
+		{
+		}
 	}
 	public delegate void ApiAuthenticator(HttpRequestMessage request, System.String totpCode);
 	public delegate MemoryStream MemoryStreamAllocator();
@@ -20438,6 +20657,15 @@ namespace SkyFrost.Base
 				__backing = value;
 			}
 		}
+
+		public AssetGatherer(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public AssetGatherer()
+		{
+		}
 	}
 	public class AssetGatherer<G> : AssetGatherer, ResoniteBridge.ResoniteBridgeValueHolder where G : GatherJob, new()
 	{
@@ -20839,6 +21067,15 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public BatchQuery(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public BatchQuery()
+		{
 		}
 	}
 	public class CloudResult : ResoniteBridge.ResoniteBridgeValueHolder
@@ -21711,6 +21948,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public GatherJob()
+		{
+		}
 	}
 	public class InfiniteRetryPolicy : IRetryPolicy, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -21772,6 +22013,10 @@ namespace SkyFrost.Base
 		public InfiniteRetryPolicy(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public InfiniteRetryPolicy()
+		{
 		}
 	}
 	public static class IPAddressExtensions
@@ -21910,6 +22155,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public RecordBatchQuery()
+		{
+		}
 	}
 	public class RecordCache<TRecord> : ResoniteBridge.ResoniteBridgeValueHolder where TRecord : class, IRecord, new()
 	{
@@ -22029,6 +22278,10 @@ namespace SkyFrost.Base
 		public RecordCache(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public RecordCache()
+		{
 		}
 	}
 	public class RecordSearch<R> : ResoniteBridge.ResoniteBridgeValueHolder where R : class, IRecord, new()
@@ -22327,6 +22580,10 @@ namespace SkyFrost.Base
 		{
 			__backing = value;
 		}
+
+		public AssetData()
+		{
+		}
 	}
 	public abstract class RecordUploadTaskBase<R> : ResoniteBridge.ResoniteBridgeValueHolder where R : class, IRecord, new()
 	{
@@ -22451,6 +22708,10 @@ namespace SkyFrost.Base
 			public AssetUploadData(ResoniteBridge.ResoniteBridgeValue value)
 			{
 				__backing = value;
+			}
+
+			public AssetUploadData()
+			{
 			}
 		}
 
@@ -22970,6 +23231,15 @@ namespace SkyFrost.Base
 			{
 				__backing = value;
 			}
+		}
+
+		public RecordUploadTaskBase(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
+		}
+
+		public RecordUploadTaskBase()
+		{
 		}
 	}
 	public static class SearchQueryParser
@@ -23717,6 +23987,10 @@ namespace SkyFrost.Base
 		public WebProxyUtility(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public WebProxyUtility()
+		{
 		}
 	}
 }

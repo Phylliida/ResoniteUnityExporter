@@ -175,6 +175,10 @@ namespace ResoniteBridge
             {
                 astType = ((ComposedType)astType).BaseType;
             }
+            if (astType.IsNull)
+            {
+                int i = 0; i += 1;
+            }
             return astType;
         }
 
@@ -272,11 +276,6 @@ namespace ResoniteBridge
 
         public static BlockStatement WrapMethod(bool isStatic, MethodDeclaration methodDeclaration, Expression staticTarget, Expression instanceTarget)
         {
-            if (methodDeclaration.Name == "GetEnumerator")
-            {
-                int i = 0;
-                i += 1;
-            }
             var methodNameExp = new PrimitiveExpression(GetMethodName(methodDeclaration));
             var clientWrappers = new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeClientWrappers"));
 
@@ -588,16 +587,11 @@ namespace ResoniteBridge
                         {
                             // implement ResoniteBridgeValueHolder interface
                             AddBackingDeclaration(typeDeclare);
-
-                            // abstract class doesn't need the constructor
-                            if (!typeDeclare.Modifiers.HasFlag(Modifiers.Abstract))
-                            {
-                                // implement constructor from ResoniteBridgeValue (needed for CastValue)
-                                var constructorDeclaration = CreateBackingConstructor(typeDeclare);
-                                membersToAdd.Add(constructorDeclaration);
-                                numConstructors -= 1;
-                            }
+                            // implement constructor from ResoniteBridgeValue (needed for CastValue)
+                            var constructorDeclaration = CreateBackingConstructor(typeDeclare);
+                            membersToAdd.Add(constructorDeclaration);
                         }
+
                     }
 
                     // replace : where T is unmanaged with : where T is struct to allow our hacky stuff
@@ -630,6 +624,7 @@ namespace ResoniteBridge
                         "__Backing"
                     );
 
+                    bool hasDefaultConstructor = false;
 
                     TraverseSyntaxNodes(astNode, (childNode) =>
                     {
@@ -640,6 +635,10 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
+                            if (constructorDeclare.Parameters.Count == 0)
+                            {
+                                hasDefaultConstructor = true;
+                            }
                             // only wrap non-static constructors
                             // (a static constructor runs once ever)
                             // for static, just make them empty, they'll be called anyway on the other end
@@ -721,7 +720,9 @@ namespace ResoniteBridge
                             if (propertyName != "__Backing") // don't override our own backing
                             {
                                 AstType returnType = propertyDeclare.ReturnType;
-
+                                // remove ref since we don't support that
+                                returnType = CleanType(returnType, removeNullable: false);
+                                propertyDeclare.ReturnType.ReplaceWith(returnType);
                                 bool isStatic = propertyDeclare.Modifiers.HasFlag(Modifiers.Static);
                                 Accessor getter = WrapGetter(isStatic,
                                     returnType,
@@ -778,6 +779,7 @@ namespace ResoniteBridge
                             if (fieldName != "__backing")
                             {
                                 AstType returnType = fieldDeclare.ReturnType;
+                                returnType.ReplaceWith(CleanType(returnType, removeNullable: false));
 
                                 bool isStatic = fieldDeclare.Modifiers.HasFlag(Modifiers.Static) ||
                                     typeDeclare.Modifiers.HasFlag(Modifiers.Static);
@@ -848,12 +850,11 @@ namespace ResoniteBridge
 
 
                     // we need to add default constructor since we define a different alternative one
-                    // but don't do it for enums, static classes, or interfaces
-                    if (numConstructors == 0
+                    // but don't do it for enums or static classes
+                    if (!hasDefaultConstructor
                         && typeDeclare.ClassType != ClassType.Enum
                         && !typeDeclare.Modifiers.HasFlag(Modifiers.Static)
-                        && typeDeclare.ClassType != ClassType.Interface
-                        )
+                        && typeDeclare.ClassType != ClassType.Interface)
                     {
                         ConstructorDeclaration defaultConstructor = CreateDefaultConstructor(typeDeclare);
                         membersToAdd.Add(defaultConstructor);
