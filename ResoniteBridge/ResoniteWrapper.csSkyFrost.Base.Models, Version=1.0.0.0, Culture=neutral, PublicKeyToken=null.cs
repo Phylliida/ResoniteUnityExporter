@@ -3191,6 +3191,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public FeatureFlag(System.String feature, System.Int32 version)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "FeatureFlag", ResoniteBridge.ResoniteBridgeValueType.Type), feature, version);
+		}
+
 		public System.Boolean Equals(FeatureFlag other)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -7878,6 +7883,16 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public EntityId()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public EntityId(System.String ownerId, System.String id)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), ownerId, id);
+		}
+
 		public override System.Boolean Equals(System.Object obj)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -9078,6 +9093,11 @@ namespace SkyFrost.Base
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "LastModifyingMachineId", value);
 			}
+		}
+
+		public RecordVersion(System.Int32 globalVersion, System.Int32 localVersion, System.String lastModifyingUserId, System.String lastModifyingMachineId)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordVersion", ResoniteBridge.ResoniteBridgeValueType.Type), globalVersion, localVersion, lastModifyingUserId, lastModifyingMachineId);
 		}
 
 		public RecordVersion OverrideModifyingUserId(System.String userId)
@@ -10921,6 +10941,16 @@ namespace SkyFrost.Base
 		public void SetValue(T value, System.String locale = "en")
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetValue", value, locale);
+		}
+
+		public MultiLanguageValue()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "MultiLanguageValue", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public MultiLanguageValue(T value, System.String locale = "en")
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "MultiLanguageValue", ResoniteBridge.ResoniteBridgeValueType.Type), value, locale);
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -12978,9 +13008,16 @@ namespace SkyFrost.Base
 			}
 		}
 
+		static PlatformProfile();
+
 		public static void LoadLegacyProfiles(System.String path)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadLegacyProfiles", path);
+		}
+
+		public PlatformProfile(System.String name, System.String shortNamePrefix, System.String abbreviation)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), name, shortNamePrefix, abbreviation);
 		}
 
 		public System.String FavoriteVariable(FavoriteEntity entity)
@@ -14884,18 +14921,6 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public Record Clone()
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(Record)) is Record __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
-		}
-
 		public override System.String ToString()
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String)) is System.String __retCasted)
@@ -15513,6 +15538,16 @@ namespace SkyFrost.Base
 			{
 				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
+		}
+
+		public RecordId(System.String ownerId, System.String recordId)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), ownerId, recordId);
+		}
+
+		public RecordId()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
 		public override System.String ToString()
@@ -16475,6 +16510,16 @@ namespace SkyFrost.Base
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "HasMoreResults", value);
 			}
+		}
+
+		public SearchResults()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchResults", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public SearchResults(List<R> records, System.Boolean hasMore)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchResults", ResoniteBridge.ResoniteBridgeValueType.Type), records, hasMore);
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -18893,6 +18938,26 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public BroadcastTarget()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public BroadcastTarget(BroadcastGroup group)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), group);
+		}
+
+		public BroadcastTarget(BroadcastGroup group, System.String targetId)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), group, targetId);
+		}
+
+		public BroadcastTarget(BroadcastGroup group, IEnumerable<string> targetIds)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), group, targetIds);
+		}
+
 		public static System.Boolean RequiresTargetIds(BroadcastGroup group)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "BroadcastTarget", ResoniteBridge.ResoniteBridgeValueType.Type), "RequiresTargetIds", group), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -19794,6 +19859,16 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public PasswordLogin()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PasswordLogin", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public PasswordLogin(System.String password)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PasswordLogin", ResoniteBridge.ResoniteBridgeValueType.Type), password);
+		}
+
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -19864,6 +19939,16 @@ namespace SkyFrost.Base
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "SessionToken", value);
 			}
+		}
+
+		public SessionTokenLogin()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SessionTokenLogin", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public SessionTokenLogin(System.String sessionToken)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SessionTokenLogin", ResoniteBridge.ResoniteBridgeValueType.Type), sessionToken);
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -24591,6 +24676,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public NewtonDefaultingStringEnumConverter(T defaultVal)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "NewtonDefaultingStringEnumConverter", ResoniteBridge.ResoniteBridgeValueType.Type), defaultVal);
+		}
+
 		public override System.Object ReadJson(JsonReader reader, Type objectType, System.Object existingValue, Newtonsoft.Json.JsonSerializer serializer)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadJson", reader, objectType, existingValue, serializer), typeof(System.Object)) is System.Object __retCasted)
@@ -24645,6 +24735,16 @@ namespace SkyFrost.Base
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "DefaultValue", value);
 			}
+		}
+
+		public JsonDefaultingStringEnumConverter(T defaultValue)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonDefaultingStringEnumConverter", ResoniteBridge.ResoniteBridgeValueType.Type), defaultValue);
+		}
+
+		public JsonDefaultingStringEnumConverter()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonDefaultingStringEnumConverter", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
 		public override System.Boolean CanConvert(Type typeToConvert)
@@ -24716,6 +24816,11 @@ namespace SkyFrost.Base
 			}
 		}
 
+		public JsonStringEnumConverterAttribute(Type converterType, System.Object defaultValue)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonStringEnumConverterAttribute", ResoniteBridge.ResoniteBridgeValueType.Type), converterType, defaultValue);
+		}
+
 		public override System.Text.Json.Serialization.JsonConverter CreateConverter(Type typeToConvert)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateConverter", typeToConvert), typeof(System.Text.Json.Serialization.JsonConverter)) is System.Text.Json.Serialization.JsonConverter __retCasted)
@@ -24757,6 +24862,16 @@ namespace SkyFrost.Base
 	}
 	public class JsonTransitionEnumConverter<T> : System.Text.Json.Serialization.JsonConverter<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
+		public JsonTransitionEnumConverter()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonTransitionEnumConverter", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
+		public JsonTransitionEnumConverter(JsonSerializerOptions options)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonTransitionEnumConverter", ResoniteBridge.ResoniteBridgeValueType.Type), options);
+		}
+
 		public override System.Boolean CanConvert(Type typeToConvert)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanConvert", typeToConvert), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -25005,6 +25120,12 @@ namespace SkyFrost.Base
 					throw new InvalidCastException("Cannot cast result to IEnumerable<int>");
 				}
 			}
+		}
+
+		[System.Text.Json.Serialization.JsonConstructor]
+		public PortRange(System.Int32 min = 0, System.Int32 max = 0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PortRange", ResoniteBridge.ResoniteBridgeValueType.Type), min, max);
 		}
 
 		private void ValidatePort(System.Int32 port, System.String name = "Port")

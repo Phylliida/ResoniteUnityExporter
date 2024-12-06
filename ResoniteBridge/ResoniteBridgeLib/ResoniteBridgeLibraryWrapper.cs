@@ -167,10 +167,11 @@ namespace ResoniteBridge
             }
         }
 
-        public static AstType CleanType(AstType astType)
+        public static AstType CleanType(AstType astType, bool removeNullable=true)
         {
             // grab the base type without ref or ?
-            if (astType.ToString().Contains("ref ") || astType.ToString().EndsWith("?"))
+            if (astType.ToString().Contains("ref ") ||
+                (removeNullable && astType.ToString().EndsWith("?")))
             {
                 astType = ((ComposedType)astType).BaseType;
             }
@@ -281,7 +282,9 @@ namespace ResoniteBridge
             if (methodDeclaration.ReturnType.ToString() != "void")
             {
                 AstType returnType = CleanType(methodDeclaration.ReturnType);
-
+                AstType returnTypeNoRef = CleanType(methodDeclaration.ReturnType, removeNullable: false);
+                // we don't support returning ref
+                methodDeclaration.ReturnType.ReplaceWith(returnTypeNoRef);
                 var castValueCall = new InvocationExpression(
                     new MemberReferenceExpression(clientWrappers.Clone(), "CastValue"),
                     invocation,
@@ -605,7 +608,15 @@ namespace ResoniteBridge
                     {
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
-                            constructorDeclare.Body = WrapConstructor(constructorDeclare, staticTarget);
+                            // only wrap non-static constructors
+                            // (a static constructor runs once ever)
+                            // for static, just make them empty, they'll be called anyway on the other end
+                            constructorDeclare.Body =
+                                constructorDeclare.Modifiers.HasFlag(Modifiers.Static)
+                                ? null
+                                : WrapConstructor(constructorDeclare, staticTarget);
+                            // No initializer (stuff like :base(...)) since we are just wrapping
+                            constructorDeclare.Initializer = null;
                             numConstructors += 1;
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
@@ -940,6 +951,34 @@ namespace ResoniteBridge
                     });
                 }
             });
+
+            // remove duplicate methods (can occur if types get wrapped, similar reasons to constructors)
+            TraverseSyntaxNodes(decompTree, (astNode) =>
+            {
+                if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
+                {
+                    HashSet<string> methods = new HashSet<string>();
+                    TraverseSyntaxNodes(astNode, (childNode) =>
+                    {
+                        if (childNode is MethodDeclaration methodDeclaration)
+                        {
+                            // key based on type and method name
+                            string methodKey = methodDeclaration.NameToken.ToString() +
+                                String.Join(",", methodDeclaration.Parameters
+                                    .Select(p => p.Type.ToString()));
+                            if (methods.Contains(methodKey))
+                            {
+                                nodesToRemove.Add(methodDeclaration);
+                            }
+                            else
+                            {
+                                methods.Add(methodKey);
+                            }
+                        }
+                    });
+                }
+            });
+
 
             // we need to do this seperately to avoid modification in place changing order
             foreach (AstNode nodeToRemove in nodesToRemove)

@@ -125,6 +125,11 @@ namespace Elements.Quantity
 				}
 			}
 
+			public Info(Unit<T> unit, System.String overrideUnitName = null, System.String overrideSeparator = null, System.String overrideNumberFormat = null, CompoundZeroHandling? overrideZeroHandling = null)
+			{
+				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Info", ResoniteBridge.ResoniteBridgeValueType.Type), unit, overrideUnitName, overrideSeparator, overrideNumberFormat, overrideZeroHandling);
+			}
+
 			private ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -297,6 +302,16 @@ namespace Elements.Quantity
 			}
 		}
 
+		public CompoundFormatInfo(System.String defaultSeparator, System.String lastNumberFormat, CompoundZeroHandling zeroHandling, System.Boolean useLongNames, System.Boolean discardLastFraction, params Info[] formatInfo)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "CompoundFormatInfo", ResoniteBridge.ResoniteBridgeValueType.Type), defaultSeparator, lastNumberFormat, zeroHandling, useLongNames, discardLastFraction, formatInfo);
+		}
+
+		public CompoundFormatInfo(System.String defaultSeparator, System.String lastNumberFormat, CompoundZeroHandling zeroHandling, System.Boolean useLongNames, System.Boolean discardLastFraction, IEnumerable<Info> formatInfo)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "CompoundFormatInfo", ResoniteBridge.ResoniteBridgeValueType.Type), defaultSeparator, lastNumberFormat, zeroHandling, useLongNames, discardLastFraction, formatInfo);
+		}
+
 		public Unit<T> GetUnit(System.Int32 index)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUnit", index), typeof(Unit<T>)) is Unit<T> __retCasted)
@@ -394,14 +409,14 @@ namespace Elements.Quantity
 				__backing = value;
 			}
 		}
-
-		public CompoundFormatInfo(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
 	}
 	public class SmartQuantityException : Exception, ResoniteBridge.ResoniteBridgeValueHolder
 	{
+		public SmartQuantityException(System.String message, Exception innerException = null)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "SmartQuantityException", ResoniteBridge.ResoniteBridgeValueType.Type), message, innerException);
+		}
+
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -444,6 +459,11 @@ namespace Elements.Quantity
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "UnitName", value);
 			}
+		}
+
+		public UnitNameNotFoundException(System.String unitName, Exception innerException = null)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitNameNotFoundException", ResoniteBridge.ResoniteBridgeValueType.Type), unitName, innerException);
 		}
 
 		public override System.String ToString()
@@ -621,6 +641,16 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to QVector3<T>");
 				}
 			}
+		}
+
+		public QVector3(System.Double x, System.Double y, System.Double z)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), x, y, z);
+		}
+
+		public QVector3(T x, T y, T z)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QVector3", ResoniteBridge.ResoniteBridgeValueType.Type), x, y, z);
 		}
 
 		public System.String FormatAs(Unit<T> unit, System.String formatNum = null, System.Boolean longName = false)
@@ -1212,6 +1242,11 @@ namespace Elements.Quantity
 			}
 		}
 
+		public UnitNonLinear(Func<double, double> convertToFunc, Func<double, double> convertFromFunc, ICollection<UnitGroup> unitGroups, string[] shortNames, string[] longNames)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitNonLinear", ResoniteBridge.ResoniteBridgeValueType.Type), convertToFunc, convertFromFunc, unitGroups, shortNames, longNames);
+		}
+
 		public override T ConvertFrom(System.Double val)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertFrom", val), typeof(T)) is T __retCasted)
@@ -1327,6 +1362,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Acceleration>");
 				}
 			}
+		}
+
+		public Acceleration(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Acceleration other)
@@ -1763,6 +1803,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Angle>");
 				}
 			}
+		}
+
+		public Angle(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Angle other)
@@ -2365,6 +2410,11 @@ namespace Elements.Quantity
 			}
 		}
 
+		public Distance(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
+		}
+
 		public System.Boolean Equals(Distance other)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -2759,6 +2809,18 @@ namespace Elements.Quantity
 			}
 		}
 
+		static UnitSI();
+
+		public UnitSI(System.Int32 nFactor, System.String shortPrefix, System.String longPrefix)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), nFactor, shortPrefix, longPrefix);
+		}
+
+		public UnitSI(System.Int32 nFactor, string[] shortPrefixes, string[] longPrefixes)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), nFactor, shortPrefixes, longPrefixes);
+		}
+
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -2946,6 +3008,11 @@ namespace Elements.Quantity
 			{
 				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
+		}
+
+		public Unit(System.Double baseRatio, ICollection<UnitGroup> unitGroups, string[] shortNames, string[] longNames)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), baseRatio, unitGroups, shortNames, longNames);
 		}
 
 		public virtual System.Double ConvertTo(T q)
@@ -3289,6 +3356,8 @@ namespace Elements.Quantity
 				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
+
+		static QuantityHelper();
 	}
 	public class UnitGroup : IEnumerable<IUnit>, IEnumerable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3379,6 +3448,11 @@ namespace Elements.Quantity
 						throw new InvalidCastException("Cannot cast result to object");
 					}
 				}
+			}
+
+			public Enumerator(UnitGroup group)
+			{
+				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Enumerator", ResoniteBridge.ResoniteBridgeValueType.Type), group);
 			}
 
 			public void Dispose()
@@ -3720,30 +3794,6 @@ namespace Elements.Quantity
 			}
 		}
 
-		IEnumerator<IUnit> IEnumerable<IUnit>.GetEnumerator()
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator<IUnit>)) is IEnumerator<IUnit> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEnumerator"), typeof(IEnumerator)) is IEnumerator __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to returnTpe");
-			}
-		}
-
 		private ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
@@ -3756,11 +3806,6 @@ namespace Elements.Quantity
 			{
 				__backing = value;
 			}
-		}
-
-		public UnitGroup(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
 		}
 	}
 	public struct Mass : IQuantitySI<Mass>, IQuantitySI, IQuantity<Mass>, IQuantity, IComparable<Mass>, IEquatable<Mass>, ResoniteBridge.ResoniteBridgeValueHolder
@@ -4036,6 +4081,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Mass>");
 				}
 			}
+		}
+
+		public Mass(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Mass other)
@@ -4414,6 +4464,11 @@ namespace Elements.Quantity
 			}
 		}
 
+		public Ratio(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
+		}
+
 		public System.Boolean Equals(Ratio other)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -4771,6 +4826,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Temperature>");
 				}
 			}
+		}
+
+		public Temperature(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Temperature other)
@@ -5334,6 +5394,11 @@ namespace Elements.Quantity
 			}
 		}
 
+		public Time(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
+		}
+
 		public System.Boolean Equals(Time other)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -5743,6 +5808,11 @@ namespace Elements.Quantity
 			}
 		}
 
+		public Velocity(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
+		}
+
 		public System.Boolean Equals(Velocity other)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean)) is System.Boolean __retCasted)
@@ -6089,6 +6159,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Current>");
 				}
 			}
+		}
+
+		public Current(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Current other)
@@ -6461,6 +6536,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Resistance>");
 				}
 			}
+		}
+
+		public Resistance(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Resistance other)
@@ -6857,6 +6937,11 @@ namespace Elements.Quantity
 					throw new InvalidCastException("Cannot cast result to Unit<Voltage>");
 				}
 			}
+		}
+
+		public Voltage(System.Double baseValue = 0.0)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), baseValue);
 		}
 
 		public System.Boolean Equals(Voltage other)
