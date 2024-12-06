@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -36,7 +37,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -48,7 +56,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -60,7 +75,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -72,7 +94,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "signature"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "signature"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -84,7 +113,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "cloudsig"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "cloudsig"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -96,7 +132,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "bytes"), typeof(System.Int64));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "bytes"), typeof(System.Int64)) is System.Int64 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to long");
+				}
 			}
 			set
 			{
@@ -108,7 +151,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "encryptionKey"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "encryptionKey"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 			set
 			{
@@ -134,6 +184,10 @@ namespace FrooxEngine.Store
 		{
 			__backing = value;
 		}
+
+		public AssetRecord()
+		{
+		}
 	}
 	public class LocalDatabaseAccountDataStore : IAccountDataStore, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -141,7 +195,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Database"), typeof(LocalDB));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Database"), typeof(LocalDB)) is LocalDB __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LocalDB");
+				}
 			}
 			set
 			{
@@ -153,7 +214,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Dictionary<string, int>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_fetchedRecords"), typeof(Dictionary<string, int>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_fetchedRecords"), typeof(Dictionary<string, int>)) is Dictionary<string, int> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, int>");
+				}
 			}
 			set
 			{
@@ -165,7 +233,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (IPlatformProfile)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformProfile"), typeof(IPlatformProfile));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PlatformProfile"), typeof(IPlatformProfile)) is IPlatformProfile __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to IPlatformProfile");
+				}
 			}
 			set
 			{
@@ -177,7 +252,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -189,7 +271,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -197,7 +286,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "UserId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -209,7 +305,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Username"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -221,7 +324,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedGroupCount"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedGroupCount"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -233,7 +343,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineOwnerOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineOwnerOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -243,6 +360,11 @@ namespace FrooxEngine.Store
 
 		public event Action<string> ProgressMessage;
 
+		public LocalDatabaseAccountDataStore(LocalDB database, IPlatformProfile platform, System.Boolean machineOwnerOnly)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDatabaseAccountDataStore", ResoniteBridge.ResoniteBridgeValueType.Type), database, platform, machineOwnerOnly);
+		}
+
 		public Task Complete()
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Complete"), typeof(Task)) is Task __retCasted)
@@ -251,7 +373,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -263,7 +385,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<User>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -275,7 +397,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<ExitMessage>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -287,7 +409,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<PatreonFundingEvent>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -299,7 +421,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<RecordAuditInfo>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -311,7 +433,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -323,7 +445,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to int");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -335,7 +457,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<string>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -347,7 +469,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<long>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -359,7 +481,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -371,7 +493,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<Contact>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -383,7 +505,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<GroupData>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -395,19 +517,19 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<DateTime>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetLatestRecordTime(System.String ownerId)
+		public Task<DateTime?> GetLatestRecordTime(System.String ownerId)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLatestRecordTime", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLatestRecordTime", ownerId), typeof(Task<DateTime?>)) is Task<DateTime?> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<DateTime?>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -419,7 +541,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<MemberData>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -431,7 +553,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<Message>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -443,7 +565,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<SkyFrost.Base.Record>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -455,7 +577,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -467,7 +589,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to IAsyncEnumerable<SkyFrost.Base.Record>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -479,7 +601,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<CloudVariable>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -491,7 +613,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<CloudVariableDefinition>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -503,7 +625,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<CloudVariable>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -515,7 +637,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -527,7 +649,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetData>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -539,7 +661,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -551,7 +673,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -563,7 +685,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -575,7 +697,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -587,7 +709,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -599,7 +721,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<StoreResultData>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -611,7 +733,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -623,7 +745,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -635,7 +757,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -647,7 +769,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -659,7 +781,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -701,11 +823,18 @@ namespace FrooxEngine.Store
 			{
 				get
 				{
-					return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "value"), typeof(T));
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "value"), typeof(T)) is T __retCasted)
+					{
+						return __retCasted;
+					}
+					else
+					{
+						throw new InvalidCastException("Cannot cast result to T");
+					}
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "value", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "value", value);
 				}
 			}
 
@@ -713,12 +842,24 @@ namespace FrooxEngine.Store
 			{
 				get
 				{
-					return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "hasValue"), typeof(System.Boolean));
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "hasValue"), typeof(System.Boolean)) is System.Boolean __retCasted)
+					{
+						return __retCasted;
+					}
+					else
+					{
+						throw new InvalidCastException("Cannot cast result to bool");
+					}
 				}
 				set
 				{
-					ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "hasValue", value);
+					ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "hasValue", value);
 				}
+			}
+
+			public VariableResult(T value)
+			{
+				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "VariableResult", ResoniteBridge.ResoniteBridgeValueType.Type), value);
 			}
 
 			private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -749,7 +890,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "connectorType"), typeof(Type));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "connectorType"), typeof(Type)) is Type __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Type");
+				}
 			}
 			set
 			{
@@ -761,7 +909,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "markedForRepair"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "markedForRepair"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -773,7 +928,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "initSubphase"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "initSubphase"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -785,7 +947,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "appDB"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "appDB"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LiteDatabaseAsync");
+				}
 			}
 			set
 			{
@@ -797,7 +966,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assets"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assets"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ILiteCollectionAsync<AssetRecord>");
+				}
 			}
 			set
 			{
@@ -809,7 +985,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "records"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "records"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ILiteCollectionAsync<Record>");
+				}
 			}
 			set
 			{
@@ -821,7 +1004,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variables"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variables"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ILiteCollectionAsync<LocalVariable>");
+				}
 			}
 			set
 			{
@@ -833,7 +1023,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "visits"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "visits"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ILiteCollectionAsync<LocalVisit>");
+				}
 			}
 			set
 			{
@@ -845,7 +1042,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assetMetadata"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assetMetadata"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ILiteCollectionAsync<LocalMetadata>");
+				}
 			}
 			set
 			{
@@ -857,7 +1061,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_precachePaths"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_precachePaths"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -869,7 +1080,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "RepairMarkFile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "RepairMarkFile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -877,11 +1095,18 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _machineCryptoProvider
+		private RSACryptoServiceProvider _machineCryptoProvider
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_machineCryptoProvider"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_machineCryptoProvider"), typeof(RSACryptoServiceProvider)) is RSACryptoServiceProvider __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RSACryptoServiceProvider");
+				}
 			}
 			set
 			{
@@ -889,11 +1114,18 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _localMachineKey
+		private RSAParameters _localMachineKey
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_localMachineKey"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_localMachineKey"), typeof(RSAParameters)) is RSAParameters __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RSAParameters");
+				}
 			}
 			set
 			{
@@ -905,7 +1137,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ushort[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "INIT_TABLE"), typeof(ushort[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "INIT_TABLE"), typeof(ushort[])) is ushort[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ushort[]");
+				}
 			}
 			set
 			{
@@ -917,7 +1156,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (ushort[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "SEED_TABLE"), typeof(ushort[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "SEED_TABLE"), typeof(ushort[])) is ushort[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to ushort[]");
+				}
 			}
 			set
 			{
@@ -929,7 +1175,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Dictionary<string, List<Action>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variableListeners"), typeof(Dictionary<string, List<Action>>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variableListeners"), typeof(Dictionary<string, List<Action>>)) is Dictionary<string, List<Action>> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Dictionary<string, List<Action>>");
+				}
 			}
 			set
 			{
@@ -941,7 +1194,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "IV_SIZE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "IV_SIZE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -953,7 +1213,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "KEY_SIZE"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "KEY_SIZE"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -965,7 +1232,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (SkyFrostInterface)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Cloud"), typeof(SkyFrostInterface));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Cloud"), typeof(SkyFrostInterface)) is SkyFrostInterface __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to SkyFrostInterface");
+				}
 			}
 			set
 			{
@@ -977,7 +1251,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseCorrupted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseCorrupted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -985,7 +1266,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PermanentPath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PermanentPath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -997,7 +1285,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TemporaryPath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "TemporaryPath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1009,7 +1304,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetCachePath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetCachePath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1021,7 +1323,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetStoragePath"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetStoragePath"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1033,7 +1342,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseFile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "DatabaseFile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1045,7 +1361,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalKeyFile"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalKeyFile"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1057,7 +1380,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MachineID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1069,7 +1399,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "SecretMachineID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -1081,7 +1418,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalOwnerID"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LocalOwnerID"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
@@ -1089,7 +1433,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyExponent"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyExponent"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 		}
 
@@ -1097,7 +1448,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyModulus"), typeof(byte[]));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "PublicKeyModulus"), typeof(byte[])) is byte[] __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to byte[]");
+				}
 			}
 		}
 
@@ -1105,7 +1463,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDisposed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDisposed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -1148,7 +1513,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to byte[]");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1160,7 +1525,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1172,11 +1537,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static System.String GenerateMachineID(ResoniteBridge.ResoniteBridgeValue rsa)
+		public static System.String GenerateMachineID(RSAParameters rsa)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateMachineID", rsa), typeof(System.String)) is System.String __retCasted)
 			{
@@ -1184,11 +1549,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static System.Boolean MachineIdMatches(System.String machineId, ResoniteBridge.ResoniteBridgeValue rsa)
+		public static System.Boolean MachineIdMatches(System.String machineId, RSAParameters rsa)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "MachineIdMatches", machineId, rsa), typeof(System.Boolean)) is System.Boolean __retCasted)
 			{
@@ -1196,11 +1561,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static byte[] HashPublicKey(ResoniteBridge.ResoniteBridgeValue rsa)
+		public static byte[] HashPublicKey(RSAParameters rsa)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "HashPublicKey", rsa), typeof(byte[])) is byte[] __retCasted)
 			{
@@ -1208,11 +1573,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to byte[]");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static System.String ProcessUrl(ResoniteBridge.ResoniteBridgeValue url)
+		public static System.String ProcessUrl(System.Uri url)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "ProcessUrl", url), typeof(System.String)) is System.String __retCasted)
 			{
@@ -1220,7 +1585,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1232,7 +1597,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1244,7 +1609,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<int>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1256,7 +1621,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1268,8 +1633,13 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
+		}
+
+		public LocalDB(SkyFrostInterface cloud, System.String permanentPath, System.String temporaryPath, HashSet<string> precachePaths)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), cloud, permanentPath, temporaryPath, precachePaths);
 		}
 
 		public void AssignCloud(SkyFrostInterface cloud)
@@ -1295,7 +1665,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1307,7 +1677,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1319,7 +1689,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1331,7 +1701,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1343,7 +1713,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1355,35 +1725,35 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to List<T>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GenerateLocalURL(System.String extension, System.String signature = null)
+		public System.Uri GenerateLocalURL(System.String extension, System.String signature = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateLocalURL", extension, signature), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateLocalURL", extension, signature), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> ImportLocalAssetAsync(System.String path, ImportLocation location, System.String forceSignature = null, System.String cloudSig = null)
+		public Task<System.Uri> ImportLocalAssetAsync(System.String path, ImportLocation location, System.String forceSignature = null, System.String cloudSig = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ImportLocalAssetAsync", path, location, forceSignature, cloudSig), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ImportLocalAssetAsync", path, location, forceSignature, cloudSig), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<List<AssetRecord>> GetAllVariantsAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
+		public Task<List<AssetRecord>> GetAllVariantsAsync(System.Uri assetURL)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAllVariantsAsync", assetURL), typeof(Task<List<AssetRecord>>)) is Task<List<AssetRecord>> __retCasted)
 			{
@@ -1391,11 +1761,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<AssetRecord>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<string> StoreCacheRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.String path, System.Boolean encrypt = false)
+		public Task<string> StoreCacheRecordAsync(System.Uri assetURL, System.String path, System.Boolean encrypt = false)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreCacheRecordAsync", assetURL, path, encrypt), typeof(Task<string>)) is Task<string> __retCasted)
 			{
@@ -1403,11 +1773,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<string>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task DeleteCacheRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
+		public Task DeleteCacheRecordAsync(System.Uri assetURL)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteCacheRecordAsync", assetURL), typeof(Task)) is Task __retCasted)
 			{
@@ -1415,11 +1785,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task StoreAssetRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.String path, byte[] encryptionKey = null)
+		public Task StoreAssetRecordAsync(System.Uri assetURL, System.String path, byte[] encryptionKey = null)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreAssetRecordAsync", assetURL, path, encryptionKey), typeof(Task)) is Task __retCasted)
 			{
@@ -1427,7 +1797,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1439,7 +1809,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1451,19 +1821,19 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> EnsurePermanentStorageAsync(ResoniteBridge.ResoniteBridgeValue assetURL, System.Boolean ignoreMissing = false)
+		public Task<System.Uri> EnsurePermanentStorageAsync(System.Uri assetURL, System.Boolean ignoreMissing = false)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsurePermanentStorageAsync", assetURL, ignoreMissing), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsurePermanentStorageAsync", assetURL, ignoreMissing), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1475,7 +1845,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1487,7 +1857,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1499,11 +1869,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<AssetRecord> TryFetchAssetRecordAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
+		public Task<AssetRecord> TryFetchAssetRecordAsync(System.Uri assetURL)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetRecordAsync", assetURL), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
 			{
@@ -1511,11 +1881,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<Stream> TryOpenAsset(ResoniteBridge.ResoniteBridgeValue assetURL)
+		public Task<Stream> TryOpenAsset(System.Uri assetURL)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryOpenAsset", assetURL), typeof(Task<Stream>)) is Task<Stream> __retCasted)
 			{
@@ -1523,11 +1893,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Stream>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<AssetRecord> TryFetchAssetRecordWithMetadataAsync(ResoniteBridge.ResoniteBridgeValue assetURL)
+		public Task<AssetRecord> TryFetchAssetRecordWithMetadataAsync(System.Uri assetURL)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetRecordWithMetadataAsync", assetURL), typeof(Task<AssetRecord>)) is Task<AssetRecord> __retCasted)
 			{
@@ -1535,7 +1905,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<AssetRecord>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1557,19 +1927,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<IAssetMetadata>");
-			}
-		}
-
-		public Task<T> TryFetchAssetMetadataAsync<T>(System.String identifier) where T : class, IAssetMetadata
-		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetMetadataAsync", identifier), typeof(Task<T>)) is Task<T> __retCasted)
-			{
-				return __retCasted;
-			}
-			else
-			{
-				throw new InvalidCastException("Cannot cast result to Task<T>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1581,7 +1939,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1593,7 +1951,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1605,7 +1963,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Record>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1617,11 +1975,11 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<bool>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<bool> DeleteRecordAsync(ResoniteBridge.ResoniteBridgeValue recordUri)
+		public Task<bool> DeleteRecordAsync(System.Uri recordUri)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteRecordAsync", recordUri), typeof(Task<bool>)) is Task<bool> __retCasted)
 			{
@@ -1629,7 +1987,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<bool>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1641,7 +1999,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<bool>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1653,7 +2011,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<bool>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1665,7 +2023,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1677,7 +2035,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<List<Record>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1689,79 +2047,79 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Record>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(Bitmap2D texture, System.String extension = "webp", System.Int32 quality = int.MaxValue, System.Boolean preserveColorInAlpha = true)
+		public Task<System.Uri> SaveAssetAsync(Bitmap2D texture, System.String extension = "webp", System.Int32 quality = int.MaxValue, System.Boolean preserveColorInAlpha = true)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension, quality, preserveColorInAlpha), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension, quality, preserveColorInAlpha), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(Bitmap3D texture, System.String extension = "3dtex")
+		public Task<System.Uri> SaveAssetAsync(Bitmap3D texture, System.String extension = "3dtex")
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture, extension), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(MeshX mesh, MeshX.Encoding encoding = MeshX.Encoding.LZ4)
+		public Task<System.Uri> SaveAssetAsync(MeshX mesh, MeshX.Encoding encoding = MeshX.Encoding.LZ4)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", mesh, encoding), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", mesh, encoding), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(AnimX anim, AnimX.Encoding encoding = AnimX.Encoding.LZMA)
+		public Task<System.Uri> SaveAssetAsync(AnimX anim, AnimX.Encoding encoding = AnimX.Encoding.LZMA)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", anim, encoding), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", anim, encoding), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(BitmapCube texture)
+		public Task<System.Uri> SaveAssetAsync(BitmapCube texture)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", texture), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public Task<ResoniteBridge.ResoniteBridgeValue> SaveAssetAsync(AudioX audio, AudioEncodeSettings encodeSettings = null)
+		public Task<System.Uri> SaveAssetAsync(AudioX audio, AudioEncodeSettings encodeSettings = null)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", audio, encodeSettings), typeof(Task<ResoniteBridge.ResoniteBridgeValue>)) is Task<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SaveAssetAsync", audio, encodeSettings), typeof(Task<System.Uri>)) is Task<System.Uri> __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<Uri>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1783,7 +2141,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<LocalVariable>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1795,7 +2153,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<T>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1807,7 +2165,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<T>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1819,7 +2177,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<VariableResult<T>>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1831,7 +2189,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<T>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1843,7 +2201,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1855,7 +2213,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<string>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1867,7 +2225,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1879,7 +2237,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<bool>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1891,7 +2249,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task<LocalVisit>");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1903,7 +2261,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1915,7 +2273,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Stream");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1927,31 +2285,31 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to byte[]");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue CreateEncryptionStream(byte[] key, Stream outputStream)
+		public static CryptoStream CreateEncryptionStream(byte[] key, Stream outputStream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncryptionStream", key, outputStream), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateEncryptionStream", key, outputStream), typeof(CryptoStream)) is CryptoStream __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CryptoStream");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public static ResoniteBridge.ResoniteBridgeValue CreateDecryptionStream(byte[] key, Stream inputStream)
+		public static CryptoStream CreateDecryptionStream(byte[] key, Stream inputStream)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateDecryptionStream", key, inputStream), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateDecryptionStream", key, inputStream), typeof(CryptoStream)) is CryptoStream __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to CryptoStream");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -1973,6 +2331,10 @@ namespace FrooxEngine.Store
 		{
 			__backing = value;
 		}
+
+		public LocalDB()
+		{
+		}
 	}
 	public static class LocalDBUtility
 	{
@@ -1984,7 +2346,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Task");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 	}
@@ -1994,7 +2356,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2006,7 +2375,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MetadataId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MetadataId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2018,7 +2394,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Metadata"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Metadata"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2044,6 +2427,10 @@ namespace FrooxEngine.Store
 		{
 			__backing = value;
 		}
+
+		public LocalMetadata()
+		{
+		}
 	}
 	public class LocalVariable : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -2051,7 +2438,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2063,7 +2457,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2075,7 +2476,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "value"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "value"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2101,6 +2509,10 @@ namespace FrooxEngine.Store
 		{
 			__backing = value;
 		}
+
+		public LocalVariable()
+		{
+		}
 	}
 	public class LocalVariableProxy<T> : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -2108,7 +2520,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2120,7 +2539,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "currentValue"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "currentValue"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -2132,7 +2558,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -2144,7 +2577,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (LocalDB)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "db"), typeof(LocalDB));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "db"), typeof(LocalDB)) is LocalDB __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to LocalDB");
+				}
 			}
 			set
 			{
@@ -2156,7 +2596,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Value"), typeof(T));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Value"), typeof(T)) is T __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to T");
+				}
 			}
 			set
 			{
@@ -2168,11 +2615,23 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 		}
 
 		public event Action<LocalVariableProxy<T>> OnChanged;
+
+		public LocalVariableProxy(LocalDB db, System.String path, T defaultValue)
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalVariableProxy", ResoniteBridge.ResoniteBridgeValueType.Type), db, path, defaultValue);
+		}
 
 		private void OnVariableChanged()
 		{
@@ -2186,7 +2645,14 @@ namespace FrooxEngine.Store
 
 		public static implicit operator T(LocalVariableProxy<T> proxy)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalVariableProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", proxy), typeof(T));
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalVariableProxy", ResoniteBridge.ResoniteBridgeValueType.Type), "op_Implicit", proxy), typeof(T)) is T __retCasted)
+			{
+				return __retCasted;
+			}
+			else
+			{
+				throw new InvalidCastException("Cannot cast result to T");
+			}
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -2218,7 +2684,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2230,7 +2703,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "url"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2242,7 +2722,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "globalVersion"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "globalVersion"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2254,7 +2741,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "lastVisit"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "lastVisit"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -2280,17 +2774,28 @@ namespace FrooxEngine.Store
 		{
 			__backing = value;
 		}
+
+		public LocalVisit()
+		{
+		}
 	}
 	[Serializable]
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	[DataModelType]
 	public class Record : IRecord, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _cachedURL
+		private System.Uri _cachedURL
 		{
 			get
 			{
-				return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL"), typeof(System.Uri)) is System.Uri __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Uri");
+				}
 			}
 			set
 			{
@@ -2302,7 +2807,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2314,7 +2826,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_cachedURL_RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2327,7 +2846,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "id"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2340,7 +2866,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CombinedRecordId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 		}
 
@@ -2350,7 +2883,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2364,7 +2904,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerId"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2378,7 +2925,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2392,7 +2946,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (RecordVersion)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Version"), typeof(RecordVersion)) is RecordVersion __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordVersion");
+				}
 			}
 			set
 			{
@@ -2405,7 +2966,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSynced"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsSynced"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2418,7 +2986,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (Record)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConflictingCloudVersion"), typeof(Record));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ConflictingCloudVersion"), typeof(Record)) is Record __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to Record");
+				}
 			}
 			set
 			{
@@ -2431,7 +3006,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedOn"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FetchedOn"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -2445,7 +3027,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Name"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2459,7 +3048,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Description"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2473,7 +3069,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RecordType"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2487,7 +3090,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "OwnerName"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2501,7 +3111,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (HashSet<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Tags"), typeof(HashSet<string>)) is HashSet<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to HashSet<string>");
+				}
 			}
 			set
 			{
@@ -2515,7 +3132,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Path"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2529,7 +3153,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "ThumbnailURI"), typeof(System.String)) is System.String __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to string");
+				}
 			}
 			set
 			{
@@ -2543,7 +3174,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsPublic"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2557,7 +3195,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsForPatrons"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2571,7 +3216,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsListed"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2585,7 +3237,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsReadOnly"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2599,7 +3258,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LastModificationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -2613,7 +3279,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RootRecordId"), typeof(RecordId));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RootRecordId"), typeof(RecordId)) is RecordId __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to RecordId");
+				}
 			}
 			set
 			{
@@ -2627,7 +3300,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "CreationTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -2641,7 +3321,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (DateTime?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(ResoniteBridge.ResoniteBridgeValue));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "FirstPublishTime"), typeof(DateTime)) is DateTime __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to DateTime");
+				}
 			}
 			set
 			{
@@ -2655,7 +3342,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsDeleted"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 			set
 			{
@@ -2669,7 +3363,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Visits"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2683,7 +3384,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Rating"), typeof(System.Double)) is System.Double __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to double");
+				}
 			}
 			set
 			{
@@ -2697,7 +3405,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "RandomOrder"), typeof(System.Int32)) is System.Int32 __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to int");
+				}
 			}
 			set
 			{
@@ -2711,7 +3426,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<Submission>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Submissions"), typeof(List<Submission>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Submissions"), typeof(List<Submission>)) is List<Submission> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<Submission>");
+				}
 			}
 			set
 			{
@@ -2725,7 +3447,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (MigrationMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "MigrationMetadata"), typeof(MigrationMetadata)) is MigrationMetadata __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to MigrationMetadata");
+				}
 			}
 			set
 			{
@@ -2738,7 +3467,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Manifest"), typeof(List<string>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "Manifest"), typeof(List<string>)) is List<string> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<string>");
+				}
 			}
 			set
 			{
@@ -2752,7 +3488,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "AssetManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -2764,7 +3507,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidOwnerId"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidOwnerId"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -2772,7 +3522,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidRecordId"), typeof(System.Boolean));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "IsValidRecordId"), typeof(System.Boolean)) is System.Boolean __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to bool");
+				}
 			}
 		}
 
@@ -2783,7 +3540,14 @@ namespace FrooxEngine.Store
 		{
 			get
 			{
-				return (List<DBAsset>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyManifest"), typeof(List<DBAsset>));
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetProperty(__Backing, "LegacyManifest"), typeof(List<DBAsset>)) is List<DBAsset> __retCasted)
+				{
+					return __retCasted;
+				}
+				else
+				{
+					throw new InvalidCastException("Cannot cast result to List<DBAsset>");
+				}
 			}
 			set
 			{
@@ -2845,27 +3609,27 @@ namespace FrooxEngine.Store
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearRecordSpecificMetadata");
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetUrl(IPlatformProfile platform)
+		public System.Uri GetUrl(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUrl", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUrl", platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetWebURL(IPlatformProfile platform)
+		public System.Uri GetWebURL(IPlatformProfile platform)
 		{
-			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetWebURL", platform), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetWebURL", platform), typeof(System.Uri)) is System.Uri __retCasted)
 			{
 				return __retCasted;
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to Uri");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2877,7 +3641,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to string");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2889,7 +3653,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to bool");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2921,7 +3685,7 @@ namespace FrooxEngine.Store
 			}
 			else
 			{
-				throw new InvalidCastException("Cannot cast result to R");
+				throw new InvalidCastException("Cannot cast result to returnTpe");
 			}
 		}
 
@@ -2942,6 +3706,10 @@ namespace FrooxEngine.Store
 		public Record(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public Record()
+		{
 		}
 	}
 }
