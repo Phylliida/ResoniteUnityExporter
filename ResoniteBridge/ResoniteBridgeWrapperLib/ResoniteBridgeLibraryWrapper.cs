@@ -579,7 +579,6 @@ namespace ResoniteBridge
                         typeDeclare.Modifiers &= ~Modifiers.Ref;
                     }
 
-                    int numConstructors = 0;
 
                     List<EntityDeclaration> membersToAdd = new List<EntityDeclaration>();
 
@@ -659,7 +658,8 @@ namespace ResoniteBridge
                         
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
-                            if (constructorDeclare.Parameters.Count == 0)
+                            if (constructorDeclare.Parameters.Count == 0 &&
+                                !constructorDeclare.Modifiers.HasFlag(Modifiers.Static))
                             {
                                 hasDefaultConstructor = true;
                             }
@@ -675,7 +675,6 @@ namespace ResoniteBridge
                                 : WrapConstructor(constructorDeclare, staticTarget);
                             // No initializer (stuff like :base(...)) since we are just wrapping
                             constructorDeclare.Initializer = null;
-                            numConstructors += 1;
                         }
                         if (childNode is IndexerDeclaration indexerDeclare)
                         {
@@ -1109,7 +1108,9 @@ namespace ResoniteBridge
                         if (childNode is ConstructorDeclaration constructorDeclaration)
                         {
                             // key based on type
-                            string constructorKey = String.Join(",", constructorDeclaration.Parameters
+                            string staticKey = constructorDeclaration.Modifiers.HasFlag(Modifiers.Static) ?
+                            "static" : "notstatic";
+                            string constructorKey = staticKey + String.Join(",", constructorDeclaration.Parameters
                                 .Select(p => p.Type.ToString()));
                             if (constructors.Contains(constructorKey))
                             {
@@ -1141,7 +1142,10 @@ namespace ResoniteBridge
                         if (childNode is MethodDeclaration methodDeclaration)
                         {
                             // key based on type and method name
-                            string methodKey = GetMethodName(methodDeclaration) +
+                            string staticKey = methodDeclaration.Modifiers.HasFlag(Modifiers.Static) ?
+                            "static" : "notstatic";
+                            string methodKey = staticKey + 
+                                GetMethodName(methodDeclaration) +
                                 String.Join(",", methodDeclaration.Parameters
                                     .Select(p => p.Type.ToString()));
                             if (methods.Contains(methodKey))
