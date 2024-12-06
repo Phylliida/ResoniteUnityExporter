@@ -1242,6 +1242,7 @@ namespace ResoniteBridge
 
         public static HashSet<string> bonusList = new HashSet<string>()
         {
+            "Assimp",
             "ICSharpCode.Decompiler",
             "Microsoft.CodeAnalysis.Analyzers",
             "Microsoft.CodeAnalysis",
@@ -1272,6 +1273,25 @@ namespace ResoniteBridge
             "Microsoft.AspNetCore.SignalR.Client",
             "EnumsNET",
             "SignalR.Strong",
+            "PDFiumSharp",
+            "PDFiumSharp.Enums",
+            "PDFiumSharp.Types",
+            "QRCoder",
+            "CSCore",
+            "CSCore.Codecs",
+            "CSCore.Codecs.FLAC",
+            "CSCore.Codecs.OGG",
+            "CSCore.Codecs.WAV",
+            "TwitchLib.Api",
+            "TwitchLib.Api.V5",
+            "TwitchLib.Api.V5.Models.Badges",
+            "TwitchLib.Client",
+            "TwitchLib.Client.Enums",
+            "TwitchLib.Client.Events",
+            "TwitchLib.Client.Models",
+            "TwitchLib.Communication.Events",
+            "TwitchLib.PubSub",
+            "TwitchLib.PubSub.Events",
         }; 
 
         public class TypeInfoLookup
@@ -1470,7 +1490,7 @@ namespace ResoniteBridge
                 Console.WriteLine("Emitting..." + outPath);
 
                 Microsoft.CodeAnalysis.Emit.EmitResult result;
-                using (FileStream writer = File.OpenRead(outPath))
+                using (FileStream writer = File.OpenWrite(outPath))
                 {
                     result = compilation.Emit(writer);
                 }

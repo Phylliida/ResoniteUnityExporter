@@ -46,6 +46,10 @@ using ProtoFlux.Runtimes.Execution.Nodes.Operators;
 using ProtoFlux.Runtimes.Execution.Nodes.Strings;
 using ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters;
 using SkyFrost.Base;
+using TwitchLib.Client.Enums;
+using TwitchLib.Client.Events;
+using TwitchLib.Client.Models;
+using TwitchLib.PubSub.Events;
 
 namespace Microsoft.CodeAnalysis
 {
@@ -37744,11 +37748,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		public ValueOutput<ResoniteBridge.ResoniteBridgeValue> CheerBadge
+		public ValueOutput<BadgeColor> CheerBadge
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "CheerBadge"), typeof(ValueOutput<ResoniteBridge.ResoniteBridgeValue>)) is ValueOutput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "CheerBadge"), typeof(ValueOutput<BadgeColor>)) is ValueOutput<BadgeColor> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -37892,7 +37896,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", context);
 		}
 
-		private void HandleEvent(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void HandleEvent(OnMessageReceivedArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HandleEvent", args, context);
 		}
@@ -38018,11 +38022,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			}
 		}
 
-		public ValueOutput<ResoniteBridge.ResoniteBridgeValue> Plan
+		public ValueOutput<SubscriptionPlan> Plan
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Plan"), typeof(ValueOutput<ResoniteBridge.ResoniteBridgeValue>)) is ValueOutput<ResoniteBridge.ResoniteBridgeValue> __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "Plan"), typeof(ValueOutput<SubscriptionPlan>)) is ValueOutput<SubscriptionPlan> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -38185,22 +38189,22 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", context);
 		}
 
-		private void OnNew(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void OnNew(OnNewSubscriberArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnNew", args, context);
 		}
 
-		private void OnResub(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void OnResub(OnReSubscriberArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnResub", args, context);
 		}
 
-		private void OnGifted(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void OnGifted(OnGiftedSubscriptionArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGifted", args, context);
 		}
 
-		private void SendEvent(ResoniteBridge.ResoniteBridgeValue args, System.Int32 months, System.Boolean isResub, FrooxEngineContext context)
+		private void SendEvent(SubscriberBase args, System.Int32 months, System.Boolean isResub, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SendEvent", args, months, isResub, context);
 		}
@@ -38322,7 +38326,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", context);
 		}
 
-		private void Follow(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void Follow(OnFollowArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Follow", args, context);
 		}
@@ -38558,7 +38562,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", context);
 		}
 
-		private void Redeem(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void Redeem(OnRewardRedeemedArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Redeem", args, context);
 		}
@@ -38737,7 +38741,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear", context);
 		}
 
-		private void Raid(ResoniteBridge.ResoniteBridgeValue args, FrooxEngineContext context)
+		private void Raid(OnRaidNotificationArgs args, FrooxEngineContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Raid", args, context);
 		}

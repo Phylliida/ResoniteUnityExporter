@@ -21,9 +21,6 @@
   </PropertyGroup>
   <ItemGroup>
 	  <PackageReference Include="System.Runtime" Version="4.3.1" />
-	  <PackageReference Include="ICSharpCode.Decompiler" Version="8.2.0.7535">
-		  <Properties>TargetFramework=netstandard2.0</Properties>
-	  </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
 		<Properties>TargetFramework=netstandard2.0</Properties>
 	</PackageReference>
@@ -46,6 +43,9 @@
     </Reference>
     <Reference Include="ResoniteBridgeLib">
       <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteBridgeWrapperLib">
+      <HintPath>..\ResoniteBridgeWrapperLib\bin\Debug\netstandard2.1\ResoniteBridgeWrapperLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

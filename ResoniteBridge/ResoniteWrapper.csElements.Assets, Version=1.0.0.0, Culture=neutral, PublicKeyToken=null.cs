@@ -18,10 +18,20 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Assimp;
+using CSCore;
+using CSCore.Codecs;
+using CSCore.Codecs.FLAC;
+using CSCore.Codecs.OGG;
+using CSCore.Codecs.WAV;
 using Elements.Core;
 using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using PDFiumSharp;
+using PDFiumSharp.Enums;
+using PDFiumSharp.Types;
+using QRCoder;
 using SkyFrost.Base;
 
 namespace Microsoft.CodeAnalysis
@@ -2679,11 +2689,11 @@ namespace Elements.Assets
 	}
 	public class CSCoreSampleDecoder : ISampleDecoder, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue waveSource
+		private IWaveSource waveSource
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "waveSource"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "waveSource"), typeof(IWaveSource)) is IWaveSource __retCasted)
 				{
 					return __retCasted;
 				}
@@ -2698,11 +2708,11 @@ namespace Elements.Assets
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue sampleSource
+		private ISampleSource sampleSource
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "sampleSource"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "sampleSource"), typeof(ISampleSource)) is ISampleSource __retCasted)
 				{
 					return __retCasted;
 				}
@@ -3150,11 +3160,11 @@ namespace Elements.Assets
 	}
 	public class WavEncoder : ISampleEncoder, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue writer
+		private WaveWriter writer
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "writer"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "writer"), typeof(WaveWriter)) is WaveWriter __retCasted)
 				{
 					return __retCasted;
 				}
@@ -6655,11 +6665,11 @@ namespace Elements.Assets
 	}
 	public class PDF_DataSource : IDocumentDataSource, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _document
+		private PdfDocument _document
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_document"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_document"), typeof(PdfDocument)) is PdfDocument __retCasted)
 				{
 					return __retCasted;
 				}
@@ -6762,11 +6772,11 @@ namespace Elements.Assets
 	{
 		private struct RenderFormat : ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			public ResoniteBridge.ResoniteBridgeValue format
+			public BitmapFormats format
 			{
 				get
 				{
-					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "format"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+					if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "format"), typeof(BitmapFormats)) is BitmapFormats __retCasted)
 					{
 						return __retCasted;
 					}
@@ -6800,7 +6810,7 @@ namespace Elements.Assets
 				}
 			}
 
-			public RenderFormat(ResoniteBridge.ResoniteBridgeValue format, System.Boolean reverseByteOrder)
+			public RenderFormat(BitmapFormats format, System.Boolean reverseByteOrder)
 			{
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "RenderFormat", ResoniteBridge.ResoniteBridgeValueType.Type), format, reverseByteOrder);
 			}
@@ -6829,11 +6839,11 @@ namespace Elements.Assets
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _page
+		private PdfPage _page
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_page"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "_page"), typeof(PdfPage)) is PdfPage __retCasted)
 				{
 					return __retCasted;
 				}
@@ -6893,7 +6903,7 @@ namespace Elements.Assets
 			}
 		}
 
-		public PDF_Page(ResoniteBridge.ResoniteBridgeValue page)
+		public PDF_Page(PdfPage page)
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "PDF_Page", ResoniteBridge.ResoniteBridgeValueType.Type), page);
 		}
@@ -6932,6 +6942,11 @@ namespace Elements.Assets
 			{
 				__backing = value;
 			}
+		}
+
+		public PDF_Page(ResoniteBridge.ResoniteBridgeValue value)
+		{
+			__backing = value;
 		}
 
 		public PDF_Page()
@@ -36597,7 +36612,7 @@ namespace Elements.Assets
 	}
 	public static class BitmapQRCodeGenerator
 	{
-		public static Bitmap2D Generate(System.String payload, ResoniteBridge.ResoniteBridgeValue eccLevel = default(ResoniteBridge.ResoniteBridgeValue), TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
+		public static Bitmap2D Generate(System.String payload, QRCodeGenerator.ECCLevel eccLevel = QRCodeGenerator.ECCLevel.Q, TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
 		{
 			if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapQRCodeGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", payload, eccLevel, format, trueColor, falseColor), typeof(Bitmap2D)) is Bitmap2D __retCasted)
 			{
@@ -36609,7 +36624,7 @@ namespace Elements.Assets
 			}
 		}
 
-		public static void Generate(ref Bitmap2D bitmap, System.String payload, ResoniteBridge.ResoniteBridgeValue eccLevel = default(ResoniteBridge.ResoniteBridgeValue), TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
+		public static void Generate(ref Bitmap2D bitmap, System.String payload, QRCodeGenerator.ECCLevel eccLevel = QRCodeGenerator.ECCLevel.Q, TextureFormat format = TextureFormat.RGBA32, color? trueColor = null, color? falseColor = null)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BitmapQRCodeGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", bitmap, payload, eccLevel, format, trueColor, falseColor);
 		}
