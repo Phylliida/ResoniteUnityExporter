@@ -3942,15 +3942,6 @@ namespace Elements.Assets
 		}
 
 		System.Int32 Read(float[] buffer, System.Int32 offset, System.Int32 count);
-
-		public ISampleDecoder(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISampleDecoder()
-		{
-		}
 	}
 	public interface ISampleEncoder : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3970,26 +3961,9 @@ namespace Elements.Assets
 		}
 
 		void Write(ResoniteBridge.ResoniteBridgeValue samples);
-
-		public ISampleEncoder(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISampleEncoder()
-		{
-		}
 	}
 	public interface IAudioDataSource : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public IAudioDataSource(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAudioDataSource()
-		{
-		}
 	}
 	public class BufferDenoiser<S> : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder where S : struct, IAudioSample<S>
 	{
@@ -4317,15 +4291,6 @@ namespace Elements.Assets
 		QuadSample ToQuad();
 
 		Surround51Sample ToSurround51();
-
-		public IAudioSample(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAudioSample()
-		{
-		}
 	}
 	public interface IAudioSample<S> : IAudioSample, ResoniteBridge.ResoniteBridgeValueHolder where S : struct, IAudioSample<S>
 	{
@@ -4340,15 +4305,6 @@ namespace Elements.Assets
 		S LerpTo(S next, System.Single lerp);
 
 		S SetChannel(System.Int32 channel, System.Single value);
-
-		public IAudioSample(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAudioSample()
-		{
-		}
 	}
 	public struct MonoSample : IAudioSample<MonoSample>, IAudioSample, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6629,15 +6585,6 @@ namespace Elements.Assets
 		}
 
 		IDocumentPage GetPage(System.Int32 index);
-
-		public IDocumentDataSource(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IDocumentDataSource()
-		{
-		}
 	}
 	public interface IDocumentPage : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6689,15 +6636,6 @@ namespace Elements.Assets
 		void RenderTo(Bitmap2D bitmap);
 
 		void RenderTo(Bitmap2D bitmap, Rect pageSection);
-
-		public IDocumentPage(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IDocumentPage()
-		{
-		}
 	}
 	public class PDF_DataSource : IDocumentDataSource, IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -8229,15 +8167,6 @@ namespace Elements.Assets
 				}
 			}
 		}
-
-		public IMeshXElement(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IMeshXElement()
-		{
-		}
 	}
 	public interface IMeshXPrimitive : IMeshXElement, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -8254,15 +8183,6 @@ namespace Elements.Assets
 					throw new InvalidCastException("Cannot cast result to Submesh");
 				}
 			}
-		}
-
-		public IMeshXPrimitive(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IMeshXPrimitive()
-		{
 		}
 	}
 	public struct AppendResult : ResoniteBridge.ResoniteBridgeValueHolder
@@ -12116,15 +12036,6 @@ namespace Elements.Assets
 	public interface ISubmesh<P> : ResoniteBridge.ResoniteBridgeValueHolder where P : IMeshXPrimitive
 	{
 		P this[System.Int32 index] { get; }
-
-		public ISubmesh(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISubmesh()
-		{
-		}
 	}
 	public abstract class Submesh : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -23939,15 +23850,6 @@ namespace Elements.Assets
 		float3 GetBlendShapeTangentDelta(System.String key, System.Int32 frame = 0);
 
 		void SetBlendShapeTangentDelta(System.String key, in float3 delta, System.Int32 frame = 0);
-
-		public IVertex(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IVertex()
-		{
-		}
 	}
 	public struct Vertex : IVertex, IMeshXElement, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -29685,41 +29587,14 @@ namespace Elements.Assets
 		void RenderRawGlyphBitmap(System.UInt32 glyphId, Bitmap2D target, IntRect rect, System.Boolean rotated);
 
 		System.Boolean SupportsRenderMethod(GlyphRenderMethod method);
-
-		public IFontDataSource(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IFontDataSource()
-		{
-		}
 	}
 	internal interface ICharacterFilter : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		System.Char FilterCharacter(System.Char ch, System.Int32 index);
-
-		public ICharacterFilter(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ICharacterFilter()
-		{
-		}
 	}
 	internal interface ISizeFilter : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		System.Single FilterSize(System.Single size, System.Int32 index);
-
-		public ISizeFilter(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISizeFilter()
-		{
-		}
 	}
 	public class CharSubstitutionNode : StringContainerNode, ICharacterFilter, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -33771,27 +33646,10 @@ namespace Elements.Assets
 	[DataModelType]
 	public interface IBitmap : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public IBitmap(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IBitmap()
-		{
-		}
 	}
 	public interface IBitmap<B> : IBitmap, ResoniteBridge.ResoniteBridgeValueHolder where B : IBitmap<B>
 	{
 		B ConvertTo(TextureFormat format);
-
-		public IBitmap(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IBitmap()
-		{
-		}
 	}
 	[DataModelType]
 	public abstract class Bitmap : ResoniteBridge.ResoniteBridgeValueHolder
@@ -37074,15 +36932,6 @@ namespace Elements.Assets
 			{
 				ResoniteBridge.ResoniteBridgeClientWrappers.SetProperty(__Backing, "A", value);
 			}
-		}
-
-		public IPixel(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IPixel()
-		{
 		}
 	}
 	public struct PixelABGR1555 : IPixel, ResoniteBridge.ResoniteBridgeValueHolder
@@ -44254,15 +44103,6 @@ namespace Elements.Assets
 		void GenerateLoadChain(List<string> chain);
 
 		List<IAssetVariantDescriptor> GenerateCloudChainNonGeneric();
-
-		public IAssetVariantDescriptor(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAssetVariantDescriptor()
-		{
-		}
 	}
 	public interface IAssetVariantDescriptor<D, M> : IAssetVariantDescriptor, IEquatable<D>, ResoniteBridge.ResoniteBridgeValueHolder where D : IAssetVariantDescriptor<D, M> where M : IAssetMetadata
 	{
@@ -44273,15 +44113,6 @@ namespace Elements.Assets
 		System.Boolean Equals(D other, VersionComparison versionComparison);
 
 		System.String ValidateCloudVariant(M metadata);
-
-		public IAssetVariantDescriptor(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAssetVariantDescriptor()
-		{
-		}
 	}
 	public static class AssetMetadataHelper
 	{
@@ -44823,15 +44654,6 @@ namespace Elements.Assets
 		}
 
 		void CopyFrom(IAssetMetadata other);
-
-		public IAssetMetadata(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAssetMetadata()
-		{
-		}
 	}
 	[DataModelType]
 	public enum ColorChannelData

@@ -10106,15 +10106,6 @@ namespace SkyFrost.Base
 		void OverrideGlobalVersion(System.Int32 globalVersion);
 
 		void IncrementLocalVersion(System.String machineId, System.String userId);
-
-		public IRecord(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IRecord()
-		{
-		}
 	}
 	public static class RecordHelper
 	{
@@ -14054,15 +14045,6 @@ namespace SkyFrost.Base
 		System.String FavoriteVariable(FavoriteEntity entity);
 
 		System.String VariablePath(System.String subpath);
-
-		public IPlatformProfile(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IPlatformProfile()
-		{
-		}
 	}
 	public enum TransferType
 	{
@@ -25319,15 +25301,6 @@ namespace SkyFrost.Base
 	public interface ISanitizableCollection : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		IEnumerable EntitiesToSanitize();
-
-		public ISanitizableCollection(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISanitizableCollection()
-		{
-		}
 	}
 	public class JsonTransitionEnumConverter<T> : System.Text.Json.Serialization.JsonConverter<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
@@ -25475,9 +25448,6 @@ namespace SkyFrost.Base
 	}
 	public class NullOnExternalAttribute : Attribute
 	{
-		public NullOnExternalAttribute()
-		{
-		}
 	}
 	public class PortRange : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -25770,9 +25740,6 @@ namespace SkyFrost.Base
 	[AttributeUsage(AttributeTargets.Class)]
 	public class SensitiveEntityAttribute : Attribute
 	{
-		public SensitiveEntityAttribute()
-		{
-		}
 	}
 	public static class ValidationHelper
 	{

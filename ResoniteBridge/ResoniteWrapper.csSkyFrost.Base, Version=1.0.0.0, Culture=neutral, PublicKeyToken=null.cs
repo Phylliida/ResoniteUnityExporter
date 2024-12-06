@@ -1666,15 +1666,6 @@ namespace SkyFrost.Base
 		Task StoreContact(Contact contact, IAccountDataStore source);
 
 		Task StoreMessage(Message message, IAccountDataStore source);
-
-		public IAccountDataStore(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IAccountDataStore()
-		{
-		}
 	}
 	public class LocalAccountDataStore : IAccountDataStore, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -5570,15 +5561,6 @@ namespace SkyFrost.Base
 		Task<CloudVariable> ReadLocalVariable(System.String path, System.String defaultValue);
 
 		Task WriteLocalVariable(CloudVariable variable);
-
-		public ILocalVariableAccessor(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ILocalVariableAccessor()
-		{
-		}
 	}
 	public class CloudVariableProxy : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6788,29 +6770,12 @@ namespace SkyFrost.Base
 	}
 	public interface IHubClient : IHubDebugClient, IHubMessagingClient, IModerationClient, IHubStatusClient, IHubNetworkingClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		public IHubClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubClient()
-		{
-		}
 	}
 	public interface IHubDebugClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		Task Pong(System.Int32 index);
 
 		Task Debug(System.String message);
-
-		public IHubDebugClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubDebugClient()
-		{
-		}
 	}
 	public interface IHubMessagingClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6819,15 +6784,6 @@ namespace SkyFrost.Base
 		Task MessageSent(Message message);
 
 		Task MessagesRead(ReadMessageBatch readBatch);
-
-		public IHubMessagingClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubMessagingClient()
-		{
-		}
 	}
 	public interface IModerationClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6836,15 +6792,6 @@ namespace SkyFrost.Base
 		Task UserMuteBanned(System.String userId);
 
 		Task UserSpectatorBanned(System.String userId);
-
-		public IModerationClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IModerationClient()
-		{
-		}
 	}
 	public interface IHubStatusClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6859,28 +6806,10 @@ namespace SkyFrost.Base
 		Task RemoveSession(System.String sessionId, DateTime timestamp);
 
 		Task KeyListenerAdded(System.String broadcastKey, System.String connectionId);
-
-		public IHubStatusClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubStatusClient()
-		{
-		}
 	}
 	public interface IHubNetworkingClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		Task PokeOverLNL(System.String connectionUrl, System.String address, System.Int32 port);
-
-		public IHubNetworkingClient(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubNetworkingClient()
-		{
-		}
 	}
 	public interface IHubServer : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6912,15 +6841,6 @@ namespace SkyFrost.Base
 		Task ListenForLNLPokeRequests(System.String universeId, System.String connectionUrl);
 
 		Task RequestLNLPoke(System.String universeId, System.String connectionUrl, System.String address, System.Int32 port);
-
-		public IHubServer(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IHubServer()
-		{
-		}
 	}
 	public interface ISessionListingSettings : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -6955,15 +6875,6 @@ namespace SkyFrost.Base
 		}
 
 		System.Boolean AcceptSession(SessionInfo sessionInfo);
-
-		public ISessionListingSettings(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ISessionListingSettings()
-		{
-		}
 	}
 	public interface IUserStatusSource : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -7098,15 +7009,6 @@ namespace SkyFrost.Base
 		void FinishUpdate();
 
 		System.Boolean UpdateSessions(UserStatus status, System.Boolean forceUpdate);
-
-		public IUserStatusSource(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IUserStatusSource()
-		{
-		}
 	}
 	public class AppsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -9493,15 +9395,6 @@ namespace SkyFrost.Base
 		ValueTask<NetworkNodeInfo> TryGetNodeWithRefetch(System.String id);
 
 		void Update();
-
-		public INetworkNodeManager(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public INetworkNodeManager()
-		{
-		}
 	}
 	public delegate void LNL_PokeRequestHandler(System.String connectionUrl, System.String targetAddress, System.Int32 targetPort);
 	public class NetworkNodeManager : INetworkNodeManager, IHubNetworkingClient, ResoniteBridge.ResoniteBridgeValueHolder

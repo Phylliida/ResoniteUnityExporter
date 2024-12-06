@@ -574,7 +574,7 @@ namespace ResoniteBridge
 
                     List<EntityDeclaration> membersToAdd = new List<EntityDeclaration>();
 
-                    // don't mess with enums, static classes, and attributes
+                    // don't mess with enums, static classes
                     if (typeDeclare.ClassType != ClassType.Enum
                     && !typeDeclare.Modifiers.HasFlag(Modifiers.Static)
                     && !IsAttribute(typeDeclare))
@@ -591,7 +591,6 @@ namespace ResoniteBridge
                             var constructorDeclaration = CreateBackingConstructor(typeDeclare);
                             membersToAdd.Add(constructorDeclaration);
                         }
-
                     }
 
                     // replace : where T is unmanaged with : where T is struct to allow our hacky stuff
@@ -606,7 +605,13 @@ namespace ResoniteBridge
                         typeDeclare.Modifiers &= ~Modifiers.Readonly;
                     }
 
-
+                    // don't modify attributes, keep them as is
+                    // they can't have object fields so we can't make wrappers out of them
+                    // but that's okay, they have very simple fields so ez to serialize
+                    if (IsAttribute(typeDeclare))
+                    {
+                        return;
+                    }
                     var staticTarget = new ObjectCreateExpression(
                         new SimpleType("ResoniteBridge.ResoniteBridgeValue"),
                         new Expression[] {

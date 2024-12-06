@@ -2747,15 +2747,6 @@ namespace Elements.Quantity
 		string[] GetShortBaseNames();
 
 		string[] GetLongBaseNames();
-
-		public IQuantity(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IQuantity()
-		{
-		}
 	}
 	public interface IQuantity<T> : IQuantity, IComparable<T>, IEquatable<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
@@ -2785,15 +2776,6 @@ namespace Elements.Quantity
 		T Divide(System.Double n);
 
 		Ratio Divide(T q);
-
-		public IQuantity(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IQuantity()
-		{
-		}
 	}
 	public interface IQuantitySI : ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -2815,26 +2797,9 @@ namespace Elements.Quantity
 		IUnit[] GetCommonSIUnits();
 
 		IUnit[] GetExludedSIUnits();
-
-		public IQuantitySI(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IQuantitySI()
-		{
-		}
 	}
 	public interface IQuantitySI<T> : IQuantitySI, IQuantity<T>, IQuantity, IComparable<T>, IEquatable<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
-		public IQuantitySI(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IQuantitySI()
-		{
-		}
 	}
 	public class UnitSI<T> : Unit<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantitySI<T>
 	{
@@ -2923,15 +2888,6 @@ namespace Elements.Quantity
 		}
 
 		ICollection<string> GetUnitNames();
-
-		public IUnit(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public IUnit()
-		{
-		}
 	}
 	public class Unit<T> : IUnit, IComparable<IUnit>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
