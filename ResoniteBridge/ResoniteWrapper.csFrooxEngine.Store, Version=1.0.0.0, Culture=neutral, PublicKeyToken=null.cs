@@ -19,6 +19,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Elements.Assets;
 using Elements.Core;
+using LiteDB;
+using LiteDB.Async;
 using Microsoft.CodeAnalysis;
 using Newtonsoft.Json;
 using SkyFrost.Base;
@@ -698,11 +700,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue appDB
+		private LiteDatabaseAsync appDB
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "appDB"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "appDB"), typeof(LiteDatabaseAsync)) is LiteDatabaseAsync __retCasted)
 				{
 					return __retCasted;
 				}
@@ -717,11 +719,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue assets
+		private ILiteCollectionAsync<AssetRecord> assets
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assets"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assets"), typeof(ILiteCollectionAsync<AssetRecord>)) is ILiteCollectionAsync<AssetRecord> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -736,11 +738,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue records
+		private ILiteCollectionAsync<Record> records
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "records"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "records"), typeof(ILiteCollectionAsync<Record>)) is ILiteCollectionAsync<Record> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -755,11 +757,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue variables
+		private ILiteCollectionAsync<LocalVariable> variables
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variables"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "variables"), typeof(ILiteCollectionAsync<LocalVariable>)) is ILiteCollectionAsync<LocalVariable> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -774,11 +776,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue visits
+		private ILiteCollectionAsync<LocalVisit> visits
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "visits"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "visits"), typeof(ILiteCollectionAsync<LocalVisit>)) is ILiteCollectionAsync<LocalVisit> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -793,11 +795,11 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue assetMetadata
+		private ILiteCollectionAsync<LocalMetadata> assetMetadata
 		{
 			get
 			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assetMetadata"), typeof(ResoniteBridge.ResoniteBridgeValue)) is ResoniteBridge.ResoniteBridgeValue __retCasted)
+				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "assetMetadata"), typeof(ILiteCollectionAsync<LocalMetadata>)) is ILiteCollectionAsync<LocalMetadata> __retCasted)
 				{
 					return __retCasted;
 				}
@@ -1360,7 +1362,7 @@ namespace FrooxEngine.Store
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkDatabaseForRepair", ex), typeof(Task));
 		}
 
-		public List<T> RepairExtractAllEntries<T>(ResoniteBridge.ResoniteBridgeValue database, System.String collectionName, Func<T, string> uniqueKeySelector = null)
+		public List<T> RepairExtractAllEntries<T>(LiteDatabase database, System.String collectionName, Func<T, string> uniqueKeySelector = null)
 		{
 			return (List<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RepairExtractAllEntries", database, collectionName, uniqueKeySelector), typeof(List<T>));
 		}

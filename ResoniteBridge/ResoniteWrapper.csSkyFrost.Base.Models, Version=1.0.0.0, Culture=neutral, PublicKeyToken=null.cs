@@ -10971,9 +10971,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue TryGetEndpoint()
+		public IPEndPoint TryGetEndpoint()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetEndpoint"), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IPEndPoint)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetEndpoint"), typeof(IPEndPoint));
 		}
 
 		public System.Boolean ShouldUse(System.Int32 protocolVersion = 2, NetworkNodePreference? preference = null, System.String universeId = null)

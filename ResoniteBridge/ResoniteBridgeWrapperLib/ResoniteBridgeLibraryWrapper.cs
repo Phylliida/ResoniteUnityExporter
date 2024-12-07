@@ -1421,6 +1421,8 @@ namespace ResoniteBridge
             // things that fail to resolve even though they should resolve
             "RetryContext",
             "WebRequest",
+            "IPEndPoint",
+            "SocketError",
 
         }; 
 
@@ -1435,11 +1437,9 @@ namespace ResoniteBridge
         public static List<Assembly> GetExtraAssemblies(out List<string> extraAssemblyPaths)
         {
             extraAssemblyPaths = new List<string>();
-            Console.WriteLine("START GET EXTRA");
             List<Assembly> result = new List<Assembly>();
             foreach (var dllFile in Directory.GetFiles(@"C:\Users\yams\Desktop\prog\ResoniteUnityExporter\ResoniteBridge\ResoniteBridgeLib\bin\Debug\netstandard2.1", "*.dll"))
             {
-                Console.WriteLine("EXTRA Found assembly" + dllFile);
                 result.Add(Assembly.LoadFrom(dllFile));
                 extraAssemblyPaths.Add(dllFile);
             }
@@ -1500,7 +1500,7 @@ namespace ResoniteBridge
                 }
                 catch
                 {
-                    Console.WriteLine("FAiled to load assembly " + assemblyPath);
+                    Console.WriteLine("Failed to load assembly " + assemblyPath + " (this is probably fine)");
                 }
             }
 
