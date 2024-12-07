@@ -44004,6 +44004,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Actions
 		{
 			__backing = value;
 		}
+
+		public DynamicImpulseHelper()
+		{
+		}
 	}
 	public interface IDynamicImpulseTarget : ResoniteBridge.ResoniteBridgeValueHolder
 	{

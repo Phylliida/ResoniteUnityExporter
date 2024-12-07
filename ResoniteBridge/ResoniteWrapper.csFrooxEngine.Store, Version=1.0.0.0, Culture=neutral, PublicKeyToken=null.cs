@@ -385,9 +385,9 @@ namespace FrooxEngine.Store
 			return (Task<List<PatreonFundingEvent>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPatreonFundingEvents"), typeof(Task<List<PatreonFundingEvent>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordAuditLog(System.String ownerId)
+		public IAsyncEnumerable<RecordAuditInfo> GetRecordAuditLog(System.String ownerId)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
 		public Task DownloadAsset(System.String hash, System.String targetPath)
@@ -420,9 +420,9 @@ namespace FrooxEngine.Store
 			return (Task<List<Contact>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetContacts"), typeof(Task<List<Contact>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetGroups()
+		public IAsyncEnumerable<GroupData> GetGroups()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<GroupData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(IAsyncEnumerable<GroupData>));
 		}
 
 		public Task<DateTime> GetLatestMessageTime(System.String contactId)
@@ -440,9 +440,9 @@ namespace FrooxEngine.Store
 			return (Task<List<MemberData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMembers", groupId), typeof(Task<List<MemberData>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetMessages(System.String contactId, DateTime? from)
+		public IAsyncEnumerable<Message> GetMessages(System.String contactId, DateTime? from)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Message>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(IAsyncEnumerable<Message>));
 		}
 
 		public Task<SkyFrost.Base.Record> GetRecord(System.String ownerId, System.String recordId)
@@ -455,9 +455,9 @@ namespace FrooxEngine.Store
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeManifest", record), typeof(Task));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
+		public IAsyncEnumerable<SkyFrost.Base.Record> GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<SkyFrost.Base.Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(IAsyncEnumerable<SkyFrost.Base.Record>));
 		}
 
 		public Task<CloudVariable> GetVariable(System.String ownerId, System.String path)

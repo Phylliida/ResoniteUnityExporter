@@ -765,7 +765,7 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
-                            if (typeDeclare.NameToken.ToString().Contains("IExecutionRuntime")) {
+                            if (typeDeclare.NameToken.ToString().Contains("LocalDatabaseAccountDataStore")) {
                                 
                                 int i = 0;
                                 i += 1;
@@ -1363,6 +1363,7 @@ namespace ResoniteBridge
             "BepuUtilities.Collections",
             "BepuUtilities.Memory",
             "ICSharpCode.Decompiler",
+            "Microsoft.Bcl.AsyncInterfaces",
             "Microsoft.CodeAnalysis.Analyzers",
             "Microsoft.CodeAnalysis",
             "Microsoft.CodeAnalysis.CSharp",

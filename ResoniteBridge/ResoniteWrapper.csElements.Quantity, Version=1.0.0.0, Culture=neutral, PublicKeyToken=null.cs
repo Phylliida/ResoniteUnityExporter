@@ -2448,6 +2448,10 @@ namespace Elements.Quantity
 		{
 			__backing = value;
 		}
+
+		public UnitSI()
+		{
+		}
 	}
 	public interface IUnit : IComparable<IUnit>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
@@ -3268,6 +3272,10 @@ namespace Elements.Quantity
 		public UnitGroup(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public UnitGroup()
+		{
 		}
 	}
 	public struct Mass : IQuantitySI<Mass>, IQuantitySI, IQuantity<Mass>, IQuantity, IComparable<Mass>, IEquatable<Mass>, ResoniteBridge.ResoniteBridgeValueHolder

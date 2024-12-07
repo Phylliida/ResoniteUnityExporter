@@ -12704,6 +12704,11 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), "LoadLegacyProfiles", path);
 		}
 
+		public PlatformProfile()
+		{
+			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type));
+		}
+
 		public PlatformProfile(System.String name, System.String shortNamePrefix, System.String abbreviation)
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PlatformProfile", ResoniteBridge.ResoniteBridgeValueType.Type), name, shortNamePrefix, abbreviation);

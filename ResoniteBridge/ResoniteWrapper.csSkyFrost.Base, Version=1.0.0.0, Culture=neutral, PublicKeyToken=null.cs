@@ -609,14 +609,14 @@ namespace SkyFrost.Base
 			return (Task<List<Contact>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetContacts"), typeof(Task<List<Contact>>));
 		}
 
-		public virtual ResoniteBridge.ResoniteBridgeValue GetMessages(System.String contactId, DateTime? from)
+		public virtual IAsyncEnumerable<Message> GetMessages(System.String contactId, DateTime? from)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Message>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(IAsyncEnumerable<Message>));
 		}
 
-		public virtual ResoniteBridge.ResoniteBridgeValue GetGroups()
+		public virtual IAsyncEnumerable<GroupData> GetGroups()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<GroupData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(IAsyncEnumerable<GroupData>));
 		}
 
 		public virtual Task<List<MemberData>> GetMembers(System.String groupId)
@@ -629,14 +629,14 @@ namespace SkyFrost.Base
 			return (Task<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecord", ownerId, recordId), typeof(Task<Record>));
 		}
 
-		public virtual ResoniteBridge.ResoniteBridgeValue GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
+		public virtual IAsyncEnumerable<Record> GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(IAsyncEnumerable<Record>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordAuditLog(System.String ownerId)
+		public IAsyncEnumerable<RecordAuditInfo> GetRecordAuditLog(System.String ownerId)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
 		private Task<Record> FillRecordDetails(Record r)
@@ -1242,19 +1242,19 @@ namespace SkyFrost.Base
 
 		Task<List<CloudVariable>> GetVariables(System.String ownerId);
 
-		ResoniteBridge.ResoniteBridgeValue GetGroups();
+		IAsyncEnumerable<GroupData> GetGroups();
 
 		Task<List<MemberData>> GetMembers(System.String groupId);
 
 		Task<Record> GetRecord(System.String ownerId, System.String recordId);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null);
+		IAsyncEnumerable<Record> GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null);
 
-		ResoniteBridge.ResoniteBridgeValue GetRecordAuditLog(System.String ownerId);
+		IAsyncEnumerable<RecordAuditInfo> GetRecordAuditLog(System.String ownerId);
 
 		Task<List<Contact>> GetContacts();
 
-		ResoniteBridge.ResoniteBridgeValue GetMessages(System.String contactId, DateTime? from);
+		IAsyncEnumerable<Message> GetMessages(System.String contactId, DateTime? from);
 
 		Task<DateTime?> GetLatestRecordTime(System.String ownerId);
 
@@ -1595,9 +1595,9 @@ namespace SkyFrost.Base
 			return (Task<List<ExitMessage>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExitMessages"), typeof(Task<List<ExitMessage>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordAuditLog(System.String ownerId)
+		public IAsyncEnumerable<RecordAuditInfo> GetRecordAuditLog(System.String ownerId)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
 		public Task<User> GetUser()
@@ -1610,9 +1610,9 @@ namespace SkyFrost.Base
 			return (Task<List<PatreonFundingEvent>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPatreonFundingEvents"), typeof(Task<List<PatreonFundingEvent>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetMessages(System.String contactId, DateTime? from)
+		public IAsyncEnumerable<Message> GetMessages(System.String contactId, DateTime? from)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Message>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMessages", contactId, from), typeof(IAsyncEnumerable<Message>));
 		}
 
 		public Task<Record> GetRecord(System.String ownerId, System.String recordId)
@@ -1620,9 +1620,9 @@ namespace SkyFrost.Base
 			return (Task<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecord", ownerId, recordId), typeof(Task<Record>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
+		public IAsyncEnumerable<Record> GetRecords(System.String ownerId, DateTime? from, Action<string> searchProgressReport = null)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, from, searchProgressReport), typeof(IAsyncEnumerable<Record>));
 		}
 
 		public Task<List<CloudVariableDefinition>> GetVariableDefinitions(System.String ownerId)
@@ -1640,9 +1640,9 @@ namespace SkyFrost.Base
 			return (Task<CloudVariable>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", ownerId, path), typeof(Task<CloudVariable>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetGroups()
+		public IAsyncEnumerable<GroupData> GetGroups()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<GroupData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGroups"), typeof(IAsyncEnumerable<GroupData>));
 		}
 
 		public Task<List<MemberData>> GetMembers(System.String groupId)
@@ -4816,9 +4816,9 @@ namespace SkyFrost.Base
 			return (Task<StatusInitializationResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitializeStatus"), typeof(Task<StatusInitializationResult>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue InitializeContacts(CancellationToken cancellationToken)
+		public IAsyncEnumerable<Contact> InitializeContacts(CancellationToken cancellationToken)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitializeContacts", cancellationToken), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<Contact>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitializeContacts", cancellationToken), typeof(IAsyncEnumerable<Contact>));
 		}
 
 		public Task BroadcastSession(SessionInfo session, BroadcastTarget target)
@@ -5093,7 +5093,7 @@ namespace SkyFrost.Base
 		[Obsolete]
 		Task<StatusInitializationResult> InitializeStatus();
 
-		ResoniteBridge.ResoniteBridgeValue InitializeContacts(CancellationToken cancellationToken);
+		IAsyncEnumerable<Contact> InitializeContacts(CancellationToken cancellationToken);
 
 		Task ListenOnContact(System.String contactId);
 
@@ -7597,9 +7597,9 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<R>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecords", ownerId, tag, path), typeof(Task<CloudResult<List<R>>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue GetRecordsInHierarchy<R>(System.String ownerId, System.String path) where R : class, IRecord, new()
+		public IAsyncEnumerable<R> GetRecordsInHierarchy<R>(System.String ownerId, System.String path) where R : class, IRecord, new()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordsInHierarchy", ownerId, path), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<R>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordsInHierarchy", ownerId, path), typeof(IAsyncEnumerable<R>));
 		}
 
 		public Task<CloudResult<SearchResults<R>>> FindRecords<R>(SearchParameters search, TimeSpan? timeout = null, System.Boolean throwOnError = true) where R : class, IRecord, new()
@@ -7647,14 +7647,14 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<RecordAuditInfo>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId, from, to), typeof(Task<CloudResult<List<RecordAuditInfo>>>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue EnumerateRecordAuditLog()
+		public IAsyncEnumerable<RecordAuditInfo> EnumerateRecordAuditLog()
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateRecordAuditLog"), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateRecordAuditLog"), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
-		public ResoniteBridge.ResoniteBridgeValue EnumerateRecordAuditLog(System.String ownerId)
+		public IAsyncEnumerable<RecordAuditInfo> EnumerateRecordAuditLog(System.String ownerId)
 		{
-			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateRecordAuditLog", ownerId), typeof(ResoniteBridge.ResoniteBridgeValue));
+			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
 		private ResoniteBridge.ResoniteBridgeValue __backing;
@@ -17776,6 +17776,10 @@ namespace SkyFrost.Base
 		public CloudResult(ResoniteBridge.ResoniteBridgeValue value)
 		{
 			__backing = value;
+		}
+
+		public CloudResult()
+		{
 		}
 	}
 	public class GatherJob : ResoniteBridge.ResoniteBridgeValueHolder

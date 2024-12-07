@@ -37079,6 +37079,10 @@ namespace Elements.Assets
 		{
 			__backing = value;
 		}
+
+		public TextureDecoder()
+		{
+		}
 	}
 	public static class TextureEncoder
 	{
