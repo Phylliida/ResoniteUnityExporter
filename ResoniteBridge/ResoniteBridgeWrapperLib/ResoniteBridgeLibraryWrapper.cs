@@ -317,7 +317,7 @@ namespace ResoniteBridge
             }
 
             InvocationExpression invocation = new InvocationExpression(
-                new MemberReferenceExpression(clientWrappers, "CallMethod"),
+                new MemberReferenceExpression(clientWrappers, wrapperMethodName),
                 invocationParams);
 
 

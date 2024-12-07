@@ -1540,17 +1540,17 @@ namespace Elements.Assets
 
 		public void SkipStartDuration(System.Single duration, out System.Int32 start, out System.Int32 count)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SkipStartDuration", out ResoniteBridge.ResoniteBridgeValue[] __outVars, duration, start, count);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SkipStartDuration", out ResoniteBridge.ResoniteBridgeValue[] __outVars, duration);
 		}
 
 		public void SkipEndDuration(System.Single duration, out System.Int32 start, out System.Int32 count)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SkipEndDuration", out ResoniteBridge.ResoniteBridgeValue[] __outVars, duration, start, count);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SkipEndDuration", out ResoniteBridge.ResoniteBridgeValue[] __outVars, duration);
 		}
 
 		public void FindStartAndEnd(System.Single threshold, out System.Int32 start, out System.Int32 count)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindStartAndEnd", out ResoniteBridge.ResoniteBridgeValue[] __outVars, threshold, start, count);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindStartAndEnd", out ResoniteBridge.ResoniteBridgeValue[] __outVars, threshold);
 		}
 
 		public System.Single ComputeMaximumAmplitude()
@@ -6671,17 +6671,17 @@ namespace Elements.Assets
 
 		public static void ComputeConvexHull(MeshX meshx, BufferPool bufferPool, System.Object bufferLock, Action meshDataExtracted, out ConvexHull convexHull, out float3 center)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, bufferPool, bufferLock, meshDataExtracted, convexHull, center);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, bufferPool, bufferLock, meshDataExtracted);
 		}
 
 		public static void ExtractTriangles(MeshX meshx, System.Boolean dualSided, BufferPool bufferPool, System.Object bufferLock, Action meshDataExtracted, out Buffer<BepuPhysics.Collidables.Triangle> triangles)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractTriangles", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, bufferPool, bufferLock, meshDataExtracted, triangles);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractTriangles", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, bufferPool, bufferLock, meshDataExtracted);
 		}
 
 		public static void ComputeMeshCollider(MeshX meshx, System.Boolean dualSided, BufferPool bufferPool, System.Object bufferLock, Action meshDataExtracted, out BepuPhysics.Collidables.Mesh mesh)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, bufferPool, bufferLock, meshDataExtracted, mesh);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ComputeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, bufferPool, bufferLock, meshDataExtracted);
 		}
 
 		public static void SerializeMeshCollider(ref BepuPhysics.Collidables.Mesh mesh, Stream stream)
@@ -6696,12 +6696,12 @@ namespace Elements.Assets
 
 		public static void DeserializeMeshCollider(MeshX meshx, System.Boolean dualSided, MeshCompression compression, Stream stream, BufferPool bufferPool, System.Object bufferLock, Action meshDataExtracted, out BepuPhysics.Collidables.Mesh mesh)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, compression, stream, bufferPool, bufferLock, meshDataExtracted, mesh);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, compression, stream, bufferPool, bufferLock, meshDataExtracted);
 		}
 
 		public static void DeserializeMeshCollider(MeshX meshx, System.Boolean dualSided, Stream stream, BufferPool bufferPool, System.Object bufferLock, Action meshDataExtracted, out BepuPhysics.Collidables.Mesh mesh)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, stream, bufferPool, bufferLock, meshDataExtracted, mesh);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeMeshCollider", out ResoniteBridge.ResoniteBridgeValue[] __outVars, meshx, dualSided, stream, bufferPool, bufferLock, meshDataExtracted);
 		}
 
 		public static void DeserializeTree(Stream stream, BufferPool bufferPool, ref Tree tree)
@@ -6726,12 +6726,12 @@ namespace Elements.Assets
 
 		public static void DeserializeConvexHull(MeshCompression compression, Stream stream, BufferPool bufferPool, System.Object bufferLock, out ConvexHullBepuData convexHullData)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compression, stream, bufferPool, bufferLock, convexHullData);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compression, stream, bufferPool, bufferLock);
 		}
 
 		public static void DeserializeConvexHull(Stream stream, BufferPool bufferPool, System.Object bufferLock, out ConvexHullBepuData convexHullData)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, stream, bufferPool, bufferLock, convexHullData);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "DeserializeConvexHull", out ResoniteBridge.ResoniteBridgeValue[] __outVars, stream, bufferPool, bufferLock);
 		}
 
 		public static ConvexHull BuildEmptyConvexHull(BufferPool bufferPool)
@@ -6756,7 +6756,7 @@ namespace Elements.Assets
 
 		public static void Decode<T>(MeshCompression compression, Stream stream, Decoder<T> decoder, out T decoded)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compression, stream, decoder, decoded);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "BepuMeshHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "Decode", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compression, stream, decoder);
 		}
 	}
 	public class BlendShape : ResoniteBridge.ResoniteBridgeValueHolder
@@ -7617,7 +7617,7 @@ namespace Elements.Assets
 
 		public void GetBinding(System.Int32 index, out System.Int32 boneIndex, out System.Single weight)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBinding", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index, boneIndex, weight);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBinding", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index);
 		}
 
 		public void SetBinding(System.Int32 index, Bone bone, System.Single weight)
@@ -9922,7 +9922,7 @@ namespace Elements.Assets
 
 		public static System.UInt32 EncodeFlags(params bool[] flags)
 		{
-			uint __finalResult = (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "EncodeFlags", out ResoniteBridge.ResoniteBridgeValue[] __outVars, flags), typeof(System.UInt32));
+			uint __finalResult = (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "EncodeFlags", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(System.UInt32));
 			flags = (bool[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(bool[]));
 			return __finalResult;
 		}
@@ -9936,7 +9936,7 @@ namespace Elements.Assets
 
 		public static void ReadFlag(ref System.UInt32 data, out System.Boolean flag)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadFlag", out ResoniteBridge.ResoniteBridgeValue[] __outVars, data, flag);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "MeshX", ResoniteBridge.ResoniteBridgeValueType.Type), "ReadFlag", out ResoniteBridge.ResoniteBridgeValue[] __outVars, data);
 		}
 
 		public static void Write(BinaryWriter bw, ref BoneBinding binding)
@@ -10188,19 +10188,19 @@ namespace Elements.Assets
 
 		public Elements.Core.BoundingBox CalculateBoundingBox(out System.Int32 invalidVertexCount)
 		{
-			Elements.Core.BoundingBox __finalResult = (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox", out ResoniteBridge.ResoniteBridgeValue[] __outVars, invalidVertexCount), typeof(Elements.Core.BoundingBox));
+			Elements.Core.BoundingBox __finalResult = (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(Elements.Core.BoundingBox));
 			invalidVertexCount = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
 
 		public void CalculateTriangleLengths(out System.Single smallest, out System.Single largest, out System.Single average, out System.Single median)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateTriangleLengths", out ResoniteBridge.ResoniteBridgeValue[] __outVars, smallest, largest, average, median);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateTriangleLengths", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public void CalculateTriangleAreas(out System.Single smallest, out System.Single largest, out System.Single average, out System.Single median)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateTriangleAreas", out ResoniteBridge.ResoniteBridgeValue[] __outVars, smallest, largest, average, median);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateTriangleAreas", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public List<SubmeshMetadata> CalculateSubmeshMetadata()
@@ -10780,7 +10780,7 @@ namespace Elements.Assets
 
 		public Elements.Core.BoundingBox CalculateBoundingBox(out System.Int32 invalidIndicies)
 		{
-			Elements.Core.BoundingBox __finalResult = (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox", out ResoniteBridge.ResoniteBridgeValue[] __outVars, invalidIndicies), typeof(Elements.Core.BoundingBox));
+			Elements.Core.BoundingBox __finalResult = (Elements.Core.BoundingBox)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CalculateBoundingBox", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(Elements.Core.BoundingBox));
 			invalidIndicies = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
@@ -12548,7 +12548,7 @@ namespace Elements.Assets
 
 		public System.Boolean TryGetNormal(in float3 position, out float3 normal)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetNormal", out ResoniteBridge.ResoniteBridgeValue[] __outVars, position, normal), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetNormal", out ResoniteBridge.ResoniteBridgeValue[] __outVars, position), typeof(System.Boolean));
 			normal = (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(float3));
 			return __finalResult;
 		}
@@ -14441,7 +14441,7 @@ namespace Elements.Assets
 
 		public void Update(out System.Boolean changedGeometry)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars, changedGeometry);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -14975,7 +14975,7 @@ namespace Elements.Assets
 
 		public void Update(out System.Boolean changedGeometry)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars, changedGeometry);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -15408,7 +15408,7 @@ namespace Elements.Assets
 
 		public void Update(out System.Boolean changedGeometry)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars, changedGeometry);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public void Remove()
@@ -15818,7 +15818,7 @@ namespace Elements.Assets
 
 		public void GetTrianglesForPoint(in int2 point, out Triangle trig0, out Triangle trig1)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTrianglesForPoint", out ResoniteBridge.ResoniteBridgeValue[] __outVars, point, trig0, trig1);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetTrianglesForPoint", out ResoniteBridge.ResoniteBridgeValue[] __outVars, point);
 		}
 
 		public void GetVerticesForPoint(in int2 point, in int2 quads, RawList<Vertex> vertices)
@@ -19073,7 +19073,7 @@ namespace Elements.Assets
 
 		public void Update(out System.Boolean geometryUpdated)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars, geometryUpdated);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public void UpdateCapVerts(System.Int32 offset, Segment segment, System.Boolean flip)
@@ -20996,7 +20996,7 @@ namespace Elements.Assets
 
 		public System.Boolean TryComputeSurfaceNormalUnsafe(out float3 normal)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryComputeSurfaceNormalUnsafe", out ResoniteBridge.ResoniteBridgeValue[] __outVars, normal), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryComputeSurfaceNormalUnsafe", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(System.Boolean));
 			normal = (float3)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(float3));
 			return __finalResult;
 		}
@@ -21552,12 +21552,12 @@ namespace Elements.Assets
 
 		public void GetIndicies(System.Int32 index, out System.Int32 v0, out System.Int32 v1, out System.Int32 v2)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIndicies", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index, v0, v1, v2);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIndicies", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index);
 		}
 
 		public void GetIndiciesUnsafe(System.Int32 index, out System.Int32 v0, out System.Int32 v1, out System.Int32 v2)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIndiciesUnsafe", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index, v0, v1, v2);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIndiciesUnsafe", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index);
 		}
 
 		public void Remove(Triangle t)
@@ -27096,7 +27096,7 @@ namespace Elements.Assets
 	{
 		public static TextHorizontalAlignment GetHorizontalAlignment(this StringNode node, out System.Boolean isOverride)
 		{
-			TextHorizontalAlignment __finalResult = (TextHorizontalAlignment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetHorizontalAlignment", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node, isOverride), typeof(TextHorizontalAlignment));
+			TextHorizontalAlignment __finalResult = (TextHorizontalAlignment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringAlignmentExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetHorizontalAlignment", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node), typeof(TextHorizontalAlignment));
 			isOverride = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Boolean));
 			return __finalResult;
 		}
@@ -28918,7 +28918,7 @@ namespace Elements.Assets
 
 		public static void Generate(StringRenderTree renderTree, float2 offset, MeshX meshx, AtlasSubmeshMapper submeshMapper, Dictionary<FontSet, List<AtlasData>> fontSetAtlases, TextEditingVisuals textEditVisuals, out System.Boolean usesAuxiliarySubmesh)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphAtlasMeshGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", out ResoniteBridge.ResoniteBridgeValue[] __outVars, renderTree, offset, meshx, submeshMapper, fontSetAtlases, textEditVisuals, usesAuxiliarySubmesh);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "GlyphAtlasMeshGenerator", ResoniteBridge.ResoniteBridgeValueType.Type), "Generate", out ResoniteBridge.ResoniteBridgeValue[] __outVars, renderTree, offset, meshx, submeshMapper, fontSetAtlases, textEditVisuals);
 		}
 
 		public static System.Int32 MatchStringPositionToGlyph(StringRenderTree renderTree, System.Int32 stringPosition)
@@ -29889,7 +29889,7 @@ namespace Elements.Assets
 
 		public void ComputeTopAndBottom(AlignmentMode alignmentMode, out System.Single top, out System.Single bottom)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTopAndBottom", out ResoniteBridge.ResoniteBridgeValue[] __outVars, alignmentMode, top, bottom);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTopAndBottom", out ResoniteBridge.ResoniteBridgeValue[] __outVars, alignmentMode);
 		}
 
 		public void PerformVerticalAlignment()
@@ -29979,7 +29979,7 @@ namespace Elements.Assets
 
 		public static System.Boolean GetTag(in StringSegment segment, out StringSegment tag, out StringSegment parameter, out System.Boolean isClosingTag, out System.Int32 tagEndIndex)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTag", out ResoniteBridge.ResoniteBridgeValue[] __outVars, segment, tag, parameter, isClosingTag, tagEndIndex), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringRenderTree", ResoniteBridge.ResoniteBridgeValueType.Type), "GetTag", out ResoniteBridge.ResoniteBridgeValue[] __outVars, segment), typeof(System.Boolean));
 			tag = (StringSegment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(StringSegment));
 			parameter = (StringSegment)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(StringSegment));
 			isClosingTag = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[2], typeof(System.Boolean));
@@ -30392,7 +30392,7 @@ namespace Elements.Assets
 
 		public static ResoniteBridge.ResoniteBridgeValue ExtractRawParameter(ResoniteBridge.ResoniteBridgeValue parameter, out System.Boolean quotesRemoved)
 		{
-			ReadOnlySpan<char> __finalResult = (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNode", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractRawParameter", out ResoniteBridge.ResoniteBridgeValue[] __outVars, parameter, quotesRemoved), typeof(ResoniteBridge.ResoniteBridgeValue));
+			ReadOnlySpan<char> __finalResult = (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "StringNode", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractRawParameter", out ResoniteBridge.ResoniteBridgeValue[] __outVars, parameter), typeof(ResoniteBridge.ResoniteBridgeValue));
 			quotesRemoved = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Boolean));
 			return __finalResult;
 		}
@@ -30466,7 +30466,7 @@ namespace Elements.Assets
 
 		public System.Boolean GetGlyphByUnicode(System.UInt32 charcode, out GlyphMetrics metrics, out FontX font)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphByUnicode", out ResoniteBridge.ResoniteBridgeValue[] __outVars, charcode, metrics, font), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphByUnicode", out ResoniteBridge.ResoniteBridgeValue[] __outVars, charcode), typeof(System.Boolean));
 			metrics = (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(GlyphMetrics));
 			font = (FontX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(FontX));
 			return __finalResult;
@@ -30474,7 +30474,7 @@ namespace Elements.Assets
 
 		public System.Boolean GetGlyphByName(System.String name, out GlyphMetrics metrics, out System.UInt32 glyphId, out FontX font)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphByName", out ResoniteBridge.ResoniteBridgeValue[] __outVars, name, metrics, glyphId, font), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetGlyphByName", out ResoniteBridge.ResoniteBridgeValue[] __outVars, name), typeof(System.Boolean));
 			metrics = (GlyphMetrics)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(GlyphMetrics));
 			glyphId = (System.UInt32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.UInt32));
 			font = (FontX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[2], typeof(FontX));
@@ -31519,17 +31519,17 @@ namespace Elements.Assets
 
 		public void FindForegroundRegion(color backgroundColor, out int2 position, out int2 size)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, backgroundColor, position, size);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, backgroundColor);
 		}
 
 		public void FindForegroundRegion(color32 backgroundColor, out int2 position, out int2 size)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, backgroundColor, position, size);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, backgroundColor);
 		}
 
 		public void FindForegroundRegion(Pixel2DPredicate isForeground, out int2 position, out int2 size)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, isForeground, position, size);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindForegroundRegion", out ResoniteBridge.ResoniteBridgeValue[] __outVars, isForeground);
 		}
 
 		public Bitmap2D Trim(Pixel2DPredicate isForeground)
@@ -39214,7 +39214,7 @@ namespace Elements.Assets
 
 		public static Dictionary<string, string> ParseBase(System.String identifier, out TextureCompression compression, out System.Int32 quality, out System.Boolean mips, out ColorPreprocess colorPreprocess, out AlphaPreprocess alphaPreprocess, out System.Int32 version)
 		{
-			Dictionary<string, string> __finalResult = (Dictionary<string, string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseBase", out ResoniteBridge.ResoniteBridgeValue[] __outVars, identifier, compression, quality, mips, colorPreprocess, alphaPreprocess, version), typeof(Dictionary<string, string>));
+			Dictionary<string, string> __finalResult = (Dictionary<string, string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Assets", "TextureVariantDescriptor", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseBase", out ResoniteBridge.ResoniteBridgeValue[] __outVars, identifier), typeof(Dictionary<string, string>));
 			compression = (TextureCompression)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(TextureCompression));
 			quality = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			mips = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[2], typeof(System.Boolean));

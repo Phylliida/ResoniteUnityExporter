@@ -349,7 +349,7 @@ namespace LZ4
 
 		public static void SelectCodec(out ILZ4Service encoder, out ILZ4Service decoder, out ILZ4Service encoderHC)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectCodec", out ResoniteBridge.ResoniteBridgeValue[] __outVars, encoder, decoder, encoderHC);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectCodec", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public static ILZ4Service AutoTest(ILZ4Service service)
@@ -804,7 +804,7 @@ namespace LZ4
 
 		public System.Boolean TryReadVarInt(out System.UInt64 result)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryReadVarInt", out ResoniteBridge.ResoniteBridgeValue[] __outVars, result), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryReadVarInt", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(System.Boolean));
 			result = (System.UInt64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.UInt64));
 			return __finalResult;
 		}
