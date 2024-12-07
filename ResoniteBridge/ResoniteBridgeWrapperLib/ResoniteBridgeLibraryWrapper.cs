@@ -1414,7 +1414,10 @@ namespace ResoniteBridge
                     {
                         // nevermind this was a bad idea
                         // set identifier to be the full qualified name of the type
-                        //identifierOfThisType.Name = resolveResult.Type.FullName;
+                        if (ShouldFullyQualifyType(astType))
+                        {
+                            identifierOfThisType.Name = resolveResult.Type.FullName;
+                        }
                     }
                     // generics will be later things, either PrimitiveType or more SimpleType nested, handled by the recursive call above
                 }
@@ -1476,6 +1479,103 @@ namespace ResoniteBridge
             }
             astType.ReplaceWith(new SimpleType(wrappedTypeStr));
             return true;
+        }
+
+        static HashSet<Tuple<string, string>> TypeMethodPairNeedsAllFullyDeclaredTypes = new HashSet<Tuple<string, string>>()
+        {
+            new Tuple<string, string>("LocalDatabaseAccountDataStore", "StoreUserData"),
+            new Tuple<string, string>("LocalDatabaseAccountDataStore", "GetUser"),
+        };
+
+        static HashSet<Tuple<string, string>> TypeMethodPairNeedsFullyDeclaredReturnType = new HashSet<Tuple<string, string>>()
+        {
+        };
+
+        static HashSet<Tuple<string, string, string>> TypeMethodParamNameTrioNeedsFullyDeclaredType = new HashSet<Tuple<string, string, string>>()
+        {
+        };
+
+        static HashSet<Tuple<string, string>> TypePropertyPairNeedsAllFullyDeclaredTypes = new HashSet<Tuple<string, string>>()
+        {
+            new Tuple<string, string>("PointMesh", "_comparer"),
+        };
+
+
+        public static bool IsEqualToOrChildOf(AstType parent, AstType sameOrChild)
+        {
+            // we can't just check equality because we might be child of return type, check recursively
+            bool result = parent == sameOrChild;
+            TraverseSyntaxNodes(parent, (parentMethodReturnTypeNode) =>
+            {
+                if (parentMethodReturnTypeNode == sameOrChild)
+                {
+                    result = true;
+                }
+            });
+            return result;
+        }
+
+        public static bool ShouldFullyQualifyType(AstType type)
+        {
+            // btw, it's not safe to always do this because froox namespaces have weird aliasing
+            // but occasionally it is needed because put all the usings together in one file per dll
+            // so sometimes names get overridden
+
+            MethodDeclaration parentMethod = type.Ancestors.OfType<MethodDeclaration>().FirstOrDefault();
+            TypeDeclaration parentType = type.Ancestors.OfType<TypeDeclaration>().FirstOrDefault();
+            if (parentMethod != null && !parentMethod.IsNull &&
+                parentType != null && !parentType.IsNull)
+            {
+                string parentMethodName = GetMethodName(parentMethod);
+                string parentTypeName = GetTypeDeclarationName(parentType);
+
+                
+                // return type matching
+                bool iAmInReturnType = IsEqualToOrChildOf(parentMethod.ReturnType, type);
+                Tuple<string, string> myTypeMethodKey = new Tuple<string, string>(parentTypeName, parentMethodName);
+                if (iAmInReturnType &&
+                    TypeMethodPairNeedsFullyDeclaredReturnType.Contains(myTypeMethodKey))
+                {
+                    return true;
+                }
+
+                // param type matching
+                foreach (ParameterDeclaration param in parentMethod.Parameters)
+                {
+                    Tuple<string, string, string> myParamKey = new Tuple<string, string, string>(
+                        parentTypeName,
+                        parentMethodName,
+                        param.NameToken.ToString());
+                    bool iAmInParamType = IsEqualToOrChildOf(param.Type, type);
+                    if (iAmInParamType &&
+                        TypeMethodParamNameTrioNeedsFullyDeclaredType.Contains(myParamKey))
+                    {
+                        return true;
+                    }
+                }
+
+                // general matching
+                if (TypeMethodPairNeedsAllFullyDeclaredTypes.Contains(myTypeMethodKey))
+                {
+                    return true;
+                }
+            }
+            PropertyDeclaration parentProperty = type.Ancestors.OfType<PropertyDeclaration>().FirstOrDefault();
+
+            if(parentProperty != null && !parentProperty.IsNull &&
+                parentType != null && !parentType.IsNull)
+            {
+                string parentPropertyName = parentProperty.NameToken.ToString();
+                string parentTypeName = GetTypeDeclarationName(parentType);
+                Tuple<string, string> myTypePropertyKey = new Tuple<string, string>(parentTypeName, parentPropertyName);
+
+                // general matching
+                if (TypePropertyPairNeedsAllFullyDeclaredTypes.Contains(myTypePropertyKey))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static HashSet<string> ForbiddenNamespaces = new HashSet<string>()
