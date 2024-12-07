@@ -349,7 +349,7 @@ namespace LZ4
 
 		public static void SelectCodec(out ILZ4Service encoder, out ILZ4Service decoder, out ILZ4Service encoderHC)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectCodec", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectCodec", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public static ILZ4Service AutoTest(ILZ4Service service)
@@ -804,7 +804,7 @@ namespace LZ4
 
 		public System.Boolean TryReadVarInt(out System.UInt64 result)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryReadVarInt", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "TryReadVarInt", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(System.Boolean));
 			result = (System.UInt64)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.UInt64));
 			return __finalResult;
 		}
@@ -2033,7 +2033,7 @@ namespace LZ4ps
 
 		public static void CheckArguments(byte[] input, System.Int32 inputOffset, ref System.Int32 inputLength, byte[] output, System.Int32 outputOffset, ref System.Int32 outputLength)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "CheckArguments", out ResoniteBridge.ResoniteBridgeValue[] __outVars, input, inputOffset, inputLength, output, outputOffset, outputLength);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "CheckArguments", out ResoniteBridge.ResoniteBridgeValue[] __outVars, input, inputOffset, inputLength, output, outputOffset, outputLength);
 		}
 
 		[Conditional("DEBUG")]
@@ -2249,14 +2249,14 @@ namespace LZ4ps
 
 		public static System.Int32 LZ4HC_InsertAndFindBestMatch_32(LZ4HC_Data_Structure ctx, System.Int32 src_p, ref System.Int32 src_match)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndFindBestMatch_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, src_match), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndFindBestMatch_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, src_match), typeof(System.Int32));
 			src_match = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
 
 		public static System.Int32 LZ4HC_InsertAndGetWiderMatch_32(LZ4HC_Data_Structure ctx, System.Int32 src_p, System.Int32 startLimit, System.Int32 longest, ref System.Int32 matchpos, ref System.Int32 startpos)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndGetWiderMatch_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, startLimit, longest, matchpos, startpos), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndGetWiderMatch_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, startLimit, longest, matchpos, startpos), typeof(System.Int32));
 			matchpos = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			startpos = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			return __finalResult;
@@ -2264,7 +2264,7 @@ namespace LZ4ps
 
 		public static System.Int32 LZ4_encodeSequence_32(LZ4HC_Data_Structure ctx, ref System.Int32 src_p, ref System.Int32 dst_p, ref System.Int32 src_anchor, System.Int32 matchLength, System.Int32 src_ref, System.Int32 dst_end)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4_encodeSequence_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, dst_p, src_anchor, matchLength, src_ref, dst_end), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4_encodeSequence_32", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, dst_p, src_anchor, matchLength, src_ref, dst_end), typeof(System.Int32));
 			src_p = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			dst_p = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			src_anchor = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[2], typeof(System.Int32));
@@ -2308,14 +2308,14 @@ namespace LZ4ps
 
 		public static System.Int32 LZ4HC_InsertAndFindBestMatch_64(LZ4HC_Data_Structure ctx, System.Int32 src_p, ref System.Int32 matchpos)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndFindBestMatch_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, matchpos), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndFindBestMatch_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, matchpos), typeof(System.Int32));
 			matchpos = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
 
 		public static System.Int32 LZ4HC_InsertAndGetWiderMatch_64(LZ4HC_Data_Structure ctx, System.Int32 src_p, System.Int32 startLimit, System.Int32 longest, ref System.Int32 matchpos, ref System.Int32 startpos)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndGetWiderMatch_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, startLimit, longest, matchpos, startpos), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4HC_InsertAndGetWiderMatch_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, startLimit, longest, matchpos, startpos), typeof(System.Int32));
 			matchpos = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			startpos = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			return __finalResult;
@@ -2323,7 +2323,7 @@ namespace LZ4ps
 
 		public static System.Int32 LZ4_encodeSequence_64(LZ4HC_Data_Structure ctx, ref System.Int32 src_p, ref System.Int32 dst_p, ref System.Int32 src_anchor, System.Int32 matchLength, System.Int32 src_ref)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4_encodeSequence_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, dst_p, src_anchor, matchLength, src_ref), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "LZ4", "LZ4Codec", ResoniteBridge.ResoniteBridgeValueType.Type), "LZ4_encodeSequence_64", out ResoniteBridge.ResoniteBridgeValue[] __outVars, ctx, src_p, dst_p, src_anchor, matchLength, src_ref), typeof(System.Int32));
 			src_p = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			dst_p = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			src_anchor = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[2], typeof(System.Int32));

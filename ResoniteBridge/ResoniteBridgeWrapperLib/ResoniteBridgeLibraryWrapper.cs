@@ -398,10 +398,15 @@ namespace ResoniteBridge
             }
             else
             {
-                return new BlockStatement
+                BlockStatement result = new BlockStatement
                 {
                     invocation
                 };
+                foreach (Expression assign in assigns)
+                {
+                    result.Add(assign);
+                }
+                return result;
             }
         }
 
@@ -1683,8 +1688,8 @@ namespace ResoniteBridge
         {
             new Thread(() =>
             {
-                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + ".cs";
-                string outErrors = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\" + rootNamespaceName + "errors.cs";
+                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\GeneratedCode\\" + rootNamespaceName + ".cs";
+                string outErrors = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\GeneratedCode\\" + rootNamespaceName + "errors.cs";
 
                 List<Microsoft.CodeAnalysis.SyntaxTree> syntaxTrees = new List<Microsoft.CodeAnalysis.SyntaxTree>();
 

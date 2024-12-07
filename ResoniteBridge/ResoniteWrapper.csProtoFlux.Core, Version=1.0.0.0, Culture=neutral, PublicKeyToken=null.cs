@@ -965,7 +965,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public NodeContextPath CaptureContextPath(out IExecutionRuntime rootRuntime)
 		{
-			NodeContextPath __finalResult = (NodeContextPath)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CaptureContextPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(NodeContextPath));
+			NodeContextPath __finalResult = (NodeContextPath)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "CaptureContextPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars), typeof(NodeContextPath));
 			rootRuntime = (IExecutionRuntime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(IExecutionRuntime));
 			return __finalResult;
 		}
@@ -1276,7 +1276,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public void GetEventDispatcher(out ExecutionEventDispatcher<C> eventDispatcher)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEventDispatcher", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetEventDispatcher", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public void DispatchEvents(ExecutionRuntime<C> runtime)
@@ -2024,7 +2024,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public void ComputeTotalStoreSizes(out System.Int32 valueStoreSize, out System.Int32 objectStoreSize)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTotalStoreSizes", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "ComputeTotalStoreSizes", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public void CaptureExplicitNodeMap()
@@ -2189,12 +2189,12 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public void ComputeTotalStoreSizes(out System.Int32 valueStoreSize, out System.Int32 objectStoreSize)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeTotalStoreSizes", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "ComputeTotalStoreSizes", out ResoniteBridge.ResoniteBridgeValue[] __outVars);
 		}
 
 		public ScopePoint CaptureScopeAndSwap(ref byte[] valuesStore, ref object[] objectsStore)
 		{
-			ScopePoint __finalResult = (ScopePoint)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CaptureScopeAndSwap", out ResoniteBridge.ResoniteBridgeValue[] __outVars, valuesStore, objectsStore), typeof(ScopePoint));
+			ScopePoint __finalResult = (ScopePoint)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "CaptureScopeAndSwap", out ResoniteBridge.ResoniteBridgeValue[] __outVars, valuesStore, objectsStore), typeof(ScopePoint));
 			valuesStore = (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(byte[]));
 			objectsStore = (object[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(object[]));
 			return __finalResult;
@@ -3210,7 +3210,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public System.Int32 UpdateBucket(SortedSet<UpdateNode> list, ref NodeContextPath current, C context)
 		{
-			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateBucket", out ResoniteBridge.ResoniteBridgeValue[] __outVars, list, current, context), typeof(System.Int32));
+			int __finalResult = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "UpdateBucket", out ResoniteBridge.ResoniteBridgeValue[] __outVars, list, current, context), typeof(System.Int32));
 			current = (NodeContextPath)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(NodeContextPath));
 			return __finalResult;
 		}
@@ -8649,7 +8649,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public void GetEvaluationIndex(IExecutionNode<C> node, out System.Int32 pos, out System.Int32 bitIndex)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEvaluationIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetEvaluationIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node);
 		}
 
 		public void ExecuteImpulseImport(System.Int32 index, C context)
@@ -9198,7 +9198,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 		public IOperation BuildOperationStep(IOperation operation, ref IOperation initialOperationSkip)
 		{
-			IOperation __finalResult = (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BuildOperationStep", out ResoniteBridge.ResoniteBridgeValue[] __outVars, operation, initialOperationSkip), typeof(IOperation));
+			IOperation __finalResult = (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "BuildOperationStep", out ResoniteBridge.ResoniteBridgeValue[] __outVars, operation, initialOperationSkip), typeof(IOperation));
 			initialOperationSkip = (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(IOperation));
 			return __finalResult;
 		}
@@ -18011,7 +18011,7 @@ namespace ProtoFlux.Runtimes.DSP
 
 		public IInputList ConvertInputIndex(ref System.Int32 index, out System.Int32 listIndex)
 		{
-			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertInputIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
+			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "ConvertInputIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listIndex = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			return __finalResult;
@@ -18019,7 +18019,7 @@ namespace ProtoFlux.Runtimes.DSP
 
 		public IInputList GetOutputList(ref System.Int32 index, out System.Int32 listIndex)
 		{
-			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOutputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
+			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetOutputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listIndex = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.Int32));
 			return __finalResult;
@@ -19576,12 +19576,12 @@ namespace ProtoFlux.Core
 
 		public void Combine(ElementPath<IOutput> output, ref System.Boolean allocatedList)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Combine", out ResoniteBridge.ResoniteBridgeValue[] __outVars, output, allocatedList);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "Combine", out ResoniteBridge.ResoniteBridgeValue[] __outVars, output, allocatedList);
 		}
 
 		public System.Boolean Combine(ChangeSourceInfo other, ref System.Boolean allocatedList)
 		{
-			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Combine", out ResoniteBridge.ResoniteBridgeValue[] __outVars, other, allocatedList), typeof(System.Boolean));
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "Combine", out ResoniteBridge.ResoniteBridgeValue[] __outVars, other, allocatedList), typeof(System.Boolean));
 			allocatedList = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Boolean));
 			return __finalResult;
 		}
@@ -20110,7 +20110,7 @@ namespace ProtoFlux.Core
 
 		public void CombineInputs(INode node, ref ChangeSourceInfo info, Dictionary<IOutput, ChangeSourceInfo> infos, Dictionary<INestedNode, ChangeTrackingData> nestedData)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineInputs", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node, info, infos, nestedData);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "CombineInputs", out ResoniteBridge.ResoniteBridgeValue[] __outVars, node, info, infos, nestedData);
 		}
 
 		public System.String DebugChangeTrackingData()
@@ -27076,7 +27076,7 @@ namespace ProtoFlux.Core
 
 		public T GetElementByName<T>(System.String name, List<T> list, ref Dictionary<string, T> dict) where T : class, IElementMetadata
 		{
-			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetElementByName", out ResoniteBridge.ResoniteBridgeValue[] __outVars, name, list, dict), typeof(T));
+			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetElementByName", out ResoniteBridge.ResoniteBridgeValue[] __outVars, name, list, dict), typeof(T));
 			dict = (Dictionary<string, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Dictionary<string, T>));
 			return __finalResult;
 		}
@@ -28659,7 +28659,7 @@ namespace ProtoFlux.Core
 
 		public virtual IInputList GetDynamicInputList(ref System.Int32 index, out InputListMetadata listMetadata)
 		{
-			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDynamicInputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
+			IInputList __finalResult = (IInputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetDynamicInputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IInputList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listMetadata = (InputListMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(InputListMetadata));
 			return __finalResult;
@@ -28667,7 +28667,7 @@ namespace ProtoFlux.Core
 
 		public virtual IOutputList GetDynamicOutputList(ref System.Int32 index, out OutputListMetadata listMetadata)
 		{
-			IOutputList __finalResult = (IOutputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDynamicOutputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IOutputList));
+			IOutputList __finalResult = (IOutputList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetDynamicOutputList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IOutputList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listMetadata = (OutputListMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(OutputListMetadata));
 			return __finalResult;
@@ -28800,7 +28800,7 @@ namespace ProtoFlux.Core
 
 		public virtual IImpulseList GetDynamicImpulseList(ref System.Int32 index, out ImpulseListMetadata listMetadata)
 		{
-			IImpulseList __finalResult = (IImpulseList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDynamicImpulseList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IImpulseList));
+			IImpulseList __finalResult = (IImpulseList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetDynamicImpulseList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IImpulseList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listMetadata = (ImpulseListMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(ImpulseListMetadata));
 			return __finalResult;
@@ -28823,7 +28823,7 @@ namespace ProtoFlux.Core
 
 		public virtual IOperationList GetDynamicOperationList(ref System.Int32 index, out OperationListMetadata listMetadata)
 		{
-			IOperationList __finalResult = (IOperationList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDynamicOperationList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IOperationList));
+			IOperationList __finalResult = (IOperationList)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(__Backing, "GetDynamicOperationList", out ResoniteBridge.ResoniteBridgeValue[] __outVars, index), typeof(IOperationList));
 			index = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			listMetadata = (OperationListMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(OperationListMetadata));
 			return __finalResult;
@@ -31203,12 +31203,12 @@ namespace ProtoFlux.Core
 
 		public static void FindOutputIndex(this IOutput output, out System.Int32 index, out System.Int32 listIndex)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FindOutputIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, output);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FindOutputIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, output);
 		}
 
 		public static void FindOperationIndex(this IOperation operation, out System.Int32 index, out System.Int32 listIndex)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FindOperationIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, operation);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethodWithRefsAndOuts(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "FindOperationIndex", out ResoniteBridge.ResoniteBridgeValue[] __outVars, operation);
 		}
 
 		public static System.Int32 FindLinearOperationIndex(this IOperation operation)
