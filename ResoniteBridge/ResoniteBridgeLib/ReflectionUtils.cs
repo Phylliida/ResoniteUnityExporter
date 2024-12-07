@@ -13,6 +13,18 @@ namespace ResoniteBridge
 
         public static BindingFlags InstanceBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.FlattenHierarchy;
 
+        static System.ComponentModel.TypeConverter typeToStringConverter = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Type));
+
+        public static string TypeToString(Type type)
+        {
+            return typeToStringConverter.ConvertToString(type);
+        }
+
+        public static Type TypeFromString(string str)
+        {
+            return Type.GetType(str);
+        }
+
 
         public static bool IsType(object obj)
         {

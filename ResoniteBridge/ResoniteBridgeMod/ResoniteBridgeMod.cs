@@ -90,12 +90,18 @@ namespace ResoniteBridgeMod
                                         catch (Exception ex)
                                         {
                                             Msg("Got exception when evaluating message:" + ex.ToString() + "\n" + Environment.StackTrace);
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse
                                             {
-                                                typeName = ex.GetType().Name,
-                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                valueType = ResoniteBridgeValueType.Error
+                                                response = new ResoniteBridgeValue()
+                                                {
+                                                    typeName = ex.GetType().Name,
+                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                    valueType = ResoniteBridgeValueType.Error
+                                                },
+                                                responseType = ResoniteBridgeResponseType.Error,
+                                                extraResults = null
                                             });
+
                                         }
                                     }
                                 };

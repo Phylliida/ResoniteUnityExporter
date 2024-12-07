@@ -49,10 +49,10 @@ namespace ResoniteBridge
         {
             if (assemblies.TryGetValue(assemblyName, out Assembly assembly))
             {
-                Type outputType = assembly.GetType(typeName);
+                Type outputType = ReflectionUtils.TypeFromString(typeName);
                 if (outputType == null)
                 {
-                    throw new ArgumentException("Type " + outputType + " does not exist in assembly " + assemblyName);
+                    throw new ArgumentException("Type " + typeName + " does not exist in assembly " + assemblyName);
                 }
                 return outputType;
             }

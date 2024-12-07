@@ -19,12 +19,10 @@ namespace ResoniteBridge
 {
     public class FrooxEngineRunner
     {
-
         // Modified from https://github.com/Lexevolution/Resonite-DataTree-Converter/blob/main/Program.cs
         public static string GetResoniteExePath(out Dictionary<string, Assembly> libraries)
         {
             string settingsLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TefssaCoil", "ResoniteDataWrapper", "app.config");
-
             bool success = false;
             libraries = new Dictionary<string, Assembly>();
             string resoniteExeLocation = "";
@@ -143,7 +141,7 @@ namespace ResoniteBridge
 
             serverData.assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
             serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
-
+            
             // Once we have froox engine, load all assemblies (this will collect more as they are loaded)
             serverData.assemblies = ResoniteBridgeServer.LoadAssemblies(FrooxEngineAsm,
                    Path.Combine(resoniteDir, "Resonite_Data", "Managed"),
@@ -192,13 +190,13 @@ namespace ResoniteBridge
             //}
             var userspaceWorld = CallMethod(LookupType("FrooxEngine", "FrooxEngine.Userspace"), "SetupUserspace", engine);
             CallMethod(engine, "RunUpdateLoop");
-
+            
             object worldStart = CallConstructor(FrooxEngineAsm, "FrooxEngine.WorldStartSettings");
             SetField(worldStart, "AutoFocus", true);
-            SetField(worldStart, "DefaultAccessLevel",
+            SetField(worldStart, "DefaultAccessLevel", 
                 GetEnum(SkyFrostBaseModelsAsm, "SkyFrost.Base.SessionAccessLevel", "Private"));
 
-            Delegate initWorldDelegate =
+            Delegate initWorldDelegate = 
                 CreateDelegateWithInputType(FrooxEngineAsm,
                 "FrooxEngine.World",
                 "FrooxEngine.WorldAction",
@@ -280,11 +278,16 @@ namespace ResoniteBridge
                                         }
                                         catch (Exception ex)
                                         {
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse()
                                             {
-                                                typeName = ex.GetType().Name,
-                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                valueType = ResoniteBridgeValueType.Error
+                                                response = new ResoniteBridgeValue()
+                                                {
+                                                    typeName = ex.GetType().Name,
+                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                    valueType = ResoniteBridgeValueType.Error
+                                                },
+                                                responseType = ResoniteBridgeResponseType.Error,
+                                                extraResults = null
                                             });
                                         }
                                     }

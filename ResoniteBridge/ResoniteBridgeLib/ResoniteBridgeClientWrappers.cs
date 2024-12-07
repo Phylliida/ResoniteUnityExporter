@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -23,7 +24,7 @@ namespace ResoniteBridge
         public delegate void DebugLogDelegate(string msg);
 
         public static DebugLogDelegate DebugLog;
-
+        
         static ResoniteBridgeValue EncodeInput<T>(T input)
         {
             if (input is ResoniteBridgeValueHolder valueHolder)
@@ -37,11 +38,12 @@ namespace ResoniteBridge
             }
             else
             {
+                Console.WriteLine("Got input of type " + input.GetType().ToString() + " with full name " + input.GetType().FullName);
                 // we need to serialize it
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 return new ResoniteBridgeValue(serialized,
                     Assembly.GetAssembly(input.GetType()).GetName().Name,
-                    input.GetType().FullName,
+                    ReflectionUtils.TypeToString(input.GetType()),
                     ResoniteBridgeValueType.Serialized);
             }
         }

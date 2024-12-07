@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEditor;
 using ResoniteBridge;
-using ResoniteWrapper;
-using static ResoniteBridge.ResoniteBridgeClientWrappers;
 
 
 
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
-		string myString = "Hello World";
+		string myString = "Hello Worlf";
 		bool groupEnabled;
 		float myFloat = 1.23f;
 		
@@ -83,14 +81,14 @@ namespace ResoniteBridgeUnity {
 			EditorGUILayout.BeginHorizontal();
 			if(GUILayout.Button("Button 1"))
 			{
-				ResoniteWrapper.FrooxEngine.Engine engine = ResoniteWrapper.FrooxEngine.Engine.Current;
+				FrooxEngine.Engine engine = FrooxEngine.Engine.Current;
                 Debug.Log("Got current engine " + engine.UID);
 				if (engine != null)
 				{
-					ResoniteWrapper.FrooxEngine.World world = engine.WorldManager.FocusedWorld;
+					FrooxEngine.World world = engine.WorldManager.FocusedWorld;
 					if (world != null)
 					{
-						CallMethod(world.RootSlot, "AddSlot", "Heyo");
+						world.RootSlot.AddSlot("beees");
 					}
 				}
 				Debug.Log("Button 1");

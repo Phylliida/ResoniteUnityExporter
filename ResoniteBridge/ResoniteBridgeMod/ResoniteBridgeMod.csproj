@@ -58,6 +58,9 @@
     <Reference Include="ProtoFluxBindings">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\ProtoFluxBindings.dll</HintPath>
     </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
+    </Reference>
     <Reference Include="ResoniteModLoader">
       <HintPath>.\ResoniteModLoader.dll</HintPath>
     </Reference>
@@ -71,10 +74,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,27 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ReflectionUtils.cs">
-      <Link>ReflectionUtils.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeClient.cs">
-      <Link>ResoniteBridgeClient.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeClientWrappers.cs">
-      <Link>ResoniteBridgeClientWrappers.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeProtocol.cs">
-      <Link>ResoniteBridgeProtocol.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeServer.cs">
-      <Link>ResoniteBridgeServer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\ResoniteBridgeServerEvaluation.cs">
-      <Link>ResoniteBridgeServerEvaluation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\ExampleUnityProject\Assets\ResoniteUnityExporter\SharedCode\UnsupportedTypeLookup.cs">
-      <Link>UnsupportedTypeLookup.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResoniteBridgeMod.cs" />
   </ItemGroup>

@@ -254,7 +254,6 @@ namespace ResoniteBridge
                                 {
                                     first = false;
                                     Console.WriteLine("Making wrapper assembly");
-                                    ResoniteBinaryWrapper.CreateWrapperAssembly(serverData.assemblies, "ResoniteWrapper");
 
                                     // hack to prevent discord interface from crashing it
                                     var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
