@@ -1349,11 +1349,13 @@ namespace ResoniteBridge
             "ProtoFlux.Core",
             //"ProtoFluxBindings",
             "FrooxEngine",
+            "LZ4",
         };
 
         public static HashSet<string> bonusList = new HashSet<string>()
         {
             "Assimp",
+            "Assimp.Configs",
             "BepuPhysics",
             "BepuPhysics.Collidables",
             "BepuPhysics.CollisionDetection",
@@ -1416,6 +1418,7 @@ namespace ResoniteBridge
             "TwitchLib.Communication.Events",
             "TwitchLib.PubSub",
             "TwitchLib.PubSub.Events",
+            "LZ4",
             "mscorlib",
 
             // things that fail to resolve even though they should resolve
@@ -1423,6 +1426,7 @@ namespace ResoniteBridge
             "WebRequest",
             "IPEndPoint",
             "SocketError",
+            "FileIOMode"
 
         }; 
 

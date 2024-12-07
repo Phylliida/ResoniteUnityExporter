@@ -19,7 +19,6 @@ namespace ResoniteBridge
 {
     public class FrooxEngineRunner
     {
-        
         // Modified from https://github.com/Lexevolution/Resonite-DataTree-Converter/blob/main/Program.cs
         public static string GetResoniteExePath(out Dictionary<string, Assembly> libraries)
         {
