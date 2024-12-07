@@ -278,11 +278,16 @@ namespace ResoniteBridge
                                         }
                                         catch (Exception ex)
                                         {
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeValue()
+                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse()
                                             {
-                                                typeName = ex.GetType().Name,
-                                                valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                valueType = ResoniteBridgeValueType.Error
+                                                response = new ResoniteBridgeValue()
+                                                {
+                                                    typeName = ex.GetType().Name,
+                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                                    valueType = ResoniteBridgeValueType.Error
+                                                },
+                                                responseType = ResoniteBridgeResponseType.Error,
+                                                extraResults = null
                                             });
                                         }
                                     }

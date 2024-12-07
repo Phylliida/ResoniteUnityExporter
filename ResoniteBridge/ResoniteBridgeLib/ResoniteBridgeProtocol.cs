@@ -71,15 +71,30 @@ namespace ResoniteBridge
 
         public ResoniteBridgeValue[] inputs = null;
     }
+
+    public enum ResoniteBridgeResponseType
+    {
+        Error=0,
+        Success=1,
+    }
+    public class ResoniteBridgeResponse
+    {
+        public ResoniteBridgeValue response;
+        public ResoniteBridgeResponseType responseType;
+
+        public ResoniteBridgeValue[] extraResults = null;
+    }
+
     public enum ResoniteBridgeMessageType
     {
         CallMethod = 0,
-        CallConstructor = 1,
-        GetField = 2,
-        SetField = 3,
-        GetProperty = 4,
-        SetProperty = 5,
-        GetEnum = 6,
+        CallMethodWithRefsAndOuts = 1,
+        CallConstructor = 2,
+        GetField = 3,
+        SetField = 4,
+        GetProperty = 5,
+        SetProperty = 6,
+        GetEnum = 7,
     }
 
 

@@ -258,6 +258,41 @@ namespace ResoniteBridge
 
             invocationParams.Add(methodNameExp);
 
+
+            string wrapperMethodName = "CallMethod";
+
+
+            // this chunk of stuff supports ref/out params
+            var outOrRefParams = methodDeclaration.Parameters.Where(
+                (p) => p.ParameterModifier.HasFlag(
+                         ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out)
+                     || p.ParameterModifier.HasFlag(
+                          ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Ref)).ToList();
+            List<Expression> assigns = new List<Expression>();
+            // If we have ref or out params we need to pass in an extra thing
+            if (outOrRefParams.Count > 0)
+            {
+                AstType outType = new SimpleType("ResoniteBridge.ResoniteBridgeValue[]");
+
+                string outName = "__outVars";
+                OutVarDeclarationExpression outDeclare = new OutVarDeclarationExpression(outType, outName);
+
+                invocationParams.Add(outDeclare);
+                wrapperMethodName = "CallMethodWithRefsAndOuts";
+                IdentifierExpression outIdentifier = new IdentifierExpression(outName);
+                // this makes the ith out/ref param 
+                // param_i = __outVars[i]
+                for (int i = 0; i < outOrRefParams.Count; i++)
+                {
+                    PrimitiveExpression indexExpression = new PrimitiveExpression(i);
+                    IdentifierExpression paramIdentifier = new IdentifierExpression(outOrRefParams[i].NameToken.ToString());
+                    AssignmentExpression assignExpr = new AssignmentExpression(paramIdentifier,
+                        new IndexerExpression(outIdentifier.Clone(), 
+                            indexExpression));
+                    assigns.Add(assignExpr);
+                }
+            }
+
             foreach (var param in methodDeclaration.Parameters)
             {
                 invocationParams.Add(new IdentifierExpression(param.NameToken.ToString()));
@@ -306,18 +341,42 @@ namespace ResoniteBridge
                         }
                     )
                 };*/
-
-                
                 //old version
                 var castExpression = new CastExpression(
                     methodDeclaration.ReturnType.Clone(),
                     castValueCall
                 );
 
-                return new BlockStatement {
-                    new ReturnStatement(castExpression)
+                Expression outputExpression = castExpression;
+
+                BlockStatement result = new BlockStatement
+                {
+
                 };
-                
+
+                // stuff to support out/ref
+
+                // this does
+                // __finalResult = <cast stuff>
+                // <later stuff does assignments to ref and out params>
+                // return __finalResult;
+                if (assigns.Count > 0)
+                {
+                    string finalResultName = "__finalResult";
+                    VariableDeclarationStatement finalResultDeclare = new VariableDeclarationStatement(
+                        methodDeclaration.ReturnType.Clone(),
+                       "__finalResult",
+                       castExpression);
+                    result.Add(finalResultDeclare);
+                    outputExpression = new IdentifierExpression(finalResultName);
+                }
+
+                foreach (Expression assign in assigns)
+                {
+                    result.Add(assign);
+                }
+                result.Add(new ReturnStatement(outputExpression));
+                return result;
             }
             else
             {
@@ -774,7 +833,14 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
-                            methodDeclare.Modifiers = SetAccessibility(methodDeclare.Modifiers);
+                            // we can't make this public sadly
+                            bool exception = methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
+                                (methodDeclare.NameToken.ToString() == "Dispose" 
+                                || methodDeclare.NameToken.ToString() == "GetWebRequest");
+                            if (!exception)
+                            {
+                                methodDeclare.Modifiers = SetAccessibility(methodDeclare.Modifiers);
+                            }
 
                             if (typeDeclare.NameToken.ToString().Contains("LocalDatabaseAccountDataStore")) {
                                 
@@ -793,12 +859,7 @@ namespace ResoniteBridge
                             if (methodDeclare.NameToken.ToString().StartsWith("get_") ||
                             methodDeclare.NameToken.ToString().StartsWith("set_") ||
                             // no operators, we handle those above
-                            methodDeclare.NameToken.ToString().StartsWith("op_") ||
-                            // we don't support out yet
-                            methodDeclare.Parameters.Any(
-                                (p) => p.ParameterModifier.HasFlag(
-                                    ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out))
-                            )
+                            methodDeclare.NameToken.ToString().StartsWith("op_"))
                             {
                                 nodesToRemove.Add(methodDeclare);
                             }
@@ -1316,7 +1377,7 @@ namespace ResoniteBridge
                     {
                         // nevermind this was a bad idea
                         // set identifier to be the full qualified name of the type
-                        identifierOfThisType.Name = resolveResult.Type.FullName;
+                        //identifierOfThisType.Name = resolveResult.Type.FullName;
                     }
                     // generics will be later things, either PrimitiveType or more SimpleType nested, handled by the recursive call above
                 }
@@ -1470,7 +1531,8 @@ namespace ResoniteBridge
             "WebRequest",
             "IPEndPoint",
             "SocketError",
-            "FileIOMode"
+            "FileIOMode",
+            "IOStream",
 
         }; 
 

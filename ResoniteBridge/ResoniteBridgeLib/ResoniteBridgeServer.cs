@@ -99,7 +99,7 @@ namespace ResoniteBridge
         public delegate void LogDelegate(string message);
 
         public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
-        public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
+        public ConcurrentQueue<ResoniteBridgeResponse> outputMessages = new ConcurrentQueue<ResoniteBridgeResponse>();
         public ResoniteBridgeServer (LogDelegate DebugLog)
         {
             stopToken = new CancellationTokenSource();
@@ -110,7 +110,7 @@ namespace ResoniteBridge
                 try
                 {
                     bool waitingForRequest = true;
-                    ResoniteBridgeValue response = new ResoniteBridgeValue();
+                    ResoniteBridgeResponse response = new ResoniteBridgeResponse();
 
                     while (!stopToken.IsCancellationRequested)
                     {
@@ -167,24 +167,25 @@ namespace ResoniteBridge
 
                                     if (!waitingForRequest)
                                     {
-                                        if (response.valueType == ResoniteBridgeValueType.Null)
+                                        try
                                         {
-                                            // empty string is null
-                                            ss.WriteString("", millisTimeout, stopToken.Token);
+                                            ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
                                         }
-                                        else
+                                        catch (JsonSerializationException e)
                                         {
-                                            try
+                                            DebugLog("Failed to serialize response, sending error instead");
+                                            DebugLog("ERROR: " + e.Message);
+                                            DebugLog("Message:" + response);
+                                            response.responseType = ResoniteBridgeResponseType.Error;
+                                            response.extraResults = null;
+                                            response.response = new ResoniteBridgeValue()
                                             {
-                                                ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
-                                            }
-                                            catch (JsonSerializationException e)
-                                            {
-                                                DebugLog("Failed to serialize response, sending null (empty string) instead");
-                                                DebugLog("ERROR: " + e.Message);
-                                                DebugLog("Message:" + response);
-                                                ss.WriteString("", millisTimeout, stopToken.Token);
-                                            }
+                                                assemblyName = null,
+                                                typeName = null,
+                                                valueStr = e.Message,
+                                                valueType = ResoniteBridgeValueType.Error
+                                            };
+                                            ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
                                         }
                                         waitingForRequest = true;
                                     }

@@ -56,10 +56,10 @@ namespace ResoniteBridge
             return encodedInputs;
         }
 
-        public static ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
+        public static ResoniteBridgeResponse SendBridgeMessageFull(ResoniteBridgeMessage message)
         {
             client.inputMessages.Enqueue(message);
-            ResoniteBridgeValue output;
+            ResoniteBridgeResponse output;
             Stopwatch elapsedTime = new Stopwatch();
             elapsedTime.Start();
             while (!client.outputMessages.TryDequeue(out output))
@@ -70,15 +70,34 @@ namespace ResoniteBridge
                 }
                 // We are on unity thread, can't sleep :(
             }
-            if (output.valueType == ResoniteBridgeValueType.Null){
-                DebugLog("Got null output?");
-                throw new EvaluationException("Got null output?");
-            }
-            if (output.valueType == ResoniteBridgeValueType.Error)
+            if (output.responseType == ResoniteBridgeResponseType.Error ||
+                output.response.valueType == ResoniteBridgeValueType.Error)
             {
-                DebugLog("Got exception:" + output.valueStr);
+                DebugLog("Got exception:" + output.response.valueStr);
             }
             return output;
+        }
+
+        public static ResoniteBridgeValue SendBridgeMessage(ResoniteBridgeMessage message)
+        {
+            return SendBridgeMessageFull(message).response;
+        }
+
+        public static ResoniteBridgeValue CallMethodWithRefsAndOuts(ResoniteBridgeValue target,
+            string methodName,
+            out ResoniteBridgeValue[] outs,
+            params object[] inputParams)
+        {
+            ResoniteBridgeMessage message = new ResoniteBridgeMessage()
+            {
+                inputs = EncodeInputs(inputParams),
+                messageType = ResoniteBridgeMessageType.CallMethodWithRefsAndOuts,
+                name = methodName,
+                target = target
+            };
+            ResoniteBridgeResponse results = SendBridgeMessageFull(message);
+            outs = results.extraResults;
+            return results.response;
         }
 
         public static ResoniteBridgeValue CallMethod(ResoniteBridgeValue target, string methodName, params object[] args)

@@ -113,58 +113,83 @@ namespace ResoniteBridge
             return results;
         }
 
-        public static ResoniteBridgeValue EvaluateMessage(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
+        public static ResoniteBridgeValue EncodeValue(ResoniteBridgeServerData runner, object value)
+        {
+            ResoniteBridgeValue encodedResult = value == null
+                    ? new ResoniteBridgeValue(
+                        valueStr: null,
+                        assemblyName: null,
+                        typeName: null,
+                        ResoniteBridgeValueType.Null)
+                    : new ResoniteBridgeValue(
+                        valueStr: null,
+                        assemblyName: ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(value.GetType())),
+                        typeName: value.GetType().FullName,
+                        valueType: ResoniteBridgeValueType.Type
+                        );
+
+
+            if (value != null && !IsType(value))
+            {
+                try
+                {
+                    string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(value, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                    encodedResult.valueStr = encoded;
+                    encodedResult.valueType = ResoniteBridgeValueType.Serialized;
+                }
+                catch (Newtonsoft.Json.JsonSerializationException)
+                {
+                    // use guid since serialization failed
+                    Guid guid = runner.uuidLookup.Add(value);
+                    encodedResult.valueStr = guid.ToString();
+                    encodedResult.valueType = ResoniteBridgeValueType.UUID;
+                }
+            }
+            return encodedResult;
+        }
+
+        public static ResoniteBridgeResponse EvaluateMessage(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
         {
             try
             {
-                object result = EvaluateHelper(runner, message);
-                if (result == null)
-                {
-                    return new ResoniteBridgeValue(); // default value is null
-                }
-                ResoniteBridgeValue encodedResult = new ResoniteBridgeValue()
-                {
-                    assemblyName = ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(result.GetType())),
-                    typeName = result.GetType().FullName
-                };
+                object result = EvaluateHelper(runner, message, out object[] extraResults);
 
-                if (IsType(result))
+                ResoniteBridgeValue encodedResult = EncodeValue(runner, result);
+                ResoniteBridgeResponse response = new ResoniteBridgeResponse();
+                response.responseType = ResoniteBridgeResponseType.Success;
+                response.response = encodedResult;
+                if (extraResults != null)
                 {
-                    encodedResult.valueStr = null;
-                    encodedResult.valueType = ResoniteBridgeValueType.Type;
-                }
-                else
-                {
-                    try
+                    ResoniteBridgeValue[] extraResultValues = new ResoniteBridgeValue[extraResults.Length];
+                    for(int i = 0; i < extraResults.Length;i ++)
                     {
-                        string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(result, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                        encodedResult.valueStr = encoded;
-                        encodedResult.valueType = ResoniteBridgeValueType.Serialized;
+                        extraResultValues[i] = EncodeValue(runner, extraResults[i]);
                     }
-                    catch (Newtonsoft.Json.JsonSerializationException)
-                    {
-                        // use guid since serialization failed
-                        Guid guid = runner.uuidLookup.Add(result);
-                        encodedResult.valueStr  = guid.ToString();
-                        encodedResult.valueType = ResoniteBridgeValueType.UUID;
-                    }
+                    response.extraResults = extraResultValues;
                 }
-                return encodedResult;
+
+                return response;
             }
             // Return errors to them for easy debugging
             catch (Exception e)
             {
-                return new ResoniteBridgeValue()
+                return new ResoniteBridgeResponse()
                 {
-                    typeName = e.GetType().Name,
-                    valueStr = e.ToString() + "\n" + Environment.StackTrace,
-                    valueType = ResoniteBridgeValueType.Error
+                    response = new ResoniteBridgeValue()
+                    {
+                        typeName = e.GetType().Name,
+                        valueStr = e.ToString() + "\n" + Environment.StackTrace,
+                        valueType = ResoniteBridgeValueType.Error
+                    },
+                    responseType = ResoniteBridgeResponseType.Error,
+                    extraResults = null
                 };
             }
         }
 
-        public static object EvaluateHelper(ResoniteBridgeServerData runner, ResoniteBridgeMessage message)
+        public static object EvaluateHelper(ResoniteBridgeServerData runner, ResoniteBridgeMessage message, out object[] extraOutputs)
         {
+            extraOutputs = null;
             object[] objInputs = ParseInputs(runner, message.inputs);
             object objTarget = null;
             if (message.target.valueType != ResoniteBridgeValueType.Null)
@@ -174,6 +199,9 @@ namespace ResoniteBridge
             switch (message.messageType)
             {
                 case ResoniteBridgeMessageType.CallMethod:
+                    return CallMethod(objTarget, message.name, objInputs);
+                case ResoniteBridgeMessageType.CallMethodWithRefsAndOuts:
+                    // todo
                     return CallMethod(objTarget, message.name, objInputs);
                 case ResoniteBridgeMessageType.CallConstructor:
                     return CallConstructorFromType((Type)objTarget, objInputs);

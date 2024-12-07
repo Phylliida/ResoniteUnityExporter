@@ -857,7 +857,7 @@ namespace LZ4
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", buffer, offset, count);
 		}
 
-		public override void Dispose(System.Boolean disposing)
+		protected override void Dispose(System.Boolean disposing)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose", disposing);
 		}

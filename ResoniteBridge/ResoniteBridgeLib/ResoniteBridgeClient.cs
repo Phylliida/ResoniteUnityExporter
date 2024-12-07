@@ -21,7 +21,7 @@ namespace ResoniteBridge
         public delegate void LogDelegate(string message);
 
         public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
-        public ConcurrentQueue<ResoniteBridgeValue> outputMessages = new ConcurrentQueue<ResoniteBridgeValue>();
+        public ConcurrentQueue<ResoniteBridgeResponse> outputMessages = new ConcurrentQueue<ResoniteBridgeResponse>();
         public ResoniteBridgeClient(LogDelegate DebugLog)
         {
             stopToken = new CancellationTokenSource();
@@ -83,14 +83,14 @@ namespace ResoniteBridge
                                 if (waitingForResponse)
                                 {
                                     string result = ss.ReadString(millisTimeout, stopToken.Token);
-                                    ResoniteBridgeValue parsedResult;
+                                    ResoniteBridgeResponse parsedResult;
                                     if (result != "" && result != null)
                                     {
                                         try
                                         {
                                             // If failed to deserialize, send null but warn in console
                                             // (todo: maybe this throws error?)
-                                            parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeValue>(result);
+                                            parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
                                             outputMessages.Enqueue(parsedResult);
                                             waitingForResponse = false;
                                         }
