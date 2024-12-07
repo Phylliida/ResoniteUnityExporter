@@ -2119,6 +2119,13 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DBSignature", dbUri, ignoreScheme), typeof(System.String));
 		}
 
+		public System.String DBSignature(System.Uri dbUri, out System.String extension, System.Boolean ignoreScheme = false)
+		{
+			string __finalResult = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DBSignature", out ResoniteBridge.ResoniteBridgeValue[] __outVars, dbUri, extension, ignoreScheme), typeof(System.String));
+			extension = (System.String)__outVars[0];
+			return __finalResult;
+		}
+
 		public System.String DBQuery(System.Uri dbUri)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DBQuery", dbUri), typeof(System.String));
@@ -2924,6 +2931,11 @@ namespace SkyFrost.Base
 		public static System.String ComposeIdentifier(System.String signature, System.String variant)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetUtil", ResoniteBridge.ResoniteBridgeValueType.Type), "ComposeIdentifier", signature, variant), typeof(System.String));
+		}
+
+		public static void SplitIdentifier(System.String identifier, out System.String signature, out System.String variant)
+		{
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetUtil", ResoniteBridge.ResoniteBridgeValueType.Type), "SplitIdentifier", out ResoniteBridge.ResoniteBridgeValue[] __outVars, identifier, signature, variant);
 		}
 	}
 	public class AssetVariantIdentifier : ResoniteBridge.ResoniteBridgeValueHolder
@@ -5913,7 +5925,7 @@ namespace SkyFrost.Base
 
 		public void LoadContact(Contact contact, ref System.Int32 requests)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadContact", contact, requests);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadContact", out ResoniteBridge.ResoniteBridgeValue[] __outVars, contact, requests);
 		}
 
 		public void FinalizeLoading(System.Int32 requests)
@@ -7565,6 +7577,22 @@ namespace SkyFrost.Base
 		public System.Uri GenerateRecordUri(System.String ownerId, System.String recordId)
 		{
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateRecordUri", ownerId, recordId), typeof(System.Uri));
+		}
+
+		public System.Boolean ExtractRecordID(System.Uri recordUri, out System.String ownerId, out System.String recordId)
+		{
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordID", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordId), typeof(System.Boolean));
+			ownerId = (System.String)__outVars[0];
+			recordId = (System.String)__outVars[1];
+			return __finalResult;
+		}
+
+		public System.Boolean ExtractRecordPath(System.Uri recordUri, out System.String ownerId, out System.String recordPath)
+		{
+			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordPath), typeof(System.Boolean));
+			ownerId = (System.String)__outVars[0];
+			recordPath = (System.String)__outVars[1];
+			return __finalResult;
 		}
 
 		public Task<CloudResult<R>> GetRecordCached<R>(System.Uri recordUri, System.String accessKey = null) where R : class, IRecord, new()

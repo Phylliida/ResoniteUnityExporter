@@ -281,14 +281,28 @@ namespace ResoniteBridge
                 wrapperMethodName = "CallMethodWithRefsAndOuts";
                 IdentifierExpression outIdentifier = new IdentifierExpression(outName);
                 // this makes the ith out/ref param 
-                // param_i = __outVars[i]
+                // param_i = (param_i_type)__outVars[i]
                 for (int i = 0; i < outOrRefParams.Count; i++)
                 {
+                    AstType paramType = CleanType(outOrRefParams[i].Type);
                     PrimitiveExpression indexExpression = new PrimitiveExpression(i);
                     IdentifierExpression paramIdentifier = new IdentifierExpression(outOrRefParams[i].NameToken.ToString());
+
+                    var castParamValueCall = new InvocationExpression(
+                        new MemberReferenceExpression(clientWrappers.Clone(), "CastValue"),
+                        new IndexerExpression(
+                            outIdentifier.Clone(),
+                            indexExpression),
+                        new TypeOfExpression(paramType.Clone())
+                    );
+
+                    var castExpression = new CastExpression(
+                        paramType.Clone(),
+                        castParamValueCall
+                    );
+
                     AssignmentExpression assignExpr = new AssignmentExpression(paramIdentifier,
-                        new IndexerExpression(outIdentifier.Clone(), 
-                            indexExpression));
+                        castExpression);
                     assigns.Add(assignExpr);
                 }
             }

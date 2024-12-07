@@ -349,7 +349,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		public override T Lerp(ref T current, ref T target, ref T intermediate, System.Single delta)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(T));
+			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, intermediate, delta), typeof(T));
+			current = (T)__outVars[0];
+			target = (T)__outVars[1];
+			intermediate = (T)__outVars[2];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -381,7 +385,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		public override floatQ Lerp(ref floatQ current, ref floatQ target, ref floatQ intermediate, System.Single delta)
 		{
-			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(floatQ));
+			floatQ __finalResult = (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, intermediate, delta), typeof(floatQ));
+			current = (floatQ)__outVars[0];
+			target = (floatQ)__outVars[1];
+			intermediate = (floatQ)__outVars[2];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -413,7 +421,11 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		public override doubleQ Lerp(ref doubleQ current, ref doubleQ target, ref doubleQ intermediate, System.Single delta)
 		{
-			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, intermediate, delta), typeof(doubleQ));
+			doubleQ __finalResult = (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, intermediate, delta), typeof(doubleQ));
+			current = (doubleQ)__outVars[0];
+			target = (doubleQ)__outVars[1];
+			intermediate = (doubleQ)__outVars[2];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -580,7 +592,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 
 		public override T Lerp(ref T current, ref T target, System.Single delta)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(T));
+			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, delta), typeof(T));
+			current = (T)__outVars[0];
+			target = (T)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -613,7 +628,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		public override floatQ Lerp(ref floatQ current, ref floatQ target, System.Single delta)
 		{
-			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(floatQ));
+			floatQ __finalResult = (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, delta), typeof(floatQ));
+			current = (floatQ)__outVars[0];
+			target = (floatQ)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -646,7 +664,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Math
 	{
 		public override doubleQ Lerp(ref doubleQ current, ref doubleQ target, System.Single delta)
 		{
-			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", current, target, delta), typeof(doubleQ));
+			doubleQ __finalResult = (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Lerp", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, target, delta), typeof(doubleQ));
+			current = (doubleQ)__outVars[0];
+			target = (doubleQ)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -15436,7 +15457,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 
 		public override T Delta(ref T current, ref T previous)
 		{
-			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(T));
+			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, previous), typeof(T));
+			current = (T)__outVars[0];
+			previous = (T)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -15467,7 +15491,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 	{
 		public override floatQ Delta(ref floatQ current, ref floatQ previous)
 		{
-			return (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(floatQ));
+			floatQ __finalResult = (floatQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, previous), typeof(floatQ));
+			current = (floatQ)__outVars[0];
+			previous = (floatQ)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -15498,7 +15525,10 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators
 	{
 		public override doubleQ Delta(ref doubleQ current, ref doubleQ previous)
 		{
-			return (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", current, previous), typeof(doubleQ));
+			doubleQ __finalResult = (doubleQ)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delta", out ResoniteBridge.ResoniteBridgeValue[] __outVars, current, previous), typeof(doubleQ));
+			current = (doubleQ)__outVars[0];
+			previous = (doubleQ)__outVars[1];
+			return __finalResult;
 		}
 
 		public ResoniteBridge.ResoniteBridgeValue __backing;
@@ -37236,17 +37266,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		public override void Initialize(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void UpdateNearest(global::FrooxEngine.User user, in float3 referencePos, ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", user, referencePos, nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, user, referencePos, nearest, context);
 		}
 
 		public override void StoreNearest(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void WriteOutputs(FrooxEngineContext context)
@@ -37497,17 +37527,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		public override void Initialize(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void UpdateNearest(global::FrooxEngine.User user, in float3 referencePos, ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", user, referencePos, nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, user, referencePos, nearest, context);
 		}
 
 		public override void StoreNearest(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void WriteOutputs(FrooxEngineContext context)
@@ -37759,17 +37789,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar
 
 		public override void Initialize(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void UpdateNearest(global::FrooxEngine.User user, in float3 referencePos, ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", user, referencePos, nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, user, referencePos, nearest, context);
 		}
 
 		public override void StoreNearest(ref Data nearest, FrooxEngineContext context)
 		{
-			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", nearest, context);
+			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreNearest", out ResoniteBridge.ResoniteBridgeValue[] __outVars, nearest, context);
 		}
 
 		public override void WriteOutputs(FrooxEngineContext context)
