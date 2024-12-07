@@ -1467,7 +1467,14 @@ namespace ResoniteBridge
                 }
             }
             // still didn't resolve, replace with ResoniteBridgeValue
-            astType.ReplaceWith(new SimpleType("ResoniteBridge.ResoniteBridgeValue"));
+
+            // arrays need to be replaced with arrays tho
+            string wrappedTypeStr = "ResoniteBridge.ResoniteBridgeValue";
+            if (astType.ToString().EndsWith("[]"))
+            {
+                wrappedTypeStr = wrappedTypeStr + "[]";
+            }
+            astType.ReplaceWith(new SimpleType(wrappedTypeStr));
             return true;
         }
 
