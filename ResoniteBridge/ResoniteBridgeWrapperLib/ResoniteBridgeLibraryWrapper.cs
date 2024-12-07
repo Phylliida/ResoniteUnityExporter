@@ -712,7 +712,7 @@ namespace ResoniteBridge
                         new Expression[] {
                             new PrimitiveExpression(null),
                             new PrimitiveExpression(assemblyName),
-                            new PrimitiveExpression(typeDeclare.Name),
+                            new PrimitiveExpression(typeDeclare.GetResolveResult().Type.ReflectionName),
                             new MemberReferenceExpression(
                                 new TypeReferenceExpression(new SimpleType("ResoniteBridge.ResoniteBridgeValueType")),
                                 "Type"

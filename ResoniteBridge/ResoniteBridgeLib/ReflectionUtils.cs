@@ -17,7 +17,12 @@ namespace ResoniteBridge
 
         public static string TypeToString(Type type)
         {
-            return typeToStringConverter.ConvertToString(type);
+            string outType = typeToStringConverter.ConvertToString(type);
+            if (!outType.StartsWith(type.Namespace))
+            {
+                outType = type.Namespace + outType;
+            }
+            return outType;
         }
 
         public static Type TypeFromString(string str)

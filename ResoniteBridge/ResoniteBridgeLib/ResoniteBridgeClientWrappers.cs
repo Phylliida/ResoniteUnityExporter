@@ -43,7 +43,7 @@ namespace ResoniteBridge
                 string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 return new ResoniteBridgeValue(serialized,
                     Assembly.GetAssembly(input.GetType()).GetName().Name,
-                    ReflectionUtils.TypeToString(input.GetType()),
+                    ReflectionUtils.TypeToString(input.GetType()) + "bees",
                     ResoniteBridgeValueType.Serialized);
             }
         }
@@ -204,7 +204,7 @@ namespace ResoniteBridge
         {
             if (typeToCastTo.IsAssignableFrom(typeof(ResoniteBridgeValueHolder)))
             {
-                return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, typeToCastTo.Name, value);
+                return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, ReflectionUtils.TypeToString(typeToCastTo), value);
             }
             else if(typeToCastTo.IsEnum)
             {
