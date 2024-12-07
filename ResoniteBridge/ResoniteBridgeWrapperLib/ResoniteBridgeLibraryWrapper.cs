@@ -1083,6 +1083,10 @@ namespace ResoniteBridge
             // replace all unresolved types with ResoniteBridgeValue
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
+                if (astNode is VariableDeclarationStatement variableDeclare)
+                {
+                    ReplaceTypeIfUnresolved(variableDeclare.Type, resolveContext, namespaceList, removeNullable: true);
+                }
                 if (astNode is DelegateDeclaration delegateDeclare)
                 {
                     ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, resolveContext, namespaceList, removeNullable: true);
