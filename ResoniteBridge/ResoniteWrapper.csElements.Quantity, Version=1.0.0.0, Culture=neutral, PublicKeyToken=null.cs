@@ -1366,7 +1366,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Acceleration q, Unit<Acceleration> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Acceleration", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Acceleration)__outVars[0];
+			q = (Acceleration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Acceleration));
 			return __finalResult;
 		}
 
@@ -1726,7 +1726,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Angle q, Unit<Angle> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Angle", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Angle)__outVars[0];
+			q = (Angle)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Angle));
 			return __finalResult;
 		}
 
@@ -2226,7 +2226,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Distance q, Unit<Distance> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Distance", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Distance)__outVars[0];
+			q = (Distance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Distance));
 			return __finalResult;
 		}
 
@@ -2663,28 +2663,28 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out T quantity, Unit<T> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, quantity, defaultUnit), typeof(System.Boolean));
-			quantity = (T)__outVars[0];
+			quantity = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(T));
 			return __finalResult;
 		}
 
 		public static System.Boolean TryParse(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out T quantity, Unit<T> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, numberStyles, formatProvider, quantity, defaultUnit), typeof(System.Boolean));
-			quantity = (T)__outVars[0];
+			quantity = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(T));
 			return __finalResult;
 		}
 
 		public static System.Boolean ParseIntern(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out T quantity, Unit<T> defaultUnit, System.Boolean throwOnFail)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseIntern", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, numberStyles, formatProvider, quantity, defaultUnit, throwOnFail), typeof(System.Boolean));
-			quantity = (T)__outVars[0];
+			quantity = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(T));
 			return __finalResult;
 		}
 
 		public static IUnit GetUnitFromSubstring(System.String str, out System.Int32 unitEndIndex, System.Boolean byLetter = false)
 		{
 			IUnit __finalResult = (IUnit)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "GetUnitFromSubstring", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, unitEndIndex, byLetter), typeof(IUnit));
-			unitEndIndex = (System.Int32)__outVars[0];
+			unitEndIndex = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
 
@@ -2827,7 +2827,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out System.Double value)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, numberStyles, formatProvider, value), typeof(System.Boolean));
-			value = (System.Double)__outVars[0];
+			value = (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Double));
 			return __finalResult;
 		}
 
@@ -3692,7 +3692,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Mass q, Unit<Mass> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Mass", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Mass)__outVars[0];
+			q = (Mass)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Mass));
 			return __finalResult;
 		}
 
@@ -3953,7 +3953,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Ratio q, Unit<Ratio> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Ratio", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Ratio)__outVars[0];
+			q = (Ratio)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Ratio));
 			return __finalResult;
 		}
 
@@ -4238,7 +4238,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Temperature q, Unit<Temperature> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Temperature", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Temperature)__outVars[0];
+			q = (Temperature)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Temperature));
 			return __finalResult;
 		}
 
@@ -4713,7 +4713,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Time q, Unit<Time> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Time", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Time)__outVars[0];
+			q = (Time)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Time));
 			return __finalResult;
 		}
 
@@ -5036,7 +5036,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Velocity q, Unit<Velocity> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Velocity", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Velocity)__outVars[0];
+			q = (Velocity)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Velocity));
 			return __finalResult;
 		}
 
@@ -5308,7 +5308,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Current q, Unit<Current> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Current", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Current)__outVars[0];
+			q = (Current)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Current));
 			return __finalResult;
 		}
 
@@ -5580,7 +5580,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Resistance q, Unit<Resistance> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Resistance", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Resistance)__outVars[0];
+			q = (Resistance)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Resistance));
 			return __finalResult;
 		}
 
@@ -5876,7 +5876,7 @@ namespace Elements.Quantity
 		public static System.Boolean TryParse(System.String str, out Voltage q, Unit<Voltage> defaultUnit = null)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Voltage", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, str, q, defaultUnit), typeof(System.Boolean));
-			q = (Voltage)__outVars[0];
+			q = (Voltage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(Voltage));
 			return __finalResult;
 		}
 

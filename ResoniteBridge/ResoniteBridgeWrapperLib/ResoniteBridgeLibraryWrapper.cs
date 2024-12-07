@@ -309,7 +309,11 @@ namespace ResoniteBridge
 
             foreach (var param in methodDeclaration.Parameters)
             {
-                invocationParams.Add(new IdentifierExpression(param.NameToken.ToString()));
+                // don't pass in out params into wrapper
+                if (!param.ParameterModifier.HasFlag(ICSharpCode.Decompiler.CSharp.Syntax.ParameterModifier.Out))
+                {
+                    invocationParams.Add(new IdentifierExpression(param.NameToken.ToString()));
+                }
             }
 
             InvocationExpression invocation = new InvocationExpression(

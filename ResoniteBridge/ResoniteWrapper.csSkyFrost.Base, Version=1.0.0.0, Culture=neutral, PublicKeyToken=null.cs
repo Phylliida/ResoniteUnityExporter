@@ -2122,7 +2122,7 @@ namespace SkyFrost.Base
 		public System.String DBSignature(System.Uri dbUri, out System.String extension, System.Boolean ignoreScheme = false)
 		{
 			string __finalResult = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DBSignature", out ResoniteBridge.ResoniteBridgeValue[] __outVars, dbUri, extension, ignoreScheme), typeof(System.String));
-			extension = (System.String)__outVars[0];
+			extension = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
 			return __finalResult;
 		}
 
@@ -7582,16 +7582,16 @@ namespace SkyFrost.Base
 		public System.Boolean ExtractRecordID(System.Uri recordUri, out System.String ownerId, out System.String recordId)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordID", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordId), typeof(System.Boolean));
-			ownerId = (System.String)__outVars[0];
-			recordId = (System.String)__outVars[1];
+			ownerId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
+			recordId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.String));
 			return __finalResult;
 		}
 
 		public System.Boolean ExtractRecordPath(System.Uri recordUri, out System.String ownerId, out System.String recordPath)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordPath), typeof(System.Boolean));
-			ownerId = (System.String)__outVars[0];
-			recordPath = (System.String)__outVars[1];
+			ownerId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
+			recordPath = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.String));
 			return __finalResult;
 		}
 

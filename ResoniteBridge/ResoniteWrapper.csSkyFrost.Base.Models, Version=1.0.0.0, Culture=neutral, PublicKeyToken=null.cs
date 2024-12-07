@@ -7840,7 +7840,7 @@ namespace SkyFrost.Base
 		public static System.Boolean TryParse(System.String compositeId, out EntityId entityId)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EntityId", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compositeId, entityId), typeof(System.Boolean));
-			entityId = (EntityId)__outVars[0];
+			entityId = (EntityId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(EntityId));
 			return __finalResult;
 		}
 
@@ -12814,16 +12814,16 @@ namespace SkyFrost.Base
 		public System.Boolean ExtractRecordID(System.Uri recordUri, out System.String ownerId, out System.String recordId)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordID", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordId), typeof(System.Boolean));
-			ownerId = (System.String)__outVars[0];
-			recordId = (System.String)__outVars[1];
+			ownerId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
+			recordId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.String));
 			return __finalResult;
 		}
 
 		public System.Boolean ExtractRecordPath(System.Uri recordUri, out System.String ownerId, out System.String recordPath)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractRecordPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars, recordUri, ownerId, recordPath), typeof(System.Boolean));
-			ownerId = (System.String)__outVars[0];
-			recordPath = (System.String)__outVars[1];
+			ownerId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
+			recordPath = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.String));
 			return __finalResult;
 		}
 
@@ -15155,7 +15155,7 @@ namespace SkyFrost.Base
 		public static System.Boolean TryParse(System.String compositeId, out RecordId recordId)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "RecordId", ResoniteBridge.ResoniteBridgeValueType.Type), "TryParse", out ResoniteBridge.ResoniteBridgeValue[] __outVars, compositeId, recordId), typeof(System.Boolean));
-			recordId = (RecordId)__outVars[0];
+			recordId = (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(RecordId));
 			return __finalResult;
 		}
 
@@ -21641,7 +21641,7 @@ namespace SkyFrost.Base
 		public LocaleString GetAccountName(System.String platformName, out colorX? color)
 		{
 			LocaleString __finalResult = (LocaleString)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAccountName", out ResoniteBridge.ResoniteBridgeValue[] __outVars, platformName, color), typeof(LocaleString));
-			color = (colorX?)__outVars[0];
+			color = (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(colorX));
 			return __finalResult;
 		}
 
@@ -23204,7 +23204,7 @@ namespace SkyFrost.Base
 		public static System.String GetCustomBadge(System.String badge, out System.Boolean pointFiltering)
 		{
 			string __finalResult = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GetCustomBadge", out ResoniteBridge.ResoniteBridgeValue[] __outVars, badge, pointFiltering), typeof(System.String));
-			pointFiltering = (System.Boolean)__outVars[0];
+			pointFiltering = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Boolean));
 			return __finalResult;
 		}
 
@@ -23616,15 +23616,15 @@ namespace SkyFrost.Base
 		public static System.Boolean PreprocessPath(System.String path, out System.Int32 separatorIndex)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "PreprocessPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars, path, separatorIndex), typeof(System.Boolean));
-			separatorIndex = (System.Int32)__outVars[0];
+			separatorIndex = (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.Int32));
 			return __finalResult;
 		}
 
 		public static System.Boolean SplitPath(System.String path, out System.String ownerId, out System.String subpath)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SplitPath", out ResoniteBridge.ResoniteBridgeValue[] __outVars, path, ownerId, subpath), typeof(System.Boolean));
-			ownerId = (System.String)__outVars[0];
-			subpath = (System.String)__outVars[1];
+			ownerId = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(System.String));
+			subpath = (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[1], typeof(System.String));
 			return __finalResult;
 		}
 
@@ -23656,21 +23656,21 @@ namespace SkyFrost.Base
 		public static System.Boolean ParseValue<T>(System.String encodedValue, System.String type, out T value)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ParseValue", out ResoniteBridge.ResoniteBridgeValue[] __outVars, encodedValue, type, value), typeof(System.Boolean));
-			value = (T)__outVars[0];
+			value = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(T));
 			return __finalResult;
 		}
 
 		public static System.Boolean TryConvertTo<T>(System.Object value, out T converted)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryConvertTo", out ResoniteBridge.ResoniteBridgeValue[] __outVars, value, converted), typeof(System.Boolean));
-			converted = (T)__outVars[0];
+			converted = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(T));
 			return __finalResult;
 		}
 
 		public static System.Boolean TryConvertToColorX(System.Object value, out colorX converted)
 		{
 			bool __finalResult = (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "TryConvertToColorX", out ResoniteBridge.ResoniteBridgeValue[] __outVars, value, converted), typeof(System.Boolean));
-			converted = (colorX)__outVars[0];
+			converted = (colorX)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(colorX));
 			return __finalResult;
 		}
 
@@ -24139,7 +24139,7 @@ namespace SkyFrost.Base
 		public T Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", out ResoniteBridge.ResoniteBridgeValue[] __outVars, reader, typeToConvert, options), typeof(T));
-			reader = (ResoniteBridge.ResoniteBridgeValue)__outVars[0];
+			reader = (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(ResoniteBridge.ResoniteBridgeValue));
 			return __finalResult;
 		}
 
@@ -24213,7 +24213,7 @@ namespace SkyFrost.Base
 		public T Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			T __finalResult = (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", out ResoniteBridge.ResoniteBridgeValue[] __outVars, reader, typeToConvert, options), typeof(T));
-			reader = (ResoniteBridge.ResoniteBridgeValue)__outVars[0];
+			reader = (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(ResoniteBridge.ResoniteBridgeValue));
 			return __finalResult;
 		}
 
@@ -24281,7 +24281,7 @@ namespace SkyFrost.Base
 		public System.Uri Read(ref ResoniteBridge.ResoniteBridgeValue reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			Uri __finalResult = (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Read", out ResoniteBridge.ResoniteBridgeValue[] __outVars, reader, typeToConvert, options), typeof(System.Uri));
-			reader = (ResoniteBridge.ResoniteBridgeValue)__outVars[0];
+			reader = (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(__outVars[0], typeof(ResoniteBridge.ResoniteBridgeValue));
 			return __finalResult;
 		}
 
