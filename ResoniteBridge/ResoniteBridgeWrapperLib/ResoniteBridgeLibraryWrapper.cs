@@ -856,6 +856,16 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
+
+                            // we don't support unsafe pointers yet (some casting nonsense needs to be done to get this to work right)
+                            if (methodDeclare.Parameters.Any(p => p.Type.ToString().Contains("*")))
+                            {
+                                nodesToRemove.Add(methodDeclare);
+                                return;
+                            }
+
+
+
                             // we can't make this public sadly
                             bool exception = methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
                                 (methodDeclare.NameToken.ToString() == "Dispose" 
