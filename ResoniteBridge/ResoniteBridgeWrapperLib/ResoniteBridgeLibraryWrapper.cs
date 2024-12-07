@@ -558,7 +558,8 @@ namespace ResoniteBridge
             return typeDeclaration.BaseTypes
                 .Any(baseType => baseType.ToString() == "Attribute" ||
                                 baseType.ToString() == "System.Attribute") ||
-                                typeDeclaration.NameToken.ToString().EndsWith("Attribute");
+                                typeDeclaration.NameToken.ToString().EndsWith("Attribute") ||
+                                typeDeclaration.NameToken.ToString().Contains("IQuantizationDefaults");
         }
 
         public static void ReplaceUnmanagedConstraintWithStruct(Constraint constraint, List<AstNode> removeAsts)
@@ -1205,14 +1206,8 @@ namespace ResoniteBridge
                 }
             });
 
-            SimpleType usingIdentifier = new SimpleType("ResoniteBridge");
-            UsingStatement addedUsing = new UsingStatement()
-            {
-
-            };
-            addedUsing.AddChild<SimpleType>(usingIdentifier, new Role<SimpleType>("using", usingIdentifier));
-
-            decompTree.InsertChildAfter<UsingStatement>(lastUsing, addedUsing, new Role<UsingStatement>("using", addedUsing));
+            IdentifierExpression usingIdentifier = new IdentifierExpression("using ResoniteBridge;");
+            decompTree.InsertChildAfter<IdentifierExpression>(lastUsing, usingIdentifier, new Role<IdentifierExpression>("using", usingIdentifier));
 
             // remove duplicate constructors (they can occur if types get wrapped)
             // like (BlahBlah a)
@@ -1421,8 +1416,7 @@ namespace ResoniteBridge
                     
 
                     // sometimes if it fails to resolve it just puts ? in front for reasons, in those cases we are fine with no resolve
-                    if (identifierOfThisType != null && !identifierOfThisType.IsNull && !type.FullName.StartsWith("?")
-                        && !astType.ToString().Contains("<") && !astType.ToString().Contains("[")) // generics this doesn't work for yet
+                    if (identifierOfThisType != null && !identifierOfThisType.IsNull && !type.FullName.StartsWith("?"))
                     {
                         // nevermind this was a bad idea
                         // set identifier to be the full qualified name of the type
