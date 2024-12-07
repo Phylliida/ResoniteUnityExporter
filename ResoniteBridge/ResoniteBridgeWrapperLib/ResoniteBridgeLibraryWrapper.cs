@@ -613,7 +613,7 @@ namespace ResoniteBridge
             return allBaseTypeDefinitions;
         }
 
-        public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList, out string usings)
+        public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
         {
             string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
             var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
@@ -1163,12 +1163,14 @@ namespace ResoniteBridge
             }
 
 
+            AstNode lastUsing = null;
             StringBuilder usingStatements = new StringBuilder();
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.UsingDeclaration ||
                     astNode is UsingAliasDeclaration)
                 {
+                    lastUsing = astNode;
                     if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.UsingDeclaration usingDec)
                     {
                         AstType usingName = usingDec.DescendantNodesAndSelf().OfType<MemberType>().FirstOrDefault();
@@ -1202,8 +1204,15 @@ namespace ResoniteBridge
                     foundTypeDec = true;
                 }
             });
-            usings = "using ResoniteBridge;";
 
+            SimpleType usingIdentifier = new SimpleType("ResoniteBridge");
+            UsingStatement addedUsing = new UsingStatement()
+            {
+
+            };
+            addedUsing.AddChild<SimpleType>(usingIdentifier, new Role<SimpleType>("using", usingIdentifier));
+
+            decompTree.InsertChildAfter<UsingStatement>(lastUsing, addedUsing, new Role<UsingStatement>("using", addedUsing));
 
             // remove duplicate constructors (they can occur if types get wrapped)
             // like (BlahBlah a)
@@ -1332,7 +1341,10 @@ namespace ResoniteBridge
             "System.Text.Json.Serialization.JsonConverter",
 
             // these have issues with not the right constructor
-            "BinaryReader"
+            "BinaryReader",
+
+            // these need return by ref and idk how to proxy that rn
+            "IContactManifold"
         };
 
         static HashSet<string> ForbiddenBaseClassOverrideMethodNames = new HashSet<string>()
@@ -1797,8 +1809,8 @@ namespace ResoniteBridge
                 var decompiler = new CSharpDecompiler(GetAssemblyPath(assembly), new DecompilerSettings());
                 string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
                 Console.WriteLine("Wrapping assembly " + assemblyName);
-                string outputCode = WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList, out string usings);
-                yield return new Tuple<Assembly, string>(assembly, usings + "\n" + outputCode);
+                string outputCode = WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList);
+                yield return new Tuple<Assembly, string>(assembly, outputCode);
                 Console.WriteLine("Done wrapping assembly " + assemblyName);
             }
 
