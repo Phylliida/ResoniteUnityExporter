@@ -75,7 +75,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -142,7 +142,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -263,7 +263,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -394,7 +394,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -567,7 +567,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -611,7 +611,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -961,7 +961,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1064,7 +1064,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1257,7 +1257,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1353,7 +1353,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryRelease", token), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1422,7 +1422,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1657,7 +1657,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1766,7 +1766,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1818,7 +1818,7 @@ namespace SkyFrost.Base
 	}
 	public class AppBuildVariant : BuildVariant<AppBuildVariantDescriptor>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1871,7 +1871,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2113,7 +2113,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2358,7 +2358,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2581,7 +2581,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2686,7 +2686,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2753,7 +2753,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2862,7 +2862,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2981,9 +2981,9 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected abstract System.String GetIdString();
+		public abstract System.String GetIdString();
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3029,12 +3029,12 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected override System.String GetIdString()
+		public override System.String GetIdString()
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3125,7 +3125,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetIdString", includeVersion, separator), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3241,7 +3241,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3345,7 +3345,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3544,7 +3544,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3595,7 +3595,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudMessage", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractMessage", content), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3790,7 +3790,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4004,7 +4004,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4123,7 +4123,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4300,7 +4300,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4451,7 +4451,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4518,7 +4518,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4978,7 +4978,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5043,7 +5043,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5088,7 +5088,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5295,7 +5295,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5493,7 +5493,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6242,7 +6242,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6611,7 +6611,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6716,7 +6716,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6803,7 +6803,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6851,7 +6851,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6902,7 +6902,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6961,7 +6961,7 @@ namespace SkyFrost.Base
 
 		public abstract System.Boolean SanitizeOrRemove();
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7047,7 +7047,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7119,7 +7119,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7169,7 +7169,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7254,7 +7254,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7302,7 +7302,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7521,7 +7521,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7651,7 +7651,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7723,7 +7723,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SanitizeOrRemove"), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7856,7 +7856,7 @@ namespace SkyFrost.Base
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7945,7 +7945,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8075,7 +8075,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8336,7 +8336,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidAtTime", time), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8466,7 +8466,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8533,7 +8533,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8684,7 +8684,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8837,7 +8837,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9017,7 +9017,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9189,7 +9189,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9875,7 +9875,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10007,7 +10007,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10116,7 +10116,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10577,7 +10577,7 @@ namespace SkyFrost.Base
 			return (Message)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(Message));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10659,7 +10659,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "MultiLanguageValue", ResoniteBridge.ResoniteBridgeValueType.Type), value, locale);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10986,7 +10986,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11220,7 +11220,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11435,7 +11435,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11869,7 +11869,7 @@ namespace SkyFrost.Base
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUsersByClientType", type), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11920,7 +11920,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static List<IPlatformProfile> _legacyProfiles
+		public static List<IPlatformProfile> _legacyProfiles
 		{
 			get
 			{
@@ -12789,7 +12789,7 @@ namespace SkyFrost.Base
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSessionWebUri", sessionId), typeof(System.Uri));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13509,7 +13509,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13699,7 +13699,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13787,7 +13787,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14513,7 +14513,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14628,7 +14628,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14980,7 +14980,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15139,7 +15139,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15288,7 +15288,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15468,7 +15468,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15508,7 +15508,7 @@ namespace SkyFrost.Base
 	[JsonObject(MemberSerialization = MemberSerialization.OptIn)]
 	public class SearchParameters : IEquatable<SearchParameters>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.Boolean _isNormalized
+		public System.Boolean _isNormalized
 		{
 			get
 			{
@@ -15889,7 +15889,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Normalize");
 		}
 
-		private List<string> NormalizeTags(List<string> tags)
+		public List<string> NormalizeTags(List<string> tags)
 		{
 			return (List<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "NormalizeTags", tags), typeof(List<string>));
 		}
@@ -15904,7 +15904,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other, excludeOffsetAndCount), typeof(System.Boolean));
 		}
 
-		private static System.Boolean ListsEqual(List<string> a, List<string> b)
+		public static System.Boolean ListsEqual(List<string> a, List<string> b)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchParameters", ResoniteBridge.ResoniteBridgeValueType.Type), "ListsEqual", a, b), typeof(System.Boolean));
 		}
@@ -15943,7 +15943,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", obj), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16021,7 +16021,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SearchResults", ResoniteBridge.ResoniteBridgeValueType.Type), records, hasMore);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16105,7 +16105,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16218,7 +16218,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "OneTimeVerificationKey", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateRecordAccessBaseId", accessingOwnerId, recordId), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16435,7 +16435,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16544,7 +16544,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16611,7 +16611,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16672,7 +16672,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16992,7 +16992,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Overrides", otherSource), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17101,7 +17101,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17312,7 +17312,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17527,7 +17527,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17743,7 +17743,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Sign", key);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17856,7 +17856,7 @@ namespace SkyFrost.Base
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAtPath", recordPath, platform), typeof(System.Uri));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18204,7 +18204,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18277,7 +18277,7 @@ namespace SkyFrost.Base
 			return (IEnumerable)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EntitiesToSanitize"), typeof(IEnumerable));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18464,7 +18464,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18612,7 +18612,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18977,7 +18977,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19160,7 +19160,7 @@ namespace SkyFrost.Base
 			return (LoginCredentials)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "LoginCredentials", ResoniteBridge.ResoniteBridgeValueType.Type), "FromCredentialAuto", credential, authentication), typeof(LoginCredentials));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19193,7 +19193,7 @@ namespace SkyFrost.Base
 		[System.Text.Json.Serialization.JsonIgnore]
 		public abstract System.Boolean IsValidForRegistration { get; }
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19301,7 +19301,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PasswordLogin", ResoniteBridge.ResoniteBridgeValueType.Type), password);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19383,7 +19383,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "SessionTokenLogin", ResoniteBridge.ResoniteBridgeValueType.Type), sessionToken);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19572,7 +19572,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19783,7 +19783,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19917,7 +19917,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValid", platform), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20106,7 +20106,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Preprocess");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20372,7 +20372,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Sanitize");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20638,7 +20638,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Sanitize");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20684,7 +20684,7 @@ namespace SkyFrost.Base
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20789,7 +20789,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21594,7 +21594,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23155,7 +23155,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "UserTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ComposeMMC21", baseCategory, subcategory, place), typeof(System.String));
 		}
 	}
-	public delegate(bool, object) CloudVariableParser(System.String value);
+	public delegate ResoniteBridge.ResoniteBridgeValue CloudVariableParser(System.String value);
 	public enum VariablePermissionType
 	{
 		Read,
@@ -23506,7 +23506,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static HashSet<string> _validPermissions
+		public static HashSet<string> _validPermissions
 		{
 			get
 			{
@@ -23595,7 +23595,7 @@ namespace SkyFrost.Base
 			return (CloudVariableParser)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetValueParser", type), typeof(CloudVariableParser));
 		}
 
-		private static CloudVariableParser GetComplexValueParser(System.String type)
+		public static CloudVariableParser GetComplexValueParser(System.String type)
 		{
 			return (CloudVariableParser)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "CloudVariableHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetComplexValueParser", type), typeof(CloudVariableParser));
 		}
@@ -23668,7 +23668,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23735,7 +23735,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23924,7 +23924,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23949,7 +23949,7 @@ namespace SkyFrost.Base
 	}
 	public class NewtonDefaultingStringEnumConverter<T> : StringEnumConverter, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, Enum
 	{
-		private T DefaultValue
+		public T DefaultValue
 		{
 			get
 			{
@@ -23978,7 +23978,7 @@ namespace SkyFrost.Base
 			return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadJson", reader, objectType, existingValue, serializer), typeof(System.Object));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24003,7 +24003,7 @@ namespace SkyFrost.Base
 	}
 	public class JsonDefaultingStringEnumConverter<T> : ResoniteBridge.ResoniteBridgeValueHolder where T : struct, Enum
 	{
-		private T DefaultValue
+		public T DefaultValue
 		{
 			get
 			{
@@ -24047,7 +24047,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", writer, value, options);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24066,58 +24066,26 @@ namespace SkyFrost.Base
 			__backing = value;
 		}
 	}
-	public sealed class JsonStringEnumConverterAttribute : System.Text.Json.Serialization.JsonConverterAttribute, ResoniteBridge.ResoniteBridgeValueHolder
+	public sealed class JsonStringEnumConverterAttribute : System.Text.Json.Serialization.JsonConverterAttribute
 	{
-		private System.Object defaultValue
-		{
-			get
-			{
-				if (ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.GetField(__Backing, "defaultValue"), typeof(System.Object)) is System.Object __retCasted)
-				{
-					return __retCasted;
-				}
-				else
-				{
-					throw new InvalidCastException("Cannot cast result to object");
-				}
-			}
-			set
-			{
-				ResoniteBridge.ResoniteBridgeClientWrappers.SetField(__Backing, "defaultValue", value);
-			}
-		}
+		private readonly System.Object defaultValue;
 
 		public JsonStringEnumConverterAttribute(Type converterType, System.Object defaultValue)
 		{
-			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "JsonStringEnumConverterAttribute", ResoniteBridge.ResoniteBridgeValueType.Type), converterType, defaultValue);
+			if (defaultValue.GetType() != converterType)
+			{
+				throw new ArgumentException("Default value must be of type: " + converterType.Name);
+			}
+			this.defaultValue = defaultValue;
 		}
 
 		public override System.Text.Json.Serialization.JsonConverter CreateConverter(Type typeToConvert)
 		{
-			return (System.Text.Json.Serialization.JsonConverter)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateConverter", typeToConvert), typeof(System.Text.Json.Serialization.JsonConverter));
-		}
-
-		private ResoniteBridge.ResoniteBridgeValue __backing;
-
-		public ResoniteBridge.ResoniteBridgeValue __Backing
-		{
-			get
+			if (defaultValue.GetType() != typeToConvert)
 			{
-				return __backing;
+				throw new ArgumentException("Can only create converter of type " + defaultValue.GetType().Name);
 			}
-			set
-			{
-				__backing = value;
-			}
-		}
-
-		public JsonStringEnumConverterAttribute(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public JsonStringEnumConverterAttribute()
-		{
+			return (System.Text.Json.Serialization.JsonConverter)Activator.CreateInstance(typeof(JsonDefaultingStringEnumConverter<>).MakeGenericType(typeToConvert), defaultValue);
 		}
 	}
 	public interface ISanitizableCollection : ResoniteBridge.ResoniteBridgeValueHolder
@@ -24151,7 +24119,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", writer, value, options);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24177,7 +24145,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WriteJson", writer, value, serializer);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24217,7 +24185,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", writer, value, options);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24245,7 +24213,7 @@ namespace SkyFrost.Base
 	}
 	public class PortRange : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private HashSet<int> InUse
+		public HashSet<int> InUse
 		{
 			get
 			{
@@ -24264,7 +24232,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -24332,7 +24300,7 @@ namespace SkyFrost.Base
 		}
 
 		[System.Text.Json.Serialization.JsonIgnore]
-		private IEnumerable<int> Range
+		public IEnumerable<int> Range
 		{
 			get
 			{
@@ -24369,7 +24337,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "PortRange", ResoniteBridge.ResoniteBridgeValueType.Type), min, max);
 		}
 
-		private void ValidatePort(System.Int32 port, System.String name = "Port")
+		public void ValidatePort(System.Int32 port, System.String name = "Port")
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValidatePort", port, name);
 		}
@@ -24419,7 +24387,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Try", startFunction), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24449,7 +24417,7 @@ namespace SkyFrost.Base
 			return (IEnumerable<TSource>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EnumerableExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "NotInHashSet", first, second), typeof(IEnumerable<TSource>));
 		}
 
-		private static IEnumerable<TSource> NotInHashSetIterator<TSource>(IEnumerable<TSource> first, HashSet<TSource> second)
+		public static IEnumerable<TSource> NotInHashSetIterator<TSource>(IEnumerable<TSource> first, HashSet<TSource> second)
 		{
 			return (IEnumerable<TSource>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base.Models", "EnumerableExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "NotInHashSetIterator", first, second), typeof(IEnumerable<TSource>));
 		}

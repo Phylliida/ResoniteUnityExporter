@@ -475,7 +475,8 @@ namespace ResoniteBridge
         {
             return typeDeclaration.BaseTypes
                 .Any(baseType => baseType.ToString() == "Attribute" ||
-                                baseType.ToString() == "System.Attribute");
+                                baseType.ToString() == "System.Attribute") ||
+                                typeDeclaration.NameToken.ToString().EndsWith("Attribute");
         }
 
         public static void ReplaceUnmanagedConstraintWithStruct(Constraint constraint, List<AstNode> removeAsts)
@@ -549,6 +550,7 @@ namespace ResoniteBridge
                 // these can be in namespaces, outside of types
                 if (astNode is DelegateDeclaration delegateDeclare)
                 {
+                    delegateDeclare.Modifiers = SetAccessibility(delegateDeclare.Modifiers);
                     // replace unmanaged with stuct in delegates so the replacements below also work
                     foreach (var constraint in delegateDeclare.Constraints)
                     {
@@ -558,6 +560,8 @@ namespace ResoniteBridge
                 // process and wrap type declarations
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.TypeDeclaration typeDeclare)
                 {
+                    typeDeclare.Modifiers = SetAccessibility(typeDeclare.Modifiers);
+                    
                     string typeNamespace = GetTypeDeclarationNamespace(typeDeclare);
                     // none of these spooky beasts
                     if (ForbiddenNamespaces.Contains(typeNamespace))
@@ -658,6 +662,8 @@ namespace ResoniteBridge
                         
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                         {
+                            constructorDeclare.Modifiers = SetAccessibility(constructorDeclare.Modifiers);
+
                             if (constructorDeclare.Parameters.Count == 0 &&
                                 !constructorDeclare.Modifiers.HasFlag(Modifiers.Static))
                             {
@@ -678,6 +684,8 @@ namespace ResoniteBridge
                         }
                         if (childNode is IndexerDeclaration indexerDeclare)
                         {
+                            indexerDeclare.Modifiers = SetAccessibility(indexerDeclare.Modifiers);
+
                             AstType returnType = indexerDeclare.ReturnType;
                             returnType = CleanType(returnType, removeNullable: false);
                             indexerDeclare.ReturnType.ReplaceWith(returnType);
@@ -747,6 +755,7 @@ namespace ResoniteBridge
 
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
                         {
+                            operatorDeclare.Modifiers = SetAccessibility(operatorDeclare.Modifiers);
                             // leave null bodies null (usually for abstract)
                             if (operatorDeclare.IsNull)
                             {
@@ -765,6 +774,8 @@ namespace ResoniteBridge
                         }
                         if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                         {
+                            methodDeclare.Modifiers = SetAccessibility(methodDeclare.Modifiers);
+
                             if (typeDeclare.NameToken.ToString().Contains("LocalDatabaseAccountDataStore")) {
                                 
                                 int i = 0;
@@ -825,6 +836,8 @@ namespace ResoniteBridge
                         }
                         else if (childNode is PropertyDeclaration propertyDeclare)
                         {
+                            propertyDeclare.Modifiers = SetAccessibility(propertyDeclare.Modifiers);
+
                             string propertyName = propertyDeclare.NameToken.ToString();
                             if (propertyName != "__Backing") // don't override our own backing
                             {
@@ -882,6 +895,8 @@ namespace ResoniteBridge
                         }
                         else if (childNode is FieldDeclaration fieldDeclare)
                         {
+                            fieldDeclare.Modifiers = SetAccessibility(fieldDeclare.Modifiers);
+
                             // fieldDeclare.NameToken is null
                             VariableInitializer variableInit = fieldDeclare.Children.OfType<VariableInitializer>().First();
                             string fieldName = variableInit.NameToken.ToString();
@@ -968,6 +983,7 @@ namespace ResoniteBridge
                     {
                         ConstructorDeclaration defaultConstructor = CreateDefaultConstructor(typeDeclare);
                         membersToAdd.Add(defaultConstructor);
+                        defaultConstructor.Modifiers = SetAccessibility(defaultConstructor.Modifiers);
                     }
                     // we do this later so the constructor wrappers don't mess with us
                     typeDeclare.Members.AddRange(membersToAdd);
@@ -983,6 +999,10 @@ namespace ResoniteBridge
             // replace all unresolved types with ResoniteBridgeValue
             TraverseSyntaxNodes(decompTree, (astNode) =>
             {
+                if (astNode is DelegateDeclaration delegateDeclare)
+                {
+                    ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, resolveContext, namespaceList, removeNullable: true);
+                }
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                 {
                     // we can't have nullable return type with our wrappers, it confuses type system
@@ -1272,6 +1292,34 @@ namespace ResoniteBridge
             // also (tuple, things) don't work, wrap those
             if (!IsForbiddenType(astType))
             {
+                ResolveResult resolveResult = astType.GetResolveResult();
+
+
+                ITypeReference typeReference = astType.ToTypeReference();
+                IType iType = typeReference.Resolve(resolveContext);
+
+                // expand types into full qualified name
+                if (!resolveResult.IsError && astType is SimpleType simpleAstType)
+                {
+                    Identifier identifierOfThisType = astType.Descendants.OfType<Identifier>().FirstOrDefault();
+
+                    IType type = resolveResult.Type;
+                    if (iType.FullName.StartsWith("?"))
+                    {
+                        type = iType;
+                    }
+                    
+
+                    // sometimes if it fails to resolve it just puts ? in front for reasons, in those cases we are fine with no resolve
+                    if (identifierOfThisType != null && !identifierOfThisType.IsNull && !type.FullName.StartsWith("?")
+                        && !astType.ToString().Contains("<") && !astType.ToString().Contains("[")) // generics this doesn't work for yet
+                    {
+                        // nevermind this was a bad idea
+                        // set identifier to be the full qualified name of the type
+                        identifierOfThisType.Name = resolveResult.Type.FullName;
+                    }
+                    // generics will be later things, either PrimitiveType or more SimpleType nested, handled by the recursive call above
+                }
                 // namespaces require seperate resolution
                 if (namespaceList.Contains(astType.ToString()) ||
                     bonusList.Contains(astType.ToString()))
@@ -1290,15 +1338,11 @@ namespace ResoniteBridge
                     return false;
                 }
 
-                ITypeReference typeReference = astType.ToTypeReference();
-                IType iType = typeReference.Resolve(resolveContext);
                 // resolved, we are happy
                 if (iType.Kind != ICSharpCode.Decompiler.TypeSystem.TypeKind.Unknown)
                 {
                     return false;
                 }
-
-                ResolveResult resolveResult = astType.GetResolveResult();
 
                 // @ confuses resolver, make a temporary version without @
                 if (resolveResult.IsError && astType.ToString().Contains("@"))
@@ -1452,6 +1496,26 @@ namespace ResoniteBridge
             return result;
         }
 
+        public static Modifiers SetAccessibility(Modifiers modifiers)
+        {
+            if (modifiers.HasFlag(Modifiers.Private))
+            {
+                modifiers &= ~Modifiers.Private;
+                modifiers |= Modifiers.Public;
+            }
+            if (modifiers.HasFlag(Modifiers.Protected))
+            {
+                modifiers &= ~Modifiers.Protected;
+                modifiers |= Modifiers.Public;
+            }
+            if (modifiers.HasFlag(Modifiers.Internal))
+            {
+                modifiers &= ~Modifiers.Internal;
+                modifiers |= Modifiers.Public;
+            }
+            return modifiers;
+        }
+
         public static string GetAssemblyPath(Assembly assembly)
         {
             return new System.Uri(assembly.CodeBase).LocalPath;
@@ -1487,7 +1551,10 @@ namespace ResoniteBridge
                 string assemblyPath = assemblyPaths[i];
                 try
                 {
-                    var decompiler = new CSharpDecompiler(assemblyPath, new DecompilerSettings());
+                    var decompiler = new CSharpDecompiler(assemblyPath, new DecompilerSettings()
+                    {
+                        AlwaysUseGlobal=true,
+                    });
                     iModules.Add(decompiler.TypeSystem.MainModule.PEFile);
                     foreach (ITypeDefinition definition in decompiler.TypeSystem.GetAllTypeDefinitions())
                     {
@@ -1641,7 +1708,7 @@ namespace ResoniteBridge
                                 var location = diagnostic.Location;
                                 var lineSpan = location.GetLineSpan();
                                 var sourceText = location.SourceTree.GetText();
-                                var startLine = sourceText.Lines[lineSpan.StartLinePosition.Line-2];
+                                var startLine = sourceText.Lines[Math.Max(lineSpan.StartLinePosition.Line-2, 0)];
                                 var endLine = sourceText.Lines[lineSpan.EndLinePosition.Line+2];
                                 var fullLines = sourceText.ToString(Microsoft.CodeAnalysis.Text.TextSpan.FromBounds(startLine.Start, endLine.End));
                                 allErrors.AppendLine(fullLines);

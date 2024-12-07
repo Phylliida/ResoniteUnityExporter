@@ -168,7 +168,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -212,7 +212,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private Dictionary<string, int> _fetchedRecords
+		public Dictionary<string, int> _fetchedRecords
 		{
 			get
 			{
@@ -412,7 +412,7 @@ namespace FrooxEngine.Store
 			return (Task<long>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAssetSize", hash), typeof(Task<long>));
 		}
 
-		private Task<AssetRecord> GetAssetRecord(System.String hash)
+		public Task<AssetRecord> GetAssetRecord(System.String hash)
 		{
 			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAssetRecord", hash), typeof(Task<AssetRecord>));
 		}
@@ -452,7 +452,7 @@ namespace FrooxEngine.Store
 			return (Task<SkyFrost.Base.Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecord", ownerId, recordId), typeof(Task<SkyFrost.Base.Record>));
 		}
 
-		private Task ComputeManifest(Record record)
+		public Task ComputeManifest(Record record)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeManifest", record), typeof(Task));
 		}
@@ -542,7 +542,7 @@ namespace FrooxEngine.Store
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreRecordAudit", info), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -619,7 +619,7 @@ namespace FrooxEngine.Store
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "VariableResult", ResoniteBridge.ResoniteBridgeValueType.Type), value);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -643,7 +643,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private static Type connectorType
+		public static Type connectorType
 		{
 			get
 			{
@@ -662,7 +662,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private System.Boolean markedForRepair
+		public System.Boolean markedForRepair
 		{
 			get
 			{
@@ -681,7 +681,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private System.String initSubphase
+		public System.String initSubphase
 		{
 			get
 			{
@@ -700,7 +700,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private LiteDatabaseAsync appDB
+		public LiteDatabaseAsync appDB
 		{
 			get
 			{
@@ -719,7 +719,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ILiteCollectionAsync<AssetRecord> assets
+		public ILiteCollectionAsync<AssetRecord> assets
 		{
 			get
 			{
@@ -738,7 +738,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ILiteCollectionAsync<Record> records
+		public ILiteCollectionAsync<Record> records
 		{
 			get
 			{
@@ -757,7 +757,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ILiteCollectionAsync<LocalVariable> variables
+		public ILiteCollectionAsync<LocalVariable> variables
 		{
 			get
 			{
@@ -776,7 +776,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ILiteCollectionAsync<LocalVisit> visits
+		public ILiteCollectionAsync<LocalVisit> visits
 		{
 			get
 			{
@@ -795,7 +795,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ILiteCollectionAsync<LocalMetadata> assetMetadata
+		public ILiteCollectionAsync<LocalMetadata> assetMetadata
 		{
 			get
 			{
@@ -814,7 +814,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private HashSet<string> _precachePaths
+		public HashSet<string> _precachePaths
 		{
 			get
 			{
@@ -833,7 +833,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private System.String RepairMarkFile
+		public System.String RepairMarkFile
 		{
 			get
 			{
@@ -852,7 +852,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private RSACryptoServiceProvider _machineCryptoProvider
+		public RSACryptoServiceProvider _machineCryptoProvider
 		{
 			get
 			{
@@ -871,7 +871,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private RSAParameters _localMachineKey
+		public RSAParameters _localMachineKey
 		{
 			get
 			{
@@ -890,7 +890,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private static ushort[] INIT_TABLE
+		public static ushort[] INIT_TABLE
 		{
 			get
 			{
@@ -909,7 +909,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private static ushort[] SEED_TABLE
+		public static ushort[] SEED_TABLE
 		{
 			get
 			{
@@ -928,7 +928,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private Dictionary<string, List<Action>> variableListeners
+		public Dictionary<string, List<Action>> variableListeners
 		{
 			get
 			{
@@ -1357,7 +1357,7 @@ namespace FrooxEngine.Store
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsPathWithinDatabase", path), typeof(System.Boolean));
 		}
 
-		private Task MarkDatabaseForRepair(Exception ex)
+		public Task MarkDatabaseForRepair(Exception ex)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkDatabaseForRepair", ex), typeof(Task));
 		}
@@ -1397,12 +1397,12 @@ namespace FrooxEngine.Store
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreAssetRecordAsync", assetURL, path, encryptionKey), typeof(Task));
 		}
 
-		private Task InsertAssetRecordAsync(AssetRecord assetRecord)
+		public Task InsertAssetRecordAsync(AssetRecord assetRecord)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertAssetRecordAsync", assetRecord), typeof(Task));
 		}
 
-		private Task InsertRecordAsync(Record record)
+		public Task InsertRecordAsync(Record record)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InsertRecordAsync", record), typeof(Task));
 		}
@@ -1422,7 +1422,7 @@ namespace FrooxEngine.Store
 			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetByCloudSignatureAsync", hash), typeof(Task<AssetRecord>));
 		}
 
-		private Task<AssetRecord> FindAssetRecordWithExistingAsset(ResoniteBridge.ResoniteBridgeValue predicate)
+		public Task<AssetRecord> FindAssetRecordWithExistingAsset(ResoniteBridge.ResoniteBridgeValue predicate)
 		{
 			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindAssetRecordWithExistingAsset", predicate), typeof(Task<AssetRecord>));
 		}
@@ -1442,12 +1442,12 @@ namespace FrooxEngine.Store
 			return (Task<AssetRecord>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryFetchAssetRecordWithMetadataAsync", assetURL), typeof(Task<AssetRecord>));
 		}
 
-		private void UnpackAssetRecord(AssetRecord record)
+		public void UnpackAssetRecord(AssetRecord record)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnpackAssetRecord", record);
 		}
 
-		private void PackAssetRecord(AssetRecord record)
+		public void PackAssetRecord(AssetRecord record)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PackAssetRecord", record);
 		}
@@ -1622,7 +1622,7 @@ namespace FrooxEngine.Store
 			return (CryptoStream)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalDB", ResoniteBridge.ResoniteBridgeValueType.Type), "CreateDecryptionStream", key, inputStream), typeof(CryptoStream));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1711,7 +1711,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1793,7 +1793,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1818,7 +1818,7 @@ namespace FrooxEngine.Store
 	}
 	public class LocalVariableProxy<T> : IDisposable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.String path
+		public System.String path
 		{
 			get
 			{
@@ -1837,7 +1837,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private T currentValue
+		public T currentValue
 		{
 			get
 			{
@@ -1856,7 +1856,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private T defaultValue
+		public T defaultValue
 		{
 			get
 			{
@@ -1875,7 +1875,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private LocalDB db
+		public LocalDB db
 		{
 			get
 			{
@@ -1935,7 +1935,7 @@ namespace FrooxEngine.Store
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "FrooxEngine.Store", "LocalVariableProxy", ResoniteBridge.ResoniteBridgeValueType.Type), db, path, defaultValue);
 		}
 
-		private void OnVariableChanged()
+		public void OnVariableChanged()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnVariableChanged");
 		}
@@ -1957,7 +1957,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2058,7 +2058,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2086,7 +2086,7 @@ namespace FrooxEngine.Store
 	[DataModelType]
 	public class Record : IRecord, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.Uri _cachedURL
+		public System.Uri _cachedURL
 		{
 			get
 			{
@@ -2105,7 +2105,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private System.String _cachedURL_OwnerId
+		public System.String _cachedURL_OwnerId
 		{
 			get
 			{
@@ -2124,7 +2124,7 @@ namespace FrooxEngine.Store
 			}
 		}
 
-		private System.String _cachedURL_RecordId
+		public System.String _cachedURL_RecordId
 		{
 			get
 			{
@@ -2956,7 +2956,7 @@ namespace FrooxEngine.Store
 			return (R)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clone"), typeof(R));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{

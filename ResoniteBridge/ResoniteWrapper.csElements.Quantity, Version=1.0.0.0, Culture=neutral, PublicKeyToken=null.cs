@@ -130,7 +130,7 @@ namespace Elements.Quantity
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Info", ResoniteBridge.ResoniteBridgeValueType.Type), unit, overrideUnitName, overrideSeparator, overrideNumberFormat, overrideZeroHandling);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -154,7 +154,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private System.String defaultSeparator
+		public System.String defaultSeparator
 		{
 			get
 			{
@@ -173,7 +173,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private Info[] formatInfo
+		public Info[] formatInfo
 		{
 			get
 			{
@@ -347,7 +347,7 @@ namespace Elements.Quantity
 			return (CompoundFormatInfo<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OverrideSeparator", separator), typeof(CompoundFormatInfo<T>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -377,7 +377,7 @@ namespace Elements.Quantity
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "SmartQuantityException", ResoniteBridge.ResoniteBridgeValueType.Type), message, innerException);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -431,7 +431,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -664,7 +664,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1147,7 +1147,7 @@ namespace Elements.Quantity
 	}
 	public class UnitNonLinear<T> : Unit<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
-		private Func<double, double> convertToFunc
+		public Func<double, double> convertToFunc
 		{
 			get
 			{
@@ -1166,7 +1166,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private Func<double, double> convertFromFunc
+		public Func<double, double> convertFromFunc
 		{
 			get
 			{
@@ -1200,7 +1200,7 @@ namespace Elements.Quantity
 			return (System.Double)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConvertTo", q), typeof(System.Double));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1452,7 +1452,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1793,7 +1793,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2298,7 +2298,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2397,7 +2397,7 @@ namespace Elements.Quantity
 	}
 	public class UnitSI<T> : Unit<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantitySI<T>
 	{
-		private static System.Double SIPower
+		public static System.Double SIPower
 		{
 			get
 			{
@@ -2430,7 +2430,7 @@ namespace Elements.Quantity
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "UnitSI", ResoniteBridge.ResoniteBridgeValueType.Type), nFactor, shortPrefixes, longPrefixes);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2489,7 +2489,7 @@ namespace Elements.Quantity
 	}
 	public class Unit<T> : IUnit, IComparable<IUnit>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct, IQuantity<T>
 	{
-		private string[] shortNames
+		public string[] shortNames
 		{
 			get
 			{
@@ -2508,7 +2508,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private string[] longNames
+		public string[] longNames
 		{
 			get
 			{
@@ -2527,7 +2527,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private static System.String shortBaseName
+		public static System.String shortBaseName
 		{
 			get
 			{
@@ -2546,7 +2546,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private static System.String longBaseName
+		public static System.String longBaseName
 		{
 			get
 			{
@@ -2639,7 +2639,7 @@ namespace Elements.Quantity
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "Parse", str, defaultUnit), typeof(T));
 		}
 
-		private static System.Int32 IndexOfNumberEnd(System.String str)
+		public static System.Int32 IndexOfNumberEnd(System.String str)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "Unit", ResoniteBridge.ResoniteBridgeValueType.Type), "IndexOfNumberEnd", str), typeof(System.Int32));
 		}
@@ -2673,7 +2673,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2696,7 +2696,7 @@ namespace Elements.Quantity
 		{
 		}
 	}
-	public delegate bool NumberTryParseHandler<T>(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out T value);
+	public delegate System.Boolean NumberTryParseHandler<T>(System.String str, NumberStyles numberStyles, IFormatProvider formatProvider, out T value);
 	public static class QuantityHelper
 	{
 		public static CultureInfo Culture
@@ -2737,7 +2737,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private static Dictionary<Type, List<IUnit>> unitCache
+		public static Dictionary<Type, List<IUnit>> unitCache
 		{
 			get
 			{
@@ -2756,7 +2756,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private static Dictionary<Type, Dictionary<string, IUnit>> unitNameCache
+		public static Dictionary<Type, Dictionary<string, IUnit>> unitNameCache
 		{
 			get
 			{
@@ -2820,7 +2820,7 @@ namespace Elements.Quantity
 			return (Unit<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SelectBestUnit", q, groups), typeof(Unit<T>));
 		}
 
-		private static System.Boolean ContainsUnit(IUnit unit, List<UnitGroup> groups)
+		public static System.Boolean ContainsUnit(IUnit unit, List<UnitGroup> groups)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "Elements.Quantity", "QuantityHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "ContainsUnit", unit, groups), typeof(System.Boolean));
 		}
@@ -2838,7 +2838,7 @@ namespace Elements.Quantity
 	{
 		public struct Enumerator : IEnumerator<IUnit>, IDisposable, IEnumerator, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private System.Boolean firstDone
+			public System.Boolean firstDone
 			{
 				get
 				{
@@ -2857,7 +2857,7 @@ namespace Elements.Quantity
 				}
 			}
 
-			private Dictionary<Type, SortedSet<IUnit>>.Enumerator dictEnum
+			public Dictionary<Type, SortedSet<IUnit>>.Enumerator dictEnum
 			{
 				get
 				{
@@ -2876,7 +2876,7 @@ namespace Elements.Quantity
 				}
 			}
 
-			private SortedSet<IUnit>.Enumerator setEnum
+			public SortedSet<IUnit>.Enumerator setEnum
 			{
 				get
 				{
@@ -2945,7 +2945,7 @@ namespace Elements.Quantity
 				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -3197,7 +3197,7 @@ namespace Elements.Quantity
 			}
 		}
 
-		private Dictionary<Type, SortedSet<IUnit>> units
+		public Dictionary<Type, SortedSet<IUnit>> units
 		{
 			get
 			{
@@ -3235,7 +3235,7 @@ namespace Elements.Quantity
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasUnit", unit), typeof(System.Boolean));
 		}
 
-		internal SortedSet<IUnit> GetSetForType(Type type, System.Boolean createIfNotExists = true)
+		public SortedSet<IUnit> GetSetForType(Type type, System.Boolean createIfNotExists = true)
 		{
 			return (SortedSet<IUnit>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetForType", type, createIfNotExists), typeof(SortedSet<IUnit>));
 		}
@@ -3255,7 +3255,7 @@ namespace Elements.Quantity
 			return (IEnumerator)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable.GetEnumerator"), typeof(IEnumerator));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3710,7 +3710,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3964,7 +3964,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4242,7 +4242,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4710,7 +4710,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5026,7 +5026,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5291,7 +5291,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5580,7 +5580,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5869,7 +5869,7 @@ namespace Elements.Quantity
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{

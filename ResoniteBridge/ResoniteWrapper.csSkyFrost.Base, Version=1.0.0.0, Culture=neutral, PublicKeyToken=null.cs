@@ -45,7 +45,7 @@ namespace SkyFrost.Base
 {
 	public class AccountDataStoreUploadTask : RecordUploadTaskBase<Record>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private IAccountDataStore source
+		public IAccountDataStore source
 		{
 			get
 			{
@@ -69,27 +69,27 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AccountDataStoreUploadTask", ResoniteBridge.ResoniteBridgeValueType.Type), cloud, source, record);
 		}
 
-		protected override ValueTask<AssetData> ReadFile(System.String signature)
+		public override ValueTask<AssetData> ReadFile(System.String signature)
 		{
 			return (ValueTask<AssetData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadFile", signature), typeof(ValueTask<AssetData>));
 		}
 
-		protected override Task<bool> PrepareFilesForUpload(CancellationToken cancellationToken)
+		public override Task<bool> PrepareFilesForUpload(CancellationToken cancellationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrepareFilesForUpload", cancellationToken), typeof(Task<bool>));
 		}
 
-		protected override Task<bool> PrepareRecord(CancellationToken cancelationToken)
+		public override Task<bool> PrepareRecord(CancellationToken cancelationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrepareRecord", cancelationToken), typeof(Task<bool>));
 		}
 
-		protected override Task StoreSyncedRecord(Record record)
+		public override Task StoreSyncedRecord(Record record)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreSyncedRecord", record), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -114,7 +114,7 @@ namespace SkyFrost.Base
 	}
 	public class AccountTransferController : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private IAccountDataStore source
+		public IAccountDataStore source
 		{
 			get
 			{
@@ -133,7 +133,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private IAccountDataStore target
+		public IAccountDataStore target
 		{
 			get
 			{
@@ -152,7 +152,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private AccountMigrationConfig config
+		public AccountMigrationConfig config
 		{
 			get
 			{
@@ -273,22 +273,22 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AccountTransferController", ResoniteBridge.ResoniteBridgeValueType.Type), source, target, migrationId, config);
 		}
 
-		private void SetProgressMessage(System.String message)
+		public void SetProgressMessage(System.String message)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetProgressMessage", message);
 		}
 
-		private System.Boolean ProcessRecord(Record record)
+		public System.Boolean ProcessRecord(Record record)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessRecord", record), typeof(System.Boolean));
 		}
 
-		private System.Boolean ProcessContact(Contact contact)
+		public System.Boolean ProcessContact(Contact contact)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessContact", contact), typeof(System.Boolean));
 		}
 
-		private System.Boolean ProcessGroup(Group group)
+		public System.Boolean ProcessGroup(Group group)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessGroup", group), typeof(System.Boolean));
 		}
@@ -318,12 +318,12 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransferOwned", ownerId, recordsStatus, variablesStatus, recordsToMigrate, variablesToMigrate, cancellationToken), typeof(Task));
 		}
 
-		private Task TrasnferRecordAuditLog(System.String ownerId)
+		public Task TrasnferRecordAuditLog(System.String ownerId)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TrasnferRecordAuditLog", ownerId), typeof(Task));
 		}
 
-		private Task TransferSelectedRecords(System.String ownerId, RecordMigrationStatus recordsStatus, List<string> recordsToMigrate)
+		public Task TransferSelectedRecords(System.String ownerId, RecordMigrationStatus recordsStatus, List<string> recordsToMigrate)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransferSelectedRecords", ownerId, recordsStatus, recordsToMigrate), typeof(Task));
 		}
@@ -338,7 +338,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransferVariableDefinitions", ownerId, status, cancellationToken), typeof(Task));
 		}
 
-		private RecordStatusCallbacks SetupCallbacks(RecordMigrationStatus status)
+		public RecordStatusCallbacks SetupCallbacks(RecordMigrationStatus status)
 		{
 			return (RecordStatusCallbacks)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetupCallbacks", status), typeof(RecordStatusCallbacks));
 		}
@@ -363,12 +363,12 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TransferMembers", group, groupStatus, cancellationToken), typeof(Task));
 		}
 
-		private void HandleRecordError(RecordMigrationStatus status, Record record, System.String error)
+		public void HandleRecordError(RecordMigrationStatus status, Record record, System.String error)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HandleRecordError", status, record, error);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -412,7 +412,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static HashSet<string> CONFLICTING_IDS
+		public static HashSet<string> CONFLICTING_IDS
 		{
 			get
 			{
@@ -431,7 +431,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, int> _fetchedRecords
+		public Dictionary<string, int> _fetchedRecords
 		{
 			get
 			{
@@ -639,7 +639,7 @@ namespace SkyFrost.Base
 			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
-		private Task<Record> FillRecordDetails(Record r)
+		public Task<Record> FillRecordDetails(Record r)
 		{
 			return (Task<Record>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FillRecordDetails", r), typeof(Task<Record>));
 		}
@@ -744,7 +744,7 @@ namespace SkyFrost.Base
 			return (Task<AssetData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadAsset", hash), typeof(Task<AssetData>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -820,7 +820,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "StoreResultData", ResoniteBridge.ResoniteBridgeValueType.Type), result, error);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -888,7 +888,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "GroupData", ResoniteBridge.ResoniteBridgeValueType.Type), group, storage);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -956,7 +956,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "MemberData", ResoniteBridge.ResoniteBridgeValueType.Type), member, storage);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1095,7 +1095,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1284,7 +1284,7 @@ namespace SkyFrost.Base
 	}
 	public class LocalAccountDataStore : IAccountDataStore, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private struct AssetJob : ResoniteBridge.ResoniteBridgeValueHolder
+		public struct AssetJob : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public System.String hash
 			{
@@ -1329,7 +1329,7 @@ namespace SkyFrost.Base
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetJob", ResoniteBridge.ResoniteBridgeValueType.Type), hash, source);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -1353,7 +1353,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ActionBlock<AssetJob> downloadProcessor
+		public ActionBlock<AssetJob> downloadProcessor
 		{
 			get
 			{
@@ -1372,7 +1372,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private HashSet<string> scheduledAssets
+		public HashSet<string> scheduledAssets
 		{
 			get
 			{
@@ -1429,7 +1429,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, int> _fetchedRecords
+		public Dictionary<string, int> _fetchedRecords
 		{
 			get
 			{
@@ -1580,7 +1580,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Complete"), typeof(Task));
 		}
 
-		private void InitDownloadProcessor()
+		public void InitDownloadProcessor()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitDownloadProcessor");
 		}
@@ -1650,12 +1650,12 @@ namespace SkyFrost.Base
 			return (Task<List<MemberData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMembers", groupId), typeof(Task<List<MemberData>>));
 		}
 
-		private Task<List<T>> GetEntities<T>(System.String path)
+		public Task<List<T>> GetEntities<T>(System.String path)
 		{
 			return (Task<List<T>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEntities", path), typeof(Task<List<T>>));
 		}
 
-		private T GetEntity<T>(System.String path)
+		public T GetEntity<T>(System.String path)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetEntity", path), typeof(T));
 		}
@@ -1715,67 +1715,67 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreExitMessage", exitMessage), typeof(Task));
 		}
 
-		private Task StoreEntity<T>(T entity, System.String path)
+		public Task StoreEntity<T>(T entity, System.String path)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StoreEntity", entity, path), typeof(Task));
 		}
 
-		private System.String UserPath()
+		public System.String UserPath()
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UserPath"), typeof(System.String));
 		}
 
-		private System.String PatreonPath()
+		public System.String PatreonPath()
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PatreonPath"), typeof(System.String));
 		}
 
-		private System.String ExitMessagesPath()
+		public System.String ExitMessagesPath()
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitMessagesPath"), typeof(System.String));
 		}
 
-		private System.String VariableDefinitionPath(System.String ownerId)
+		public System.String VariableDefinitionPath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VariableDefinitionPath", ownerId), typeof(System.String));
 		}
 
-		private System.String VariablePath(System.String ownerId)
+		public System.String VariablePath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "VariablePath", ownerId), typeof(System.String));
 		}
 
-		private System.String ContactsPath(System.String ownerId)
+		public System.String ContactsPath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ContactsPath", ownerId), typeof(System.String));
 		}
 
-		private System.String MessagesPath(System.String ownerId, System.String contactId)
+		public System.String MessagesPath(System.String ownerId, System.String contactId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MessagesPath", ownerId, contactId), typeof(System.String));
 		}
 
-		private System.String RecordsPath(System.String ownerId)
+		public System.String RecordsPath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecordsPath", ownerId), typeof(System.String));
 		}
 
-		private System.String RecordAuditPath(System.String ownerId)
+		public System.String RecordAuditPath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecordAuditPath", ownerId), typeof(System.String));
 		}
 
-		private System.String GroupsPath(System.String ownerId)
+		public System.String GroupsPath(System.String ownerId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GroupsPath", ownerId), typeof(System.String));
 		}
 
-		private System.String MembersPath(System.String ownerId, System.String groupId)
+		public System.String MembersPath(System.String ownerId, System.String groupId)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MembersPath", ownerId, groupId), typeof(System.String));
 		}
 
-		private System.String GetAssetPath(System.String hash)
+		public System.String GetAssetPath(System.String hash)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAssetPath", hash), typeof(System.String));
 		}
@@ -1790,7 +1790,7 @@ namespace SkyFrost.Base
 			return (Task<DateTime?>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLatestRecordTime", ownerId), typeof(Task<DateTime?>));
 		}
 
-		private void ScheduleAsset(System.String hash, IAccountDataStore store)
+		public void ScheduleAsset(System.String hash, IAccountDataStore store)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ScheduleAsset", hash, store);
 		}
@@ -1815,7 +1815,7 @@ namespace SkyFrost.Base
 			return (Task<AssetData>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadAsset", hash), typeof(Task<AssetData>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1840,7 +1840,7 @@ namespace SkyFrost.Base
 	}
 	public static class MigrationHelper
 	{
-		private struct MigrationGroup : IEquatable<MigrationGroup>, ResoniteBridge.ResoniteBridgeValueHolder
+		public struct MigrationGroup : IEquatable<MigrationGroup>, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public IPlatformProfile from
 			{
@@ -1924,7 +1924,7 @@ namespace SkyFrost.Base
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -1948,7 +1948,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static ResoniteBridge.ResoniteBridgeValue migrationStrings
+		public static ResoniteBridge.ResoniteBridgeValue migrationStrings
 		{
 			get
 			{
@@ -1967,7 +1967,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static SortedDictionary<string, string> GetMigrationStrings(IPlatformProfile from, IPlatformProfile to)
+		public static SortedDictionary<string, string> GetMigrationStrings(IPlatformProfile from, IPlatformProfile to)
 		{
 			return (SortedDictionary<string, string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "MigrationHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMigrationStrings", from, to), typeof(SortedDictionary<string, string>));
 		}
@@ -2188,7 +2188,7 @@ namespace SkyFrost.Base
 
 		public abstract Task<CloudResult<ThumbnailInfo>> UploadThumbnail(System.String path, System.String session);
 
-		protected abstract AssetUploadTask CreateEmptyAssetUploadTask();
+		public abstract AssetUploadTask CreateEmptyAssetUploadTask();
 
 		public System.String GetAssetBaseURL(System.String ownerId, System.String hash, System.String variant)
 		{
@@ -2292,12 +2292,12 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinishVariantComputation", hash, variantId), typeof(Task<CloudResult>));
 		}
 
-		private static System.String GetMetadataURLSegment(Type type)
+		public static System.String GetMetadataURLSegment(Type type)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetInterface", ResoniteBridge.ResoniteBridgeValueType.Type), "GetMetadataURLSegment", type), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2341,7 +2341,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected Stream assetStream
+		public Stream assetStream
 		{
 			get
 			{
@@ -2360,7 +2360,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected System.String assetPath
+		public System.String assetPath
 		{
 			get
 			{
@@ -2379,7 +2379,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected System.Uri assetURL
+		public System.Uri assetURL
 		{
 			get
 			{
@@ -2398,7 +2398,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected System.String assetFileName
+		public System.String assetFileName
 		{
 			get
 			{
@@ -2677,7 +2677,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitializeWithURL", cloud, ownerId, signature, variant, url, progress, bytes, retries);
 		}
 
-		private void Initialize(SkyFrostInterface cloud, System.String ownerId, System.String signature, System.String variant, System.String assetPath, Stream assetStream, System.Uri assetURL, IProgressIndicator progress = null, long? bytes = null, System.Int32 retries = 5)
+		public void Initialize(SkyFrostInterface cloud, System.String ownerId, System.String signature, System.String variant, System.String assetPath, Stream assetStream, System.Uri assetURL, IProgressIndicator progress = null, long? bytes = null, System.Int32 retries = 5)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", cloud, ownerId, signature, variant, assetPath, assetStream, assetURL, progress, bytes, retries);
 		}
@@ -2691,12 +2691,12 @@ namespace SkyFrost.Base
 
 		public abstract ValueTask<CloudResult<AssetUploadData>> WaitForAssetFinishProcessing();
 
-		protected virtual void OnInitialize()
+		public virtual void OnInitialize()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnInitialize");
 		}
 
-		protected void DisposeOfStream()
+		public void DisposeOfStream()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DisposeOfStream");
 		}
@@ -2706,7 +2706,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Dispose");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2731,7 +2731,7 @@ namespace SkyFrost.Base
 	}
 	public abstract class AssetUploadTask<TChunkResult> : AssetUploadTask, ResoniteBridge.ResoniteBridgeValueHolder where TChunkResult : class
 	{
-		private class UploadChunkBuffer : ResoniteBridge.ResoniteBridgeValueHolder
+		public class UploadChunkBuffer : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public byte[] data
 			{
@@ -2809,7 +2809,7 @@ namespace SkyFrost.Base
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -2833,12 +2833,12 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private void EnqueueChunk(UploadChunkBuffer buffer, List<UploadChunkBuffer> processingBuffers)
+		public void EnqueueChunk(UploadChunkBuffer buffer, List<UploadChunkBuffer> processingBuffers)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnqueueChunk", buffer, processingBuffers);
 		}
 
-		private Task<UploadChunkBuffer> TakeFinishedBuffer(List<UploadChunkBuffer> buffers)
+		public Task<UploadChunkBuffer> TakeFinishedBuffer(List<UploadChunkBuffer> buffers)
 		{
 			return (Task<UploadChunkBuffer>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TakeFinishedBuffer", buffers), typeof(Task<UploadChunkBuffer>));
 		}
@@ -2848,30 +2848,30 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadAssetData"), typeof(Task<CloudResult<AssetUploadData>>));
 		}
 
-		private Task<CloudResult<AssetUploadData>> Upload()
+		public Task<CloudResult<AssetUploadData>> Upload()
 		{
 			return (Task<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Upload"), typeof(Task<CloudResult<AssetUploadData>>));
 		}
 
-		protected abstract Task<CloudResult<AssetUploadData>> InitiateUpload();
+		public abstract Task<CloudResult<AssetUploadData>> InitiateUpload();
 
-		protected virtual Task UploadInitiated(AssetUploadData data)
+		public virtual Task UploadInitiated(AssetUploadData data)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadInitiated", data), typeof(Task));
 		}
 
-		protected abstract HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length);
+		public abstract HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length);
 
-		protected abstract void ProcessChunkUploadResult(System.Int32 chunkIndex, TChunkResult result);
+		public abstract void ProcessChunkUploadResult(System.Int32 chunkIndex, TChunkResult result);
 
-		protected abstract Task<CloudResult> FinalizeChunkUpload();
+		public abstract Task<CloudResult> FinalizeChunkUpload();
 
-		protected ValueTask<CloudResult<AssetUploadData>> WaitForAssetFinishProcessing(System.String apiUrl)
+		public ValueTask<CloudResult<AssetUploadData>> WaitForAssetFinishProcessing(System.String apiUrl)
 		{
 			return (ValueTask<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WaitForAssetFinishProcessing", apiUrl), typeof(ValueTask<CloudResult<AssetUploadData>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2970,7 +2970,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3107,7 +3107,7 @@ namespace SkyFrost.Base
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ThumbnailIdToHttp", id), typeof(System.Uri));
 		}
 
-		protected override AssetUploadTask CreateEmptyAssetUploadTask()
+		public override AssetUploadTask CreateEmptyAssetUploadTask()
 		{
 			return (AssetUploadTask)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateEmptyAssetUploadTask"), typeof(AssetUploadTask));
 		}
@@ -3127,7 +3127,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<string>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAvailableVariants", hash), typeof(Task<CloudResult<List<string>>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3171,7 +3171,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.String baseUrl
+		public System.String baseUrl
 		{
 			get
 			{
@@ -3205,27 +3205,27 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected override void OnInitialize()
+		public override void OnInitialize()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnInitialize");
 		}
 
-		protected override Task<CloudResult<AssetUploadData>> InitiateUpload()
+		public override Task<CloudResult<AssetUploadData>> InitiateUpload()
 		{
 			return (Task<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitiateUpload"), typeof(Task<CloudResult<AssetUploadData>>));
 		}
 
-		protected override HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length)
+		public override HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length)
 		{
 			return (HttpRequestMessage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateChunkUploadRequest", chunkIndex, data, length), typeof(HttpRequestMessage));
 		}
 
-		protected override Task<CloudResult> FinalizeChunkUpload()
+		public override Task<CloudResult> FinalizeChunkUpload()
 		{
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinalizeChunkUpload"), typeof(Task<CloudResult>));
 		}
 
-		protected override void ProcessChunkUploadResult(System.Int32 chunkIndex, CloudMessage result)
+		public override void ProcessChunkUploadResult(System.Int32 chunkIndex, CloudMessage result)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessChunkUploadResult", chunkIndex, result);
 		}
@@ -3235,7 +3235,7 @@ namespace SkyFrost.Base
 			return (ValueTask<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WaitForAssetFinishProcessing"), typeof(ValueTask<CloudResult<AssetUploadData>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3375,12 +3375,12 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<ThumbnailInfo>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadThumbnail", path, sessionId), typeof(Task<CloudResult<ThumbnailInfo>>));
 		}
 
-		protected override AssetUploadTask CreateEmptyAssetUploadTask()
+		public override AssetUploadTask CreateEmptyAssetUploadTask()
 		{
 			return (AssetUploadTask)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateEmptyAssetUploadTask"), typeof(AssetUploadTask));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3424,7 +3424,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3449,7 +3449,7 @@ namespace SkyFrost.Base
 	}
 	public class CloudflareAssetUploadTask : AssetUploadTask<CloudflareChunkResult>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.String apiBaseUrl
+		public System.String apiBaseUrl
 		{
 			get
 			{
@@ -3468,7 +3468,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private List<AssetChunk> parts
+		public List<AssetChunk> parts
 		{
 			get
 			{
@@ -3502,32 +3502,32 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected override void OnInitialize()
+		public override void OnInitialize()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnInitialize");
 		}
 
-		protected override Task UploadInitiated(AssetUploadData data)
+		public override Task UploadInitiated(AssetUploadData data)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadInitiated", data), typeof(Task));
 		}
 
-		protected override HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length)
+		public override HttpRequestMessage CreateChunkUploadRequest(System.Int32 chunkIndex, byte[] data, System.Int32 length)
 		{
 			return (HttpRequestMessage)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateChunkUploadRequest", chunkIndex, data, length), typeof(HttpRequestMessage));
 		}
 
-		protected override Task<CloudResult<AssetUploadData>> InitiateUpload()
+		public override Task<CloudResult<AssetUploadData>> InitiateUpload()
 		{
 			return (Task<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitiateUpload"), typeof(Task<CloudResult<AssetUploadData>>));
 		}
 
-		protected override Task<CloudResult> FinalizeChunkUpload()
+		public override Task<CloudResult> FinalizeChunkUpload()
 		{
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinalizeChunkUpload"), typeof(Task<CloudResult>));
 		}
 
-		protected override void ProcessChunkUploadResult(System.Int32 chunkIndex, CloudflareChunkResult result)
+		public override void ProcessChunkUploadResult(System.Int32 chunkIndex, CloudflareChunkResult result)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessChunkUploadResult", chunkIndex, result);
 		}
@@ -3537,7 +3537,7 @@ namespace SkyFrost.Base
 			return (ValueTask<CloudResult<AssetUploadData>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WaitForAssetFinishProcessing"), typeof(ValueTask<CloudResult<AssetUploadData>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3562,7 +3562,7 @@ namespace SkyFrost.Base
 	}
 	public static class LegacyAssetMap
 	{
-		private static Dictionary<string, string> map
+		public static Dictionary<string, string> map
 		{
 			get
 			{
@@ -3675,7 +3675,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3744,7 +3744,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "TimestampedCloudVariable", ResoniteBridge.ResoniteBridgeValueType.Type), value, timestamp);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3778,7 +3778,7 @@ namespace SkyFrost.Base
 	}
 	public class CloudVariableManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<CloudVariableIdentity, CloudVariableProxy> _variableProxies
+		public Dictionary<CloudVariableIdentity, CloudVariableProxy> _variableProxies
 		{
 			get
 			{
@@ -3797,7 +3797,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private HashSet<CloudVariableProxy> _changedVariables
+		public HashSet<CloudVariableProxy> _changedVariables
 		{
 			get
 			{
@@ -3816,7 +3816,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private VariableReadBatchQuery _readBatch
+		public VariableReadBatchQuery _readBatch
 		{
 			get
 			{
@@ -3835,7 +3835,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private VariableWriteBatchQuery _writeBatch
+		public VariableWriteBatchQuery _writeBatch
 		{
 			get
 			{
@@ -3873,7 +3873,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		internal System.Object Lock
+		public System.Object Lock
 		{
 			get
 			{
@@ -3897,17 +3897,17 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetLocalAccessor", accessor);
 		}
 
-		internal Task<VariableReadResult<CloudVariable, CloudVariableDefinition>> ReadVariable(System.String ownerId, System.String path)
+		public Task<VariableReadResult<CloudVariable, CloudVariableDefinition>> ReadVariable(System.String ownerId, System.String path)
 		{
 			return (Task<VariableReadResult<CloudVariable, CloudVariableDefinition>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReadVariable", ownerId, path), typeof(Task<VariableReadResult<CloudVariable, CloudVariableDefinition>>));
 		}
 
-		internal Task<CloudVariable> WriteVariable(CloudVariable variable)
+		public Task<CloudVariable> WriteVariable(CloudVariable variable)
 		{
 			return (Task<CloudVariable>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WriteVariable", variable), typeof(Task<CloudVariable>));
 		}
 
-		internal void RegisterChanged(CloudVariableProxy proxies)
+		public void RegisterChanged(CloudVariableProxy proxies)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterChanged", proxies);
 		}
@@ -3947,7 +3947,7 @@ namespace SkyFrost.Base
 			return (CloudVariableProxy)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterListener", ownerId, path, onChanged), typeof(CloudVariableProxy));
 		}
 
-		internal System.Boolean TryUnregisterProxy(CloudVariableProxy proxy)
+		public System.Boolean TryUnregisterProxy(CloudVariableProxy proxy)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryUnregisterProxy", proxy), typeof(System.Boolean));
 		}
@@ -4042,7 +4042,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Delete", path), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4149,7 +4149,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CloudVariable _variable
+		public CloudVariable _variable
 		{
 			get
 			{
@@ -4168,7 +4168,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _isLocalVariable
+		public System.Boolean _isLocalVariable
 		{
 			get
 			{
@@ -4187,7 +4187,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.String _definitionOwnerId
+		public System.String _definitionOwnerId
 		{
 			get
 			{
@@ -4206,7 +4206,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.String _definitionSubpath
+		public System.String _definitionSubpath
 		{
 			get
 			{
@@ -4225,7 +4225,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CloudVariableManager _manager
+		public CloudVariableManager _manager
 		{
 			get
 			{
@@ -4244,7 +4244,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ILocalVariableAccessor _localVariableAccessor
+		public ILocalVariableAccessor _localVariableAccessor
 		{
 			get
 			{
@@ -4263,7 +4263,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Task _readTask
+		public Task _readTask
 		{
 			get
 			{
@@ -4282,7 +4282,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CancellationTokenSource _readCancel
+		public CancellationTokenSource _readCancel
 		{
 			get
 			{
@@ -4301,7 +4301,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Task _writeTask
+		public Task _writeTask
 		{
 			get
 			{
@@ -4320,7 +4320,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CancellationTokenSource _unregisterCancel
+		public CancellationTokenSource _unregisterCancel
 		{
 			get
 			{
@@ -4339,7 +4339,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -4598,7 +4598,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Unregister", onChanged);
 		}
 
-		private void ScheduleUnregistration()
+		public void ScheduleUnregistration()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ScheduleUnregistration");
 		}
@@ -4618,17 +4618,17 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Refresh"), typeof(Task));
 		}
 
-		private System.Boolean CanAccessInPublic(List<string> permissions)
+		public System.Boolean CanAccessInPublic(List<string> permissions)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanAccessInPublic", permissions), typeof(System.Boolean));
 		}
 
-		private System.Boolean CanAccessInPrivate(List<string> permissions)
+		public System.Boolean CanAccessInPrivate(List<string> permissions)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanAccessInPrivate", permissions), typeof(System.Boolean));
 		}
 
-		private System.Boolean CanAccessInPrivate(System.String perm)
+		public System.Boolean CanAccessInPrivate(System.String perm)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanAccessInPrivate", perm), typeof(System.Boolean));
 		}
@@ -4648,12 +4648,12 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetValue", value), typeof(System.Boolean));
 		}
 
-		private void RunChangedEvent()
+		public void RunChangedEvent()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunChangedEvent");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4678,7 +4678,7 @@ namespace SkyFrost.Base
 	}
 	public class AppHub : IHubServer, IHubDebugClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private CancellationTokenSource _cancellation
+		public CancellationTokenSource _cancellation
 		{
 			get
 			{
@@ -4716,7 +4716,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CancellationToken Token
+		public CancellationToken Token
 		{
 			get
 			{
@@ -4731,7 +4731,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean IsClosed
+		public System.Boolean IsClosed
 		{
 			get
 			{
@@ -4756,7 +4756,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Disconnect");
 		}
 
-		private ValueTask EnsureConnectedHub()
+		public ValueTask EnsureConnectedHub()
 		{
 			return (ValueTask)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureConnectedHub"), typeof(ValueTask));
 		}
@@ -4841,7 +4841,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestLNLPoke", universeId, connectionUrl, address, port), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4861,7 +4861,7 @@ namespace SkyFrost.Base
 	}
 	public class HubStatusController : IHubStatusClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private CancellationTokenSource _initializationCancellation
+		public CancellationTokenSource _initializationCancellation
 		{
 			get
 			{
@@ -4880,7 +4880,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int32 exceptionCount
+		public System.Int32 exceptionCount
 		{
 			get
 			{
@@ -4961,7 +4961,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "HubStatusController", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		internal void ResetInitializationStatus()
+		public void ResetInitializationStatus()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResetInitializationStatus");
 		}
@@ -4971,7 +4971,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", token);
 		}
 
-		private void RunInitialization(CancellationToken cancellation)
+		public void RunInitialization(CancellationToken cancellation)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunInitialization", cancellation);
 		}
@@ -5001,7 +5001,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "KeyListenerAdded", broadcastKey, connectionId), typeof(Task));
 		}
 
-		private ValueTask WaitForInitialized()
+		public ValueTask WaitForInitialized()
 		{
 			return (ValueTask)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WaitForInitialized"), typeof(ValueTask));
 		}
@@ -5016,7 +5016,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveSession", sessionId, timestamp), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5322,12 +5322,12 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<Universe>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUniverse", universeId), typeof(Task<CloudResult<Universe>>));
 		}
 
-		private Task UpdateCurrentUniverse(System.String universeId)
+		public Task UpdateCurrentUniverse(System.String universeId)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateCurrentUniverse", universeId), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5352,7 +5352,7 @@ namespace SkyFrost.Base
 	}
 	public class BadgeManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _cachedBadges
+		public ResoniteBridge.ResoniteBridgeValue _cachedBadges
 		{
 			get
 			{
@@ -5386,7 +5386,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateBadge", badge), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5411,7 +5411,7 @@ namespace SkyFrost.Base
 	}
 	public class ContactData : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<string, UserStatus> statuses
+		public Dictionary<string, UserStatus> statuses
 		{
 			get
 			{
@@ -5589,42 +5589,42 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DecodeSessions", infos, undecoded);
 		}
 
-		internal System.Boolean UpdateStatus(UserStatus status)
+		public System.Boolean UpdateStatus(UserStatus status)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateStatus", status), typeof(System.Boolean));
 		}
 
-		internal System.Boolean ClearExpired()
+		public System.Boolean ClearExpired()
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearExpired"), typeof(System.Boolean));
 		}
 
-		private void UpdateAggregate()
+		public void UpdateAggregate()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateAggregate");
 		}
 
-		internal System.Boolean TryMatchNewSession(SessionInfo info)
+		public System.Boolean TryMatchNewSession(SessionInfo info)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryMatchNewSession", info), typeof(System.Boolean));
 		}
 
-		internal System.Boolean TryUpdateSession(SessionInfo info)
+		public System.Boolean TryUpdateSession(SessionInfo info)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryUpdateSession", info), typeof(System.Boolean));
 		}
 
-		internal System.Boolean TryRemoveSession(System.String sessionId)
+		public System.Boolean TryRemoveSession(System.String sessionId)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryRemoveSession", sessionId), typeof(System.Boolean));
 		}
 
-		private UserStatus GetDefaultStatus()
+		public UserStatus GetDefaultStatus()
 		{
 			return (UserStatus)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDefaultStatus"), typeof(UserStatus));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5649,7 +5649,7 @@ namespace SkyFrost.Base
 	}
 	public class ContactManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.String _contactPath
+		public System.String _contactPath
 		{
 			get
 			{
@@ -5668,7 +5668,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, ContactData> contacts
+		public Dictionary<string, ContactData> contacts
 		{
 			get
 			{
@@ -5687,7 +5687,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private List<ContactData> contactDataList
+		public List<ContactData> contactDataList
 		{
 			get
 			{
@@ -5706,7 +5706,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private HashSet<string> sessionBroadcastKeys
+		public HashSet<string> sessionBroadcastKeys
 		{
 			get
 			{
@@ -5725,7 +5725,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -5744,7 +5744,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int32 updateListIndex
+		public System.Int32 updateListIndex
 		{
 			get
 			{
@@ -5831,17 +5831,17 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "ContactManager", ResoniteBridge.ResoniteBridgeValueType.Type), cloud, contactPath);
 		}
 
-		private void OnSessionRemoved(SessionInfo info)
+		public void OnSessionRemoved(SessionInfo info)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnSessionRemoved", info);
 		}
 
-		private void OnSessionUpdated(SessionInfo info)
+		public void OnSessionUpdated(SessionInfo info)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnSessionUpdated", info);
 		}
 
-		private void OnSessionAdded(SessionInfo info)
+		public void OnSessionAdded(SessionInfo info)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnSessionAdded", info);
 		}
@@ -5906,47 +5906,47 @@ namespace SkyFrost.Base
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IgnoreRequest", contact), typeof(Task<bool>));
 		}
 
-		private Task<bool> UpdateContact(Contact contact)
+		public Task<bool> UpdateContact(Contact contact)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateContact", contact), typeof(Task<bool>));
 		}
 
-		internal void LoadContact(Contact contact, ref System.Int32 requests)
+		public void LoadContact(Contact contact, ref System.Int32 requests)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoadContact", contact, requests);
 		}
 
-		internal void FinalizeLoading(System.Int32 requests)
+		public void FinalizeLoading(System.Int32 requests)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinalizeLoading", requests);
 		}
 
-		internal void ContactStatusUpdated(UserStatus status)
+		public void ContactStatusUpdated(UserStatus status)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ContactStatusUpdated", status);
 		}
 
-		internal void ContactAddedOrUpdated(Contact contact)
+		public void ContactAddedOrUpdated(Contact contact)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ContactAddedOrUpdated", contact);
 		}
 
-		internal void UpdateContactRequestCount()
+		public void UpdateContactRequestCount()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateContactRequestCount");
 		}
 
-		internal void Reconnecting()
+		public void Reconnecting()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reconnecting");
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
 
-		internal void Update()
+		public void Update()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
@@ -5961,7 +5961,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<Contact>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetContacts", userId), typeof(Task<CloudResult<List<Contact>>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5986,7 +5986,7 @@ namespace SkyFrost.Base
 	}
 	public class GroupsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.Object _groupsLock
+		public System.Object _groupsLock
 		{
 			get
 			{
@@ -6005,7 +6005,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, Member> _groupMemberInfos
+		public Dictionary<string, Member> _groupMemberInfos
 		{
 			get
 			{
@@ -6024,7 +6024,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, Group> _groups
+		public Dictionary<string, Group> _groups
 		{
 			get
 			{
@@ -6043,7 +6043,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, Storage> _groupStorages
+		public Dictionary<string, Storage> _groupStorages
 		{
 			get
 			{
@@ -6062,7 +6062,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, Storage> _groupMemberStorages
+		public Dictionary<string, Storage> _groupMemberStorages
 		{
 			get
 			{
@@ -6081,7 +6081,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private List<Membership> _groupMemberships
+		public List<Membership> _groupMemberships
 		{
 			get
 			{
@@ -6176,27 +6176,27 @@ namespace SkyFrost.Base
 			return (Membership)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetCurrentUserGroupMembership", groupId), typeof(Membership));
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
 
-		private void SetMemberships(IEnumerable<Membership> memberships)
+		public void SetMemberships(IEnumerable<Membership> memberships)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetMemberships", memberships);
 		}
 
-		private void ClearMemberships()
+		public void ClearMemberships()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearMemberships");
 		}
 
-		private void AddMembership(Membership membership)
+		public void AddMembership(Membership membership)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddMembership", membership);
 		}
 
-		private Task RunMembershipsUpdated()
+		public Task RunMembershipsUpdated()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunMembershipsUpdated"), typeof(Task));
 		}
@@ -6266,7 +6266,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DeleteSubmission", groupId, submissionId), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6291,7 +6291,7 @@ namespace SkyFrost.Base
 	}
 	public class MessageManager : SkyFrostModule, IHubMessagingClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private CancellationTokenSource _fetchCancellation
+		public CancellationTokenSource _fetchCancellation
 		{
 			get
 			{
@@ -6310,7 +6310,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _initialFetchRunning
+		public System.Boolean _initialFetchRunning
 		{
 			get
 			{
@@ -6329,7 +6329,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _messagesLock
+		public System.Object _messagesLock
 		{
 			get
 			{
@@ -6348,7 +6348,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, UserMessages> _messages
+		public Dictionary<string, UserMessages> _messages
 		{
 			get
 			{
@@ -6367,7 +6367,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _messagesWaitingForConfirmation
+		public ResoniteBridge.ResoniteBridgeValue _messagesWaitingForConfirmation
 		{
 			get
 			{
@@ -6386,7 +6386,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _unreadCountDirty
+		public System.Boolean _unreadCountDirty
 		{
 			get
 			{
@@ -6499,12 +6499,12 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReceiveMessage", message), typeof(Task));
 		}
 
-		private void ProcessReceivedMessage(Message message)
+		public void ProcessReceivedMessage(Message message)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessReceivedMessage", message);
 		}
 
-		internal void ProcessSentMessage(Message message)
+		public void ProcessSentMessage(Message message)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessSentMessage", message);
 		}
@@ -6519,32 +6519,32 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MessagesRead", batch), typeof(Task));
 		}
 
-		internal void Update()
+		public void Update()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
 
-		private void FetchInitialMessages()
+		public void FetchInitialMessages()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FetchInitialMessages");
 		}
 
-		internal void RegisterMessageWaitingForConfirmation(Message message, TaskCompletionSource<bool> completion)
+		public void RegisterMessageWaitingForConfirmation(Message message, TaskCompletionSource<bool> completion)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterMessageWaitingForConfirmation", message, completion);
 		}
 
-		internal void UnregisterMessageWaitingForConfirmation(Message message)
+		public void UnregisterMessageWaitingForConfirmation(Message message)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnregisterMessageWaitingForConfirmation", message);
 		}
 
-		internal void MarkUnreadCountDirty()
+		public void MarkUnreadCountDirty()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkUnreadCountDirty");
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
@@ -6579,7 +6579,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAllUserMessages", list);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6604,7 +6604,7 @@ namespace SkyFrost.Base
 	}
 	public class UserMessages : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private HashSet<string> _messageIds
+		public HashSet<string> _messageIds
 		{
 			get
 			{
@@ -6623,7 +6623,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -6642,7 +6642,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Task<CloudResult<List<Message>>> _historyLoadTask
+		public Task<CloudResult<List<Message>>> _historyLoadTask
 		{
 			get
 			{
@@ -6661,7 +6661,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _historyLoaded
+		public System.Boolean _historyLoaded
 		{
 			get
 			{
@@ -6846,7 +6846,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureHistory"), typeof(Task));
 		}
 
-		internal System.Boolean AddMessage(Message message)
+		public System.Boolean AddMessage(Message message)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddMessage", message), typeof(System.Boolean));
 		}
@@ -6861,7 +6861,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkReadByRecipient", ids, readTime, readMessages);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6886,7 +6886,7 @@ namespace SkyFrost.Base
 	}
 	public class MigrationManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _migrationTasks
+		public ResoniteBridge.ResoniteBridgeValue _migrationTasks
 		{
 			get
 			{
@@ -6905,7 +6905,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime nextMigrationTaskUpdate
+		public DateTime nextMigrationTaskUpdate
 		{
 			get
 			{
@@ -6944,7 +6944,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "MigrationManager", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
@@ -6964,7 +6964,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForceMigrationTaskUpdate");
 		}
 
-		private void TryScheduleMigrationTaskUpdate()
+		public void TryScheduleMigrationTaskUpdate()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryScheduleMigrationTaskUpdate");
 		}
@@ -6984,7 +6984,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<AccountMigrationTask>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateMigrationTask", init, migrateFavorites, overwriteFavorites), typeof(Task<CloudResult<List<AccountMigrationTask>>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7040,7 +7040,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UserSpectatorBanned", userId), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7122,7 +7122,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7166,7 +7166,7 @@ namespace SkyFrost.Base
 	public delegate void LNL_PokeRequestHandler(System.String connectionUrl, System.String targetAddress, System.Int32 targetPort);
 	public class NetworkNodeManager : INetworkNodeManager, IHubNetworkingClient, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<NetworkNodeInfo> _nodes
+		public List<NetworkNodeInfo> _nodes
 		{
 			get
 			{
@@ -7185,7 +7185,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastUpdateTime
+		public DateTime _lastUpdateTime
 		{
 			get
 			{
@@ -7299,7 +7299,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PokeOverLNL", connectionUrl, address, port), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7324,7 +7324,7 @@ namespace SkyFrost.Base
 	}
 	public class ProfileManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.Uri[] _favorites
+		public System.Uri[] _favorites
 		{
 			get
 			{
@@ -7343,7 +7343,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Action<ResoniteBridge.ResoniteBridgeValue>[] _favoriteListeners
+		public Action<ResoniteBridge.ResoniteBridgeValue>[] _favoriteListeners
 		{
 			get
 			{
@@ -7362,7 +7362,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CloudVariableProxy[] _favoriteProxies
+		public CloudVariableProxy[] _favoriteProxies
 		{
 			get
 			{
@@ -7381,7 +7381,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private string[] _favoriteVariablePaths
+		public string[] _favoriteVariablePaths
 		{
 			get
 			{
@@ -7430,7 +7430,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnregisterListener", entity, callback);
 		}
 
-		internal Task SignIn()
+		public Task SignIn()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SignIn"), typeof(Task));
 		}
@@ -7440,17 +7440,17 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
 
-		private void OnCloudVariableChanged(CloudVariableProxy proxy)
+		public void OnCloudVariableChanged(CloudVariableProxy proxy)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnCloudVariableChanged", proxy);
 		}
 
-		private System.Uri FilterUrl(System.Uri url)
+		public System.Uri FilterUrl(System.Uri url)
 		{
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FilterUrl", url), typeof(System.Uri));
 		}
 
-		private void SafeInvoke(Action<System.Uri> events, System.Uri arg)
+		public void SafeInvoke(Action<System.Uri> events, System.Uri arg)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SafeInvoke", events, arg);
 		}
@@ -7465,7 +7465,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateProfile", userId, profile), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7490,7 +7490,7 @@ namespace SkyFrost.Base
 	}
 	public class RecordsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _recordBatchQueries
+		public ResoniteBridge.ResoniteBridgeValue _recordBatchQueries
 		{
 			get
 			{
@@ -7509,7 +7509,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _recordCaches
+		public ResoniteBridge.ResoniteBridgeValue _recordCaches
 		{
 			get
 			{
@@ -7657,7 +7657,7 @@ namespace SkyFrost.Base
 			return (IAsyncEnumerable<RecordAuditInfo>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnumerateRecordAuditLog", ownerId), typeof(IAsyncEnumerable<RecordAuditInfo>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7725,7 +7725,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "CryptoData", ResoniteBridge.ResoniteBridgeValueType.Type), provider, parameters);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7750,7 +7750,7 @@ namespace SkyFrost.Base
 	}
 	public class SecurityManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private RSACryptoServiceProvider _cryptoProvider
+		public RSACryptoServiceProvider _cryptoProvider
 		{
 			get
 			{
@@ -7793,12 +7793,12 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "SecurityManager", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		internal void ActivateSession(CryptoData cryptoData)
+		public void ActivateSession(CryptoData cryptoData)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ActivateSession", cryptoData);
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
@@ -7848,7 +7848,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TemporarilyAllowIP"), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7911,7 +7911,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastSessionUpdate
+		public DateTime _lastSessionUpdate
 		{
 			get
 			{
@@ -7930,7 +7930,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastTokenRefresh
+		public DateTime _lastTokenRefresh
 		{
 			get
 			{
@@ -7949,7 +7949,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _updateCurrentUserInfo
+		public System.Boolean _updateCurrentUserInfo
 		{
 			get
 			{
@@ -7968,7 +7968,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.String _saml2Endpoint
+		public System.String _saml2Endpoint
 		{
 			get
 			{
@@ -7987,7 +7987,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _useLegacyLogin
+		public System.Boolean _useLegacyLogin
 		{
 			get
 			{
@@ -8006,7 +8006,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private UserSession _currentSession
+		public UserSession _currentSession
 		{
 			get
 			{
@@ -8025,7 +8025,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private User _currentUser
+		public User _currentUser
 		{
 			get
 			{
@@ -8044,7 +8044,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private AuthenticationHeaderValue _currentAuthenticationHeader
+		public AuthenticationHeaderValue _currentAuthenticationHeader
 		{
 			get
 			{
@@ -8063,7 +8063,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _sessionLock
+		public System.Object _sessionLock
 		{
 			get
 			{
@@ -8139,7 +8139,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		internal AuthenticationHeaderValue AuthenticationHeader
+		public AuthenticationHeaderValue AuthenticationHeader
 		{
 			get
 			{
@@ -8180,7 +8180,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<UserSessionResult<UserSession>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Login", credential, authentication, secretMachineId, rememberMe, totp), typeof(Task<CloudResult<UserSessionResult<UserSession>>>));
 		}
 
-		private Dictionary<string, object> GenerateLegacyLogin(System.String credential, System.String password, System.String secretMachineId, System.Boolean rememberMe = false, System.String totp = null)
+		public Dictionary<string, object> GenerateLegacyLogin(System.String credential, System.String password, System.String secretMachineId, System.Boolean rememberMe = false, System.String totp = null)
 		{
 			return (Dictionary<string, object>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateLegacyLogin", credential, password, secretMachineId, rememberMe, totp), typeof(Dictionary<string, object>));
 		}
@@ -8200,7 +8200,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Logout", isManual), typeof(Task));
 		}
 
-		internal void Update()
+		public void Update()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
@@ -8230,12 +8230,12 @@ namespace SkyFrost.Base
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LoginSaml2", samlEntityId, secretMachineId, cancellationToken), typeof(Task<bool>));
 		}
 
-		private Task LogoutSaml2(UserSession session)
+		public Task LogoutSaml2(UserSession session)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LogoutSaml2", session), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8261,7 +8261,7 @@ namespace SkyFrost.Base
 	public delegate void SessionsChangedHandler(System.Boolean sessionsAddedOrRemoved);
 	public class SessionsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private struct SessionInfoData : ResoniteBridge.ResoniteBridgeValueHolder
+		public struct SessionInfoData : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public SessionInfo info
 			{
@@ -8301,7 +8301,7 @@ namespace SkyFrost.Base
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -8325,7 +8325,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -8344,7 +8344,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, SessionInfoData> sessions
+		public Dictionary<string, SessionInfoData> sessions
 		{
 			get
 			{
@@ -8363,7 +8363,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _sessionsChanged
+		public System.Boolean _sessionsChanged
 		{
 			get
 			{
@@ -8382,7 +8382,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _sessionsAddedOrRemoved
+		public System.Boolean _sessionsAddedOrRemoved
 		{
 			get
 			{
@@ -8401,7 +8401,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _initialPublicSessionsFetched
+		public System.Boolean _initialPublicSessionsFetched
 		{
 			get
 			{
@@ -8420,7 +8420,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _forceFetchRequested
+		public System.Boolean _forceFetchRequested
 		{
 			get
 			{
@@ -8439,7 +8439,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Task _initialPublicSessionFetchTask
+		public Task _initialPublicSessionFetchTask
 		{
 			get
 			{
@@ -8458,7 +8458,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<string, DateTime> _removedPublicSessions
+		public Dictionary<string, DateTime> _removedPublicSessions
 		{
 			get
 			{
@@ -8477,7 +8477,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime lastCleanup
+		public DateTime lastCleanup
 		{
 			get
 			{
@@ -8496,7 +8496,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DictionaryList<string, Action<SessionInfo>> _sessionIdListeners
+		public DictionaryList<string, Action<SessionInfo>> _sessionIdListeners
 		{
 			get
 			{
@@ -8515,7 +8515,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DictionaryList<RecordId, Action<IReadOnlyList<SessionInfo>>> _worldIdListeners
+		public DictionaryList<RecordId, Action<IReadOnlyList<SessionInfo>>> _worldIdListeners
 		{
 			get
 			{
@@ -8534,7 +8534,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean ShouldDoFullFetch
+		public System.Boolean ShouldDoFullFetch
 		{
 			get
 			{
@@ -8621,7 +8621,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateSessionMap", status, map);
 		}
 
-		private void RunSessionUpdated(SessionInfo info, System.String normalizedSessionId)
+		public void RunSessionUpdated(SessionInfo info, System.String normalizedSessionId)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunSessionUpdated", info, normalizedSessionId);
 		}
@@ -8631,7 +8631,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateSessionInfo", info, localUpdate);
 		}
 
-		private System.Boolean ShouldRemoveSession(SessionInfoData data)
+		public System.Boolean ShouldRemoveSession(SessionInfoData data)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldRemoveSession", data), typeof(System.Boolean));
 		}
@@ -8691,7 +8691,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintoutSessions"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8751,7 +8751,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AcceptSession", sessionInfo), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8776,7 +8776,7 @@ namespace SkyFrost.Base
 	}
 	public class StatisticsManager : SkyFrostModule, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<CreditType, List<CreditUser>> _userCredits
+		public Dictionary<CreditType, List<CreditUser>> _userCredits
 		{
 			get
 			{
@@ -8795,7 +8795,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastServerStatsUpdate
+		public DateTime _lastServerStatsUpdate
 		{
 			get
 			{
@@ -8814,7 +8814,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastOnlineStatsUpdate
+		public DateTime _lastOnlineStatsUpdate
 		{
 			get
 			{
@@ -9012,7 +9012,7 @@ namespace SkyFrost.Base
 			return (Task<List<CreditUser>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetUserCreditsCached", type), typeof(Task<List<CreditUser>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9056,7 +9056,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _updateCurrentUserStorage
+		public System.Boolean _updateCurrentUserStorage
 		{
 			get
 			{
@@ -9075,7 +9075,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Storage _currentUserStorage
+		public Storage _currentUserStorage
 		{
 			get
 			{
@@ -9094,7 +9094,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _storageDirty
+		public ResoniteBridge.ResoniteBridgeValue _storageDirty
 		{
 			get
 			{
@@ -9113,7 +9113,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _updatingStorage
+		public ResoniteBridge.ResoniteBridgeValue _updatingStorage
 		{
 			get
 			{
@@ -9228,12 +9228,12 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateStorage", ownerId), typeof(Task));
 		}
 
-		internal void Update()
+		public void Update()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
 
-		internal void Reset()
+		public void Reset()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Reset");
 		}
@@ -9248,7 +9248,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<Storage>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetMemberStorage", ownerId, userId), typeof(Task<CloudResult<Storage>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9343,7 +9343,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult<List<ExitMessage>>>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetExitMessages"), typeof(Task<CloudResult<List<ExitMessage>>>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9406,7 +9406,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private OnlineStatus _onlineStatus
+		public OnlineStatus _onlineStatus
 		{
 			get
 			{
@@ -9425,7 +9425,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private UserStatus status
+		public UserStatus status
 		{
 			get
 			{
@@ -9444,7 +9444,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime lastSessionChangeTimestamp
+		public DateTime lastSessionChangeTimestamp
 		{
 			get
 			{
@@ -9463,7 +9463,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime lastPublicKeyUpdateTimestamp
+		public DateTime lastPublicKeyUpdateTimestamp
 		{
 			get
 			{
@@ -9482,7 +9482,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CancellationTokenSource publicKeyCancellationToken
+		public CancellationTokenSource publicKeyCancellationToken
 		{
 			get
 			{
@@ -9501,7 +9501,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean _forceUpdate
+		public System.Boolean _forceUpdate
 		{
 			get
 			{
@@ -9520,7 +9520,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -9669,57 +9669,57 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "UserStatusManager", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		internal void Update()
+		public void Update()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
 
-		internal void ForceUpdate()
+		public void ForceUpdate()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForceUpdate");
 		}
 
-		private void UpdatePublicKey()
+		public void UpdatePublicKey()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdatePublicKey");
 		}
 
-		private void UpdateStatus()
+		public void UpdateStatus()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateStatus");
 		}
 
-		private void DoUpdate()
+		public void DoUpdate()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoUpdate");
 		}
 
-		internal void SignIn()
+		public void SignIn()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SignIn");
 		}
 
-		internal void SendStatusToUser(System.String userId)
+		public void SendStatusToUser(System.String userId)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SendStatusToUser", userId);
 		}
 
-		internal Task SignOut()
+		public Task SignOut()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SignOut"), typeof(Task));
 		}
 
-		private void SetStatusToOffline()
+		public void SetStatusToOffline()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetStatusToOffline");
 		}
 
-		private void InitializeNewStatus()
+		public void InitializeNewStatus()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InitializeNewStatus");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9754,7 +9754,7 @@ namespace SkyFrost.Base
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "LogVisit", visit), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10135,7 +10135,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearAll");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10160,7 +10160,7 @@ namespace SkyFrost.Base
 	}
 	public class AccountMigrationStatus : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private DateTime? _lastSnapshot
+		public DateTime? _lastSnapshot
 		{
 			get
 			{
@@ -10179,7 +10179,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int32 _lastMigratedRecords
+		public System.Int32 _lastMigratedRecords
 		{
 			get
 			{
@@ -10710,7 +10710,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateStats");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11075,7 +11075,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MergeStatus", target, source);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11205,7 +11205,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11377,7 +11377,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11507,7 +11507,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11806,7 +11806,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Updated");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11873,7 +11873,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13121,7 +13121,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13184,7 +13184,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13339,7 +13339,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14065,7 +14065,7 @@ namespace SkyFrost.Base
 			return (SkyFrostConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WithProxy", proxy), typeof(SkyFrostConfig));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14203,7 +14203,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14679,7 +14679,7 @@ namespace SkyFrost.Base
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14704,7 +14704,7 @@ namespace SkyFrost.Base
 	}
 	public static class RecordTags
 	{
-		private static HashSet<string> IGNORE_TAGS
+		public static HashSet<string> IGNORE_TAGS
 		{
 			get
 			{
@@ -15183,7 +15183,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GetCorrespondingWorldUrl", tags), typeof(System.String));
 		}
 
-		private static System.String ExtractValue(HashSet<string> tags, System.String prefix)
+		public static System.String ExtractValue(HashSet<string> tags, System.String prefix)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractValue", tags, prefix), typeof(System.String));
 		}
@@ -15193,7 +15193,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordTags", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateTagsFromName", name, tags);
 		}
 
-		private static void ExtractTag(StringBuilder tagBuilder, HashSet<string> tags)
+		public static void ExtractTag(StringBuilder tagBuilder, HashSet<string> tags)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordTags", ResoniteBridge.ResoniteBridgeValueType.Type), "ExtractTag", tagBuilder, tags);
 		}
@@ -15253,7 +15253,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue SignalRTransports
+		public ResoniteBridge.ResoniteBridgeValue SignalRTransports
 		{
 			get
 			{
@@ -15329,7 +15329,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private CancellationTokenSource _hubConnectionToken
+		public CancellationTokenSource _hubConnectionToken
 		{
 			get
 			{
@@ -15348,7 +15348,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue _metadataBatchQueries
+		public ResoniteBridge.ResoniteBridgeValue _metadataBatchQueries
 		{
 			get
 			{
@@ -15367,7 +15367,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int32 SignalRConnectionAttempts
+		public System.Int32 SignalRConnectionAttempts
 		{
 			get
 			{
@@ -15754,7 +15754,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected virtual System.Boolean UseAlternateWebsocket
+		public virtual System.Boolean UseAlternateWebsocket
 		{
 			get
 			{
@@ -16131,13 +16131,13 @@ namespace SkyFrost.Base
 		}
 
 		[Conditional("PROFILE")]
-		private void ProfilerBeginSample(System.String name)
+		public void ProfilerBeginSample(System.String name)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProfilerBeginSample", name);
 		}
 
 		[Conditional("PROFILE")]
-		private void ProfilerEndSample()
+		public void ProfilerEndSample()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProfilerEndSample");
 		}
@@ -16147,12 +16147,12 @@ namespace SkyFrost.Base
 			return (MetadataBatchQuery<M>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MetadataBatch"), typeof(MetadataBatchQuery<M>));
 		}
 
-		protected virtual Task OnLogin()
+		public virtual Task OnLogin()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnLogin"), typeof(Task));
 		}
 
-		protected virtual Task OnLogout(System.Boolean isManual)
+		public virtual Task OnLogout(System.Boolean isManual)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnLogout", isManual), typeof(Task));
 		}
@@ -16162,7 +16162,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnSessionTokenRefresh"), typeof(Task));
 		}
 
-		protected virtual void InstallConfigFile(System.String path, System.String content)
+		public virtual void InstallConfigFile(System.String path, System.String content)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InstallConfigFile", path, content);
 		}
@@ -16172,27 +16172,27 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "SkyFrostInterface", ResoniteBridge.ResoniteBridgeValueType.Type), uid, secretMachineId, config);
 		}
 
-		protected virtual Task<bool> RunInitialAnonymousHubConnection()
+		public virtual Task<bool> RunInitialAnonymousHubConnection()
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunInitialAnonymousHubConnection"), typeof(Task<bool>));
 		}
 
-		private void AuthenticateApiRequest(HttpRequestMessage request, System.String totpCode)
+		public void AuthenticateApiRequest(HttpRequestMessage request, System.String totpCode)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AuthenticateApiRequest", request, totpCode);
 		}
 
-		internal Task ConnectToHub(System.String source)
+		public Task ConnectToHub(System.String source)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ConnectToHub", source), typeof(Task));
 		}
 
-		private static Task Connect(ResoniteBridge.ResoniteBridgeValue connection, System.String source, CancellationToken cancellationToken)
+		public static Task Connect(ResoniteBridge.ResoniteBridgeValue connection, System.String source, CancellationToken cancellationToken)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "SkyFrostInterface", ResoniteBridge.ResoniteBridgeValueType.Type), "Connect", connection, source, cancellationToken), typeof(Task));
 		}
 
-		private Task DisconnectFromHub()
+		public Task DisconnectFromHub()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DisconnectFromHub"), typeof(Task));
 		}
@@ -16202,7 +16202,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Update");
 		}
 
-		internal Task Login()
+		public Task Login()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Login"), typeof(Task));
 		}
@@ -16212,17 +16212,17 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinalizeSession"), typeof(Task));
 		}
 
-		internal Task BeginLogout(System.Boolean isManual)
+		public Task BeginLogout(System.Boolean isManual)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeginLogout", isManual), typeof(Task));
 		}
 
-		internal void ResetModules()
+		public void ResetModules()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResetModules");
 		}
 
-		internal void CompleteLogout(System.Boolean isManual)
+		public void CompleteLogout(System.Boolean isManual)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompleteLogout", isManual);
 		}
@@ -16252,7 +16252,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOwnerPath", ownerId), typeof(System.String));
 		}
 
-		internal void ProcessUserSessionResult<T>(UserSessionResult<T> result)
+		public void ProcessUserSessionResult<T>(UserSessionResult<T> result)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessUserSessionResult", result);
 		}
@@ -16262,7 +16262,7 @@ namespace SkyFrost.Base
 			return (Task<ExitMessage>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRandomExitMessage"), typeof(Task<ExitMessage>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16401,7 +16401,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "SkyFrostModule", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16428,7 +16428,7 @@ namespace SkyFrost.Base
 	public delegate MemoryStream MemoryStreamAllocator();
 	public class ApiClient : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private static MediaTypeHeaderValue JSON_MEDIA_TYPE
+		public static MediaTypeHeaderValue JSON_MEDIA_TYPE
 		{
 			get
 			{
@@ -16447,7 +16447,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static HttpMethod PATCH_METHOD
+		public static HttpMethod PATCH_METHOD
 		{
 			get
 			{
@@ -16466,7 +16466,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private static HttpMethod COPY_METHOD
+		public static HttpMethod COPY_METHOD
 		{
 			get
 			{
@@ -16599,7 +16599,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ApiAuthenticator authenticator
+		public ApiAuthenticator authenticator
 		{
 			get
 			{
@@ -16618,7 +16618,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private MemoryStreamAllocator memoryAllocator
+		public MemoryStreamAllocator memoryAllocator
 		{
 			get
 			{
@@ -16637,7 +16637,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Action<string> profilerBeginSampleCallback
+		public Action<string> profilerBeginSampleCallback
 		{
 			get
 			{
@@ -16656,7 +16656,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Action profilerEndSampleCallback
+		public Action profilerEndSampleCallback
 		{
 			get
 			{
@@ -16700,13 +16700,13 @@ namespace SkyFrost.Base
 		}
 
 		[Conditional("PROFILE")]
-		private void ProfilerBeginSample(System.String name)
+		public void ProfilerBeginSample(System.String name)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProfilerBeginSample", name);
 		}
 
 		[Conditional("PROFILE")]
-		private void ProfilerEndSample()
+		public void ProfilerEndSample()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProfilerEndSample");
 		}
@@ -16806,17 +16806,17 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddMultipartFileToRequest", request, filePath, mime, progressIndicator);
 		}
 
-		private void AddBody(HttpRequestMessage message, System.Object entity)
+		public void AddBody(HttpRequestMessage message, System.Object entity)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddBody", message, entity);
 		}
 
-		internal Task<CloudResult> RunRequest(Func<HttpRequestMessage> requestSource, TimeSpan? timeout, System.Boolean throwOnError)
+		public Task<CloudResult> RunRequest(Func<HttpRequestMessage> requestSource, TimeSpan? timeout, System.Boolean throwOnError)
 		{
 			return (Task<CloudResult>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunRequest", requestSource, timeout, throwOnError), typeof(Task<CloudResult>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16944,7 +16944,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Stack<byte[]> buffers
+		public Stack<byte[]> buffers
 		{
 			get
 			{
@@ -16963,7 +16963,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int64 _totalBytesPerSecond
+		public System.Int64 _totalBytesPerSecond
 		{
 			get
 			{
@@ -16982,7 +16982,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastSpeedUpdate
+		public DateTime _lastSpeedUpdate
 		{
 			get
 			{
@@ -17001,7 +17001,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int64 _speedAccumulatedBytes
+		public System.Int64 _speedAccumulatedBytes
 		{
 			get
 			{
@@ -17020,7 +17020,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _speedLock
+		public System.Object _speedLock
 		{
 			get
 			{
@@ -17078,22 +17078,22 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetGatherer", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		internal byte[] BorrowBuffer()
+		public byte[] BorrowBuffer()
 		{
 			return (byte[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BorrowBuffer"), typeof(byte[]));
 		}
 
-		internal void ReturnBuffer(byte[] buffer)
+		public void ReturnBuffer(byte[] buffer)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ReturnBuffer", buffer);
 		}
 
-		internal void BytesDownloaded(System.Int64 bytes)
+		public void BytesDownloaded(System.Int64 bytes)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BytesDownloaded", bytes);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17118,7 +17118,7 @@ namespace SkyFrost.Base
 	}
 	public class AssetGatherer<G> : AssetGatherer, ResoniteBridge.ResoniteBridgeValueHolder where G : GatherJob, new()
 	{
-		private Dictionary<object, ActionBlock<object>> processors
+		public Dictionary<object, ActionBlock<object>> processors
 		{
 			get
 			{
@@ -17137,7 +17137,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<object, List<G>> waitingJobs
+		public Dictionary<object, List<G>> waitingJobs
 		{
 			get
 			{
@@ -17156,7 +17156,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<System.Uri, G> jobs
+		public Dictionary<System.Uri, G> jobs
 		{
 			get
 			{
@@ -17175,7 +17175,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private List<G> activeJobs
+		public List<G> activeJobs
 		{
 			get
 			{
@@ -17214,7 +17214,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "AssetGatherer", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		private Task ProcessJob(System.Object category)
+		public Task ProcessJob(System.Object category)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessJob", category), typeof(Task));
 		}
@@ -17224,7 +17224,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCategoryParallelism", category, concurrentJobs);
 		}
 
-		private ActionBlock<object> SetCategoryParallelismIntern(System.Object category, System.Int32 concurrentJobs)
+		public ActionBlock<object> SetCategoryParallelismIntern(System.Object category, System.Int32 concurrentJobs)
 		{
 			return (ActionBlock<object>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetCategoryParallelismIntern", category, concurrentJobs), typeof(ActionBlock<object>));
 		}
@@ -17244,7 +17244,7 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAllJobs", list);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17269,7 +17269,7 @@ namespace SkyFrost.Base
 	}
 	public abstract class BatchQuery<Query, Result> : ResoniteBridge.ResoniteBridgeValueHolder where Query : class, IEquatable<Query> where Result : class
 	{
-		protected class QueryResult : ResoniteBridge.ResoniteBridgeValueHolder
+		public class QueryResult : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public Query query
 			{
@@ -17314,7 +17314,7 @@ namespace SkyFrost.Base
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "QueryResult", ResoniteBridge.ResoniteBridgeValueType.Type), query);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -17338,7 +17338,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -17357,7 +17357,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private Dictionary<Query, TaskCompletionSource<Result>> queue
+		public Dictionary<Query, TaskCompletionSource<Result>> queue
 		{
 			get
 			{
@@ -17376,7 +17376,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private TaskCompletionSource<bool> immediateDispatch
+		public TaskCompletionSource<bool> immediateDispatch
 		{
 			get
 			{
@@ -17395,7 +17395,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean dispatchScheduled
+		public System.Boolean dispatchScheduled
 		{
 			get
 			{
@@ -17462,14 +17462,14 @@ namespace SkyFrost.Base
 			return (Task<Result>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Request", query), typeof(Task<Result>));
 		}
 
-		private Task SendBatch()
+		public Task SendBatch()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SendBatch"), typeof(Task));
 		}
 
-		protected abstract Task RunBatch(List<QueryResult> batch);
+		public abstract Task RunBatch(List<QueryResult> batch);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17672,7 +17672,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryGetHeaderValue", name), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17759,7 +17759,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17803,7 +17803,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private TaskCompletionSource<dummy> _taskSource
+		public TaskCompletionSource<dummy> _taskSource
 		{
 			get
 			{
@@ -17822,7 +17822,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private DateTime _lastSpeedUpdate
+		public DateTime _lastSpeedUpdate
 		{
 			get
 			{
@@ -17841,7 +17841,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Int64 _speedAccumulatedBytes
+		public System.Int64 _speedAccumulatedBytes
 		{
 			get
 			{
@@ -18230,12 +18230,12 @@ namespace SkyFrost.Base
 
 		public event Action<float> ProgressUpdated;
 
-		internal void Initialize(AssetGatherer gatherer, System.Uri url)
+		public void Initialize(AssetGatherer gatherer, System.Uri url)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Initialize", gatherer, url);
 		}
 
-		private System.Uri ResolveURL(System.Uri url, DB_Endpoint endpoint)
+		public System.Uri ResolveURL(System.Uri url, DB_Endpoint endpoint)
 		{
 			return (System.Uri)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResolveURL", url, endpoint), typeof(System.Uri));
 		}
@@ -18245,37 +18245,37 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Download"), typeof(Task));
 		}
 
-		protected void StartGathering()
+		public void StartGathering()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StartGathering");
 		}
 
-		protected void FinishGathering(System.String newFilePath = null)
+		public void FinishGathering(System.String newFilePath = null)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinishGathering", newFilePath);
 		}
 
-		protected void Fail(System.String reason, System.Boolean nonRecoverable, Exception exception = null, ResoniteBridge.ResoniteBridgeValue statusCode = default(ResoniteBridge.ResoniteBridgeValue))
+		public void Fail(System.String reason, System.Boolean nonRecoverable, Exception exception = null, ResoniteBridge.ResoniteBridgeValue statusCode = default(ResoniteBridge.ResoniteBridgeValue))
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Fail", reason, nonRecoverable, exception, statusCode);
 		}
 
-		protected void AddDownloadedBytes(System.Int64 delta)
+		public void AddDownloadedBytes(System.Int64 delta)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddDownloadedBytes", delta);
 		}
 
-		protected void UpdateBytes(System.Int64 total, System.Int64 received)
+		public void UpdateBytes(System.Int64 total, System.Int64 received)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateBytes", total, received);
 		}
 
-		protected virtual Task RunDownload()
+		public virtual Task RunDownload()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunDownload"), typeof(Task));
 		}
 
-		protected virtual Task<string> FinishGather()
+		public virtual Task<string> FinishGather()
 		{
 			return (Task<string>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinishGather"), typeof(Task<string>));
 		}
@@ -18285,7 +18285,7 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18344,7 +18344,7 @@ namespace SkyFrost.Base
 			return (TimeSpan?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "NextRetryDelay", retryContext), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18376,7 +18376,7 @@ namespace SkyFrost.Base
 	}
 	public class MetadataBatchQuery<M> : BatchQuery<string, M>, ResoniteBridge.ResoniteBridgeValueHolder where M : class, IAssetMetadata, new()
 	{
-		private AssetInterface assetInterface
+		public AssetInterface assetInterface
 		{
 			get
 			{
@@ -18400,12 +18400,12 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "MetadataBatchQuery", ResoniteBridge.ResoniteBridgeValueType.Type), cloud);
 		}
 
-		protected override Task RunBatch(List<QueryResult> batch)
+		public override Task RunBatch(List<QueryResult> batch)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunBatch", batch), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18430,7 +18430,7 @@ namespace SkyFrost.Base
 	}
 	public class RecordBatchQuery<R> : BatchQuery<RecordId, R>, ResoniteBridge.ResoniteBridgeValueHolder where R : class, IRecord, new()
 	{
-		private RecordsManager records
+		public RecordsManager records
 		{
 			get
 			{
@@ -18459,12 +18459,12 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordBatchQuery", ResoniteBridge.ResoniteBridgeValueType.Type), records);
 		}
 
-		protected override Task RunBatch(List<QueryResult> batch)
+		public override Task RunBatch(List<QueryResult> batch)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunBatch", batch), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18489,7 +18489,7 @@ namespace SkyFrost.Base
 	}
 	public class RecordCache<TRecord> : ResoniteBridge.ResoniteBridgeValueHolder where TRecord : class, IRecord, new()
 	{
-		private Dictionary<RecordId, TRecord> cached
+		public Dictionary<RecordId, TRecord> cached
 		{
 			get
 			{
@@ -18557,17 +18557,17 @@ namespace SkyFrost.Base
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Cache", records);
 		}
 
-		private RecordId GetKey(IRecord record)
+		public RecordId GetKey(IRecord record)
 		{
 			return (RecordId)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetKey", record), typeof(RecordId));
 		}
 
-		private void CacheIntern(RecordId key, TRecord record)
+		public void CacheIntern(RecordId key, TRecord record)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CacheIntern", key, record);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18630,7 +18630,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private SearchParameters searchParameters
+		public SearchParameters searchParameters
 		{
 			get
 			{
@@ -18649,7 +18649,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private RecordsManager recordsManager
+		public RecordsManager recordsManager
 		{
 			get
 			{
@@ -18668,7 +18668,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Boolean cache
+		public System.Boolean cache
 		{
 			get
 			{
@@ -18745,7 +18745,7 @@ namespace SkyFrost.Base
 			return (ValueTask<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureResults", count, attempts, throwOnError, delayMilliseconds, timeout), typeof(ValueTask<bool>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18847,7 +18847,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18976,7 +18976,7 @@ namespace SkyFrost.Base
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -19000,7 +19000,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		protected static System.Boolean LOG_PROGRESS
+		public static System.Boolean LOG_PROGRESS
 		{
 			get
 			{
@@ -19019,7 +19019,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.String _stageDescription
+		public System.String _stageDescription
 		{
 			get
 			{
@@ -19038,7 +19038,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private System.Single preprocessProgress
+		public System.Single preprocessProgress
 		{
 			get
 			{
@@ -19057,7 +19057,7 @@ namespace SkyFrost.Base
 			}
 		}
 
-		private TaskCompletionSource<bool> _completionSource
+		public TaskCompletionSource<bool> _completionSource
 		{
 			get
 			{
@@ -19380,13 +19380,13 @@ namespace SkyFrost.Base
 
 		public event Action<string> AssetMissing;
 
-		protected abstract Task<bool> PrepareFilesForUpload(CancellationToken cancellationToken);
+		public abstract Task<bool> PrepareFilesForUpload(CancellationToken cancellationToken);
 
-		protected abstract Task StoreSyncedRecord(R record);
+		public abstract Task StoreSyncedRecord(R record);
 
-		protected abstract ValueTask<AssetData> ReadFile(System.String signature);
+		public abstract ValueTask<AssetData> ReadFile(System.String signature);
 
-		protected virtual ValueTask UploadStarted(System.String signature)
+		public virtual ValueTask UploadStarted(System.String signature)
 		{
 			return (ValueTask)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadStarted", signature), typeof(ValueTask));
 		}
@@ -19396,22 +19396,22 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RecordUploadTaskBase", ResoniteBridge.ResoniteBridgeValueType.Type), cloud, record, ensureFolder);
 		}
 
-		protected void Fail(System.String error)
+		public void Fail(System.String error)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Fail", error);
 		}
 
-		protected void FailConflict()
+		public void FailConflict()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FailConflict");
 		}
 
-		private void RemoveManifestDuplicates()
+		public void RemoveManifestDuplicates()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RemoveManifestDuplicates");
 		}
 
-		private Task EnsureManifestAssetSizes()
+		public Task EnsureManifestAssetSizes()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureManifestAssetSizes"), typeof(Task));
 		}
@@ -19421,34 +19421,34 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunUpload", cancellationToken), typeof(Task));
 		}
 
-		private Task<bool> CheckCloudVersion(CancellationToken cancelationToken)
+		public Task<bool> CheckCloudVersion(CancellationToken cancelationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CheckCloudVersion", cancelationToken), typeof(Task<bool>));
 		}
 
-		protected abstract Task<bool> PrepareRecord(CancellationToken cancelationToken);
+		public abstract Task<bool> PrepareRecord(CancellationToken cancelationToken);
 
-		private Task<bool> PreprocessRecord(CancellationToken cancelationToken)
+		public Task<bool> PreprocessRecord(CancellationToken cancelationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PreprocessRecord", cancelationToken), typeof(Task<bool>));
 		}
 
-		private Task<bool> UploadAssets(CancellationToken cancelationToken)
+		public Task<bool> UploadAssets(CancellationToken cancelationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UploadAssets", cancelationToken), typeof(Task<bool>));
 		}
 
-		private Task<bool> UpsertRecord(CancellationToken cancelationToken)
+		public Task<bool> UpsertRecord(CancellationToken cancelationToken)
 		{
 			return (Task<bool>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpsertRecord", cancelationToken), typeof(Task<bool>));
 		}
 
-		private Task RunUploadInternal(CancellationToken cancelationToken)
+		public Task RunUploadInternal(CancellationToken cancelationToken)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunUploadInternal", cancelationToken), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19542,7 +19542,7 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "CloudVariableInfo", ResoniteBridge.ResoniteBridgeValueType.Type), path, type, defaultValue);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19674,7 +19674,7 @@ namespace SkyFrost.Base
 	}
 	public class SignalRWebSocket : WebSocket, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue _client
+		public ResoniteBridge.ResoniteBridgeValue _client
 		{
 			get
 			{
@@ -19798,7 +19798,7 @@ namespace SkyFrost.Base
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SendAsync", buffer, messageType, endOfMessage, cancellationToken), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19833,7 +19833,7 @@ namespace SkyFrost.Base
 	}
 	public class VariableReadBatchQuery : BatchQuery<VariableReadRequest, VariableReadResult<CloudVariable, CloudVariableDefinition>>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private CloudVariableManager variables
+		public CloudVariableManager variables
 		{
 			get
 			{
@@ -19857,12 +19857,12 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "VariableReadBatchQuery", ResoniteBridge.ResoniteBridgeValueType.Type), variables);
 		}
 
-		protected override Task RunBatch(List<QueryResult> batch)
+		public override Task RunBatch(List<QueryResult> batch)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunBatch", batch), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19887,7 +19887,7 @@ namespace SkyFrost.Base
 	}
 	public class VariableWriteBatchQuery : BatchQuery<CloudVariable, CloudVariable>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private CloudVariableManager variables
+		public CloudVariableManager variables
 		{
 			get
 			{
@@ -19911,12 +19911,12 @@ namespace SkyFrost.Base
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "VariableWriteBatchQuery", ResoniteBridge.ResoniteBridgeValueType.Type), variables);
 		}
 
-		protected override Task RunBatch(List<QueryResult> batch)
+		public override Task RunBatch(List<QueryResult> batch)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunBatch", batch), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19989,7 +19989,7 @@ namespace SkyFrost.Base
 			return (RegistryProxyConfiguration)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "RegistryProxyConfiguration", ResoniteBridge.ResoniteBridgeValueType.Type), "From", proxyServer, proxyOverride), typeof(RegistryProxyConfiguration));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20014,7 +20014,7 @@ namespace SkyFrost.Base
 	}
 	public class WebProxyUtility : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private static ResoniteBridge.ResoniteBridgeValue SetupCredentials(ProxyConfig config)
+		public static ResoniteBridge.ResoniteBridgeValue SetupCredentials(ProxyConfig config)
 		{
 			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "SetupCredentials", config), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
@@ -20034,17 +20034,17 @@ namespace SkyFrost.Base
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "MakeAbsolouteProxyAddress", str), typeof(System.String));
 		}
 
-		private static ProxyConfig HydrateProxyConfiguration(ProxyConfig initialConfig)
+		public static ProxyConfig HydrateProxyConfiguration(ProxyConfig initialConfig)
 		{
 			return (ProxyConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "HydrateProxyConfiguration", initialConfig), typeof(ProxyConfig));
 		}
 
-		private static ProxyConfig GenerateProxySettingsFromDefaultWebProxy(ProxyConfig initialConfig)
+		public static ProxyConfig GenerateProxySettingsFromDefaultWebProxy(ProxyConfig initialConfig)
 		{
 			return (ProxyConfig)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateProxySettingsFromDefaultWebProxy", initialConfig), typeof(ProxyConfig));
 		}
 
-		private static RegistryProxyConfiguration? GetProxyConfigFromRegistry()
+		public static RegistryProxyConfiguration? GetProxyConfigFromRegistry()
 		{
 			return (RegistryProxyConfiguration?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "GetProxyConfigFromRegistry"), typeof(RegistryProxyConfiguration));
 		}
@@ -20054,12 +20054,12 @@ namespace SkyFrost.Base
 			return (ProxyConfig?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "GenerateProxyConfigFromRegistry", registryValues), typeof(ProxyConfig));
 		}
 
-		private static string? GetDomainFromProxyOverride(System.String domain)
+		public static string? GetDomainFromProxyOverride(System.String domain)
 		{
 			return (string?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "SkyFrost.Base", "WebProxyUtility", ResoniteBridge.ResoniteBridgeValueType.Type), "GetDomainFromProxyOverride", domain), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{

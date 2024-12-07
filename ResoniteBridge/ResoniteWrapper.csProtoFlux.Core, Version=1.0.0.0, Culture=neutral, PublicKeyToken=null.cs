@@ -209,7 +209,7 @@ namespace ProtoFlux.Runtimes.Execution
 				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -302,7 +302,7 @@ namespace ProtoFlux.Runtimes.Execution
 				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -326,7 +326,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Stack<ExecutionImpulseExportHandler> _impulseExportHandlers
+		public Stack<ExecutionImpulseExportHandler> _impulseExportHandlers
 		{
 			get
 			{
@@ -345,7 +345,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Stack<ExecutionAsyncImpulseExportHandler> _asyncImpulseExportHandlers
+		public Stack<ExecutionAsyncImpulseExportHandler> _asyncImpulseExportHandlers
 		{
 			get
 			{
@@ -364,7 +364,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private StackFrame[] _frames
+		public StackFrame[] _frames
 		{
 			get
 			{
@@ -383,7 +383,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.UInt16 _allocatedFrames
+		public System.UInt16 _allocatedFrames
 		{
 			get
 			{
@@ -402,7 +402,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.UInt16 _currentFrameIndex
+		public System.UInt16 _currentFrameIndex
 		{
 			get
 			{
@@ -421,7 +421,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		internal StackLayout stackLayout
+		public StackLayout stackLayout
 		{
 			get
 			{
@@ -440,7 +440,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private HashSet<IExecutionRuntime> onceEnteredRuntimes
+		public HashSet<IExecutionRuntime> onceEnteredRuntimes
 		{
 			get
 			{
@@ -872,7 +872,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AllocateFrame", runtime, nestedNode);
 		}
 
-		private StackFrame CreateStackFrame(IExecutionRuntime runtime, IExecutionNestedNode nestedNode)
+		public StackFrame CreateStackFrame(IExecutionRuntime runtime, IExecutionNestedNode nestedNode)
 		{
 			return (StackFrame)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateStackFrame", runtime, nestedNode), typeof(StackFrame));
 		}
@@ -909,46 +909,46 @@ namespace ProtoFlux.Runtimes.Execution
 			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawStackFrame"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
-		internal void PopToLocal(in LocalNodeData mapping)
+		public void PopToLocal(in LocalNodeData mapping)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PopToLocal", mapping);
 		}
 
-		internal void PushFromLocal(in LocalNodeData mapping)
+		public void PushFromLocal(in LocalNodeData mapping)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PushFromLocal", mapping);
 		}
 
-		internal void PushImpulseExportHandler(ExecutionImpulseExportHandler handler)
+		public void PushImpulseExportHandler(ExecutionImpulseExportHandler handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PushImpulseExportHandler", handler);
 		}
 
-		internal void PushAsyncImpulseExportHandler(ExecutionAsyncImpulseExportHandler handler)
+		public void PushAsyncImpulseExportHandler(ExecutionAsyncImpulseExportHandler handler)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PushAsyncImpulseExportHandler", handler);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal void PopImpulseExportHandler()
+		public void PopImpulseExportHandler()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PopImpulseExportHandler");
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal void PopAsyncImpulseExportHandler()
+		public void PopAsyncImpulseExportHandler()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PopAsyncImpulseExportHandler");
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal void InvokeImpulseExport(System.Int32 index)
+		public void InvokeImpulseExport(System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InvokeImpulseExport", index);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal Task InvokeAsyncImpulseExport(System.Int32 index)
+		public Task InvokeAsyncImpulseExport(System.Int32 index)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InvokeAsyncImpulseExport", index), typeof(Task));
 		}
@@ -973,17 +973,17 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeStackDepth"), typeof(System.Int32));
 		}
 
-		internal void EnterExecution()
+		public void EnterExecution()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnterExecution");
 		}
 
-		internal Task TryEnterAsyncExecution()
+		public Task TryEnterAsyncExecution()
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryEnterAsyncExecution"), typeof(Task));
 		}
 
-		internal void ExitExecution()
+		public void ExitExecution()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitExecution");
 		}
@@ -1003,7 +1003,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearExecutionDepth");
 		}
 
-		private void WalkStackAndCopyTo(System.UInt16 frameIndex, ExecutionContext target)
+		public void WalkStackAndCopyTo(System.UInt16 frameIndex, ExecutionContext target)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "WalkStackAndCopyTo", frameIndex, target);
 		}
@@ -1018,7 +1018,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitRuntimeOnce", runtime);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1039,7 +1039,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public static class ExecutionContextExtensions
 	{
-		private static NotImplementedException Exception()
+		public static NotImplementedException Exception()
 		{
 			return (NotImplementedException)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ExecutionContextExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "Exception"), typeof(NotImplementedException));
 		}
@@ -1195,7 +1195,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public abstract class ExtendedExecutionContext<C> : ExecutionContext, ResoniteBridge.ResoniteBridgeValueHolder where C : ExtendedExecutionContext<C>
 	{
-		private ExecutionEventDispatcher<C> _eventDispatcher
+		public ExecutionEventDispatcher<C> _eventDispatcher
 		{
 			get
 			{
@@ -1287,7 +1287,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ExtendedExecutionContext", ResoniteBridge.ResoniteBridgeValueType.Type), sharedExecutionScope, updateDispatcher, eventDispatcher, changesDispatcher);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1308,7 +1308,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ExtendedExecutionContext : ExtendedExecutionContext<ExtendedExecutionContext>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1399,7 +1399,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ObjectStack : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private object[] stack
+		public object[] stack
 		{
 			get
 			{
@@ -1457,13 +1457,13 @@ namespace ProtoFlux.Runtimes.Execution
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private System.Int32 GetBottomPosition(System.Int32 bottom, System.Int32 offset)
+		public System.Int32 GetBottomPosition(System.Int32 bottom, System.Int32 offset)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBottomPosition", bottom, offset), typeof(System.Int32));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private System.Int32 GetPosition(System.Int32 offset)
+		public System.Int32 GetPosition(System.Int32 offset)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPosition", offset), typeof(System.Int32));
 		}
@@ -1533,7 +1533,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CopyBottomTo", sourceBottom, targetBottom, count, target);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1640,7 +1640,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1708,7 +1708,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeStoreOffsets", ResoniteBridge.ResoniteBridgeValueType.Type), valuesOffset, objectsOffset);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -1733,7 +1733,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ScopePoint : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private IGlobalValue[] _mappedGlobals
+		public IGlobalValue[] _mappedGlobals
 		{
 			get
 			{
@@ -1752,7 +1752,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue nestedScopes
+		public ResoniteBridge.ResoniteBridgeValue nestedScopes
 		{
 			get
 			{
@@ -1771,7 +1771,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<IExecutionNode, NodeStoreOffsets> explicitNodeMap
+		public Dictionary<IExecutionNode, NodeStoreOffsets> explicitNodeMap
 		{
 			get
 			{
@@ -1980,7 +1980,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (ScopePoint)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AllocateScope", key, valuesStoreOffset, objectsStoreOffset), typeof(ScopePoint));
 		}
 
-		internal void MapGlobals(IGlobalValue[] globals)
+		public void MapGlobals(IGlobalValue[] globals)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapGlobals", globals);
 		}
@@ -2010,17 +2010,17 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HasAnyStoreDataInHierarchy"), typeof(System.Boolean));
 		}
 
-		internal void CaptureExplicitNodeMap()
+		public void CaptureExplicitNodeMap()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CaptureExplicitNodeMap");
 		}
 
-		internal NodeStoreOffsets? GetStoredOffset(IExecutionNode node)
+		public NodeStoreOffsets? GetStoredOffset(IExecutionNode node)
 		{
 			return (NodeStoreOffsets?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStoredOffset", node), typeof(NodeStoreOffsets));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2041,7 +2041,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class SharedExecutionScope : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private System.Object _lock
+		public System.Object _lock
 		{
 			get
 			{
@@ -2060,7 +2060,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _allocatedValueStoreSize
+		public System.Int32 _allocatedValueStoreSize
 		{
 			get
 			{
@@ -2079,7 +2079,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _allocatedObjectStoreSize
+		public System.Int32 _allocatedObjectStoreSize
 		{
 			get
 			{
@@ -2180,7 +2180,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2270,7 +2270,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetValue", newValue), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2295,7 +2295,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ValueStack : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private byte[] stack
+		public byte[] stack
 		{
 			get
 			{
@@ -2368,7 +2368,7 @@ namespace ProtoFlux.Runtimes.Execution
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private System.Int32 GetBottomPosition(System.Int32 bottom, System.Int32 offset)
+		public System.Int32 GetBottomPosition(System.Int32 bottom, System.Int32 offset)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetBottomPosition", bottom, offset), typeof(System.Int32));
 		}
@@ -2380,7 +2380,7 @@ namespace ProtoFlux.Runtimes.Execution
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private System.Int32 GetPosition<T>(System.Int32 offset) where T : struct
+		public System.Int32 GetPosition<T>(System.Int32 offset) where T : struct
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetPosition", offset), typeof(System.Int32));
 		}
@@ -2449,7 +2449,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (ResoniteBridge.ResoniteBridgeValue)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRawStack"), typeof(ResoniteBridge.ResoniteBridgeValue));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2480,7 +2480,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public struct ObjectLocal<T> : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		internal System.Int32 offset
+		public System.Int32 offset
 		{
 			get
 			{
@@ -2509,7 +2509,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2534,7 +2534,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public struct ValueLocal<T> : ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		internal System.Int32 offset
+		public System.Int32 offset
 		{
 			get
 			{
@@ -2568,7 +2568,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Access", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2593,7 +2593,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ExecutionChangesDispatcher<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private NodeGroup group
+		public NodeGroup group
 		{
 			get
 			{
@@ -2612,7 +2612,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private SortedSet<ElementPath<INode>> changedNodes
+		public SortedSet<ElementPath<INode>> changedNodes
 		{
 			get
 			{
@@ -2631,7 +2631,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private SortedSet<ElementPath<INode>> backBuffer
+		public SortedSet<ElementPath<INode>> backBuffer
 		{
 			get
 			{
@@ -2732,7 +2732,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DispatchChangeToAllListeners", runtime, context), typeof(System.Int32));
 		}
 
-		private System.Int32 DispatchChangeToAllRecursively(ExecutionRuntime<C> runtime, C context)
+		public System.Int32 DispatchChangeToAllRecursively(ExecutionRuntime<C> runtime, C context)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DispatchChangeToAllRecursively", runtime, context), typeof(System.Int32));
 		}
@@ -2742,7 +2742,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DispatchChanges", runtime, context), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -2768,7 +2768,7 @@ namespace ProtoFlux.Runtimes.Execution
 	public delegate void NodeEventHandler<in C>(C context, System.Object eventData) where C : ExecutionContext;
 	public class ExecutionEventDispatcher<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private struct Event : IEquatable<Event>, IComparable<Event>, ResoniteBridge.ResoniteBridgeValueHolder
+		public struct Event : IEquatable<Event>, IComparable<Event>, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public NodeContextPath path
 			{
@@ -2842,7 +2842,7 @@ namespace ProtoFlux.Runtimes.Execution
 				return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Equals", other), typeof(System.Boolean));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -2866,7 +2866,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<Event> orderedEvents
+		public List<Event> orderedEvents
 		{
 			get
 			{
@@ -2885,7 +2885,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<Event> unorderedEvents
+		public List<Event> unorderedEvents
 		{
 			get
 			{
@@ -2986,7 +2986,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearEvents");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3011,7 +3011,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ExecutionUpdateDispatcher<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private struct UpdateNode : IComparable<UpdateNode>, IEquatable<UpdateNode>, ResoniteBridge.ResoniteBridgeValueHolder
+		public struct UpdateNode : IComparable<UpdateNode>, IEquatable<UpdateNode>, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public NodeContextPath path
 			{
@@ -3071,7 +3071,7 @@ namespace ProtoFlux.Runtimes.Execution
 				return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHashCode"), typeof(System.Int32));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -3095,7 +3095,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private SortedDictionary<int, SortedSet<UpdateNode>> updateBuckets
+		public SortedDictionary<int, SortedSet<UpdateNode>> updateBuckets
 		{
 			get
 			{
@@ -3183,12 +3183,12 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateBucket", bucket, runtime, context);
 		}
 
-		private System.Int32 UpdateBucket(SortedSet<UpdateNode> list, ref NodeContextPath current, C context)
+		public System.Int32 UpdateBucket(SortedSet<UpdateNode> list, ref NodeContextPath current, C context)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateBucket", list, current, context), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3227,7 +3227,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ScopeAddRemoveDispatcher<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private class ScopeNode : ResoniteBridge.ResoniteBridgeValueHolder
+		public class ScopeNode : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public IScopeEventListener<C> Node
 			{
@@ -3291,7 +3291,7 @@ namespace ProtoFlux.Runtimes.Execution
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ScopeNode", ResoniteBridge.ResoniteBridgeValueType.Type), node);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -3315,7 +3315,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<NodeContextPath, Dictionary<IScopeEventListener<C>, ScopeNode>> registeredNodes
+		public Dictionary<NodeContextPath, Dictionary<IScopeEventListener<C>, ScopeNode>> registeredNodes
 		{
 			get
 			{
@@ -3334,7 +3334,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Boolean _hasNewNodes
+		public System.Boolean _hasNewNodes
 		{
 			get
 			{
@@ -3358,7 +3358,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateScopesAndSendRemoved", runtime, context);
 		}
 
-		private void UpdateScopesAndSendRemoved(ExecutionRuntime<C> runtime, C context, System.Boolean scanForNewNodes)
+		public void UpdateScopesAndSendRemoved(ExecutionRuntime<C> runtime, C context, System.Boolean scanForNewNodes)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateScopesAndSendRemoved", runtime, context, scanForNewNodes);
 		}
@@ -3373,17 +3373,17 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SendAddedEvents", runtime, context);
 		}
 
-		private void ProcessScope(ExecutionRuntime<C> runtime, C context)
+		public void ProcessScope(ExecutionRuntime<C> runtime, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ProcessScope", runtime, context);
 		}
 
-		private Dictionary<IScopeEventListener<C>, ScopeNode> EnsureScopeDictionary(NodeContextPath path)
+		public Dictionary<IScopeEventListener<C>, ScopeNode> EnsureScopeDictionary(NodeContextPath path)
 		{
 			return (Dictionary<IScopeEventListener<C>, ScopeNode>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureScopeDictionary", path), typeof(Dictionary<IScopeEventListener<C>, ScopeNode>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3489,7 +3489,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ExecutionAbortedException", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, initialOperation, nextOperation, isAsync);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3512,7 +3512,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class EvaluateSequence<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class EvaluateSequence<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public EvaluationSequence<C> Sequence
 		{
@@ -3543,7 +3543,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "EvaluateSequence", ResoniteBridge.ResoniteBridgeValueType.Type), sequence);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -3566,7 +3566,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal abstract class ExecutionControlNode<C> : IExecutionNode<C>, IExecutionNode, INode, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public abstract class ExecutionControlNode<C> : IExecutionNode<C>, IExecutionNode, INode, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public System.Int32 FixedValueStackSize
 		{
@@ -4467,7 +4467,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsOperationPassthrough", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4490,7 +4490,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class LoadValueFromLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class LoadValueFromLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public System.Int32 Size
 		{
@@ -4540,7 +4540,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "LoadValueFromLocal", ResoniteBridge.ResoniteBridgeValueType.Type), size, offset);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4563,7 +4563,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class LoadObjectFromLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class LoadObjectFromLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public System.Int32 Size
 		{
@@ -4613,7 +4613,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "LoadObjectFromLocal", ResoniteBridge.ResoniteBridgeValueType.Type), size, offset);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4636,7 +4636,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class PopToLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class PopToLocal<C> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public LocalNodeData Mapping
 		{
@@ -4667,7 +4667,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "PopToLocal", ResoniteBridge.ResoniteBridgeValueType.Type), mapping);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4690,7 +4690,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class PushObject<C, T> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class PushObject<C, T> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public T Object
 		{
@@ -4721,7 +4721,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "PushObject", ResoniteBridge.ResoniteBridgeValueType.Type), @object);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4744,7 +4744,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class PushValue<C, T> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext where T : struct
+	public class PushValue<C, T> : ExecutionControlNode<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext where T : struct
 	{
 		public T Value
 		{
@@ -4775,7 +4775,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "PushValue", ResoniteBridge.ResoniteBridgeValueType.Type), value);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -4800,7 +4800,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public static class ExecutionHelper
 	{
-		private static ResoniteBridge.ResoniteBridgeValue _sizeCache
+		public static ResoniteBridge.ResoniteBridgeValue _sizeCache
 		{
 			get
 			{
@@ -4824,45 +4824,27 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ExecutionHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SizeOf", type), typeof(System.Int32));
 		}
 
-		private unsafe static System.Int32 SizeOfGeneric<T>() where T : struct
+		public unsafe static System.Int32 SizeOfGeneric<T>() where T : struct
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ExecutionHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SizeOfGeneric"), typeof(System.Int32));
 		}
 	}
 	[AttributeUsage(AttributeTargets.Field)]
-	public class ExecutionInputAttribute : CrossRuntimeInputAttribute, ResoniteBridge.ResoniteBridgeValueHolder
+	public class ExecutionInputAttribute : CrossRuntimeInputAttribute
 	{
 		public override System.Boolean IsValidTargetRuntime(NodeRuntime runtime)
 		{
-			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsValidTargetRuntime", runtime), typeof(System.Boolean));
-		}
-
-		private ResoniteBridge.ResoniteBridgeValue __backing;
-
-		public ResoniteBridge.ResoniteBridgeValue __Backing
-		{
-			get
+			Type type = runtime.GetType();
+			if (!type.IsGenericType)
 			{
-				return __backing;
+				return false;
 			}
-			set
-			{
-				__backing = value;
-			}
-		}
-
-		public ExecutionInputAttribute(ResoniteBridge.ResoniteBridgeValue value)
-		{
-			__backing = value;
-		}
-
-		public ExecutionInputAttribute()
-		{
+			return type.GetGenericTypeDefinition() == typeof(ExecutionRuntime<>);
 		}
 	}
 	public abstract class ExecutionNode<C> : Node, IExecutionNode<C>, IExecutionNode, INode, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private static ResoniteBridge.ResoniteBridgeValue _metadataCache
+		public static ResoniteBridge.ResoniteBridgeValue _metadataCache
 		{
 			get
 			{
@@ -4881,7 +4863,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private BindingFlags OPERATION_BIND_FLAGS
+		public BindingFlags OPERATION_BIND_FLAGS
 		{
 			get
 			{
@@ -4900,7 +4882,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private BindingFlags LOCALS_BIND_FLAGS
+		public BindingFlags LOCALS_BIND_FLAGS
 		{
 			get
 			{
@@ -4919,7 +4901,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private BindingFlags STORES_BIND_FLAGS
+		public BindingFlags STORES_BIND_FLAGS
 		{
 			get
 			{
@@ -4938,7 +4920,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private BindingFlags GLOBAL_BIND_FLAGS
+		public BindingFlags GLOBAL_BIND_FLAGS
 		{
 			get
 			{
@@ -5179,7 +5161,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ListGlobalChanged", listIndex, index, value, context);
 		}
 
-		private MethodInfo GetHandlerMethod(System.Int32 index, System.Boolean async)
+		public MethodInfo GetHandlerMethod(System.Int32 index, System.Boolean async)
 		{
 			return (MethodInfo)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHandlerMethod", index, async), typeof(MethodInfo));
 		}
@@ -5234,7 +5216,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetStoreOffset", index, offset);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5354,9 +5336,9 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Evaluate", context);
 		}
 
-		protected abstract T Compute(C context);
+		public abstract T Compute(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5476,9 +5458,9 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Evaluate", context);
 		}
 
-		protected abstract T Compute(C context);
+		public abstract T Compute(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5523,12 +5505,12 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Evaluate", context);
 		}
 
-		protected virtual void ComputeOutputs(C context)
+		public virtual void ComputeOutputs(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5616,9 +5598,9 @@ namespace ProtoFlux.Runtimes.Execution
 			return (ExecutionOperationHandler<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHandler"), typeof(ExecutionOperationHandler<T>));
 		}
 
-		protected abstract IOperation Run(C context);
+		public abstract IOperation Run(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5662,14 +5644,14 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		protected sealed override IOperation Run(C context)
+		public sealed override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		protected abstract void Do(C context);
+		public abstract void Do(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5713,14 +5695,14 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		protected sealed override IOperation Run(C context)
+		public sealed override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		protected abstract System.Boolean Do(C context);
+		public abstract System.Boolean Do(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5785,9 +5767,9 @@ namespace ProtoFlux.Runtimes.Execution
 			return (AsyncExecutionOperationHandler<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetAsyncHandler"), typeof(AsyncExecutionOperationHandler<T>));
 		}
 
-		protected abstract Task<IOperation> RunAsync(C context);
+		public abstract Task<IOperation> RunAsync(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5831,14 +5813,14 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		protected sealed override Task<IOperation> RunAsync(C context)
+		public sealed override Task<IOperation> RunAsync(C context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		protected abstract Task Do(C context);
+		public abstract Task Do(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -5882,14 +5864,14 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		protected sealed override Task<IOperation> RunAsync(C context)
+		public sealed override Task<IOperation> RunAsync(C context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		protected abstract Task<bool> Do(C context);
+		public abstract Task<bool> Do(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6172,7 +6154,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OperationExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), method);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6240,7 +6222,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OperationListExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), syncMethod, asyncMethod);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6640,12 +6622,12 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		internal void GenerateDefaultStackLayout()
+		public void GenerateDefaultStackLayout()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GenerateDefaultStackLayout");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6694,7 +6676,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalRefExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), method);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6743,7 +6725,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalRefListExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), method);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6811,7 +6793,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InputExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), size, stackOffset);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6917,7 +6899,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "LocalExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), field, dataClass);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -6966,7 +6948,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OutputExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), size);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7072,7 +7054,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "StoreExecutionMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), field, dataClass);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7108,7 +7090,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7131,7 +7113,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class AsyncExecutionListOperationWrapper<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class AsyncExecutionListOperationWrapper<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public System.Int32 Index
 		{
@@ -7181,7 +7163,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7204,7 +7186,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class AsyncOperationSequence<C> : OperationSequence<C, IAsyncOperation, AsyncExecutionOperationHandler<C>>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class AsyncOperationSequence<C> : OperationSequence<C, IAsyncOperation, AsyncExecutionOperationHandler<C>>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public override System.Boolean IsAsync
 		{
@@ -7226,7 +7208,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncOperationSequence", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, origin);
 		}
 
-		protected override AsyncExecutionOperationHandler<C> GetHandler(IOperation operation)
+		public override AsyncExecutionOperationHandler<C> GetHandler(IOperation operation)
 		{
 			return (AsyncExecutionOperationHandler<C>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHandler", operation), typeof(AsyncExecutionOperationHandler<C>));
 		}
@@ -7236,7 +7218,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7259,9 +7241,9 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class EvaluationAnalysisContext<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class EvaluationAnalysisContext<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private HashSet<EvaluationSequence<C>> processedSequences
+		public HashSet<EvaluationSequence<C>> processedSequences
 		{
 			get
 			{
@@ -7280,7 +7262,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private HashSet<IExecutionNode<C>> globalEvaluatedNodes
+		public HashSet<IExecutionNode<C>> globalEvaluatedNodes
 		{
 			get
 			{
@@ -7299,7 +7281,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private HashSet<IExecutionNode<C>> sequenceEvaluatedNodes
+		public HashSet<IExecutionNode<C>> sequenceEvaluatedNodes
 		{
 			get
 			{
@@ -7318,7 +7300,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private HashSet<IExecutionNode<C>> localNodes
+		public HashSet<IExecutionNode<C>> localNodes
 		{
 			get
 			{
@@ -7391,7 +7373,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkLocal", node);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7414,9 +7396,9 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class EvaluationBuildContext<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class EvaluationBuildContext<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private HashSet<IExecutionNode<C>> evaluatedNodes
+		public HashSet<IExecutionNode<C>> evaluatedNodes
 		{
 			get
 			{
@@ -7445,7 +7427,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearEvaluated");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7480,7 +7462,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7520,7 +7502,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7543,7 +7525,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal struct EvaluationAction<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public struct EvaluationAction<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public IExecutionNode<C> node
 		{
@@ -7598,7 +7580,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7621,9 +7603,9 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class EvaluationSequence<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class EvaluationSequence<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private System.Boolean isRoot
+		public System.Boolean isRoot
 		{
 			get
 			{
@@ -7642,7 +7624,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private HashSet<IExecutionNode<C>> rootNodes
+		public HashSet<IExecutionNode<C>> rootNodes
 		{
 			get
 			{
@@ -7661,7 +7643,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private IExecutionNode<C> firstNode
+		public IExecutionNode<C> firstNode
 		{
 			get
 			{
@@ -7680,7 +7662,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<IOutput> outputs
+		public List<IOutput> outputs
 		{
 			get
 			{
@@ -7699,7 +7681,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<EvaluationAction<C>> evaluationSequence
+		public List<EvaluationAction<C>> evaluationSequence
 		{
 			get
 			{
@@ -7785,52 +7767,52 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "EvaluationSequence", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, node, index);
 		}
 
-		internal void MarkLocal()
+		public void MarkLocal()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MarkLocal");
 		}
 
-		internal void Analyze(EvaluationAnalysisContext<C> context)
+		public void Analyze(EvaluationAnalysisContext<C> context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Analyze", context);
 		}
 
-		private void AnalyzeRecursive(IExecutionNode<C> node, EvaluationAnalysisContext<C> context)
+		public void AnalyzeRecursive(IExecutionNode<C> node, EvaluationAnalysisContext<C> context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AnalyzeRecursive", node, context);
 		}
 
-		internal void Build(EvaluationBuildContext<C> context)
+		public void Build(EvaluationBuildContext<C> context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Build", context);
 		}
 
-		private System.Boolean BuildRecursive(IExecutionNode<C> node, EvaluationBuildContext<C> context)
+		public System.Boolean BuildRecursive(IExecutionNode<C> node, EvaluationBuildContext<C> context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BuildRecursive", node, context), typeof(System.Boolean));
 		}
 
-		internal T EvaluateValue<T>(IOutput output, C context) where T : struct
+		public T EvaluateValue<T>(IOutput output, C context) where T : struct
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateValue", output, context), typeof(T));
 		}
 
-		internal T EvaluateObject<T>(IOutput output, C context)
+		public T EvaluateObject<T>(IOutput output, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateObject", output, context), typeof(T));
 		}
 
-		internal void EvaluateValueToStack<T>(IOutput output, C context) where T : struct
+		public void EvaluateValueToStack<T>(IOutput output, C context) where T : struct
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateValueToStack", output, context);
 		}
 
-		internal void EvaluateObjectToStack<T>(IOutput output, C context)
+		public void EvaluateObjectToStack<T>(IOutput output, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateObjectToStack", output, context);
 		}
 
-		internal void Evaluate(C context)
+		public void Evaluate(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Evaluate", context);
 		}
@@ -7845,7 +7827,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7870,7 +7852,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public delegate void ExecutionGlobalRefHandler<in C, T>(T value, C context) where C : ExecutionContext;
 	public delegate void ExecutionGlobalRefListHandler<in C, T>(System.Int32 index, T value, C context) where C : ExecutionContext;
-	internal class ExecutionListOperationWrapper<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class ExecutionListOperationWrapper<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public System.Int32 Index
 		{
@@ -7920,7 +7902,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -7982,7 +7964,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8036,7 +8018,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8167,7 +8149,7 @@ namespace ProtoFlux.Runtimes.Execution
 	}
 	public class ExecutionRuntime<C> : NodeRuntime<IExecutionNode<C>>, IExecutionRuntime, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private EvaluationSequence<C> _exportsEvaluationSequence
+		public EvaluationSequence<C> _exportsEvaluationSequence
 		{
 			get
 			{
@@ -8186,7 +8168,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<IExecutionNode<C>, EvaluationSequence<C>> evaluationSequences
+		public Dictionary<IExecutionNode<C>, EvaluationSequence<C>> evaluationSequences
 		{
 			get
 			{
@@ -8205,7 +8187,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<int> importsMapping
+		public List<int> importsMapping
 		{
 			get
 			{
@@ -8224,7 +8206,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<IOutput, int> localValueMapping
+		public Dictionary<IOutput, int> localValueMapping
 		{
 			get
 			{
@@ -8243,7 +8225,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<IExecutionNode<C>, LocalNodeData> localNodes
+		public Dictionary<IExecutionNode<C>, LocalNodeData> localNodes
 		{
 			get
 			{
@@ -8262,7 +8244,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private Dictionary<IOperation, IOperationSequence<C>> operationSequences
+		public Dictionary<IOperation, IOperationSequence<C>> operationSequences
 		{
 			get
 			{
@@ -8281,7 +8263,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _evaluationFlagsSize
+		public System.Int32 _evaluationFlagsSize
 		{
 			get
 			{
@@ -8300,7 +8282,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _localValueStackSize
+		public System.Int32 _localValueStackSize
 		{
 			get
 			{
@@ -8319,7 +8301,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _localObjectStackSize
+		public System.Int32 _localObjectStackSize
 		{
 			get
 			{
@@ -8338,7 +8320,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _valueLocalsSize
+		public System.Int32 _valueLocalsSize
 		{
 			get
 			{
@@ -8357,7 +8339,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _objectLocalsSize
+		public System.Int32 _objectLocalsSize
 		{
 			get
 			{
@@ -8376,7 +8358,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Boolean _requiresScopeData
+		public System.Boolean _requiresScopeData
 		{
 			get
 			{
@@ -8395,7 +8377,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _valueStoresSize
+		public System.Int32 _valueStoresSize
 		{
 			get
 			{
@@ -8414,7 +8396,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private System.Int32 _objectStoresSize
+		public System.Int32 _objectStoresSize
 		{
 			get
 			{
@@ -8538,12 +8520,12 @@ namespace ProtoFlux.Runtimes.Execution
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateObject", output, context), typeof(T));
 		}
 
-		internal void EvaluateValueToStack<T>(IOutput output, C context) where T : struct
+		public void EvaluateValueToStack<T>(IOutput output, C context) where T : struct
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateValueToStack", output, context);
 		}
 
-		internal void EvaluateObjectToStack<T>(IOutput output, C context)
+		public void EvaluateObjectToStack<T>(IOutput output, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EvaluateObjectToStack", output, context);
 		}
@@ -8573,42 +8555,42 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Rebuild");
 		}
 
-		private void MapLocalNode(IExecutionNode<C> node)
+		public void MapLocalNode(IExecutionNode<C> node)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapLocalNode", node);
 		}
 
-		internal EvaluationSequence<C> EnsureSequence(IExecutionNode<C> node)
+		public EvaluationSequence<C> EnsureSequence(IExecutionNode<C> node)
 		{
 			return (EvaluationSequence<C>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureSequence", node), typeof(EvaluationSequence<C>));
 		}
 
-		internal EvaluationSequence<C> GetSequence(IExecutionNode<C> node)
+		public EvaluationSequence<C> GetSequence(IExecutionNode<C> node)
 		{
 			return (EvaluationSequence<C>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSequence", node), typeof(EvaluationSequence<C>));
 		}
 
-		internal System.Boolean IsLocalNode(IExecutionNode<C> node)
+		public System.Boolean IsLocalNode(IExecutionNode<C> node)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsLocalNode", node), typeof(System.Boolean));
 		}
 
-		internal System.Int32 GetLocalValueMapping(IOutput output)
+		public System.Int32 GetLocalValueMapping(IOutput output)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetLocalValueMapping", output), typeof(System.Int32));
 		}
 
-		internal LocalNodeData GetStaticNodeMapping(IExecutionNode<C> node)
+		public LocalNodeData GetStaticNodeMapping(IExecutionNode<C> node)
 		{
 			return (LocalNodeData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetStaticNodeMapping", node), typeof(LocalNodeData));
 		}
 
-		internal void MapSequence(IOperation alias, IOperation existing)
+		public void MapSequence(IOperation alias, IOperation existing)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapSequence", alias, existing);
 		}
 
-		internal void SetNullSequence(IOperation alias)
+		public void SetNullSequence(IOperation alias)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetNullSequence", alias);
 		}
@@ -8668,12 +8650,12 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsyncResumption", resumption, context), typeof(Task));
 		}
 
-		internal void ResumeExecution(SyncResumption resumption, C context)
+		public void ResumeExecution(SyncResumption resumption, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResumeExecution", resumption, context);
 		}
 
-		internal Task ResumeAsyncExecution(AsyncResumption resumption, C context)
+		public Task ResumeAsyncExecution(AsyncResumption resumption, C context)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResumeAsyncExecution", resumption, context), typeof(Task));
 		}
@@ -8713,17 +8695,17 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitStackFrame", context), typeof(System.Boolean));
 		}
 
-		internal void ClearValueLocals(C context)
+		public void ClearValueLocals(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearValueLocals", context);
 		}
 
-		internal void ClearObjectLocals(C context)
+		public void ClearObjectLocals(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearObjectLocals", context);
 		}
 
-		internal void ClearEvaluatedFlags(C context)
+		public void ClearEvaluatedFlags(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearEvaluatedFlags", context);
 		}
@@ -8738,7 +8720,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EndStackFrame", context);
 		}
 
-		internal void InvokeImpulseExport(C context, System.Int32 index)
+		public void InvokeImpulseExport(C context, System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InvokeImpulseExport", context, index);
 		}
@@ -8778,7 +8760,7 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResetGlobalsToDefault", context);
 		}
 
-		internal void MapGlobalsInternal(IGlobalValue[] globals, C context)
+		public void MapGlobalsInternal(IGlobalValue[] globals, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapGlobalsInternal", globals, context);
 		}
@@ -8788,12 +8770,12 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RestoreSharedScope", rootScope, context, values, objects), typeof(System.Int32));
 		}
 
-		private System.Int32 RestoreSharedScopeInternal(ScopePoint point, C context, byte[] values, object[] objects)
+		public System.Int32 RestoreSharedScopeInternal(ScopePoint point, C context, byte[] values, object[] objects)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RestoreSharedScopeInternal", point, context, values, objects), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8861,12 +8843,12 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseExportWrapper", ResoniteBridge.ResoniteBridgeValueType.Type), index);
 		}
 
-		protected System.Boolean ShouldBeContinuation(C context)
+		public System.Boolean ShouldBeContinuation(C context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ShouldBeContinuation", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -8889,7 +8871,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal struct LocalNodeData : ResoniteBridge.ResoniteBridgeValueHolder
+	public struct LocalNodeData : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		public System.Int32 index
 		{
@@ -9015,7 +8997,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9038,7 +9020,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal interface IOperationSequence<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public interface IOperationSequence<C> : ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		ExecutionRuntime<C> Runtime
 		{
@@ -9091,9 +9073,9 @@ namespace ProtoFlux.Runtimes.Execution
 
 		Task<IOperation> ExecuteAsync(C context);
 	}
-	internal abstract class OperationSequence<C, O, H> : IOperationSequence<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext where O : class, IOperation where H : Delegate
+	public abstract class OperationSequence<C, O, H> : IOperationSequence<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext where O : class, IOperation where H : Delegate
 	{
-		private O origin
+		public O origin
 		{
 			get
 			{
@@ -9146,7 +9128,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		protected List<H> operationSequence
+		public List<H> operationSequence
 		{
 			get
 			{
@@ -9177,22 +9159,22 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IOperationSequence<C>.Build");
 		}
 
-		internal void StitchSequence(Node node, IOperation initialOperationSkip)
+		public void StitchSequence(Node node, IOperation initialOperationSkip)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "StitchSequence", node, initialOperationSkip);
 		}
 
-		internal IOperation BuildOperationStep(IOperation operation, ref IOperation initialOperationSkip)
+		public IOperation BuildOperationStep(IOperation operation, ref IOperation initialOperationSkip)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BuildOperationStep", operation, initialOperationSkip), typeof(IOperation));
 		}
 
-		protected virtual System.Boolean IsSupported(IOperation operation)
+		public virtual System.Boolean IsSupported(IOperation operation)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsSupported", operation), typeof(System.Boolean));
 		}
 
-		protected abstract H GetHandler(IOperation operation);
+		public abstract H GetHandler(IOperation operation);
 
 		public virtual IOperation ExecuteSync(C context)
 		{
@@ -9204,7 +9186,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9227,7 +9209,7 @@ namespace ProtoFlux.Runtimes.Execution
 		{
 		}
 	}
-	internal class SyncOperationSequence<C> : OperationSequence<C, ISyncOperation, ExecutionOperationHandler<C>>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
+	public class SyncOperationSequence<C> : OperationSequence<C, ISyncOperation, ExecutionOperationHandler<C>>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
 		public override System.Boolean IsAsync
 		{
@@ -9249,7 +9231,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "SyncOperationSequence", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, origin);
 		}
 
-		protected override ExecutionOperationHandler<C> GetHandler(IOperation operation)
+		public override ExecutionOperationHandler<C> GetHandler(IOperation operation)
 		{
 			return (ExecutionOperationHandler<C>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetHandler", operation), typeof(ExecutionOperationHandler<C>));
 		}
@@ -9259,7 +9241,7 @@ namespace ProtoFlux.Runtimes.Execution
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExecuteSync", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -9306,7 +9288,7 @@ namespace ProtoFlux.Runtimes.Execution
 	[NodeOverload("Core.Nest")]
 	public class NestedNode<C> : VoidNode<C>, IExecutionNestedNode, INestedNode, INode, ResoniteBridge.ResoniteBridgeValueHolder where C : ExecutionContext
 	{
-		private abstract class InputMapping : ResoniteBridge.ResoniteBridgeValueHolder
+		public abstract class InputMapping : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public abstract void Map(ArgumentList inputList, IOutput output);
 
@@ -9316,7 +9298,7 @@ namespace ProtoFlux.Runtimes.Execution
 
 			public abstract void SetFromStack(System.Int32 index, ExecutionRuntime<C> group, C context);
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9340,13 +9322,13 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private abstract class OutputMapping : ResoniteBridge.ResoniteBridgeValueHolder
+		public abstract class OutputMapping : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public abstract void Map(OutputList outputList, IOutput output);
 
 			public abstract void ExtractExport(System.Int32 index, ExecutionRuntime<C> runtime, C context);
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9370,9 +9352,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private abstract class InputMapping<T> : InputMapping, ResoniteBridge.ResoniteBridgeValueHolder
+		public abstract class InputMapping<T> : InputMapping, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9396,9 +9378,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private abstract class OutputMapping<T> : OutputMapping, ResoniteBridge.ResoniteBridgeValueHolder
+		public abstract class OutputMapping<T> : OutputMapping, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9422,9 +9404,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private class ValueInputMapping<T> : InputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
+		public class ValueInputMapping<T> : InputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 		{
-			private IInput<T> input
+			public IInput<T> input
 			{
 				get
 				{
@@ -9443,7 +9425,7 @@ namespace ProtoFlux.Runtimes.Execution
 				}
 			}
 
-			private ValueOutput<T> import
+			public ValueOutput<T> import
 			{
 				get
 				{
@@ -9482,7 +9464,7 @@ namespace ProtoFlux.Runtimes.Execution
 				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetFromStack", index, group, context);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9506,9 +9488,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private class ObjectInputMapping<T> : InputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder
+		public class ObjectInputMapping<T> : InputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private IInput<T> input
+			public IInput<T> input
 			{
 				get
 				{
@@ -9527,7 +9509,7 @@ namespace ProtoFlux.Runtimes.Execution
 				}
 			}
 
-			private ObjectOutput<T> import
+			public ObjectOutput<T> import
 			{
 				get
 				{
@@ -9566,7 +9548,7 @@ namespace ProtoFlux.Runtimes.Execution
 				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetFromStack", index, group, context);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9590,9 +9572,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private class ValueOutputMapping<T> : OutputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
+		public class ValueOutputMapping<T> : OutputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 		{
-			private ValueOutput<T> output
+			public ValueOutput<T> output
 			{
 				get
 				{
@@ -9611,7 +9593,7 @@ namespace ProtoFlux.Runtimes.Execution
 				}
 			}
 
-			private IOutput export
+			public IOutput export
 			{
 				get
 				{
@@ -9640,7 +9622,7 @@ namespace ProtoFlux.Runtimes.Execution
 				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractExport", index, runtime, context);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9664,9 +9646,9 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private class ObjectOutputMapping<T> : OutputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder
+		public class ObjectOutputMapping<T> : OutputMapping<T>, ResoniteBridge.ResoniteBridgeValueHolder
 		{
-			private ObjectOutput<T> output
+			public ObjectOutput<T> output
 			{
 				get
 				{
@@ -9685,7 +9667,7 @@ namespace ProtoFlux.Runtimes.Execution
 				}
 			}
 
-			private IOutput export
+			public IOutput export
 			{
 				get
 				{
@@ -9714,7 +9696,7 @@ namespace ProtoFlux.Runtimes.Execution
 				ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractExport", index, runtime, context);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -9738,7 +9720,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private static Type _valueInputMapping
+		public static Type _valueInputMapping
 		{
 			get
 			{
@@ -9757,7 +9739,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private static Type _objectInputMapping
+		public static Type _objectInputMapping
 		{
 			get
 			{
@@ -9776,7 +9758,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private static Type _valueOutputMapping
+		public static Type _valueOutputMapping
 		{
 			get
 			{
@@ -9795,7 +9777,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private static Type _objectOutputMapping
+		public static Type _objectOutputMapping
 		{
 			get
 			{
@@ -9928,7 +9910,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<InputMapping> _inputMappings
+		public List<InputMapping> _inputMappings
 		{
 			get
 			{
@@ -9947,7 +9929,7 @@ namespace ProtoFlux.Runtimes.Execution
 			}
 		}
 
-		private List<OutputMapping> _outputMappings
+		public List<OutputMapping> _outputMappings
 		{
 			get
 			{
@@ -10046,37 +10028,37 @@ namespace ProtoFlux.Runtimes.Execution
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapTarget");
 		}
 
-		internal void EnterTargetFrame(C context)
+		public void EnterTargetFrame(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnterTargetFrame", context);
 		}
 
-		internal void ExitTargetFrame(C context)
+		public void ExitTargetFrame(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitTargetFrame", context);
 		}
 
-		protected IOperation DoOperations(C context, System.Int32 index)
+		public IOperation DoOperations(C context, System.Int32 index)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoOperations", context, index), typeof(IOperation));
 		}
 
-		protected Task<IOperation> DoOperationsAsync(C context, System.Int32 index)
+		public Task<IOperation> DoOperationsAsync(C context, System.Int32 index)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoOperationsAsync", context, index), typeof(Task<IOperation>));
 		}
 
-		private void OnGlobalRefsChanged<T>(System.Int32 index, T value, C context)
+		public void OnGlobalRefsChanged<T>(System.Int32 index, T value, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGlobalRefsChanged", index, value, context);
 		}
 
-		internal void MapGlobals(IGlobalValue[] scopeGlobals, C context)
+		public void MapGlobals(IGlobalValue[] scopeGlobals, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "MapGlobals", scopeGlobals, context);
 		}
 
-		private IOperation FinishOperations(C context)
+		public IOperation FinishOperations(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinishOperations", context), typeof(IOperation));
 		}
@@ -10091,32 +10073,32 @@ namespace ProtoFlux.Runtimes.Execution
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResumeAsyncExecution", resumption, context), typeof(Task<IOperation>));
 		}
 
-		internal System.Int32 DoOnEachNode<T>(ExecutionNodeOperation<T, C> action, C context, System.Boolean cache, HashSet<NodeRuntime> walkedRuntimes) where T : INode
+		public System.Int32 DoOnEachNode<T>(ExecutionNodeOperation<T, C> action, C context, System.Boolean cache, HashSet<NodeRuntime> walkedRuntimes) where T : INode
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoOnEachNode", action, context, cache, walkedRuntimes), typeof(System.Int32));
 		}
 
-		private void OnImpulseExport(ExecutionContext context, System.Int32 index)
+		public void OnImpulseExport(ExecutionContext context, System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnImpulseExport", context, index);
 		}
 
-		protected override void ComputeOutputs(C context)
+		public override void ComputeOutputs(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
 
-		private void EnterNestedFrame(C context)
+		public void EnterNestedFrame(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnterNestedFrame", context);
 		}
 
-		private void FinishNestedFrame(C context)
+		public void FinishNestedFrame(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FinishNestedFrame", context);
 		}
 
-		private void ExtractExports(C context)
+		public void ExtractExports(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExtractExports", context);
 		}
@@ -10131,7 +10113,7 @@ namespace ProtoFlux.Runtimes.Execution
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NestedNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10184,19 +10166,19 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected virtual void BeforeDelay(ExecutionContext context)
+		public virtual void BeforeDelay(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeforeDelay", context);
 		}
 
-		protected abstract TimeSpan GetDuration(ExecutionContext context);
+		public abstract TimeSpan GetDuration(ExecutionContext context);
 
-		protected override Task Do(ExecutionContext context)
+		public override Task Do(ExecutionContext context)
 		{
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10241,12 +10223,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10291,12 +10273,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10341,12 +10323,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10391,12 +10373,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10461,17 +10443,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void BeforeDelay(ExecutionContext context)
+		public override void BeforeDelay(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeforeDelay", context);
 		}
 
-		protected DelayTimeWithValue()
+		public DelayTimeWithValue()
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DelayTimeWithValue", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10511,12 +10493,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10560,12 +10542,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10609,12 +10591,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10658,12 +10640,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10728,17 +10710,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void BeforeDelay(ExecutionContext context)
+		public override void BeforeDelay(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BeforeDelay", context);
 		}
 
-		protected DelayTimeWithObject()
+		public DelayTimeWithObject()
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DelayTimeWithObject", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10778,12 +10760,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10827,12 +10809,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10876,12 +10858,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10925,12 +10907,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override TimeSpan GetDuration(ExecutionContext context)
+		public override TimeSpan GetDuration(ExecutionContext context)
 		{
 			return (TimeSpan)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetDuration", context), typeof(TimeSpan));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -10976,12 +10958,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Object Compute(ExecutionContext context)
+		public override System.Object Compute(ExecutionContext context)
 		{
 			return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Object));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11027,12 +11009,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11078,12 +11060,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11169,12 +11151,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11238,12 +11220,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11346,7 +11328,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void ComputeOutputs(ExecutionContext context)
+		public override void ComputeOutputs(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
@@ -11356,7 +11338,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ValueDemultiplex", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11455,7 +11437,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void ComputeOutputs(ExecutionContext context)
+		public override void ComputeOutputs(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
@@ -11465,7 +11447,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ObjectDemultiplex", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11508,7 +11490,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11555,7 +11537,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11647,7 +11629,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Changed", context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11737,7 +11719,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Changed", context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11783,12 +11765,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(C context)
+		public override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11813,7 +11795,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ExternalImpulseDisplay : ExternalImpulseDisplay<ExecutionContext>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11842,7 +11824,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Input")]
 	public class ExternalValueInput<C, T> : ValueFunctionNode<C, T>, IScopeEventListener<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExtendedExecutionContext<C> where T : struct
 	{
-		private Dictionary<NodeContextPath, ExecutionChangesDispatcher<C>> _changeListeners
+		public Dictionary<NodeContextPath, ExecutionChangesDispatcher<C>> _changeListeners
 		{
 			get
 			{
@@ -11895,12 +11877,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetValue", value);
 		}
 
-		protected override T Compute(C context)
+		public override T Compute(C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -11929,7 +11911,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Input")]
 	public class ExternalObjectInput<C, T> : ObjectFunctionNode<C, T>, IScopeEventListener<C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ExtendedExecutionContext<C>
 	{
-		private Dictionary<NodeContextPath, ExecutionChangesDispatcher<C>> _changeListeners
+		public Dictionary<NodeContextPath, ExecutionChangesDispatcher<C>> _changeListeners
 		{
 			get
 			{
@@ -11982,12 +11964,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetValue", value);
 		}
 
-		protected override T Compute(C context)
+		public override T Compute(C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12035,12 +12017,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(C context)
+		public override T Compute(C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12088,12 +12070,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(C context)
+		public override T Compute(C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12144,7 +12126,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12195,7 +12177,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", context), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12351,7 +12333,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Task<IOperation> RunAsync(ExecutionContext context)
+		public override Task<IOperation> RunAsync(ExecutionContext context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
@@ -12361,7 +12343,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncFor", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12533,7 +12515,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Task<IOperation> RunAsync(ExecutionContext context)
+		public override Task<IOperation> RunAsync(ExecutionContext context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
@@ -12543,7 +12525,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncRangeLoopInt", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12585,7 +12567,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Task<IOperation> RunAsync(ExecutionContext context)
+		public override Task<IOperation> RunAsync(ExecutionContext context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
@@ -12595,7 +12577,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncSequence", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12694,12 +12676,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Task<IOperation> RunAsync(ExecutionContext context)
+		public override Task<IOperation> RunAsync(ExecutionContext context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12855,7 +12837,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
@@ -12865,7 +12847,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "For", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -12945,12 +12927,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13058,7 +13040,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseDemultiplexer", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13119,7 +13101,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
@@ -13129,7 +13111,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseMultiplexer", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13301,7 +13283,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
@@ -13311,7 +13293,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "RangeLoopInt", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13353,7 +13335,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
@@ -13363,7 +13345,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "Sequence", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13462,12 +13444,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13513,12 +13495,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Type Compute(ExecutionContext context)
+		public override Type Compute(ExecutionContext context)
 		{
 			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13575,12 +13557,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private void OnGlobalChanged(T value, ExecutionContext context)
+		public void OnGlobalChanged(T value, ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGlobalChanged", value, context);
 		}
@@ -13590,7 +13572,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalToValueOutput", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13643,12 +13625,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private void OnGlobalChanged(T value, ExecutionContext context)
+		public void OnGlobalChanged(T value, ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGlobalChanged", value, context);
 		}
@@ -13658,7 +13640,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalToObjectOutput", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13719,7 +13701,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13746,7 +13728,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Local")]
 	public class LocalValue<T> : ValueFunctionNode<ExecutionContext, T>, IVariable<ExecutionContext, T>, INode, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ValueLocal<T> _data
+		public ValueLocal<T> _data
 		{
 			get
 			{
@@ -13765,7 +13747,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
@@ -13780,7 +13762,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13807,7 +13789,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Local")]
 	public class LocalObject<T> : ObjectFunctionNode<ExecutionContext, T>, IVariable<ExecutionContext, T>, INode, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ObjectLocal<T> _data
+		public ObjectLocal<T> _data
 		{
 			get
 			{
@@ -13826,7 +13808,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
@@ -13841,7 +13823,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -13944,7 +13926,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void ComputeOutputs(ExecutionContext context)
+		public override void ComputeOutputs(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
@@ -13954,7 +13936,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ValueMultiplex", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14053,7 +14035,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void ComputeOutputs(ExecutionContext context)
+		public override void ComputeOutputs(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
@@ -14063,7 +14045,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ObjectMultiplex", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14125,12 +14107,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T? Compute(ExecutionContext context)
+		public override T? Compute(ExecutionContext context)
 		{
 			return (T?)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14215,7 +14197,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override void ComputeOutputs(ExecutionContext context)
+		public override void ComputeOutputs(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ComputeOutputs", context);
 		}
@@ -14225,7 +14207,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "UnpackNullable", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14306,12 +14288,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14396,12 +14378,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14467,12 +14449,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14538,12 +14520,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14590,12 +14572,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14642,12 +14624,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14713,12 +14695,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14784,12 +14766,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override System.Boolean Compute(ExecutionContext context)
+		public override System.Boolean Compute(ExecutionContext context)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14855,12 +14837,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14907,7 +14889,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
@@ -14917,7 +14899,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "MultiNullCoalesce", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -14960,12 +14942,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15026,12 +15008,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15092,12 +15074,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15125,7 +15107,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.ContinuationRelay")]
 	public class ContinuationRelay : ActionFlowNode<ExecutionContext>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override void Do(ExecutionContext context)
+		public override void Do(ExecutionContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Do", context);
 		}
@@ -15140,7 +15122,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsOperationPassthrough", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15187,7 +15169,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(ExecutionContext context)
+		public override IOperation Run(ExecutionContext context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
@@ -15202,7 +15184,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsOperationPassthrough", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15249,7 +15231,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override Task<IOperation> RunAsync(ExecutionContext context)
+		public override Task<IOperation> RunAsync(ExecutionContext context)
 		{
 			return (Task<IOperation>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunAsync", context), typeof(Task<IOperation>));
 		}
@@ -15264,7 +15246,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IsOperationPassthrough", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15291,7 +15273,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Store")]
 	public class StoredValue<T> : ValueFunctionNode<ExecutionContext, T>, IVariable<ExecutionContext, T>, INode, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ValueStore<T> _data
+		public ValueStore<T> _data
 		{
 			get
 			{
@@ -15310,7 +15292,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
@@ -15325,7 +15307,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15352,7 +15334,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	[NodeOverload("Core.Store")]
 	public class StoredObject<T> : ObjectFunctionNode<ExecutionContext, T>, IVariable<ExecutionContext, T>, INode, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ObjectStore<T> _data
+		public ObjectStore<T> _data
 		{
 			get
 			{
@@ -15371,7 +15353,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
@@ -15386,7 +15368,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15432,12 +15414,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override T Compute(ExecutionContext context)
+		public override T Compute(ExecutionContext context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15500,16 +15482,16 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected abstract IVariable<C, T> GetVariable(C context);
+		public abstract IVariable<C, T> GetVariable(C context);
 
-		protected abstract T GetValue(IVariable<C, T> variable, C context);
+		public abstract T GetValue(IVariable<C, T> variable, C context);
 
-		protected override IOperation Run(C context)
+		public override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15575,17 +15557,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected sealed override IVariable<C, T> GetVariable(C context)
+		public sealed override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected sealed override T GetValue(IVariable<C, T> variable, C context)
+		public sealed override T GetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15651,17 +15633,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected sealed override IVariable<C, T> GetVariable(C context)
+		public sealed override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected sealed override T GetValue(IVariable<C, T> variable, C context)
+		public sealed override T GetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15727,17 +15709,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected sealed override IVariable<C, T> GetVariable(C context)
+		public sealed override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected sealed override T GetValue(IVariable<C, T> variable, C context)
+		public sealed override T GetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15803,17 +15785,17 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected sealed override IVariable<C, T> GetVariable(C context)
+		public sealed override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected sealed override T GetValue(IVariable<C, T> variable, C context)
+		public sealed override T GetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15838,7 +15820,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ValueWrite<T> : ValueWrite<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15863,7 +15845,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ObjectWrite<T> : ObjectWrite<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15888,7 +15870,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ValueIndirectWrite<T> : ValueIndirectWrite<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -15913,7 +15895,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ObjectIndirectWrite<T> : ObjectIndirectWrite<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16017,12 +15999,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(C context)
+		public override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private void OnGlobalChanged(T value, C context)
+		public void OnGlobalChanged(T value, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGlobalChanged", value, context);
 		}
@@ -16032,7 +16014,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "WriteValueToGlobal", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16132,12 +16114,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IOperation Run(C context)
+		public override IOperation Run(C context)
 		{
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Run", context), typeof(IOperation));
 		}
 
-		private void OnGlobalChanged(T value, C context)
+		public void OnGlobalChanged(T value, C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "OnGlobalChanged", value, context);
 		}
@@ -16147,7 +16129,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "WriteObjectToGlobal", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16273,18 +16255,18 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "DoReset", context), typeof(IOperation));
 		}
 
-		protected abstract IVariable<C, T> GetVariable(C context);
+		public abstract IVariable<C, T> GetVariable(C context);
 
-		protected abstract T GetSetValue(IVariable<C, T> variable, C context);
+		public abstract T GetSetValue(IVariable<C, T> variable, C context);
 
-		protected abstract T GetResetValue(IVariable<C, T> variable, C context);
+		public abstract T GetResetValue(IVariable<C, T> variable, C context);
 
-		protected WriteLatchBase()
+		public WriteLatchBase()
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "WriteLatchBase", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16365,22 +16347,22 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IVariable<C, T> GetVariable(C context)
+		public override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected override T GetSetValue(IVariable<C, T> variable, C context)
+		public override T GetSetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetValue", variable, context), typeof(T));
 		}
 
-		protected override T GetResetValue(IVariable<C, T> variable, C context)
+		public override T GetResetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetResetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16465,22 +16447,22 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IVariable<C, T> GetVariable(C context)
+		public override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected override T GetSetValue(IVariable<C, T> variable, C context)
+		public override T GetSetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetValue", variable, context), typeof(T));
 		}
 
-		protected override T GetResetValue(IVariable<C, T> variable, C context)
+		public override T GetResetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetResetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16565,22 +16547,22 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IVariable<C, T> GetVariable(C context)
+		public override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected override T GetSetValue(IVariable<C, T> variable, C context)
+		public override T GetSetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetValue", variable, context), typeof(T));
 		}
 
-		protected override T GetResetValue(IVariable<C, T> variable, C context)
+		public override T GetResetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetResetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16665,22 +16647,22 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 			}
 		}
 
-		protected override IVariable<C, T> GetVariable(C context)
+		public override IVariable<C, T> GetVariable(C context)
 		{
 			return (IVariable<C, T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetVariable", context), typeof(IVariable<C, T>));
 		}
 
-		protected override T GetSetValue(IVariable<C, T> variable, C context)
+		public override T GetSetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetSetValue", variable, context), typeof(T));
 		}
 
-		protected override T GetResetValue(IVariable<C, T> variable, C context)
+		public override T GetResetValue(IVariable<C, T> variable, C context)
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetResetValue", variable, context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16705,7 +16687,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ValueWriteLatch<T> : ValueWriteLatch<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16730,7 +16712,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ObjectWriteLatch<T> : ObjectWriteLatch<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16755,7 +16737,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ValueIndirectWriteLatch<T> : ValueIndirectWriteLatch<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16780,7 +16762,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes
 	}
 	public class ObjectIndirectWriteLatch<T> : ObjectIndirectWriteLatch<ExecutionContext, T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16874,7 +16856,7 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Casts
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -16966,12 +16948,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Casts
 			}
 		}
 
-		protected override O Compute(ExecutionContext context)
+		public override O Compute(ExecutionContext context)
 		{
 			return (O)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(O));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17047,12 +17029,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Casts
 			}
 		}
 
-		protected override System.Object Compute(ExecutionContext context)
+		public override System.Object Compute(ExecutionContext context)
 		{
 			return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Object));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17143,12 +17125,12 @@ namespace ProtoFlux.Runtimes.Execution.Nodes.Casts
 			}
 		}
 
-		protected override System.Object Compute(ExecutionContext context)
+		public override System.Object Compute(ExecutionContext context)
 		{
 			return (System.Object)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Compute", context), typeof(System.Object));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17176,7 +17158,7 @@ namespace ProtoFlux.Runtimes.DSP
 {
 	public abstract class DSP_Action<TNode, TSequence, TContext, TBuffer, TAction> : ResoniteBridge.ResoniteBridgeValueHolder where TNode : class, IDSP_Node<TBuffer, TContext> where TSequence : DSP_Sequence<TNode, TSequence, TContext, TBuffer, TAction> where TContext : DSP_Context<TBuffer, TContext> where TBuffer : DSP_Buffer where TAction : DSP_Action<TNode, TSequence, TContext, TBuffer, TAction>
 	{
-		private List<DSP_Dependency<TSequence>> _dependencies
+		public List<DSP_Dependency<TSequence>> _dependencies
 		{
 			get
 			{
@@ -17277,7 +17259,7 @@ namespace ProtoFlux.Runtimes.DSP
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RequestDepedency", sequence, inputIndex, outputIndex);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17306,7 +17288,7 @@ namespace ProtoFlux.Runtimes.DSP
 
 		public abstract void Recycle();
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17350,7 +17332,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17375,7 +17357,7 @@ namespace ProtoFlux.Runtimes.DSP
 	}
 	public abstract class DSP_BuildContext<TNode, TSequence, TContext, TBuffer, TAction> : DSP_BuildContext, ResoniteBridge.ResoniteBridgeValueHolder where TNode : class, IDSP_Node<TBuffer, TContext> where TSequence : DSP_Sequence<TNode, TSequence, TContext, TBuffer, TAction>, new() where TContext : DSP_Context<TBuffer, TContext> where TBuffer : DSP_Buffer where TAction : DSP_Action<TNode, TSequence, TContext, TBuffer, TAction>
 	{
-		private Dictionary<TNode, TSequence> nodes
+		public Dictionary<TNode, TSequence> nodes
 		{
 			get
 			{
@@ -17394,7 +17376,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private List<TSequence> rootSequences
+		public List<TSequence> rootSequences
 		{
 			get
 			{
@@ -17413,7 +17395,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private TaskCompletionSource<bool> completion
+		public TaskCompletionSource<bool> completion
 		{
 			get
 			{
@@ -17432,7 +17414,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private DSP_ResultHandler<TBuffer> resultHandler
+		public DSP_ResultHandler<TBuffer> resultHandler
 		{
 			get
 			{
@@ -17451,7 +17433,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private System.Int32 outputCount
+		public System.Int32 outputCount
 		{
 			get
 			{
@@ -17470,7 +17452,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private System.Int32 remainingOutputs
+		public System.Int32 remainingOutputs
 		{
 			get
 			{
@@ -17509,7 +17491,7 @@ namespace ProtoFlux.Runtimes.DSP
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Collect", outputs, executionContext);
 		}
 
-		private TSequence Collect(TNode node)
+		public TSequence Collect(TNode node)
 		{
 			return (TSequence)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Collect", node), typeof(TSequence));
 		}
@@ -17519,12 +17501,12 @@ namespace ProtoFlux.Runtimes.DSP
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Execute", context), typeof(Task));
 		}
 
-		private void HandleResult(System.Int32 index, TBuffer buffer)
+		public void HandleResult(System.Int32 index, TBuffer buffer)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "HandleResult", index, buffer);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17567,7 +17549,7 @@ namespace ProtoFlux.Runtimes.DSP
 	public delegate void DSP_ResultHandler<B>(System.Int32 resultIndex, B buffer) where B : DSP_Buffer;
 	public abstract class DSP_Context<B, C> : ResoniteBridge.ResoniteBridgeValueHolder where B : DSP_Buffer where C : DSP_Context<B, C>
 	{
-		private List<B> inputBuffers
+		public List<B> inputBuffers
 		{
 			get
 			{
@@ -17586,7 +17568,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private List<B> outputBuffers
+		public List<B> outputBuffers
 		{
 			get
 			{
@@ -17605,7 +17587,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private List<int> sharedOutputBuffers
+		public List<int> sharedOutputBuffers
 		{
 			get
 			{
@@ -17662,7 +17644,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		internal void SetResult(System.Int32 resultIndex, B buffer)
+		public void SetResult(System.Int32 resultIndex, B buffer)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetResult", resultIndex, buffer);
 		}
@@ -17731,26 +17713,26 @@ namespace ProtoFlux.Runtimes.DSP
 
 		public abstract B CloneBuffer(B buffer);
 
-		protected abstract void RecycleBuffer(B buffer);
+		public abstract void RecycleBuffer(B buffer);
 
-		protected abstract C CloneSelf();
+		public abstract C CloneSelf();
 
-		private void EnsureInputBufferCountForIndex(System.Int32 index)
+		public void EnsureInputBufferCountForIndex(System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureInputBufferCountForIndex", index);
 		}
 
-		private void EnsureOutputBufferCountForIndex(System.Int32 index)
+		public void EnsureOutputBufferCountForIndex(System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureOutputBufferCountForIndex", index);
 		}
 
-		private void EnsureBufferCountForIndex(List<B> list, System.Int32 index)
+		public void EnsureBufferCountForIndex(List<B> list, System.Int32 index)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "EnsureBufferCountForIndex", list, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17773,7 +17755,7 @@ namespace ProtoFlux.Runtimes.DSP
 		{
 		}
 	}
-	internal struct DSP_Dependency<TSequence> : ResoniteBridge.ResoniteBridgeValueHolder where TSequence : class
+	public struct DSP_Dependency<TSequence> : ResoniteBridge.ResoniteBridgeValueHolder where TSequence : class
 	{
 		public TSequence sequence
 		{
@@ -17852,7 +17834,7 @@ namespace ProtoFlux.Runtimes.DSP
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DSP_Dependency", ResoniteBridge.ResoniteBridgeValueType.Type), sequence, inputIndex, outputIndex);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -17877,7 +17859,7 @@ namespace ProtoFlux.Runtimes.DSP
 	}
 	public static class DSP_MetadataHelper
 	{
-		private static ResoniteBridge.ResoniteBridgeValue _metadataCache
+		public static ResoniteBridge.ResoniteBridgeValue _metadataCache
 		{
 			get
 			{
@@ -17973,22 +17955,22 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private System.Int32 BaseInputIndex(System.Int32 index)
+		public System.Int32 BaseInputIndex(System.Int32 index)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BaseInputIndex", index), typeof(System.Int32));
 		}
 
-		private System.Int32 BaseOutputIndex(System.Int32 index)
+		public System.Int32 BaseOutputIndex(System.Int32 index)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BaseOutputIndex", index), typeof(System.Int32));
 		}
 
-		private System.Int32 BaseInputListIndex(System.Int32 index)
+		public System.Int32 BaseInputListIndex(System.Int32 index)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BaseInputListIndex", index), typeof(System.Int32));
 		}
 
-		private System.Int32 BaseOutputListIndex(System.Int32 index)
+		public System.Int32 BaseOutputListIndex(System.Int32 index)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BaseOutputListIndex", index), typeof(System.Int32));
 		}
@@ -18007,7 +17989,7 @@ namespace ProtoFlux.Runtimes.DSP
 
 		public abstract void Process(C context);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18076,7 +18058,7 @@ namespace ProtoFlux.Runtimes.DSP
 			return (Task)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Process", outputs, context), typeof(Task));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18101,7 +18083,7 @@ namespace ProtoFlux.Runtimes.DSP
 	}
 	public abstract class DSP_Sequence<TNode, TSequence, TContext, TBuffer, TAction> : ResoniteBridge.ResoniteBridgeValueHolder where TNode : class, IDSP_Node<TBuffer, TContext> where TSequence : DSP_Sequence<TNode, TSequence, TContext, TBuffer, TAction> where TContext : DSP_Context<TBuffer, TContext> where TBuffer : DSP_Buffer where TAction : DSP_Action<TNode, TSequence, TContext, TBuffer, TAction>
 	{
-		private List<TAction> _actions
+		public List<TAction> _actions
 		{
 			get
 			{
@@ -18120,7 +18102,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private List<TBuffer> _dependencyBuffers
+		public List<TBuffer> _dependencyBuffers
 		{
 			get
 			{
@@ -18139,7 +18121,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private System.Int32 _missingDependencies
+		public System.Int32 _missingDependencies
 		{
 			get
 			{
@@ -18173,54 +18155,54 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		internal void AllocateDependency(System.Int32 inputIndex)
+		public void AllocateDependency(System.Int32 inputIndex)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AllocateDependency", inputIndex);
 		}
 
-		internal System.Boolean SetDependency(System.Int32 inputIndex, TBuffer buffer)
+		public System.Boolean SetDependency(System.Int32 inputIndex, TBuffer buffer)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetDependency", inputIndex, buffer), typeof(System.Boolean));
 		}
 
-		internal void AddStep(TNode node)
+		public void AddStep(TNode node)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddStep", node);
 		}
 
-		internal void AddStep(IDSP_Node node, System.Int32 inputIndex, System.Int32 outputIndex)
+		public void AddStep(IDSP_Node node, System.Int32 inputIndex, System.Int32 outputIndex)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddStep", node, inputIndex, outputIndex);
 		}
 
-		protected abstract TAction CreateAction(IDSP_Node node);
+		public abstract TAction CreateAction(IDSP_Node node);
 
-		internal void RegisterDependency(IOutput output, System.Int32 inputIndex, TSequence targetSequence)
+		public void RegisterDependency(IOutput output, System.Int32 inputIndex, TSequence targetSequence)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterDependency", output, inputIndex, targetSequence);
 		}
 
-		internal void RegisterResultDependency(IOutput output, System.Int32 resultIndex)
+		public void RegisterResultDependency(IOutput output, System.Int32 resultIndex)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterResultDependency", output, resultIndex);
 		}
 
-		internal TAction FindAction(IOutput output)
+		public TAction FindAction(IOutput output)
 		{
 			return (TAction)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindAction", output), typeof(TAction));
 		}
 
-		internal void ScheduleRun(TContext context)
+		public void ScheduleRun(TContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ScheduleRun", context);
 		}
 
-		internal void RunSequence(TContext context)
+		public void RunSequence(TContext context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RunSequence", context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18472,7 +18454,7 @@ namespace ProtoFlux.Runtimes.DSP
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18505,7 +18487,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DSP_Array_Action", ResoniteBridge.ResoniteBridgeValueType.Type), node);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18534,7 +18516,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 
 		public abstract void Copy(DSP_Array_Buffer source);
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18613,7 +18595,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Recycle");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18638,7 +18620,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 	}
 	public class DSP_Array_BuildContext : DSP_BuildContext<IDSP_Array_Node, DSP_Array_Sequence, DSP_Array_Context, DSP_Array_Buffer, DSP_Array_Action>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18673,7 +18655,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			return (DSP_Array_Buffer)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CloneBuffer", buffer), typeof(DSP_Array_Buffer));
 		}
 
-		protected override DSP_Array_Context CloneSelf()
+		public override DSP_Array_Context CloneSelf()
 		{
 			return (DSP_Array_Context)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CloneSelf"), typeof(DSP_Array_Context));
 		}
@@ -18688,12 +18670,12 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecycleContext");
 		}
 
-		protected override void RecycleBuffer(DSP_Array_Buffer buffer)
+		public override void RecycleBuffer(DSP_Array_Buffer buffer)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RecycleBuffer", buffer);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18748,14 +18730,14 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			return (T[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DSP_Array_BufferExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetOutputBufferOrReuse", index, context), typeof(T[]));
 		}
 
-		private static T[] GetOutputBuffer<T>(System.Int32 index, DSP_Array_Context context, System.Boolean allowReuse) where T : struct
+		public static T[] GetOutputBuffer<T>(System.Int32 index, DSP_Array_Context context, System.Boolean allowReuse) where T : struct
 		{
 			return (T[])ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "DSP_Array_BufferExtensions", ResoniteBridge.ResoniteBridgeValueType.Type), "GetOutputBuffer", index, context, allowReuse), typeof(T[]));
 		}
 	}
 	public abstract class DSP_Array_Node : DSP_Node<DSP_Array_Buffer, DSP_Array_Context>, IDSP_Array_Node, IDSP_Node<DSP_Array_Buffer, DSP_Array_Context>, IDSP_Node, INode, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18780,7 +18762,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 	}
 	public class DSP_Array_Runtime<C> : DSP_Runtime<IDSP_Array_Node, DSP_Array_Context, DSP_Array_Buffer, DSP_Array_BuildContext, DSP_Array_Sequence, DSP_Array_Action, C>, ResoniteBridge.ResoniteBridgeValueHolder where C : ProtoFlux.Runtimes.Execution.ExecutionContext
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18805,12 +18787,12 @@ namespace ProtoFlux.Runtimes.DSP.Array
 	}
 	public class DSP_Array_Sequence : DSP_Sequence<IDSP_Array_Node, DSP_Array_Sequence, DSP_Array_Context, DSP_Array_Buffer, DSP_Array_Action>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		protected override DSP_Array_Action CreateAction(IDSP_Node node)
+		public override DSP_Array_Action CreateAction(IDSP_Node node)
 		{
 			return (DSP_Array_Action)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CreateAction", node), typeof(DSP_Array_Action));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -18911,7 +18893,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestAddArraysNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19005,7 +18987,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestAddArraysNodeExecution", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19098,7 +19080,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestAmplifyArray", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19210,7 +19192,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestConditionalCollectArrayNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19284,7 +19266,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestNegateArrayNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19339,7 +19321,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestRandomArrayNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19394,7 +19376,7 @@ namespace ProtoFlux.Runtimes.DSP.Array
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "TestSequenceArrayNode", ResoniteBridge.ResoniteBridgeValueType.Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19418,7 +19400,7 @@ namespace ProtoFlux.Core
 {
 	public static class CastHelper
 	{
-		private static Dictionary<Type, Dictionary<Type, List<Type>>> valueCasts
+		public static Dictionary<Type, Dictionary<Type, List<Type>>> valueCasts
 		{
 			get
 			{
@@ -19437,7 +19419,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private static List<Type> objectCasts
+		public static List<Type> objectCasts
 		{
 			get
 			{
@@ -19477,7 +19459,7 @@ namespace ProtoFlux.Core
 	public class ChangeSourceAttribute : Attribute
 	{
 	}
-	internal struct ChangeSourceInfo : ResoniteBridge.ResoniteBridgeValueHolder
+	public struct ChangeSourceInfo : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		public System.Boolean continuous
 		{
@@ -19557,7 +19539,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19580,9 +19562,9 @@ namespace ProtoFlux.Core
 		{
 		}
 	}
-	internal class ChangeTrackingBuildContext : ResoniteBridge.ResoniteBridgeValueHolder
+	public class ChangeTrackingBuildContext : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private HashSet<NodeGroup> _currentlyProcessing
+		public HashSet<NodeGroup> _currentlyProcessing
 		{
 			get
 			{
@@ -19601,7 +19583,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private HashSet<NodeGroup> _currentConflicts
+		public HashSet<NodeGroup> _currentConflicts
 		{
 			get
 			{
@@ -19650,7 +19632,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "NestOut", group);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19673,7 +19655,7 @@ namespace ProtoFlux.Core
 		{
 		}
 	}
-	internal class ChangeTrackingData : ResoniteBridge.ResoniteBridgeValueHolder
+	public class ChangeTrackingData : ResoniteBridge.ResoniteBridgeValueHolder
 	{
 		public HashSet<NodeGroup> NestedGroups
 		{
@@ -19771,7 +19753,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -19799,7 +19781,7 @@ namespace ProtoFlux.Core
 	}
 	public class NodeGroup : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ChangeTrackingData changeTrackingData
+		public ChangeTrackingData changeTrackingData
 		{
 			get
 			{
@@ -19818,7 +19800,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<NodeRuntime> runtimes
+		public List<NodeRuntime> runtimes
 		{
 			get
 			{
@@ -19837,7 +19819,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private System.Int32 _nodeAllocationCount
+		public System.Int32 _nodeAllocationCount
 		{
 			get
 			{
@@ -20034,7 +20016,7 @@ namespace ProtoFlux.Core
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ContainsNestedGroup", group), typeof(System.Boolean));
 		}
 
-		private System.Boolean CheckChangeTracking()
+		public System.Boolean CheckChangeTracking()
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CheckChangeTracking"), typeof(System.Boolean));
 		}
@@ -20064,17 +20046,17 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RebuildChangeTrackingData");
 		}
 
-		private ChangeTrackingData BuildChangeTrackingData(ChangeTrackingBuildContext context)
+		public ChangeTrackingData BuildChangeTrackingData(ChangeTrackingBuildContext context)
 		{
 			return (ChangeTrackingData)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "BuildChangeTrackingData", context), typeof(ChangeTrackingData));
 		}
 
-		private ChangeSourceInfo GetChangeInfo(IOutput output, Dictionary<IOutput, ChangeSourceInfo> infos, Dictionary<INestedNode, ChangeTrackingData> nestedData)
+		public ChangeSourceInfo GetChangeInfo(IOutput output, Dictionary<IOutput, ChangeSourceInfo> infos, Dictionary<INestedNode, ChangeTrackingData> nestedData)
 		{
 			return (ChangeSourceInfo)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetChangeInfo", output, infos, nestedData), typeof(ChangeSourceInfo));
 		}
 
-		private void CombineInputs(INode node, ref ChangeSourceInfo info, Dictionary<IOutput, ChangeSourceInfo> infos, Dictionary<INestedNode, ChangeTrackingData> nestedData)
+		public void CombineInputs(INode node, ref ChangeSourceInfo info, Dictionary<IOutput, ChangeSourceInfo> infos, Dictionary<INestedNode, ChangeTrackingData> nestedData)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CombineInputs", node, info, infos, nestedData);
 		}
@@ -20089,27 +20071,27 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintDebugStructure"), typeof(System.String));
 		}
 
-		private void PrintRuntime(StringBuilder str, NodeRuntime runtime, System.Int32 indent)
+		public void PrintRuntime(StringBuilder str, NodeRuntime runtime, System.Int32 indent)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintRuntime", str, runtime, indent);
 		}
 
-		private void PrintNode(StringBuilder str, INode node, System.Int32 indent)
+		public void PrintNode(StringBuilder str, INode node, System.Int32 indent)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintNode", str, node, indent);
 		}
 
-		private System.String PrintInputSource(IOutput source)
+		public System.String PrintInputSource(IOutput source)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintInputSource", source), typeof(System.String));
 		}
 
-		private System.String PrintImpulseTarget(IOperation target)
+		public System.String PrintImpulseTarget(IOperation target)
 		{
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "PrintImpulseTarget", target), typeof(System.String));
 		}
 
-		private void Indent(StringBuilder str, System.Int32 indent)
+		public void Indent(StringBuilder str, System.Int32 indent)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Indent", str, indent);
 		}
@@ -20119,7 +20101,7 @@ namespace ProtoFlux.Core
 			return (NodeRuntime)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetRuntime", index), typeof(NodeRuntime));
 		}
 
-		internal System.Int32 GetNodeAllocationIndex()
+		public System.Int32 GetNodeAllocationIndex()
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNodeAllocationIndex"), typeof(System.Int32));
 		}
@@ -20154,7 +20136,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20194,7 +20176,7 @@ namespace ProtoFlux.Core
 	}
 	public class AsyncCallList : IImpulseList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private class InternalCall : IAsyncCall, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
+		public class InternalCall : IAsyncCall, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public IOperation Target
 			{
@@ -20249,7 +20231,7 @@ namespace ProtoFlux.Core
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -20273,7 +20255,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<InternalCall> calls
+		public List<InternalCall> calls
 		{
 			get
 			{
@@ -20342,7 +20324,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetImpulseTarget", index, target);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20447,7 +20429,7 @@ namespace ProtoFlux.Core
 				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -20471,7 +20453,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<Operation> _operations
+		public List<Operation> _operations
 		{
 			get
 			{
@@ -20583,7 +20565,7 @@ namespace ProtoFlux.Core
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IOperationList.IsOperationAsync", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20608,7 +20590,7 @@ namespace ProtoFlux.Core
 	}
 	public class CallList : IImpulseList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private class InternalCall : ICall, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
+		public class InternalCall : ICall, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public ISyncOperation Target
 			{
@@ -20663,7 +20645,7 @@ namespace ProtoFlux.Core
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -20687,7 +20669,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<InternalCall> calls
+		public List<InternalCall> calls
 		{
 			get
 			{
@@ -20756,7 +20738,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetImpulseTarget", index, target);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20781,7 +20763,7 @@ namespace ProtoFlux.Core
 	}
 	public class ContinuationList : IImpulseList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private class InternalContinuation : IContinuation, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
+		public class InternalContinuation : IContinuation, IImpulse, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public IOperation Target
 			{
@@ -20817,7 +20799,7 @@ namespace ProtoFlux.Core
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -20841,7 +20823,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<InternalContinuation> continuations
+		public List<InternalContinuation> continuations
 		{
 			get
 			{
@@ -20910,7 +20892,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetImpulseTarget", index, target);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20959,7 +20941,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ListGlobalRef", ResoniteBridge.ResoniteBridgeValueType.Type), list, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -20984,7 +20966,7 @@ namespace ProtoFlux.Core
 	}
 	public class GlobalRefList : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<IGlobalRef> globalRefs
+		public List<IGlobalRef> globalRefs
 		{
 			get
 			{
@@ -21091,7 +21073,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21212,7 +21194,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class InputListBase : IInputList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private abstract class Input : ResoniteBridge.ResoniteBridgeValueHolder
+		public abstract class Input : ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public abstract IOutput GenericSource { get; set; }
 
@@ -21222,7 +21204,7 @@ namespace ProtoFlux.Core
 
 			public abstract System.Object DefaultValue { get; }
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -21246,7 +21228,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private class Input<T> : Input, IInput<T>, IInput, ResoniteBridge.ResoniteBridgeValueHolder
+		public class Input<T> : Input, IInput<T>, IInput, ResoniteBridge.ResoniteBridgeValueHolder
 		{
 			public IOutput<T> Source
 			{
@@ -21346,7 +21328,7 @@ namespace ProtoFlux.Core
 				}
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -21370,7 +21352,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<Input> _inputs
+		public List<Input> _inputs
 		{
 			get
 			{
@@ -21459,7 +21441,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddInput", source);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21484,7 +21466,7 @@ namespace ProtoFlux.Core
 	}
 	public class InputList : InputListBase, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21509,7 +21491,7 @@ namespace ProtoFlux.Core
 	}
 	public class ArgumentList : InputListBase, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21687,7 +21669,7 @@ namespace ProtoFlux.Core
 				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -21733,7 +21715,7 @@ namespace ProtoFlux.Core
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "SyncOperation", ResoniteBridge.ResoniteBridgeValueType.Type), index, list);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -21779,7 +21761,7 @@ namespace ProtoFlux.Core
 				__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncOperation", ResoniteBridge.ResoniteBridgeValueType.Type), index, list);
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -21803,7 +21785,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<Operation> _operations
+		public List<Operation> _operations
 		{
 			get
 			{
@@ -21915,7 +21897,7 @@ namespace ProtoFlux.Core
 			return (IOperation)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IOperationList.AddOperation"), typeof(IOperation));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -21940,7 +21922,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class ObjectInputListBase<T> : IInputList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<IObjectOutput<T>> inputs
+		public List<IObjectOutput<T>> inputs
 		{
 			get
 			{
@@ -22019,7 +22001,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22044,7 +22026,7 @@ namespace ProtoFlux.Core
 	}
 	public class ObjectInputList<T> : ObjectInputListBase<T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22069,7 +22051,7 @@ namespace ProtoFlux.Core
 	}
 	public class ObjectArgumentList<T> : ObjectInputListBase<T>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22094,7 +22076,7 @@ namespace ProtoFlux.Core
 	}
 	public class ObjectOutputList<T> : IOutputList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<ListObjectOutput<T>> _outputs
+		public List<ListObjectOutput<T>> _outputs
 		{
 			get
 			{
@@ -22192,7 +22174,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ObjectOutputList", ResoniteBridge.ResoniteBridgeValueType.Type), owner);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22292,7 +22274,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ListValueOutput", ResoniteBridge.ResoniteBridgeValueType.Type), index, list);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22360,7 +22342,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ListObjectOutput", ResoniteBridge.ResoniteBridgeValueType.Type), index, list);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22385,7 +22367,7 @@ namespace ProtoFlux.Core
 	}
 	public class OutputList : IOutputList, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<IOutput> _outputs
+		public List<IOutput> _outputs
 		{
 			get
 			{
@@ -22498,7 +22480,7 @@ namespace ProtoFlux.Core
 			return (IListOutput)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddOutput"), typeof(IListOutput));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22603,7 +22585,7 @@ namespace ProtoFlux.Core
 				return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 			}
 
-			private ResoniteBridge.ResoniteBridgeValue __backing;
+			public ResoniteBridge.ResoniteBridgeValue __backing;
 
 			public ResoniteBridge.ResoniteBridgeValue __Backing
 			{
@@ -22627,7 +22609,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<Operation> _operations
+		public List<Operation> _operations
 		{
 			get
 			{
@@ -22739,7 +22721,7 @@ namespace ProtoFlux.Core
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IOperationList.IsOperationAsync", index), typeof(System.Boolean));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22764,7 +22746,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class ValueInputListBase<T> : IInputList, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private List<IValueOutput<T>> inputs
+		public List<IValueOutput<T>> inputs
 		{
 			get
 			{
@@ -22843,7 +22825,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Clear");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22868,7 +22850,7 @@ namespace ProtoFlux.Core
 	}
 	public class ValueInputList<T> : ValueInputListBase<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22893,7 +22875,7 @@ namespace ProtoFlux.Core
 	}
 	public class ValueArgumentList<T> : ValueInputListBase<T>, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -22918,7 +22900,7 @@ namespace ProtoFlux.Core
 	}
 	public class ValueOutputList<T> : IOutputList, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private List<ListValueOutput<T>> _outputs
+		public List<ListValueOutput<T>> _outputs
 		{
 			get
 			{
@@ -23016,7 +22998,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ValueOutputList", ResoniteBridge.ResoniteBridgeValueType.Type), owner);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23094,7 +23076,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23167,7 +23149,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23226,7 +23208,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23304,7 +23286,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23363,7 +23345,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23435,7 +23417,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalRef", ResoniteBridge.ResoniteBridgeValueType.Type), owner, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23460,7 +23442,7 @@ namespace ProtoFlux.Core
 	}
 	public class GlobalRef<T> : GlobalRef, IGlobalRef<T>, IGlobalRef, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Global<T> _global
+		public Global<T> _global
 		{
 			get
 			{
@@ -23523,7 +23505,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearReference");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23628,7 +23610,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23721,7 +23703,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23766,7 +23748,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ObjectOutput", ResoniteBridge.ResoniteBridgeValueType.Type), owner);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23839,7 +23821,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23883,7 +23865,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -23961,7 +23943,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24054,7 +24036,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24147,7 +24129,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24192,7 +24174,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ValueOutput", ResoniteBridge.ResoniteBridgeValueType.Type), owner);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24529,7 +24511,7 @@ namespace ProtoFlux.Core
 	}
 	public struct UnmanagedNullable<T> : ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		private T _value
+		public T _value
 		{
 			get
 			{
@@ -24548,7 +24530,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private System.Boolean _hasValue
+		public System.Boolean _hasValue
 		{
 			get
 			{
@@ -24638,7 +24620,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24679,7 +24661,7 @@ namespace ProtoFlux.Core
 	}
 	public struct ObjectStore<T> : IStore<T>, IStore, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		internal System.Int32 offset
+		public System.Int32 offset
 		{
 			get
 			{
@@ -24723,7 +24705,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Write", value, context);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24748,7 +24730,7 @@ namespace ProtoFlux.Core
 	}
 	public struct ValueStore<T> : IStore<T>, IStore, ResoniteBridge.ResoniteBridgeValueHolder where T : struct
 	{
-		internal System.Int32 offset
+		public System.Int32 offset
 		{
 			get
 			{
@@ -24800,7 +24782,7 @@ namespace ProtoFlux.Core
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Access", context), typeof(T));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24948,7 +24930,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -24978,7 +24960,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "AsyncCallExport", ResoniteBridge.ResoniteBridgeValueType.Type), node, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25008,7 +24990,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "CallExport", ResoniteBridge.ResoniteBridgeValueType.Type), node, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25038,7 +25020,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ContinuationExport", ResoniteBridge.ResoniteBridgeValueType.Type), node, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25106,7 +25088,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseExport", ResoniteBridge.ResoniteBridgeValueType.Type), node, index);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25131,7 +25113,7 @@ namespace ProtoFlux.Core
 	}
 	public class ImpulseExportNode : Node, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25156,7 +25138,7 @@ namespace ProtoFlux.Core
 	}
 	public class DataImportNode : Node, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25242,18 +25224,18 @@ namespace ProtoFlux.Core
 
 		public abstract System.Int32 ListenerCount { get; }
 
-		internal abstract void AddMatchingTypeToList(GlobalRefList list);
+		public abstract void AddMatchingTypeToList(GlobalRefList list);
 
-		internal abstract void UpdateToInitialValue<C>(C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext;
+		public abstract void UpdateToInitialValue<C>(C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext;
 
-		internal abstract void ResetValueToDefault<C>(C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext;
+		public abstract void ResetValueToDefault<C>(C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext;
 
 		public Global(NodeRuntime runtime, System.Int32 index, System.String name)
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "Global", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, index, name);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25278,7 +25260,7 @@ namespace ProtoFlux.Core
 	}
 	public class Global<T> : Global, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<GlobalRef<T>> _listeners
+		public List<GlobalRef<T>> _listeners
 		{
 			get
 			{
@@ -25332,27 +25314,27 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "Global", ResoniteBridge.ResoniteBridgeValueType.Type), runtime, index, name);
 		}
 
-		internal void ValueChanged<C>(T value, C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext
+		public void ValueChanged<C>(T value, C context) where C : ProtoFlux.Runtimes.Execution.ExecutionContext
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ValueChanged", value, context);
 		}
 
-		internal override void UpdateToInitialValue<C>(C context)
+		public override void UpdateToInitialValue<C>(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UpdateToInitialValue", context);
 		}
 
-		internal override void ResetValueToDefault<C>(C context)
+		public override void ResetValueToDefault<C>(C context)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ResetValueToDefault", context);
 		}
 
-		internal void RegisterListener(GlobalRef<T> listener)
+		public void RegisterListener(GlobalRef<T> listener)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "RegisterListener", listener);
 		}
 
-		internal void UnregisterListener(GlobalRef<T> listener)
+		public void UnregisterListener(GlobalRef<T> listener)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "UnregisterListener", listener);
 		}
@@ -25362,12 +25344,12 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		internal override void AddMatchingTypeToList(GlobalRefList list)
+		public override void AddMatchingTypeToList(GlobalRefList list)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "AddMatchingTypeToList", list);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25435,7 +25417,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseImport", ResoniteBridge.ResoniteBridgeValueType.Type), target, isAsync);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25541,7 +25523,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25628,7 +25610,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalRefListMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25734,7 +25716,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "GlobalRefMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25872,7 +25854,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseListMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -25940,7 +25922,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InputListMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field, defaultValue);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -26008,7 +25990,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InputMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field, dataClass, defaultValue);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -26205,7 +26187,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InputMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), index, field, defaultValue);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -26230,7 +26212,7 @@ namespace ProtoFlux.Core
 	}
 	public class NodeMetadata : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<string, InputMetadata> _inputsByName
+		public Dictionary<string, InputMetadata> _inputsByName
 		{
 			get
 			{
@@ -26249,7 +26231,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, OutputMetadata> _outputsByName
+		public Dictionary<string, OutputMetadata> _outputsByName
 		{
 			get
 			{
@@ -26268,7 +26250,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, InputListMetadata> _inputListsByName
+		public Dictionary<string, InputListMetadata> _inputListsByName
 		{
 			get
 			{
@@ -26287,7 +26269,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, OutputListMetadata> _outputListsByName
+		public Dictionary<string, OutputListMetadata> _outputListsByName
 		{
 			get
 			{
@@ -26306,7 +26288,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, ImpulseMetadata> _impulsesByName
+		public Dictionary<string, ImpulseMetadata> _impulsesByName
 		{
 			get
 			{
@@ -26325,7 +26307,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, OperationMetadata> _actionsByName
+		public Dictionary<string, OperationMetadata> _actionsByName
 		{
 			get
 			{
@@ -26344,7 +26326,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, ImpulseListMetadata> _impulseListsByName
+		public Dictionary<string, ImpulseListMetadata> _impulseListsByName
 		{
 			get
 			{
@@ -26363,7 +26345,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, OperationListMetadata> _actionListsByName
+		public Dictionary<string, OperationListMetadata> _actionListsByName
 		{
 			get
 			{
@@ -26382,7 +26364,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<string, ReferenceMetadata> _referencesByName
+		public Dictionary<string, ReferenceMetadata> _referencesByName
 		{
 			get
 			{
@@ -27040,7 +27022,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private T GetElementByName<T>(System.String name, List<T> list, ref Dictionary<string, T> dict) where T : class, IElementMetadata
+		public T GetElementByName<T>(System.String name, List<T> list, ref Dictionary<string, T> dict) where T : class, IElementMetadata
 		{
 			return (T)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetElementByName", name, list, dict), typeof(T));
 		}
@@ -27095,7 +27077,7 @@ namespace ProtoFlux.Core
 			return (ReferenceMetadata)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetReferenceByName", name), typeof(ReferenceMetadata));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27120,7 +27102,7 @@ namespace ProtoFlux.Core
 	}
 	public static class NodeMetadataHelper
 	{
-		private static ResoniteBridge.ResoniteBridgeValue _metadataCache
+		public static ResoniteBridge.ResoniteBridgeValue _metadataCache
 		{
 			get
 			{
@@ -27265,7 +27247,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OperationListMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field, supportsSync, supportsAsync);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27410,7 +27392,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OperationMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27478,7 +27460,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OutputListMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27570,7 +27552,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OutputMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field, dataClass);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27702,7 +27684,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OutputMetadataBase", ResoniteBridge.ResoniteBridgeValueType.Type), index, ownerType, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -27808,7 +27790,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ReferenceMetadata", ResoniteBridge.ResoniteBridgeValueType.Type), index, field);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -28866,7 +28848,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -28891,7 +28873,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class NodeRuntime : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private DataImportNode importNode
+		public DataImportNode importNode
 		{
 			get
 			{
@@ -28910,7 +28892,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ImpulseExportNode exportNode
+		public ImpulseExportNode exportNode
 		{
 			get
 			{
@@ -28929,7 +28911,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<IOutput> dataExports
+		public List<IOutput> dataExports
 		{
 			get
 			{
@@ -28948,7 +28930,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private OutputList dataImports
+		public OutputList dataImports
 		{
 			get
 			{
@@ -28967,7 +28949,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<ImpulseImport> impulseImports
+		public List<ImpulseImport> impulseImports
 		{
 			get
 			{
@@ -28986,7 +28968,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<ImpulseExport> impulseExports
+		public List<ImpulseExport> impulseExports
 		{
 			get
 			{
@@ -29005,7 +28987,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<Global> globals
+		public List<Global> globals
 		{
 			get
 			{
@@ -29151,9 +29133,9 @@ namespace ProtoFlux.Core
 
 		public abstract void SortNodesByIndex();
 
-		internal abstract System.Int32 ForeachNode<T>(NodeEnumerationAction<T> action, NodeEnumerationContext context, System.Boolean cache) where T : INode;
+		public abstract System.Int32 ForeachNode<T>(NodeEnumerationAction<T> action, NodeEnumerationContext context, System.Boolean cache) where T : INode;
 
-		internal void Init(NodeGroup group)
+		public void Init(NodeGroup group)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Init", group);
 		}
@@ -29325,7 +29307,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -29350,7 +29332,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class NodeRuntime<N> : NodeRuntime, ResoniteBridge.ResoniteBridgeValueHolder where N : class, INode
 	{
-		private List<N> nodes
+		public List<N> nodes
 		{
 			get
 			{
@@ -29369,7 +29351,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue cachedNodeTypes
+		public ResoniteBridge.ResoniteBridgeValue cachedNodeTypes
 		{
 			get
 			{
@@ -29388,7 +29370,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<IExecutionNestedNode> cachedNestedNodes
+		public List<IExecutionNestedNode> cachedNestedNodes
 		{
 			get
 			{
@@ -29542,17 +29524,17 @@ namespace ProtoFlux.Core
 			return (IEnumerable<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetNodesOfType", cache), typeof(IEnumerable<T>));
 		}
 
-		internal override System.Int32 ForeachNode<T>(NodeEnumerationAction<T> action, NodeEnumerationContext context, System.Boolean cache)
+		public override System.Int32 ForeachNode<T>(NodeEnumerationAction<T> action, NodeEnumerationContext context, System.Boolean cache)
 		{
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ForeachNode", action, context, cache), typeof(System.Int32));
 		}
 
-		protected void ClearQueryCaches()
+		public void ClearQueryCaches()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearQueryCaches");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -29655,7 +29637,7 @@ namespace ProtoFlux.Core
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CompareTo", other), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -29680,7 +29662,7 @@ namespace ProtoFlux.Core
 	}
 	public struct NodeContextPath : IEquatable<NodeContextPath>, IComparable<NodeContextPath>, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private INode[] path
+		public INode[] path
 		{
 			get
 			{
@@ -29756,7 +29738,7 @@ namespace ProtoFlux.Core
 			return (System.Int32)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "FindSharedRootLength", other), typeof(System.Int32));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -29782,7 +29764,7 @@ namespace ProtoFlux.Core
 	public delegate void NodeEnumerationAction<T>(T node, NodeEnumerationContext context) where T : INode;
 	public class NodeEnumerationContext : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private HashSet<NodeGroup> enteredGroups
+		public HashSet<NodeGroup> enteredGroups
 		{
 			get
 			{
@@ -29801,7 +29783,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<INestedNode> nodePath
+		public List<INestedNode> nodePath
 		{
 			get
 			{
@@ -29860,7 +29842,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ExitNestedNode", node);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -29885,7 +29867,7 @@ namespace ProtoFlux.Core
 	}
 	public class NodeQueryAcceleration : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<INode, HashSet<INode>> evaluatingNodes
+		public Dictionary<INode, HashSet<INode>> evaluatingNodes
 		{
 			get
 			{
@@ -29904,7 +29886,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<INode, HashSet<INode>> impulsingNodes
+		public Dictionary<INode, HashSet<INode>> impulsingNodes
 		{
 			get
 			{
@@ -29923,7 +29905,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<INode, HashSet<INode>> referencingNodes
+		public Dictionary<INode, HashSet<INode>> referencingNodes
 		{
 			get
 			{
@@ -29966,7 +29948,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeQueryAcceleration", ResoniteBridge.ResoniteBridgeValueType.Type), group);
 		}
 
-		private void Build()
+		public void Build()
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Build");
 		}
@@ -29986,7 +29968,7 @@ namespace ProtoFlux.Core
 			return (IEnumerable<INode>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetReferencingNodes", node), typeof(IEnumerable<INode>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30314,7 +30296,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SetWalkAllReferences");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30467,7 +30449,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ClearContinuation");
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30550,7 +30532,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30582,7 +30564,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30703,7 +30685,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InvalidImpulseTargetError", ResoniteBridge.ResoniteBridgeValueType.Type), sourceNode, impulseIndex, targetOperation, reason);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -30805,7 +30787,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseLoopError", ResoniteBridge.ResoniteBridgeValueType.Type), node, impulseIndex, isAsync);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31031,7 +31013,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseFlowError", ResoniteBridge.ResoniteBridgeValueType.Type), referencingNode, impulseIndex, target, contextIsAsync, contextIsContinuation, reason);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31111,7 +31093,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseValidator", ResoniteBridge.ResoniteBridgeValueType.Type), "GetSourcesUnreachableFromImports", runtime, sources);
 		}
 
-		private static void RemoveReachableSources(IOperation operation, HashSet<ImpulseSource> sources, HashSet<Node> walkedNodes = null)
+		public static void RemoveReachableSources(IOperation operation, HashSet<ImpulseSource> sources, HashSet<Node> walkedNodes = null)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "ImpulseValidator", ResoniteBridge.ResoniteBridgeValueType.Type), "RemoveReachableSources", operation, sources, walkedNodes);
 		}
@@ -31153,7 +31135,7 @@ namespace ProtoFlux.Core
 	}
 	public abstract class Output<T> : IOutput<T>, IOutput, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Node _node
+		public Node _node
 		{
 			get
 			{
@@ -31214,7 +31196,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31286,7 +31268,7 @@ namespace ProtoFlux.Core
 
 		public abstract DataClass OutputDataClass { get; }
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31326,7 +31308,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31413,7 +31395,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InsertedConversion", ResoniteBridge.ResoniteBridgeValueType.Type), conversion, targetNode, targetInput);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31589,7 +31571,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31704,7 +31686,7 @@ namespace ProtoFlux.Core
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "InputType", ResoniteBridge.ResoniteBridgeValueType.Type), type, runtime);
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31811,7 +31793,7 @@ namespace ProtoFlux.Core
 			return (NodeConnections)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeConnections", ResoniteBridge.ResoniteBridgeValueType.Type), "GetFromNode", node), typeof(NodeConnections));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31846,7 +31828,7 @@ namespace ProtoFlux.Core
 	}
 	public class NodeOverloadCollection : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<Type> _overloads
+		public List<Type> _overloads
 		{
 			get
 			{
@@ -31895,7 +31877,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		internal void Add(Type type)
+		public void Add(Type type)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "Add", type);
 		}
@@ -31905,7 +31887,7 @@ namespace ProtoFlux.Core
 			return (System.String)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "ToString"), typeof(System.String));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -31979,7 +31961,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private OverloadResult(System.String errorReason)
+		public OverloadResult(System.String errorReason)
 		{
 			__backing = ResoniteBridge.ResoniteBridgeClientWrappers.CallConstructor(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OverloadResult", ResoniteBridge.ResoniteBridgeValueType.Type), errorReason);
 		}
@@ -31989,7 +31971,7 @@ namespace ProtoFlux.Core
 			return (OverloadResult)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "OverloadResult", ResoniteBridge.ResoniteBridgeValueType.Type), "Fail", reason), typeof(OverloadResult));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -32014,7 +31996,7 @@ namespace ProtoFlux.Core
 	}
 	public class NodeOverloadContext : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private Dictionary<INode, Type> overloads
+		public Dictionary<INode, Type> overloads
 		{
 			get
 			{
@@ -32033,7 +32015,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<INode, INode> swappedNodes
+		public Dictionary<INode, INode> swappedNodes
 		{
 			get
 			{
@@ -32052,7 +32034,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private HashSet<INode> affectedEvaluatingNodes
+		public HashSet<INode> affectedEvaluatingNodes
 		{
 			get
 			{
@@ -32071,7 +32053,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private HashSet<INode> affectedImpulsingNodes
+		public HashSet<INode> affectedImpulsingNodes
 		{
 			get
 			{
@@ -32090,7 +32072,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private List<InsertedConversion> insertedCasts
+		public List<InsertedConversion> insertedCasts
 		{
 			get
 			{
@@ -32109,7 +32091,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private NodeQueryAcceleration query
+		public NodeQueryAcceleration query
 		{
 			get
 			{
@@ -32276,7 +32258,7 @@ namespace ProtoFlux.Core
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "SwapNodes");
 		}
 
-		private NodeConnections GetModifiedConnections(INode node)
+		public NodeConnections GetModifiedConnections(INode node)
 		{
 			return (NodeConnections)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetModifiedConnections", node), typeof(NodeConnections));
 		}
@@ -32286,12 +32268,12 @@ namespace ProtoFlux.Core
 			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOverloadedType", node), typeof(Type));
 		}
 
-		private Type GetOverloadedType(IOutput source)
+		public Type GetOverloadedType(IOutput source)
 		{
 			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "GetOverloadedType", source), typeof(Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -32316,7 +32298,7 @@ namespace ProtoFlux.Core
 	}
 	public static class NodeOverloadHelper
 	{
-		private static Dictionary<string, NodeOverloadCollection> overloads
+		public static Dictionary<string, NodeOverloadCollection> overloads
 		{
 			get
 			{
@@ -32335,7 +32317,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private static CancellationTokenSource generationCancellation
+		public static CancellationTokenSource generationCancellation
 		{
 			get
 			{
@@ -32354,7 +32336,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private static System.Object generationLock
+		public static System.Object generationLock
 		{
 			get
 			{
@@ -32387,7 +32369,7 @@ namespace ProtoFlux.Core
 			return (Dictionary<string, NodeOverloadCollection>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeOverloadHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "SearchOverloads"), typeof(Dictionary<string, NodeOverloadCollection>));
 		}
 
-		private static void CurrentDomain_AssemblyLoad(System.Object sender, AssemblyLoadEventArgs args)
+		public static void CurrentDomain_AssemblyLoad(System.Object sender, AssemblyLoadEventArgs args)
 		{
 			ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(new ResoniteBridge.ResoniteBridgeValue(null, "ProtoFlux.Core", "NodeOverloadHelper", ResoniteBridge.ResoniteBridgeValueType.Type), "CurrentDomain_AssemblyLoad", sender, args);
 		}
@@ -32419,7 +32401,7 @@ namespace ProtoFlux.Core
 	}
 	public class OverloadSearchContext : ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private static Type[] emptyTypes
+		public static Type[] emptyTypes
 		{
 			get
 			{
@@ -32438,7 +32420,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private Dictionary<Type, Type> genericParameters
+		public Dictionary<Type, Type> genericParameters
 		{
 			get
 			{
@@ -32539,7 +32521,7 @@ namespace ProtoFlux.Core
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "CanAccomodate", source, target), typeof(System.Boolean));
 		}
 
-		private System.Boolean TryMatchGenericArguments(Type source, Type target)
+		public System.Boolean TryMatchGenericArguments(Type source, Type target)
 		{
 			return (System.Boolean)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "TryMatchGenericArguments", source, target), typeof(System.Boolean));
 		}
@@ -32554,7 +32536,7 @@ namespace ProtoFlux.Core
 			return (Type)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "InstanceType", type, currentType), typeof(Type));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -32717,7 +32699,7 @@ namespace ProtoFlux.Core
 	}
 	public class OrderedSet<T> : IEnumerable<T>, IEnumerable, ResoniteBridge.ResoniteBridgeValueHolder
 	{
-		private List<T> list
+		public List<T> list
 		{
 			get
 			{
@@ -32736,7 +32718,7 @@ namespace ProtoFlux.Core
 			}
 		}
 
-		private HashSet<T> set
+		public HashSet<T> set
 		{
 			get
 			{
@@ -32795,7 +32777,7 @@ namespace ProtoFlux.Core
 			return (IEnumerator<T>)ResoniteBridge.ResoniteBridgeClientWrappers.CastValue(ResoniteBridge.ResoniteBridgeClientWrappers.CallMethod(__Backing, "IEnumerable<T>.GetEnumerator"), typeof(IEnumerator<T>));
 		}
 
-		private ResoniteBridge.ResoniteBridgeValue __backing;
+		public ResoniteBridge.ResoniteBridgeValue __backing;
 
 		public ResoniteBridge.ResoniteBridgeValue __Backing
 		{
@@ -32820,7 +32802,7 @@ namespace ProtoFlux.Core
 	}
 	public static class ReflectionHelper
 	{
-		private static ResoniteBridge.ResoniteBridgeValue cachedTypes
+		public static ResoniteBridge.ResoniteBridgeValue cachedTypes
 		{
 			get
 			{
@@ -32887,9 +32869,9 @@ namespace ProtoFlux.Core
 		}
 	}
 }
-internal class ProtoFluxCore_ProcessedByFody : ResoniteBridge.ResoniteBridgeValueHolder
+public class ProtoFluxCore_ProcessedByFody : ResoniteBridge.ResoniteBridgeValueHolder
 {
-	internal System.String FodyVersion
+	public System.String FodyVersion
 	{
 		get
 		{
@@ -32908,7 +32890,7 @@ internal class ProtoFluxCore_ProcessedByFody : ResoniteBridge.ResoniteBridgeValu
 		}
 	}
 
-	internal System.String NodeWeaver
+	public System.String NodeWeaver
 	{
 		get
 		{
@@ -32927,7 +32909,7 @@ internal class ProtoFluxCore_ProcessedByFody : ResoniteBridge.ResoniteBridgeValu
 		}
 	}
 
-	private ResoniteBridge.ResoniteBridgeValue __backing;
+	public ResoniteBridge.ResoniteBridgeValue __backing;
 
 	public ResoniteBridge.ResoniteBridgeValue __Backing
 	{
