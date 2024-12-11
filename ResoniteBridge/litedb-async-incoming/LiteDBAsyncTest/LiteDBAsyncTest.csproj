@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Authors>Maurício David</Authors>
+		<Product>LiteDBAsync</Product>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+	</PropertyGroup>
+
+
+  <ItemGroup>
+    <None Remove="Utils\Json\person.json" />
+    <None Remove="Utils\Json\zip.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Utils\Json\person.json" />
+    <EmbeddedResource Include="Utils\Json\zip.json" />
+  </ItemGroup>
+
+
+</Project>

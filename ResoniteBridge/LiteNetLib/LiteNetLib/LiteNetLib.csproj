@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>LiteNetLib</AssemblyName>
+        <RootNamespace>LiteNetLib</RootNamespace>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <Title>Lite reliable UDP library for Mono and .NET </Title>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/RevenantX/LiteNetLib</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/RevenantX/LiteNetLib</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Ruslan Pyrch</Authors>
+        <Copyright>Copyright 2024 Ruslan Pyrch</Copyright>
+        <Description>Lite reliable UDP library for .NET, Mono, and .NET Core</Description>
+        <PackageIcon>LNL.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\LNL.png">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+</Project>

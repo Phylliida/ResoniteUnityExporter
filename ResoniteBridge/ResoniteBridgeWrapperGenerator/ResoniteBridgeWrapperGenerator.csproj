@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ResoniteBridgeWrapperGenerator</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+	<PublishSingleFile>true</PublishSingleFile>
+	<SelfContained>true</SelfContained>
+	<PublishReadyToRun>true</PublishReadyToRun>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+	  <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
+		<Properties>TargetFramework=netstandard2.0</Properties>
+	</PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3">
+		<Properties>TargetFramework=netstandard2.0</Properties>
+	</PackageReference>
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3">
+		<Properties>TargetFramework=netstandard2.0</Properties>
+	</PackageReference>
+    <PackageReference Include="System.IO.Ports" Version="9.0.0">
+		<Properties>TargetFramework=netstandard2.0</Properties>
+	</PackageReference>
+    <PackageReference Include="System.Text.Json" Version="9.0.0">
+		<Properties>TargetFramework=netstandard2.0</Properties>
+	</PackageReference>
+</ItemGroup>
+  <ItemGroup>
+    <Reference Include="FrooxEngine">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteBridgeWrapperLib">
+      <HintPath>..\ResoniteBridgeWrapperLib\bin\Debug\netstandard2.1\ResoniteBridgeWrapperLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
