@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEditor;
+using ResoniteWrapper;
 
 
 namespace ResoniteBridgeUnity {

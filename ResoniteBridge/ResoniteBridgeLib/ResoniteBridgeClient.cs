@@ -1,13 +1,18 @@
 ﻿using Newtonsoft.Json;
+using ResoniteBridge;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
-    
+using System.Threading.Tasks;
+
 namespace ResoniteBridge
 {
+   
+
     public class ResoniteBridgeClient
     {
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
