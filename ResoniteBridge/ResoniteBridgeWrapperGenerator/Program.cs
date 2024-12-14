@@ -143,7 +143,7 @@ namespace ResoniteBridge
             serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
             
             // Once we have froox engine, load all assemblies (this will collect more as they are loaded)
-            serverData.assemblies = ResoniteBridgeServer.LoadAssemblies(FrooxEngineAsm,
+            serverData.assemblies = ReflectionUtils.LoadAssemblies(FrooxEngineAsm,
                    Path.Combine(resoniteDir, "Resonite_Data", "Managed"),
                    Path.Combine(resoniteDir, "Resonite_Data", "Plugins", "x64")
                    );
@@ -222,98 +222,61 @@ namespace ResoniteBridge
             ConcurrentQueue<string> messages = new ConcurrentQueue<string>();
             new Thread(() =>
             {
-                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
+                bool first = true;
+                try
                 {
-                    Console.WriteLine(msg);
-                }))
-                {
-
-
-                    bool first = true;
-                    try
+                    Console.WriteLine("Starting");
+                    while (!opener.IsCompleted)
                     {
-                        Console.WriteLine("Starting");
-                        while (!opener.IsCompleted)
+                        CallMethod(engine, "RunUpdateLoop");
+                        CallMethod(systemInfo, "FrameFinished");
+                        Thread.Sleep(16);
+                    }
+                    Console.WriteLine("Started");
+                    var cancellation = new CancellationTokenSource();
+                    while (true)
+                    {
+                        object focusedWorld =
+                            GetProperty(
+                                GetProperty(engine, "WorldManager"),
+                                "FocusedWorld");
+
+                        if (focusedWorld != null)
+                        {
+                            if (first)
+                            {
+                                first = false;
+                                Console.WriteLine("Making wrapper assembly");
+                                ResoniteBinaryWrapper.CreateWrapperAssembly(serverData.assemblies, "ResoniteWrapper");
+
+                                // hack to prevent discord interface from crashing it
+                                var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
+                                SetField(
+                                    GetProperty(engine, "PlatformInterface"),
+                                    "connectors",
+                                    Array.CreateInstance(platformConnectorType
+                                        ,
+                                        0)
+                                    );
+                            }
+                            serverData.focusedWorld = focusedWorld;
+                            serverData.engine = this.engine;
+                        }
+                        try
                         {
                             CallMethod(engine, "RunUpdateLoop");
-                            CallMethod(systemInfo, "FrameFinished");
-                            Thread.Sleep(16);
                         }
-                        Console.WriteLine("Started");
-                        var cancellation = new CancellationTokenSource();
-                        while (true)
+                        catch (Exception e)
                         {
-                            object focusedWorld =
-                                GetProperty(
-                                    GetProperty(engine, "WorldManager"),
-                                    "FocusedWorld");
-
-                            if (focusedWorld != null)
-                            {
-                                if (first)
-                                {
-                                    first = false;
-                                    Console.WriteLine("Making wrapper assembly");
-                                    ResoniteBinaryWrapper.CreateWrapperAssembly(serverData.assemblies, "ResoniteWrapper");
-
-                                    // hack to prevent discord interface from crashing it
-                                    var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
-                                    SetField(
-                                        GetProperty(engine, "PlatformInterface"),
-                                        "connectors",
-                                        Array.CreateInstance(platformConnectorType
-                                            ,
-                                            0)
-                                        );
-                                }
-                                serverData.focusedWorld = focusedWorld;
-                                serverData.engine = this.engine;
-                                Action runStuff = delegate
-                                {
-                                    while (bridgeServer.inputMessages.TryDequeue(out ResoniteBridgeMessage message))
-                                    {
-                                        try
-                                        {
-                                            bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse()
-                                            {
-                                                response = new ResoniteBridgeValue()
-                                                {
-                                                    typeName = ex.GetType().Name,
-                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                    valueType = ResoniteBridgeValueType.Error
-                                                },
-                                                responseType = ResoniteBridgeResponseType.Error,
-                                                extraResults = null
-                                            });
-                                        }
-                                    }
-                                };
-                                CallMethod(focusedWorld, "RunSynchronously",
-                                    runStuff,
-                                    false,
-                                    null,
-                                    false);
-                            }
-                            try
-                            {
-                                CallMethod(engine, "RunUpdateLoop");
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Got exception " + e.ToString() + "\n" + Environment.StackTrace);
-                            }
-                            CallMethod(systemInfo, "FrameFinished");
-                            Thread.Sleep(16);
+                            Console.WriteLine("Got exception " + e.ToString() + "\n" + Environment.StackTrace);
                         }
+                        CallMethod(systemInfo, "FrameFinished");
+                        Thread.Sleep(16);
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
                 }
             }).Start();
         }

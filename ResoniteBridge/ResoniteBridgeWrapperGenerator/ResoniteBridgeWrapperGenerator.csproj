@@ -5,6 +5,7 @@
     <RootNamespace>ResoniteBridgeWrapperGenerator</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	  <UseWindowsForms>true</UseWindowsForms>
+      <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 	<PublishSingleFile>true</PublishSingleFile>
