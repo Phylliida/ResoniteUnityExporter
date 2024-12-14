@@ -14,6 +14,14 @@ namespace NamedPipeIPC
             signal.Set(); // Signal that queue has an item
         }
 
+        /// <summary>
+        /// Timeoutmillis < 0 means wait until stopToken is triggered or item is recieved
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="timeoutMillis"></param>
+        /// <param name="stopToken"></param>
+        /// <returns></returns>
+        /// <exception cref="OperationCanceledException"></exception>
         public bool TryDequeue(out T item, int timeoutMillis, CancellationToken stopToken)
         {
             while (!stopToken.IsCancellationRequested)
@@ -22,7 +30,11 @@ namespace NamedPipeIPC
                 {
                     return true;
                 }
-                int tokenIndex = WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal }, timeoutMillis);
+
+                int tokenIndex = timeoutMillis > 0
+                    ? WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal }, timeoutMillis)
+                    : WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal });
+                
                 // stopped
                 if (tokenIndex == 0)
                 {

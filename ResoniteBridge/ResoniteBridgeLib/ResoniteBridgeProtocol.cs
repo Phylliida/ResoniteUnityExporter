@@ -70,6 +70,8 @@ namespace ResoniteBridge
         public string name = null;
 
         public ResoniteBridgeValue[] inputs = null;
+
+        public int uuid;
     }
 
     public enum ResoniteBridgeResponseType
@@ -83,6 +85,8 @@ namespace ResoniteBridge
         public ResoniteBridgeResponseType responseType;
 
         public ResoniteBridgeValue[] extraResults = null;
+        
+        public int uuid;
     }
 
     public enum ResoniteBridgeMessageType

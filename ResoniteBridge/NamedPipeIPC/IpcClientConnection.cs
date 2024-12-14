@@ -20,10 +20,21 @@ namespace NamedPipeIPC
             bytesToSend.Enqueue(bytes);
         }
 
-        public IpcClientConnection(string idOfServer, int millisBetweenPing, int timeoutMultiplier, CancellationTokenSource stopToken) {
+        private string idOfServer;
+        private int millisBetweenPing;
+        private int timeoutMultiplier;
+        
+        public IpcClientConnection(string idOfServer, int millisBetweenPing, int timeoutMultiplier,
+            CancellationTokenSource stopToken)
+        {
             this.stopToken = stopToken;
+            this.idOfServer = idOfServer;
+            this.millisBetweenPing = millisBetweenPing;
+            this.timeoutMultiplier = timeoutMultiplier;
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
-            // server thread
+        }
+        public void Init() {
+             // server thread
             listenerThread = new Thread(() =>
             {
                 try

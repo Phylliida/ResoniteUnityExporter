@@ -15,7 +15,12 @@ namespace NamedPipeIPC
         public string baseKey;
 
         public Thread searchThread;
-
+        
+        public ManualResetEvent connectEvent = new ManualResetEvent(false);
+        public ManualResetEvent disconnectEvent = new ManualResetEvent(true);
+        public object connectEventLock = new object();
+        
+        
         public IpcPublisher(string baseKey, int millisBetweenPing)
         {
             this.baseKey = baseKey;
@@ -47,6 +52,26 @@ namespace NamedPipeIPC
             }
         }
         
+        void UpdateConnectionEvents()
+        {
+            // we need to lock to ensure we don't set this between the IsConnected check above and resetting
+            lock (connectEventLock)
+            {
+                if (IsConnected())
+                {
+                    connectEvent.Set();
+                    disconnectEvent.Reset();
+                }
+                else
+                {
+                    connectEvent.Reset();
+                    disconnectEvent.Set();
+                }
+            }
+        }
+
+
+        
         void ConnectToAvailableServers() {
             foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2))
             {
@@ -62,9 +87,30 @@ namespace NamedPipeIPC
                         stopToken);
                     connections[server.processId] = clientConnection;
                     // on disconnect, try to reconnect
-                    clientConnection.OnDisconnect += ConnectToAvailableServers;
+                    clientConnection.OnDisconnect += () =>
+                    {
+                        UpdateConnectionEvents();
+                        // important we do this after reset connect event to avoid
+                        // race condition where we connect between IsConnected test and reset event
+                        ConnectToAvailableServers();
+                    };
+                    clientConnection.OnConnect += UpdateConnectionEvents;
+                    clientConnection.Init();
                 }
             }
+        }
+
+        public bool IsConnected()
+        {
+            foreach (KeyValuePair<int, IpcClientConnection> connection in connections)
+            {
+                if (connection.Value.connectionStatus == IpcUtils.ConnectionStatus.Connected)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Dispose()

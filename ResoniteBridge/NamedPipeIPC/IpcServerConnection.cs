@@ -33,8 +33,8 @@ namespace NamedPipeIPC
         public delegate void RecievedBytesCallback(byte[] bytes);
         public event RecievedBytesCallback OnRecievedBytes;
         
-        public event Action OnConnected;
-        public event Action OnDisconnected;
+        public event Action OnConnect;
+        public event Action OnDisconnect;
 
         Thread listenerThread;
         Thread writeStatusThread;
@@ -48,7 +48,8 @@ namespace NamedPipeIPC
             this.stopToken = stopToken;
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
             guid = MakeUniqueGuid();
-
+        }
+        public void Init() {
             // server thread
             listenerThread = new Thread(() =>
             {
@@ -58,7 +59,8 @@ namespace NamedPipeIPC
                            new NamedPipeServerStream(GetServerKey(), PipeDirection.In))
                     {
                         pipeServer.WaitForConnection();
-                        OnConnected?.Invoke();
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        OnConnect?.Invoke();
                         while (!stopToken.IsCancellationRequested)
                         {
                             // if it takes twice as long as ping time, timeout
@@ -84,9 +86,9 @@ namespace NamedPipeIPC
                 }
                 finally
                 {
-                    OnDisconnected?.Invoke();
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     stopToken.Cancel();
+                    OnDisconnect?.Invoke();
                 }
             });
 

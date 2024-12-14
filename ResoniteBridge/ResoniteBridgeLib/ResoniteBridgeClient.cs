@@ -8,6 +8,9 @@ using System.IO;
 using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
+using NamedPipeIPC;
+using TwitchLib.Api.Helix.Models.Moderation.CheckAutoModStatus.Request;
 
 namespace ResoniteBridge
 {
@@ -17,124 +20,113 @@ namespace ResoniteBridge
     {
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
 
-        Thread monitoringThread;
+        public const int millisBetweenPing = 1000;
 
-        public CancellationTokenSource stopToken;
+        private volatile int curMessageId = 0;
 
-        public volatile bool connected = false;
+        public IpcPublisher publisher;
+        public IpcSubscriber subscriber;
+
+        CancellationTokenSource stopToken;
 
         public delegate void LogDelegate(string message);
 
-        public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
-        public ConcurrentQueue<ResoniteBridgeResponse> outputMessages = new ConcurrentQueue<ResoniteBridgeResponse>();
+        public ConcurrentDictionary<int, ManualResetEvent> recievedMessageEvents = new ConcurrentDictionary<int, ManualResetEvent>();
+        public ConcurrentQueueWithNotification<ResoniteBridgeMessage> inputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeMessage>();
+
+        private Thread sendingThread;
+
+        public ResoniteBridgeResponse SendMessageSync(ResoniteBridgeMessage message, int timeout=-1)
+        {
+            int messageUuid = Interlocked.Increment(ref curMessageId);
+            
+            message.uuid = messageUuid;
+
+            ManualResetEvent messageEvent = new ManualResetEvent(false);
+            recievedMessageEvents[messageUuid] = messageEvent;
+            inputMessages.Enqueue(message);
+            int waitedHandle = WaitHandle.WaitAny(new WaitHandle[]
+            {
+                stopToken.Token.WaitHandle,
+                publisher.
+                messageEvent
+            }, timeout);
+            
+            messageEvent.WaitOne(millisBetweenPing);
+            recievedMessageEvents
+        }
+
         public ResoniteBridgeClient(LogDelegate DebugLog)
         {
             stopToken = new CancellationTokenSource();
+            publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing);
+            subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing);
             // this is a bit cursed but it lets us avoid having to pass client into all calls so I think it's ok
             ResoniteBridgeClientWrappers.client = this;
 
             int millisTimeout = 10000;
 
             // network monitoring thread
-            monitoringThread = new Thread(() =>
+            sendingThread = new Thread(() =>
             {
-                bool waitingForResponse = false;
-
                 while (!stopToken.IsCancellationRequested)
                 {
-                    using (NamedPipeClientStream pipeClient =
-                        new NamedPipeClientStream(NAMED_SOCKET_KEY))
+                    try
                     {
+                        // Read the request from the client. Once the client has
+                        // written to the pipe its security token will be available.
+
+                        inputMessages.TryDequeue(out ResoniteBridgeMessage message, -1, stopToken.Token);
+                        // wait for publisher to connect
+                        WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
+                        if (stopToken.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
                         try
                         {
-                            DebugLog("Waiting for connection to Resonite");
-
-                            pipeClient.Connect(millisTimeout);
-
-                            connected = true;
-                            DebugLog("Connected to Resonite");
-                            // Read the request from the client. Once the client has
-                            // written to the pipe its security token will be available.
-
-                            StreamString ss = new StreamString(pipeClient);
-                            // Verify our identity to the connected client using a
-                            // string that the client anticipates.
-                            while (!stopToken.IsCancellationRequested)
-                            {
-                                if (!waitingForResponse)
-                                {
-                                    ResoniteBridgeMessage message;
-                                    while (!inputMessages.TryDequeue(out message) && !stopToken.IsCancellationRequested)
-                                    {
-                                        if (!pipeClient.IsConnected)
-                                        {
-                                            connected = false;
-                                            throw new IOException("Disconnected");
-                                        }
-                                        Thread.Sleep(1);
-                                    }
-                                    try
-                                    {
-                                        ss.WriteString(JsonConvert.SerializeObject(message), millisTimeout, stopToken.Token);
-                                        waitingForResponse = true;
-                                    }
-                                    catch (JsonSerializationException e)
-                                    {
-                                        DebugLog("Failed to serialize message, ignoring");
-                                        DebugLog("ERROR: " + e.Message);
-                                        DebugLog("Message:" + message);
-                                    }
-                                }
-                                if (waitingForResponse)
-                                {
-                                    string result = ss.ReadString(millisTimeout, stopToken.Token);
-                                    ResoniteBridgeResponse parsedResult;
-                                    if (result != "" && result != null)
-                                    {
-                                        try
-                                        {
-                                            // If failed to deserialize, send null but warn in console
-                                            // (todo: maybe this throws error?)
-                                            parsedResult = JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
-                                            outputMessages.Enqueue(parsedResult);
-                                            waitingForResponse = false;
-                                        }
-                                        catch (JsonSerializationException e)
-                                        {
-                                            DebugLog("Failed to deserialize result, sending null instead");
-                                            DebugLog("ERROR: " + e.Message);
-                                            DebugLog("Message: " + result);
-                                        }
-                                    }
-                                }
-                            }
+                            message.uuid = messageCount;
+                            messageCount += 1;
+                            WriteString(publisher, JsonConvert.SerializeObject(message), millisTimeout,
+                                stopToken.Token);
+                            AutoResetEvent responseEvent = new AutoResetEvent(false);
+                            gotResponseEvents[message.uuid] = responseEvent;
                         }
-                        // Catch the IOException that is raised if the pipe is broken
-                        // or disconnected.
-                        catch (IOException e)
+                        catch (JsonSerializationException e)
                         {
-                            DebugLog("Disconnected from Resonite with IOException");
+                            DebugLog("Failed to serialize message, ignoring");
                             DebugLog("ERROR: " + e.Message);
+                            DebugLog("Message:" + message);
                         }
-                        catch (TimeoutException e)
+                    }
+                }
+            });
+
+            // wait for subscriber to connect
+                        WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, subscriber.connectEvent });
+                        if (stopToken.IsCancellationRequested)
                         {
-                            DebugLog("Disconnected from Resonite with TimeoutException");
+                            break;
+                        }
+
+                        string result = ReadString(subscriber, millisTimeout, stopToken.Token);
+                        try
+                        {
+                            ] ResoniteBridgeResponse parsedResult =
+                                JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
+                            outputMessages.Enqueue(parsedResult);
+                        }
+                        catch (JsonSerializationException e)
+                        {
+                            DebugLog("Failed to deserialize result, ignoring");
                             DebugLog("ERROR: " + e.Message);
+                            DebugLog("Message: " + result);
                         }
-                        catch (CanceledException)
-                        {
-                            DebugLog("Disconnected from Resonite with CanceledException, breaking");
-                        }
-                        catch (Exception e)
-                        {
-                            DebugLog("Disconnected from Resonite with error " + e.GetType());
-                            DebugLog("ERROR: " + e.Message);
-                        }
-                        finally
-                        {
-                            connected = false;
-                            pipeClient.Close();
-                        }
+                    }
+                    catch (CanceledException)
+                    {
+                        DebugLog("Disconnected from Resonite with CanceledException, breaking");
                     }
                 }
             });

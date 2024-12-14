@@ -19,6 +19,15 @@ namespace NamedPipeIPC
         CancellationTokenSource stopToken = new CancellationTokenSource();
         
         public volatile ConcurrentBag<IpcServerConnection> connections = new ConcurrentBag<IpcServerConnection>();
+
+        public event IpcServerConnection.RecievedBytesCallback RecievedBytes;
+        
+        
+        public ManualResetEvent connectEvent = new ManualResetEvent(false);
+        public ManualResetEvent disconnectEvent = new ManualResetEvent(true);
+        public object connectEventLock = new object();
+        
+        
         public IpcSubscriber(string baseKey, int millisBetweenPing) {
             this.baseKey = baseKey;
             this.millisBetweenPing = millisBetweenPing;
@@ -33,9 +42,38 @@ namespace NamedPipeIPC
                 this.processId,
                 stopToken);
             connections.Add(connection);
+            connection.OnDisconnect += () =>
+            {
+                UpdateConnectionEvents();
+                AddNewListener();
+            };
+            connection.OnConnect += () =>
+            {
+                UpdateConnectionEvents();
+
+                CheckListeners();
+            };
             // once it connects, we need to open a new channel for new people that want to connect
-            connection.OnConnected += AddNewListener;
-            connection.OnDisconnected += CheckListeners;
+            connection.OnRecievedBytes += RecievedBytes;
+            connection.Init();
+        }
+
+        void UpdateConnectionEvents()
+        {
+            // we need to lock to ensure we don't set this between the IsConnected check above and resetting
+            lock (connectEventLock)
+            {
+                if (IsConnected())
+                {
+                    connectEvent.Set();
+                    disconnectEvent.Reset();
+                }
+                else
+                {
+                    connectEvent.Reset();
+                    disconnectEvent.Set();
+                }
+            }
         }
 
         void CheckListeners()
@@ -60,6 +98,19 @@ namespace NamedPipeIPC
             }
 
             connections = cleanedBag;
+        }
+
+        public bool IsConnected()
+        {
+            foreach (IpcServerConnection connection in connections)
+            {
+                if (connection.connectionStatus == IpcUtils.ConnectionStatus.Connected)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Dispose()
