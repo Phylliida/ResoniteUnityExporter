@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0-windows7.0</TargetFramework>
     <OutputType>Exe</OutputType>
+      <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <RootNamespace>ResoniteBridgeStandalone</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	  <UseWindowsForms>true</UseWindowsForms>

@@ -6,7 +6,7 @@ using NamedPipeIPC;
 
 namespace ResoniteBridge
 {
-    public class ResoniteBridgeServer
+    public class ResoniteBridgeServer : IDisposable
     {
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
 
@@ -27,7 +27,7 @@ namespace ResoniteBridge
         
         public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message);
 
-        public void ProcessMessageAsync(ResoniteBridgeMessage message,
+        private void ProcessMessageAsync(ResoniteBridgeMessage message,
             MessageProcessor messageProcessor, int timeout = -1)
         {
             Thread processThread = new Thread(() =>
@@ -37,7 +37,7 @@ namespace ResoniteBridge
             processThread.Start();
         }
         
-        public void ProcessMessageSync(ResoniteBridgeMessage message,
+        private void ProcessMessageSync(ResoniteBridgeMessage message,
             MessageProcessor messageProcessor, int timeout = -1)
         {
             Task<ResoniteBridgeResponse> processingTask = Task.Run(() => messageProcessor(message), stopToken.Token);

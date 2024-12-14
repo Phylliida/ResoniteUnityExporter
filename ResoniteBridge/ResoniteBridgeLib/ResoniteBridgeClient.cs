@@ -6,7 +6,7 @@ using NamedPipeIPC;
 
 namespace ResoniteBridge
 {
-    public class ResoniteBridgeClient
+    public class ResoniteBridgeClient : IDisposable
     {
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
 
@@ -52,7 +52,7 @@ namespace ResoniteBridge
                 return response;
             }
         }
-        public ResoniteBridgeResponse SendMessageSyncHelper(ResoniteBridgeMessage message, int timeout=-1)
+        private ResoniteBridgeResponse SendMessageSyncHelper(ResoniteBridgeMessage message, int timeout=-1)
         {
             ManualResetEvent messageEvent = new ManualResetEvent(false);
             outputMessageEvents[message.uuid] = messageEvent;

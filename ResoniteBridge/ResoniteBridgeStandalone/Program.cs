@@ -143,7 +143,7 @@ namespace ResoniteBridge
             serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
             
             // Once we have froox engine, load all assemblies (this will collect more as they are loaded)
-            serverData.assemblies = ResoniteBridgeServer.LoadAssemblies(FrooxEngineAsm,
+            serverData.assemblies = ReflectionUtils.LoadAssemblies(FrooxEngineAsm,
                    Path.Combine(resoniteDir, "Resonite_Data", "Managed"),
                    Path.Combine(resoniteDir, "Resonite_Data", "Plugins", "x64")
                    );
@@ -222,13 +222,42 @@ namespace ResoniteBridge
             ConcurrentQueue<string> messages = new ConcurrentQueue<string>();
             new Thread(() =>
             {
+                ManualResetEvent readyToProcess = new ManualResetEvent(false);
                 using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
                 {
                     Console.WriteLine(msg);
+                }, message =>
+                {
+                    ResoniteBridgeResponse result = null;
+                    Action runStuff = delegate
+                    {
+                        try
+                        {
+                            result = ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message);
+                        }
+                        catch (Exception ex)
+                        {
+                            result = new ResoniteBridgeResponse()
+                            {
+                                response = new ResoniteBridgeValue()
+                                {
+                                    typeName = ex.GetType().Name,
+                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                    valueType = ResoniteBridgeValueType.Error
+                                },
+                                responseType = ResoniteBridgeResponseType.Error,
+                                extraResults = null
+                            };
+                        }
+                    };
+                    CallMethod(serverData.focusedWorld, "RunSynchronously",
+                        runStuff,
+                        false,
+                        null,
+                        false);
+                    return result;
                 }))
                 {
-
-
                     bool first = true;
                     try
                     {
@@ -264,38 +293,12 @@ namespace ResoniteBridge
                                             ,
                                             0)
                                         );
+                                    readyToProcess.Set();
                                 }
+
                                 serverData.focusedWorld = focusedWorld;
                                 serverData.engine = this.engine;
-                                Action runStuff = delegate
-                                {
-                                    while (bridgeServer.inputMessages.TryDequeue(out ResoniteBridgeMessage message))
-                                    {
-                                        try
-                                        {
-                                            bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse()
-                                            {
-                                                response = new ResoniteBridgeValue()
-                                                {
-                                                    typeName = ex.GetType().Name,
-                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                    valueType = ResoniteBridgeValueType.Error
-                                                },
-                                                responseType = ResoniteBridgeResponseType.Error,
-                                                extraResults = null
-                                            });
-                                        }
-                                    }
-                                };
-                                CallMethod(focusedWorld, "RunSynchronously",
-                                    runStuff,
-                                    false,
-                                    null,
-                                    false);
+                                
                             }
                             try
                             {

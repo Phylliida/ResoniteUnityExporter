@@ -41,9 +41,10 @@ namespace ResoniteBridgeMod
         {
             new Thread(() =>
             {
+                ManualResetEvent readyToProcess = new ManualResetEvent(false);
                 ResoniteBridgeServerData serverData = new ResoniteBridgeServerData()
                 {
-                    assemblies = ResoniteBridgeServer.LoadAssemblies(typeof(FrooxEngine.Engine).Assembly),
+                    assemblies = ReflectionUtils.LoadAssemblies(typeof(FrooxEngine.Engine).Assembly),
                     uuidLookup = new UnsupportedTypeLookup(10)
                 };
                 using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
@@ -59,6 +60,45 @@ namespace ResoniteBridgeMod
                             Msg("Bridge message:" + msg);
                         });
                     }
+                }, message =>
+                {
+                    // wait for ready to process
+                    WaitHandle.WaitAny(new[] { readyToProcess, cancellation.Token.WaitHandle });
+                    if (cancellation.IsCancellationRequested)
+                    {
+                        throw new CanceledException();
+                    }
+
+                    ResoniteBridgeResponse response = null;
+                    
+                    Action runStuff = delegate
+                    {
+                        try
+                        {
+                            response = ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Msg("Got exception when evaluating message:" + ex.ToString() + "\n" +
+                                Environment.StackTrace);
+                            response = new ResoniteBridgeResponse
+                            {
+                                response = new ResoniteBridgeValue()
+                                {
+                                    typeName = ex.GetType().Name,
+                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                    valueType = ResoniteBridgeValueType.Error
+                                },
+                                responseType = ResoniteBridgeResponseType.Error,
+                                extraResults = null
+                            };
+                        }
+                    };
+                    if (FrooxEngine.Engine.Current.WorldManager.FocusedWorld != null)
+                    {
+                        FrooxEngine.Engine.Current.WorldManager.FocusedWorld.RunSynchronously(runStuff);
+                    }
+                    return response;
                 }))
                 {
                     try
@@ -70,45 +110,9 @@ namespace ResoniteBridgeMod
                         {
                             Thread.Sleep(16);
                         }
+                        readyToProcess.Set();
                         Msg("Bridge server listening");
-                        while (!cancellation.IsCancellationRequested)
-                        {
-                            FrooxEngine.World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
-                            if (focusedWorld != null)
-                            {
-                                serverData.focusedWorld = focusedWorld;
-                                serverData.engine = FrooxEngine.Engine.Current;
-                                Action runStuff = delegate
-                                {
-                                    while (bridgeServer.inputMessages.TryDequeue(out ResoniteBridgeMessage message))
-                                    {
-                                        try
-                                        {
-                                            Msg("Got message of type " + message.messageType + " with name " + message.name + " with target " + message.target + " with inputs " + message.inputs);
-                                            bridgeServer.outputMessages.Enqueue(ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message));
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Msg("Got exception when evaluating message:" + ex.ToString() + "\n" + Environment.StackTrace);
-                                            bridgeServer.outputMessages.Enqueue(new ResoniteBridgeResponse
-                                            {
-                                                response = new ResoniteBridgeValue()
-                                                {
-                                                    typeName = ex.GetType().Name,
-                                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
-                                                    valueType = ResoniteBridgeValueType.Error
-                                                },
-                                                responseType = ResoniteBridgeResponseType.Error,
-                                                extraResults = null
-                                            });
-
-                                        }
-                                    }
-                                };
-                                focusedWorld.RunSynchronously(runStuff);
-                            }
-                            Thread.Sleep(16);
-                        }
+                        cancellation.Token.WaitHandle.WaitOne();
                     }
                     catch (Exception ex)
                     {
