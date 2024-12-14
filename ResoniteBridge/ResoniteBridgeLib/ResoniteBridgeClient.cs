@@ -37,6 +37,10 @@ namespace ResoniteBridge
         private Thread recievingThread;
 
 
+        public bool IsConnected()
+        {
+            return publisher.IsConnected() && subscriber.IsConnected();
+        }
         public ResoniteBridgeResponse SendMessageSync(ResoniteBridgeMessage message, int timeout)
         {
             int messageUuid = Interlocked.Increment(ref curMessageId);

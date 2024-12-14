@@ -82,6 +82,11 @@ namespace ResoniteBridge
             }
         }
 
+        public bool IsConnected()
+        {
+            return subscriber.IsConnected() && publisher.IsConnected();
+        }
+
         public ResoniteBridgeServer(LogDelegate DebugLog, MessageProcessor messageProcessor)
         {
             stopToken = new CancellationTokenSource();
