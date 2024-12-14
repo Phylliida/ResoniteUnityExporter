@@ -9,6 +9,82 @@ namespace ResoniteBridge
 {
     public static class ReflectionUtils
     {
+        
+        // from https://stackoverflow.com/a/10253634
+        public static IEnumerable<Assembly> GetAssemblies(Assembly frooxEngineAsm, params string[] searchPaths)
+        {
+            var list = new List<string>();
+            var stack = new Stack<Assembly>();
+
+            stack.Push(frooxEngineAsm);
+
+            do
+            {
+                var asm = stack.Pop();
+
+                yield return asm;
+
+                foreach (var reference in asm.GetReferencedAssemblies())
+                    if (!list.Contains(reference.FullName))
+                    {
+                        try
+                        {
+                            stack.Push(Assembly.Load(reference));
+                        }
+                        catch (Exception e) when (e is System.IO.FileNotFoundException || e is System.IO.FileLoadException)
+                        {
+                            foreach (string searchPath in searchPaths)
+                            {
+                                try
+                                {
+                                    stack.Push(Assembly.Load(System.IO.Path.Combine(searchPath, reference.Name)));
+                                    break;
+                                }
+                                catch (Exception e2) when (e2 is System.IO.FileNotFoundException || e2 is System.IO.FileLoadException)
+                                {
+
+                                }
+                            }
+                        }
+                        list.Add(reference.FullName);
+                    }
+
+            }
+            while (stack.Count > 0);
+
+        }
+
+        public static string GetAssemblyName(Assembly assembly)
+        {
+            return assembly.GetName().Name;
+        }
+
+        public static Dictionary<string, Assembly> LoadAssemblies(Assembly frooxEngineAsm, params string[] searchPaths)
+        {
+            Dictionary<string, Assembly> loadedAssemblies = new Dictionary<string, Assembly>();
+
+            foreach (Assembly assembly in GetAssemblies(frooxEngineAsm, searchPaths))
+            {
+                if (!loadedAssemblies.ContainsKey(GetAssemblyName(assembly)))
+                {
+                    loadedAssemblies.Add(GetAssemblyName(assembly), assembly);
+                }
+            }
+
+            // Any assemblies loaded later
+            AppDomain.CurrentDomain.AssemblyLoad += (object sender, AssemblyLoadEventArgs args) => {
+                if (!loadedAssemblies.ContainsKey(GetAssemblyName(args.LoadedAssembly)))
+                {
+                    loadedAssemblies.Add(GetAssemblyName(args.LoadedAssembly), args.LoadedAssembly);
+                }
+            };
+            // This will be directory holding resonite
+            // For example
+            // C:\Program Files (x86)\Steam\steamapps\common\Resonite
+            return loadedAssemblies;
+        }
+
+        
         public static BindingFlags StaticBindingFlags = BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy | BindingFlags.NonPublic;
 
         public static BindingFlags InstanceBindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.FlattenHierarchy;

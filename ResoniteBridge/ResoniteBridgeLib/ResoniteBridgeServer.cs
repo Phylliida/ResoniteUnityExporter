@@ -1,228 +1,151 @@
 ﻿using Newtonsoft.Json;
+using ResoniteBridge;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
+using NamedPipeIPC;
+using TwitchLib.Api.Helix.Models.Moderation.CheckAutoModStatus.Request;
 
 namespace ResoniteBridge
 {
-    public class ResoniteBridgeServer : IDisposable
+    public class ResoniteBridgeServer
     {
-
-        // from https://stackoverflow.com/a/10253634
-        public static IEnumerable<Assembly> GetAssemblies(Assembly frooxEngineAsm, params string[] searchPaths)
-        {
-            var list = new List<string>();
-            var stack = new Stack<Assembly>();
-
-            stack.Push(frooxEngineAsm);
-
-            do
-            {
-                var asm = stack.Pop();
-
-                yield return asm;
-
-                foreach (var reference in asm.GetReferencedAssemblies())
-                    if (!list.Contains(reference.FullName))
-                    {
-                        try
-                        {
-                            stack.Push(Assembly.Load(reference));
-                        }
-                        catch (Exception e) when (e is System.IO.FileNotFoundException || e is System.IO.FileLoadException)
-                        {
-                            foreach (string searchPath in searchPaths)
-                            {
-                                try
-                                {
-                                    stack.Push(Assembly.Load(System.IO.Path.Combine(searchPath, reference.Name)));
-                                    break;
-                                }
-                                catch (Exception e2) when (e2 is System.IO.FileNotFoundException || e2 is System.IO.FileLoadException)
-                                {
-
-                                }
-                            }
-                        }
-                        list.Add(reference.FullName);
-                    }
-
-            }
-            while (stack.Count > 0);
-
-        }
-
-        public static string GetAssemblyName(Assembly assembly)
-        {
-            return assembly.GetName().Name;
-        }
-
-        public static Dictionary<string, Assembly> LoadAssemblies(Assembly frooxEngineAsm, params string[] searchPaths)
-        {
-            Dictionary<string, Assembly> loadedAssemblies = new Dictionary<string, Assembly>();
-
-            foreach (Assembly assembly in GetAssemblies(frooxEngineAsm, searchPaths))
-            {
-                if (!loadedAssemblies.ContainsKey(GetAssemblyName(assembly)))
-                {
-                    loadedAssemblies.Add(GetAssemblyName(assembly), assembly);
-                }
-            }
-
-            // Any assemblies loaded later
-            AppDomain.CurrentDomain.AssemblyLoad += (object sender, AssemblyLoadEventArgs args) => {
-                if (!loadedAssemblies.ContainsKey(GetAssemblyName(args.LoadedAssembly)))
-                {
-                    loadedAssemblies.Add(GetAssemblyName(args.LoadedAssembly), args.LoadedAssembly);
-                }
-            };
-            // This will be directory holding resonite
-            // For example
-            // C:\Program Files (x86)\Steam\steamapps\common\Resonite
-            return loadedAssemblies;
-        }
-
-
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
 
-        Thread monitoringThread;
+        public const int millisBetweenPing = 1000;
 
-        public CancellationTokenSource stopToken;
+        private volatile int curMessageId = 0;
+
+        public IpcPublisher publisher;
+        public IpcSubscriber subscriber;
+
+        CancellationTokenSource stopToken;
+
         public delegate void LogDelegate(string message);
 
-        public ConcurrentQueue<ResoniteBridgeMessage> inputMessages = new ConcurrentQueue<ResoniteBridgeMessage>();
-        public ConcurrentQueue<ResoniteBridgeResponse> outputMessages = new ConcurrentQueue<ResoniteBridgeResponse>();
-        public ResoniteBridgeServer (LogDelegate DebugLog)
+        private ConcurrentQueueWithNotification<ResoniteBridgeResponse> outputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeResponse>();
+
+        private Thread sendingThread;
+        private Thread recievingThread;
+        
+        public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message);
+
+        public void ProcessMessageAsync(ResoniteBridgeMessage message,
+            MessageProcessor messageProcessor, int timeout = -1)
+        {
+            Thread processThread = new Thread(() =>
+            {
+                ProcessMessageSync(message, messageProcessor, timeout);
+            });
+            processThread.Start();
+        }
+        
+        public void ProcessMessageSync(ResoniteBridgeMessage message,
+            MessageProcessor messageProcessor, int timeout = -1)
+        {
+            Task<ResoniteBridgeResponse> processingTask = Task.Run(() => messageProcessor(message), stopToken.Token);
+        
+            // Create a task for disconnect event
+            Task disconnectTask = Task.Run(() => publisher.disconnectEvent.WaitOne(), stopToken.Token);
+
+            Task timeoutTask = Task.Delay(timeout, stopToken.Token);
+            
+            // Wait for the first task to complete
+            Task completedTask = Task.WhenAny(
+                processingTask,
+                disconnectTask,
+                timeoutTask
+            );
+            
+            if (stopToken.IsCancellationRequested)
+            {
+                throw new CanceledException();
+            }
+            else if (completedTask == disconnectTask)
+            {
+                throw new DisconnectException();
+            }
+            else if (completedTask == timeoutTask)
+            {
+                throw new TimeoutException();
+            }
+            else
+            {
+                ResoniteBridgeResponse response = processingTask.GetAwaiter().GetResult();
+                response.uuid = message.uuid;
+                outputMessages.Enqueue(response);
+            }
+        }
+
+        public ResoniteBridgeServer(LogDelegate DebugLog, MessageProcessor messageProcessor)
         {
             stopToken = new CancellationTokenSource();
-            int millisTimeout = 10000;
-            // network monitoring thread
-            monitoringThread = new Thread(() =>
+            publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing);
+            subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing);
+            
+            recievingThread = new Thread(() =>
             {
-                try
+                while (!stopToken.IsCancellationRequested)
                 {
-                    bool waitingForRequest = true;
-                    ResoniteBridgeResponse response = new ResoniteBridgeResponse();
-
-                    while (!stopToken.IsCancellationRequested)
+                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, subscriber.connectEvent });
+                    if (stopToken.IsCancellationRequested)
                     {
-                        using (NamedPipeServerStream pipeServer =
-                            new NamedPipeServerStream(NAMED_SOCKET_KEY, PipeDirection.InOut))
-                        {
-                            try
-                            {
-                                DebugLog("Waiting for connection to client");
-
-                                pipeServer.WaitForConnection();
-
-                                DebugLog("Connected to client");
-                                // Read the request from the client. Once the client has
-                                // written to the pipe its security token will be available.
-
-                                StreamString ss = new StreamString(pipeServer);
-
-                                // Verify our identity to the connected client using a
-                                // string that the client anticipates.
-                                while (!stopToken.IsCancellationRequested)
-                                {
-                                    if (waitingForRequest)
-                                    {
-                                        string message = ss.ReadString(millisTimeout, stopToken.Token);
-                                        if (message == null)
-                                        {
-                                            DebugLog("Got null message, breaking");
-                                            break;
-                                        }
-                                        try
-                                        {
-                                            DebugLog("Got string " + message);
-                                            ResoniteBridgeMessage parsedMessage = JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
-                                            inputMessages.Enqueue(parsedMessage);
-                                            Stopwatch elapsed = new Stopwatch();
-                                            while (!outputMessages.TryDequeue(out response) && !stopToken.IsCancellationRequested)
-                                            {
-                                                if (elapsed.ElapsedMilliseconds > millisTimeout)
-                                                {
-                                                    throw new TimeoutException("Recieved message but took too long to process");
-                                                }
-                                                Thread.Sleep(1);
-                                            }
-                                            waitingForRequest = false;
-                                        }
-                                        catch (JsonSerializationException e)
-                                        {
-                                            DebugLog("Failed to serialize message, ignoring");
-                                            DebugLog("ERROR: " + e.Message);
-                                            DebugLog("Message:" + message);
-                                        }
-                                    }
-
-                                    if (!waitingForRequest)
-                                    {
-                                        try
-                                        {
-                                            ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
-                                        }
-                                        catch (JsonSerializationException e)
-                                        {
-                                            DebugLog("Failed to serialize response, sending error instead");
-                                            DebugLog("ERROR: " + e.Message);
-                                            DebugLog("Message:" + response);
-                                            response.responseType = ResoniteBridgeResponseType.Error;
-                                            response.extraResults = null;
-                                            response.response = new ResoniteBridgeValue()
-                                            {
-                                                assemblyName = null,
-                                                typeName = null,
-                                                valueStr = e.Message,
-                                                valueType = ResoniteBridgeValueType.Error
-                                            };
-                                            ss.WriteString(JsonConvert.SerializeObject(response), millisTimeout, stopToken.Token);
-                                        }
-                                        waitingForRequest = true;
-                                    }
-                                }
-                            }
-                            // Catch the IOException that is raised if the pipe is broken
-                            // or disconnected.
-                            catch (IOException e)
-                            {
-                                DebugLog("Disconnected from client with io exception");
-                                DebugLog("ERROR: " + e.Message + " " + Environment.StackTrace);
-                            }
-                            catch (TimeoutException e)
-                            {
-                                DebugLog("Timeout, disconnected from client with error");
-                                DebugLog("ERROR: " + e.Message + " " + Environment.StackTrace);
-                            }
-                            catch (CanceledException)
-                            {
-                                DebugLog("Disconnected from client with CanceledException, breaking" + " " + Environment.StackTrace);
-                                break;
-                            }
-                            catch (Exception e)
-                            {
-                                DebugLog("Disconnected from client with error " + e.GetType() + " " + Environment.StackTrace);
-                                DebugLog("ERROR: " + e.Message);
-                            }
-                        }
+                        break;
+                    }
+                    string message = ReadString(subscriber, Timeout.Infinite, stopToken.Token);
+                    try
+                    {
+                        ResoniteBridgeMessage parsedMessage =
+                            JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
+                        ProcessMessageAsync(parsedMessage, messageProcessor);
+                    }
+                    catch (JsonSerializationException e)
+                    {
+                        DebugLog("Failed to deserialize message, ignoring");
+                        DebugLog("ERROR: " + e.Message);
+                        DebugLog("Message: " + message);
                     }
                 }
-                catch (Exception e)
+            });
+            
+            // network monitoring thread
+            sendingThread = new Thread(() =>
+            {
+                while (!stopToken.IsCancellationRequested)
                 {
-                    DebugLog("Got exception " + e.Message + " " + Environment.StackTrace);
+                    // Read the request from the client. Once the client has
+                    // written to the pipe its security token will be available.
+
+                    outputMessages.TryDequeue(out ResoniteBridgeResponse response, -1, stopToken.Token);
+                    // wait for publisher to connect
+                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
+                    if (stopToken.IsCancellationRequested)
+                    {
+                        break;
+                    }
+
+                    try
+                    {
+                        WriteString(publisher, JsonConvert.SerializeObject(response), Timeout.Infinite,
+                            stopToken.Token);
+                    }
+                    catch (JsonSerializationException e)
+                    {
+                        DebugLog("Failed to serialize response, ignoring");
+                        DebugLog("ERROR: " + e.Message);
+                        DebugLog("Message:" + response);
+                    }
                 }
             });
-
-            monitoringThread.Start();
+            
+            sendingThread.Start();
+            recievingThread.Start();
         }
 
         public void Dispose()
@@ -230,7 +153,8 @@ namespace ResoniteBridge
             if (!stopToken.IsCancellationRequested)
             {
                 stopToken.Cancel();
-                monitoringThread.Join();
+                sendingThread.Join();
+                recievingThread.Join();
                 stopToken.Dispose();
             }
         }

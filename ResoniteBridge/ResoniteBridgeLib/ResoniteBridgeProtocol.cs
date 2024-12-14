@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using System.Reflection;
 using System.Linq;
+using NamedPipeIPC;
 
 namespace ResoniteBridge
 {
@@ -104,6 +105,18 @@ namespace ResoniteBridge
 
     public class CanceledException : Exception {
     
+    }
+
+    public class DisconnectException : Exception
+    {
+        
+    }
+    
+    public static class StreamUtils {
+        public static WriteString(IpcPublisher publisher, string str)
+        {
+            
+        }
     }
 
 
