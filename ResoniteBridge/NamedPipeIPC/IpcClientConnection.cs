@@ -56,7 +56,8 @@ namespace NamedPipeIPC
                             // send messages
                             while (bytesToSend.TryDequeue(out byte[] bytes, millisBetweenPing, stopToken.Token))
                             {
-                                if (!WriteBytes(pipeClient, millisBetweenPing, bytes))
+                                if (!WriteBytes(pipeClient, millisBetweenPing, new byte[] {IpcUtils.DATA_MESSAGE})
+                                    || !WriteBytes(pipeClient, millisBetweenPing, bytes))
                                 {
                                     break;
                                 }
