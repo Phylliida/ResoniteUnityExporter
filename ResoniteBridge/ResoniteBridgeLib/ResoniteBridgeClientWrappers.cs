@@ -60,18 +60,7 @@ namespace ResoniteBridge
 
         public static ResoniteBridgeResponse SendBridgeMessageFull(ResoniteBridgeMessage message)
         {
-            client.inputMessages.Enqueue(message);
-            ResoniteBridgeResponse output;
-            Stopwatch elapsedTime = new Stopwatch();
-            elapsedTime.Start();
-            while (!client.outputMessages.TryDequeue(out output))
-            {
-                if (elapsedTime.ElapsedMilliseconds > 5000)
-                {
-                    throw new TimeoutException("Timed out waiting for response from server");
-                }
-                // We are on unity thread, can't sleep :(
-            }
+            ResoniteBridgeResponse output = client.SendMessageSync(message, 5000);
             if (output.responseType == ResoniteBridgeResponseType.Error ||
                 output.response.valueType == ResoniteBridgeValueType.Error)
             {

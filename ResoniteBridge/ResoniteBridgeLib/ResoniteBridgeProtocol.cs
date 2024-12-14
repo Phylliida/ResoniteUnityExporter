@@ -112,12 +112,7 @@ namespace ResoniteBridge
         
     }
     
-    public static class StreamUtils {
-        public static WriteString(IpcPublisher publisher, string str)
-        {
-            
-        }
-    }
+    
 
 
     // from https://learn.microsoft.com/en-us/dotnet/standard/io/how-to-use-named-pipes-for-network-interprocess-communication

@@ -35,15 +35,31 @@ namespace ResoniteBridge
 
         private Thread sendingThread;
         private Thread recievingThread;
-        
-        public ResoniteBridgeResponse SendMessageSync(ResoniteBridgeMessage message, int timeout=-1)
+
+
+        public ResoniteBridgeResponse SendMessageSync(ResoniteBridgeMessage message, int timeout)
         {
             int messageUuid = Interlocked.Increment(ref curMessageId);
-            
             message.uuid = messageUuid;
-
+            try
+            {
+                return SendMessageSync(message, timeout);
+            }
+            catch (Exception e)
+            {
+                ResoniteBridgeResponse response = new ResoniteBridgeResponse();
+                response.uuid = messageUuid;
+                response.response = new ResoniteBridgeValue();
+                response.response.valueType = ResoniteBridgeValueType.Error;
+                response.response.valueStr = e.Message + " " + e.StackTrace;
+                response.responseType = ResoniteBridgeResponseType.Error;
+                return response;
+            }
+        }
+        public ResoniteBridgeResponse SendMessageSyncHelper(ResoniteBridgeMessage message, int timeout=-1)
+        {
             ManualResetEvent messageEvent = new ManualResetEvent(false);
-            outputMessageEvents[messageUuid] = messageEvent;
+            outputMessageEvents[message.uuid] = messageEvent;
             inputMessages.Enqueue(message);
             int waitedHandle = WaitHandle.WaitAny(new WaitHandle[]
             {
@@ -52,7 +68,7 @@ namespace ResoniteBridge
                 messageEvent
             }, timeout);
 
-            outputMessageEvents.TryRemove(messageUuid, out _);
+            outputMessageEvents.TryRemove(message.uuid, out _);
             messageEvent.Dispose();
             
             if (waitedHandle == 0)
@@ -69,7 +85,7 @@ namespace ResoniteBridge
             }
             else
             {
-                outputMessages.TryRemove(messageUuid, out ResoniteBridgeResponse response);
+                outputMessages.TryRemove(message.uuid, out ResoniteBridgeResponse response);
                 return response;
             }
         }
@@ -97,11 +113,10 @@ namespace ResoniteBridge
                     {
                         break;
                     }
-
                     try
                     {
-                        WriteString(publisher, JsonConvert.SerializeObject(message), millisTimeout,
-                            stopToken.Token);
+                        byte[] strBytes = ResoniteBridgeUtils.EncodeString(JsonConvert.SerializeObject(message));
+                        publisher.Publish(strBytes);
                     }
                     catch (JsonSerializationException e)
                     {
@@ -112,31 +127,23 @@ namespace ResoniteBridge
                 }
             });
             
-            recievingThread = new Thread(() =>
+            subscriber.RecievedBytes += (bytes) =>
             {
-                while (!stopToken.IsCancellationRequested)
+                string result = ResoniteBridgeUtils.DecodeString(bytes);
+                try
                 {
-                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, subscriber.connectEvent });
-                    if (stopToken.IsCancellationRequested)
-                    {
-                        break;
-                    }
-                    string result = ReadString(subscriber, millisTimeout, stopToken.Token);
-                    try
-                    {
-                        ResoniteBridgeResponse parsedResult =
-                            JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
-                        outputMessages[parsedResult.uuid] = parsedResult;
-                        outputMessageEvents[parsedResult.uuid].Set();
-                    }
-                    catch (JsonSerializationException e)
-                    {
-                        DebugLog("Failed to deserialize result, ignoring");
-                        DebugLog("ERROR: " + e.Message);
-                        DebugLog("Message: " + result);
-                    }
+                    ResoniteBridgeResponse parsedResult =
+                        JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
+                    outputMessages[parsedResult.uuid] = parsedResult;
+                    outputMessageEvents[parsedResult.uuid].Set();
                 }
-            });
+                catch (JsonSerializationException e)
+                {
+                    DebugLog("Failed to deserialize result, ignoring");
+                    DebugLog("ERROR: " + e.Message);
+                    DebugLog("Message: " + result);
+                }
+            };
             
             sendingThread.Start();
             recievingThread.Start();

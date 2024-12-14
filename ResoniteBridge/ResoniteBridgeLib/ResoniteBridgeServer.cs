@@ -32,7 +32,6 @@ namespace ResoniteBridge
         private ConcurrentQueueWithNotification<ResoniteBridgeResponse> outputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeResponse>();
 
         private Thread sendingThread;
-        private Thread recievingThread;
         
         public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message);
 
@@ -88,31 +87,23 @@ namespace ResoniteBridge
             stopToken = new CancellationTokenSource();
             publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing);
             subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing);
-            
-            recievingThread = new Thread(() =>
+
+            subscriber.RecievedBytes += (bytes) =>
             {
-                while (!stopToken.IsCancellationRequested)
+                string message = ResoniteBridgeUtils.DecodeString(bytes);
+                try
                 {
-                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, subscriber.connectEvent });
-                    if (stopToken.IsCancellationRequested)
-                    {
-                        break;
-                    }
-                    string message = ReadString(subscriber, Timeout.Infinite, stopToken.Token);
-                    try
-                    {
-                        ResoniteBridgeMessage parsedMessage =
-                            JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
-                        ProcessMessageAsync(parsedMessage, messageProcessor);
-                    }
-                    catch (JsonSerializationException e)
-                    {
-                        DebugLog("Failed to deserialize message, ignoring");
-                        DebugLog("ERROR: " + e.Message);
-                        DebugLog("Message: " + message);
-                    }
+                    ResoniteBridgeMessage parsedMessage =
+                        JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
+                    ProcessMessageAsync(parsedMessage, messageProcessor);
                 }
-            });
+                catch (JsonSerializationException e)
+                {
+                    DebugLog("Failed to deserialize message, ignoring");
+                    DebugLog("ERROR: " + e.Message);
+                    DebugLog("Message: " + message);
+                }
+            };
             
             // network monitoring thread
             sendingThread = new Thread(() =>
@@ -129,11 +120,10 @@ namespace ResoniteBridge
                     {
                         break;
                     }
-
                     try
                     {
-                        WriteString(publisher, JsonConvert.SerializeObject(response), Timeout.Infinite,
-                            stopToken.Token);
+                        byte[] strBytes = ResoniteBridgeUtils.EncodeString(JsonConvert.SerializeObject(response));
+                        publisher.Publish(strBytes);
                     }
                     catch (JsonSerializationException e)
                     {
@@ -145,7 +135,6 @@ namespace ResoniteBridge
             });
             
             sendingThread.Start();
-            recievingThread.Start();
         }
 
         public void Dispose()
@@ -154,7 +143,6 @@ namespace ResoniteBridge
             {
                 stopToken.Cancel();
                 sendingThread.Join();
-                recievingThread.Join();
                 stopToken.Dispose();
             }
         }

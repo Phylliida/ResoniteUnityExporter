@@ -123,7 +123,7 @@ namespace ResoniteBridge
                         ResoniteBridgeValueType.Null)
                     : new ResoniteBridgeValue(
                         valueStr: null,
-                        assemblyName: ResoniteBridgeServer.GetAssemblyName(Assembly.GetAssembly(value.GetType())),
+                        assemblyName: ReflectionUtils.GetAssemblyName(Assembly.GetAssembly(value.GetType())),
                         typeName: value.GetType().FullName,
                         valueType: ResoniteBridgeValueType.Type
                         );
