@@ -30,7 +30,7 @@ namespace ResoniteBridge
 
         public static object ParseUUIDObject(UnsupportedTypeLookup typeLookup, ResoniteBridgeValue value, Type type)
         {
-            Guid uuid = Guid.Parse(value.valueStr);
+            Guid uuid = Guid.Parse(ResoniteBridgeUtils.DecodeString(value.valueBytes));
             if (typeLookup.TryGet(uuid, type, out object result))
             {
                 return result;
@@ -70,9 +70,9 @@ namespace ResoniteBridge
             switch (value.valueType)
             {
                 case ResoniteBridgeValueType.Serialized:
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, type);
+                    return ResoniteBridgeUtils.DecodeObject(value.valueBytes, type);
                 case ResoniteBridgeValueType.UUID:
-                    if (Guid.TryParse(value.valueStr, out Guid guid))
+                    if (Guid.TryParse(ResoniteBridgeUtils.DecodeString(value.valueBytes), out Guid guid))
                     {
                         if (runner.uuidLookup.TryGet(guid, type, out object result))
                         {
@@ -90,7 +90,7 @@ namespace ResoniteBridge
                 case ResoniteBridgeValueType.Type:
                     return type;
                 case ResoniteBridgeValueType.SpecialKeyword:
-                    return ParseSpecialKeyword(runner, value.valueStr);
+                    return ParseSpecialKeyword(runner, ResoniteBridgeUtils.DecodeString(value.valueBytes));
             }
             throw new ArgumentException("Unknown ResoniteBridgeValueType " + value.valueType + " for type " + type + " from assembly " + value.assemblyName);
         }
@@ -114,12 +114,12 @@ namespace ResoniteBridge
         {
             ResoniteBridgeValue encodedResult = value == null
                     ? new ResoniteBridgeValue(
-                        valueStr: null,
+                        valueBytes: null,
                         assemblyName: null,
                         typeName: null,
                         ResoniteBridgeValueType.Null)
                     : new ResoniteBridgeValue(
-                        valueStr: null,
+                        valueBytes: null,
                         assemblyName: ReflectionUtils.GetAssemblyName(Assembly.GetAssembly(value.GetType())),
                         typeName: value.GetType().FullName,
                         valueType: ResoniteBridgeValueType.Type
@@ -130,15 +130,15 @@ namespace ResoniteBridge
             {
                 try
                 {
-                    string encoded = Newtonsoft.Json.JsonConvert.SerializeObject(value, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                    encodedResult.valueStr = encoded;
+                    byte[] encoded = ResoniteBridgeUtils.EncodeObject(value);
+                    encodedResult.valueBytes = encoded;
                     encodedResult.valueType = ResoniteBridgeValueType.Serialized;
                 }
                 catch (Newtonsoft.Json.JsonSerializationException)
                 {
                     // use guid since serialization failed
                     Guid guid = runner.uuidLookup.Add(value);
-                    encodedResult.valueStr = guid.ToString();
+                    encodedResult.valueBytes = ResoniteBridgeUtils.EncodeString(guid.ToString());
                     encodedResult.valueType = ResoniteBridgeValueType.UUID;
                 }
             }
@@ -175,7 +175,7 @@ namespace ResoniteBridge
                     response = new ResoniteBridgeValue()
                     {
                         typeName = e.GetType().Name,
-                        valueStr = e.ToString() + "\n" + Environment.StackTrace,
+                        valueBytes = ResoniteBridgeUtils.EncodeString(e.ToString() + "\n" + Environment.StackTrace),
                         valueType = ResoniteBridgeValueType.Error
                     },
                     responseType = ResoniteBridgeResponseType.Error,

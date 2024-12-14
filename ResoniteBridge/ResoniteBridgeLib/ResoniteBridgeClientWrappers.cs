@@ -38,7 +38,7 @@ namespace ResoniteBridge
             {
                 Console.WriteLine("Got input of type " + input.GetType().ToString() + " with full name " + input.GetType().FullName);
                 // we need to serialize it
-                string serialized = Newtonsoft.Json.JsonConvert.SerializeObject(input, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                byte[] serialized = ResoniteBridgeUtils.EncodeObject(input);
                 return new ResoniteBridgeValue(serialized,
                     Assembly.GetAssembly(input.GetType()).GetName().Name,
                     ReflectionUtils.TypeToString(input.GetType()) + "bees",
@@ -62,7 +62,7 @@ namespace ResoniteBridge
             if (output.responseType == ResoniteBridgeResponseType.Error ||
                 output.response.valueType == ResoniteBridgeValueType.Error)
             {
-                DebugLog("Got exception:" + output.response.valueStr);
+                DebugLog("Got exception:" + output.response.valueBytes);
             }
             return output;
         }
@@ -158,7 +158,7 @@ namespace ResoniteBridge
             {
                 assemblyName = assemblyName,
                 typeName = typeName,
-                valueStr = null,
+                valueBytes = null,
                 valueType = ResoniteBridgeValueType.Type
             };
         }
@@ -170,7 +170,7 @@ namespace ResoniteBridge
             {
                 assemblyName = target.assemblyName,
                 typeName = target.typeName,
-                valueStr = null,
+                valueBytes = null,
                 valueType = ResoniteBridgeValueType.Type
             };
         }
@@ -193,13 +193,13 @@ namespace ResoniteBridge
             {
                 return ReflectionUtils.CallConstructor(typeToCastTo.Assembly, ReflectionUtils.TypeToString(typeToCastTo), value);
             }
-            else if(typeToCastTo.IsEnum)
-            {
-                return Enum.Parse(typeToCastTo, value.valueStr);
-            }
+            //else if(typeToCastTo.IsEnum)
+            //{
+            //    return Enum.Parse(typeToCastTo, ResoniteBridgeUtils.DecodeString(value.valueBytes));
+            //}
             else
             {
-                return Newtonsoft.Json.JsonConvert.DeserializeObject(value.valueStr, typeToCastTo);
+                return ResoniteBridgeUtils.DecodeObject(value.valueBytes, typeToCastTo);
             }
         }
 

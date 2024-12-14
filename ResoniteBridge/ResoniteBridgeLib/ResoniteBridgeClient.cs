@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
+using System.IO;
 using System.Threading;
 using NamedPipeIPC;
+using Newtonsoft.Json.Bson;
 
 namespace ResoniteBridge
 {
@@ -47,7 +49,7 @@ namespace ResoniteBridge
                 response.uuid = messageUuid;
                 response.response = new ResoniteBridgeValue();
                 response.response.valueType = ResoniteBridgeValueType.Error;
-                response.response.valueStr = e.Message + " " + e.StackTrace;
+                response.response.valueBytes = ResoniteBridgeUtils.EncodeString(e.Message + " " + e.StackTrace);
                 response.responseType = ResoniteBridgeResponseType.Error;
                 return response;
             }
@@ -111,8 +113,10 @@ namespace ResoniteBridge
                     }
                     try
                     {
-                        byte[] strBytes = ResoniteBridgeUtils.EncodeString(JsonConvert.SerializeObject(message));
-                        publisher.Publish(strBytes);
+                        // we use bson to decrease communication size
+                        // especially useful for arrays
+                        byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(message);
+                        publisher.Publish(encodedBytes);
                     }
                     catch (JsonSerializationException e)
                     {
@@ -125,11 +129,10 @@ namespace ResoniteBridge
             
             subscriber.RecievedBytes += (bytes) =>
             {
-                string result = ResoniteBridgeUtils.DecodeString(bytes);
                 try
                 {
-                    ResoniteBridgeResponse parsedResult =
-                        JsonConvert.DeserializeObject<ResoniteBridgeResponse>(result);
+                    ResoniteBridgeResponse parsedResult = (ResoniteBridgeResponse)ResoniteBridgeUtils.DecodeObject(
+                        bytes, typeof(ResoniteBridgeResponse));
                     outputMessages[parsedResult.uuid] = parsedResult;
                     outputMessageEvents[parsedResult.uuid].Set();
                 }
@@ -137,7 +140,7 @@ namespace ResoniteBridge
                 {
                     DebugLog("Failed to deserialize result, ignoring");
                     DebugLog("ERROR: " + e.Message);
-                    DebugLog("Message: " + result);
+                    DebugLog("Message: " + bytes);
                 }
             };
             

@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using NamedPipeIPC;
+using Newtonsoft.Json.Bson;
 
 namespace ResoniteBridge
 {
@@ -87,18 +89,17 @@ namespace ResoniteBridge
 
             subscriber.RecievedBytes += (bytes) =>
             {
-                string message = ResoniteBridgeUtils.DecodeString(bytes);
                 try
                 {
-                    ResoniteBridgeMessage parsedMessage =
-                        JsonConvert.DeserializeObject<ResoniteBridgeMessage>(message);
+                    ResoniteBridgeMessage parsedMessage = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
+                        bytes, typeof(ResoniteBridgeMessage));
                     ProcessMessageAsync(parsedMessage, messageProcessor);
                 }
                 catch (JsonSerializationException e)
                 {
                     DebugLog("Failed to deserialize message, ignoring");
                     DebugLog("ERROR: " + e.Message);
-                    DebugLog("Message: " + message);
+                    DebugLog("Message: " + bytes);
                 }
             };
             
@@ -119,8 +120,8 @@ namespace ResoniteBridge
                     }
                     try
                     {
-                        byte[] strBytes = ResoniteBridgeUtils.EncodeString(JsonConvert.SerializeObject(response));
-                        publisher.Publish(strBytes);
+                        byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(response);
+                        publisher.Publish(encodedBytes);
                     }
                     catch (JsonSerializationException e)
                     {
