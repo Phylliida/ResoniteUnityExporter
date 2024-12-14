@@ -616,7 +616,7 @@ namespace ResoniteBridge
 
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
         {
-            string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
+            string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
             var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
             Console.WriteLine("Decompiling");
             var decompTree = decompiler.DecompileWholeModuleAsSingleFile();
@@ -1740,7 +1740,7 @@ namespace ResoniteBridge
             foreach (KeyValuePair<string, Assembly> pair in new Dictionary<string, Assembly>(assemblies))
             {
                 Assembly assembly = pair.Value;
-                if (whitelist.Contains(ResoniteBridgeServer.GetAssemblyName(pair.Value)))
+                if (whitelist.Contains(ReflectionUtils.GetAssemblyName(pair.Value)))
                 {
                     whitelistedAssemblies.Add(assembly);
                 }
@@ -1801,7 +1801,7 @@ namespace ResoniteBridge
             foreach (Assembly assembly in whitelistedAssemblies)
             {
                 var decompiler = new CSharpDecompiler(GetAssemblyPath(assembly), new DecompilerSettings());
-                string assemblyName = ResoniteBridgeServer.GetAssemblyName(assembly);
+                string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
                 Console.WriteLine("Wrapping assembly " + assemblyName);
                 string outputCode = WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList);
                 yield return new Tuple<Assembly, string>(assembly, outputCode);

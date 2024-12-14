@@ -1,16 +1,8 @@
 ﻿using Newtonsoft.Json;
-using ResoniteBridge;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Pipes;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Sources;
 using NamedPipeIPC;
-using TwitchLib.Api.Helix.Models.Moderation.CheckAutoModStatus.Request;
 
 namespace ResoniteBridge
 {

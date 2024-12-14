@@ -1,12 +1,10 @@
 ﻿
 
-using System.IO;
 using System.Text;
 using System;
 using System.Threading;
 using System.Reflection;
 using System.Linq;
-using NamedPipeIPC;
 
 namespace ResoniteBridge
 {
