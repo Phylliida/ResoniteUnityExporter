@@ -1,6 +1,8 @@
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Elements.Assets;
 using UnityEngine;
 using UnityEditor;
 
@@ -119,6 +121,8 @@ namespace ResoniteBridgeUnity {
 			return texCoordDimensions.ToArray();
 		}
 		
+		
+		
 		public Elements.Assets.MeshX UnityMeshToMeshX(UnityEngine.Mesh unityMesh)
 		{
 			// todo: provide option to ignore bones and ignore vertex colors
@@ -126,7 +130,8 @@ namespace ResoniteBridgeUnity {
 			meshx.IncreaseVertexCount(unityMesh.vertexCount);
 			meshx.HasNormals = NotEmpty(unityMesh.normals);
 			meshx.HasTangents = NotEmpty(unityMesh.tangents);
-			meshx.HasColors = NotEmpty(unityMesh.colors) || NotEmpty(unityMesh.colors32);
+			// todo: do they ever have colors32 without colors? (maybe we need to convert)
+			meshx.HasColors = NotEmpty(unityMesh.colors);
 			// todo: is this right? maybe we need to look at bindposes too
 			meshx.HasBoneBindings = NotEmpty(unityMesh.boneWeights);
 			// todo: make little drop down auto generate if need to configure options for thing
@@ -139,22 +144,79 @@ namespace ResoniteBridgeUnity {
 				meshx.SetUV_Dimension(i, uvDimensions[i]);
 			}
 
-			Elements.Assets.VertexCollection resultVertices = new Elements.Assets.VertexCollection();
-			UnityEngine.Vector3[] vertices = unityMesh.GetVertices();
-			float[] vertexRawData = new float[vertices.Length*3];
-			System.Runtime.InteropServices.Marshal.Copy(vertices,
-				vertexRawData, 
-				0, 
-				vertices.Length*3);
-			for (int i = 0; i < vertices.Length; i++)
+			meshx.positions = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.GetVertices());
+			if (meshx.HasColors)
 			{
-				vertexRawData[i * 3] = vertices[i].x;
-				vertexRawData[i * 3+1] = vertices[i].y;
-				vertexRawData[i * 3+2] = vertices[i].z;
+				// important to use .colors instead of .colors32 on the unityMesh
+				// because colors32 stores each r,g,b,a as a byte instead of a float
+				// so this conversion would not work without manually fixing
+				meshx.colors = ConvertArray<Elements.Core.color, UnityEngine.Color>(unityMesh.colors);
+			}
+			if (meshx.HasNormals)
+			{
+				meshx.normals = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.normals);
+			}
+			if (meshx.HasTangents)
+			{
+				meshx.tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vertex4>(unityMesh.tangents);
 			}
 			
-			resultVertices._vertices = ;
-			meshx.AddVertices(vertices.Length, resultVertices);
+			// uvs are stored as UV_Array[] uv_channels
+			// where uv_channels[0] is for UV0 array, uv_channels[1] is for UV1 array, etc.
+			// inside a UV_Array they have three arrays,
+			// float2[] uv_2D
+			// float3[] uv_3D
+			// float4[] uv_4D
+			// so we can just set that directly
+			Elements.Assets.MeshX.UV_Array[] allUvs = new Elements.Assets.MeshX.UV_Array[uvDimensions.Length];
+			for (int i = 0; i < uvDimensions.Length; i++)
+			{
+				allUvs[i] = new MeshX.UV_Array();
+				int curDimension = uvDimensions[i];
+				if (curDimension == 2)
+				{
+					List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
+					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+					allUvs[i].uv_2D = ConvertArray<Elements.Core.float2, UnityEngine.Vector2>(uvs);
+				}
+				else if (curDimension == 3)
+				{
+					List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
+					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+					allUvs[i].uv_3D = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(uvs);
+				}
+				else if (curDimension == 4)
+				{
+					List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
+					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+					allUvs[i].uv_4D = ConvertArray<Elements.Core.float4, UnityEngine.Vector4>(uvs);
+				}
+			}
+
+			meshx.uv_channels = allUvs;
+			
+			
+			List<Elements.Assets.Submesh> submeshes = new List<Elements.Assets.Submesh>();
+			//for(int submeshI = 0; submeshI < unityMesh.)
+			//meshx.submeshes = 
+		}
+
+		/// <summary>
+		/// Note that this only works for arrays that use the same underlying data
+		/// i.e. it assumes sizes are the same and just copies the raw representation
+		/// </summary>
+		/// <param name="inArr"></param>
+		/// <typeparam name="ArrIn"></typeparam>
+		/// <typeparam name="ArrOut"></typeparam>
+		/// <returns></returns>
+		public static ArrOut[] ConvertArray<ArrOut, ArrIn>(ArrIn[] inArr)
+		{
+			ArrOut[] outArr = new ArrOut[inArr.Length];
+			Buffer.BlockCopy(
+				inArr, 0,
+				outArr, 0,
+				inArr.Length);
+			return outArr;
 		}
 		
 		

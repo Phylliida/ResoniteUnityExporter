@@ -614,6 +614,30 @@ namespace ResoniteBridge
             return allBaseTypeDefinitions;
         }
 
+        // we leave these as is, to decrease communication between wrapper and resonite
+        public static HashSet<string> PreservingTypes = new HashSet<string>()
+        {
+            "float2",
+            "float3",
+            "float4",
+            "double2",
+            "double3",
+            "double4",
+            "int2",
+            "int3",
+            "int4",
+            "long2",
+            "long3",
+            "long4",
+            "bool2",
+            "bool3",
+            "bool4",
+            "floatQ",
+            "doubleQ",
+            "color",
+            "colorX",
+        };
+
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
         {
             string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
@@ -657,6 +681,12 @@ namespace ResoniteBridge
                         typeDeclare.NameToken.ToString().Contains("FunctionProxy")) // we aren't gonna wrap all function proxies, they confuse ILSpy
                     {
                         nodesToRemove.Add(typeDeclare);
+                        return;
+                    }
+
+                    // we leave these as is (mostly raw types like float3, bool4, floatQ, etc.)
+                    if (PreservingTypes.Contains(typeDeclare.NameToken.ToString()))
+                    {
                         return;
                     }
 
@@ -707,6 +737,7 @@ namespace ResoniteBridge
                     {
                         return;
                     }
+
                     var staticTarget = new ObjectCreateExpression(
                         new SimpleType("ResoniteBridge.ResoniteBridgeValue"),
                         new Expression[] {
