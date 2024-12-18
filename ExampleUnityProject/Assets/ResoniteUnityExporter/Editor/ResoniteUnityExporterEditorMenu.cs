@@ -128,6 +128,7 @@ namespace ResoniteBridgeUnity {
 			// todo: provide option to ignore bones and ignore vertex colors
 			Elements.Assets.MeshX meshx = new Elements.Assets.MeshX();
 			meshx.IncreaseVertexCount(unityMesh.vertexCount);
+			int numVertices = unityMesh.vertexCount;
 			meshx.HasNormals = NotEmpty(unityMesh.normals);
 			meshx.HasTangents = NotEmpty(unityMesh.tangents);
 			// todo: do they ever have colors32 without colors? (maybe we need to convert)
@@ -144,7 +145,8 @@ namespace ResoniteBridgeUnity {
 				meshx.SetUV_Dimension(i, uvDimensions[i]);
 			}
 
-			meshx.positions = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.GetVertices());
+			Elements.Core.float3[] vertices = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.GetVertices());
+			meshx.positions = vertices;
 			if (meshx.HasColors)
 			{
 				// important to use .colors instead of .colors32 on the unityMesh
@@ -152,13 +154,18 @@ namespace ResoniteBridgeUnity {
 				// so this conversion would not work without manually fixing
 				meshx.colors = ConvertArray<Elements.Core.color, UnityEngine.Color>(unityMesh.colors);
 			}
+
+			Elements.Core.float3[] normals = null;
 			if (meshx.HasNormals)
 			{
-				meshx.normals = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.normals);
+				normals = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.normals);
+				meshx.normals = normals;
 			}
+			Elements.Core.float4[] tangents = null;
 			if (meshx.HasTangents)
 			{
-				meshx.tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vertex4>(unityMesh.tangents);
+				tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vertex4>(unityMesh.tangents);
+				meshx.tangents = tangents;
 			}
 			
 			// uvs are stored as UV_Array[] uv_channels
@@ -272,10 +279,54 @@ namespace ResoniteBridgeUnity {
 			{
 				string blendShapeName = unityMesh.GetBlendShapeName(blendShapeI);
 				Elements.Assets.BlendShape blendShape = meshx.AddBlendShape(blendShapeName);
-				blendShape.
+				int blendShapeFrameCount = unityMesh.GetblendShapeFrameCount(blendShapeI);
+				for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
+				{
+					float frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
+					Elements.Assets.BlendShapeFrame blendShapeFrame = blendShape.AddFrame(frameWeight);
+					UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
+					UnityEngine.Vector3[] deltaNormals = new UnityEngine.Vector3[numVertices];
+					UnityEngine.Vector3[] deltaTangents = new UnityEngine.Vector3[numVertices];
+					blendShape.HasNormals = meshx.HasNormals;
+					blendShape.HasTangents = meshx.HasTangents;
+
+					unityMesh.GetBlendShapeFrameVertices(
+						blendShapeI,
+						blendShapeFrameI,
+						deltaVertices,
+						deltaNormals,
+						deltaTangents
+					);
+
+					Elements.Core.float3[] frameVertices = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(deltaVertices);
+					for (int i = 0; i < numVertices; i++)
+					{
+						frameVertices[i] = frameVertices[i] - vertices[i];
+					}
+					blendShapeFrame.positions = frameVertices;
+
+					if (blendShape.HasNormals)
+					{
+						Elements.Core.float3[] frameNormals = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(deltaNormals);
+						for (int i = 0; i < numVertices; i++)
+						{
+							frameNormals[i] = frameNormals[i] - normals[i];
+						}
+						blendShapeFrame.normals = frameNormals;
+					}
+					
+					if (blendShape.HasTangents)
+					{
+						Elements.Core.float3[] frameTangents = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(deltaTangents);
+						for (int i = 0; i < numVertices; i++)
+						{
+							frameTangents[i] = frameTangents[i] - tangents[i].xyz;
+						}
+						blendShapeFrame.tangents = frameTangents;
+					}
+				}
 			}
 			
-			meshx.AddBlendShape()
 			
 		}
 
