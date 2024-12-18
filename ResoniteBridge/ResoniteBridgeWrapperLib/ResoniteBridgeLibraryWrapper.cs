@@ -636,6 +636,7 @@ namespace ResoniteBridge
             "doubleQ",
             "color",
             "colorX",
+            "UV_Array",
         };
 
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)

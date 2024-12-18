@@ -177,28 +177,106 @@ namespace ResoniteBridgeUnity {
 				{
 					List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
 					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-					allUvs[i].uv_2D = ConvertArray<Elements.Core.float2, UnityEngine.Vector2>(uvs);
+					allUvs[i].uv_2D = ConvertArray<Elements.Core.float2, UnityEngine.Vector2>(uvs.ToArray());
 				}
 				else if (curDimension == 3)
 				{
 					List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
 					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-					allUvs[i].uv_3D = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(uvs);
+					allUvs[i].uv_3D = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(uvs.ToArray());
 				}
 				else if (curDimension == 4)
 				{
 					List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
 					unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-					allUvs[i].uv_4D = ConvertArray<Elements.Core.float4, UnityEngine.Vector4>(uvs);
+					allUvs[i].uv_4D = ConvertArray<Elements.Core.float4, UnityEngine.Vector4>(uvs.ToArray());
 				}
 			}
 
 			meshx.uv_channels = allUvs;
 			
-			
+			// submesh (index buffers)
 			List<Elements.Assets.Submesh> submeshes = new List<Elements.Assets.Submesh>();
-			//for(int submeshI = 0; submeshI < unityMesh.)
-			//meshx.submeshes = 
+			for(int subMeshI = 0; subMeshI < unityMesh.subMeshCount; subMeshI++)
+			{
+				UnityEngine.Rendering.SubMeshDescriptor subMeshDescriptor = unityMesh.GetSubMesh(subMeshI);
+				Elements.Assets.TriangleSubmesh submesh = meshx.AddSubmesh<Elements.Assets.TriangleSubmesh>();
+				// todo: Lines, LineStrip, Points
+				int[] indicies = unityMesh.GetIndices(subMeshI);
+				int numPrimitives = 0;
+				bool reverse = false;
+				if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Triangles)
+				{
+					numPrimitives = indicies.Length / 3;
+					if (reverse)
+					{
+						// do it in place because why not
+						for (int triI = 0; triI < indicies.Length; triI++)
+						{
+							int v0 = indicies[triI];
+							int v1 = indicies[triI+1];
+							int v2 = indicies[triI+2];
+							indicies[triI] = v2;
+							indicies[triI+1] = v1;
+							indicies[triI+2] = v0;
+						}
+					}
+				}
+				else if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Quads)
+				{
+					// turn each quad into two tris
+					numPrimitives = 2 * (indicies.Length / 4);
+					int[] triIndicies = new int[numPrimitives * 3];
+					int triIndex = 0;
+					for (int quadI = 0; quadI < indicies.Length; quadI += 4)
+					{
+						int v0 = indicies[quadI];
+						int v1 = indicies[quadI+1];
+						int v2 = indicies[quadI+2];
+						int v3 = indicies[quadI+3];
+						if (reverse)
+						{
+							triIndicies[triIndex++] = v3;
+							triIndicies[triIndex++] = v2;
+							triIndicies[triIndex++] = v1;
+
+							triIndicies[triIndex++] = v3;
+							triIndicies[triIndex++] = v1;
+							triIndicies[triIndex++] = v0;
+						}
+						else
+						{
+							triIndicies[triIndex++] = v0;
+							triIndicies[triIndex++] = v1;
+							triIndicies[triIndex++] = v2;
+
+							triIndicies[triIndex++] = v0;
+							triIndicies[triIndex++] = v2;
+							triIndicies[triIndex++] = v3;
+						}
+					}
+					indicies = triIndicies;
+				}
+				int[] primitiveIDs = new int[numPrimitives];
+				for (int i = 0; i < numPrimitives; i++)
+				{
+					primitiveIDs[i] = i;
+				}
+				submesh.indicies = indicies;
+				submesh.primitiveIDs = primitiveIDs;
+				submesh._currentID = numPrimitives;
+				submesh.Count = numPrimitives;
+			}
+
+			for (int blendShapeI = 0; blendShapeI < unityMesh.blendShapeCount; blendShapeI++)
+			{
+				string blendShapeName = unityMesh.GetBlendShapeName(blendShapeI);
+				Elements.Assets.BlendShape blendShape = meshx.AddBlendShape(blendShapeName);
+				blendShape.
+			}
+			
+			meshx.AddBlendShape()
+			
 		}
 
 		/// <summary>
