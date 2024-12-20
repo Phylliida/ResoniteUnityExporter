@@ -60,7 +60,7 @@ namespace ResoniteBridgeMod
                             Msg("Bridge message:" + msg);
                         });
                     }
-                }, message =>
+                }, (message, threadState) =>
                 {
                     // wait for ready to process
                     WaitHandle.WaitAny(new[] { readyToProcess, cancellation.Token.WaitHandle });
@@ -96,7 +96,15 @@ namespace ResoniteBridgeMod
                     };
                     if (FrooxEngine.Engine.Current.WorldManager.FocusedWorld != null)
                     {
-                        FrooxEngine.Engine.Current.WorldManager.FocusedWorld.RunSynchronously(runStuff);
+                        if (threadState == ResoniteBridgeServer.ThreadState.Background)
+                        {
+                            FrooxEngine.Engine.Current.WorldManager.FocusedWorld.Coroutines.StartBackgroundTask(
+                                () => new System.Threading.Tasks.Task(runStuff));
+                        }
+                        else
+                        {
+                            FrooxEngine.Engine.Current.WorldManager.FocusedWorld.RunSynchronously(runStuff);
+                        }
                     }
                     return response;
                 }))
