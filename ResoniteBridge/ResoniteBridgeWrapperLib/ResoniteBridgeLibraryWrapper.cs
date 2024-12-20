@@ -637,6 +637,7 @@ namespace ResoniteBridge
             "color",
             "colorX",
             "UV_Array",
+            "BoneBinding", // needed to bulk transfer bone data
         };
 
         public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)

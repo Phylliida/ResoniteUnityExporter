@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
+using System.Threading.Tasks;
 using static ResoniteBridge.ReflectionUtils;
 
 namespace ResoniteBridge
@@ -182,6 +182,26 @@ namespace ResoniteBridge
                     extraResults = null
                 };
             }
+        }
+        
+        
+        public static IEnumerator<object> WaitForThreadState(ResoniteBridgeServer.ThreadState threadState)
+        {
+            object awaitTask = null;
+            switch (threadState)
+            {
+                case ResoniteBridgeServer.ThreadState.Background:
+                    awaitTask = CallMethod(LookupType("FrooxEngine", "FrooxEngine.Context"),
+                        "ToBackground");
+                    break;
+                case ResoniteBridgeServer.ThreadState.World:
+                    awaitTask = CallMethod(LookupType("FrooxEngine", "FrooxEngine.Context"),
+                        "ToWorld");
+                    break;
+            }
+
+            
+            yield return awaitTask;
         }
 
         public static object EvaluateHelper(ResoniteBridgeServerData runner, ResoniteBridgeMessage message, out object[] extraOutputs)

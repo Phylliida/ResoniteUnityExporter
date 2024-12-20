@@ -97,6 +97,7 @@ namespace ResoniteBridge
         GetProperty = 5,
         SetProperty = 6,
         GetEnum = 7,
+        SetThreadState = 8,
     }
 
 

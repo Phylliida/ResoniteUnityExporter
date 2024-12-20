@@ -226,13 +226,14 @@ namespace ResoniteBridge
                 using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
                 {
                     Console.WriteLine(msg);
-                }, message =>
+                }, (message, threadState) =>
                 {
                     ResoniteBridgeResponse result = null;
                     Action runStuff = delegate
                     {
                         try
                         {
+                            // evaluate
                             result = ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message);
                         }
                         catch (Exception ex)
@@ -242,7 +243,7 @@ namespace ResoniteBridge
                                 response = new ResoniteBridgeValue()
                                 {
                                     typeName = ex.GetType().Name,
-                                    valueStr = ex.ToString() + "\n" + Environment.StackTrace,
+                                    valueBytes = ResoniteBridge.ResoniteBridgeUtils.EncodeString(ex.ToString() + "\n" + Environment.StackTrace),
                                     valueType = ResoniteBridgeValueType.Error
                                 },
                                 responseType = ResoniteBridgeResponseType.Error,
@@ -250,11 +251,24 @@ namespace ResoniteBridge
                             };
                         }
                     };
-                    CallMethod(serverData.focusedWorld, "RunSynchronously",
-                        runStuff,
-                        false,
-                        null,
-                        false);
+                    if (threadState == ResoniteBridgeServer.ThreadState.World) 
+                    {
+                        CallMethod(serverData.focusedWorld, "RunSynchronously",
+                            runStuff,
+                            false,
+                            null,
+                            false);
+                    }
+                    else
+                    {
+                        var coroutines = GetProperty(
+                                                    serverData.focusedWorld,
+                                                    "Coroutines");
+                        CallMethod(coroutines,
+                                "StartBackgroundTask", 
+                                () => new System.Threading.Tasks.Task(runStuff));
+                    }
+
                     return result;
                 }))
                 {

@@ -27,22 +27,36 @@ namespace ResoniteBridge
 
         private Thread sendingThread;
         
-        public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message);
+        public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message, ThreadState threadState);
 
         private void ProcessMessageAsync(ResoniteBridgeMessage message,
             MessageProcessor messageProcessor, int timeout = -1)
         {
-            Thread processThread = new Thread(() =>
+            if (message.messageType == ResoniteBridgeMessageType.SetThreadState)
             {
-                ProcessMessageSync(message, messageProcessor, timeout);
-            });
-            processThread.Start();
+                this.threadState = (ThreadState)ReflectionUtils.GetEnum(typeof(ThreadState), message.name);
+            }
+            else
+            {
+                Thread processThread = new Thread(() =>
+                {
+                    ProcessMessageSync(message, messageProcessor, timeout);
+                });
+                processThread.Start();
+            }
         }
-        
+
+        public volatile ThreadState threadState = ThreadState.World;
+
+        public enum ThreadState
+        {
+            World,
+            Background
+        }
         private void ProcessMessageSync(ResoniteBridgeMessage message,
             MessageProcessor messageProcessor, int timeout = -1)
         {
-            Task<ResoniteBridgeResponse> processingTask = Task.Run(() => messageProcessor(message), stopToken.Token);
+            Task<ResoniteBridgeResponse> processingTask = Task.Run(() => messageProcessor(message, threadState), stopToken.Token);
         
             // Create a task for disconnect event
             Task disconnectTask = Task.Run(() => publisher.disconnectEvent.WaitOne(), stopToken.Token);

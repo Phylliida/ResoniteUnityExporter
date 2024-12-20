@@ -214,5 +214,15 @@ namespace ResoniteBridge
             };
             return SendBridgeMessage(message);
         }
+
+        public static void SetThreadState(ResoniteBridgeServer.ThreadState threadState)
+        {
+            ResoniteBridgeMessage message = new ResoniteBridgeMessage()
+            {
+                messageType = ResoniteBridgeMessageType.SetThreadState,
+                name = threadState.ToString(),
+            };
+            SendBridgeMessage(message);
+        }
     }
 }

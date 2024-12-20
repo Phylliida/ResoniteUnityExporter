@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Elements.Assets;
+using ResoniteBridge;
 using UnityEngine;
 using UnityEditor;
 
@@ -84,6 +86,7 @@ namespace ResoniteBridgeUnity {
 			
 			
 			
+			
 		}
 
 		public static bool NotEmpty<T>(T[] arr)
@@ -106,6 +109,8 @@ namespace ResoniteBridgeUnity {
 		
 		public int[] GetMeshUVChannelDimensions(UnityEngine.Mesh unityMesh, out int[] actualTexCoordIndices)
 		{
+			// Coroutines is a property
+			
 			List<int> texCoordIndices = new List<int>();
 			List<int> texCoordDimensions = new List<int>();
 			foreach (UnityEngine.Rendering.VertexAttributeDescriptor descriptor in unityMesh.GetVertexAttributes())
@@ -120,17 +125,43 @@ namespace ResoniteBridgeUnity {
 			actualTexCoordIndices = texCoordIndices.ToArray();
 			return texCoordDimensions.ToArray();
 		}
+
+
+		public void SkinnedMeshRendererToSlot(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, FrooxEngine.Slot attachingSlot, FrooxEngine.Slot assetsSlot)
+		{
+			List<string> boneNames = new List<string>();
+			if (NotEmpty(skinnedMeshRenderer.bones))
+			{
+				foreach (UnityEngine.Transform bone in skinnedMeshRenderer.bones)
+				{
+					boneNames.Add(bone.name);
+				}
+			}
+
+			Elements.Assets.MeshX meshx = UnityMeshToMeshX(skinnedMeshRenderer.sharedMesh, boneNames.ToArray());
+			
+			ResoniteBridgeClientWrappers.SetThreadState(ResoniteBridgeServer.ThreadState.Background);
+			FrooxEngine.Store.LocalDB localDb = attachingSlot.World.Engine.LocalDB;
+			string tempFilePath = localDb.GetTempFilePath("meshx");
+			meshx.SaveToFile(tempFilePath);
+			Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
+			//yield return FrooxEngine.Context.ToWorld();
+			ResoniteBridgeClientWrappers.SetThreadState(ResoniteBridgeServer.ThreadState.World);
+			FrooxEngine.StaticMesh staticMesh = assetsSlot.AddSlot("Mesh").AttachComponent<FrooxEngine.StaticMesh>();
+			staticMesh.URL.Value = url;
 		
+		}
 		
-		
-		public Elements.Assets.MeshX UnityMeshToMeshX(UnityEngine.Mesh unityMesh)
+		public Elements.Assets.MeshX UnityMeshToMeshX(UnityEngine.Mesh unityMesh, string[] boneNames=null)
 		{
 			// todo: provide option to ignore bones and ignore vertex colors
 			Elements.Assets.MeshX meshx = new Elements.Assets.MeshX();
 			meshx.IncreaseVertexCount(unityMesh.vertexCount);
 			int numVertices = unityMesh.vertexCount;
-			meshx.HasNormals = NotEmpty(unityMesh.normals);
-			meshx.HasTangents = NotEmpty(unityMesh.tangents);
+			bool hasNormals = NotEmpty(unityMesh.normals);
+			meshx.HasNormals = hasNormals;
+			bool hasTangents = NotEmpty(unityMesh.tangents);
+			meshx.HasTangents = hasTangents;
 			// todo: do they ever have colors32 without colors? (maybe we need to convert)
 			meshx.HasColors = NotEmpty(unityMesh.colors);
 			// todo: is this right? maybe we need to look at bindposes too
@@ -156,13 +187,13 @@ namespace ResoniteBridgeUnity {
 			}
 
 			Elements.Core.float3[] normals = null;
-			if (meshx.HasNormals)
+			if (hasNormals)
 			{
 				normals = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.normals);
 				meshx.normals = normals;
 			}
 			Elements.Core.float4[] tangents = null;
-			if (meshx.HasTangents)
+			if (hasTangents)
 			{
 				tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vertex4>(unityMesh.tangents);
 				meshx.tangents = tangents;
@@ -279,14 +310,25 @@ namespace ResoniteBridgeUnity {
 			{
 				string blendShapeName = unityMesh.GetBlendShapeName(blendShapeI);
 				Elements.Assets.BlendShape blendShape = meshx.AddBlendShape(blendShapeName);
-				int blendShapeFrameCount = unityMesh.GetblendShapeFrameCount(blendShapeI);
+				int blendShapeFrameCount = unityMesh.GetBlendShapeFrameCount(blendShapeI);
 				for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
 				{
 					float frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
+					// todo: ModelImporter just uses 1.0 for weight, should we do that?
 					Elements.Assets.BlendShapeFrame blendShapeFrame = blendShape.AddFrame(frameWeight);
 					UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
-					UnityEngine.Vector3[] deltaNormals = new UnityEngine.Vector3[numVertices];
-					UnityEngine.Vector3[] deltaTangents = new UnityEngine.Vector3[numVertices];
+					UnityEngine.Vector3[] deltaNormals = null;
+					if (hasNormals)
+					{
+						deltaNormals = new UnityEngine.Vector3[numVertices];
+					}
+
+					UnityEngine.Vector3[] deltaTangents = null;
+					if (hasTangents)
+					{
+						deltaTangents = new UnityEngine.Vector3[numVertices];
+					}
+					
 					blendShape.HasNormals = meshx.HasNormals;
 					blendShape.HasTangents = meshx.HasTangents;
 
@@ -305,7 +347,7 @@ namespace ResoniteBridgeUnity {
 					}
 					blendShapeFrame.positions = frameVertices;
 
-					if (blendShape.HasNormals)
+					if (hasNormals)
 					{
 						Elements.Core.float3[] frameNormals = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(deltaNormals);
 						for (int i = 0; i < numVertices; i++)
@@ -315,7 +357,7 @@ namespace ResoniteBridgeUnity {
 						blendShapeFrame.normals = frameNormals;
 					}
 					
-					if (blendShape.HasTangents)
+					if (hasTangents)
 					{
 						Elements.Core.float3[] frameTangents = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(deltaTangents);
 						for (int i = 0; i < numVertices; i++)
@@ -327,7 +369,89 @@ namespace ResoniteBridgeUnity {
 				}
 			}
 			
+			// todo: they have some normal flipping thing if normals are wrong, do we need that?
+
+			UnityEngine.Collections.NativeArray<byte> numBonesPerVertex = unityMesh.GetBonesPerVertex();
+			UnityEngine.Collections.NativeArray<UnityEngine.BoneWeight1> boneWeights = unityMesh.GetAllBoneWeights();
+			UnityEngine.Matrix4x4 boneBindposes = unityMesh.bindposes;
+			if (numBonesPerVertex.Length > 0 && boneWeights.Length > 0)
+			{
+				Dictionary<string, Elements.Assets.Bone> stringToBone = new Dictionary<string, Elements.Assets.Bone>();
+				Elements.Assets.BoneBinding[] boneBindings = new Elements.Assets.BoneBinding[numVertices];
+				for (int boneI = 0; boneI < boneNames.Length; boneI++)
+				{
+					string boneName = boneNames[boneI];
+					Elements.Core.float4x4 boneBindPose = ConvertMatrix4x4(boneBindposes[boneI]);
+					if (!stringToBone.TryGetValue(boneName, out Elements.Assets.Bone bone))
+					{
+						bone = meshx.AddBone(boneName);
+						bone.BindPose = boneBindPose;
+						stringToBone.Add(boneName, bone);
+					}
+				}
+				int boneWeightIndex = 0;
+				// unity has us traverse over all them in this weird way
+				for (int vertexI = 0; vertexI < numVertices; vertexI++)
+				{
+					byte numBones = numBonesPerVertex[vertexI];
+					BoneBinding boneBinding = new BoneBinding();
+					for (int boneI = 0; boneI < numBones; boneI++)
+					{
+						UnityEngine.BoneWeight1 boneWeight = boneWeights[boneWeightIndex++];
+						switch (boneI)
+						{
+							case 0:
+								boneBindings[vertexI].boneIndex0 = boneWeight.index;
+								boneBindings[vertexI].weight0 = boneWeight.weight;
+								break;
+							case 1:
+								boneBindings[vertexI].boneIndex1 = boneWeight.index;
+								boneBindings[vertexI].weight1 = boneWeight.weight;
+								break;
+							case 2:
+								boneBindings[vertexI].boneIndex2 = boneWeight.index;
+								boneBindings[vertexI].weight2 = boneWeight.weight;
+								break;
+							case 3:
+								boneBindings[vertexI].boneIndex3 = boneWeight.index;
+								boneBindings[vertexI].weight3 = boneWeight.weight;
+								break;
+							// sadly resonite only supports up to 4 bones per vertex
+							default:
+								break;
+						}
+						// luckily unity is already sorted (todo: is decending order correct?)
+					}
+				}
+				meshx.boneBindings = boneBindings;
+				meshx.SortTrimAndNormalizeBoneWeights();
+				meshx.FillInEmptyBindings(0);
+			}
 			
+			if (makeDualSided)
+			{
+				meshx.MakeDualSided();
+			}
+			if (makeFlatShaded)
+			{
+				meshx.ConvertToFlatShading();
+			}
+			meshx.StripEmptyBlendshapes();
+			if (calculateTangents)
+			{
+				meshx.RecalculateTangentsMikktspace();
+			}
+
+			return meshx;
+		}
+
+		public Elements.Core.float4x4 ConvertMatrix4x4(UnityEngine.Matrix4x4 mat)
+		{
+			return new Elements.Core.float4x4(
+				mat.m00, mat.m01, mat.m02, mat.m03,
+				mat.m10, mat.m11, mat.m12, mat.m13,
+				mat.m20, mat.m21, mat.m22, mat.m23,
+				mat.m30, mat.m31, mat.m32, mat.m33);
 		}
 
 		/// <summary>
