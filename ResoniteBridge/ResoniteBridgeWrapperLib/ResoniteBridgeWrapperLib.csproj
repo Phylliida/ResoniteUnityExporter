@@ -47,19 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BepuPhysics">
-      <HintPath>..\bepuphysics2\BepuPhysics\bin\Release\netstandard2.1\publish\BepuPhysics.dll</HintPath>
+      <HintPath>..\Published\BepuPhysics\BepuPhysics.dll</HintPath>
     </Reference>
     <Reference Include="BepuUtilities">
-      <HintPath>..\bepuphysics2\BepuPhysics\bin\Release\netstandard2.1\publish\BepuUtilities.dll</HintPath>
+      <HintPath>..\Published\BepuUtilities\BepuUtilities.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB">
-      <HintPath>..\LiteDB\LiteDB\bin\Release\netstandard2.1\publish\LiteDB.dll</HintPath>
+      <HintPath>..\Published\LiteDB\LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="LiteDBAsync">
-      <HintPath>..\litedb-async-incoming\LiteDBAsync\bin\Release\netstandard2.1\publish\LiteDBAsync.dll</HintPath>
+      <HintPath>..\Published\LiteDBAsync\LiteDBAsync.dll</HintPath>
     </Reference>
     <Reference Include="LiteNetLib">
-      <HintPath>..\LiteNetLib\LiteNetLib\bin\Release\netstandard2.1\publish\LiteNetLib.dll</HintPath>
+      <HintPath>..\Published\LiteNetLib\LiteNetLib.dll</HintPath>
     </Reference>
     <Reference Include="NamedPipeIPC">
       <HintPath>..\NamedPipeIPC\bin\Release\netstandard2.1\NamedPipeIPC.dll</HintPath>

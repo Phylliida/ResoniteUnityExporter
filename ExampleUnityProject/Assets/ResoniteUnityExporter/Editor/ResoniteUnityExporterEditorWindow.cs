@@ -59,7 +59,7 @@ namespace ResoniteBridgeUnity {
                 bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
 				
             }
-			if (bridgeClient.connected) {
+			if (bridgeClient.IsConnected()) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
 			else {

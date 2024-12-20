@@ -39,14 +39,14 @@
 	</PackageReference>
 </ItemGroup>
   <ItemGroup>
-    <Reference Include="FrooxEngine">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
+    <Reference Include="NamedPipeIPC">
+      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeLib">
-      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
+      <HintPath>..\Published\ResoniteBridgeLIb\ResoniteBridgeLib.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeWrapperLib">
-      <HintPath>..\ResoniteBridgeWrapperLib\bin\Debug\netstandard2.1\ResoniteBridgeWrapperLib.dll</HintPath>
+      <HintPath>..\Published\ResoniteBridgeWrapperLIb\ResoniteBridgeWrapperLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

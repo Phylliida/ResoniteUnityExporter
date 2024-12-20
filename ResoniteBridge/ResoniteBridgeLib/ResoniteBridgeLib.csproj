@@ -10,10 +10,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <Reference Include="NamedPipeIPC">
-      <HintPath>..\NamedPipeIPC\bin\Release\netstandard2.1\NamedPipeIPC.dll</HintPath>
+      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

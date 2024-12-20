@@ -16,10 +16,10 @@
 	<Summary>LiteDB.Async - A lightweight async wrapper for LiteDB</Summary>
 </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="LiteDB">
-      <HintPath>..\..\LiteDB\LiteDB\bin\Release\netstandard2.1\publish\LiteDB.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+<ItemGroup>
+  <Reference Include="LiteDB">
+    <HintPath>..\..\Published\LiteDB\LiteDB.dll</HintPath>
+  </Reference>
+</ItemGroup>
 
 </Project>

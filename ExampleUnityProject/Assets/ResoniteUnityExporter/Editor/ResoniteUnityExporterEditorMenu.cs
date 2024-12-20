@@ -12,7 +12,7 @@ using UnityEditor;
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorMenu
 	{
-		private IEnumerator<FrooxEngine.Context> ImportFromObject(UnityEngine.GameObject objectRoot)
+		private void ImportFromObject(UnityEngine.GameObject objectRoot)
 		{
 			// modified from FrooxEngine ModelImporter.cs
 			string name = objectRoot.name;
@@ -20,6 +20,7 @@ namespace ResoniteBridgeUnity {
 			FrooxEngine.Slot targetSlot = focusedWorld.RootSlot.AddSlot(name);
 			FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
 			assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
+			/*
 			yield return FrooxEngine.Context.ToBackground();
 			// internally froox engine rotates around y axis 180 degrees (idk why)
 			// and then calls string text = ModelPreimporter.Preimport(file, localDB.TemporaryPath);
@@ -82,7 +83,7 @@ namespace ResoniteBridgeUnity {
 			
 			
 			
-			
+			*/			
 			
 			
 			
@@ -176,7 +177,7 @@ namespace ResoniteBridgeUnity {
 				meshx.SetUV_Dimension(i, uvDimensions[i]);
 			}
 
-			Elements.Core.float3[] vertices = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.GetVertices());
+			Elements.Core.float3[] vertices = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(unityMesh.vertices);
 			meshx.positions = vertices;
 			if (meshx.HasColors)
 			{
@@ -189,13 +190,13 @@ namespace ResoniteBridgeUnity {
 			Elements.Core.float3[] normals = null;
 			if (hasNormals)
 			{
-				normals = ConvertArray<Elements.Core.float3, UnityEngine.Vertex3>(unityMesh.normals);
+				normals = ConvertArray<Elements.Core.float3, UnityEngine.Vector3>(unityMesh.normals);
 				meshx.normals = normals;
 			}
 			Elements.Core.float4[] tangents = null;
 			if (hasTangents)
 			{
-				tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vertex4>(unityMesh.tangents);
+				tangents = ConvertArray<Elements.Core.float4, UnityEngine.Vector4>(unityMesh.tangents);
 				meshx.tangents = tangents;
 			}
 			
@@ -371,9 +372,9 @@ namespace ResoniteBridgeUnity {
 			
 			// todo: they have some normal flipping thing if normals are wrong, do we need that?
 
-			UnityEngine.Collections.NativeArray<byte> numBonesPerVertex = unityMesh.GetBonesPerVertex();
-			UnityEngine.Collections.NativeArray<UnityEngine.BoneWeight1> boneWeights = unityMesh.GetAllBoneWeights();
-			UnityEngine.Matrix4x4 boneBindposes = unityMesh.bindposes;
+			var numBonesPerVertex = unityMesh.GetBonesPerVertex();
+			var boneWeights = unityMesh.GetAllBoneWeights();
+			UnityEngine.Matrix4x4[] boneBindposes = unityMesh.bindposes;
 			if (numBonesPerVertex.Length > 0 && boneWeights.Length > 0)
 			{
 				Dictionary<string, Elements.Assets.Bone> stringToBone = new Dictionary<string, Elements.Assets.Bone>();
@@ -401,19 +402,19 @@ namespace ResoniteBridgeUnity {
 						switch (boneI)
 						{
 							case 0:
-								boneBindings[vertexI].boneIndex0 = boneWeight.index;
+								boneBindings[vertexI].boneIndex0 = boneWeight.boneIndex;
 								boneBindings[vertexI].weight0 = boneWeight.weight;
 								break;
 							case 1:
-								boneBindings[vertexI].boneIndex1 = boneWeight.index;
+								boneBindings[vertexI].boneIndex1 = boneWeight.boneIndex;
 								boneBindings[vertexI].weight1 = boneWeight.weight;
 								break;
 							case 2:
-								boneBindings[vertexI].boneIndex2 = boneWeight.index;
+								boneBindings[vertexI].boneIndex2 = boneWeight.boneIndex;
 								boneBindings[vertexI].weight2 = boneWeight.weight;
 								break;
 							case 3:
-								boneBindings[vertexI].boneIndex3 = boneWeight.index;
+								boneBindings[vertexI].boneIndex3 = boneWeight.boneIndex;
 								boneBindings[vertexI].weight3 = boneWeight.weight;
 								break;
 							// sadly resonite only supports up to 4 bones per vertex
@@ -427,7 +428,10 @@ namespace ResoniteBridgeUnity {
 				meshx.SortTrimAndNormalizeBoneWeights();
 				meshx.FillInEmptyBindings(0);
 			}
-			
+
+			bool makeDualSided = false;
+			bool makeFlatShaded = false;
+			bool calculateTangents = false;
 			if (makeDualSided)
 			{
 				meshx.MakeDualSided();

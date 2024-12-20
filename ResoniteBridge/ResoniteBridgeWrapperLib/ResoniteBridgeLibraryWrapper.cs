@@ -1731,7 +1731,7 @@ namespace ResoniteBridge
         {
             extraAssemblyPaths = new List<string>();
             List<Assembly> result = new List<Assembly>();
-            foreach (var dllFile in Directory.GetFiles(@"C:\Users\yams\Desktop\prog\ResoniteUnityExporter\ResoniteBridge\ResoniteBridgeLib\bin\Debug\netstandard2.1", "*.dll"))
+            foreach (var dllFile in Directory.GetFiles(GetAllDllsRoot(out string _), "*.dll"))
             {
                 result.Add(Assembly.LoadFrom(dllFile));
                 extraAssemblyPaths.Add(dllFile);
@@ -1844,12 +1844,41 @@ namespace ResoniteBridge
 
         }
 
+        public static string FindParentDirectory(string startPath, string parentDirNameContains)
+        {
+            var directory = new DirectoryInfo(startPath);
+
+            while (directory != null)
+            {
+                if (directory.Name.Contains(parentDirNameContains, StringComparison.OrdinalIgnoreCase))
+                {
+                    return directory.FullName;
+                }
+                directory = directory.Parent;
+            }
+
+            return null; // Parent directory not found
+        }
+
+        public static string GetAllDllsRoot(out string gitRepoRoot)
+        {
+            // todo: this gives resonite directory
+            gitRepoRoot = FindParentDirectory(Environment.CurrentDirectory.ToString(), "ResoniteUnityExporter");
+            if (gitRepoRoot == null)
+            {
+                throw new ArgumentException("This needs to be ran within the ResoniteUnityExporter directory");
+            }
+            return Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteBridgeWrapperLib");
+        }
+
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             new Thread(() =>
             {
-                string outTxt = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\GeneratedCode\\" + rootNamespaceName + ".cs";
-                string outErrors = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\GeneratedCode\\" + rootNamespaceName + "errors.cs";
+                // creates if not exist
+                System.IO.Directory.CreateDirectory("GeneratedCode");
+                string outTxt = "GeneratedCode\\" + rootNamespaceName + ".cs";
+                string outErrors = "GeneratedCode\\" + rootNamespaceName + "errors.cs";
 
                 List<Microsoft.CodeAnalysis.SyntaxTree> syntaxTrees = new List<Microsoft.CodeAnalysis.SyntaxTree>();
 
@@ -1897,14 +1926,24 @@ namespace ResoniteBridge
                     references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(path));
                 }
 
-                foreach (var dllFile in Directory.GetFiles(@"C:\Users\yams\Desktop\prog\ResoniteUnityExporter\ResoniteBridge\ResoniteBridgeLib\bin\Debug\netstandard2.1", "*.dll"))
+                // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
+                string allDllsRoot = GetAllDllsRoot(out string gitRepoRoot); 
+                string publishRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper");
+                string unityPluginRoot = Path.Join(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
+                foreach (var dllFile in Directory.GetFiles(allDllsRoot, "*.dll"))
                 {
                     Console.WriteLine("extra Found assembly" + dllFile);
                     references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(dllFile));
+                    // also move any depended on dlls into the publish root directory
+                    File.Copy(dllFile, Path.Join(publishRoot, dllFile));
+                    File.Copy(dllFile, Path.Join(unityPluginRoot, dllFile));
                 }
+
+
                 syntaxTrees.Insert(0, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(assemblyAttributeSource));
 
-                string outPath = "C:\\Users\\yams\\Desktop\\prog\\ResoniteUnityExporter\\ResoniteBridge\\ResoniteBridgeStandalone\\" + rootNamespaceName + ".dll";
+                string outDllName = rootNamespaceName + ".dll";
+                string outPath =Path.Join(publishRoot, outDllName);
                 Console.WriteLine("Compiling");
                 // Create compilation
                 Microsoft.CodeAnalysis.CSharp.CSharpCompilation compilation = Microsoft.CodeAnalysis.CSharp.CSharpCompilation.Create(
@@ -1962,6 +2001,11 @@ namespace ResoniteBridge
                     }
                     File.WriteAllText(outErrors, allErrors.ToString());
                     throw new Exception($"Compilation failed");
+                }
+                else
+                {
+                    // move the dll also into the unity project plugins
+                    File.Copy(outPath, Path.Join(unityPluginRoot, outDllName));
                 }
 
                 Console.WriteLine("Done!");
