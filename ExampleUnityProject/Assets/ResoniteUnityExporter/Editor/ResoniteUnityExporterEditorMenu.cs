@@ -149,7 +149,6 @@ namespace ResoniteBridgeUnity {
 			ResoniteBridgeClientWrappers.SetThreadState(ResoniteBridgeServer.ThreadState.World);
 			FrooxEngine.StaticMesh staticMesh = assetsSlot.AddSlot("Mesh").AttachComponent<FrooxEngine.StaticMesh>();
 			staticMesh.URL.Value = url;
-			FrooxEngine.Engine.Current.WorldManager.FocusedWorld.Coroutines.StartBackgroundTask()
 		
 		}
 		

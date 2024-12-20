@@ -35,6 +35,10 @@ namespace ResoniteBridge
             if (message.messageType == ResoniteBridgeMessageType.SetThreadState)
             {
                 this.threadState = (ThreadState)ReflectionUtils.GetEnum(typeof(ThreadState), message.name);
+                ResoniteBridgeResponse response = new ResoniteBridgeResponse();
+                response.responseType = ResoniteBridgeResponseType.Success;
+                response.uuid = message.uuid;
+                outputMessages.Enqueue(response);
             }
             else
             {
