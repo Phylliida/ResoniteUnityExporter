@@ -1863,7 +1863,7 @@ namespace ResoniteBridge
         public static string GetAllDllsRoot(out string gitRepoRoot)
         {
             // todo: this gives resonite directory
-            gitRepoRoot = FindParentDirectory(Environment.CurrentDirectory.ToString(), "ResoniteUnityExporter");
+            gitRepoRoot = FindParentDirectory(AppDomain.CurrentDomain.BaseDirectory, "ResoniteUnityExporter");
             if (gitRepoRoot == null)
             {
                 throw new ArgumentException("This needs to be ran within the ResoniteUnityExporter directory");
@@ -1888,7 +1888,7 @@ namespace ResoniteBridge
                     string code = codeAndAssembly.Item2;
                     syntaxTrees.Add(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(code));
                     File.WriteAllText(outTxt + assembly.FullName + ".cs", code);
-                }
+                } 
 
                 // netstandard 2.1 core libs
                 string refPath = Path.Combine(
