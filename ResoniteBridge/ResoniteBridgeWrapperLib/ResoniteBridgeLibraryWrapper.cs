@@ -1935,8 +1935,8 @@ namespace ResoniteBridge
                     Console.WriteLine("extra Found assembly" + dllFile);
                     references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(dllFile));
                     // also move any depended on dlls into the publish root directory
-                    File.Copy(dllFile, Path.Join(publishRoot, Path.GetFileName(dllFile)));
-                    File.Copy(dllFile, Path.Join(unityPluginRoot, Path.GetFileName(dllFile)));
+                    File.Copy(dllFile, Path.Join(publishRoot, Path.GetFileName(dllFile)), true);
+                    File.Copy(dllFile, Path.Join(unityPluginRoot, Path.GetFileName(dllFile)), true);
                 }
 
 
@@ -2005,7 +2005,7 @@ namespace ResoniteBridge
                 else
                 {
                     // move the dll also into the unity project plugins
-                    File.Copy(outPath, Path.Join(unityPluginRoot, Path.GetFileName(outDllName)));
+                    File.Copy(outPath, Path.Join(unityPluginRoot, Path.GetFileName(outDllName)), true);
                 }
 
                 Console.WriteLine("Done!");
