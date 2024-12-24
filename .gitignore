@@ -1,6 +1,8 @@
 # too big
 ResoniteBridge/Published/ResoniteBridgeStandalone/ResoniteBridgeStandalone.exe
 
+ResoniteBridge/Published/ResoniteWrapper/CompileErrors/
+ResoniteBridge/Published/ResoniteWrapper/GeneratedCode/
 ResoniteBridge/ResoniteWrapper.cs
 ResoniteBridge/ResoniteWrappererrors.cs
 

@@ -46,7 +46,7 @@
       <HintPath>..\Published\ResoniteBridgeLIb\ResoniteBridgeLib.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeWrapperLib">
-      <HintPath>..\Published\ResoniteBridgeWrapperLIb\ResoniteBridgeWrapperLib.dll</HintPath>
+      <HintPath>..\ResoniteBridgeWrapperLib\bin\Debug\netstandard2.1\ResoniteBridgeWrapperLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

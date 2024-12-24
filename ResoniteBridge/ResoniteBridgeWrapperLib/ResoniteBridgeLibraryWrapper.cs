@@ -640,12 +640,51 @@ namespace ResoniteBridge
             "BoneBinding", // needed to bulk transfer bone data
         };
 
-        public static string WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
+
+        public static string WrapType(SyntaxTree typeTree, string syntaxTreeTypeLabel, Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
+        {
+            return ParseSyntaxTree(typeTree, syntaxTreeTypeLabel, assembly, typeInfoLookup, resolveContext, namespaceList);
+        }
+
+        public static IEnumerable<Tuple<string, string>> WrapAssembly(Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
         {
             string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
-            var decompiler = new CSharpDecompiler(assembly.Location, new DecompilerSettings());
+            DecompilerSettings settings = new DecompilerSettings();
+            settings.UsingDeclarations = true;
+            settings.AlwaysQualifyMemberReferences = true;
+            var decompiler = new CSharpDecompiler(assembly.Location, settings);
+
             Console.WriteLine("Decompiling");
-            var decompTree = decompiler.DecompileWholeModuleAsSingleFile();
+            var topLevelTypes = decompiler.TypeSystem.MainModule.TypeDefinitions
+                .Where(t => !t.IsCompilerGenerated() &&
+                    t.DeclaringType == null &&
+                    !t.Name.StartsWith("<") // weird <module> stuff
+                    ).ToArray();
+
+            // sadly we can't just put them all in one file
+            // that results in ambiguous usings
+            // (because ambiguity only happens when it gets a using from a different type,
+            // and by itself it would have been fine)
+            Dictionary<string, string> resultFiles = new Dictionary<string, string>();
+            int i = 0;
+            foreach (var topLevelType in topLevelTypes)
+            {
+                SyntaxTree typeTree = decompiler.DecompileType(topLevelType.FullTypeName);
+                string typeNamespace = topLevelType.Namespace;
+                string typeName = topLevelType.Name;
+                string key = typeNamespace == null || typeNamespace.Length == 0
+                    ? typeName
+                    : typeNamespace + "." + typeName;
+                yield return new Tuple<string, string>(key, WrapType(typeTree, key, assembly, typeInfoLookup, resolveContext, namespaceList));
+                i += 1;
+                Console.CursorLeft = 0;
+                Console.Write($"{i}/{topLevelTypes.Length}");
+            }
+        }
+
+        public static string ParseSyntaxTree(SyntaxTree decompTree, string syntaxTreeTypeLabel, Assembly assembly, TypeInfoLookup typeInfoLookup, SimpleTypeResolveContext resolveContext, HashSet<string> namespaceList)
+        {
+            string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
 
             // Get all the usings and replace them with empty
             // Because we need them all at the start
@@ -1129,20 +1168,20 @@ namespace ResoniteBridge
             {
                 if (astNode is VariableDeclarationStatement variableDeclare)
                 {
-                    ReplaceTypeIfUnresolved(variableDeclare.Type, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(variableDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
                 }
                 if (astNode is DelegateDeclaration delegateDeclare)
                 {
-                    ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
                 }
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                 {
                     // we can't have nullable return type with our wrappers, it confuses type system
-                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
                 }
                 else if (astNode is ParameterDeclaration paramDeclare)
                 {
-                    if (ReplaceTypeIfUnresolved(paramDeclare.Type, resolveContext, namespaceList))
+                    if (ReplaceTypeIfUnresolved(paramDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList))
                     {
                         // just fallback to null default
                         // Todo: make this more detailed
@@ -1160,26 +1199,42 @@ namespace ResoniteBridge
                 }
                 else if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.PropertyDeclaration propertyDeclare)
                 {
-                    ReplaceTypeIfUnresolved(propertyDeclare.ReturnType, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(propertyDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList);
                 }
                 else if(astNode is ICSharpCode.Decompiler.CSharp.Syntax.FieldDeclaration fieldDeclare )
                 {
-                    ReplaceTypeIfUnresolved(fieldDeclare.ReturnType, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(fieldDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList);
                 }
                 else if(astNode is ICSharpCode.Decompiler.CSharp.Syntax.CastExpression castExpr)
                 {
-                    ReplaceTypeIfUnresolved(castExpr.Type, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(castExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList);
                 }
                 else if(astNode is TypeOfExpression typeOfExpr)
                 {
                     // remove nullable for typeof, it confuses it
-                    ReplaceTypeIfUnresolved(typeOfExpr.Type, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(typeOfExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
                 }
                 // occurs in if (a is Type b) statements
                 else if(astNode is DeclarationExpression declarationExpression)
                 {
                     // remove nullable for these is expressions
-                    ReplaceTypeIfUnresolved(declarationExpression.Type, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(declarationExpression.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                }
+                else if(astNode is TypeDeclaration typeDeclarationExpression) {
+                    foreach (AstType baseType in typeDeclarationExpression.BaseTypes)
+                    {
+                        ReplaceTypeIfUnresolved(baseType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                    }
+                    foreach (Constraint constraint in typeDeclarationExpression.Constraints)
+                    {
+                        TraverseSyntaxNodes(constraint, (constraintChildNode) =>
+                        {
+                            if (constraintChildNode is AstType constraintType)
+                            {
+                                ReplaceTypeIfUnresolved(constraintType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                            }
+                        });
+                    }
                 }
             });
 
@@ -1196,7 +1251,7 @@ namespace ResoniteBridge
                 }
             }
 
-
+            
             AstNode lastUsing = null;
             StringBuilder usingStatements = new StringBuilder();
             TraverseSyntaxNodes(decompTree, (astNode) =>
@@ -1214,9 +1269,9 @@ namespace ResoniteBridge
                         }
 
                         // don't need to recurse so alsoChildren=false, no generics and that messes stuff up
-                        if(ReplaceTypeIfUnresolved(usingName, resolveContext, namespaceList, alsoChildren: false))
+                        if (ReplaceTypeIfUnresolved(usingName, syntaxTreeTypeLabel, resolveContext, namespaceList, alsoChildren: false))
                         {
-                            Console.WriteLine("Removing using: " + usingName);
+                            Console.WriteLine("Removing using: " + usingName + " for type " + syntaxTreeTypeLabel);
                         }
                         // the code above will replace unknown usings with this, but it's redundant we can remove it
                         if (astNode.ToString().Trim() == "using ResoniteBridge.ResoniteBridgeValue;")
@@ -1239,9 +1294,8 @@ namespace ResoniteBridge
                 }
             });
 
-            IdentifierExpression usingIdentifier = new IdentifierExpression("using ResoniteBridge;");
-            decompTree.InsertChildAfter<IdentifierExpression>(lastUsing, usingIdentifier, new Role<IdentifierExpression>("using", usingIdentifier));
-
+            var usingDecl = new UsingDeclaration("ResoniteBridge");
+            decompTree.InsertChildAfter(lastUsing, usingDecl, SyntaxTree.MemberRole);
             // remove duplicate constructors (they can occur if types get wrapped)
             // like (BlahBlah a)
             // and  (Juniper a)
@@ -1352,6 +1406,14 @@ namespace ResoniteBridge
             {"Uri", typeof(System.Uri) },
         };
 
+        static HashSet<string> keywordStrTypes = new HashSet<string>()
+        {
+            "class",
+            "struct",
+            "new",
+            "unmanaged",
+        };
+
         public static bool IsForbiddenType(AstType astType)
         {
             // spans don't convert well
@@ -1392,14 +1454,14 @@ namespace ResoniteBridge
             return ForbiddenBaseClasses.Contains(noGenerics);
         }
 
-        public static bool ReplaceTypeIfUnresolved(AstType astType, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
+        public static bool ReplaceTypeIfUnresolved(AstType astType, string fileName, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
         {
             if (alsoChildren)
             {
                 // recurse (for generics)
                 foreach (AstType childType in astType.DescendantNodes().OfType<SimpleType>())
                 {
-                    ReplaceTypeIfUnresolved(childType, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(childType, fileName, resolveContext, namespaceList);
                 }
             }
             // we have a few things we try for resolving types
@@ -1430,6 +1492,11 @@ namespace ResoniteBridge
             // also (tuple, things) don't work, wrap those
             if (!IsForbiddenType(astType))
             {
+                if (astType.ToString() == "A")
+                {
+                    int i = 0;
+                    i += 1;
+                }
                 ResolveResult resolveResult = astType.GetResolveResult();
 
 
@@ -1478,6 +1545,13 @@ namespace ResoniteBridge
                     return false;
                 }
 
+                // stuff like new, class, struct
+                if (keywordStrTypes.Contains(astType.ToString()))
+                {
+                    return false;
+                }
+
+
                 // resolved, we are happy
                 if (iType.Kind != ICSharpCode.Decompiler.TypeSystem.TypeKind.Unknown)
                 {
@@ -1488,6 +1562,50 @@ namespace ResoniteBridge
                 if (resolveResult.IsError && astType.ToString().Contains("@"))
                 {
                     resolveResult = (new SimpleType(astType.ToString().Replace("@", ""))).GetResolveResult();
+                }
+
+                // fixes a bug in ilspy, where A : ... fails to resolve even if A is a generic paramter of the type,
+                // to fix this, loop through all AstType in type declaration statement and see if we have a matching name
+                // because in the AssetManager<A> the A does resolve
+                TypeDeclaration typeDeclarationHolder = astType.Ancestors.OfType<TypeDeclaration>().FirstOrDefault();
+                List<AstNode> stuffToSearch = new List<AstNode>();
+                if (typeDeclarationHolder != null && !typeDeclarationHolder.IsNull)
+                {
+                    /*
+                    // the first AstType of the child of typeDeclaration is the class *Blah* this thing
+                    AstType nameDeclare = typeDeclarationHolder.Children.OfType<AstType>().FirstOrDefault();
+                    if (nameDeclare != null && !nameDeclare.IsNull)
+                    {
+                        stuffToSearch.Add(nameDeclare);
+                    }
+                    */
+                    // also search through type parameters, which annoyingly isn't included in the above by default
+                    foreach (var typeParam in typeDeclarationHolder.TypeParameters)
+                    {
+                        if (typeParam.ToString() == astType.ToString())
+                        {
+                            return false;
+                        }
+                    }
+                    /*
+                    foreach (AstNode nodeToSearch in stuffToSearch)
+                    {
+                        bool found = false;
+                        TraverseSyntaxNodes(nodeToSearch, child =>
+                        {
+                            if (child is AstType childAstType
+                            && childAstType.ToString() == astType.ToString())
+                            {
+                                found = true;
+                            }
+                        });
+                        // we found it as a generic argument or subgeneric argument, it's fine
+                        if (found)
+                        {
+                            return false;
+                        }
+                    }
+                    */
                 }
 
                 if (!resolveResult.IsError)
@@ -1508,6 +1626,13 @@ namespace ResoniteBridge
                     }
                 }
             }
+
+            if (astType.ToString().Contains("System.Uri"))
+            {
+                int i = 0;
+                i += 1;
+            }
+
             // still didn't resolve, replace with ResoniteBridgeValue
 
             // arrays need to be replaced with arrays tho
@@ -1516,6 +1641,7 @@ namespace ResoniteBridge
             {
                 wrappedTypeStr = wrappedTypeStr + "[]";
             }
+            Console.WriteLine("Replacing type " + astType.ToString() + " in " + fileName);
             astType.ReplaceWith(new SimpleType(wrappedTypeStr));
             return true;
         }
@@ -1537,6 +1663,11 @@ namespace ResoniteBridge
         static HashSet<Tuple<string, string>> TypePropertyPairNeedsAllFullyDeclaredTypes = new HashSet<Tuple<string, string>>()
         {
             new Tuple<string, string>("PointMesh", "_comparer"),
+        };
+
+        static HashSet<string> TypeNeedsToBeFullyDeclared = new HashSet<string>
+        {
+            "IOperation"
         };
 
 
@@ -1562,12 +1693,22 @@ namespace ResoniteBridge
 
             MethodDeclaration parentMethod = type.Ancestors.OfType<MethodDeclaration>().FirstOrDefault();
             TypeDeclaration parentType = type.Ancestors.OfType<TypeDeclaration>().FirstOrDefault();
+
+            if (parentType != null && !parentType.IsNull)
+            {
+                if (TypeNeedsToBeFullyDeclared.Contains(type.ToString()))
+                {
+                    return true;
+                }
+            }
+
             if (parentMethod != null && !parentMethod.IsNull &&
                 parentType != null && !parentType.IsNull)
             {
                 string parentMethodName = GetMethodName(parentMethod);
                 string parentTypeName = GetTypeDeclarationName(parentType);
 
+               
                 
                 // return type matching
                 bool iAmInReturnType = IsEqualToOrChildOf(parentMethod.ReturnType, type);
@@ -1604,6 +1745,7 @@ namespace ResoniteBridge
             if(parentProperty != null && !parentProperty.IsNull &&
                 parentType != null && !parentType.IsNull)
             {
+
                 string parentPropertyName = parentProperty.NameToken.ToString();
                 string parentTypeName = GetTypeDeclarationName(parentType);
                 Tuple<string, string> myTypePropertyKey = new Tuple<string, string>(parentTypeName, parentPropertyName);
@@ -1638,6 +1780,7 @@ namespace ResoniteBridge
             //"ProtoFluxBindings",
             "FrooxEngine",
             "LZ4",
+            "PhotonDust",
         };
 
         public static HashSet<string> bonusList = new HashSet<string>()
@@ -1659,6 +1802,7 @@ namespace ResoniteBridge
             "Microsoft.CodeAnalysis.CSharp",
             "Newtonsoft.Json",
             "System.CodeDom",
+            "System.Core",
             "System.Text.Json",
             "System.Private.CoreLib",
             "System.Security.Cryptography",
@@ -1671,12 +1815,14 @@ namespace ResoniteBridge
             "System.Diagnostics",
             "System.Globalization",
             "System.IO",
+            "System.IO.Compression",
             "System.Linq",
             "System.Net.Http",
             "System.Net.Http.Headers",
             "System.Net.Sockets",
             "System.Net.WebSockets",
             "System.Threading.Tasks.Dataflow",
+            "System.Text.RegularExpressions",
             "Microsoft.AspNetCore.Http.Connections",
             "Microsoft.AspNetCore.Http.Connections.Client",
             "Microsoft.AspNetCore.SignalR",
@@ -1716,6 +1862,7 @@ namespace ResoniteBridge
             "SocketError",
             "FileIOMode",
             "IOStream",
+            "System.Uri",
 
         }; 
 
@@ -1743,6 +1890,7 @@ namespace ResoniteBridge
 
         public static Modifiers SetAccessibility(Modifiers modifiers)
         {
+            /*
             if (modifiers.HasFlag(Modifiers.Private))
             {
                 modifiers &= ~Modifiers.Private;
@@ -1758,6 +1906,7 @@ namespace ResoniteBridge
                 modifiers &= ~Modifiers.Internal;
                 modifiers |= Modifiers.Public;
             }
+            */
             return modifiers;
         }
 
@@ -1766,7 +1915,7 @@ namespace ResoniteBridge
             return new System.Uri(assembly.CodeBase).LocalPath;
         }
 
-        public static IEnumerable<Tuple<Assembly, string>> WrapAssemblies(Dictionary<string, Assembly> assemblies)
+        public static IEnumerable<Tuple<Assembly, string, string>> WrapAssemblies(Dictionary<string, Assembly> assemblies)
         {
             List<Assembly> whitelistedAssemblies = new List<Assembly>();
             // might be modified so have to make a copy
@@ -1836,8 +1985,10 @@ namespace ResoniteBridge
                 var decompiler = new CSharpDecompiler(GetAssemblyPath(assembly), new DecompilerSettings());
                 string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
                 Console.WriteLine("Wrapping assembly " + assemblyName);
-                string outputCode = WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList);
-                yield return new Tuple<Assembly, string>(assembly, outputCode);
+                foreach (Tuple<string, string> code in WrapAssembly(assembly, typeInfoLookup, resolveContext, namespaceList))
+                {
+                    yield return new Tuple<Assembly, string, string>(assembly, code.Item1, code.Item2);
+                }
                 Console.WriteLine("Done wrapping assembly " + assemblyName);
             }
 
@@ -1876,37 +2027,68 @@ namespace ResoniteBridge
             new Thread(() =>
             {
                 // creates if not exist
-                System.IO.Directory.CreateDirectory("GeneratedCode");
-                string outTxt = "GeneratedCode\\" + rootNamespaceName + ".cs";
-                string outErrors = "GeneratedCode\\" + rootNamespaceName + "errors.cs";
-
+                
                 List<Microsoft.CodeAnalysis.SyntaxTree> syntaxTrees = new List<Microsoft.CodeAnalysis.SyntaxTree>();
+                List<string> syntaxTreeLabels = new List<string>();
 
-                foreach (Tuple<Assembly, string> codeAndAssembly in WrapAssemblies(assemblies))
+                string allDllsRoot = GetAllDllsRoot(out string gitRepoRoot);
+                string publishRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/Libraries");
+                string generatedCodeRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/GeneratedCode");
+                string errorsRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/CompileErrors");
+                System.IO.Directory.CreateDirectory(publishRoot);
+                System.IO.Directory.CreateDirectory(generatedCodeRoot);
+                System.IO.Directory.CreateDirectory(errorsRoot);
+
+                foreach (Tuple<Assembly, string, string> codeAndAssembly in WrapAssemblies(assemblies))
                 {
                     Assembly assembly = codeAndAssembly.Item1;
-                    string code = codeAndAssembly.Item2;
+                    string label = codeAndAssembly.Item2;
+                    string code = codeAndAssembly.Item3;
                     syntaxTrees.Add(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(code));
-                    File.WriteAllText(outTxt + assembly.FullName + ".cs", code);
-                } 
+                    string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
+                    string outputCodeName = Path.Join(Path.Join(generatedCodeRoot, assemblyName), label.Replace(".", "/") + ".cs");
+                    syntaxTreeLabels.Add(outputCodeName);
+                    Directory.CreateDirectory(Path.GetDirectoryName(outputCodeName));
+                    File.WriteAllText(outputCodeName, code);
+                }
+
+                bool netStandard = false;
+
+
 
                 // netstandard 2.1 core libs
-                string refPath = Path.Combine(
+                string refPath = netStandard
+                ? Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
                     "dotnet",
                     "packs",
                     "NETStandard.Library.Ref",
                     "2.1.0",
                     "ref",
-                    "netstandard2.1");
+                    "netstandard2.1")
+                : Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                    "Reference Assemblies",
+                    "Microsoft",
+                    "Framework",
+                    ".NETFramework",
+                    "v4.7.2");
 
                 // Add core references
-                var coreLibs = new[]
+                var coreLibs = netStandard 
+                ? new[]
                 {
                     "netstandard.dll",
                     "System.Runtime.dll",
                     "System.Collections.dll",
                     "mscorlib.dll"
+                }
+                : new[]
+                {
+                    "mscorlib.dll",
+                    "System.dll",
+                    "System.Core.dll",
+                    "System.Runtime.dll"
                 };
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
@@ -1927,8 +2109,6 @@ namespace ResoniteBridge
                 }
 
                 // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
-                string allDllsRoot = GetAllDllsRoot(out string gitRepoRoot); 
-                string publishRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper");
                 string unityPluginRoot = Path.Join(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
                 foreach (var dllFile in Directory.GetFiles(allDllsRoot, "*.dll"))
                 {
@@ -1940,6 +2120,7 @@ namespace ResoniteBridge
                 }
 
 
+                syntaxTreeLabels.Insert(0, "AssemblyAttributes");
                 syntaxTrees.Insert(0, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(assemblyAttributeSource));
 
                 string outDllName = rootNamespaceName + ".dll";
@@ -1956,14 +2137,24 @@ namespace ResoniteBridge
                         allowUnsafe: true
                     ));
 
-                
-                // weird stuff needed to force .NETStandard 2.1
-                var targetFrameworkAttribute = compilation.SyntaxTrees.First()
+
+                // weird stuff needed to force .NETStandard 2.1/NETFramework 4.7.2 (the version unity likes)
+
+                var targetFrameworkAttribute = netStandard
+                    ? compilation.SyntaxTrees.First()
                             .WithFilePath("TargetFrameworkAttribute.cs")
                             .WithRootAndOptions(
                                 Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(@"
                                         using System.Runtime.Versioning;
                                         [assembly: TargetFramework("".NETStandard,Version=v2.1"")]
+                                        ").GetRoot(),
+                            compilation.SyntaxTrees.First().Options)
+                    : compilation.SyntaxTrees.First()
+                            .WithFilePath("TargetFrameworkAttribute.cs")
+                            .WithRootAndOptions(
+                                Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(@"
+                                        using System.Runtime.Versioning;
+                                        [assembly: TargetFramework("".NETFramework,Version=v4.7.2"")]
                                         ").GetRoot(),
                             compilation.SyntaxTrees.First().Options);
 
@@ -1984,22 +2175,28 @@ namespace ResoniteBridge
                 {
                     foreach (var diagnostic in result.Diagnostics)
                     {
+                        string codePath = "(unknown location)";
+                        int treeIndex = syntaxTrees.IndexOf(diagnostic.Location.SourceTree);
+                        if (treeIndex != -1)
+                        {
+                            codePath = syntaxTreeLabels[treeIndex];
+                        }
                         if (diagnostic.Severity == Microsoft.CodeAnalysis.DiagnosticSeverity.Error)
                         {
-                            allErrors.AppendLine(diagnostic.Location + " " + diagnostic.ToString());
+                            allErrors.AppendLine(codePath + " " + diagnostic.ToString());
                             if (diagnostic.Location != null && diagnostic.Location.SourceTree != null)
                             {
                                 var location = diagnostic.Location;
                                 var lineSpan = location.GetLineSpan();
                                 var sourceText = location.SourceTree.GetText();
                                 var startLine = sourceText.Lines[Math.Max(lineSpan.StartLinePosition.Line-2, 0)];
-                                var endLine = sourceText.Lines[lineSpan.EndLinePosition.Line+2];
+                                var endLine = sourceText.Lines[Math.Min(lineSpan.EndLinePosition.Line+2, sourceText.Lines.Count-1)];
                                 var fullLines = sourceText.ToString(Microsoft.CodeAnalysis.Text.TextSpan.FromBounds(startLine.Start, endLine.End));
                                 allErrors.AppendLine(fullLines);
                             }
                         }
                     }
-                    File.WriteAllText(outErrors, allErrors.ToString());
+                    File.WriteAllText(Path.Join(errorsRoot, "errors.txt"), allErrors.ToString());
                     throw new Exception($"Compilation failed");
                 }
                 else
