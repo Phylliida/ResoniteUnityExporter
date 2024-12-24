@@ -40,7 +40,7 @@
     <PackageReference Include="TwitchLib.PubSub" Version="3.2.6" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="9.0.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" ExcludeAssets="runtime" Version="4.6.0" />
-    <PackageReference Include="System.Numerics.Vectors" ExcludeAssets="runtime" Version="4.6.0" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.6.0" />
     <PackageReference Include="System.Collections.Concurrent" ExcludeAssets="runtime" />
     <PackageReference Include="System.Collections.Concurrent" ExcludeAssets="runtime" Version="4.3.0" />
     <PackageReference Include="System.Security.Cryptography.OpenSsl" ExcludeAssets="runtime" Version="5.0.0" />

@@ -726,11 +726,6 @@ namespace ResoniteBridge
                         return;
                     }
 
-                    // we leave these as is (mostly raw types like float3, bool4, floatQ, etc.)
-                    if (PreservingTypes.Contains(typeDeclare.NameToken.ToString()))
-                    {
-                        return;
-                    }
 
                     // no ref structs, they confuse the wrappers
                     if (typeDeclare.Modifiers.HasFlag(Modifiers.Ref))
@@ -780,6 +775,13 @@ namespace ResoniteBridge
                         return;
                     }
 
+                    bool wrapFields = true;
+                    // we leave these mostly as is (mostly raw types like float3, bool4, floatQ, etc.)
+                    if (PreservingTypes.Contains(typeDeclare.NameToken.ToString()))
+                    {
+                        wrapFields = false;
+                    }
+
                     var staticTarget = new ObjectCreateExpression(
                         new SimpleType("ResoniteBridge.ResoniteBridgeValue"),
                         new Expression[] {
@@ -808,339 +810,343 @@ namespace ResoniteBridge
 
                     bool hasDefaultConstructor = false;
 
-                    TraverseSyntaxNodes(astNode, (childNode) =>
+                    if (wrapFields)
                     {
-                        // skip nodes of subchildren, we'll process them later
-                        if (!IsOwnedByTypeDeclaration(typeDeclare, childNode))
+                        TraverseSyntaxNodes(astNode, (childNode) =>
                         {
-                            return;
-                        }
-                        
-                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
-                        {
-                            constructorDeclare.Modifiers = SetAccessibility(constructorDeclare.Modifiers);
-
-                            if (constructorDeclare.Parameters.Count == 0 &&
-                                !constructorDeclare.Modifiers.HasFlag(Modifiers.Static))
+                            // skip nodes of subchildren, we'll process them later
+                            if (!IsOwnedByTypeDeclaration(typeDeclare, childNode))
                             {
-                                hasDefaultConstructor = true;
-                            }
-                            // only wrap non-static constructors
-                            // (a static constructor runs once ever)
-                            // for static, just make them empty, they'll be called anyway on the other end
-                            constructorDeclare.Body =
-                                constructorDeclare.Modifiers.HasFlag(Modifiers.Static)
-                                ? new BlockStatement
-                                {
-
-                                }
-                                : WrapConstructor(constructorDeclare, staticTarget);
-                            // No initializer (stuff like :base(...)) since we are just wrapping
-                            constructorDeclare.Initializer = null;
-                        }
-                        if (childNode is IndexerDeclaration indexerDeclare)
-                        {
-                            indexerDeclare.Modifiers = SetAccessibility(indexerDeclare.Modifiers);
-
-                            AstType returnType = indexerDeclare.ReturnType;
-                            returnType = CleanType(returnType, removeNullable: false);
-                            indexerDeclare.ReturnType.ReplaceWith(returnType);
-
-                            string indexerName = indexerDeclare.Name;
-                            bool isStatic = indexerDeclare.Modifiers.HasFlag(Modifiers.Static) ||
-                                typeDeclare.Modifiers.HasFlag(Modifiers.Static);
-                            
-                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Const))
-                            {
-                                // we need to make it not const bc properties can't be const
-                                // (well, our wrapper ones can't be)
-                                indexerDeclare.Modifiers &= ~Modifiers.Const;
-                            }
-                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Readonly))
-                            {
-                                // Don't allow readonly ones bc that confuses compiler
-                                indexerDeclare.Modifiers &= ~Modifiers.Readonly;
-                            }
-                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Volatile))
-                            {
-                                // Don't allow volatile ones bc no need since we are just a wrapper
-                                indexerDeclare.Modifiers &= ~Modifiers.Volatile;
-                            }
-
-                            // inherit static from parent
-                            if (!indexerDeclare.Modifiers.HasFlag(Modifiers.Static) &&
-                                typeDeclare.Modifiers.HasFlag(Modifiers.Static))
-                            {
-                                indexerDeclare.Modifiers |= Modifiers.Static;
-                            }
-
-                            if (!indexerDeclare.Getter.IsNull)
-                            {
-                                indexerDeclare.Getter = WrapGetter(isStatic,
-                                    returnType,
-                                    indexerName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "GetProperty"
-                                );
-                            }
-
-                            if (!indexerDeclare.Setter.IsNull)
-                            {
-                                indexerDeclare.Setter = WrapSetter(isStatic,
-                                    indexerName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "SetProperty"
-                                );
-                            }
-
-                            // don't fill out bodies for abstract fields
-                            if (indexerDeclare.Modifiers.HasFlag(Modifiers.Abstract))
-                            {
-                                indexerDeclare.Getter = indexerDeclare.Getter.IsNull
-                                ? null
-                                : new Accessor
-                                {
-
-                                };
-                                // don't require a setter 
-                                indexerDeclare.Setter = null;
-                            }
-                        }
-
-                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
-                        {
-                            operatorDeclare.Modifiers = SetAccessibility(operatorDeclare.Modifiers);
-                            // leave null bodies null (usually for abstract)
-                            if (operatorDeclare.IsNull)
-                            {
-
-                            }
-                            else
-                            {
-                                bool isStatic = operatorDeclare.Modifiers.HasFlag(Modifiers.Static);
-                                operatorDeclare.Body = WrapOperator(
-                                    isStatic,
-                                    operatorDeclare,
-                                    staticTarget,
-                                    instanceTarget);
-                            }
-
-                        }
-                        if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
-                        {
-
-                            // we don't support unsafe pointers yet (some casting nonsense needs to be done to get this to work right)
-                            if (methodDeclare.Parameters.Any(p => p.Type.ToString().Contains("*")))
-                            {
-                                nodesToRemove.Add(methodDeclare);
                                 return;
                             }
 
-
-
-                            // we can't make this public sadly
-                            bool exception = methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
-                                (methodDeclare.NameToken.ToString() == "Dispose" 
-                                || methodDeclare.NameToken.ToString() == "GetWebRequest");
-                            if (!exception)
+                            if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.ConstructorDeclaration constructorDeclare)
                             {
-                                methodDeclare.Modifiers = SetAccessibility(methodDeclare.Modifiers);
-                            }
+                                constructorDeclare.Modifiers = SetAccessibility(constructorDeclare.Modifiers);
 
-                            if (typeDeclare.NameToken.ToString().Contains("LocalDatabaseAccountDataStore")) {
-                                
-                                int i = 0;
-                                i += 1;
-                            }
-                            // certain things we need to remove override
-                            // if the thing they override no longer exists
-                            if (lostForbiddenBaseClass &&
-                                methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
-                                ForbiddenBaseClassOverrideMethodNames.Contains(methodDeclare.NameToken.ToString()))
-                            {
-                                methodDeclare.Modifiers &= ~Modifiers.Override;
-                            }
-                            // no getters or setters, stap
-                            if (methodDeclare.NameToken.ToString().StartsWith("get_") ||
-                            methodDeclare.NameToken.ToString().StartsWith("set_") ||
-                            // no operators, we handle those above
-                            methodDeclare.NameToken.ToString().StartsWith("op_"))
-                            {
-                                nodesToRemove.Add(methodDeclare);
-                            }
-                            // leave null bodies null (usually in interfaces)
-                            else if (methodDeclare.Body.IsNull)
-                            {
-                                // still replace the constraints though
-                                foreach (var constraint in methodDeclare.Constraints)
+                                if (constructorDeclare.Parameters.Count == 0 &&
+                                    !constructorDeclare.Modifiers.HasFlag(Modifiers.Static))
                                 {
-                                    ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
+                                    hasDefaultConstructor = true;
                                 }
-                            }
-                            else
-                            {
-                                // we don't support async yet, just return the task
-                                if (methodDeclare.Modifiers.HasFlag(Modifiers.Async))
-                                {
-                                    methodDeclare.Modifiers &= ~Modifiers.Async;
-                                }
-                                bool isStatic = methodDeclare.Modifiers.HasFlag(Modifiers.Static);
-                                
-                                // don't fill out body for abstract methods 
-                                if (!methodDeclare.Modifiers.HasFlag(Modifiers.Abstract)) { 
-                                    methodDeclare.Body = WrapMethod(
-                                        isStatic,
-                                        methodDeclare,
-                                        staticTarget,
-                                        instanceTarget);
-                                }
-                                foreach (var constraint in methodDeclare.Constraints)
-                                {
-                                    ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
-                                }
-                            }
-                        }
-                        else if (childNode is PropertyDeclaration propertyDeclare)
-                        {
-                            propertyDeclare.Modifiers = SetAccessibility(propertyDeclare.Modifiers);
-
-                            string propertyName = propertyDeclare.NameToken.ToString();
-                            if (propertyName != "__Backing") // don't override our own backing
-                            {
-                                AstType returnType = propertyDeclare.ReturnType;
-                                // remove ref since we don't support that
-                                returnType = CleanType(returnType, removeNullable: false);
-                                propertyDeclare.ReturnType.ReplaceWith(returnType);
-                                bool isStatic = propertyDeclare.Modifiers.HasFlag(Modifiers.Static);
-                                Accessor getter = WrapGetter(isStatic,
-                                    returnType,
-                                    propertyName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "GetProperty"
-                                );
-
-                                Accessor setter = WrapSetter(isStatic,
-                                    propertyName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "SetProperty");
-                                // only wrap them if the original exists
-                                // or if expression body exists ( => ...)
-                                if (!propertyDeclare.Getter.IsNull ||
-                                !propertyDeclare.ExpressionBody.IsNull)
-                                {
-                                    propertyDeclare.Getter = getter;
-                                    // no more expression body, we wrapped it
-                                    propertyDeclare.ExpressionBody = null;
-                                }
-                                if (!propertyDeclare.Setter.IsNull)
-                                {
-                                    propertyDeclare.Setter = setter;
-                                }
-                                // we don't need these because they'll be called on frooxengine side
-                                propertyDeclare.Initializer = null;
-
-                                // don't fill out bodies for abstract properties
-                                if (propertyDeclare.Modifiers.HasFlag(Modifiers.Abstract))
-                                {
-                                    propertyDeclare.Getter = propertyDeclare.Getter.IsNull
-                                    ? null
-                                    : new Accessor
+                                // only wrap non-static constructors
+                                // (a static constructor runs once ever)
+                                // for static, just make them empty, they'll be called anyway on the other end
+                                constructorDeclare.Body =
+                                    constructorDeclare.Modifiers.HasFlag(Modifiers.Static)
+                                    ? new BlockStatement
                                     {
 
-                                    };
-                                    propertyDeclare.Setter = propertyDeclare.Setter.IsNull
-                                    ? null
-                                    : new Accessor
-                                    {
-
-                                    };
-                                }
+                                    }
+                                    : WrapConstructor(constructorDeclare, staticTarget);
+                                // No initializer (stuff like :base(...)) since we are just wrapping
+                                constructorDeclare.Initializer = null;
                             }
-                        }
-                        else if (childNode is FieldDeclaration fieldDeclare)
-                        {
-                            fieldDeclare.Modifiers = SetAccessibility(fieldDeclare.Modifiers);
-
-                            // fieldDeclare.NameToken is null
-                            VariableInitializer variableInit = fieldDeclare.Children.OfType<VariableInitializer>().First();
-                            string fieldName = variableInit.NameToken.ToString();
-                            if (fieldName != "__backing")
+                            if (childNode is IndexerDeclaration indexerDeclare)
                             {
-                                AstType returnType = fieldDeclare.ReturnType;
-                                returnType = CleanType(returnType, removeNullable: false);
-                                fieldDeclare.ReturnType.ReplaceWith(returnType);
+                                indexerDeclare.Modifiers = SetAccessibility(indexerDeclare.Modifiers);
 
-                                bool isStatic = fieldDeclare.Modifiers.HasFlag(Modifiers.Static) ||
+                                AstType returnType = indexerDeclare.ReturnType;
+                                returnType = CleanType(returnType, removeNullable: false);
+                                indexerDeclare.ReturnType.ReplaceWith(returnType);
+
+                                string indexerName = indexerDeclare.Name;
+                                bool isStatic = indexerDeclare.Modifiers.HasFlag(Modifiers.Static) ||
                                     typeDeclare.Modifiers.HasFlag(Modifiers.Static);
-                                Accessor getter = WrapGetter(isStatic,
-                                    returnType,
-                                    fieldName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "GetField"
-                                );
 
-                                Accessor setter = WrapSetter(isStatic,
-                                    fieldName,
-                                    staticTarget,
-                                    instanceTarget,
-                                    "SetField");
-
-                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Const))
+                                if (indexerDeclare.Modifiers.HasFlag(Modifiers.Const))
                                 {
                                     // we need to make it not const bc properties can't be const
                                     // (well, our wrapper ones can't be)
-                                    fieldDeclare.Modifiers &= ~Modifiers.Const;
+                                    indexerDeclare.Modifiers &= ~Modifiers.Const;
                                 }
-                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Readonly))
+                                if (indexerDeclare.Modifiers.HasFlag(Modifiers.Readonly))
                                 {
                                     // Don't allow readonly ones bc that confuses compiler
-                                    fieldDeclare.Modifiers &= ~Modifiers.Readonly;
+                                    indexerDeclare.Modifiers &= ~Modifiers.Readonly;
                                 }
-                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Volatile))
+                                if (indexerDeclare.Modifiers.HasFlag(Modifiers.Volatile))
                                 {
                                     // Don't allow volatile ones bc no need since we are just a wrapper
-                                    fieldDeclare.Modifiers &= ~Modifiers.Volatile;
+                                    indexerDeclare.Modifiers &= ~Modifiers.Volatile;
                                 }
 
                                 // inherit static from parent
-                                if (!fieldDeclare.Modifiers.HasFlag(Modifiers.Static) &&
+                                if (!indexerDeclare.Modifiers.HasFlag(Modifiers.Static) &&
                                     typeDeclare.Modifiers.HasFlag(Modifiers.Static))
                                 {
-                                    fieldDeclare.Modifiers |= Modifiers.Static;
+                                    indexerDeclare.Modifiers |= Modifiers.Static;
                                 }
 
-
-                                var fieldProperty = new PropertyDeclaration
+                                if (!indexerDeclare.Getter.IsNull)
                                 {
-                                    Name = fieldName,
-                                    ReturnType = fieldDeclare.ReturnType.Clone(),
-                                    Modifiers = fieldDeclare.Modifiers,
-                                    Getter = getter,
-                                    Setter = setter
-                                };
-                                fieldDeclare.ReplaceWith(fieldProperty);
+                                    indexerDeclare.Getter = WrapGetter(isStatic,
+                                        returnType,
+                                        indexerName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "GetProperty"
+                                    );
+                                }
+
+                                if (!indexerDeclare.Setter.IsNull)
+                                {
+                                    indexerDeclare.Setter = WrapSetter(isStatic,
+                                        indexerName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "SetProperty"
+                                    );
+                                }
 
                                 // don't fill out bodies for abstract fields
-                                if (fieldDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                                if (indexerDeclare.Modifiers.HasFlag(Modifiers.Abstract) || typeDeclare.ClassType == ClassType.Interface)
                                 {
-                                    fieldProperty.Getter = fieldProperty.Getter.IsNull
+                                    indexerDeclare.Getter = indexerDeclare.Getter.IsNull
                                     ? null
                                     : new Accessor
                                     {
 
                                     };
                                     // don't require a setter 
-                                    fieldProperty.Setter = null;
+                                    indexerDeclare.Setter = null;
                                 }
                             }
-                        }
-                    });
 
+                            if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.OperatorDeclaration operatorDeclare)
+                            {
+                                operatorDeclare.Modifiers = SetAccessibility(operatorDeclare.Modifiers);
+                                // leave null bodies null (usually for abstract)
+                                if (operatorDeclare.IsNull)
+                                {
+
+                                }
+                                else
+                                {
+                                    bool isStatic = operatorDeclare.Modifiers.HasFlag(Modifiers.Static);
+                                    operatorDeclare.Body = WrapOperator(
+                                        isStatic,
+                                        operatorDeclare,
+                                        staticTarget,
+                                        instanceTarget);
+                                }
+
+                            }
+                            if (childNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
+                            {
+
+                                // we don't support unsafe pointers yet (some casting nonsense needs to be done to get this to work right)
+                                if (methodDeclare.Parameters.Any(p => p.Type.ToString().Contains("*")))
+                                {
+                                    nodesToRemove.Add(methodDeclare);
+                                    return;
+                                }
+
+
+
+                                // we can't make this public sadly
+                                bool exception = methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
+                                    (methodDeclare.NameToken.ToString() == "Dispose"
+                                    || methodDeclare.NameToken.ToString() == "GetWebRequest");
+                                if (!exception)
+                                {
+                                    methodDeclare.Modifiers = SetAccessibility(methodDeclare.Modifiers);
+                                }
+
+                                if (typeDeclare.NameToken.ToString().Contains("LocalDatabaseAccountDataStore"))
+                                {
+
+                                    int i = 0;
+                                    i += 1;
+                                }
+                                // certain things we need to remove override
+                                // if the thing they override no longer exists
+                                if (lostForbiddenBaseClass &&
+                                    methodDeclare.Modifiers.HasFlag(Modifiers.Override) &&
+                                    ForbiddenBaseClassOverrideMethodNames.Contains(methodDeclare.NameToken.ToString()))
+                                {
+                                    methodDeclare.Modifiers &= ~Modifiers.Override;
+                                }
+                                // no getters or setters, stap
+                                if (methodDeclare.NameToken.ToString().StartsWith("get_") ||
+                                methodDeclare.NameToken.ToString().StartsWith("set_") ||
+                                // no operators, we handle those above
+                                methodDeclare.NameToken.ToString().StartsWith("op_"))
+                                {
+                                    nodesToRemove.Add(methodDeclare);
+                                }
+                                // leave null bodies null (usually in interfaces)
+                                else if (methodDeclare.Body.IsNull)
+                                {
+                                    // still replace the constraints though
+                                    foreach (var constraint in methodDeclare.Constraints)
+                                    {
+                                        ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
+                                    }
+                                }
+                                else
+                                {
+                                    // we don't support async yet, just return the task
+                                    if (methodDeclare.Modifiers.HasFlag(Modifiers.Async))
+                                    {
+                                        methodDeclare.Modifiers &= ~Modifiers.Async;
+                                    }
+                                    bool isStatic = methodDeclare.Modifiers.HasFlag(Modifiers.Static);
+
+                                    // don't fill out body for abstract methods 
+                                    if (!methodDeclare.Modifiers.HasFlag(Modifiers.Abstract))
+                                    {
+                                        methodDeclare.Body = WrapMethod(
+                                            isStatic,
+                                            methodDeclare,
+                                            staticTarget,
+                                            instanceTarget);
+                                    }
+                                    foreach (var constraint in methodDeclare.Constraints)
+                                    {
+                                        ReplaceUnmanagedConstraintWithStruct(constraint, nodesToRemove);
+                                    }
+                                }
+                            }
+                            else if (childNode is PropertyDeclaration propertyDeclare)
+                            {
+                                propertyDeclare.Modifiers = SetAccessibility(propertyDeclare.Modifiers);
+
+                                string propertyName = propertyDeclare.NameToken.ToString();
+                                if (propertyName != "__Backing") // don't override our own backing
+                                {
+                                    AstType returnType = propertyDeclare.ReturnType;
+                                    // remove ref since we don't support that
+                                    returnType = CleanType(returnType, removeNullable: false);
+                                    propertyDeclare.ReturnType.ReplaceWith(returnType);
+                                    bool isStatic = propertyDeclare.Modifiers.HasFlag(Modifiers.Static);
+                                    Accessor getter = WrapGetter(isStatic,
+                                        returnType,
+                                        propertyName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "GetProperty"
+                                    );
+
+                                    Accessor setter = WrapSetter(isStatic,
+                                        propertyName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "SetProperty");
+                                    // only wrap them if the original exists
+                                    // or if expression body exists ( => ...)
+                                    if (!propertyDeclare.Getter.IsNull ||
+                                    !propertyDeclare.ExpressionBody.IsNull)
+                                    {
+                                        propertyDeclare.Getter = getter;
+                                        // no more expression body, we wrapped it
+                                        propertyDeclare.ExpressionBody = null;
+                                    }
+                                    if (!propertyDeclare.Setter.IsNull)
+                                    {
+                                        propertyDeclare.Setter = setter;
+                                    }
+                                    // we don't need these because they'll be called on frooxengine side
+                                    propertyDeclare.Initializer = null;
+
+                                    // don't fill out bodies for abstract properties and interface classes
+                                    if (propertyDeclare.Modifiers.HasFlag(Modifiers.Abstract) || typeDeclare.ClassType == ClassType.Interface)
+                                    {
+                                        propertyDeclare.Getter = propertyDeclare.Getter.IsNull
+                                        ? null
+                                        : new Accessor
+                                        {
+
+                                        };
+                                        propertyDeclare.Setter = propertyDeclare.Setter.IsNull
+                                        ? null
+                                        : new Accessor
+                                        {
+
+                                        };
+                                    }
+                                }
+                            }
+                            else if (childNode is FieldDeclaration fieldDeclare)
+                            {
+                                fieldDeclare.Modifiers = SetAccessibility(fieldDeclare.Modifiers);
+
+                                // fieldDeclare.NameToken is null
+                                VariableInitializer variableInit = fieldDeclare.Children.OfType<VariableInitializer>().First();
+                                string fieldName = variableInit.NameToken.ToString();
+                                if (fieldName != "__backing")
+                                {
+                                    AstType returnType = fieldDeclare.ReturnType;
+                                    returnType = CleanType(returnType, removeNullable: false);
+                                    fieldDeclare.ReturnType.ReplaceWith(returnType);
+
+                                    bool isStatic = fieldDeclare.Modifiers.HasFlag(Modifiers.Static) ||
+                                        typeDeclare.Modifiers.HasFlag(Modifiers.Static);
+                                    Accessor getter = WrapGetter(isStatic,
+                                        returnType,
+                                        fieldName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "GetField"
+                                    );
+
+                                    Accessor setter = WrapSetter(isStatic,
+                                        fieldName,
+                                        staticTarget,
+                                        instanceTarget,
+                                        "SetField");
+
+                                    if (fieldDeclare.Modifiers.HasFlag(Modifiers.Const))
+                                    {
+                                        // we need to make it not const bc properties can't be const
+                                        // (well, our wrapper ones can't be)
+                                        fieldDeclare.Modifiers &= ~Modifiers.Const;
+                                    }
+                                    if (fieldDeclare.Modifiers.HasFlag(Modifiers.Readonly))
+                                    {
+                                        // Don't allow readonly ones bc that confuses compiler
+                                        fieldDeclare.Modifiers &= ~Modifiers.Readonly;
+                                    }
+                                    if (fieldDeclare.Modifiers.HasFlag(Modifiers.Volatile))
+                                    {
+                                        // Don't allow volatile ones bc no need since we are just a wrapper
+                                        fieldDeclare.Modifiers &= ~Modifiers.Volatile;
+                                    }
+
+                                    // inherit static from parent
+                                    if (!fieldDeclare.Modifiers.HasFlag(Modifiers.Static) &&
+                                        typeDeclare.Modifiers.HasFlag(Modifiers.Static))
+                                    {
+                                        fieldDeclare.Modifiers |= Modifiers.Static;
+                                    }
+
+
+                                    var fieldProperty = new PropertyDeclaration
+                                    {
+                                        Name = fieldName,
+                                        ReturnType = fieldDeclare.ReturnType.Clone(),
+                                        Modifiers = fieldDeclare.Modifiers,
+                                        Getter = getter,
+                                        Setter = setter
+                                    };
+                                    fieldDeclare.ReplaceWith(fieldProperty);
+
+                                    // don't fill out bodies for abstract fields
+                                    if (fieldDeclare.Modifiers.HasFlag(Modifiers.Abstract) || typeDeclare.ClassType == ClassType.Interface)
+                                    {
+                                        fieldProperty.Getter = fieldProperty.Getter.IsNull
+                                        ? null
+                                        : new Accessor
+                                        {
+
+                                        };
+                                        // don't require a setter 
+                                        fieldProperty.Setter = null;
+                                    }
+                                }
+                            }
+                        });
+                    }
 
                     // we need to add default constructor since we define a different alternative one
                     // but don't do it for enums or static classes
@@ -1693,7 +1699,7 @@ namespace ResoniteBridge
             // btw, it's not safe to always do this because froox namespaces have weird aliasing
             // but occasionally it is needed because put all the usings together in one file per dll
             // so sometimes names get overridden
-
+            return false;
             MethodDeclaration parentMethod = type.Ancestors.OfType<MethodDeclaration>().FirstOrDefault();
             TypeDeclaration parentType = type.Ancestors.OfType<TypeDeclaration>().FirstOrDefault();
 
@@ -1807,10 +1813,12 @@ namespace ResoniteBridge
             "System.CodeDom",
             "System.Core",
             "System.Text.Json",
+            "System.Text.Json.Serialization",
             "System.Private.CoreLib",
             "System.Security.Cryptography",
             "System.Runtime.Serialization.Formatters.Binary",
             "System.Net.Http",
+            "System.Numerics",
             "System",
             "System.Collections",
             "System.Collections.Generic",
@@ -1824,6 +1832,7 @@ namespace ResoniteBridge
             "System.Net.Http.Headers",
             "System.Net.Sockets",
             "System.Net.WebSockets",
+            "System.Threading.Tasks",
             "System.Threading.Tasks.Dataflow",
             "System.Text.RegularExpressions",
             "Microsoft.AspNetCore.Http.Connections",
@@ -1866,7 +1875,17 @@ namespace ResoniteBridge
             "FileIOMode",
             "IOStream",
             "System.Uri",
+            "ValueTask",
+            "Task",
+            "Vector", // system numerics
 
+            // Ass imp stuff
+            "Vector2D",
+            "Vector3D",
+            "Quaternion",
+            "Color3D",
+            "Color4D",
+            "Matrix4x4",
         }; 
 
         public class TypeInfoLookup
@@ -2025,6 +2044,7 @@ namespace ResoniteBridge
             return Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteBridgeWrapperLib");
         }
 
+
         public static List<Microsoft.CodeAnalysis.MetadataReference> GetNetStandardReferences()
         {
 
@@ -2066,6 +2086,7 @@ namespace ResoniteBridge
                     "System.dll",
                     "System.Core.dll",
                     "System.Net.Http.dll",
+                    "System.Numerics.dll",
             };
             var references = new List<Microsoft.CodeAnalysis.MetadataReference>();
             foreach (var lib in coreLibs)
@@ -2127,6 +2148,7 @@ namespace ResoniteBridge
 
 
                 List<Microsoft.CodeAnalysis.MetadataReference> references = GetNetFrameworkReferences();
+                // some libraries use netstandard 
 
                 // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
                 string unityPluginRoot = Path.Combine(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
