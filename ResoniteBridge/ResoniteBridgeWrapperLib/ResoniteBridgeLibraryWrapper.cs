@@ -13,6 +13,7 @@ using ICSharpCode.Decompiler.CSharp.Syntax;
 using ICSharpCode.Decompiler.CSharp.OutputVisitor;
 using ICSharpCode.Decompiler.TypeSystem.Implementation;
 using ICSharpCode.Decompiler.Semantics;
+using System.Runtime.CompilerServices;
 
 namespace ResoniteBridge
 {
@@ -2024,6 +2025,61 @@ namespace ResoniteBridge
             return Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteBridgeWrapperLib");
         }
 
+        public static List<Microsoft.CodeAnalysis.MetadataReference> GetNetStandardReferences()
+        {
+
+            string allDllsRoot = GetAllDllsRoot(out string gitRepoRoot);
+            string refPath = Path.Combine(gitRepoRoot, "ResoniteBridge/Published/netstandard2.0");
+
+            var coreLibs = new[]
+            {
+                    "netstandard.dll",
+                    "System.Runtime.dll",
+                    "System.Collections.dll",
+                    "mscorlib.dll"
+            };
+            var references = new List<Microsoft.CodeAnalysis.MetadataReference>();
+            foreach (var lib in coreLibs)
+            {
+                var path = Path.Combine(refPath, lib);
+                references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(path));
+            }
+            return references;
+        }
+
+        public static List<Microsoft.CodeAnalysis.MetadataReference> GetNetFrameworkReferences()
+        {
+
+            // netstandard 2.1 core libs
+            string refPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                    "Reference Assemblies",
+                    "Microsoft",
+                    "Framework",
+                    ".NETFramework",
+                    "v4.7.2");
+
+            // Add core references
+            var coreLibs = new[]
+            {
+                    "mscorlib.dll",
+                    "System.dll",
+                    "System.Core.dll",
+                    "System.Net.Http.dll",
+            };
+            var references = new List<Microsoft.CodeAnalysis.MetadataReference>();
+            foreach (var lib in coreLibs)
+            {
+                var path = Path.Combine(refPath, lib);
+                references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(path));
+            }
+            return references;
+        }
+
+            
+
+
+
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
         {
             new Thread(() =>
@@ -2058,40 +2114,6 @@ namespace ResoniteBridge
 
 
 
-                // netstandard 2.1 core libs
-                string refPath = netStandard
-                ? Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-                    "dotnet",
-                    "packs",
-                    "NETStandard.Library.Ref",
-                    "2.1.0",
-                    "ref",
-                    "netstandard2.1")
-                : Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                    "Reference Assemblies",
-                    "Microsoft",
-                    "Framework",
-                    ".NETFramework",
-                    "v4.7.2");
-
-                // Add core references
-                var coreLibs = netStandard 
-                ? new[]
-                {
-                    "netstandard.dll",
-                    "System.Runtime.dll",
-                    "System.Collections.dll",
-                    "mscorlib.dll"
-                }
-                : new[]
-                {
-                    "mscorlib.dll",
-                    "System.dll",
-                    "System.Core.dll",
-                    "System.Net.Http.dll",
-                };
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
                         {
@@ -2103,12 +2125,9 @@ namespace ResoniteBridge
                             }
                         }";
 
-                var references = new List<Microsoft.CodeAnalysis.MetadataReference>();
-                foreach (var lib in coreLibs)
-                {
-                    var path = Path.Combine(refPath, lib);
-                    references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(path));
-                }
+
+                List<Microsoft.CodeAnalysis.MetadataReference> references = GetNetFrameworkReferences();
+                references.AddRange(GetNetStandardReferences());
 
                 // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
                 string unityPluginRoot = Path.Combine(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
@@ -2124,6 +2143,8 @@ namespace ResoniteBridge
 
                 syntaxTreeLabels.Insert(0, "AssemblyAttributes");
                 syntaxTrees.Insert(0, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(assemblyAttributeSource));
+
+
 
                 string outDllName = rootNamespaceName + ".dll";
                 string outPath =Path.Combine(publishRoot, outDllName);
