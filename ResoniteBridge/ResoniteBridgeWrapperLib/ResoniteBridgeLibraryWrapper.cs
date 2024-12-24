@@ -204,7 +204,7 @@ namespace ResoniteBridge
                         new BlockStatement {
                             new ThrowStatement(
                                 new ObjectCreateExpression(
-                                    new SimpleType("InvalidCastException"),
+                                    new SimpleType("ResoniteBridge.InvalidCastException"),
                                     new PrimitiveExpression($"Cannot cast result to {returnType}")
                                 )
                             )
@@ -353,7 +353,7 @@ namespace ResoniteBridge
                         new BlockStatement {
                             new ThrowStatement(
                                 new ObjectCreateExpression(
-                                    new SimpleType("InvalidCastException"),
+                                    new SimpleType("ResoniteBridge.InvalidCastException"),
                                     new PrimitiveExpression($"Cannot cast result to {"returnTpe"}")
                                 )
                             )
@@ -474,7 +474,7 @@ namespace ResoniteBridge
                         new BlockStatement {
                             new ThrowStatement(
                                 new ObjectCreateExpression(
-                                    new SimpleType("InvalidCastException"),
+                                    new SimpleType("ResoniteBridge.InvalidCastException"),
                                     new PrimitiveExpression($"Cannot cast result to {getterType}")
                                 )
                             )

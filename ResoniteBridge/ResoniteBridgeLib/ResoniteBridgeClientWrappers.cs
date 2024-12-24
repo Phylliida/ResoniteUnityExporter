@@ -15,6 +15,17 @@ namespace ResoniteBridge
         }
     }
 
+    public class InvalidCastException : Exception
+    {
+        public string exceptionType;
+
+        public string Message;
+        public InvalidCastException(string message)
+        {
+            this.Message = message;
+        }
+    }
+
     public class ResoniteBridgeClientWrappers
     {
         public static ResoniteBridgeClient client;
