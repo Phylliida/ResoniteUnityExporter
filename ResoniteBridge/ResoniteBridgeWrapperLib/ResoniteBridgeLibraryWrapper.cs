@@ -2127,7 +2127,6 @@ namespace ResoniteBridge
 
 
                 List<Microsoft.CodeAnalysis.MetadataReference> references = GetNetFrameworkReferences();
-                references.AddRange(GetNetStandardReferences());
 
                 // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
                 string unityPluginRoot = Path.Combine(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");

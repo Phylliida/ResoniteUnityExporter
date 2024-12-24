@@ -3,7 +3,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
 	<Authors>Maurício David</Authors>
 	<Product>LiteDB</Product>
 	<Description>LiteDB - A lightweight embedded .NET NoSQL document store in a single datafile</Description>

@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>LiteNetLib</AssemblyName>
         <RootNamespace>LiteNetLib</RootNamespace>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net472</TargetFramework>
         <Title>Lite reliable UDP library for Mono and .NET </Title>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/RevenantX/LiteNetLib</RepositoryUrl>

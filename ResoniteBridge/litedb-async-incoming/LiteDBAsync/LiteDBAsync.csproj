@@ -3,7 +3,7 @@
 <PropertyGroup>
 	<PackageId>LiteDB.Async</PackageId>
 	<Authors>Mark Lockett</Authors>
-	<TargetFramework>netstandard2.0</TargetFramework>
+	<TargetFramework>net472</TargetFramework>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	<Title>LiteDB-Async</Title>
 	<Copyright>Copyright (c) 2020 - 2023 Licensed by Apache 2.0</Copyright>
