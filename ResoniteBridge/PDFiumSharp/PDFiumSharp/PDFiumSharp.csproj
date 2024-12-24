@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <AssemblyVersion>0.1.2.0</AssemblyVersion>
+    <Copyright>Copyright © Tobias Meyer 2017</Copyright>
+    <Platforms>AnyCPU</Platforms>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="PDFium.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PDFium.g.cs</LastGenOutput>
+    </None>
+    <None Update="Types\FPDF_Typedefs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FPDF_Typedefs.g.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="PDFium.g.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PDFium.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Types\FPDF_Typedefs.g.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FPDF_Typedefs.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

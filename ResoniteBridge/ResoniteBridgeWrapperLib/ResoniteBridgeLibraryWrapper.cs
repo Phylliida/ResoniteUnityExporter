@@ -1828,6 +1828,7 @@ namespace ResoniteBridge
             "System.IO",
             "System.IO.Compression",
             "System.Linq",
+            "System.Linq.Expressions",
             "System.Net.Http",
             "System.Net.Http.Headers",
             "System.Net.Sockets",
@@ -1875,8 +1876,6 @@ namespace ResoniteBridge
             "FileIOMode",
             "IOStream",
             "System.Uri",
-            "ValueTask",
-            "Task",
             "Vector", // system numerics
 
             // Ass imp stuff
