@@ -68,7 +68,7 @@ namespace NamedPipeIPC
         }
 
         public static string GuidToConnectionPath(Guid guid) {
-            return Path.Join(GetServerDirectory(), guid.ToString() + ".json");
+            return Path.Combine(GetServerDirectory(), guid.ToString() + ".json");
         }
 
         public static string GetServerDirectory() {

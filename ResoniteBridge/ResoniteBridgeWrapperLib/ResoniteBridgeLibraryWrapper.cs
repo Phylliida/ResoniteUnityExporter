@@ -1582,7 +1582,9 @@ namespace ResoniteBridge
                     // also search through type parameters, which annoyingly isn't included in the above by default
                     foreach (var typeParam in typeDeclarationHolder.TypeParameters)
                     {
-                        if (typeParam.ToString() == astType.ToString())
+                        // split based on " ", so things like "in C" consider the in and the C
+                        if(typeParam.ToString().Split(' ')
+                            .Any(piece => piece == astType.ToString()))
                         {
                             return false;
                         }
@@ -2001,7 +2003,7 @@ namespace ResoniteBridge
 
             while (directory != null)
             {
-                if (directory.Name.Contains(parentDirNameContains, StringComparison.OrdinalIgnoreCase))
+                if (directory.Name.Contains(parentDirNameContains))
                 {
                     return directory.FullName;
                 }
@@ -2019,7 +2021,7 @@ namespace ResoniteBridge
             {
                 throw new ArgumentException("This needs to be ran within the ResoniteUnityExporter directory");
             }
-            return Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteBridgeWrapperLib");
+            return Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteBridgeWrapperLib");
         }
 
         public static void CreateWrapperAssembly(Dictionary<string, Assembly> assemblies, string rootNamespaceName)
@@ -2032,9 +2034,9 @@ namespace ResoniteBridge
                 List<string> syntaxTreeLabels = new List<string>();
 
                 string allDllsRoot = GetAllDllsRoot(out string gitRepoRoot);
-                string publishRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/Libraries");
-                string generatedCodeRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/GeneratedCode");
-                string errorsRoot = Path.Join(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/CompileErrors");
+                string publishRoot = Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/Libraries");
+                string generatedCodeRoot = Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/GeneratedCode");
+                string errorsRoot = Path.Combine(gitRepoRoot, "ResoniteBridge/Published/ResoniteWrapper/CompileErrors");
                 System.IO.Directory.CreateDirectory(publishRoot);
                 System.IO.Directory.CreateDirectory(generatedCodeRoot);
                 System.IO.Directory.CreateDirectory(errorsRoot);
@@ -2046,7 +2048,7 @@ namespace ResoniteBridge
                     string code = codeAndAssembly.Item3;
                     syntaxTrees.Add(Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(code));
                     string assemblyName = ReflectionUtils.GetAssemblyName(assembly);
-                    string outputCodeName = Path.Join(Path.Join(generatedCodeRoot, assemblyName), label.Replace(".", "/") + ".cs");
+                    string outputCodeName = Path.Combine(Path.Combine(generatedCodeRoot, assemblyName), label.Replace(".", "/") + ".cs");
                     syntaxTreeLabels.Add(outputCodeName);
                     Directory.CreateDirectory(Path.GetDirectoryName(outputCodeName));
                     File.WriteAllText(outputCodeName, code);
@@ -2088,6 +2090,7 @@ namespace ResoniteBridge
                     "mscorlib.dll",
                     "System.dll",
                     "System.Core.dll",
+                    "System.Net.Http.dll",
                 };
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
@@ -2108,14 +2111,14 @@ namespace ResoniteBridge
                 }
 
                 // Walk up to find ResoniteUnityExporter then traverse down to find all the dlls we depend on
-                string unityPluginRoot = Path.Join(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
+                string unityPluginRoot = Path.Combine(gitRepoRoot, "ExampleUnityProject/Assets/ResoniteUnityExporter/Plugins");
                 foreach (var dllFile in Directory.GetFiles(allDllsRoot, "*.dll"))
                 {
                     Console.WriteLine("extra Found assembly" + dllFile);
                     references.Add(Microsoft.CodeAnalysis.MetadataReference.CreateFromFile(dllFile));
                     // also move any depended on dlls into the publish root directory
-                    File.Copy(dllFile, Path.Join(publishRoot, Path.GetFileName(dllFile)), true);
-                    File.Copy(dllFile, Path.Join(unityPluginRoot, Path.GetFileName(dllFile)), true);
+                    File.Copy(dllFile, Path.Combine(publishRoot, Path.GetFileName(dllFile)), true);
+                    File.Copy(dllFile, Path.Combine(unityPluginRoot, Path.GetFileName(dllFile)), true);
                 }
 
 
@@ -2123,7 +2126,7 @@ namespace ResoniteBridge
                 syntaxTrees.Insert(0, Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(assemblyAttributeSource));
 
                 string outDllName = rootNamespaceName + ".dll";
-                string outPath =Path.Join(publishRoot, outDllName);
+                string outPath =Path.Combine(publishRoot, outDllName);
                 Console.WriteLine("Compiling");
                 // Create compilation
                 Microsoft.CodeAnalysis.CSharp.CSharpCompilation compilation = Microsoft.CodeAnalysis.CSharp.CSharpCompilation.Create(
@@ -2195,13 +2198,13 @@ namespace ResoniteBridge
                             }
                         }
                     }
-                    File.WriteAllText(Path.Join(errorsRoot, "errors.txt"), allErrors.ToString());
+                    File.WriteAllText(Path.Combine(errorsRoot, "errors.txt"), allErrors.ToString());
                     throw new Exception($"Compilation failed");
                 }
                 else
                 {
                     // move the dll also into the unity project plugins
-                    File.Copy(outPath, Path.Join(unityPluginRoot, Path.GetFileName(outDllName)), true);
+                    File.Copy(outPath, Path.Combine(unityPluginRoot, Path.GetFileName(outDllName)), true);
                 }
 
                 Console.WriteLine("Done!");

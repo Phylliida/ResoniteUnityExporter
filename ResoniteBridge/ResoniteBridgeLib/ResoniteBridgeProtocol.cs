@@ -20,7 +20,7 @@ namespace ResoniteBridge
 
     public interface ResoniteBridgeValueHolder
     {
-        public ResoniteBridgeValue __Backing { get; set; }
+        ResoniteBridgeValue __Backing { get; set; }
     }
 
     public struct ResoniteBridgeValue

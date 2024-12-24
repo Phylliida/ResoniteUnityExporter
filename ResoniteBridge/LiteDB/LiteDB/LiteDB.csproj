@@ -3,17 +3,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 	<Authors>Maurício David</Authors>
 	<Product>LiteDB</Product>
 	<Description>LiteDB - A lightweight embedded .NET NoSQL document store in a single datafile</Description>
 	<Copyright>MIT</Copyright>
 	<NeutralLanguage>en-US</NeutralLanguage>
 	<Title>LiteDB</Title>
-    <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	  
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Buffers" Version="4.6.0" />
+  </ItemGroup>
 
 </Project>

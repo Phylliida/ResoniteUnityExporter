@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net472</TargetFramework>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+	<PropertyGroup>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+	</PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Assimp" Version="3.0.0" />
     <PackageReference Include="AssimpNet" Version="4.1.0" />
@@ -25,7 +28,7 @@
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="SignalR.Strong" Version="0.3.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" GeneratePathProperty="true" />
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
     <PackageReference Include="System.Net.Sockets" Version="4.3.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
@@ -64,6 +67,9 @@
     <Reference Include="NamedPipeIPC">
       <HintPath>..\NamedPipeIPC\bin\Release\netstandard2.1\NamedPipeIPC.dll</HintPath>
     </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>..\Published\ResoniteBridgeLIb\ResoniteBridgeLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -71,11 +77,6 @@
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.12.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
 
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

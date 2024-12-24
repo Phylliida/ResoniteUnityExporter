@@ -123,32 +123,11 @@ namespace LiteDB.Engine
                 var pipe = queryPlan.GetPipe(transaction, snapshot, _sortDisk, _pragmas, _disk.MAX_ITEMS_COUNT);
 
                 // start cursor elapsed timer which stops on dispose
-                using var _ = _cursor.Elapsed.StartDisposable();
-
-                using (var enumerator = pipe.Pipe(nodes, queryPlan).GetEnumerator())
+                using (var _ = _cursor.Elapsed.StartDisposable())
                 {
-                    var read = false;
-
-                    try
+                    using (var enumerator = pipe.Pipe(nodes, queryPlan).GetEnumerator())
                     {
-                        read = enumerator.MoveNext();
-                    }
-                    catch (Exception ex)
-                    {
-                        _state.Handle(ex);
-                        throw ex;
-                    }
-
-                    while (read)
-                    {
-                        _cursor.Fetched++;
-                        _cursor.Elapsed.Stop();
-
-                        yield return enumerator.Current;
-
-                        if (transaction.State != TransactionState.Active) throw new LiteException(0, $"There is no more active transaction for this cursor: {_cursor.Query.ToSQL(_cursor.Collection)}");
-
-                        _cursor.Elapsed.Start();
+                        var read = false;
 
                         try
                         {
@@ -158,6 +137,28 @@ namespace LiteDB.Engine
                         {
                             _state.Handle(ex);
                             throw ex;
+                        }
+
+                        while (read)
+                        {
+                            _cursor.Fetched++;
+                            _cursor.Elapsed.Stop();
+
+                            yield return enumerator.Current;
+
+                            if (transaction.State != TransactionState.Active) throw new LiteException(0, $"There is no more active transaction for this cursor: {_cursor.Query.ToSQL(_cursor.Collection)}");
+
+                            _cursor.Elapsed.Start();
+
+                            try
+                            {
+                                read = enumerator.MoveNext();
+                            }
+                            catch (Exception ex)
+                            {
+                                _state.Handle(ex);
+                                throw ex;
+                            }
                         }
                     }
                 }

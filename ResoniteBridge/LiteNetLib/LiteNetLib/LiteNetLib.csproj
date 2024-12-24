@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>LiteNetLib</AssemblyName>
         <RootNamespace>LiteNetLib</RootNamespace>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <Title>Lite reliable UDP library for Mono and .NET </Title>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/RevenantX/LiteNetLib</RepositoryUrl>
@@ -15,7 +15,6 @@
         <Description>Lite reliable UDP library for .NET, Mono, and .NET Core</Description>
         <PackageIcon>LNL.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 

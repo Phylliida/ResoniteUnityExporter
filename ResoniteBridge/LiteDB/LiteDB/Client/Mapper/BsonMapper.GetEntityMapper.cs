@@ -26,29 +26,31 @@ namespace LiteDB
                 return mapper;
             }
 
-            using var cts = new CancellationTokenSource();
-            try
+            using (var cts = new CancellationTokenSource())
             {
-                // We need to add the empty shell, because ``BuildEntityMapper`` may use this method recursively
-                mapper = new EntityMapper(type, cts.Token);
-                EntityMapper addedMapper = _entities.GetOrAdd(type, mapper);
-                if (ReferenceEquals(addedMapper, mapper))
+                try
                 {
-                    try
+                    // We need to add the empty shell, because ``BuildEntityMapper`` may use this method recursively
+                    mapper = new EntityMapper(type, cts.Token);
+                    EntityMapper addedMapper = _entities.GetOrAdd(type, mapper);
+                    if (ReferenceEquals(addedMapper, mapper))
                     {
-                        this.BuildEntityMapper(mapper);
-                    }
-                    catch (Exception ex)
-                    {
-                        _entities.TryRemove(type, out _);
-                        throw new LiteException(LiteException.MAPPING_ERROR, $"Error in '{type.Name}' mapping: {ex.Message}", ex);
+                        try
+                        {
+                            this.BuildEntityMapper(mapper);
+                        }
+                        catch (Exception ex)
+                        {
+                            _entities.TryRemove(type, out _);
+                            throw new LiteException(LiteException.MAPPING_ERROR, $"Error in '{type.Name}' mapping: {ex.Message}", ex);
+                        }
                     }
                 }
-            }
-            finally
-            {
-                // Allow the Mapper to be used for de-/serialization
-                cts.Cancel();
+                finally
+                {
+                    // Allow the Mapper to be used for de-/serialization
+                    cts.Cancel();
+                }
             }
 
             return mapper;
