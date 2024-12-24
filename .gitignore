@@ -1,6 +1,7 @@
 # too big
 ResoniteBridge/Published/ResoniteBridgeStandalone/ResoniteBridgeStandalone.exe
 
+# wrapper generated code, owned by froox don't commit that
 ResoniteBridge/Published/ResoniteWrapper/CompileErrors/
 ResoniteBridge/Published/ResoniteWrapper/GeneratedCode/
 ResoniteBridge/ResoniteWrapper.cs

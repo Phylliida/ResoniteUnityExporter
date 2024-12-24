@@ -2067,7 +2067,7 @@ namespace ResoniteBridge
                     "ref",
                     "netstandard2.1")
                 : Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                    Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                     "Reference Assemblies",
                     "Microsoft",
                     "Framework",
@@ -2088,7 +2088,6 @@ namespace ResoniteBridge
                     "mscorlib.dll",
                     "System.dll",
                     "System.Core.dll",
-                    "System.Runtime.dll"
                 };
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
