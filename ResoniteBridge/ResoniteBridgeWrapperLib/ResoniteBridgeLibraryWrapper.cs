@@ -1547,7 +1547,13 @@ namespace ResoniteBridge
                 // fix up the @ that gets added to these
                 if (keywordTypes.TryGetValue(astType.ToString().Replace("@", ""), out Type keywordType))
                 {
-                    AstType newType = new SimpleType(astType.ToString().Replace("@", ""));
+                    // IT IS IMPORTANT NOT TO REPLACE WITH keywordType.FullName BECAUSE like System.String will look for String in
+                    // TwitchLib.Api.Core.Extensions.System
+                    // instead of System
+                    // but it'll work fine if we use lowercase keyword (without the @)
+                    // We can't use SimpleType("int") (for example) because that'll add the @ back,
+                    // but primitiveType should work fine
+                    AstType newType = new PrimitiveType(astType.ToString().Replace("@", ""));
                     astType.ReplaceWith(newType);
                     astType = newType;
                     // keywords exist, we are done
@@ -1897,8 +1903,6 @@ namespace ResoniteBridge
             "TwitchLib.Api.V5.Models.Users",
             "TwitchLib.Api.V5.Models.Videos",
             "TwitchLib.Api.V5.Models.ViewerHeartbeatService",
-            "TwitchLib.Api.Core.Interfaces.Clips",
-            "TwitchLib.Api.Core.Models.Root",
             "TwitchLib.Api.Core.Models.Search",
             "TwitchLib.Api.Core.Models.Streams",
             "TwitchLib.Api.Core.Models.Teams",
