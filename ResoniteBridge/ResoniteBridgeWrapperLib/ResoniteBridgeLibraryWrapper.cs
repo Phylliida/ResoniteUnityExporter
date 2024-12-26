@@ -1547,7 +1547,7 @@ namespace ResoniteBridge
                 // fix up the @ that gets added to these
                 if (keywordTypes.TryGetValue(astType.ToString().Replace("@", ""), out Type keywordType))
                 {
-                    AstType newType = new SimpleType(keywordType.FullName);
+                    AstType newType = new SimpleType(astType.ToString().Replace("@", ""));
                     astType.ReplaceWith(newType);
                     astType = newType;
                     // keywords exist, we are done
