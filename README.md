@@ -7,7 +7,8 @@ with just these changes:
 -- (that is needed to resolve some ambiguities that come up when internal stuff are seen where they shouldn't be)
 - final other todo: make certain classes (like float3, and generally most json stufF) not be wrapped in the same way
 - so they can serialize nicely
-it should work. But this has so much mantinence burden (need to manually specify all namespaces, need to specially handle cases, no support for spans and ref structs) that I decided to pursue
+
+But this approach in general has so much mantinence burden (need to manually specify all namespaces, need to specially handle cases, no support for spans and ref structs) that I decided to pursue
 a different direction.)
 
 Resonite Bridge is a tool for modders and content creators that allows you to work with internal Resonite functions/data via Inter-Process Communication.
