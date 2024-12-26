@@ -2200,6 +2200,7 @@ namespace ResoniteBridge
                 // (that is needed to resolve some ambiguities that come up when internal stuff are seen where they shouldn't be)
                 // final other todo: make certain classes (like float3, and generally most json stufF) not be wrapped in the same way
                 // so they can serialize nicely
+                // moved to branch because this direction seems silly
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
                         {
