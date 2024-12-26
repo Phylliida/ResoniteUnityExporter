@@ -1972,20 +1972,19 @@ namespace ResoniteBridge
 
         public static Modifiers SetAccessibility(Modifiers modifiers)
         {
-            if (modifiers.HasFlag(Modifiers.Private))
+            // don't modify internal
+            if (!modifiers.HasFlag(Modifiers.Internal))
             {
-                modifiers &= ~Modifiers.Private;
-                modifiers |= Modifiers.Public;
-            }
-            if (modifiers.HasFlag(Modifiers.Protected))
-            {
-                modifiers &= ~Modifiers.Protected;
-                modifiers |= Modifiers.Public;
-            }
-            if (modifiers.HasFlag(Modifiers.Internal))
-            {
-                modifiers &= ~Modifiers.Internal;
-                modifiers |= Modifiers.Public;
+                if (modifiers.HasFlag(Modifiers.Private))
+                {
+                    modifiers &= ~Modifiers.Private;
+                    modifiers |= Modifiers.Public;
+                }
+                if (modifiers.HasFlag(Modifiers.Protected))
+                {
+                    modifiers &= ~Modifiers.Protected;
+                    modifiers |= Modifiers.Public;
+                }
             }
             return modifiers;
         }
@@ -2196,7 +2195,11 @@ namespace ResoniteBridge
                 bool netStandard = false;
 
 
-
+                // MAIN TODO: look at protected/public/private values for types and correctly make things non-public as needed when we have internal things
+                // other todo: split wrappr dlls into seperate ones for each wrapped dll instead of one big dll 
+                // (that is needed to resolve some ambiguities that come up when internal stuff are seen where they shouldn't be)
+                // final other todo: make certain classes (like float3, and generally most json stufF) not be wrapped in the same way
+                // so they can serialize nicely
 
                 var assemblyAttributeSource = @"namespace System.Runtime.CompilerServices
                         {
