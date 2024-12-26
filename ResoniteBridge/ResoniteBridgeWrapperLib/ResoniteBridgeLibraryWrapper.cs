@@ -1178,20 +1178,20 @@ namespace ResoniteBridge
             {
                 if (astNode is VariableDeclarationStatement variableDeclare)
                 {
-                    ReplaceTypeIfUnresolved(variableDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(variableDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, removeNullable: true);
                 }
                 if (astNode is DelegateDeclaration delegateDeclare)
                 {
-                    ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(delegateDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, removeNullable: true);
                 }
                 if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.MethodDeclaration methodDeclare)
                 {
                     // we can't have nullable return type with our wrappers, it confuses type system
-                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(methodDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, removeNullable: true);
                 }
                 else if (astNode is ParameterDeclaration paramDeclare)
                 {
-                    if (ReplaceTypeIfUnresolved(paramDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList))
+                    if (ReplaceTypeIfUnresolved(paramDeclare.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType))
                     {
                         // just fallback to null default
                         // Todo: make this more detailed
@@ -1209,34 +1209,34 @@ namespace ResoniteBridge
                 }
                 else if (astNode is ICSharpCode.Decompiler.CSharp.Syntax.PropertyDeclaration propertyDeclare)
                 {
-                    ReplaceTypeIfUnresolved(propertyDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(propertyDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType);
                 }
                 else if(astNode is ICSharpCode.Decompiler.CSharp.Syntax.FieldDeclaration fieldDeclare )
                 {
-                    ReplaceTypeIfUnresolved(fieldDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(fieldDeclare.ReturnType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType);
                 }
                 else if(astNode is ICSharpCode.Decompiler.CSharp.Syntax.CastExpression castExpr)
                 {
-                    ReplaceTypeIfUnresolved(castExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(castExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType);
                 }
                 else if(astNode is TypeOfExpression typeOfExpr)
                 {
                     // remove nullable for typeof, it confuses it
-                    ReplaceTypeIfUnresolved(typeOfExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(typeOfExpr.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, removeNullable: true);
                 }
                 // occurs in if (a is Type b) statements
                 else if(astNode is DeclarationExpression declarationExpression)
                 {
                     // remove nullable for these is expressions
-                    ReplaceTypeIfUnresolved(declarationExpression.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, removeNullable: true);
+                    ReplaceTypeIfUnresolved(declarationExpression.Type, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, removeNullable: true);
                 }
                 else if(astNode is TypeDeclaration typeDeclarationExpression) {
                     foreach (AstType baseType in typeDeclarationExpression.BaseTypes)
                     {
                         // just remove them if base type, we can't extend from ResoniteBridgeValue
-                        if(ReplaceTypeIfUnresolved(baseType, syntaxTreeTypeLabel, resolveContext, namespaceList))
+                        if(ReplaceTypeIfUnresolved(baseType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType))
                         {
-                            nodesToRemove.Add(baseType);
+                            nodesToRemove.Add(replaceType);
                         }
                     }
                     foreach (Constraint constraint in typeDeclarationExpression.Constraints)
@@ -1245,7 +1245,7 @@ namespace ResoniteBridge
                         {
                             if (constraintChildNode is AstType constraintType)
                             {
-                                ReplaceTypeIfUnresolved(constraintType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                                ReplaceTypeIfUnresolved(constraintType, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType);
                             }
                         });
                     }
@@ -1283,7 +1283,7 @@ namespace ResoniteBridge
                         }
 
                         // don't need to recurse so alsoChildren=false, no generics and that messes stuff up
-                        if (ReplaceTypeIfUnresolved(usingName, syntaxTreeTypeLabel, resolveContext, namespaceList, alsoChildren: false))
+                        if (ReplaceTypeIfUnresolved(usingName, syntaxTreeTypeLabel, resolveContext, namespaceList, out AstType replaceType, alsoChildren: false))
                         {
                             Console.WriteLine("Removing using: " + usingName + " for type " + syntaxTreeTypeLabel);
                         }
@@ -1468,14 +1468,15 @@ namespace ResoniteBridge
             return ForbiddenBaseClasses.Contains(noGenerics);
         }
 
-        public static bool ReplaceTypeIfUnresolved(AstType astType, string fileName, ITypeResolveContext resolveContext, HashSet<string> namespaceList, bool alsoChildren=true, bool removeNullable=false)
+        public static bool ReplaceTypeIfUnresolved(AstType astType, string fileName, ITypeResolveContext resolveContext, HashSet<string> namespaceList, out AstType replaceType, bool alsoChildren=true, bool removeNullable=false)
         {
+            replaceType = AstType.Null;
             if (alsoChildren)
             {
                 // recurse (for generics)
                 foreach (AstType childType in astType.DescendantNodes().OfType<SimpleType>())
                 {
-                    ReplaceTypeIfUnresolved(childType, fileName, resolveContext, namespaceList);
+                    ReplaceTypeIfUnresolved(childType, fileName, resolveContext, namespaceList, out AstType subReplaceType);
                 }
             }
             // we have a few things we try for resolving types
@@ -1664,7 +1665,8 @@ namespace ResoniteBridge
                 wrappedTypeStr = wrappedTypeStr + "[]";
             }
             Console.WriteLine("Replacing type " + astType.ToString() + " in " + fileName);
-            astType.ReplaceWith(new SimpleType(wrappedTypeStr));
+            replaceType = new SimpleType(wrappedTypeStr);
+            astType.ReplaceWith(replaceType);
             return true;
         }
 
@@ -1852,6 +1854,7 @@ namespace ResoniteBridge
             "System",
             "System.Collections",
             "System.Collections.Generic",
+            "System.Collections.Specialized",
             "System.ComponentModel",
             "System.Diagnostics",
             "System.Drawing",
@@ -1942,6 +1945,7 @@ namespace ResoniteBridge
             "Color3D",
             "Color4D",
             "Matrix4x4",
+            "IOSystem",
         }; 
 
         public class TypeInfoLookup
