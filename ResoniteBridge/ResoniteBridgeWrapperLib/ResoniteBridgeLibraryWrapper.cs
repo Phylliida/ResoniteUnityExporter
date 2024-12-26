@@ -639,6 +639,7 @@ namespace ResoniteBridge
             "colorX",
             "UV_Array",
             "BoneBinding", // needed to bulk transfer bone data
+            "FPDF_COLOR", // has struct layout stuff that gets angry otherwise, just leave it alone
         };
 
 
@@ -1232,7 +1233,11 @@ namespace ResoniteBridge
                 else if(astNode is TypeDeclaration typeDeclarationExpression) {
                     foreach (AstType baseType in typeDeclarationExpression.BaseTypes)
                     {
-                        ReplaceTypeIfUnresolved(baseType, syntaxTreeTypeLabel, resolveContext, namespaceList);
+                        // just remove them if base type, we can't extend from ResoniteBridgeValue
+                        if(ReplaceTypeIfUnresolved(baseType, syntaxTreeTypeLabel, resolveContext, namespaceList))
+                        {
+                            nodesToRemove.Add(baseType);
+                        }
                     }
                     foreach (Constraint constraint in typeDeclarationExpression.Constraints)
                     {
@@ -1923,6 +1928,7 @@ namespace ResoniteBridge
             "RetryContext",
             "WebRequest",
             "IPEndPoint",
+            "IRetryPolicy",
             "SocketError",
             "FileIOMode",
             "IOStream",
