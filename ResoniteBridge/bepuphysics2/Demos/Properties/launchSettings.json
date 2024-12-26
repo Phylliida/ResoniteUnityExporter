@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Demos": {
-      "commandName": "Project",
-      "nativeDebugging": false
-    }
-  }
-}
