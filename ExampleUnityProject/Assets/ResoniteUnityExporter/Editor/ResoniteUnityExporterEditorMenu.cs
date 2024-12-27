@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Elements.Assets;
-using ResoniteBridge;
+//using Elements.Assets;
+//using ResoniteBridge;
 using UnityEngine;
 using UnityEditor;
 
-
+/*
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorMenu
 	{
@@ -83,7 +83,7 @@ namespace ResoniteBridgeUnity {
 			
 			
 			
-			*/			
+			* /			
 			
 			
 			
@@ -487,3 +487,4 @@ namespace ResoniteBridgeUnity {
 		}
 	}
 }
+*/

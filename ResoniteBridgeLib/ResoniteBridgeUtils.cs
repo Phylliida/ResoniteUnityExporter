@@ -3,7 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 
-namespace ResoniteBridge
+namespace ResoniteBridgeLib
 {
     public static class ResoniteBridgeUtils {
         public static UnicodeEncoding stringEncoding = new UnicodeEncoding();

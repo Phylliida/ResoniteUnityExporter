@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
-using ResoniteBridge;
+using ResoniteBridgeLib;
+using ResoniteUnityExporterShared;
 
 
 
@@ -38,6 +39,7 @@ namespace ResoniteBridgeUnity {
 			if (bridgeClient != null)
 			{
 				bridgeClient.Dispose();
+				
 				bridgeClient = null;
             }
         }
@@ -49,10 +51,12 @@ namespace ResoniteBridgeUnity {
 
         void OnGUI()
 		{
+			/*
             ResoniteBridge.ResoniteBridgeClientWrappers.DebugLog = (string message) =>
             {
                 Debug.Log(message);
             };
+			*/
 
             if (bridgeClient == null) {
                 
@@ -66,6 +70,7 @@ namespace ResoniteBridgeUnity {
 				GUILayout.Label("Connecting to Resonite...", EditorStyles.boldLabel);
 				return;
 			}
+			/*
 			myString = EditorGUILayout.TextField("Tefffxt Field", myString);
 
 			groupEnabled = EditorGUILayout.BeginToggleGroup("Optional Settings", groupEnabled);
@@ -97,6 +102,7 @@ namespace ResoniteBridgeUnity {
 			{
 				Debug.Log("Button 2");
 			}
+			*/
 			EditorGUILayout.EndHorizontal();
 		}
 	}

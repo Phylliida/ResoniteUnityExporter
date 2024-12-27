@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using NamedPipeIPC;
 using System.Collections.Concurrent;
 
-namespace ResoniteBridge
+namespace ResoniteBridgeLib
 {
     public class ResoniteBridgeServer : IDisposable
     {

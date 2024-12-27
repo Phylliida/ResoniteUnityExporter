@@ -6,7 +6,7 @@ using System.Threading;
 using System.Reflection;
 using System.Linq;
 
-namespace ResoniteBridge
+namespace ResoniteBridgeLib
 {
     public enum ResoniteBridgeValueType
     {

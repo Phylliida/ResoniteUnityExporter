@@ -119,7 +119,7 @@ namespace ResoniteUnityExporterShared
 
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct U2ResStaticMesh
+    public struct StaticMesh_U2Res
     {
         public Float3_U2Res[] positions;
         public Float4_U2Res[] colors;
