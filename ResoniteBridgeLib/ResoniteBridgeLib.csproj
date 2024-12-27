@@ -10,9 +10,12 @@
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="NamedPipeIPC">
-      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+    <ItemGroup>
+        <Reference Include="NamedPipeIPC">
+            <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <Target Name="PostPublish" AfterTargets="Publish">
+	    <Exec Command="xcopy &quot;$(PublishDir)\*.dll&quot; &quot;..\ExampleUnityProject\Assets\Plugins&quot; /E /I /Y" />
+    </Target>
 </Project>
