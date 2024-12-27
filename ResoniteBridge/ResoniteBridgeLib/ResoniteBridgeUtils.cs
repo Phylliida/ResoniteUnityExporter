@@ -35,6 +35,17 @@ namespace ResoniteBridge
             }
         }
 
+        public static T DecodeObject<T>(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                using (BsonDataReader reader = new BsonDataReader(ms))
+                {
+                    return serializer.Deserialize<T>(reader);
+                }
+            }
+        }
+
         public static object DecodeObject(byte[] bytes, System.Type t)
         {
             using (MemoryStream ms = new MemoryStream(bytes))

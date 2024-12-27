@@ -5,6 +5,8 @@ using System.IO;
 using System.Threading;
 using NamedPipeIPC;
 using Newtonsoft.Json.Bson;
+using static ResoniteBridge.ResoniteBridgeServer;
+using System.Xml.Linq;
 
 namespace ResoniteBridge
 {
@@ -25,7 +27,7 @@ namespace ResoniteBridge
 
         private ConcurrentQueueWithNotification<ResoniteBridgeMessage> inputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeMessage>();
         private ConcurrentDictionary<int, ManualResetEvent> outputMessageEvents = new ConcurrentDictionary<int, ManualResetEvent>();
-        private ConcurrentDictionary<int, ResoniteBridgeResponse> outputMessages = new ConcurrentDictionary<int, ResoniteBridgeResponse>();
+        private ConcurrentDictionary<int, ResoniteBridgeMessage> outputMessages = new ConcurrentDictionary<int, ResoniteBridgeMessage>();
 
         private Thread sendingThread;
         private Thread recievingThread;
@@ -35,26 +37,41 @@ namespace ResoniteBridge
         {
             return publisher.IsConnected() && subscriber.IsConnected();
         }
-        public ResoniteBridgeResponse SendMessageSync(ResoniteBridgeMessage message, int timeout)
+
+        public delegate void MessageResponseHandler(byte[] responseBytes, bool isError);
+
+        public void SendMessageAsync(string name, byte[] data, int timeout, MessageResponseHandler handler)
+        {
+            new Thread(() =>
+            {
+                SendMessageSync(name, data, timeout, out byte[] responseBytes, out bool isError);
+                handler(responseBytes, isError);
+            }).Start(); 
+        }
+
+        public void SendMessageSync(string name, byte[] data, int timeout, out byte[] responseBytes, out bool isError)
         {
             int messageUuid = Interlocked.Increment(ref curMessageId);
-            message.uuid = messageUuid;
+            ResoniteBridgeMessage message = new ResoniteBridgeMessage()
+            {
+                data = data,
+                methodName = name,
+                messageType = ResoniteBridgeValueType.Bytes,
+                uuid = messageUuid,
+            };
             try
             {
-                return SendMessageSync(message, timeout);
+                ResoniteBridgeMessage responseMessage = SendMessageSyncHelper(message, timeout);
+                responseBytes = responseMessage.data;
+                isError = responseMessage.messageType == ResoniteBridgeValueType.Error;
             }
             catch (Exception e)
             {
-                ResoniteBridgeResponse response = new ResoniteBridgeResponse();
-                response.uuid = messageUuid;
-                response.response = new ResoniteBridgeValue();
-                response.response.valueType = ResoniteBridgeValueType.Error;
-                response.response.valueBytes = ResoniteBridgeUtils.EncodeString(e.Message + " " + e.StackTrace);
-                response.responseType = ResoniteBridgeResponseType.Error;
-                return response;
+                responseBytes = ResoniteBridgeUtils.EncodeString(e.Message + " " + e.StackTrace);
+                isError = true;
             }
         }
-        private ResoniteBridgeResponse SendMessageSyncHelper(ResoniteBridgeMessage message, int timeout=-1)
+        private ResoniteBridgeMessage SendMessageSyncHelper(ResoniteBridgeMessage message, int timeout=-1)
         {
             ManualResetEvent messageEvent = new ManualResetEvent(false);
             outputMessageEvents[message.uuid] = messageEvent;
@@ -83,18 +100,25 @@ namespace ResoniteBridge
             }
             else
             {
-                outputMessages.TryRemove(message.uuid, out ResoniteBridgeResponse response);
-                return response;
+                if(outputMessages.TryRemove(message.uuid, out ResoniteBridgeMessage response))
+                {
+                    return response;
+                }
+                else
+                {
+                    throw new ArgumentException("Could not find output message, something went wrong");
+                }
             }
         }
 
+        public LogDelegate DebugLog;
+
         public ResoniteBridgeClient(LogDelegate DebugLog)
         {
+            this.DebugLog = DebugLog;
             stopToken = new CancellationTokenSource();
             publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing);
             subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing);
-            // this is a bit cursed but it lets us avoid having to pass client into all calls so I think it's ok
-            ResoniteBridgeClientWrappers.client = this;
             
             // network monitoring thread
             sendingThread = new Thread(() =>
@@ -131,8 +155,8 @@ namespace ResoniteBridge
             {
                 try
                 {
-                    ResoniteBridgeResponse parsedResult = (ResoniteBridgeResponse)ResoniteBridgeUtils.DecodeObject(
-                        bytes, typeof(ResoniteBridgeResponse));
+                    ResoniteBridgeMessage parsedResult = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
+                        bytes, typeof(ResoniteBridgeMessage));
                     outputMessages[parsedResult.uuid] = parsedResult;
                     outputMessageEvents[parsedResult.uuid].Set();
                 }

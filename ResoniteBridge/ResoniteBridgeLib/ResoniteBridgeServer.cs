@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using NamedPipeIPC;
 using Newtonsoft.Json.Bson;
+using ResoniteBridge;
+using System.Collections.Concurrent;
 
 namespace ResoniteBridge
 {
@@ -23,73 +25,95 @@ namespace ResoniteBridge
 
         public delegate void LogDelegate(string message);
 
-        private ConcurrentQueueWithNotification<ResoniteBridgeResponse> outputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeResponse>();
+        private ConcurrentDictionary<string, MessageProcessor> processors = new ConcurrentDictionary<string, MessageProcessor>();
+
+        public bool TryGetProcessor(string methodName, out MessageProcessor processor)
+        {
+            return processors.TryGetValue(methodName, out processor);
+        }
+
+        public void RegisterProcessor(string methodName, MessageProcessor processor)
+        {
+            processors[methodName] = processor;
+        }
+
+        public bool TryUnregisterProcessor(string methodName, out MessageProcessor removedProcessor)
+        {
+            return processors.TryRemove(methodName, out removedProcessor);
+        }
+
+        private ConcurrentQueueWithNotification<ResoniteBridgeMessage> outputMessages = new ConcurrentQueueWithNotification<ResoniteBridgeMessage>();
 
         private Thread sendingThread;
         
-        public delegate ResoniteBridgeResponse MessageProcessor(ResoniteBridgeMessage message, ThreadState threadState);
+        public delegate byte[] MessageProcessor(byte[] input);
 
-        private void ProcessMessageAsync(ResoniteBridgeMessage message,
-            MessageProcessor messageProcessor, int timeout = -1)
+        private void ProcessMessageAsync(ResoniteBridgeMessage message, int timeout = -1)
         {
-            if (message.messageType == ResoniteBridgeMessageType.SetThreadState)
+            new Thread(() =>
             {
-                this.threadState = (ThreadState)ReflectionUtils.GetEnum(typeof(ThreadState), message.name);
-                ResoniteBridgeResponse response = new ResoniteBridgeResponse();
-                response.responseType = ResoniteBridgeResponseType.Success;
-                response.uuid = message.uuid;
-                outputMessages.Enqueue(response);
-            }
-            else
+                ProcessMessageSync(message, timeout);
+            }).Start();
+        }
+
+        private void ProcessMessageSync(ResoniteBridgeMessage message, int timeout = -1)
+        {
+            try
             {
-                Thread processThread = new Thread(() =>
+                MessageProcessor processor;
+                if (!TryGetProcessor(message.methodName, out processor))
                 {
-                    ProcessMessageSync(message, messageProcessor, timeout);
-                });
-                processThread.Start();
-            }
-        }
+                    throw new UnknownProcessorException(message.methodName);
+                }
 
-        public volatile ThreadState threadState = ThreadState.World;
+                Task<byte[]> processingTask = Task.Run(() => processor(message.data), stopToken.Token);
 
-        public enum ThreadState
-        {
-            World,
-            Background
-        }
-        private void ProcessMessageSync(ResoniteBridgeMessage message,
-            MessageProcessor messageProcessor, int timeout = -1)
-        {
-            Task<ResoniteBridgeResponse> processingTask = Task.Run(() => messageProcessor(message, threadState), stopToken.Token);
-        
-            // Create a task for disconnect event
-            Task disconnectTask = Task.Run(() => publisher.disconnectEvent.WaitOne(), stopToken.Token);
+                // Create a task for disconnect event
+                Task disconnectTask = Task.Run(() => publisher.disconnectEvent.WaitOne(), stopToken.Token);
 
-            Task timeoutTask = Task.Delay(timeout, stopToken.Token);
-            
-            // Wait for the first task to complete
-            Task completedTask = Task.WhenAny(
-                processingTask,
-                disconnectTask,
-                timeoutTask
-            );
-            
-            if (stopToken.IsCancellationRequested)
-            {
-                throw new CanceledException();
+                Task timeoutTask = Task.Delay(timeout, stopToken.Token);
+
+                // Wait for the first task to complete
+                Task completedTask = Task.WhenAny(
+                    processingTask,
+                    disconnectTask,
+                    timeoutTask
+                );
+
+                if (stopToken.IsCancellationRequested)
+                {
+                    throw new CanceledException();
+                }
+                else if (completedTask == disconnectTask)
+                {
+                    throw new DisconnectException();
+                }
+                else if (completedTask == timeoutTask)
+                {
+                    throw new TimeoutException();
+                }
+                else
+                {
+                    byte[] responseData = processingTask.GetAwaiter().GetResult();
+                    ResoniteBridgeMessage response = new ResoniteBridgeMessage()
+                    {
+                        data = responseData,
+                        messageType = ResoniteBridgeValueType.Bytes,
+                        methodName = message.methodName,
+                        uuid = message.uuid
+                    };
+                    outputMessages.Enqueue(response);
+                }
             }
-            else if (completedTask == disconnectTask)
+            catch (Exception ex)
             {
-                throw new DisconnectException();
-            }
-            else if (completedTask == timeoutTask)
-            {
-                throw new TimeoutException();
-            }
-            else
-            {
-                ResoniteBridgeResponse response = processingTask.GetAwaiter().GetResult();
-                response.uuid = message.uuid;
+                ResoniteBridgeMessage response = new ResoniteBridgeMessage()
+                {
+                    data = ResoniteBridgeUtils.EncodeString(ex.ToString() + " " + ex.StackTrace),
+                    messageType = ResoniteBridgeValueType.Error,
+                    methodName = message.methodName,
+                    uuid = message.uuid,
+                };
                 outputMessages.Enqueue(response);
             }
         }
@@ -111,7 +135,7 @@ namespace ResoniteBridge
                 {
                     ResoniteBridgeMessage parsedMessage = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
                         bytes, typeof(ResoniteBridgeMessage));
-                    ProcessMessageAsync(parsedMessage, messageProcessor);
+                    ProcessMessageAsync(parsedMessage);
                 }
                 catch (JsonSerializationException e)
                 {
@@ -129,7 +153,7 @@ namespace ResoniteBridge
                     // Read the request from the client. Once the client has
                     // written to the pipe its security token will be available.
 
-                    outputMessages.TryDequeue(out ResoniteBridgeResponse response, -1, stopToken.Token);
+                    outputMessages.TryDequeue(out ResoniteBridgeMessage response, -1, stopToken.Token);
                     // wait for publisher to connect
                     WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
                     if (stopToken.IsCancellationRequested)
