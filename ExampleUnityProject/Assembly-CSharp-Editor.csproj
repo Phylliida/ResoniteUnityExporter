@@ -412,10 +412,6 @@
       <HintPath>Library\PackageCache\com.unity.collections@2.5.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@2.0.3\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
@@ -428,10 +424,6 @@
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.Unity3D.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="NamedPipeIPC">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\NamedPipeIPC.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\YamlDotNet.dll</HintPath>
       <Private>False</Private>
@@ -440,16 +432,16 @@
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.File.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Bson">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Serilog">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="vpm-core-lib">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\vpm-core-lib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ResoniteBridgeLib">
@@ -464,8 +456,16 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NamedPipeIPC">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\NamedPipeIPC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="mscorlib">

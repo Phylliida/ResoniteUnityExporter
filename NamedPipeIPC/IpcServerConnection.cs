@@ -10,9 +10,9 @@ namespace NamedPipeIPC
     public class IpcServerConnection : IDisposable
     {
         public static Guid MakeUniqueGuid() {
-            Guid guid = new Guid();
+            Guid guid = Guid.NewGuid();
             while (File.Exists(IpcUtils.GuidToConnectionPath(guid))) {
-                guid = new Guid();
+                guid = Guid.NewGuid();
             }
             return guid;
         }
