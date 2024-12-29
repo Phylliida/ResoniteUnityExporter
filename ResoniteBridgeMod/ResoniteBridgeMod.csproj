@@ -102,6 +102,7 @@
     <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\$(ProjectName).dll
 copy /Y "$(TargetDir)ResoniteBridgeLib.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ResoniteBridgeLib.dll
 copy /Y "$(TargetDir)NamedPipeIPC.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\NamedPipeIPC.dll
-copy /Y "$(TargetDir)ResoniteUnityExporterShared.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ResoniteUnityExporterShared.dll</PostBuildEvent>
+copy /Y "$(TargetDir)ResoniteUnityExporterShared.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ResoniteUnityExporterShared.dll
+copy /Y "$(TargetDir)ImportFromUnityLib.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ImportFromUnityLib.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
