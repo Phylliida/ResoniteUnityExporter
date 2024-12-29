@@ -119,8 +119,20 @@ namespace ResoniteUnityExporterShared
 
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct StaticMeshImportSettings_U2Res
+    {
+        public bool reverse;
+        public bool makeDualSided;
+        public bool makeFlatShaded;
+        public bool calculateTangents;
+    }
+
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct StaticMesh_U2Res
     {
+        public string name;
+        public StaticMeshImportSettings_U2Res importSettings;
         public Float3_U2Res[] positions;
         public Float4_U2Res[] colors;
         public Float3_U2Res[] normals;

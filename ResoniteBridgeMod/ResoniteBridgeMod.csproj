@@ -49,6 +49,12 @@
     <Reference Include="FrooxEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
     </Reference>
+    <Reference Include="ImportFromUnityLib">
+      <HintPath>..\Published\ImportFromUnityLib\ImportFromUnityLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NamedPipeIPC">
+      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -59,10 +65,13 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\ProtoFluxBindings.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeLib">
-      <HintPath>..\ResoniteBridgeLib\bin\Debug\netstandard2.1\ResoniteBridgeLib.dll</HintPath>
+      <HintPath>..\Published\ResoniteBridgeLib\ResoniteBridgeLib.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteModLoader">
       <HintPath>.\ResoniteModLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>..\Published\ResoniteUnityExporterShared\ResoniteUnityExporterShared.dll</HintPath>
     </Reference>
     <Reference Include="SkyFrost.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,6 +99,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\HotReloadMods\$(ProjectName).dll</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

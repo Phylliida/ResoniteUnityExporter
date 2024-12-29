@@ -120,7 +120,7 @@ namespace ResoniteBridgeLib
             return subscriber.IsConnected() && publisher.IsConnected();
         }
 
-        public ResoniteBridgeServer(LogDelegate DebugLog, MessageProcessor messageProcessor)
+        public ResoniteBridgeServer(LogDelegate DebugLog)
         {
             stopToken = new CancellationTokenSource();
             publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing);

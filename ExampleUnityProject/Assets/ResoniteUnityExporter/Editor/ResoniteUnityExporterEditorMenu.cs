@@ -33,7 +33,7 @@ namespace ResoniteBridgeUnity
 			StaticMesh_U2Res convertedMesh = ConvertMesh(skinnedMeshRenderer.sharedMesh, boneNames.ToArray());
 
 			bridgeClient.SendMessageSync(
-				"LoadMesh",
+                "ImportToStaticMesh",
 				ResoniteBridgeUtils.EncodeObject(convertedMesh),
 				-1,
 				out byte[] outBytes,
@@ -123,6 +123,7 @@ namespace ResoniteBridgeUnity
         {
 			// todo: provide option to ignore bones and ignore vertex colors
 			StaticMesh_U2Res meshx = new StaticMesh_U2Res();
+			meshx.name = unityMesh.name;
             int[] uvDimensions = GetMeshUVChannelDimensions(unityMesh, out int[] actualTexCoordIndices);
 
             Float3_U2Res[] vertices = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
