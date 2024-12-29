@@ -26,7 +26,6 @@ namespace ResoniteBridgeLib
         private ConcurrentDictionary<int, ResoniteBridgeMessage> outputMessages = new ConcurrentDictionary<int, ResoniteBridgeMessage>();
 
         private Thread sendingThread;
-        private Thread recievingThread;
 
 
         public bool IsConnected()
@@ -165,7 +164,6 @@ namespace ResoniteBridgeLib
             };
             
             sendingThread.Start();
-            recievingThread.Start();
         }
 
         public void Dispose()
@@ -174,7 +172,6 @@ namespace ResoniteBridgeLib
             {
                 stopToken.Cancel();
                 sendingThread.Join();
-                recievingThread.Join();
                 stopToken.Dispose();
             }
         }
