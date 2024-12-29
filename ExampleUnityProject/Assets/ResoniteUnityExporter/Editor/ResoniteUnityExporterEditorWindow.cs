@@ -8,9 +8,6 @@ using ResoniteUnityExporterShared;
 namespace ResoniteBridgeUnity {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
-		string myString = "Hello Worlf";
-		bool groupEnabled;
-		float myFloat = 1.23f;
 		
 		public static ResoniteBridgeClient bridgeClient;
 
@@ -22,6 +19,8 @@ namespace ResoniteBridgeUnity {
 			EditorWindow.GetWindow(typeof(ResoniteUnityExporterEditorWindow));
 		}
 
+		
+		// stuff for recreating connection on reload of scripts
         void OnEnable()
         {
             AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
@@ -33,7 +32,6 @@ namespace ResoniteBridgeUnity {
             AssemblyReloadEvents.beforeAssemblyReload -= OnBeforeAssemblyReload;
             AssemblyReloadEvents.afterAssemblyReload -= OnAfterAssemblyReload;
         }
-
         public void OnBeforeAssemblyReload()
         {
 			if (bridgeClient != null)
@@ -43,34 +41,50 @@ namespace ResoniteBridgeUnity {
 				bridgeClient = null;
             }
         }
-
         public void OnAfterAssemblyReload()
         {
-            Debug.Log("fAfter Assfembffly Reload");
         }
 
+
+		// gui
+		SkinnedMeshRenderer skinnedMesh;
         void OnGUI()
 		{
-			/*
-            ResoniteBridge.ResoniteBridgeClientWrappers.DebugLog = (string message) =>
-            {
-                Debug.Log(message);
-            };
-			*/
-
             if (bridgeClient == null) {
                 
                 bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
 				
             }
-			if (bridgeClient.IsConnected()) {
+            skinnedMesh = (SkinnedMeshRenderer)EditorGUILayout.ObjectField(
+				"Skinned Mesh",
+				skinnedMesh,
+				typeof(SkinnedMeshRenderer),
+				true
+			);
+
+            if (bridgeClient.IsConnected()) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
 			else {
 				GUILayout.Label("Connecting to Resonite...", EditorStyles.boldLabel);
 				return;
 			}
-			/*
+
+			if (skinnedMesh == null)
+			{
+				GUILayout.Label("Need skinned mesh");
+				return;
+			}
+
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Export"))
+            {
+				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
+            }
+            EditorGUILayout.EndHorizontal();
+
+
+            /*
 			myString = EditorGUILayout.TextField("Tefffxt Field", myString);
 
 			groupEnabled = EditorGUILayout.BeginToggleGroup("Optional Settings", groupEnabled);
@@ -103,7 +117,7 @@ namespace ResoniteBridgeUnity {
 				Debug.Log("Button 2");
 			}
 			*/
-			EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
 		}
 	}
 }

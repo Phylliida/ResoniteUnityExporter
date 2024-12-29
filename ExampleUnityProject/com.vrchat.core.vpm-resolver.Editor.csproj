@@ -431,7 +431,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\Plugins\ResoniteUnityExporterShared.dll</HintPath>
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -447,7 +447,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="NamedPipeIPC">
-      <HintPath>Assets\Plugins\NamedPipeIPC.dll</HintPath>
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\NamedPipeIPC.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="YamlDotNet">
@@ -459,7 +459,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json.Bson">
-      <HintPath>Assets\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Serilog">

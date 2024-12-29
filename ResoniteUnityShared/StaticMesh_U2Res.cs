@@ -69,9 +69,9 @@ namespace ResoniteUnityExporterShared
     public struct UVArray_U2Res
     {
         public int dimension;
-        Float2_U2Res[] uv_2D;
-        Float3_U2Res[] uv_3D;
-        Float4_U2Res[] uv_4D;
+        public Float2_U2Res[] uv_2D;
+        public Float3_U2Res[] uv_3D;
+        public Float4_U2Res[] uv_4D;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -84,7 +84,7 @@ namespace ResoniteUnityExporterShared
     [StructLayout(LayoutKind.Sequential)]
     public struct BlendShapeFrame_U2Res
     {
-        float frameWeight;
+        public float frameWeight;
         public Float3_U2Res[] positions;
         public Float3_U2Res[] normals;
         public Float3_U2Res[] tangents;
@@ -93,8 +93,8 @@ namespace ResoniteUnityExporterShared
     [StructLayout(LayoutKind.Sequential)]
     public struct BlendShape_U2Res
     {
-        string name;
-        BlendShapeFrame_U2Res[] frames;
+        public string name;
+        public BlendShapeFrame_U2Res[] frames;
     }
 
     [StructLayout(LayoutKind.Sequential)]
