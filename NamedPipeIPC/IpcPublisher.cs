@@ -32,10 +32,17 @@ namespace NamedPipeIPC
             // but for the number of servers we have, this is fine enough
             searchThread = new Thread( () =>
             {
-                while (!stopToken.IsCancellationRequested)
+                try
                 {
-                    ConnectToAvailableServers();
-                    Task.Delay(millisBetweenPing, stopToken.Token).Wait();
+                    while (!stopToken.IsCancellationRequested)
+                    {
+                        ConnectToAvailableServers();
+                        Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                    }
+                }
+                catch (TaskCanceledException)
+                {
+
                 }
             });
             searchThread.Start();

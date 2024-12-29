@@ -95,10 +95,18 @@ namespace NamedPipeIPC
             // server status thread
             writeStatusThread = new Thread (() =>
             {
-                while (!stopToken.IsCancellationRequested) {
-                    WriteServerStatus();
-                    // this will immediately return if stopToken canceled
-                    Task.Delay(millisBetweenPing, stopToken.Token).Wait();
+                try
+                {
+                    while (!stopToken.IsCancellationRequested)
+                    {
+                        WriteServerStatus();
+                        // this will immediately return if stopToken canceled
+                        Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                    }
+                }
+                catch (TaskCanceledException canceledTask)
+                {
+
                 }
                 // remove our file since we are closed
                 File.Delete(IpcUtils.GuidToConnectionPath(this.guid));
