@@ -42,11 +42,17 @@
     <Reference Include="FrooxEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
     </Reference>
+    <Reference Include="ImportFromUnityLib">
+      <HintPath>..\Published\ImportFromUnityLib\ImportFromUnityLib.dll</HintPath>
+    </Reference>
     <Reference Include="NamedPipeIPC">
       <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeLib">
-      <HintPath>..\Published\ResoniteBridgeLIb\ResoniteBridgeLib.dll</HintPath>
+      <HintPath>..\Published\ResoniteBridgeLib\ResoniteBridgeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>..\Published\ResoniteUnityExporterShared\ResoniteUnityExporterShared.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

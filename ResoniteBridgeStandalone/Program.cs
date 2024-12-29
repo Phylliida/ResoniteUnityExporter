@@ -129,21 +129,19 @@ namespace ResoniteBridge
         // heavily modified from code given to me by whatsavalue3 (who gave permission to license this as MIT)
         public FrooxEngineRunner()
         {
-            ResoniteBridgeServerData serverData = new ResoniteBridgeServerData();
 
-            ReflectionUtils.serverData = serverData;
             string resoniteDir = Path.GetDirectoryName(
-                FrooxEngineRunner.GetResoniteExePath(out serverData.assemblies)
+                FrooxEngineRunner.GetResoniteExePath(out assemblies)
             );
             string curDir = System.IO.Directory.GetCurrentDirectory();
             string libraryPath = Path.Combine(resoniteDir, "Resonite_Data", "Managed");
 
 
-            serverData.assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
-            serverData.assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
+            assemblies.TryGetValue("FrooxEngine", out FrooxEngineAsm);
+            assemblies.TryGetValue("SkyFrost.Base.Models", out SkyFrostBaseModelsAsm);
             
             // Once we have froox engine, load all assemblies (this will collect more as they are loaded)
-            serverData.assemblies = ReflectionUtils.LoadAssemblies(FrooxEngineAsm,
+            assemblies = ReflectionUtils.LoadAssemblies(FrooxEngineAsm,
                    Path.Combine(resoniteDir, "Resonite_Data", "Managed"),
                    Path.Combine(resoniteDir, "Resonite_Data", "Plugins", "x64")
                    );
@@ -223,113 +221,62 @@ namespace ResoniteBridge
             new Thread(() =>
             {
                 ManualResetEvent readyToProcess = new ManualResetEvent(false);
-                using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
+
+                ResoniteBridgeLib.ResoniteBridgeServer bridgeServer = null;
+
+                bool first = true;
+                try
                 {
-                    Console.WriteLine(msg);
-                }, (message, threadState) =>
-                {
-                    ResoniteBridgeResponse result = null;
-                    Action runStuff = delegate
+                    Console.WriteLine("Starting");
+                    while (!opener.IsCompleted)
                     {
+                        CallMethod(engine, "RunUpdateLoop");
+                        CallMethod(systemInfo, "FrameFinished");
+                        Thread.Sleep(16);
+                    }
+                    Console.WriteLine("Started");
+                    var cancellation = new CancellationTokenSource();
+                    while (true)
+                    {
+                        object focusedWorld =
+                            GetProperty(
+                                GetProperty(engine, "WorldManager"),
+                                "FocusedWorld");
+
+                        if (focusedWorld != null)
+                        {
+                            if (first)
+                            {
+                                bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer((msg) => Console.WriteLine(msg));
+                                first = false;
+
+                                // hack to prevent discord interface from crashing it
+                                var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
+                                SetField(
+                                    GetProperty(engine, "PlatformInterface"),
+                                    "connectors",
+                                    Array.CreateInstance(platformConnectorType
+                                        ,
+                                        0)
+                                    );
+                                readyToProcess.Set();
+                            }   
+                        }
                         try
                         {
-                            // evaluate
-                            result = ResoniteBridgeServerEvaluation.EvaluateMessage(serverData, message);
-                        }
-                        catch (Exception ex)
-                        {
-                            result = new ResoniteBridgeResponse()
-                            {
-                                response = new ResoniteBridgeValue()
-                                {
-                                    typeName = ex.GetType().Name,
-                                    valueBytes = ResoniteBridge.ResoniteBridgeUtils.EncodeString(ex.ToString() + "\n" + Environment.StackTrace),
-                                    valueType = ResoniteBridgeValueType.Error
-                                },
-                                responseType = ResoniteBridgeResponseType.Error,
-                                extraResults = null
-                            };
-                        }
-                    };
-                    if (threadState == ResoniteBridgeServer.ThreadState.World) 
-                    {
-                        CallMethod(serverData.focusedWorld, "RunSynchronously",
-                            runStuff,
-                            false,
-                            null,
-                            false);
-                    }
-                    else
-                    {
-                        var coroutines = GetProperty(
-                                                    serverData.focusedWorld,
-                                                    "Coroutines");
-                        CallMethod(coroutines,
-                                "StartBackgroundTask", 
-                                () => new System.Threading.Tasks.Task(runStuff));
-                    }
-
-                    return result;
-                }))
-                {
-                    bool first = true;
-                    try
-                    {
-                        Console.WriteLine("Starting");
-                        while (!opener.IsCompleted)
-                        {
                             CallMethod(engine, "RunUpdateLoop");
-                            CallMethod(systemInfo, "FrameFinished");
-                            Thread.Sleep(16);
                         }
-                        Console.WriteLine("Started");
-                        var cancellation = new CancellationTokenSource();
-                        while (true)
+                        catch (Exception e)
                         {
-                            object focusedWorld =
-                                GetProperty(
-                                    GetProperty(engine, "WorldManager"),
-                                    "FocusedWorld");
-
-                            if (focusedWorld != null)
-                            {
-                                if (first)
-                                {
-                                    first = false;
-                                    Console.WriteLine("Making wrapper assembly");
-
-                                    // hack to prevent discord interface from crashing it
-                                    var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
-                                    SetField(
-                                        GetProperty(engine, "PlatformInterface"),
-                                        "connectors",
-                                        Array.CreateInstance(platformConnectorType
-                                            ,
-                                            0)
-                                        );
-                                    readyToProcess.Set();
-                                }
-
-                                serverData.focusedWorld = focusedWorld;
-                                serverData.engine = this.engine;
-                                
-                            }
-                            try
-                            {
-                                CallMethod(engine, "RunUpdateLoop");
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Got exception " + e.ToString() + "\n" + Environment.StackTrace);
-                            }
-                            CallMethod(systemInfo, "FrameFinished");
-                            Thread.Sleep(16);
+                            Console.WriteLine("Got exception " + e.ToString() + "\n" + Environment.StackTrace);
                         }
+                        CallMethod(systemInfo, "FrameFinished");
+                        Thread.Sleep(16);
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
-                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString() + "\n" + Environment.StackTrace);
                 }
             }).Start();
         }

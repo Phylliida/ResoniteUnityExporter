@@ -32,10 +32,12 @@ namespace NamedPipeIPC
             this.baseKey = baseKey;
             this.millisBetweenPing = millisBetweenPing;
             this.processId = System.Diagnostics.Process.GetCurrentProcess().Id;
+            AddNewListener();
         }
 
         void AddNewListener()
         {
+            Console.WriteLine("Adding new ipc listener");
             IpcServerConnection connection = new IpcServerConnection(
                 this.baseKey,
                 this.millisBetweenPing,
@@ -44,11 +46,13 @@ namespace NamedPipeIPC
             connections.Add(connection);
             connection.OnDisconnect += () =>
             {
+                Console.WriteLine("ipc listener disconnected");
                 UpdateConnectionEvents();
                 AddNewListener();
             };
             connection.OnConnect += () =>
             {
+                Console.WriteLine("ipc listener connected");
                 UpdateConnectionEvents();
 
                 CheckListeners();
