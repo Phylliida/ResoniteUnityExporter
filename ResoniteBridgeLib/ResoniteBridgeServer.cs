@@ -145,29 +145,36 @@ namespace ResoniteBridgeLib
             // network monitoring thread
             sendingThread = new Thread(() =>
             {
-                while (!stopToken.IsCancellationRequested)
+                try
                 {
-                    // Read the request from the client. Once the client has
-                    // written to the pipe its security token will be available.
+                    while (!stopToken.IsCancellationRequested)
+                    {
+                        // Read the request from the client. Once the client has
+                        // written to the pipe its security token will be available.
 
-                    outputMessages.TryDequeue(out ResoniteBridgeMessage response, -1, stopToken.Token);
-                    // wait for publisher to connect
-                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
-                    if (stopToken.IsCancellationRequested)
-                    {
-                        break;
+                        outputMessages.TryDequeue(out ResoniteBridgeMessage response, -1, stopToken.Token);
+                        // wait for publisher to connect
+                        WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
+                        if (stopToken.IsCancellationRequested)
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(response);
+                            publisher.Publish(encodedBytes);
+                        }
+                        catch (JsonSerializationException e)
+                        {
+                            DebugLog("Failed to serialize response, ignoring");
+                            DebugLog("ERROR: " + e.Message);
+                            DebugLog("Message:" + response);
+                        }
                     }
-                    try
-                    {
-                        byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(response);
-                        publisher.Publish(encodedBytes);
-                    }
-                    catch (JsonSerializationException e)
-                    {
-                        DebugLog("Failed to serialize response, ignoring");
-                        DebugLog("ERROR: " + e.Message);
-                        DebugLog("Message:" + response);
-                    }
+                }
+                catch (TaskCanceledException)
+                {
+
                 }
             });
             

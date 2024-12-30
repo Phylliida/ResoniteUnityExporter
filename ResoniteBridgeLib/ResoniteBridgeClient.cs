@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using NamedPipeIPC;
+using System.Threading.Tasks;
 
 namespace ResoniteBridgeLib
 {
@@ -118,31 +119,38 @@ namespace ResoniteBridgeLib
             // network monitoring thread
             sendingThread = new Thread(() =>
             {
-                while (!stopToken.IsCancellationRequested)
+                try
                 {
-                    // Read the request from the client. Once the client has
-                    // written to the pipe its security token will be available.
+                    while (!stopToken.IsCancellationRequested)
+                    {
+                        // Read the request from the client. Once the client has
+                        // written to the pipe its security token will be available.
 
-                    inputMessages.TryDequeue(out ResoniteBridgeMessage message, -1, stopToken.Token);
-                    // wait for publisher to connect
-                    WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
-                    if (stopToken.IsCancellationRequested)
-                    {
-                        break;
+                        inputMessages.TryDequeue(out ResoniteBridgeMessage message, -1, stopToken.Token);
+                        // wait for publisher to connect
+                        WaitHandle.WaitAny(new WaitHandle[] { stopToken.Token.WaitHandle, publisher.connectEvent });
+                        if (stopToken.IsCancellationRequested)
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            // we use bson to decrease communication size
+                            // especially useful for arrays
+                            byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(message);
+                            publisher.Publish(encodedBytes);
+                        }
+                        catch (JsonSerializationException e)
+                        {
+                            DebugLog("Failed to serialize message, ignoring");
+                            DebugLog("ERROR: " + e.Message);
+                            DebugLog("Message:" + message);
+                        }
                     }
-                    try
-                    {
-                        // we use bson to decrease communication size
-                        // especially useful for arrays
-                        byte[] encodedBytes = ResoniteBridgeUtils.EncodeObject(message);
-                        publisher.Publish(encodedBytes);
-                    }
-                    catch (JsonSerializationException e)
-                    {
-                        DebugLog("Failed to serialize message, ignoring");
-                        DebugLog("ERROR: " + e.Message);
-                        DebugLog("Message:" + message);
-                    }
+                }
+                catch(TaskCanceledException)
+                {
+
                 }
             });
             
