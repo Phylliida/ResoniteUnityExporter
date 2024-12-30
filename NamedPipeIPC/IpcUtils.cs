@@ -11,13 +11,14 @@ namespace NamedPipeIPC
 {
     public class IpcUtils
     {
-        public static byte PING_MESSAGE = 0;
-        public static byte DATA_MESSAGE = 1;
+        public static byte PING_MESSAGE = 1;
+        public static byte DATA_MESSAGE = 2;
 
+        // important none are zero because that's the default bytes recieved when connection dies
         public enum ResponseType {
-            Ping,
-            Data,
-            Error
+            Ping=1,
+            Data=2,
+            Error=3
         }
 
        public enum ConnectionStatus {

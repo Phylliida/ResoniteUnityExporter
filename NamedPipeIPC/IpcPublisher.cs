@@ -96,8 +96,11 @@ namespace NamedPipeIPC
             foreach(KeyValuePair<int, IpcClientConnection> terminatedConnection in 
                 connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
             {
+                DebugLog("Removing terminated connection to process " + terminatedConnection.Key + " from connections");
                 connections.Remove(terminatedConnection.Key, out _);
             }
+
+            DebugLog("Looking to connect, currently have " + connections.Count + " active connections");
             
             foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2, stopToken))
             {

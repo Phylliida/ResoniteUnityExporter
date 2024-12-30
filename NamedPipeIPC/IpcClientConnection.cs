@@ -107,6 +107,7 @@ namespace NamedPipeIPC
         /// <returns></returns>
         public bool SendPing(System.IO.Stream ioStream, int millisTimeout)
         {
+            DebugLog("Sending ping to " + this.idOfServer);
             using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
             {
                 using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token)) {

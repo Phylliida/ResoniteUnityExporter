@@ -73,7 +73,7 @@ namespace NamedPipeIPC
                             IpcUtils.ResponseType responseType = ReadBytes(pipeServer, millisBetweenPing * 2, out byte[] bytes);
                             if (responseType == IpcUtils.ResponseType.Ping)
                             {
-
+                                DebugLog("Got ping from " + GetServerKey());
                             }
                             else if (responseType == IpcUtils.ResponseType.Data)
                             {
@@ -81,6 +81,7 @@ namespace NamedPipeIPC
                             }
                             else if (responseType == IpcUtils.ResponseType.Error)
                             {
+                                DebugLog("Got error from " + GetServerKey());
                                 break;
                             }
                         }
@@ -143,7 +144,13 @@ namespace NamedPipeIPC
                 using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token)) {
                     try {
                         byte[] kindBytes = IpcUtils.ReadBytes(ioSteam, 1, mergedSource.Token);
-                        if (kindBytes[0] == IpcUtils.PING_MESSAGE)
+                        if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
+                        {
+                            bytes = null;
+                            DebugLog("Got zero for message type, " + GetServerKey() + " is disconnected");
+                            return IpcUtils.ResponseType.Error;
+                        }
+                        else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
                         {
                             bytes = null;
                             return IpcUtils.ResponseType.Ping;
