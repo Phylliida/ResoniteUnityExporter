@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading;
+using static NamedPipeIPC.IpcUtils;
 
 namespace NamedPipeIPC
 {
@@ -26,9 +27,11 @@ namespace NamedPipeIPC
         public ManualResetEvent connectEvent = new ManualResetEvent(false);
         public ManualResetEvent disconnectEvent = new ManualResetEvent(true);
         public object connectEventLock = new object();
-        
-        
-        public IpcSubscriber(string baseKey, int millisBetweenPing) {
+
+        DebugLogType DebugLog;
+
+        public IpcSubscriber(string baseKey, int millisBetweenPing, DebugLogType logger) {
+            this.DebugLog = logger;
             this.baseKey = baseKey;
             this.millisBetweenPing = millisBetweenPing;
             this.processId = System.Diagnostics.Process.GetCurrentProcess().Id;
@@ -37,25 +40,32 @@ namespace NamedPipeIPC
 
         void AddNewListener()
         {
-            Console.WriteLine("Adding new ipc listener");
+            DebugLog("Adding new ipc listener");
             IpcServerConnection connection = new IpcServerConnection(
                 this.baseKey,
                 this.millisBetweenPing,
                 this.processId,
-                stopToken);
+                stopToken,
+                DebugLog);
             connections.Add(connection);
             connection.OnDisconnect += () =>
             {
-                Console.WriteLine("ipc listener disconnected");
+                DebugLog("ipc listener disconnected");
                 UpdateConnectionEvents();
-                AddNewListener();
+                if (!stopToken.IsCancellationRequested)
+                {
+                    AddNewListener();
+                }
             };
             connection.OnConnect += () =>
             {
-                Console.WriteLine("ipc listener connected");
+                DebugLog("ipc listener connected");
                 UpdateConnectionEvents();
-
-                CheckListeners();
+                
+                if (!stopToken.IsCancellationRequested)
+                {
+                    CheckListeners();
+                }
             };
             // once it connects, we need to open a new channel for new people that want to connect
             connection.OnRecievedBytes += RecievedBytes;

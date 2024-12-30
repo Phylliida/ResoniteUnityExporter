@@ -23,10 +23,12 @@ namespace NamedPipeIPC
         private string idOfServer;
         private int millisBetweenPing;
         private int timeoutMultiplier;
-        
+
+        IpcUtils.DebugLogType DebugLog;
         public IpcClientConnection(string idOfServer, int millisBetweenPing, int timeoutMultiplier,
-            CancellationTokenSource stopToken)
+            CancellationTokenSource stopToken, IpcUtils.DebugLogType DebugLog)
         {
+            this.DebugLog = DebugLog;
             this.stopToken = stopToken;
             this.idOfServer = idOfServer;
             this.millisBetweenPing = millisBetweenPing;
@@ -39,6 +41,7 @@ namespace NamedPipeIPC
             {
                 try
                 {
+                    DebugLog("Connecting to " + idOfServer);
                     using (NamedPipeClientStream pipeClient =
                            new NamedPipeClientStream(idOfServer))
                     {
@@ -67,7 +70,7 @@ namespace NamedPipeIPC
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Got error in connection, disconnecting:" + e.Message);
+                    DebugLog("Got error in connection, disconnecting:" + e.Message + e.StackTrace);
                 }
                 finally
                 {

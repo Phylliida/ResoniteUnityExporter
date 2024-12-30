@@ -38,10 +38,11 @@ namespace NamedPipeIPC
 
         Thread listenerThread;
         Thread writeStatusThread;
-
+        IpcUtils.DebugLogType DebugLog;
         public IpcServerConnection(string baseKey, int millisBetweenPing, int processId,
-            CancellationTokenSource stopToken)
+            CancellationTokenSource stopToken, IpcUtils.DebugLogType DebugLog)
         {
+            this.DebugLog = DebugLog;
             this.baseKey = baseKey;
             this.millisBetweenPing = millisBetweenPing;
             this.processId = processId;
@@ -55,8 +56,9 @@ namespace NamedPipeIPC
             {
                 try
                 {
+                    DebugLog("Creating server with key " + GetServerKey());
                     using (NamedPipeServerStream pipeServer =
-                           new NamedPipeServerStream(GetServerKey(), PipeDirection.In))
+                           new NamedPipeServerStream(GetServerKey()))
                     {
                         pipeServer.WaitForConnection();
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
@@ -82,7 +84,7 @@ namespace NamedPipeIPC
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    DebugLog("Got exception in server, disconnecting " + e.Message + " " + e.StackTrace);
                 }
                 finally
                 {
@@ -162,7 +164,7 @@ namespace NamedPipeIPC
                 baseKey = this.baseKey
             };
 
-            File.WriteAllText(
+            IpcUtils.SafeWriteAllText(
                 IpcUtils.GuidToConnectionPath(this.guid),
                 JsonConvert.SerializeObject(serverInfo)
             );

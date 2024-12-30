@@ -117,7 +117,6 @@ namespace ResoniteBridgeUnity {
 				Debug.Log("Button 2");
 			}
 			*/
-            EditorGUILayout.EndHorizontal();
 		}
 	}
 }

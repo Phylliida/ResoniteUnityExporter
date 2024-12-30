@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using static NamedPipeIPC.IpcUtils;
 
 namespace NamedPipeIPC
 {
@@ -19,10 +20,12 @@ namespace NamedPipeIPC
         public ManualResetEvent connectEvent = new ManualResetEvent(false);
         public ManualResetEvent disconnectEvent = new ManualResetEvent(true);
         public object connectEventLock = new object();
-        
-        
-        public IpcPublisher(string baseKey, int millisBetweenPing)
+
+        DebugLogType DebugLog;
+
+        public IpcPublisher(string baseKey, int millisBetweenPing, DebugLogType logger)
         {
+            this.DebugLog = logger;
             this.baseKey = baseKey;
             this.processId = System.Diagnostics.Process.GetCurrentProcess().Id;
             this.millisBetweenPing = millisBetweenPing;
@@ -91,7 +94,8 @@ namespace NamedPipeIPC
                         IpcUtils.GetServerKey(server.baseKey, server.guid),
                         this.millisBetweenPing,
                         2,
-                        stopToken);
+                        stopToken,
+                        DebugLog);
                     connections[server.processId] = clientConnection;
                     // on disconnect, try to reconnect
                     clientConnection.OnDisconnect += () =>

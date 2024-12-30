@@ -79,6 +79,26 @@ namespace NamedPipeIPC
 
         }
 
+        public static string SafeReadAllText(string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var sr = new StreamReader(fs))
+            {
+                return sr.ReadToEnd();
+            }
+        }
+
+        public delegate void DebugLogType(string msg);
+
+        public static void SafeWriteAllText(string path, string contents)
+        {
+            using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
+            using (var sw = new StreamWriter(fs))
+            {
+                sw.Write(contents);
+            }
+        }
+
         /// <summary>
         /// Fetches loaded servers from the config files
         /// </summary>
@@ -87,7 +107,7 @@ namespace NamedPipeIPC
             List<IpcServerInfo> servers = new List<IpcServerInfo>();
             foreach (string server in Directory.GetFiles(GetServerDirectory(), "*.json")) {
                 try {
-                    IpcServerInfo info = JsonConvert.DeserializeObject<IpcServerInfo>(File.ReadAllText(server));
+                    IpcServerInfo info = JsonConvert.DeserializeObject<IpcServerInfo>(SafeReadAllText(server));
                     long timeSinceUpdated = TimeMillis() - info.timeOfLastUpdate;
                     if  (timeSinceUpdated < keepAliveMillis) {
                         servers.Add(info);
