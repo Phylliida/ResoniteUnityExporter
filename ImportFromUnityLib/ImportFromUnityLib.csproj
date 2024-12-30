@@ -5,6 +5,7 @@
 	  <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 	  <SelfContained>false</SelfContained>
 	  <PublishSingleFile>false</PublishSingleFile>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 	<Target Name="ClearReferenceCopyLocalPaths" AfterTargets="ResolveAssemblyReferences">

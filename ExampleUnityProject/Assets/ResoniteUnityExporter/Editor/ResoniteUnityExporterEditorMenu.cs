@@ -12,6 +12,7 @@ using ResoniteBridgeLib;
 using System.Xml.Linq;
 using UnityEngine.XR;
 using UnityEngine.Assertions.Must;
+using System.Runtime.InteropServices;
 
 
 namespace ResoniteBridgeUnity
@@ -100,25 +101,6 @@ namespace ResoniteBridgeUnity
             };
         }
 
-        /// <summary>
-        /// Note that this only works for arrays that use the same underlying data
-        /// i.e. it assumes sizes are the same and just copies the raw representation
-        /// </summary>
-        /// <param name="inArr"></param>
-        /// <typeparam name="ArrIn"></typeparam>
-        /// <typeparam name="ArrOut"></typeparam>
-        /// <returns></returns>
-        public static ArrOut[] ConvertArray<ArrOut, ArrIn>(ArrIn[] inArr)
-        {
-            ArrOut[] outArr = new ArrOut[inArr.Length];
-            Buffer.BlockCopy(
-                inArr, 0,
-                outArr, 0,
-                inArr.Length);
-            return outArr;
-        }
-
-
         public static ResoniteUnityExporterShared.StaticMesh_U2Res ConvertMesh(UnityEngine.Mesh unityMesh, string[] boneNames)
         {
 			// todo: provide option to ignore bones and ignore vertex colors
@@ -126,7 +108,7 @@ namespace ResoniteBridgeUnity
 			meshx.name = unityMesh.name;
             int[] uvDimensions = GetMeshUVChannelDimensions(unityMesh, out int[] actualTexCoordIndices);
 
-            Float3_U2Res[] vertices = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
+            Float3_U2Res[] vertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
             meshx.positions = vertices;
 			int numVertices = vertices.Length;
             if (NotEmpty(unityMesh.colors))
@@ -134,19 +116,19 @@ namespace ResoniteBridgeUnity
                 // important to use .colors instead of .colors32 on the unityMesh
                 // because colors32 stores each r,g,b,a as a byte instead of a float
                 // so this conversion would not work without manually fixing
-                meshx.colors = ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
+                meshx.colors = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
             }
 
             Float3_U2Res[] normals = null;
             if (NotEmpty(unityMesh.normals))
             {
-                normals = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
+                normals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
                 meshx.normals = normals;
             }
             Float4_U2Res[] tangents = null;
             if (NotEmpty(unityMesh.tangents))
             {
-                tangents = ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
+                tangents = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
                 meshx.tangents = tangents;
             }
 
@@ -166,19 +148,19 @@ namespace ResoniteBridgeUnity
                 {
                     List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
                     unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_2D = ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
+                    allUvs[i].uv_2D = U2ResUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
                 }
                 else if (curDimension == 3)
                 {
                     List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
                     unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_3D = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
+                    allUvs[i].uv_3D = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
                 }
                 else if (curDimension == 4)
                 {
                     List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
                     unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_4D = ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
+                    allUvs[i].uv_4D = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
                 }
             }
             meshx.uvChannels = allUvs;
@@ -285,7 +267,7 @@ namespace ResoniteBridgeUnity
 	                    deltaTangents
                     );
 
-                    Float3_U2Res[] frameVertices = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
+                    Float3_U2Res[] frameVertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
                     for (int i = 0; i < numVertices; i++)
                     {
                         frameVertices[i].x = frameVertices[i].x - vertices[i].x;
@@ -296,7 +278,7 @@ namespace ResoniteBridgeUnity
 
                     if (normals != null)
                     {
-                        Float3_U2Res[] frameNormals = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
+                        Float3_U2Res[] frameNormals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
                         for (int i = 0; i < numVertices; i++)
                         {
                             frameNormals[i].x = frameNormals[i].x - normals[i].x;
@@ -308,7 +290,7 @@ namespace ResoniteBridgeUnity
 
                     if (tangents != null)
                     {
-                        Float3_U2Res[] frameTangents = ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
+                        Float3_U2Res[] frameTangents = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
                         for (int i = 0; i < numVertices; i++)
                         {
                             frameTangents[i].x = frameTangents[i].x - tangents[i].x;

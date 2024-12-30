@@ -28,32 +28,6 @@ namespace ImportFromUnityLib
             return arr != null && arr.Length > 0;
         }
 
-        /// <summary>
-        /// Note that this only works for arrays that use the same underlying data
-        /// i.e. it assumes sizes are the same and just copies the raw representation
-        /// </summary>
-        /// <param name="inArr"></param>
-        /// <typeparam name="ArrIn"></typeparam>
-        /// <typeparam name="ArrOut"></typeparam>
-        /// <returns></returns>
-        public static ArrOut[] ConvertArray<ArrOut, ArrIn>(ArrIn[] inArr)
-        {
-            ArrOut[] outArr = new ArrOut[inArr.Length];
-            Buffer.BlockCopy(
-                inArr, 0,
-                outArr, 0,
-                inArr.Length);
-            return outArr;
-        }
-
-        public static void CopyArray<T1, T2>(T1[] src, T2[] dst)
-        {
-            Buffer.BlockCopy(
-                src, 0,
-                dst, 0,
-                Marshal.SizeOf<T1>() * src.Length);
-        }
-
         public static byte[] ImportToStaticMesh(byte[] staticMeshBytes)
         {
             // tobackground...
@@ -108,18 +82,18 @@ namespace ImportFromUnityLib
                 meshx.SetUV_Dimension(uv, mesh.uvChannels[uv].dimension);
             }
 
-            CopyArray(mesh.positions, meshx.RawPositions);
+            U2ResUtils.CopyArray(mesh.positions, meshx.RawPositions);
             if (meshx.HasColors)
             {
-                CopyArray(mesh.colors, meshx.RawColors);
+                U2ResUtils.CopyArray(mesh.colors, meshx.RawColors);
             }
             if (hasNormals)
             {
-                CopyArray(mesh.normals, meshx.RawNormals);
+                U2ResUtils.CopyArray(mesh.normals, meshx.RawNormals);
             }
             if (hasTangents)
             {
-                CopyArray(mesh.tangents, meshx.RawTangents);
+                U2ResUtils.CopyArray(mesh.tangents, meshx.RawTangents);
             }
 
 
@@ -129,15 +103,15 @@ namespace ImportFromUnityLib
                 int curDimension = uvChannel.dimension;
                 if (curDimension == 2)
                 {
-                    CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
+                    U2ResUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
                 }
                 else if (curDimension == 3)
                 {
-                    CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
+                    U2ResUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
                 }
                 else if (curDimension == 4)
                 {
-                    CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
+                    U2ResUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
                 }
             }
 
@@ -163,7 +137,7 @@ namespace ImportFromUnityLib
                 }
                 int numPrimitives = indices.Length / 3;
                 submesh.SetCount(numPrimitives);
-                CopyArray(indices, submesh.RawIndicies);
+                U2ResUtils.CopyArray(indices, submesh.RawIndicies);
             }
 
             for (int blendShapeI = 0; blendShapeI < mesh.blendShapes.Length; blendShapeI++)
@@ -177,16 +151,16 @@ namespace ImportFromUnityLib
                     BlendShapeFrame_U2Res blendShapeFrame = blendShape.frames[blendShapeFrameI];
                     // todo: ModelImporter just uses 1.0 for weight, should we do that?
                     Elements.Assets.BlendShapeFrame blendShapeFrameX = blendShapeX.AddFrame(blendShapeFrame.frameWeight);
-                    CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
+                    U2ResUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
 
                     if (hasNormals)
                     {
-                        CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
+                        U2ResUtils.CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
                     }
 
                     if (hasTangents)
                     {
-                        CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
+                        U2ResUtils.CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
                     }
                 }
             }
