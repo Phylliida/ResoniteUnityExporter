@@ -133,6 +133,9 @@ namespace NamedPipeIPC
             }
 
             searchThread.Join();
+            connectEvent.Dispose();
+            disconnectEvent.Dispose();
+            stopToken.Dispose();
         }
     }
 }

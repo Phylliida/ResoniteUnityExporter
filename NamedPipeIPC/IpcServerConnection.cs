@@ -22,8 +22,10 @@ namespace NamedPipeIPC
         public Guid guid;
         public int processId;
 
+        CancellationTokenSource parentStopToken;
+        CancellationTokenSource selfStopTokenSource;
         CancellationTokenSource stopToken;
-        
+
         public string GetServerKey() {
             return IpcUtils.GetServerKey(baseKey, guid);
         }
@@ -46,7 +48,9 @@ namespace NamedPipeIPC
             this.baseKey = baseKey;
             this.millisBetweenPing = millisBetweenPing;
             this.processId = processId;
-            this.stopToken = stopToken;
+            this.parentStopToken = stopToken;
+            this.selfStopTokenSource = new CancellationTokenSource();
+            this.stopToken = CancellationTokenSource.CreateLinkedTokenSource(this.selfStopTokenSource.Token, this.parentStopToken.Token);
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
             guid = MakeUniqueGuid();
         }
@@ -89,7 +93,7 @@ namespace NamedPipeIPC
                 finally
                 {
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
-                    stopToken.Cancel();
+                    selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
                 }
             });
@@ -119,9 +123,11 @@ namespace NamedPipeIPC
         }
 
         public void Dispose() {
-            stopToken.Cancel();
+            selfStopTokenSource.Cancel();
             listenerThread.Join();
             writeStatusThread.Join();
+            selfStopTokenSource.Dispose();
+            stopToken.Dispose();
         }
 
 

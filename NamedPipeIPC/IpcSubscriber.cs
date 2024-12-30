@@ -135,6 +135,8 @@ namespace NamedPipeIPC
                 connection.Dispose();
             }
             stopToken.Dispose();
+            connectEvent.Dispose();
+            disconnectEvent.Dispose();
         }
     }
 }

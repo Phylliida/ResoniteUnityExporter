@@ -103,6 +103,7 @@ namespace ResoniteBridgeUnity
 
         public static ResoniteUnityExporterShared.StaticMesh_U2Res ConvertMesh(UnityEngine.Mesh unityMesh, string[] boneNames)
         {
+			Debug.Log("Starting export mesh");
 			// todo: provide option to ignore bones and ignore vertex colors
 			StaticMesh_U2Res meshx = new StaticMesh_U2Res();
 			meshx.name = unityMesh.name;
@@ -131,6 +132,7 @@ namespace ResoniteBridgeUnity
                 tangents = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
                 meshx.tangents = tangents;
             }
+            Debug.Log("Loaded mesh vertex data");
 
             // uvs are stored as UV_Array[] uv_channels
             // where uv_channels[0] is for UV0 array, uv_channels[1] is for UV1 array, etc.
@@ -164,6 +166,7 @@ namespace ResoniteBridgeUnity
                 }
             }
             meshx.uvChannels = allUvs;
+            Debug.Log("Loaded mesh uv channels");
 
             // submesh (index buffers)
             TriSubmesh_U2Res[] submeshes = new TriSubmesh_U2Res[unityMesh.subMeshCount];
@@ -301,6 +304,7 @@ namespace ResoniteBridgeUnity
                     }
                 }
             }
+            Debug.Log("Loaded mesh index buffers");
 
             // todo: they have some normal flipping thing if normals are wrong, do we need that?
 
@@ -356,25 +360,7 @@ namespace ResoniteBridgeUnity
                 //meshx.SortTrimAndNormalizeBoneWeights();
                 //meshx.FillInEmptyBindings(0);
             }
-
-			/*
-            bool makeDualSided = false;
-            bool makeFlatShaded = false;
-            bool calculateTangents = false;
-            if (makeDualSided)
-            {
-                meshx.MakeDualSided();
-            }
-            if (makeFlatShaded)
-            {
-                meshx.ConvertToFlatShading();
-            }
-            meshx.StripEmptyBlendshapes();
-            if (calculateTangents)
-            {
-                meshx.RecalculateTangentsMikktspace();
-            }
-			*/
+            Debug.Log("Finished, sending mesh data");
 
             return meshx;
         }

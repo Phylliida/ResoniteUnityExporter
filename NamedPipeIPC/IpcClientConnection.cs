@@ -8,6 +8,8 @@ namespace NamedPipeIPC
 
         ConcurrentQueueWithNotification<byte[]> bytesToSend = new ConcurrentQueueWithNotification<byte[]>();
         Thread listenerThread;
+        CancellationTokenSource parentStopTokenSource;
+        CancellationTokenSource selfStopTokenSource;
         CancellationTokenSource stopToken;
 
         public IpcUtils.ConnectionStatus connectionStatus;
@@ -20,6 +22,8 @@ namespace NamedPipeIPC
             bytesToSend.Enqueue(bytes);
         }
 
+
+
         private string idOfServer;
         private int millisBetweenPing;
         private int timeoutMultiplier;
@@ -29,7 +33,9 @@ namespace NamedPipeIPC
             CancellationTokenSource stopToken, IpcUtils.DebugLogType DebugLog)
         {
             this.DebugLog = DebugLog;
-            this.stopToken = stopToken;
+            this.parentStopTokenSource = stopToken;
+            this.selfStopTokenSource = new CancellationTokenSource();
+            this.stopToken = CancellationTokenSource.CreateLinkedTokenSource(parentStopTokenSource.Token, selfStopTokenSource.Token);
             this.idOfServer = idOfServer;
             this.millisBetweenPing = millisBetweenPing;
             this.timeoutMultiplier = timeoutMultiplier;
@@ -75,7 +81,7 @@ namespace NamedPipeIPC
                 finally
                 {
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
-                    stopToken.Cancel();
+                    selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
                 }
             });
@@ -86,8 +92,10 @@ namespace NamedPipeIPC
 
         public void Dispose()
         {
-            stopToken.Cancel();
+            selfStopTokenSource.Cancel();
             listenerThread.Join();
+            bytesToSend.Dispose();
+            selfStopTokenSource.Dispose();
         }
 
         /// <summary>
