@@ -50,7 +50,7 @@ namespace NamedPipeIPC
             connections.Add(connection);
             connection.OnDisconnect += () =>
             {
-                DebugLog("ipc listener disconnected");
+                DebugLog("ipc listener " + connection.GetServerKey() + " disconnected");
                 UpdateConnectionEvents();
                 if (!stopToken.IsCancellationRequested)
                 {
@@ -59,7 +59,7 @@ namespace NamedPipeIPC
             };
             connection.OnConnect += () =>
             {
-                DebugLog("ipc listener connected");
+                DebugLog("ipc listener " + connection.GetServerKey() + " connected");
                 UpdateConnectionEvents();
                 
                 if (!stopToken.IsCancellationRequested)

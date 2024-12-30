@@ -190,9 +190,11 @@ namespace ResoniteBridgeLib
             if (!stopToken.IsCancellationRequested)
             {
                 stopToken.Cancel();
-                sendingThread.Join();
-                stopToken.Dispose();
             }
+            sendingThread.Join();
+            stopToken.Dispose();
+            publisher.Dispose();
+            subscriber.Dispose();
         }
     }
 }
