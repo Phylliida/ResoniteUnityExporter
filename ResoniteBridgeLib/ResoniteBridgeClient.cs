@@ -152,6 +152,10 @@ namespace ResoniteBridgeLib
                 {
 
                 }
+                catch (OperationCanceledException)
+                {
+
+                }
             });
             
             subscriber.RecievedBytes += (bytes) =>

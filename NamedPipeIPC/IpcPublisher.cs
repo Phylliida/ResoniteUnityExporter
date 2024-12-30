@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using static NamedPipeIPC.IpcUtils;
@@ -47,6 +48,14 @@ namespace NamedPipeIPC
                 {
 
                 }
+                catch (OperationCanceledException)
+                {
+
+                }
+                catch (Exception e)
+                {
+                    DebugLog("Exception in search thread:" + e.GetType() + " " + e.Message + " " + e.StackTrace);
+                }
             });
             searchThread.Start();
         }
@@ -83,6 +92,13 @@ namespace NamedPipeIPC
 
         
         void ConnectToAvailableServers() {
+            // remove all terminated connections, this ensures we can try to reconnect again to a process that disconnected previously
+            foreach(KeyValuePair<int, IpcClientConnection> terminatedConnection in 
+                connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
+            {
+                connections.Remove(terminatedConnection.Key, out _);
+            }
+            
             foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2))
             {
                 if (server.baseKey == baseKey &&

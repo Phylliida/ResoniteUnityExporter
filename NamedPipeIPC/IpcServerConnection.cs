@@ -110,7 +110,11 @@ namespace NamedPipeIPC
                         Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
                     }
                 }
-                catch (TaskCanceledException canceledTask)
+                catch (TaskCanceledException)
+                {
+
+                }
+                catch (OperationCanceledException)
                 {
 
                 }

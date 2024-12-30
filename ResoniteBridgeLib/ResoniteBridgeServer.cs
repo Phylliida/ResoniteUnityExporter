@@ -176,6 +176,10 @@ namespace ResoniteBridgeLib
                 {
 
                 }
+                catch (OperationCanceledException)
+                {
+
+                }
             });
             
             sendingThread.Start();

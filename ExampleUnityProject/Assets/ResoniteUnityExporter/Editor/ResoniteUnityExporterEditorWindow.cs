@@ -62,6 +62,13 @@ namespace ResoniteBridgeUnity {
 				true
 			);
 
+            if (GUILayout.Button("Restart connection"))
+            {
+				bridgeClient.Dispose();
+				bridgeClient = null;
+				return;
+            }
+
             if (bridgeClient.IsConnected()) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
@@ -79,6 +86,7 @@ namespace ResoniteBridgeUnity {
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Export"))
             {
+				// test
 				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
             }
             EditorGUILayout.EndHorizontal();
