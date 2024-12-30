@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace NamedPipeIPC
@@ -84,7 +86,7 @@ namespace NamedPipeIPC
         public static int NUM_RETRIES = 5;
 
 
-        public static string SafeReadAllText(string path)
+        public static string SafeReadAllText(string path, CancellationTokenSource stopToken)
         {
             for (int i = 0; i < NUM_RETRIES; i++)
             {
@@ -104,7 +106,18 @@ namespace NamedPipeIPC
                     }
                     else
                     {
-                        Thread.Sleep(WAIT_MILLIS);
+                        try
+                        {
+                            Task.Delay(WAIT_MILLIS, stopToken.Token).GetAwaiter().GetResult();
+                        }
+                        catch (TaskCanceledException)
+                        {
+                            return null;
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            return null;
+                        }
                     }
                 }
             }
@@ -114,8 +127,9 @@ namespace NamedPipeIPC
 
         public delegate void DebugLogType(string msg);
 
-        public static void SafeWriteAllText(string path, string contents)
+        public static void SafeWriteAllText(string path, string contents, CancellationTokenSource stopToken)
         {
+            // we need this retry logic because other stuff might be trying to access it
             for (int i = 0; i < NUM_RETRIES; i++)
             {
                 try
@@ -135,7 +149,18 @@ namespace NamedPipeIPC
                     }
                     else
                     {
-                        Thread.Sleep(WAIT_MILLIS);
+                        try
+                        {
+                            Task.Delay(WAIT_MILLIS, stopToken.Token).GetAwaiter().GetResult();
+                        }
+                        catch (TaskCanceledException)
+                        {
+                            return;
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            return;
+                        }
                     }
                 }
             }
@@ -145,11 +170,11 @@ namespace NamedPipeIPC
         /// Fetches loaded servers from the config files
         /// </summary>
         /// <param name="keepaliveMillis">How long since last update we allow before a server is ignored</param>
-        public static IEnumerable<IpcServerInfo> GetLoadedServers(long keepAliveMillis) {
+        public static IEnumerable<IpcServerInfo> GetLoadedServers(long keepAliveMillis, CancellationTokenSource stopToken) {
             List<IpcServerInfo> servers = new List<IpcServerInfo>();
             foreach (string server in Directory.GetFiles(GetServerDirectory(), "*.json")) {
                 try {
-                    string text = SafeReadAllText(server);
+                    string text = SafeReadAllText(server, stopToken);
                     if (text != null)
                     {
                         IpcServerInfo info = JsonConvert.DeserializeObject<IpcServerInfo>(text);

@@ -99,7 +99,7 @@ namespace NamedPipeIPC
                 connections.Remove(terminatedConnection.Key, out _);
             }
             
-            foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2))
+            foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2, stopToken))
             {
                 if (server.baseKey == baseKey &&
                     server.connectionStatus == IpcUtils.ConnectionStatus.WaitingForConnection &&

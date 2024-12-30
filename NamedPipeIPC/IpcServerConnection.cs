@@ -95,6 +95,7 @@ namespace NamedPipeIPC
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
+                    DebugLog("Terminating reading thread of server connected to " + GetServerKey());
                 }
             });
 
@@ -120,6 +121,7 @@ namespace NamedPipeIPC
                 }
                 // remove our file since we are closed
                 File.Delete(IpcUtils.GuidToConnectionPath(this.guid));
+                DebugLog("Terminating write status thread of server connected to " + GetServerKey());
             });
 
             listenerThread.Start();
@@ -176,7 +178,8 @@ namespace NamedPipeIPC
 
             IpcUtils.SafeWriteAllText(
                 IpcUtils.GuidToConnectionPath(this.guid),
-                JsonConvert.SerializeObject(serverInfo)
+                JsonConvert.SerializeObject(serverInfo),
+                stopToken
             );
         }
     }

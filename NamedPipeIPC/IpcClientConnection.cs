@@ -80,6 +80,7 @@ namespace NamedPipeIPC
                 }
                 finally
                 {
+                    DebugLog("Terminating connection to " + idOfServer);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
