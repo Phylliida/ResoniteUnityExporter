@@ -31,9 +31,7 @@ namespace NamedPipeIPC
                     return true;
                 }
 
-                int tokenIndex = timeoutMillis > 0
-                    ? WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal }, timeoutMillis)
-                    : WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal });
+                int tokenIndex = WaitHandle.WaitAny(new[] { stopToken.WaitHandle, signal }, timeoutMillis);
                 
                 // stopped
                 if (tokenIndex == 0)
@@ -45,7 +43,7 @@ namespace NamedPipeIPC
                     item = default;
                     return false;
                 }
-                // recieved an entry in the queue, return it
+                // recieved an entry in the queue, return it (above)
                 else if(tokenIndex == 1) {
 
                 }

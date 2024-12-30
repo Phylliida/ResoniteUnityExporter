@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using NamedPipeIPC;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ResoniteBridgeLib
 {
@@ -188,6 +189,7 @@ namespace ResoniteBridgeLib
             stopToken.Dispose();
             publisher.Dispose();
             subscriber.Dispose();
+            inputMessages.Dispose();
         }
     }
 }

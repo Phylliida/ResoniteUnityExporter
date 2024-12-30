@@ -93,25 +93,30 @@ namespace NamedPipeIPC
         void CheckListeners()
         {
             // if no one is waiting for connection, make a new one (maybe an error was thrown in connection attempt)
-            bool anyAreWaiting = connections.Any(
-                (c) =>
-                    c.connectionStatus == IpcUtils.ConnectionStatus.WaitingForConnection);
+            bool anyAreWaiting = false;
+            lock(connectEventLock)
+            {
+                anyAreWaiting = connections.Any(
+                    (c) =>
+                        c.connectionStatus == IpcUtils.ConnectionStatus.WaitingForConnection);
+            }
             if (!anyAreWaiting)
             {
                 AddNewListener();
             }
             
             // remove all terminated connections from bag
-            ConcurrentBag<IpcServerConnection> cleanedBag = new ConcurrentBag<IpcServerConnection>();
-            foreach (IpcServerConnection connection in connections)
+            lock(connectEventLock)
             {
-                if (connection.connectionStatus != IpcUtils.ConnectionStatus.Terminated)
+                ConcurrentBag<IpcServerConnection> cleanedBag = new ConcurrentBag<IpcServerConnection>();
+                foreach (IpcServerConnection connection in
+                    connections.Where(x => x.connectionStatus != ConnectionStatus.Terminated).ToList())
                 {
                     cleanedBag.Add(connection);
                 }
+                connections = cleanedBag;
             }
 
-            connections = cleanedBag;
         }
 
         public bool IsConnected()

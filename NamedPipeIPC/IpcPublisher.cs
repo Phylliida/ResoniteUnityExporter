@@ -93,11 +93,15 @@ namespace NamedPipeIPC
         
         void ConnectToAvailableServers() {
             // remove all terminated connections, this ensures we can try to reconnect again to a process that disconnected previously
-            foreach(KeyValuePair<int, IpcClientConnection> terminatedConnection in 
-                connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
+            lock (connectEventLock)
             {
-                DebugLog("Removing terminated connection to process " + terminatedConnection.Key + " from connections");
-                connections.Remove(terminatedConnection.Key, out _);
+
+                foreach (KeyValuePair<int, IpcClientConnection> terminatedConnection in 
+                connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
+                {
+                    DebugLog("Removing terminated connection to process " + terminatedConnection.Key + " from connections");
+                    connections.Remove(terminatedConnection.Key, out _);
+                }
             }
 
             DebugLog("Looking to connect, currently have " + connections.Count + " active connections");
@@ -115,7 +119,10 @@ namespace NamedPipeIPC
                         2,
                         stopToken,
                         DebugLog);
-                    connections[server.processId] = clientConnection;
+                    lock(connectEventLock)
+                    {
+                        connections[server.processId] = clientConnection;
+                    }
                     // on disconnect, try to reconnect
                     clientConnection.OnDisconnect += () =>
                     {

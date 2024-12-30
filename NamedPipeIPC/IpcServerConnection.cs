@@ -64,26 +64,42 @@ namespace NamedPipeIPC
                     using (NamedPipeServerStream pipeServer =
                            new NamedPipeServerStream(GetServerKey()))
                     {
-                        pipeServer.WaitForConnection();
-                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                        OnConnect?.Invoke();
-                        while (!stopToken.IsCancellationRequested)
+                        IAsyncResult connectionResult = pipeServer.BeginWaitForConnection((IAsyncResult iar) =>
                         {
-                            // if it takes twice as long as ping time, timeout
-                            IpcUtils.ResponseType responseType = ReadBytes(pipeServer, millisBetweenPing * 2, out byte[] bytes);
-                            if (responseType == IpcUtils.ResponseType.Ping)
+                            NamedPipeServerStream serverStream =
+                                (NamedPipeServerStream)iar.AsyncState;
+
+                            this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                            OnConnect?.Invoke();
+                            while (!stopToken.IsCancellationRequested)
                             {
-                                DebugLog("Got ping from " + GetServerKey());
+                                // if it takes twice as long as ping time, timeout
+                                IpcUtils.ResponseType responseType = ReadBytes(serverStream, millisBetweenPing * 2, out byte[] bytes);
+                                if (responseType == IpcUtils.ResponseType.Ping)
+                                {
+                                    DebugLog("Got ping from " + GetServerKey());
+                                }
+                                else if (responseType == IpcUtils.ResponseType.Data)
+                                {
+                                    OnRecievedBytes?.Invoke(bytes);
+                                }
+                                else if (responseType == IpcUtils.ResponseType.Error)
+                                {
+                                    DebugLog("Got error from " + GetServerKey());
+                                    break;
+                                }
                             }
-                            else if (responseType == IpcUtils.ResponseType.Data)
-                            {
-                                OnRecievedBytes?.Invoke(bytes);
-                            }
-                            else if (responseType == IpcUtils.ResponseType.Error)
-                            {
-                                DebugLog("Got error from " + GetServerKey());
-                                break;
-                            }
+                        }, pipeServer);
+
+                        int handleIndex = WaitHandle.WaitAny(new[] { stopToken.Token.WaitHandle, connectionResult.AsyncWaitHandle });
+
+                        if (handleIndex == 0)
+                        {
+                            DebugLog("Canceled, bailing");   
+                        }
+                        else if(handleIndex == 1)
+                        {
+                            pipeServer.EndWaitForConnection(connectionResult);
                         }
                     }
                 }

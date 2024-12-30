@@ -195,6 +195,7 @@ namespace ResoniteBridgeLib
             stopToken.Dispose();
             publisher.Dispose();
             subscriber.Dispose();
+            outputMessages.Dispose();
         }
     }
 }
