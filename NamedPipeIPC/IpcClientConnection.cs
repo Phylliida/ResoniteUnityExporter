@@ -49,6 +49,7 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Connecting to " + idOfServer);
                     // "." means local computer which is what we want
+                    // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
                     using (NamedPipeClientStream pipeClient =
                            new NamedPipeClientStream(".", idOfServer, PipeDirection.InOut, PipeOptions.Asynchronous))
                     {

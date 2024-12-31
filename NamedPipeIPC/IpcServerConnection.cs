@@ -62,6 +62,7 @@ namespace NamedPipeIPC
                 try
                 {
                     DebugLog("Creating server with key " + GetServerKey());
+                    // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
                     using (NamedPipeServerStream pipeServer =
                            new NamedPipeServerStream(GetServerKey(), PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
                     {
@@ -123,7 +124,7 @@ namespace NamedPipeIPC
 
                 }
                 // remove our file since we are closed
-                File.Delete(IpcUtils.GuidToConnectionPath(this.guid));
+                IpcUtils.SafeDeleteFile(IpcUtils.GuidToConnectionPath(this.guid), this.stopToken);
                 DebugLog("Terminating write status thread of server connected to " + GetServerKey());
             });
 

@@ -34,6 +34,8 @@ namespace ResoniteBridgeUnity {
         }
         public void OnBeforeAssemblyReload()
         {
+			// on script reload we need to remember to Dispose it manually
+			// otherwise unity will hang
 			if (bridgeClient != null)
 			{
 				bridgeClient.Dispose();
@@ -75,8 +77,8 @@ namespace ResoniteBridgeUnity {
 				bridgeClient = null;
 				return;
             }
-			// bees wow wow wow wow wow
-            if (true) {
+			// bees wow wow wow wow wow wow wow
+            if (bridgeClient.IsConnected()) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
 			else {

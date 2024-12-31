@@ -84,8 +84,41 @@ namespace NamedPipeIPC
         }
 
         public static int WAIT_MILLIS = 100;
-        public static int NUM_RETRIES = 5;
+        public static int NUM_RETRIES = 6;
 
+
+        public static void SafeDeleteFile(string path, CancellationTokenSource stopToken)
+        {
+            for (int i = 0; i < NUM_RETRIES && File.Exists(path); i++)
+            {
+                try
+                {
+                    File.Delete(path);
+                }
+                catch (Exception e)
+                {
+                    if (i == NUM_RETRIES - 1)
+                    {
+                        throw e;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            Task.Delay(WAIT_MILLIS, stopToken.Token).GetAwaiter().GetResult();
+                        }
+                        catch (TaskCanceledException)
+                        {
+                            return;
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
 
         public static string SafeReadAllText(string path, CancellationTokenSource stopToken)
         {
