@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NamedPipeIPC;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace ResoniteBridgeLib
 {
@@ -60,9 +61,11 @@ namespace ResoniteBridgeLib
                 MessageProcessor processor;
                 if (!TryGetProcessor(message.methodName, out processor))
                 {
+                    DebugLog("Unknown processor " + message.methodName);
                     throw new UnknownProcessorException(message.methodName);
                 }
 
+                DebugLog("Running processor " + message.methodName);
                 Task<byte[]> processingTask = Task.Run(() => processor(message.data), stopToken.Token);
 
                 // Create a task for disconnect event
@@ -76,21 +79,26 @@ namespace ResoniteBridgeLib
                     disconnectTask,
                     timeoutTask
                 );
+                DebugLog("Done running processor " + message.methodName);
 
                 if (stopToken.IsCancellationRequested)
                 {
+                    DebugLog("Done running processor " + message.methodName + " canceled");
                     throw new CanceledException();
                 }
                 else if (completedTask == disconnectTask)
                 {
+                    DebugLog("Done running processor " + message.methodName + " disconnected");
                     throw new DisconnectException();
                 }
                 else if (completedTask == timeoutTask)
                 {
+                    DebugLog("Done running processor " + message.methodName + " timed out");
                     throw new TimeoutException();
                 }
                 else
                 {
+                    DebugLog("Done running processor " + message.methodName + " success");
                     byte[] responseData = processingTask.GetAwaiter().GetResult();
                     ResoniteBridgeMessage response = new ResoniteBridgeMessage()
                     {
@@ -104,6 +112,7 @@ namespace ResoniteBridgeLib
             }
             catch (Exception ex)
             {
+                DebugLog("Got exception when running processor " + ex.GetType() + " " + ex.Message + " " + ex.StackTrace);
                 ResoniteBridgeMessage response = new ResoniteBridgeMessage()
                 {
                     data = ResoniteBridgeUtils.EncodeString(ex.ToString() + " " + ex.StackTrace),
@@ -120,18 +129,28 @@ namespace ResoniteBridgeLib
             return subscriber.IsConnected() && publisher.IsConnected();
         }
 
+        LogDelegate DebugLog;
+
         public ResoniteBridgeServer(LogDelegate DebugLog)
         {
+            this.DebugLog = DebugLog;
+            DebugLog("Hii i'm the bridge server");
             stopToken = new CancellationTokenSource();
             publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing, msg => DebugLog(msg));
             subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing, msg => DebugLog(msg));
 
             subscriber.RecievedBytes += (bytes) =>
             {
+                DebugLog("Subscriber recieved these bytes " + bytes);
+
                 try
                 {
+                    DebugLog("Subscriber recieved " + bytes.Length + " bytes");
                     ResoniteBridgeMessage parsedMessage = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
                         bytes, typeof(ResoniteBridgeMessage));
+                    DebugLog("Recieved message " + parsedMessage.methodName + " with " + 
+                        (parsedMessage.data == null ? 0 : parsedMessage.data.Length)
+                        + " bytes");
                     ProcessMessageAsync(parsedMessage);
                 }
                 catch (JsonSerializationException e)

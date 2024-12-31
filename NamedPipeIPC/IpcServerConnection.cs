@@ -80,6 +80,7 @@ namespace NamedPipeIPC
                             }
                             else if (responseType == IpcUtils.ResponseType.Data)
                             {
+                                DebugLog("Recieved bytes");
                                 OnRecievedBytes?.Invoke(bytes);
                             }
                             else if (responseType == IpcUtils.ResponseType.Error)
@@ -194,6 +195,7 @@ namespace NamedPipeIPC
             try
             {
                 byte[] kindBytes = IpcUtils.ReadBytes(ioStream, 1, readStopToken.Token);
+                DebugLog("read bytes with kind " + kindBytes[0]);
                 if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
                 {
                     bytes = null;
@@ -202,14 +204,18 @@ namespace NamedPipeIPC
                 }
                 else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
                 {
+                    DebugLog("read ping bytes");
                     bytes = null;
                     return IpcUtils.ResponseType.Ping;
                 }
                 else if (kindBytes[0] == IpcUtils.DATA_MESSAGE)
                 {
+                    DebugLog("read data bytes");
                     byte[] sizeBytes = IpcUtils.ReadBytes(ioStream, 4, readStopToken.Token);
                     int numBytes = BitConverter.ToInt32(sizeBytes, 0);
+                    DebugLog(numBytes + " more bytes to read");
                     bytes = IpcUtils.ReadBytes(ioStream, numBytes, readStopToken.Token);
+                    DebugLog(numBytes + " read " + bytes.Length + " more bytes");
                     return IpcUtils.ResponseType.Data;
                 }
                 else
