@@ -129,7 +129,10 @@ namespace NamedPipeIPC
                         UpdateConnectionEvents();
                         // important we do this after reset connect event to avoid
                         // race condition where we connect between IsConnected test and reset event
-                        ConnectToAvailableServers();
+                        if (!stopToken.IsCancellationRequested)
+                        {
+                            ConnectToAvailableServers();
+                        }
                     };
                     clientConnection.OnConnect += UpdateConnectionEvents;
                     clientConnection.Init();
