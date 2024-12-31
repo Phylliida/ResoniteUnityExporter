@@ -77,8 +77,7 @@ namespace NamedPipeIPC
                             // send messages
                             while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
                             {
-                                if (!WriteBytes(pipeClient, new byte[] {IpcUtils.DATA_MESSAGE})
-                                    || !WriteBytes(pipeClient, bytes))
+                                if (!WriteBytes(pipeClient, bytes))
                                 {
                                     break;
                                 }
