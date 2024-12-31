@@ -20,8 +20,31 @@ namespace ResoniteBridgeUnity
 	public class ResoniteUnityExporterEditorMenu
 	{
 
+
 		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{
+			Float3_U2Res testFloat = new Float3_U2Res()
+			{
+				x = 1,
+				y = 2,
+				z = 3
+			};
+			bridgeClient.SendMessageSync(
+				"TestBees",
+				ResoniteBridgeUtils.EncodeObject(testFloat),
+				-1,
+				out byte[] responseBytes,
+				out bool isError);
+			if (isError)
+			{
+				Debug.Log("Got error: " + ResoniteBridgeUtils.DecodeString(responseBytes));
+			}
+			else
+			{
+				Float3_U2Res responseFloat = ResoniteBridgeUtils.DecodeObject<Float3_U2Res>(responseBytes);
+				Debug.Log("Got response float: " + responseFloat.x + " " + responseFloat.y + " " + responseFloat.z);
+			}
+			return new RefID_U2Res();
             List<string> boneNames = new List<string>();
             if (NotEmpty(skinnedMeshRenderer.bones))
             {
@@ -37,14 +60,14 @@ namespace ResoniteBridgeUnity
                 "ImportToStaticMesh",
 				ResoniteBridgeUtils.EncodeObject(convertedMesh),
 				-1,
-				out byte[] outBytes,
-				out bool isError
+				out byte[] outBytes2,
+				out bool isError2
 				);
 			if (isError)
 			{
-				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes2));
 			}
-			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes2);
 			Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
 			return staticMeshRefId;
 		}

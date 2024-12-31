@@ -38,7 +38,8 @@ namespace NamedPipeIPC
         public event Action OnConnect;
         public event Action OnDisconnect;
 
-        Thread listenerThread;
+        Thread dataThread;
+        Thread pingThread;
         Thread writeStatusThread;
         IpcUtils.DebugLogType DebugLog;
         public IpcServerConnection(string baseKey, int millisBetweenPing, int processId,
@@ -56,15 +57,60 @@ namespace NamedPipeIPC
         }
 
         public void Init() {
-            // server thread
-            listenerThread = new Thread(() =>
+            // recieve data
+            dataThread = new Thread(() =>
             {
+                string id = GetServerKey() + "data";
                 try
                 {
-                    DebugLog("Creating server with key " + GetServerKey());
+                    DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
                     using (NamedPipeServerStream pipeServer =
-                           new NamedPipeServerStream(GetServerKey(), PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
+                           new NamedPipeServerStream(id, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
+                    {
+                        pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
+
+                        while (!stopToken.IsCancellationRequested)
+                        {
+                            // if it takes twice as long as ping time, timeout
+                            IpcUtils.ResponseType responseType = ReadBytes(pipeServer, -1, out byte[] bytes);
+                            if (responseType == IpcUtils.ResponseType.Ping)
+                            {
+                                DebugLog("Why did data thread get ping??");
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Data)
+                            {
+                                OnRecievedBytes?.Invoke(bytes);
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Error)
+                            {
+                                DebugLog("Got error from " + id);
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    DebugLog("Got exception in server, disconnecting " + e.Message + " " + e.StackTrace);
+                }
+                finally
+                {
+                    selfStopTokenSource.Cancel();
+                    DebugLog("Terminating reading thread of server connected to " + GetServerKey());
+                }
+            });
+            
+            // recieve keepalive ping
+            pingThread = new Thread(() =>
+            {
+                string id = GetServerKey() + "ping";
+                try
+                {
+                    DebugLog("Creating server with key " + id);
+                    // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
+                    using (NamedPipeServerStream pipeServer =
+                           new NamedPipeServerStream(id, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
                     {
                         pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
 
@@ -76,15 +122,16 @@ namespace NamedPipeIPC
                             IpcUtils.ResponseType responseType = ReadBytes(pipeServer, millisBetweenPing * 2, out byte[] bytes);
                             if (responseType == IpcUtils.ResponseType.Ping)
                             {
-                                DebugLog("Got ping from " + GetServerKey());
+                                DebugLog("Got ping from " + id);
                             }
                             else if (responseType == IpcUtils.ResponseType.Data)
                             {
-                                OnRecievedBytes?.Invoke(bytes);
+                                DebugLog("Got data from ping thread?? what u doin");
+                                break;
                             }
                             else if (responseType == IpcUtils.ResponseType.Error)
                             {
-                                DebugLog("Got error from " + GetServerKey());
+                                DebugLog("Got error from " + id);
                                 break;
                             }
                         }
@@ -99,7 +146,7 @@ namespace NamedPipeIPC
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
-                    DebugLog("Terminating reading thread of server connected to " + GetServerKey());
+                    DebugLog("Terminating reading thread of server connected to " + id);
                 }
             });
 
@@ -128,50 +175,67 @@ namespace NamedPipeIPC
                 DebugLog("Terminating write status thread of server connected to " + GetServerKey());
             });
 
-            listenerThread.Start();
+            dataThread.Start();
+            pingThread.Start();
             writeStatusThread.Start();
         }
 
         public void Dispose() {
             selfStopTokenSource.Cancel();
-            listenerThread.Join();
+            dataThread.Join();
+            pingThread.Join();
             writeStatusThread.Join();
             selfStopTokenSource.Dispose();
             stopToken.Dispose();
         }
 
-
-        public IpcUtils.ResponseType ReadBytes(System.IO.Stream ioSteam, int millisTimeout, out byte[] bytes) {
-            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+        public IpcUtils.ResponseType ReadBytes(System.IO.Stream ioStream, out byte[] bytes, CancellationTokenSource readStopToken)
+        {
+            try
             {
-                using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token)) {
-                    try {
-                        byte[] kindBytes = IpcUtils.ReadBytes(ioSteam, 1, mergedSource.Token);
-                        if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
-                        {
-                            bytes = null;
-                            DebugLog("Got zero for message type, " + GetServerKey() + " is disconnected");
-                            return IpcUtils.ResponseType.Error;
-                        }
-                        else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
-                        {
-                            bytes = null;
-                            return IpcUtils.ResponseType.Ping;
-                        }
-                        else if(kindBytes[0] == IpcUtils.DATA_MESSAGE) {
-                            byte[] sizeBytes = IpcUtils.ReadBytes(ioSteam, 4, mergedSource.Token);
-                            int numBytes = BitConverter.ToInt32(sizeBytes, 0);
-                            bytes = IpcUtils.ReadBytes(ioSteam, numBytes, mergedSource.Token);
-                            return IpcUtils.ResponseType.Data;
-                        }
-                        else {
-                            throw new ArgumentException("Unknown message kind " + kindBytes[0]);
-                        }
-                    }
-                    // we timed out or were canceled, terminate the connection
-                    catch (IpcUtils.CanceledException canceled) {
-                        bytes = null;
-                        return IpcUtils.ResponseType.Error;
+                byte[] kindBytes = IpcUtils.ReadBytes(ioStream, 1, readStopToken.Token);
+                if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
+                {
+                    bytes = null;
+                    DebugLog("Got zero for message type, " + GetServerKey() + " is disconnected");
+                    return IpcUtils.ResponseType.Error;
+                }
+                else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
+                {
+                    bytes = null;
+                    return IpcUtils.ResponseType.Ping;
+                }
+                else if (kindBytes[0] == IpcUtils.DATA_MESSAGE)
+                {
+                    byte[] sizeBytes = IpcUtils.ReadBytes(ioStream, 4, readStopToken.Token);
+                    int numBytes = BitConverter.ToInt32(sizeBytes, 0);
+                    bytes = IpcUtils.ReadBytes(ioStream, numBytes, readStopToken.Token);
+                    return IpcUtils.ResponseType.Data;
+                }
+                else
+                {
+                    throw new ArgumentException("Unknown message kind " + kindBytes[0]);
+                }
+            }
+            // we timed out or were canceled, terminate the connection
+            catch (IpcUtils.CanceledException canceled)
+            {
+                bytes = null;
+                return IpcUtils.ResponseType.Error;
+            }
+        }
+        public IpcUtils.ResponseType ReadBytes(System.IO.Stream ioStream, int millisTimeout, out byte[] bytes) {
+            if (millisTimeout < 0)
+            {
+                return ReadBytes(ioStream, out bytes, stopToken);
+            }
+            else
+            {
+                using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
+                {
+                    using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token))
+                    {
+                        return ReadBytes(ioStream, out bytes, mergedSource);
                     }
                 }
             }

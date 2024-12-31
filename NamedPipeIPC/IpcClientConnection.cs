@@ -1,13 +1,15 @@
 using System;
 using System.IO.Pipes;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace NamedPipeIPC
 {
    public class IpcClientConnection : IDisposable {
 
         ConcurrentQueueWithNotification<byte[]> bytesToSend = new ConcurrentQueueWithNotification<byte[]>();
-        Thread listenerThread;
+        Thread dataThread;
+        Thread pingThread;
         CancellationTokenSource parentStopTokenSource;
         CancellationTokenSource selfStopTokenSource;
         CancellationTokenSource stopToken;
@@ -42,33 +44,41 @@ namespace NamedPipeIPC
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
         }
         public void Init() {
+             // each connection is actually two connections
+             // one that is just for sending keepalive pings
+             // the other for the actual data
+             
+            // we need to send keepalive pings because named pipes don't have easy
+            // ways of telling when connection died in certain cases
+            // however if we required a keepalive ping every x seconds, that would prevent us from
+            // sending large chunks of data that took more than x seconds to recieve
+            // (because a timeout would be triggered, which is indistinguishable from connection dropped)
+
+            // this "two connection" method allows us to be regularly sending keepalive pings
+            // while simultaneously sending large chunks of data
+
+
              // server thread
-            listenerThread = new Thread(() =>
+            dataThread = new Thread(() =>
             {
+                string id = idOfServer + "data";
                 try
                 {
-                    DebugLog("Connecting to " + idOfServer);
+                    DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
                     using (NamedPipeClientStream pipeClient =
-                           new NamedPipeClientStream(".", idOfServer, PipeDirection.InOut, PipeOptions.Asynchronous))
+                           new NamedPipeClientStream(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
                     {
                         pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                        OnConnect?.Invoke();
                         while (!stopToken.IsCancellationRequested)
                         {
-                            // keepalive ping
-                            if (!SendPing(pipeClient, millisBetweenPing))
-                            {
-                                break;
-                            }
-
                             // send messages
-                            while (bytesToSend.TryDequeue(out byte[] bytes, millisBetweenPing, stopToken.Token))
+                            while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
                             {
-                                if (!WriteBytes(pipeClient, millisBetweenPing, new byte[] {IpcUtils.DATA_MESSAGE})
-                                    || !WriteBytes(pipeClient, millisBetweenPing, bytes))
+                                if (!WriteBytes(pipeClient, new byte[] {IpcUtils.DATA_MESSAGE})
+                                    || !WriteBytes(pipeClient, bytes))
                                 {
                                     break;
                                 }
@@ -82,21 +92,58 @@ namespace NamedPipeIPC
                 }
                 finally
                 {
-                    DebugLog("Terminating connection to " + idOfServer);
+                    DebugLog("Terminating connection to " + id);
+                    selfStopTokenSource.Cancel();
+                }
+            });
+
+            pingThread = new Thread(() =>
+            {
+                string id = idOfServer + "ping";
+                try
+                {
+                    DebugLog("Connecting to " + id);
+                    // "." means local computer which is what we want
+                    // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
+                    using (NamedPipeClientStream pipeClient =
+                           new NamedPipeClientStream(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
+                    {
+                        pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        OnConnect?.Invoke();
+                        while (!stopToken.IsCancellationRequested)
+                        {
+                            // keepalive ping
+                            if (!SendPing(pipeClient, millisBetweenPing))
+                            {
+                                break;
+                            }
+                            Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    DebugLog("Got error in connection, disconnecting:" + e.Message + e.StackTrace);
+                }
+                finally
+                {
+                    DebugLog("Terminating connection to " + id);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
                 }
             });
 
-            listenerThread.Start();
-            
+            dataThread.Start();
+            pingThread.Start();
         }
 
         public void Dispose()
         {
             selfStopTokenSource.Cancel();
-            listenerThread.Join();
+            dataThread.Join();
+            pingThread.Join();
             bytesToSend.Dispose();
             selfStopTokenSource.Dispose();
         }
@@ -126,23 +173,18 @@ namespace NamedPipeIPC
             }
         }
 
-        public bool WriteBytes(System.IO.Stream ioStream, int millisTimeout, byte[] bytes) {
-            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
-            {
-                using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token)) {
-                    try {
-                        byte[] kindBytes = new byte[] {IpcUtils.DATA_MESSAGE};
-                        IpcUtils.WriteBytes(ioStream, kindBytes, 0, 1, mergedSource.Token);
-                        byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
-                        IpcUtils.WriteBytes(ioStream, lenBytes, 0, 4, mergedSource.Token);
-                        IpcUtils.WriteBytes(ioStream, bytes, 0, bytes.Length, mergedSource.Token);
-                        return true;
-                    }
-                    // we timed out or were canceled
-                    catch (IpcUtils.CanceledException canceled) {
-                        return false;
-                    }
-                }
+        public bool WriteBytes(System.IO.Stream ioStream, byte[] bytes) {
+            try {
+                byte[] kindBytes = new byte[] {IpcUtils.DATA_MESSAGE};
+                IpcUtils.WriteBytes(ioStream, kindBytes, 0, 1, stopToken.Token);
+                byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
+                IpcUtils.WriteBytes(ioStream, lenBytes, 0, 4, stopToken.Token);
+                IpcUtils.WriteBytes(ioStream, bytes, 0, bytes.Length, stopToken.Token);
+                return true;
+            }
+            // we timed out or were canceled
+            catch (IpcUtils.CanceledException canceled) {
+                return false;
             }
         }
 
