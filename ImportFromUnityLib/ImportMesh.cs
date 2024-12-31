@@ -158,6 +158,8 @@ namespace ImportFromUnityLib
                 BlendShape_U2Res blendShape = mesh.blendShapes[blendShapeI];
                 string blendShapeName = blendShape.name;
                 Elements.Assets.BlendShape blendShapeX = meshx.AddBlendShape(blendShapeName);
+                blendShapeX.HasNormals = meshx.HasNormals;
+                blendShapeX.HasTangents = meshx.HasTangents;
                 int blendShapeFrameCount = blendShape.frames.Length;
                 for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
                 {

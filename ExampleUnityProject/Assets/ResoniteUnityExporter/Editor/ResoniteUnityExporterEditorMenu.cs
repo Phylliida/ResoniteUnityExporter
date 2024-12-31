@@ -21,30 +21,33 @@ namespace ResoniteBridgeUnity
 	{
 
 
+		public static void TestBees(ResoniteBridgeClient bridgeClient)
+		{
+
+            Float3_U2Res testFloat = new Float3_U2Res()
+            {
+                x = 1,
+                y = 2,
+                z = 3
+            };
+            bridgeClient.SendMessageSync(
+                "TestBees",
+                ResoniteBridgeUtils.EncodeObject(testFloat),
+                -1,
+                out byte[] responseBytes,
+                out bool isError);
+            if (isError)
+            {
+                Debug.Log("Got error: " + ResoniteBridgeUtils.DecodeString(responseBytes));
+            }
+            else
+            {
+                Float3_U2Res responseFloat = ResoniteBridgeUtils.DecodeObject<Float3_U2Res>(responseBytes);
+                Debug.Log("Got response float: " + responseFloat.x + " " + responseFloat.y + " " + responseFloat.z);
+            }
+        }
 		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{
-			Float3_U2Res testFloat = new Float3_U2Res()
-			{
-				x = 1,
-				y = 2,
-				z = 3
-			};
-			bridgeClient.SendMessageSync(
-				"TestBees",
-				ResoniteBridgeUtils.EncodeObject(testFloat),
-				-1,
-				out byte[] responseBytes,
-				out bool isError);
-			if (isError)
-			{
-				Debug.Log("Got error: " + ResoniteBridgeUtils.DecodeString(responseBytes));
-			}
-			else
-			{
-				Float3_U2Res responseFloat = ResoniteBridgeUtils.DecodeObject<Float3_U2Res>(responseBytes);
-				Debug.Log("Got response float: " + responseFloat.x + " " + responseFloat.y + " " + responseFloat.z);
-			}
-			return new RefID_U2Res();
             List<string> boneNames = new List<string>();
             if (NotEmpty(skinnedMeshRenderer.bones))
             {
@@ -60,14 +63,14 @@ namespace ResoniteBridgeUnity
                 "ImportToStaticMesh",
 				ResoniteBridgeUtils.EncodeObject(convertedMesh),
 				-1,
-				out byte[] outBytes2,
-				out bool isError2
+				out byte[] outBytes,
+				out bool isError
 				);
 			if (isError)
 			{
-				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes2));
+				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
 			}
-			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes2);
+			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
 			Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
 			return staticMeshRefId;
 		}
@@ -197,7 +200,6 @@ namespace ResoniteBridgeUnity
             {
                 UnityEngine.Rendering.SubMeshDescriptor subMeshDescriptor = unityMesh.GetSubMesh(subMeshI);
 				TriSubmesh_U2Res submesh = new TriSubmesh_U2Res();
-				submeshes[subMeshI] = submesh;
                 // todo: Lines, LineStrip, Points
                 int[] indicies = unityMesh.GetIndices(subMeshI);
                 int numPrimitives = 0;
@@ -255,21 +257,21 @@ namespace ResoniteBridgeUnity
                     indicies = triIndicies;
                 }
                 submesh.indicies = indicies;
+                submeshes[subMeshI] = submesh;
             }
+			meshx.submeshes = submeshes; // hhf
 
 			BlendShape_U2Res[] blendShapes = new BlendShape_U2Res[unityMesh.blendShapeCount];
 
             for (int blendShapeI = 0; blendShapeI < unityMesh.blendShapeCount; blendShapeI++)
             {
 				BlendShape_U2Res blendShape = new BlendShape_U2Res();
-				blendShapes[blendShapeI] = blendShape;
                 blendShape.name = unityMesh.GetBlendShapeName(blendShapeI);
                 int blendShapeFrameCount = unityMesh.GetBlendShapeFrameCount(blendShapeI);
 				blendShape.frames = new BlendShapeFrame_U2Res[blendShapeFrameCount];
                 for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
                 {
 					BlendShapeFrame_U2Res frame = new BlendShapeFrame_U2Res();
-					blendShape.frames[blendShapeFrameI] = frame;
                     // todo: ModelImporter just uses 1.0 for weight, should we do that?
                     frame.frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
                     UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
@@ -325,8 +327,11 @@ namespace ResoniteBridgeUnity
                         }
 						frame.tangents = frameTangents;
                     }
+                    blendShape.frames[blendShapeFrameI] = frame;
                 }
+                blendShapes[blendShapeI] = blendShape;
             }
+			meshx.blendShapes = blendShapes;
             Debug.Log("Loaded mesh index buffers");
 
             // todo: they have some normal flipping thing if normals are wrong, do we need that?
