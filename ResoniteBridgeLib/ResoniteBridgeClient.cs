@@ -116,7 +116,8 @@ namespace ResoniteBridgeLib
             stopToken = new CancellationTokenSource();
             publisher = new IpcPublisher(NAMED_SOCKET_KEY, millisBetweenPing, (msg) => DebugLog(msg));
             subscriber = new IpcSubscriber(NAMED_SOCKET_KEY, millisBetweenPing, (msg) => DebugLog(msg));
-            
+            return;
+
             // network monitoring thread
             sendingThread = new Thread(() =>
             {
@@ -185,7 +186,7 @@ namespace ResoniteBridgeLib
             {
                 stopToken.Cancel();
             }
-            sendingThread.Join();
+            //sendingThread.Join();
             stopToken.Dispose();
             publisher.Dispose();
             subscriber.Dispose();

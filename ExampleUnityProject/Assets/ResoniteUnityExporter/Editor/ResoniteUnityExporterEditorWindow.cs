@@ -45,15 +45,22 @@ namespace ResoniteBridgeUnity {
         {
         }
 
+        void Update()
+        {
+            // Your GUI code here
+            Repaint();
+        }
 
-		// gui
-		SkinnedMeshRenderer skinnedMesh;
+
+        // gui
+        SkinnedMeshRenderer skinnedMesh;
         void OnGUI()
 		{
             if (bridgeClient == null) {
-                
-                bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
-				
+
+				// bees
+				bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
+				//return;
             }
             skinnedMesh = (SkinnedMeshRenderer)EditorGUILayout.ObjectField(
 				"Skinned Mesh",
@@ -68,8 +75,8 @@ namespace ResoniteBridgeUnity {
 				bridgeClient = null;
 				return;
             }
-
-            if (bridgeClient.IsConnected()) {
+			// bees wow wow wow wow wow
+            if (true) {
 				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
 			}
 			else {
@@ -90,7 +97,7 @@ namespace ResoniteBridgeUnity {
 				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
             }
             EditorGUILayout.EndHorizontal();
-
+			// bees
 
             /*
 			myString = EditorGUILayout.TextField("Tefffxt Field", myString);

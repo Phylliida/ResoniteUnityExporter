@@ -48,10 +48,11 @@ namespace NamedPipeIPC
                 try
                 {
                     DebugLog("Connecting to " + idOfServer);
+                    // "." means local computer which is what we want
                     using (NamedPipeClientStream pipeClient =
-                           new NamedPipeClientStream(idOfServer))
+                           new NamedPipeClientStream(".", idOfServer, PipeDirection.InOut, PipeOptions.Asynchronous))
                     {
-                        pipeClient.Connect(millisBetweenPing * timeoutMultiplier);
+                        pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                         OnConnect?.Invoke();
                         while (!stopToken.IsCancellationRequested)

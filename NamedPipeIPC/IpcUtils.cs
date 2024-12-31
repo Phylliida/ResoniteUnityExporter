@@ -39,7 +39,7 @@ namespace NamedPipeIPC
         {
             byte[] buffer = new byte[numBytes];
             System.Threading.Tasks.Task<int> readTask = ioStream.ReadAsync(buffer, 0, numBytes, cancelToken);
-            readTask.Wait();
+            int numRead = readTask.GetAwaiter().GetResult();
             if (cancelToken.IsCancellationRequested)
             {
                 throw new CanceledException();
@@ -50,7 +50,7 @@ namespace NamedPipeIPC
         public static void WriteBytes(System.IO.Stream ioStream, byte[] bytes, int offset, int numToWrite, CancellationToken cancelToken)
         {
             System.Threading.Tasks.Task writeTask = ioStream.WriteAsync(bytes, offset, numToWrite, cancelToken);
-            writeTask.Wait();
+            writeTask.GetAwaiter().GetResult();
             if (cancelToken.IsCancellationRequested)
             {
                 throw new CanceledException();
@@ -60,7 +60,7 @@ namespace NamedPipeIPC
         public static void Flush(System.IO.Stream ioStream, CancellationToken cancelToken)
         {
             System.Threading.Tasks.Task flushTask = ioStream.FlushAsync(cancelToken);
-            flushTask.Wait();
+            flushTask.GetAwaiter().GetResult();
             if (cancelToken.IsCancellationRequested)
             {
                 throw new CanceledException();

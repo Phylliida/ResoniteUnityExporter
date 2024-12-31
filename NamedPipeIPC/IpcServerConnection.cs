@@ -55,8 +55,6 @@ namespace NamedPipeIPC
             guid = MakeUniqueGuid();
         }
 
-        public AutoResetEvent doneProcessing = new AutoResetEvent(false);
-
         public void Init() {
             // server thread
             listenerThread = new Thread(() =>
@@ -65,58 +63,29 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Creating server with key " + GetServerKey());
                     using (NamedPipeServerStream pipeServer =
-                           new NamedPipeServerStream(GetServerKey()))
+                           new NamedPipeServerStream(GetServerKey(), PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
                     {
-                        IAsyncResult connectionResult = pipeServer.BeginWaitForConnection((IAsyncResult iar) =>
-                        {
-                            try
-                            {
-                                NamedPipeServerStream serverStream =
-                                    (NamedPipeServerStream)iar.AsyncState;
+                        pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
 
-                                this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                                OnConnect?.Invoke();
-                                while (!stopToken.IsCancellationRequested)
-                                {
-                                    // if it takes twice as long as ping time, timeout
-                                    IpcUtils.ResponseType responseType = ReadBytes(serverStream, millisBetweenPing * 2, out byte[] bytes);
-                                    if (responseType == IpcUtils.ResponseType.Ping)
-                                    {
-                                        DebugLog("Got ping from " + GetServerKey());
-                                    }
-                                    else if (responseType == IpcUtils.ResponseType.Data)
-                                    {
-                                        OnRecievedBytes?.Invoke(bytes);
-                                    }
-                                    else if (responseType == IpcUtils.ResponseType.Error)
-                                    {
-                                        DebugLog("Got error from " + GetServerKey());
-                                        break;
-                                    }
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                DebugLog("Got exception in server, disconnecting " + e.Message + " " + e.StackTrace);
-                            }
-                            finally
-                            {
-                                // trigger the waiter below to pass through
-                                doneProcessing.Set();
-                            }
-                        }, pipeServer);
-
-                        int handleIndex = WaitHandle.WaitAny(new[] { stopToken.Token.WaitHandle, connectionResult.AsyncWaitHandle });
-
-                        if (handleIndex == 0)
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        OnConnect?.Invoke();
+                        while (!stopToken.IsCancellationRequested)
                         {
-                            DebugLog("Canceled, bailing");   
-                        }
-                        else if(handleIndex == 1)
-                        {
-                            pipeServer.EndWaitForConnection(connectionResult);
-                            // wait for the handler to be done
-                            int handleIndexProcessing = WaitHandle.WaitAny(new[] { stopToken.Token.WaitHandle, doneProcessing });
+                            // if it takes twice as long as ping time, timeout
+                            IpcUtils.ResponseType responseType = ReadBytes(pipeServer, millisBetweenPing * 2, out byte[] bytes);
+                            if (responseType == IpcUtils.ResponseType.Ping)
+                            {
+                                DebugLog("Got ping from " + GetServerKey());
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Data)
+                            {
+                                OnRecievedBytes?.Invoke(bytes);
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Error)
+                            {
+                                DebugLog("Got error from " + GetServerKey());
+                                break;
+                            }
                         }
                     }
                 }
@@ -168,7 +137,6 @@ namespace NamedPipeIPC
             writeStatusThread.Join();
             selfStopTokenSource.Dispose();
             stopToken.Dispose();
-            doneProcessing.Dispose();
         }
 
 
