@@ -136,7 +136,8 @@ namespace NamedPipeIPC
                 {
                     if (i == NUM_RETRIES - 1)
                     {
-                        throw e;
+                        // we failed
+                        return null;
                     }
                     else
                     {
