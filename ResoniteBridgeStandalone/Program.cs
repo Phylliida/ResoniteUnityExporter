@@ -14,6 +14,7 @@ using System.ComponentModel;
 using static ResoniteBridge.ReflectionUtils;
 using System.Text.Json;
 using Newtonsoft.Json;
+using ImportFromUnityLib;
 
 namespace ResoniteBridge
 {
@@ -248,6 +249,7 @@ namespace ResoniteBridge
                             if (first)
                             {
                                 bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer((msg) => Console.WriteLine(msg));
+                                ImportMesh.Register(bridgeServer);
                                 first = false;
 
                                 // hack to prevent discord interface from crashing it

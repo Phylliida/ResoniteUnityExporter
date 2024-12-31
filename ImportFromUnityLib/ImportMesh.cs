@@ -21,7 +21,7 @@ namespace ImportFromUnityLib
         public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server)
         {
             server.RegisterProcessor("ImportToStaticMesh", ImportToStaticMesh);
-            server.RegisterProcessor("TestBees", ImportToStaticMesh);
+            server.RegisterProcessor("TestBees", SimpleTest);
         }
 
         public static byte[] SimpleTest(byte[] data)
@@ -33,7 +33,7 @@ namespace ImportFromUnityLib
                 y = input.y - 2,
                 z = input.z * 2,
             };
-            return ResoniteBridgeUtils.EncodeObject(data);
+            return ResoniteBridgeUtils.EncodeObject(result);
         }
 
         public static bool NotEmpty<T>(T[] arr)
