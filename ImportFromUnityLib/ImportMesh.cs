@@ -52,22 +52,38 @@ namespace ImportFromUnityLib
             }
             MeshX meshx = ConvertToMeshX(meshOut);
             World focusedWorld = Engine.Current.WorldManager.FocusedWorld;
-            FrooxEngine.Slot targetSlot = focusedWorld.RootSlot.AddSlot(name);
-            FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
-            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
-            FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
-            string tempFilePath = localDb.GetTempFilePath("meshx");
-            meshx.SaveToFile(tempFilePath);
-            Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
-            // toworld...
-            FrooxEngine.StaticMesh staticMesh = assetsSlot.AddSlot("Mesh").AttachComponent<FrooxEngine.StaticMesh>();
-            staticMesh.URL.Value = url;
-            ulong refId = (ulong)staticMesh.ReferenceID;
-            RefID_U2Res staticMeshRefId = new RefID_U2Res()
+            AutoResetEvent finished = new AutoResetEvent(false);
+            RefID_U2Res result = new RefID_U2Res()
             {
-                id = refId
+                id = 0
             };
-            return ResoniteBridgeUtils.EncodeObject(staticMeshRefId);
+            Engine.Current.WorldManager.FocusedWorld.RunSynchronously(() =>
+            {
+                try
+                {
+                    FrooxEngine.Slot targetSlot = focusedWorld.RootSlot.AddSlot(name);
+                    FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
+                    assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
+                    FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
+                    string tempFilePath = localDb.GetTempFilePath("meshx");
+                    meshx.SaveToFile(tempFilePath);
+                    Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
+                    // toworld...
+                    FrooxEngine.StaticMesh staticMesh = assetsSlot.AddSlot("Mesh").AttachComponent<FrooxEngine.StaticMesh>();
+                    staticMesh.URL.Value = url;
+                    ulong refId = (ulong)staticMesh.ReferenceID;
+                    result = new RefID_U2Res()
+                    {
+                        id = refId
+                    };
+                }
+                finally
+                {
+                    finished.Set();
+                }
+            });
+            finished.WaitOne();
+            return ResoniteBridgeUtils.EncodeObject(result);
         }
 
         public static MeshX ConvertToMeshX(StaticMesh_U2Res mesh)
