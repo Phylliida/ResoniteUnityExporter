@@ -68,8 +68,8 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    using (NamedPipeClientStream pipeClient =
-                           new NamedPipeClientStream(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
+                    using (NamedPipeClientStreamDotNet pipeClient =
+                           new NamedPipeClientStreamDotNet(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
                     {
                         pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
@@ -105,8 +105,8 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    using (NamedPipeClientStream pipeClient =
-                           new NamedPipeClientStream(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
+                    using (NamedPipeClientStreamDotNet pipeClient =
+                           new NamedPipeClientStreamDotNet(".", id, PipeDirection.InOut, PipeOptions.Asynchronous))
                     {
                         pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;

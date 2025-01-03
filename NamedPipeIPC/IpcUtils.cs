@@ -128,9 +128,9 @@ namespace NamedPipeIPC
                 try
                 {
                     using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    using (var sr = new StreamReader(fs))
+                    using (var Strings = new StreamReader(fs))
                     {
-                        return sr.ReadToEnd();
+                        return Strings.ReadToEnd();
                     }
                 }
                 catch (Exception e)

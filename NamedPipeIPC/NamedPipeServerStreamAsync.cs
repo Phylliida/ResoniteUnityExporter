@@ -208,9 +208,10 @@ namespace NamedPipeIPC
 
                     _isConnected = true;
                 }
-                finally
+                catch
                 {
                     CancelIo(_pipeHandle);
+                    throw;
                 }
             }
         }
@@ -259,29 +260,23 @@ namespace NamedPipeIPC
                         throw new IOException($"Read failed with error: {error}");
                     }
 
-                    try
+                    await Task.Run(() =>
                     {
-                        await Task.Run(() =>
-                        {
-                            WaitHandle.WaitAny(new WaitHandle[] { overlapped.waitHandle, cancellationToken.WaitHandle });
-                        }, cancellationToken);
+                        WaitHandle.WaitAny(new WaitHandle[] { overlapped.waitHandle, cancellationToken.WaitHandle });
+                    }, cancellationToken);
                         
-                        if (cancellationToken.IsCancellationRequested)
-                        {
-                            throw new OperationCanceledException(cancellationToken);
-                        }
-
-                        if (!GetOverlappedResult(_pipeHandle, overlapped.overlappedPtr, out bytesRead, false))
-                        {
-                            throw new IOException($"Read operation failed: {Marshal.GetLastWin32Error()}");
-                        }
-                    }
-                    finally
+                    if (cancellationToken.IsCancellationRequested)
                     {
                         CancelIo(_pipeHandle);
+                        throw new OperationCanceledException(cancellationToken);
+                    }
+
+                    if (!GetOverlappedResult(_pipeHandle, overlapped.overlappedPtr, out bytesRead, true))
+                    {
+                        throw new IOException($"Read operation failed: {Marshal.GetLastWin32Error()}");
                     }
                 }
-
+                Console.WriteLine(bytesRead + " ffread bytes");
                 return (int)bytesRead;
             }
         }
@@ -317,14 +312,15 @@ namespace NamedPipeIPC
                             throw new OperationCanceledException(cancellationToken);
                         }
                         
-                        if (!GetOverlappedResult(_pipeHandle, overlapped.overlappedPtr, out bytesWritten, false))
+                        if (!GetOverlappedResult(_pipeHandle, overlapped.overlappedPtr, out bytesWritten, true))
                         {
                             throw new IOException($"Write operation failed: {Marshal.GetLastWin32Error()}");
                         }
                     }
-                    finally
+                    catch
                     {
                         CancelIo(_pipeHandle);
+                        throw;
                     }
                 }
             }
