@@ -43,6 +43,7 @@ namespace NamedPipeIPC
             this.timeoutMultiplier = timeoutMultiplier;
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
         }
+
         public void Init() {
              // each connection is actually two connections
              // one that is just for sending keepalive pings

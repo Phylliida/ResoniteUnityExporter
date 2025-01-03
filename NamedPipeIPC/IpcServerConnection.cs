@@ -65,10 +65,14 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
-                    using (NamedPipeServerStream pipeServer =
-                           new NamedPipeServerStream(id, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
+                    // actually we just implemented our own version of that because it's not available in resonite
+                    using (NamedPipeServerStreamAsync pipeServer =
+                           new NamedPipeServerStreamAsync(id, PipeDirection.InOut, 1))
                     {
                         pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
+                        
+                        // not supported in resonite's dot net
+                        //pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
 
                         while (!stopToken.IsCancellationRequested)
                         {
@@ -110,8 +114,8 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
-                    using (NamedPipeServerStream pipeServer =
-                           new NamedPipeServerStream(id, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous))
+                    using (NamedPipeServerStreamAsync pipeServer =
+                           new NamedPipeServerStreamAsync(id, PipeDirection.InOut, 1))
                     {
                         pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
 
