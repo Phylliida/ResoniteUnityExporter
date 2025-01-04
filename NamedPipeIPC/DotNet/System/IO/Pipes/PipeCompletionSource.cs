@@ -7,6 +7,7 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using static NamedPipeIPC.DotNet.System.IO.Pipes.ThreadPoolBindHandleNative;
 
 namespace System.IO.Pipes
 {
@@ -19,7 +20,7 @@ namespace System.IO.Pipes
         private const int CompletedCallback = 8;
 
         private readonly CancellationToken _cancellationToken;
-        private readonly ThreadPoolBoundHandle _threadPoolBinding;
+        private readonly SafeHandle _threadPoolBinding;
 
         private CancellationTokenRegistration _cancellationRegistration;
         private int _errorCode;
@@ -29,9 +30,15 @@ namespace System.IO.Pipes
 #if DEBUG
         private bool _cancellationHasBeenRegistered;
 #endif
+        public unsafe NativeOverlapped* AllocateNativeOverlapped(SafeHandle boundHandle, IOCompletionCallback callback, object state, object pinData)
+        {
+            ThreadPoolBoundHandleOverlappedDotNet threadPoolBoundHandleOverlapped = new ThreadPoolBoundHandleOverlappedDotNet(callback, state, pinData, null);
+            return threadPoolBoundHandleOverlapped._nativeOverlapped;
+        }
+
 
         // Using RunContinuationsAsynchronously for compat reasons (old API used ThreadPool.QueueUserWorkItem for continuations)
-        protected PipeCompletionSource(ThreadPoolBoundHandle handle, CancellationToken cancellationToken, object pinData)
+        protected PipeCompletionSource(SafeHandle handle, CancellationToken cancellationToken, object pinData)
             : base(TaskCreationOptions.RunContinuationsAsynchronously)
         {
             Debug.Assert(handle != null, "handle is null");
@@ -42,12 +49,14 @@ namespace System.IO.Pipes
 
             _overlapped = _threadPoolBinding.AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
             {
-                var completionSource = (PipeCompletionSource<TResult>)ThreadPoolBoundHandle.GetNativeOverlappedState(pOverlapped);
+                var completionSource = (PipeCompletionSource<TResult>)ThreadPoolBoundHandleDotNet.GetNativeOverlappedState(pOverlapped);
                 Debug.Assert(completionSource.Overlapped == pOverlapped);
 
                 completionSource.AsyncCallback(errorCode, numBytes);
             }, this, pinData);
         }
+
+
 
         internal NativeOverlapped* Overlapped
         {
