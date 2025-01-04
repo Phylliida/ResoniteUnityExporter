@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace System.IO.Pipes
 {
-    internal sealed class ReadWriteCompletionSourceDotNet : PipeCompletionSourceDotNet<int>
+    internal sealed class ReadWriteCompletionSource : PipeCompletionSource<int>
     {
         private readonly bool _isWrite;
         private readonly PipeStreamDotNet _pipeStream;
@@ -15,7 +15,7 @@ namespace System.IO.Pipes
         private bool _isMessageComplete;
         private int _numBytes; // number of buffer read OR written
 
-        internal ReadWriteCompletionSourceDotNet(PipeStreamDotNet stream, byte[] buffer, CancellationToken cancellationToken, bool isWrite)
+        internal ReadWriteCompletionSource(PipeStreamDotNet stream, byte[] buffer, CancellationToken cancellationToken, bool isWrite)
             : base(stream._threadPoolBinding, cancellationToken, pinData: buffer)
         {
             Debug.Assert(buffer != null, "buffer is null");

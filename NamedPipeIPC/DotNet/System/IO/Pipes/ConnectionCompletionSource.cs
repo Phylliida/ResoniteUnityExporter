@@ -6,12 +6,12 @@ using System.Threading;
 
 namespace System.IO.Pipes
 {
-    internal sealed class ConnectionCompletionSourceDotNet : PipeCompletionSourceDotNet<VoidResult>
+    internal sealed class ConnectionCompletionSource : PipeCompletionSource<VoidResult>
     {
         private readonly NamedPipeServerStreamDotNet _serverStream;
 
         // Using RunContinuationsAsynchronously for compat reasons (old API used ThreadPool.QueueUserWorkItem for continuations)
-        internal ConnectionCompletionSourceDotNet(NamedPipeServerStreamDotNet server, CancellationToken cancellationToken)
+        internal ConnectionCompletionSource(NamedPipeServerStreamDotNet server, CancellationToken cancellationToken)
             : base(server._threadPoolBinding, cancellationToken, pinData: null)
         {
             _serverStream = server;

@@ -83,7 +83,7 @@ namespace System.IO.Pipes
         [SecuritySafeCritical]
         private Task<int> ReadAsyncCore(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
-            var completionSource = new ReadWriteCompletionSourceDotNet(this, buffer, cancellationToken, isWrite: false);
+            var completionSource = new ReadWriteCompletionSource(this, buffer, cancellationToken, isWrite: false);
 
             // Queue an async ReadFile operation and pass in a packed overlapped
             int errorCode = 0;
@@ -151,7 +151,7 @@ namespace System.IO.Pipes
         [SecuritySafeCritical]
         private Task WriteAsyncCore(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
-            var completionSource = new ReadWriteCompletionSourceDotNet(this, buffer, cancellationToken, isWrite: true);
+            var completionSource = new ReadWriteCompletionSource(this, buffer, cancellationToken, isWrite: true);
             int errorCode = 0;
 
             // Queue an async WriteFile operation and pass in a packed overlapped

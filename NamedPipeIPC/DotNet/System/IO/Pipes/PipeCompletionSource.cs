@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace System.IO.Pipes
 {
-    internal abstract unsafe class PipeCompletionSourceDotNet<TResult> : TaskCompletionSource<TResult>
+    internal abstract unsafe class PipeCompletionSource<TResult> : TaskCompletionSource<TResult>
     {
         private const int NoResult = 0;
         private const int ResultSuccess = 1;
@@ -31,7 +31,7 @@ namespace System.IO.Pipes
 #endif
 
         // Using RunContinuationsAsynchronously for compat reasons (old API used ThreadPool.QueueUserWorkItem for continuations)
-        protected PipeCompletionSourceDotNet(ThreadPoolBoundHandle handle, CancellationToken cancellationToken, object pinData)
+        protected PipeCompletionSource(ThreadPoolBoundHandle handle, CancellationToken cancellationToken, object pinData)
             : base(TaskCreationOptions.RunContinuationsAsynchronously)
         {
             Debug.Assert(handle != null, "handle is null");
@@ -42,7 +42,7 @@ namespace System.IO.Pipes
 
             _overlapped = _threadPoolBinding.AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
             {
-                var completionSource = (PipeCompletionSourceDotNet<TResult>)ThreadPoolBoundHandleDotNet.GetNativeOverlappedState(pOverlapped);
+                var completionSource = (PipeCompletionSource<TResult>)ThreadPoolBoundHandle.GetNativeOverlappedState(pOverlapped);
                 Debug.Assert(completionSource.Overlapped == pOverlapped);
 
                 completionSource.AsyncCallback(errorCode, numBytes);
@@ -51,8 +51,7 @@ namespace System.IO.Pipes
 
         internal NativeOverlapped* Overlapped
         {
-            [SecurityCritical]
-            get { return _overlapped; }
+            [SecurityCritical]get { return _overlapped; }
         }
 
         internal void RegisterForCancellation()
@@ -70,7 +69,7 @@ namespace System.IO.Pipes
                 if (state == NoResult)
                 {
                     // Register the cancellation
-                    _cancellationRegistration = _cancellationToken.Register(thisRef => ((PipeCompletionSourceDotNet<TResult>)thisRef).Cancel(), this);
+                    _cancellationRegistration = _cancellationToken.Register(thisRef => ((PipeCompletionSource<TResult>)thisRef).Cancel(), this);
 
                     // Grab the state for case if IO completed while we were setting the registration.
                     state = Interlocked.Exchange(ref _state, NoResult);

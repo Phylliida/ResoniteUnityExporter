@@ -43,19 +43,14 @@ namespace System.IO.Pipes
                 access |= Interop.Kernel32.GenericOperations.GENERIC_WRITE;
             }
 
-            SafePipeHandle handle;
-            using (Interop.Kernel32.SecurityAttriutes secAttr = new Interop.Kernel32.SecurityAttriutes(secAttrs))
-            {
-                // Let's try to connect first
-                 handle = Interop.Kernel32.CreateNamedPipeClient(_normalizedPipePath,
-                                            access,           // read and write access
-                                            0,                  // sharing: none
-                                            secAttr.ptr,           // security attributes
-                                            FileMode.Open,      // open existing 
-                                            _pipeFlags,         // impersonation flags
-                                            IntPtr.Zero);  // template file: null
-
-            }
+            // Let's try to connect first
+            SafePipeHandle handle = Interop.Kernel32.CreateNamedPipeClient(_normalizedPipePath,
+                                        access,           // read and write access
+                                        0,                  // sharing: none
+                                        ref secAttrs,           // security attributes
+                                        FileMode.Open,      // open existing 
+                                        _pipeFlags,         // impersonation flags
+                                        IntPtr.Zero);  // template file: null
 
             if (handle.IsInvalid)
             {
@@ -81,17 +76,15 @@ namespace System.IO.Pipes
                     throw Win32Marshal.GetExceptionForWin32Error(errorCode);
                 }
 
-                using (Interop.Kernel32.SecurityAttriutes secAttr = new Interop.Kernel32.SecurityAttriutes(secAttrs))
-                {
-                    // Pipe server should be free.  Let's try to connect to it.
-                    handle = Interop.Kernel32.CreateNamedPipeClient(_normalizedPipePath,
+                // Pipe server should be free.  Let's try to connect to it.
+                handle = Interop.Kernel32.CreateNamedPipeClient(_normalizedPipePath,
                                             access,           // read and write access
                                             0,                  // sharing: none
-                                            secAttr.ptr,           // security attributes
+                                            ref secAttrs,           // security attributes
                                             FileMode.Open,      // open existing 
                                             _pipeFlags,         // impersonation flags
                                             IntPtr.Zero);  // template file: null
-                }
+
                 if (handle.IsInvalid)
                 {
                     errorCode = Marshal.GetLastWin32Error();
