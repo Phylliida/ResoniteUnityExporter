@@ -19,7 +19,7 @@ namespace System.IO.Pipes
         private const int CompletedCallback = 8;
 
         private readonly CancellationToken _cancellationToken;
-        private readonly ThreadPoolBoundHandleDotNet _threadPoolBinding;
+        private readonly ThreadPoolBoundHandle _threadPoolBinding;
 
         private CancellationTokenRegistration _cancellationRegistration;
         private int _errorCode;
@@ -31,7 +31,7 @@ namespace System.IO.Pipes
 #endif
 
         // Using RunContinuationsAsynchronously for compat reasons (old API used ThreadPool.QueueUserWorkItem for continuations)
-        protected PipeCompletionSourceDotNet(ThreadPoolBoundHandleDotNet handle, CancellationToken cancellationToken, object pinData)
+        protected PipeCompletionSourceDotNet(ThreadPoolBoundHandle handle, CancellationToken cancellationToken, object pinData)
             : base(TaskCreationOptions.RunContinuationsAsynchronously)
         {
             Debug.Assert(handle != null, "handle is null");
@@ -42,7 +42,7 @@ namespace System.IO.Pipes
 
             _overlapped = _threadPoolBinding.AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
             {
-                var completionSource = (PipeCompletionSourceDotNet<TResult>)ThreadPoolBoundHandle.GetNativeOverlappedState(pOverlapped);
+                var completionSource = (PipeCompletionSourceDotNet<TResult>)ThreadPoolBoundHandleDotNet.GetNativeOverlappedState(pOverlapped);
                 Debug.Assert(completionSource.Overlapped == pOverlapped);
 
                 completionSource.AsyncCallback(errorCode, numBytes);

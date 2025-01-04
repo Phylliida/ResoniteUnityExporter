@@ -11,7 +11,7 @@ internal partial class Interop
     internal partial class Kernel32
     {
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true, EntryPoint = "CreateNamedPipeW")]
-        internal static extern IntPtr CreateNamedPipe(
+        internal static extern SafePipeHandle CreateNamedPipe(
             string pipeName,
             uint openMode,
             uint pipeMode,

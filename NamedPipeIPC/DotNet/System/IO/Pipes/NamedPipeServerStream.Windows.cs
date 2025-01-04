@@ -58,8 +58,8 @@ namespace System.IO.Pipes
             using (Interop.Kernel32.SecurityAttriutes attrs = new Interop.Kernel32.SecurityAttriutes(secAttrs))
             {
 
-                SafePipeHandle handle = new SafePipeHandle(Interop.Kernel32.CreateNamedPipe(fullPipeName, (uint)openMode, (uint)pipeModes,
-                    (uint)maxNumberOfServerInstances, (uint)outBufferSize, (uint)inBufferSize, 0, attrs.ptr), true);
+                SafePipeHandle handle = Interop.Kernel32.CreateNamedPipe(fullPipeName, (uint)openMode, (uint)pipeModes,
+                    (uint)maxNumberOfServerInstances, (uint)outBufferSize, (uint)inBufferSize, 0, attrs.ptr);
 
                 if (handle.IsInvalid)
                 {

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -227,6 +230,41 @@ namespace System.Threading
             _handle = handle;
         }
 
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        [SecurityCritical]
+        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
+        private static extern bool BindIOCompletionCallbackNative(IntPtr fileHandle);
+
+        /*
+        // from threadpool decomp
+        [SecuritySafeCritical]
+        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+        static bool ThreadPoolBindHandle(SafeHandle osHandle)
+        {
+            if (osHandle == null)
+            {
+                throw new ArgumentNullException("osHandle");
+            }
+
+            bool flag = false;
+            bool success = false;
+            RuntimeHelpers.PrepareConstrainedRegions();
+            try
+            {
+                osHandle.DangerousAddRef(ref success);
+                return BindIOCompletionCallbackNative(osHandle.DangerousGetHandle());
+            }
+            finally
+            {
+                if (success)
+                {
+                    osHandle.DangerousRelease();
+                }
+            }
+        }
+        */
+
         [SecurityCritical]
         public static ThreadPoolBoundHandleDotNet BindHandle(SafeHandle handle)
         {
@@ -242,6 +280,7 @@ namespace System.Threading
 
             try
             {
+                // todo: replace with ThreadPoolBindHandle
                 bool flag = ThreadPool.BindHandle(handle);
             }
             catch (Exception ex)

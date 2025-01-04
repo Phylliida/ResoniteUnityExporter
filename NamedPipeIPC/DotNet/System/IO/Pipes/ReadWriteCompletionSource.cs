@@ -18,7 +18,6 @@ namespace System.IO.Pipes
         internal ReadWriteCompletionSourceDotNet(PipeStreamDotNet stream, byte[] buffer, CancellationToken cancellationToken, bool isWrite)
             : base(stream._threadPoolBinding, cancellationToken, pinData: buffer)
         {
-            ThreadPoolBoundHandle ayy;
             Debug.Assert(buffer != null, "buffer is null");
 
             _pipeStream = stream;

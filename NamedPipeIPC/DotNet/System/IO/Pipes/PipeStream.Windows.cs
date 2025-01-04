@@ -15,6 +15,7 @@ namespace System.IO.Pipes
     public abstract partial class PipeStreamDotNet : Stream
     {
         internal const bool CheckOperationsRequiresSetHandle = true;
+        internal ThreadPoolBoundHandle _threadPoolBinding;
 
         internal static string GetPipePath(string serverName, string pipeName)
         {
@@ -37,20 +38,17 @@ namespace System.IO.Pipes
             }
         }
 
-        public ThreadPoolBoundHandleDotNet _threadPoolBinding;
-
         /// <summary>Initializes the handle to be used asynchronously.</summary>
         /// <param name="handle">The handle.</param>
         private void InitializeAsyncHandle(SafePipeHandle handle)
         {
             // If the handle is of async type, bind the handle to the ThreadPool so that we can use 
             // the async operations (it's needed so that our native callbacks get called).
-            _threadPoolBinding = ThreadPoolBoundHandleDotNet.BindHandle(handle);
+            _threadPoolBinding = ThreadPoolBoundHandle.BindHandle(handle);
         }
 
         private void UninitializeAsyncHandle()
         {
-            // automatically cleaned up, we don't need this
             if (_threadPoolBinding != null)
                 _threadPoolBinding.Dispose();
         }

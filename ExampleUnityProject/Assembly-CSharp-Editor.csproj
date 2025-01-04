@@ -408,6 +408,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@2.5.1\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
@@ -424,6 +428,10 @@
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.Unity3D.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Security.AccessControl">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\YamlDotNet.dll</HintPath>
       <Private>False</Private>
@@ -434,6 +442,10 @@
     </Reference>
     <Reference Include="Serilog">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="vpm-core-lib">
