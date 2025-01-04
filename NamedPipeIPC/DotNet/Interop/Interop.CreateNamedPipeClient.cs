@@ -16,7 +16,7 @@ internal partial class Interop
             string lpFileName,
             int dwDesiredAccess,
             System.IO.FileShare dwShareMode,
-            ref SECURITY_ATTRIBUTES secAttrs,
+            IntPtr secAttrs,
             FileMode dwCreationDisposition,
             int dwFlagsAndAttributes,
             IntPtr hTemplateFile);

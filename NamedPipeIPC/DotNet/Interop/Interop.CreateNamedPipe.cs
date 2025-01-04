@@ -19,6 +19,6 @@ internal partial class Interop
             int outBufferSize,
             int inBufferSize,
             int defaultTimeout,
-            ref SECURITY_ATTRIBUTES securityAttributes);
+            IntPtr securityAttributes);
     }
 }

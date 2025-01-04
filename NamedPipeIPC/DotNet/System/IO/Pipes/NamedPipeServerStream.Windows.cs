@@ -55,15 +55,18 @@ namespace System.IO.Pipes
             }
 
             Interop.Kernel32.SECURITY_ATTRIBUTES secAttrs = PipeStreamDotNet.GetSecAttrs(inheritability);
-            SafePipeHandle handle = Interop.Kernel32.CreateNamedPipe(fullPipeName, openMode, pipeModes,
-                maxNumberOfServerInstances, outBufferSize, inBufferSize, 0, ref secAttrs);
-
-            if (handle.IsInvalid)
+            using (Interop.Kernel32.SecurityAttriutes attrs = new Interop.Kernel32.SecurityAttriutes(secAttrs))
             {
-                throw Win32Marshal.GetExceptionForLastWin32Error();
-            }
+                SafePipeHandle handle = Interop.Kernel32.CreateNamedPipe(fullPipeName, openMode, pipeModes,
+                    maxNumberOfServerInstances, outBufferSize, inBufferSize, 0, attrs.ptr);
 
-            InitializeHandle(handle, false, (options & PipeOptionsDotNet.Asynchronous) != 0);
+                if (handle.IsInvalid)
+                {
+                    throw Win32Marshal.GetExceptionForLastWin32Error();
+                }
+
+                InitializeHandle(handle, false, (options & PipeOptionsDotNet.Asynchronous) != 0);
+            }
         }
 
         // This will wait until the client calls Connect().  If we return from this method, we guarantee that

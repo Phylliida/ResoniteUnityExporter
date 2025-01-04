@@ -9,15 +9,28 @@ internal partial class Interop
 {
     internal partial class Kernel32
     {
-        [StructLayout(LayoutKind.Sequential)]
-        internal class SECURITY_ATTRIBUTES
+        internal class SecurityAttriutes : IDisposable
         {
-            public SECURITY_ATTRIBUTES()
+            SECURITY_ATTRIBUTES secAttrs;
+            public IntPtr ptr;
+            internal SecurityAttriutes(SECURITY_ATTRIBUTES secAttrs)
             {
-                this.nLength = 0;
-                this.lpSecurityDescriptor = IntPtr.Zero;
-                this.bInheritHandle = BOOL.FALSE;
+                this.secAttrs = secAttrs;
+
+                // Allocate unmanaged memory for the structure
+                ptr = Marshal.AllocHGlobal(Marshal.SizeOf<SECURITY_ATTRIBUTES>());
+                Marshal.StructureToPtr(secAttrs, ptr, false);
             }
+
+            public void Dispose()
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct SECURITY_ATTRIBUTES
+        {
             internal uint nLength;
             internal IntPtr lpSecurityDescriptor;
             internal BOOL bInheritHandle;
