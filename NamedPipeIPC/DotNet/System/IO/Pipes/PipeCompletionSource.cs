@@ -30,7 +30,7 @@ namespace System.IO.Pipes
 #if DEBUG
         private bool _cancellationHasBeenRegistered;
 #endif
-        public unsafe NativeOverlapped* AllocateNativeOverlapped(SafeHandle boundHandle, IOCompletionCallback callback, object state, object pinData)
+        public unsafe NativeOverlapped* AllocateNativeOverlapped(IOCompletionCallback callback, object state, object pinData)
         {
             ThreadPoolBoundHandleOverlappedDotNet threadPoolBoundHandleOverlapped = new ThreadPoolBoundHandleOverlappedDotNet(callback, state, pinData, null);
             return threadPoolBoundHandleOverlapped._nativeOverlapped;
@@ -47,20 +47,13 @@ namespace System.IO.Pipes
             _cancellationToken = cancellationToken;
             _state = NoResult;
 
-            _overlapped = _threadPoolBinding.AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
+            _overlapped = AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
             {
                 var completionSource = (PipeCompletionSource<TResult>)ThreadPoolBoundHandleDotNet.GetNativeOverlappedState(pOverlapped);
                 Debug.Assert(completionSource.Overlapped == pOverlapped);
 
                 completionSource.AsyncCallback(errorCode, numBytes);
             }, this, pinData);
-        }
-
-
-
-        internal NativeOverlapped* Overlapped
-        {
-            [SecurityCritical]get { return _overlapped; }
         }
 
         internal void RegisterForCancellation()
@@ -71,7 +64,7 @@ namespace System.IO.Pipes
 #endif
 
             // Quick check to make sure that the cancellation token supports cancellation, and that the IO hasn't completed
-            if (_cancellationToken.CanBeCanceled && Overlapped != null)
+            if (_cancellationToken.CanBeCanceled && _overlapped != null)
             {
                 // Register the cancellation only if the IO hasn't completed
                 int state = Interlocked.CompareExchange(ref _state, RegisteringCancellation, NoResult);
@@ -99,15 +92,40 @@ namespace System.IO.Pipes
             }
         }
 
+        void FreeNativeOverlapped(NativeOverlapped* overlapped)
+        {
+            if (overlapped == null)
+            {
+                throw new ArgumentNullException("overlapped");
+            }
+
+            Overlapped overlappedWrapper = Overlapped.Unpack(overlapped);
+
+            PreAllocatedOverlapped preAllocated = (PreAllocatedOverlapped)overlappedWrapper.GetType()
+                .GetField("_preAllocated").GetValue(
+                overlappedWrapper);
+
+            if (preAllocated != null)
+            {
+                preAllocated.GetType()
+                    .GetMethod("Release", Reflection.BindingFlags.NonPublic | Reflection.BindingFlags.Instance)
+                    .Invoke(preAllocated, new object[] { });
+            }
+            else
+            {
+                Overlapped.Free(overlapped);
+            }
+        }
+
         internal void ReleaseResources()
         {
             _cancellationRegistration.Dispose();
 
             // NOTE: The cancellation must *NOT* be running at this point, or it may observe freed memory
             // (this is why we disposed the registration above)
-            if (Overlapped != null)
+            if (_overlapped != null)
             {
-                _threadPoolBinding.FreeNativeOverlapped(Overlapped);
+                FreeNativeOverlapped(_overlapped);
                 _overlapped = null;
             }
         }
@@ -145,8 +163,8 @@ namespace System.IO.Pipes
 
         private void Cancel()
         {
-            SafeHandle handle = _threadPoolBinding.Handle;
-            NativeOverlapped* overlapped = Overlapped;
+            SafeHandle handle = _threadPoolBinding;
+            NativeOverlapped* overlapped = _overlapped;
 
             // If the handle is still valid, attempt to cancel the IO
             if (!handle.IsInvalid && !Interop.Kernel32.CancelIoEx(handle, overlapped))
