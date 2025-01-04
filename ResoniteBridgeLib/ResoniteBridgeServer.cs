@@ -14,8 +14,6 @@ namespace ResoniteBridgeLib
 
         public const int millisBetweenPing = 1000;
 
-        private volatile int curMessageId = 0;
-
         public IpcPublisher publisher;
         public IpcSubscriber subscriber;
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -33,10 +33,6 @@
       <LastGenOutput>SR.Designer.cs</LastGenOutput>
       <CustomToolNamespace>System.IO</CustomToolNamespace>
     </EmbeddedResource>
-  </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="DotNet\System\Net\Sockets\" />
   </ItemGroup>
 
 </Project>

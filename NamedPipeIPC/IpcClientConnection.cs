@@ -124,7 +124,7 @@ namespace NamedPipeIPC
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got error in connection, disconnecting:" + e.Message + e.StackTrace);
+                    DebugLog("Got error in connection, disconnecting:" + e.GetType() + " " + e.Message + e.StackTrace);
                 }
                 finally
                 {
