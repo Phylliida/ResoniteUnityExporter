@@ -100,7 +100,7 @@ namespace NamedPipeIPC
                 connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
                 {
                     DebugLog("Removing terminated connection to process " + terminatedConnection.Key + " from connections");
-                    connections.Remove(terminatedConnection.Key, out _);
+                    connections.TryRemove(terminatedConnection.Key, out _);
                 }
             }
 
