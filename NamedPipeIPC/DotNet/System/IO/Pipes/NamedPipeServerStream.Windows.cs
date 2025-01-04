@@ -250,7 +250,7 @@ namespace System.IO.Pipes
 
             var completionSource = new ConnectionCompletionSource(this, cancellationToken);
 
-            if (!Interop.Kernel32.ConnectNamedPipe(InternalHandle, completionSource.Overlapped))
+            if (!Interop.Kernel32.ConnectNamedPipe(InternalHandle, completionSource._overlapped))
             {
                 int errorCode = Marshal.GetLastWin32Error();
 

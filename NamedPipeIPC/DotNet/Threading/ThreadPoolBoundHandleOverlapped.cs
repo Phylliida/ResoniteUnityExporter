@@ -17,13 +17,13 @@ namespace System.Threading
 
         internal readonly object _userState;
 
-        internal PreAllocatedOverlappedDotNet _preAllocated;
+        internal PreAllocatedOverlapped _preAllocated;
 
         internal unsafe NativeOverlapped* _nativeOverlapped;
 
         internal bool _completed;
 
-        public unsafe ThreadPoolBoundHandleOverlappedDotNet(IOCompletionCallback callback, object state, object pinData, PreAllocatedOverlappedDotNet preAllocated)
+        public unsafe ThreadPoolBoundHandleOverlappedDotNet(IOCompletionCallback callback, object state, object pinData, PreAllocatedOverlapped preAllocated)
         {
             _userCallback = callback;
             _userState = state;

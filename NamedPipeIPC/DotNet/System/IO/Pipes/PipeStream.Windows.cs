@@ -91,7 +91,7 @@ namespace System.IO.Pipes
             int r;
             unsafe
             {
-                r = ReadFileNative(_handle, buffer, offset, count, completionSource.Overlapped, out errorCode);
+                r = ReadFileNative(_handle, buffer, offset, count, completionSource._overlapped, out errorCode);
             }
 
             // ReadFile, the OS version, will return 0 on failure, but this ReadFileNative wrapper
@@ -117,7 +117,7 @@ namespace System.IO.Pipes
                         {
                             // Clear the overlapped status bit for this special case. Failure to do so looks 
                             // like we are freeing a pending overlapped.
-                            completionSource.Overlapped->InternalLow = IntPtr.Zero;
+                            completionSource._overlapped->InternalLow = IntPtr.Zero;
                         }
 
                         completionSource.ReleaseResources();
@@ -159,7 +159,7 @@ namespace System.IO.Pipes
             int r;
             unsafe
             {
-                r = WriteFileNative(_handle, buffer, offset, count, completionSource.Overlapped, out errorCode);
+                r = WriteFileNative(_handle, buffer, offset, count, completionSource._overlapped, out errorCode);
             }
 
             // WriteFile, the OS version, will return 0 on failure, but this WriteFileNative 

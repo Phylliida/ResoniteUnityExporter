@@ -7,7 +7,6 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using static NamedPipeIPC.DotNet.System.IO.Pipes.ThreadPoolBindHandleNative;
 
 namespace System.IO.Pipes
 {
@@ -24,7 +23,7 @@ namespace System.IO.Pipes
 
         private CancellationTokenRegistration _cancellationRegistration;
         private int _errorCode;
-        private NativeOverlapped* _overlapped;
+        public NativeOverlapped* _overlapped;
         private int _state;
 
 #if DEBUG
@@ -36,6 +35,13 @@ namespace System.IO.Pipes
             return threadPoolBoundHandleOverlapped._nativeOverlapped;
         }
 
+
+        object GetNativeOverlappedState(NativeOverlapped* overlapped)
+        {
+            Overlapped unwrapped = Overlapped.Unpack(overlapped);
+            return unwrapped.GetType().GetField("_userState")
+                .GetValue(unwrapped);
+        }
 
         // Using RunContinuationsAsynchronously for compat reasons (old API used ThreadPool.QueueUserWorkItem for continuations)
         protected PipeCompletionSource(SafeHandle handle, CancellationToken cancellationToken, object pinData)
@@ -49,8 +55,8 @@ namespace System.IO.Pipes
 
             _overlapped = AllocateNativeOverlapped((errorCode, numBytes, pOverlapped) =>
             {
-                var completionSource = (PipeCompletionSource<TResult>)ThreadPoolBoundHandleDotNet.GetNativeOverlappedState(pOverlapped);
-                Debug.Assert(completionSource.Overlapped == pOverlapped);
+                var completionSource = (PipeCompletionSource<TResult>)GetNativeOverlappedState(pOverlapped);
+                Debug.Assert(completionSource._overlapped == pOverlapped);
 
                 completionSource.AsyncCallback(errorCode, numBytes);
             }, this, pinData);
