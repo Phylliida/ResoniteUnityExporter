@@ -44,8 +44,12 @@ namespace NamedPipeIPC
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
         }
 
-        volatile NamedPipeClientStream dataClient;
-        volatile NamedPipeClientStream pingClient;
+
+        const int BUFFER_SIZE = 2048 * 16;
+        const int PING_BUFFER_SIZE = 128;
+
+        volatile MemoryMappedFileConnection dataClient;
+        volatile MemoryMappedFileConnection pingClient;
         object cleanupLock = new object();
 
         public void Init() {
@@ -72,19 +76,16 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    dataClient = new NamedPipeClientStream(".", id);
-                    
-                    dataClient.Connect(millisBetweenPing * timeoutMultiplier);
+                    dataClient = new MemoryMappedFileConnection(id, BUFFER_SIZE, isWriter: true);
+
+                    dataClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                     while (!stopToken.IsCancellationRequested)
                     {
                         // send messages
                         while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
                         {
-                            if (!WriteBytes(dataClient, bytes))
-                            {
-                                break;
-                            }
+                            WriteBytes(dataClient, bytes);
                         }
                     }
                 }
@@ -107,17 +108,14 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    pingClient = new NamedPipeClientStream(".", id);
-                    pingClient.Connect(millisBetweenPing * timeoutMultiplier);
+                    pingClient = new MemoryMappedFileConnection(id, PING_BUFFER_SIZE, isWriter: true);
+                    pingClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                     OnConnect?.Invoke();
                     while (!stopToken.IsCancellationRequested)
                     {
                         // keepalive ping
-                        if (!SendPing(pingClient, millisBetweenPing))
-                        {
-                            break;
-                        }
+                        SendPing(pingClient, millisBetweenPing);
                         Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
                     }
                 }
@@ -164,38 +162,18 @@ namespace NamedPipeIPC
         /// <param name="ioStream"></param>
         /// <param name="millisTimeout"></param>
         /// <returns></returns>
-        public bool SendPing(System.IO.Stream ioStream, int millisTimeout)
+        public void SendPing(MemoryMappedFileConnection connection, int millisTimeout)
         {
-            DebugLog("Sending ping to " + this.idOfServer);
-            using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
-            {
-                using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token)) {
-                    try {
-                        byte[] kindBytes = new byte[] {IpcUtils.PING_MESSAGE};
-                        IpcUtils.WriteBytes(ioStream, kindBytes, 0, 1, mergedSource.Token);
-                        return true;
-                    }
-                    // we timed out or were canceled
-                    catch (IpcUtils.CanceledException canceled) {
-                        return false;
-                    }
-                }
-            }
+            byte[] kindBytes = new byte[] { IpcUtils.PING_MESSAGE };
+            connection.WriteData(kindBytes, 0, 1, stopToken.Token, millisTimeout);
         }
 
-        public bool WriteBytes(System.IO.Stream ioStream, byte[] bytes) {
-            try {
-                byte[] kindBytes = new byte[] {IpcUtils.DATA_MESSAGE};
-                IpcUtils.WriteBytes(ioStream, kindBytes, 0, 1, stopToken.Token);
-                byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
-                IpcUtils.WriteBytes(ioStream, lenBytes, 0, 4, stopToken.Token);
-                IpcUtils.WriteBytes(ioStream, bytes, 0, bytes.Length, stopToken.Token);
-                return true;
-            }
-            // we timed out or were canceled
-            catch (IpcUtils.CanceledException canceled) {
-                return false;
-            }
+        public void WriteBytes(MemoryMappedFileConnection connection, byte[] bytes, int millisTimeout=-1) {
+            byte[] kindBytes = new byte[] {IpcUtils.DATA_MESSAGE};
+            connection.WriteData(kindBytes, 0, 1, stopToken.Token, millisTimeout);
+            byte[] lenBytes = BitConverter.GetBytes(bytes.Length);
+            connection.WriteData(lenBytes, 0, 4, stopToken.Token, millisTimeout);
+            connection.WriteData(bytes, 0, bytes.Length, stopToken.Token, millisTimeout);
         }
 
     }

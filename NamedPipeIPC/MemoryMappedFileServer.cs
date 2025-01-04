@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NamedPipeIPC
 {
-    class SharedEventWaitHandle : IDisposable
+    public class SharedEventWaitHandle : IDisposable
     {
         public EventWaitHandle waitHandle;
         public SharedEventWaitHandle(string name, bool initialState)
@@ -30,7 +30,7 @@ namespace NamedPipeIPC
             waitHandle.Dispose();
         }
     }
-    class MemoryMappedFileConnection : IDisposable
+    public class MemoryMappedFileConnection : IDisposable
     {
         MemoryMappedFile file;
         MemoryMappedViewAccessor accessor;
@@ -79,16 +79,30 @@ namespace NamedPipeIPC
             readyToWrite.Set();
         }
 
-        static void WaitOrCancel(WaitHandle waitHandle, CancellationToken cancelToken)
+        static void WaitOrCancel(WaitHandle waitHandle, CancellationToken cancelToken, int timeoutMillis=-1)
         {
-            WaitHandle.WaitAny(new WaitHandle[] { waitHandle, cancelToken.WaitHandle });
+            if (timeoutMillis >= 0)
+            {
+                using (CancellationTokenSource timeoutToken = new CancellationTokenSource(timeoutMillis))
+                {
+                    WaitHandle.WaitAny(new WaitHandle[] { waitHandle, cancelToken.WaitHandle, timeoutToken.Token.WaitHandle });
+                    if (timeoutToken.IsCancellationRequested)
+                    {
+                        throw new TimeoutException();
+                    }
+                }
+            }
+            else
+            {
+                WaitHandle.WaitAny(new WaitHandle[] { waitHandle, cancelToken.WaitHandle });
+            }
             if (cancelToken.IsCancellationRequested)
             {
                 throw new OperationCanceledException();
             }
         }
 
-        public void WaitForConnection(CancellationToken cancelToken)
+        public void WaitForConnection(CancellationToken cancelToken, int timeoutMillis = -1)
         {
             if (!isWriter)
             {
@@ -97,16 +111,16 @@ namespace NamedPipeIPC
             // we need a readyForConnection handle so only one will connect
             // (this prevents multiple connecting to this which breaks assumptions we have)
             readyForConnection.waitHandle.Set();
-            WaitOrCancel(connected.waitHandle, cancelToken);
+            WaitOrCancel(connected.waitHandle, cancelToken, timeoutMillis);
         }
 
-        public void Connect(CancellationToken cancelToken)
+        public void Connect(CancellationToken cancelToken, int timeoutMillis = -1)
         {
             if (isWriter)
             {
                 throw new ArgumentOutOfRangeException("Only readers can wait for connection, use WaitForConnection instead");
             }
-            WaitOrCancel(readyForConnection.waitHandle, cancelToken);
+            WaitOrCancel(readyForConnection.waitHandle, cancelToken, timeoutMillis);
             connected.waitHandle.Set();
         }
 
@@ -124,13 +138,13 @@ namespace NamedPipeIPC
         }
 
 
-        public byte[] ReadData(CancellationToken cancelToken)
+        public byte[] ReadData(CancellationToken cancelToken, int timeoutMillis = -1)
         {
             if (isWriter)
             {
                 throw new ArgumentOutOfRangeException("Only readers can ReadData");
             }
-            WaitOrCancel(readyForRead.waitHandle, cancelToken);
+            WaitOrCancel(readyForRead.waitHandle, cancelToken, timeoutMillis);
 
             ulong totalLength = accessor.ReadUInt64(TOTAL_LENGTH_POSITION);
 
@@ -143,7 +157,7 @@ namespace NamedPipeIPC
                 // signal we are done reading
                 finishedRead.waitHandle.Set();
                 // wait until they have inserted the next data
-                WaitOrCancel(readyForRead.waitHandle, cancelToken);
+                WaitOrCancel(readyForRead.waitHandle, cancelToken, timeoutMillis);
             }
             ReadChunk(resultBytes, offset);
             finishedRead.waitHandle.Set();
@@ -155,13 +169,13 @@ namespace NamedPipeIPC
             accessor.WriteArray<byte>(DATA_POSITION, data, offset, chunkLen);
         }
 
-        public void WriteData(byte[] data, int offset, int len, CancellationToken cancelToken)
+        public void WriteData(byte[] data, int offset, int len, CancellationToken cancelToken, int timeoutMillis = -1)
         {
             if (!isWriter)
             {
                 throw new ArgumentOutOfRangeException("Only writers can WriteData");
             }
-            WaitOrCancel(readyToWrite, cancelToken);
+            WaitOrCancel(readyToWrite, cancelToken, timeoutMillis);
             accessor.Write(TOTAL_LENGTH_POSITION, len);
             if (len > this.bufferSize)
             {
@@ -174,7 +188,7 @@ namespace NamedPipeIPC
                     bool partialChunk = chunkStart + this.bufferSize < len;
                     accessor.Write(STATUS_POSITION, partialChunk ? PARTIAL_DATA : FINAL_DATA);
                     readyForRead.waitHandle.Set();
-                    WaitOrCancel(finishedRead.waitHandle, cancelToken);
+                    WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
                 }
             }
             // we are done, a new task can write now

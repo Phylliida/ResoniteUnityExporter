@@ -22,7 +22,8 @@ namespace System.IO.Pipes
         // pipe by us after we have connected but before the server has called WaitForConnection will be available
         // to the server after it calls WaitForConnection. 
         [SecurityCritical]
-        private bool TryConnect(int timeout, CancellationToken cancellationToken)
+        private bool TryConnect(int 
+            , CancellationToken cancellationToken)
         {
             Interop.Kernel32.SECURITY_ATTRIBUTES secAttrs = PipeStreamDotNet.GetSecAttrs(_inheritability);
 
