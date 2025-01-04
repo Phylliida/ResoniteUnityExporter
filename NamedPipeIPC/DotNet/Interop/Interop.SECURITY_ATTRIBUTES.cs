@@ -10,8 +10,14 @@ internal partial class Interop
     internal partial class Kernel32
     {
         [StructLayout(LayoutKind.Sequential)]
-        internal struct SECURITY_ATTRIBUTES
+        internal class SECURITY_ATTRIBUTES
         {
+            public SECURITY_ATTRIBUTES()
+            {
+                this.nLength = 0;
+                this.lpSecurityDescriptor = IntPtr.Zero;
+                this.bInheritHandle = BOOL.FALSE;
+            }
             internal uint nLength;
             internal IntPtr lpSecurityDescriptor;
             internal BOOL bInheritHandle;
