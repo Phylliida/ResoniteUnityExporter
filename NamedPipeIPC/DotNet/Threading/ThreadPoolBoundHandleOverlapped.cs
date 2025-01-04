@@ -1,15 +1,11 @@
-﻿#region Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-// C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll
-// Decompiled with ICSharpCode.Decompiler 8.1.1.7464
-#endregion
-
+﻿using System;
 using System.Security;
+using System.Threading;
 
-namespace System.Threading
+namespace HelperBoi
 {
-
     [SecurityCritical]
-    internal sealed class ThreadPoolBoundHandleOverlappedDotNet : Overlapped
+    internal sealed class ThreadPoolBoundHandleOverlapped : Overlapped
     {
         private unsafe static readonly IOCompletionCallback s_completionCallback = CompletionCallback;
 
@@ -21,9 +17,11 @@ namespace System.Threading
 
         internal unsafe NativeOverlapped* _nativeOverlapped;
 
+        internal ThreadPoolBoundHandle _boundHandle;
+
         internal bool _completed;
 
-        public unsafe ThreadPoolBoundHandleOverlappedDotNet(IOCompletionCallback callback, object state, object pinData, PreAllocatedOverlapped preAllocated)
+        public unsafe ThreadPoolBoundHandleOverlapped(IOCompletionCallback callback, object state, object pinData, PreAllocatedOverlapped preAllocated)
         {
             _userCallback = callback;
             _userState = state;
@@ -35,14 +33,16 @@ namespace System.Threading
 
         private unsafe static void CompletionCallback(uint errorCode, uint numBytes, NativeOverlapped* nativeOverlapped)
         {
-            ThreadPoolBoundHandleOverlappedDotNet threadPoolBoundHandleOverlapped = (ThreadPoolBoundHandleOverlappedDotNet)Overlapped.Unpack(nativeOverlapped);
+            ThreadPoolBoundHandleOverlapped threadPoolBoundHandleOverlapped = (ThreadPoolBoundHandleOverlapped)Overlapped.Unpack(nativeOverlapped);
             if (threadPoolBoundHandleOverlapped._completed)
             {
                 throw new InvalidOperationException("InvalidOperation_NativeOverlappedReused");
             }
-
             threadPoolBoundHandleOverlapped._completed = true;
-
+            if (threadPoolBoundHandleOverlapped._boundHandle == null)
+            {
+                throw new InvalidOperationException("Argument_NativeOverlappedAlreadyFree");
+            }
             threadPoolBoundHandleOverlapped._userCallback(errorCode, numBytes, nativeOverlapped);
         }
     }

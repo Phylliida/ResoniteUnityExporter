@@ -7,6 +7,8 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using HelperBoi;
+using System.Reflection;
 
 namespace System.IO.Pipes
 {
@@ -31,8 +33,22 @@ namespace System.IO.Pipes
 #endif
         public unsafe NativeOverlapped* AllocateNativeOverlapped(IOCompletionCallback callback, object state, object pinData)
         {
-            ThreadPoolBoundHandleOverlappedDotNet threadPoolBoundHandleOverlapped = new ThreadPoolBoundHandleOverlappedDotNet(callback, state, pinData, null);
-            return threadPoolBoundHandleOverlapped._nativeOverlapped;
+            Type overlappedType = typeof(System.Threading.ThreadPoolBoundHandle).Module
+                .GetType("System.Threading.ThreadBoolBoundHandleOverlapped");
+            object instance = Activator.CreateInstance(overlappedType,
+            BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.CreateInstance,
+            null,
+            new object[] { callback, state, pinData },
+            null);
+
+            IntPtr value = (IntPtr)instance.GetType()
+                .GetField("_nativeOverlapped")
+                .GetValue(instance);
+
+            unsafe
+            {
+                return (NativeOverlapped*)value.ToPointer();
+            }
         }
 
 
