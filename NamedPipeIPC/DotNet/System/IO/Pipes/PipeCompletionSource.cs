@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace System.IO.Pipes
 {
@@ -32,21 +33,25 @@ namespace System.IO.Pipes
 #endif
         public unsafe NativeOverlapped* AllocateNativeOverlapped(IOCompletionCallback callback, object state, object pinData)
         {
-            Type overlappedType = typeof(System.Threading.ThreadPoolBoundHandle).Module
-                .GetType("System.Threading.ThreadBoolBoundHandleOverlapped");
-            object instance = Activator.CreateInstance(overlappedType,
-            BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.CreateInstance,
-            null,
-            new object[] { callback, state, pinData },
-            null);
-
-            IntPtr value = (IntPtr)instance.GetType()
-                .GetField("_nativeOverlapped")
-                .GetValue(instance);
+            Type overlappedType = typeof(System.Threading.ThreadPoolBoundHandle).Assembly
+                .GetType("System.Threading.ThreadPoolBoundHandleOverlapped");
+            object instance = overlappedType.GetConstructor(
+                new Type[] {
+                    typeof(IOCompletionCallback),
+                    typeof(object),
+                    typeof(object)
+                }).Invoke(new object[] { callback, state, pinData });
 
             unsafe
             {
-                return (NativeOverlapped*)value.ToPointer();
+                FieldInfo field = instance.GetType().GetField("_nativeOverlapped");
+                RuntimeFieldHandle fieldHandle = field.FieldHandle;
+                //int fieldOffset = RuntimeHelpers.GetFieldOffset(fieldHandle);
+
+                // cursed shit, compute field offset
+                TypedReference tr = __makeref(instance);
+                IntPtr ptrValue = *(IntPtr*)&tr;
+                return *(NativeOverlapped**)((byte*)ptrValue.ToPointer() + field.FieldHandle.Value.ToInt32());
             }
         }
 

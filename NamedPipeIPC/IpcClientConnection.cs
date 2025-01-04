@@ -44,6 +44,10 @@ namespace NamedPipeIPC
             this.connectionStatus = IpcUtils.ConnectionStatus.WaitingForConnection;
         }
 
+        volatile NamedPipeClientStream dataClient;
+        volatile NamedPipeClientStream pingClient;
+        object cleanupLock = new object();
+
         public void Init() {
              // each connection is actually two connections
              // one that is just for sending keepalive pings
@@ -68,20 +72,18 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    using (NamedPipeClientStreamDotNet pipeClient =
-                           new NamedPipeClientStreamDotNet(".", id, PipeDirectionDotNet.InOut, PipeOptionsDotNet.Asynchronous))
+                    dataClient = new NamedPipeClientStream(".", id);
+                    
+                    dataClient.Connect(millisBetweenPing * timeoutMultiplier);
+                    this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                    while (!stopToken.IsCancellationRequested)
                     {
-                        pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
-                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                        while (!stopToken.IsCancellationRequested)
+                        // send messages
+                        while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
                         {
-                            // send messages
-                            while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
+                            if (!WriteBytes(dataClient, bytes))
                             {
-                                if (!WriteBytes(pipeClient, bytes))
-                                {
-                                    break;
-                                }
+                                break;
                             }
                         }
                     }
@@ -105,21 +107,18 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    using (NamedPipeClientStreamDotNet pipeClient =
-                           new NamedPipeClientStreamDotNet(".", id, PipeDirectionDotNet.InOut, PipeOptionsDotNet.Asynchronous))
+                    pingClient = new NamedPipeClientStream(".", id);
+                    pingClient.Connect(millisBetweenPing * timeoutMultiplier);
+                    this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                    OnConnect?.Invoke();
+                    while (!stopToken.IsCancellationRequested)
                     {
-                        pipeClient.ConnectAsync(millisBetweenPing * timeoutMultiplier, stopToken.Token).GetAwaiter().GetResult();
-                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                        OnConnect?.Invoke();
-                        while (!stopToken.IsCancellationRequested)
+                        // keepalive ping
+                        if (!SendPing(pingClient, millisBetweenPing))
                         {
-                            // keepalive ping
-                            if (!SendPing(pipeClient, millisBetweenPing))
-                            {
-                                break;
-                            }
-                            Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                            break;
                         }
+                        Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
                     }
                 }
                 catch (Exception e)
@@ -142,6 +141,17 @@ namespace NamedPipeIPC
         public void Dispose()
         {
             selfStopTokenSource.Cancel();
+            // disposing them will interrupt attempts to connect/send message
+            if (dataClient != null)
+            {
+                dataClient.Dispose();
+                dataClient = null;
+            }
+            if (pingClient != null)
+            {
+                pingClient.Dispose();
+                pingClient = null;
+            }
             dataThread.Join();
             pingThread.Join();
             bytesToSend.Dispose();
