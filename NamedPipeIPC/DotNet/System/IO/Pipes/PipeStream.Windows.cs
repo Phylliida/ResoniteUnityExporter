@@ -15,7 +15,6 @@ namespace System.IO.Pipes
     public abstract partial class PipeStreamDotNet : Stream
     {
         internal const bool CheckOperationsRequiresSetHandle = true;
-        internal ThreadPoolBoundHandle _threadPoolBinding;
 
         internal static string GetPipePath(string serverName, string pipeName)
         {
@@ -38,17 +37,20 @@ namespace System.IO.Pipes
             }
         }
 
+        public ThreadPoolBoundHandleDotNet _threadPoolBinding;
+
         /// <summary>Initializes the handle to be used asynchronously.</summary>
         /// <param name="handle">The handle.</param>
         private void InitializeAsyncHandle(SafePipeHandle handle)
         {
             // If the handle is of async type, bind the handle to the ThreadPool so that we can use 
             // the async operations (it's needed so that our native callbacks get called).
-            _threadPoolBinding = ThreadPoolBoundHandle.BindHandle(handle);
+            _threadPoolBinding = ThreadPoolBoundHandleDotNet.BindHandle(handle);
         }
 
         private void UninitializeAsyncHandle()
         {
+            // automatically cleaned up, we don't need this
             if (_threadPoolBinding != null)
                 _threadPoolBinding.Dispose();
         }
@@ -83,7 +85,7 @@ namespace System.IO.Pipes
         [SecuritySafeCritical]
         private Task<int> ReadAsyncCore(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
-            var completionSource = new ReadWriteCompletionSource(this, buffer, cancellationToken, isWrite: false);
+            var completionSource = new ReadWriteCompletionSourceDotNet(this, buffer, cancellationToken, isWrite: false);
 
             // Queue an async ReadFile operation and pass in a packed overlapped
             int errorCode = 0;
@@ -151,7 +153,7 @@ namespace System.IO.Pipes
         [SecuritySafeCritical]
         private Task WriteAsyncCore(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
-            var completionSource = new ReadWriteCompletionSource(this, buffer, cancellationToken, isWrite: true);
+            var completionSource = new ReadWriteCompletionSourceDotNet(this, buffer, cancellationToken, isWrite: true);
             int errorCode = 0;
 
             // Queue an async WriteFile operation and pass in a packed overlapped

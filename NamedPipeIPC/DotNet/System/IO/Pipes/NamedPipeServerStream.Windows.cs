@@ -57,8 +57,9 @@ namespace System.IO.Pipes
             Interop.Kernel32.SECURITY_ATTRIBUTES secAttrs = PipeStreamDotNet.GetSecAttrs(inheritability);
             using (Interop.Kernel32.SecurityAttriutes attrs = new Interop.Kernel32.SecurityAttriutes(secAttrs))
             {
-                SafePipeHandle handle = Interop.Kernel32.CreateNamedPipe(fullPipeName, openMode, pipeModes,
-                    maxNumberOfServerInstances, outBufferSize, inBufferSize, 0, attrs.ptr);
+
+                SafePipeHandle handle = new SafePipeHandle(Interop.Kernel32.CreateNamedPipe(fullPipeName, (uint)openMode, (uint)pipeModes,
+                    (uint)maxNumberOfServerInstances, (uint)outBufferSize, (uint)inBufferSize, 0, attrs.ptr), true);
 
                 if (handle.IsInvalid)
                 {
@@ -251,7 +252,7 @@ namespace System.IO.Pipes
                 throw new InvalidOperationException(SR.InvalidOperation_PipeNotAsync);
             }
 
-            var completionSource = new ConnectionCompletionSource(this, cancellationToken);
+            var completionSource = new ConnectionCompletionSourceDotNet(this, cancellationToken);
 
             if (!Interop.Kernel32.ConnectNamedPipe(InternalHandle, completionSource.Overlapped))
             {
