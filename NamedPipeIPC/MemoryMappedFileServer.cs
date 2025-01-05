@@ -194,26 +194,28 @@ namespace NamedPipeIPC
             }
             WaitOrCancel(readyToWrite, cancelToken, timeoutMillis);
             accessor.Write(TOTAL_LENGTH_POSITION, (ulong)len);
-            if (len > this.bufferSize)
+            for (int chunkStart = 0; chunkStart < len; chunkStart += this.bufferSize)
             {
-                for (int chunkStart = 0; chunkStart < len; chunkStart += this.bufferSize)
+                int remaining = len - chunkStart;
+                int chunkLen = Math.Min(this.bufferSize, remaining);
+                accessor.Write(CHUNK_LENGTH_POSITION, chunkLen);
+                WriteDataChunk(data, offset + chunkStart, chunkLen);
+                bool partialChunk = (chunkStart + this.bufferSize) < len;
+                accessor.Write(STATUS_POSITION, partialChunk ? PARTIAL_DATA : FINAL_DATA);
+                readyForRead.waitHandle.Set();
+                // wait for finishedRead should be sufficient, however, if the server disposes of the events
+                // then on some OS they get stuck in a perpertual "Set" state
+                // so we need to see that they change the acknowledge bit as well
+                accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);      
+                // it can get stuck on ACKNOWLEDGED if server disconnects, if so, bail
+                if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != NO_ACKNOWLEDGE)
                 {
-                    int remaining = len - chunkStart;
-                    int chunkLen = Math.Min(this.bufferSize, remaining);
-                    accessor.Write(CHUNK_LENGTH_POSITION, chunkLen);
-                    WriteDataChunk(data, offset + chunkStart, chunkLen);
-                    bool partialChunk = (chunkStart + this.bufferSize) < len;
-                    accessor.Write(STATUS_POSITION, partialChunk ? PARTIAL_DATA : FINAL_DATA);
-                    readyForRead.waitHandle.Set();
-                    // wait for finishedRead should be sufficient, however, if the server disposes of the events
-                    // then on some OS they get stuck in a perpertual "Set" state
-                    // so we need to see that they change the acknowledge bit as well
-                    accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);                    
-                    WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
-                    if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != ACKNOWLEDGED)
-                    {
-                        throw new IpcUtils.DisconnectedException();
-                    }
+                    throw new IpcUtils.DisconnectedException();
+                }
+                WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
+                if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != ACKNOWLEDGED)
+                {
+                    throw new IpcUtils.DisconnectedException();
                 }
             }
             // we are done, a new task can write now
