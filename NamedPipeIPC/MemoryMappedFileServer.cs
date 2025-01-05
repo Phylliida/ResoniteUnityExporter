@@ -207,7 +207,7 @@ namespace NamedPipeIPC
                 // then on some OS they get stuck in a perpertual "Set" state
                 // so we need to see that they change the acknowledge bit as well
                 accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);      
-                // it can get stuck on ACKNOWLEDGED if server disconnects, if so, bail
+                // it can get stuck on ACKNOWLEDGED if server disconnects, if so, bail (not sure that is true, actually, but just in case)
                 if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != NO_ACKNOWLEDGE)
                 {
                     throw new IpcUtils.DisconnectedException();
