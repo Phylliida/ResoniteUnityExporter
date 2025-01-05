@@ -71,7 +71,7 @@ namespace NamedPipeIPC
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
                     using (MemoryMappedFileConnection dataClient = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: true))
                     {
-                        dataClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
+                        dataClient.Connect(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                         while (!stopToken.IsCancellationRequested)
                         {
@@ -85,11 +85,11 @@ namespace NamedPipeIPC
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got error in connection, disconnecting:" + e.Message + e.StackTrace);
+                    DebugLog("Got error in client data connection, disconnecting:" + e.Message + e.StackTrace);
                 }
                 finally
                 {
-                    DebugLog("Terminating connection to " + id);
+                    DebugLog("Terminating client data connection to " + id);
                     selfStopTokenSource.Cancel();
                 }
             });
@@ -104,24 +104,26 @@ namespace NamedPipeIPC
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
                     using (MemoryMappedFileConnection pingClient = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: true))
                     {
-                        pingClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
+                        pingClient.Connect(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                         this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                         OnConnect?.Invoke();
                         while (!stopToken.IsCancellationRequested)
                         {
                             // keepalive ping
+                            DebugLog("Sending ping to " + id);
                             SendPing(pingClient, millisBetweenPing);
+                            DebugLog("Sent ping to " + id);
                             Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got error in connection, disconnecting:" + e.GetType() + " " + e.Message + e.StackTrace);
+                    DebugLog("Got error in client ping connection, disconnecting:" + e.GetType() + " " + e.Message + e.StackTrace);
                 }
                 finally
                 {
-                    DebugLog("Terminating connection to " + id);
+                    DebugLog("Terminating client ping connection to " + id);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
@@ -134,11 +136,13 @@ namespace NamedPipeIPC
 
         public void Dispose()
         {
+            DebugLog("Started disposing client " + idOfServer);
             selfStopTokenSource.Cancel();
             dataThread.Join();
             pingThread.Join();
             bytesToSend.Dispose();
             selfStopTokenSource.Dispose();
+            DebugLog("Finished disposing client " + idOfServer);
         }
 
         /// <summary>

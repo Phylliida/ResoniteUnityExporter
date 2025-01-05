@@ -93,16 +93,27 @@ namespace NamedPipeIPC
         
         void ConnectToAvailableServers() {
             // remove all terminated connections, this ensures we can try to reconnect again to a process that disconnected previously
+            List<IpcClientConnection> terminatedConnections = new List<IpcClientConnection>();
             lock (connectEventLock)
             {
-
-                foreach (KeyValuePair<int, IpcClientConnection> terminatedConnection in 
-                connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
+                foreach (KeyValuePair<int, IpcClientConnection> terminatedConnection in
+                    connections.Where(c => c.Value.connectionStatus == ConnectionStatus.Terminated).ToList())
                 {
                     DebugLog("Removing terminated connection to process " + terminatedConnection.Key + " from connections");
-                    connections.TryRemove(terminatedConnection.Key, out _);
+                    connections.TryRemove(terminatedConnection.Key, out IpcClientConnection removingConnection);
+                    // dispose the terminated connection
+                    terminatedConnections.Add(removingConnection);
                 }
             }
+
+            // need to do this in a seperate thread since we might be running in one of the threads we want to join
+            new Thread(() =>
+            {
+                foreach (IpcClientConnection terminatedConnection in terminatedConnections)
+                {
+                    terminatedConnection.Dispose();
+                }
+            }).Start();
 
             DebugLog("Looking to connect, currently have " + connections.Count + " active connections");
             

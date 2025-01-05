@@ -148,14 +148,14 @@ namespace NamedPipeIPC
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got exception in server, disconnecting " + e.Message + " " + e.StackTrace);
+                    DebugLog("Got exception in server, disconnecting " + e.GetType() + " " + e.Message + " " + e.StackTrace);
                 }
                 finally
                 {
                     this.connectionStatus = IpcUtils.ConnectionStatus.Terminated;
                     selfStopTokenSource.Cancel();
                     OnDisconnect?.Invoke();
-                    DebugLog("Terminating reading thread of server connected to " + id);
+                    DebugLog("Terminating ping thread of server connected to " + id);
                 }
             });
 
@@ -196,6 +196,7 @@ namespace NamedPipeIPC
             writeStatusThread.Join();
             selfStopTokenSource.Dispose();
             stopToken.Dispose();
+            DebugLog("Finished disposing server " + GetServerKey());
         }
 
         public IpcUtils.ResponseType ReadBytes(MemoryMappedFileConnection connection, out byte[] bytes, CancellationTokenSource readStopToken, int millisTimeout=-1)

@@ -13,16 +13,27 @@ namespace NamedPipeIPC
     public class SharedEventWaitHandle : IDisposable
     {
         public EventWaitHandle waitHandle;
-        public SharedEventWaitHandle(string name, bool initialState)
+        public SharedEventWaitHandle(string name, bool initialState, bool openExisting)
         {
             // need to add security to use shared event wait handle
-            var users = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
-            var rule = new EventWaitHandleAccessRule(users, EventWaitHandleRights.Synchronize | EventWaitHandleRights.Modify,
-                                      AccessControlType.Allow);
-            var security = new EventWaitHandleSecurity();
-            security.AddAccessRule(rule);
+            //var users = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
+            //var rule = new EventWaitHandleAccessRule(users, EventWaitHandleRights.Synchronize | EventWaitHandleRights.Modify,
+            //                          AccessControlType.Allow);
+            //var security = new EventWaitHandleSecurity();
+            //security.AddAccessRule(rule);
             bool created;
-            waitHandle = new EventWaitHandle(initialState, EventResetMode.AutoReset, "Global\\" + name, out created, security);
+            if (openExisting)
+            {
+                waitHandle = EventWaitHandle.OpenExisting("Global\\" + name);
+            }
+            else
+            {
+                waitHandle = new EventWaitHandle(initialState, EventResetMode.AutoReset, "Global\\" + name, out created);
+                if (!created)
+                {
+                    throw new ArgumentException("failed to create event handle " + name);
+                }
+            }
         }
 
         public void Dispose()
@@ -34,7 +45,6 @@ namespace NamedPipeIPC
     {
         MemoryMappedFile file;
         MemoryMappedViewAccessor accessor;
-        MemoryMappedViewStream statusAccessor;
         SharedEventWaitHandle readyForRead;
         SharedEventWaitHandle finishedRead;
         SharedEventWaitHandle connected;
@@ -43,7 +53,8 @@ namespace NamedPipeIPC
         const int STATUS_POSITION = 0; // byte
         const int TOTAL_LENGTH_POSITION = 1; // ulong
         const int CHUNK_LENGTH_POSITION = 9; // uint
-        const int DATA_POSITION = 13; // rest of data, as byte array
+        const byte ACKNOWLEDGE_POSITION = 13; // byte
+        const int DATA_POSITION = 14; // rest of data, as byte array
 
         // no data availble
         byte NO_DATA = 1;
@@ -51,6 +62,10 @@ namespace NamedPipeIPC
         byte PARTIAL_DATA = 2;
         // last chunk of data (or only chunk of data)
         byte FINAL_DATA = 3;
+
+        byte NO_ACKNOWLEDGE = 1;
+        byte ACKNOWLEDGED = 2;
+
         int bufferSize;
 
         // doesn't need to be shared since only the server uses it
@@ -60,12 +75,12 @@ namespace NamedPipeIPC
 
         public MemoryMappedFileConnection(string id, int bufferSize, bool isWriter)
         {
-            readyForRead = new SharedEventWaitHandle(id + "readyForRead", false);
-            finishedRead = new SharedEventWaitHandle(id + "finishedRead", false);
-            connected = new SharedEventWaitHandle(id + "connected", false);
-            readyForConnection = new SharedEventWaitHandle(id + "readyForConnection", false);
-            file = MemoryMappedFile.CreateNew(id, (long)bufferSize);
-            accessor = file.CreateViewAccessor();
+            readyForRead = new SharedEventWaitHandle(id + "readyForRead", false, isWriter);
+            finishedRead = new SharedEventWaitHandle(id + "finishedRead", false, isWriter);
+            connected = new SharedEventWaitHandle(id + "connected", false, isWriter);
+            readyForConnection = new SharedEventWaitHandle(id + "readyForConnection", false, isWriter);
+            file = MemoryMappedFile.CreateOrOpen(id, (long)bufferSize);
+            accessor = file.CreateViewAccessor(0, bufferSize);
             if (isWriter)
             {
                 // first byte contains status, put no data
@@ -98,15 +113,15 @@ namespace NamedPipeIPC
             }
             if (cancelToken.IsCancellationRequested)
             {
-                throw new OperationCanceledException();
+                throw new TaskCanceledException();
             }
         }
 
         public void WaitForConnection(CancellationToken cancelToken, int timeoutMillis = -1)
         {
-            if (!isWriter)
+            if (isWriter)
             {
-                throw new ArgumentOutOfRangeException("Only writers can wait for connection, use Connect instead");
+                throw new ArgumentOutOfRangeException("Only readers can wait for connection, use Connect instead");
             }
             // we need a readyForConnection handle so only one will connect
             // (this prevents multiple connecting to this which breaks assumptions we have)
@@ -116,9 +131,9 @@ namespace NamedPipeIPC
 
         public void Connect(CancellationToken cancelToken, int timeoutMillis = -1)
         {
-            if (isWriter)
+            if (!isWriter)
             {
-                throw new ArgumentOutOfRangeException("Only readers can wait for connection, use WaitForConnection instead");
+                throw new ArgumentOutOfRangeException("Only writers can call connect, use WaitForConnection instead");
             }
             WaitOrCancel(readyForConnection.waitHandle, cancelToken, timeoutMillis);
             connected.waitHandle.Set();
@@ -134,6 +149,8 @@ namespace NamedPipeIPC
         {
             int length = accessor.ReadInt32(CHUNK_LENGTH_POSITION);
             accessor.ReadArray<byte>(DATA_POSITION, outBytes, offset, length);
+            // also set the ADKNOWLEDGED byte so the client knows we did something
+            accessor.Write(ACKNOWLEDGE_POSITION, ACKNOWLEDGED);
             return length;
         }
 
@@ -176,7 +193,7 @@ namespace NamedPipeIPC
                 throw new ArgumentOutOfRangeException("Only writers can WriteData");
             }
             WaitOrCancel(readyToWrite, cancelToken, timeoutMillis);
-            accessor.Write(TOTAL_LENGTH_POSITION, len);
+            accessor.Write(TOTAL_LENGTH_POSITION, (ulong)len);
             if (len > this.bufferSize)
             {
                 for (int chunkStart = 0; chunkStart < len; chunkStart += this.bufferSize)
@@ -185,10 +202,18 @@ namespace NamedPipeIPC
                     int chunkLen = Math.Min(this.bufferSize, remaining);
                     accessor.Write(CHUNK_LENGTH_POSITION, chunkLen);
                     WriteDataChunk(data, offset + chunkStart, chunkLen);
-                    bool partialChunk = chunkStart + this.bufferSize < len;
+                    bool partialChunk = (chunkStart + this.bufferSize) < len;
                     accessor.Write(STATUS_POSITION, partialChunk ? PARTIAL_DATA : FINAL_DATA);
                     readyForRead.waitHandle.Set();
+                    // wait for finishedRead should be sufficient, however, if the server disposes of the events
+                    // then on some OS they get stuck in a perpertual "Set" state
+                    // so we need to see that they change the acknowledge bit as well
+                    accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);                    
                     WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
+                    if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != ACKNOWLEDGED)
+                    {
+                        throw new IpcUtils.DisconnectedException();
+                    }
                 }
             }
             // we are done, a new task can write now
@@ -197,8 +222,8 @@ namespace NamedPipeIPC
 
         public void Dispose()
         {
-            file.Dispose();
             accessor.Dispose();
+            file.Dispose();
             readyToWrite.Dispose();
             readyForRead.Dispose();
             finishedRead.Dispose();

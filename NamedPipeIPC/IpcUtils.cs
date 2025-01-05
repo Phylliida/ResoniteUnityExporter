@@ -30,6 +30,11 @@ namespace NamedPipeIPC
         
         }
 
+        public class DisconnectedException : Exception
+        {
+
+        }
+
 
         public static string GetServerKey(string baseKey, Guid guid)
         {
