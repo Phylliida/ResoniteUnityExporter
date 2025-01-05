@@ -59,11 +59,6 @@ namespace NamedPipeIPC
             guid = MakeUniqueGuid();
         }
 
-        volatile MemoryMappedFileConnection dataServer;
-        volatile MemoryMappedFileConnection pingServer;
-
-        object disposeLock = new object();
-
 
 
         public void Init() {
@@ -74,31 +69,34 @@ namespace NamedPipeIPC
                 try
                 {
                     DebugLog("Creating server with key " + id);
+
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
                     // actually we just implemented our own version of that because it's not available in resonite
-                    dataServer = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: false);
-                    dataServer.WaitForConnection(stopToken.Token);
-                        
-                    // not supported in resonite's dot net
-                    //pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
-
-                    while (!stopToken.IsCancellationRequested)
+                    using (MemoryMappedFileConnection dataServer = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: false))
                     {
-                        // if it takes twice as long as ping time, timeout
-                        IpcUtils.ResponseType responseType = ReadBytes(dataServer, out byte[] bytes, stopToken);
-                        if (responseType == IpcUtils.ResponseType.Ping)
+                        dataServer.WaitForConnection(stopToken.Token);
+
+                        // not supported in resonite's dot net
+                        //pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
+
+                        while (!stopToken.IsCancellationRequested)
                         {
-                            DebugLog("Why did data thread get ping??");
-                        }
-                        else if (responseType == IpcUtils.ResponseType.Data)
-                        {
-                            DebugLog("Recieved bytes");
-                            OnRecievedBytes?.Invoke(bytes);
-                        }
-                        else if (responseType == IpcUtils.ResponseType.Error)
-                        {
-                            DebugLog("Got error from " + id);
-                            break;
+                            // if it takes twice as long as ping time, timeout
+                            IpcUtils.ResponseType responseType = ReadBytes(dataServer, out byte[] bytes, stopToken);
+                            if (responseType == IpcUtils.ResponseType.Ping)
+                            {
+                                DebugLog("Why did data thread get ping??");
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Data)
+                            {
+                                DebugLog("Recieved bytes");
+                                OnRecievedBytes?.Invoke(bytes);
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Error)
+                            {
+                                DebugLog("Got error from " + id);
+                                break;
+                            }
                         }
                     }
                 }
@@ -121,28 +119,30 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
-                    pingServer = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: false);
-                    pingServer.WaitForConnection(stopToken.Token);
-
-                    this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                    OnConnect?.Invoke();
-                    while (!stopToken.IsCancellationRequested)
+                    using (MemoryMappedFileConnection pingServer = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: false))
                     {
-                        // if it takes twice as long as ping time, timeout
-                        IpcUtils.ResponseType responseType = ReadBytes(pingServer, out byte[] bytes, stopToken, millisBetweenPing * 2);
-                        if (responseType == IpcUtils.ResponseType.Ping)
+                        pingServer.WaitForConnection(stopToken.Token);
+
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        OnConnect?.Invoke();
+                        while (!stopToken.IsCancellationRequested)
                         {
-                            DebugLog("Got ping from " + id);
-                        }
-                        else if (responseType == IpcUtils.ResponseType.Data)
-                        {
-                            DebugLog("Got data from ping thread?? what u doin");
-                            break;
-                        }
-                        else if (responseType == IpcUtils.ResponseType.Error)
-                        {
-                            DebugLog("Got error from " + id);
-                            break;
+                            // if it takes twice as long as ping time, timeout
+                            IpcUtils.ResponseType responseType = ReadBytes(pingServer, out byte[] bytes, stopToken, millisBetweenPing * 2);
+                            if (responseType == IpcUtils.ResponseType.Ping)
+                            {
+                                DebugLog("Got ping from " + id);
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Data)
+                            {
+                                DebugLog("Got data from ping thread?? what u doin");
+                                break;
+                            }
+                            else if (responseType == IpcUtils.ResponseType.Error)
+                            {
+                                DebugLog("Got error from " + id);
+                                break;
+                            }
                         }
                     }
                 }
@@ -191,17 +191,6 @@ namespace NamedPipeIPC
 
         public void Dispose() {
             selfStopTokenSource.Cancel();
-            // disposing will interrupt the sync connects above and so lets us join the threads
-            if (dataServer != null)
-            {
-                dataServer.Dispose();
-                dataServer = null;
-            }
-            if (pingServer != null)
-            {
-                pingServer.Dispose();
-                pingServer = null;
-            }
             dataThread.Join();
             pingThread.Join();
             writeStatusThread.Join();

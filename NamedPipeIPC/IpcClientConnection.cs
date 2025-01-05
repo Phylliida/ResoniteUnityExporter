@@ -45,11 +45,6 @@ namespace NamedPipeIPC
         }
 
 
-
-        volatile MemoryMappedFileConnection dataClient;
-        volatile MemoryMappedFileConnection pingClient;
-        object cleanupLock = new object();
-
         public void Init() {
              // each connection is actually two connections
              // one that is just for sending keepalive pings
@@ -74,16 +69,17 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    dataClient = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: true);
-
-                    dataClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
-                    this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                    while (!stopToken.IsCancellationRequested)
+                    using (MemoryMappedFileConnection dataClient = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: true))
                     {
-                        // send messages
-                        while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
+                        dataClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        while (!stopToken.IsCancellationRequested)
                         {
-                            WriteBytes(dataClient, bytes);
+                            // send messages
+                            while (bytesToSend.TryDequeue(out byte[] bytes, -1, stopToken.Token))
+                            {
+                                WriteBytes(dataClient, bytes);
+                            }
                         }
                     }
                 }
@@ -106,15 +102,17 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    pingClient = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: true);
-                    pingClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
-                    this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
-                    OnConnect?.Invoke();
-                    while (!stopToken.IsCancellationRequested)
+                    using (MemoryMappedFileConnection pingClient = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: true))
                     {
-                        // keepalive ping
-                        SendPing(pingClient, millisBetweenPing);
-                        Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                        pingClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
+                        this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
+                        OnConnect?.Invoke();
+                        while (!stopToken.IsCancellationRequested)
+                        {
+                            // keepalive ping
+                            SendPing(pingClient, millisBetweenPing);
+                            Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
+                        }
                     }
                 }
                 catch (Exception e)
@@ -137,17 +135,6 @@ namespace NamedPipeIPC
         public void Dispose()
         {
             selfStopTokenSource.Cancel();
-            // disposing them will interrupt attempts to connect/send message
-            if (dataClient != null)
-            {
-                dataClient.Dispose();
-                dataClient = null;
-            }
-            if (pingClient != null)
-            {
-                pingClient.Dispose();
-                pingClient = null;
-            }
             dataThread.Join();
             pingThread.Join();
             bytesToSend.Dispose();
