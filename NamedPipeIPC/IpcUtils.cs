@@ -47,6 +47,9 @@ namespace NamedPipeIPC
             return buffer;
         }
 
+        public const int BUFFER_SIZE = 2048 * 16;
+        public const int PING_BUFFER_SIZE = 128;
+
         public static void WriteBytes(System.IO.Stream ioStream, byte[] bytes, int offset, int numToWrite, CancellationToken cancelToken)
         {
             System.Threading.Tasks.Task writeTask = ioStream.WriteAsync(bytes, offset, numToWrite, cancelToken);

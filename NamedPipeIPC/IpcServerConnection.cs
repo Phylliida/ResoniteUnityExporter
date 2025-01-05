@@ -59,8 +59,8 @@ namespace NamedPipeIPC
             guid = MakeUniqueGuid();
         }
 
-        volatile NamedPipeServerStream dataServer;
-        volatile NamedPipeServerStream pingServer;
+        volatile MemoryMappedFileConnection dataServer;
+        volatile MemoryMappedFileConnection pingServer;
 
         object disposeLock = new object();
 
@@ -76,7 +76,8 @@ namespace NamedPipeIPC
                     DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
                     // actually we just implemented our own version of that because it's not available in resonite
-                        dataServer.WaitForConnection();
+                    dataServer = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: false);
+                    dataServer.WaitForConnection(stopToken.Token);
                         
                     // not supported in resonite's dot net
                     //pipeServer.WaitForConnectionAsync(stopToken.Token).GetAwaiter().GetResult();
@@ -84,7 +85,7 @@ namespace NamedPipeIPC
                     while (!stopToken.IsCancellationRequested)
                     {
                         // if it takes twice as long as ping time, timeout
-                        IpcUtils.ResponseType responseType = ReadBytes(dataServer, -1, out byte[] bytes);
+                        IpcUtils.ResponseType responseType = ReadBytes(dataServer, out byte[] bytes, stopToken);
                         if (responseType == IpcUtils.ResponseType.Ping)
                         {
                             DebugLog("Why did data thread get ping??");
@@ -120,15 +121,15 @@ namespace NamedPipeIPC
                 {
                     DebugLog("Creating server with key " + id);
                     // PipeOptions.Asynchronous is very important!! Or WaitForConnectionAsync won't stop when stopToken is canceled
-                    pingServer = new NamedPipeServerStream(id);
-                    pingServer.WaitForConnection();
+                    pingServer = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: false);
+                    pingServer.WaitForConnection(stopToken.Token);
 
                     this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                     OnConnect?.Invoke();
                     while (!stopToken.IsCancellationRequested)
                     {
                         // if it takes twice as long as ping time, timeout
-                        IpcUtils.ResponseType responseType = ReadBytes(pingServer, millisBetweenPing * 2, out byte[] bytes);
+                        IpcUtils.ResponseType responseType = ReadBytes(pingServer, out byte[] bytes, stopToken, millisBetweenPing * 2);
                         if (responseType == IpcUtils.ResponseType.Ping)
                         {
                             DebugLog("Got ping from " + id);
@@ -208,60 +209,35 @@ namespace NamedPipeIPC
             stopToken.Dispose();
         }
 
-        public IpcUtils.ResponseType ReadBytes(System.IO.Stream ioStream, out byte[] bytes, CancellationTokenSource readStopToken)
+        public IpcUtils.ResponseType ReadBytes(MemoryMappedFileConnection connection, out byte[] bytes, CancellationTokenSource readStopToken, int millisTimeout=-1)
         {
-            try
-            {
-                byte[] kindBytes = IpcUtils.ReadBytes(ioStream, 1, readStopToken.Token);
-                DebugLog("read bytes with kind " + kindBytes[0]);
-                if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
-                {
-                    bytes = null;
-                    DebugLog("Got zero for message type, " + GetServerKey() + " is disconnected");
-                    return IpcUtils.ResponseType.Error;
-                }
-                else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
-                {
-                    DebugLog("read ping bytes");
-                    bytes = null;
-                    return IpcUtils.ResponseType.Ping;
-                }
-                else if (kindBytes[0] == IpcUtils.DATA_MESSAGE)
-                {
-                    DebugLog("read data bytes");
-                    byte[] sizeBytes = IpcUtils.ReadBytes(ioStream, 4, readStopToken.Token);
-                    int numBytes = BitConverter.ToInt32(sizeBytes, 0);
-                    DebugLog(numBytes + " more bytes to read");
-                    bytes = IpcUtils.ReadBytes(ioStream, numBytes, readStopToken.Token);
-                    DebugLog(numBytes + " read " + bytes.Length + " more bytes");
-                    return IpcUtils.ResponseType.Data;
-                }
-                else
-                {
-                    throw new ArgumentException("Unknown message kind " + kindBytes[0]);
-                }
-            }
-            // we timed out or were canceled, terminate the connection
-            catch (IpcUtils.CanceledException canceled)
+            byte[] kindBytes = connection.ReadData(readStopToken.Token, millisTimeout);
+            DebugLog("read bytes with kind " + kindBytes[0]);
+            if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
             {
                 bytes = null;
+                DebugLog("Got zero for message type, " + GetServerKey() + " is disconnected");
                 return IpcUtils.ResponseType.Error;
             }
-        }
-        public IpcUtils.ResponseType ReadBytes(System.IO.Stream ioStream, int millisTimeout, out byte[] bytes) {
-            if (millisTimeout < 0)
+            else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
             {
-                return ReadBytes(ioStream, out bytes, stopToken);
+                DebugLog("read ping bytes");
+                bytes = null;
+                return IpcUtils.ResponseType.Ping;
+            }
+            else if (kindBytes[0] == IpcUtils.DATA_MESSAGE)
+            {
+                DebugLog("read data bytes");
+                byte[] sizeBytes = connection.ReadData(readStopToken.Token, millisTimeout);
+                int numBytes = BitConverter.ToInt32(sizeBytes, 0);
+                DebugLog(numBytes + " more bytes to read");
+                bytes = connection.ReadData(readStopToken.Token, millisTimeout);
+                DebugLog(numBytes + " read " + bytes.Length + " more bytes");
+                return IpcUtils.ResponseType.Data;
             }
             else
             {
-                using (CancellationTokenSource timeoutSource = new CancellationTokenSource(millisTimeout))
-                {
-                    using (CancellationTokenSource mergedSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutSource.Token, this.stopToken.Token))
-                    {
-                        return ReadBytes(ioStream, out bytes, mergedSource);
-                    }
-                }
+                throw new ArgumentException("Unknown message kind " + kindBytes[0]);
             }
         }
 

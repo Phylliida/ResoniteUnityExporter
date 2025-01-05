@@ -45,8 +45,6 @@ namespace NamedPipeIPC
         }
 
 
-        const int BUFFER_SIZE = 2048 * 16;
-        const int PING_BUFFER_SIZE = 128;
 
         volatile MemoryMappedFileConnection dataClient;
         volatile MemoryMappedFileConnection pingClient;
@@ -76,7 +74,7 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    dataClient = new MemoryMappedFileConnection(id, BUFFER_SIZE, isWriter: true);
+                    dataClient = new MemoryMappedFileConnection(id, IpcUtils.BUFFER_SIZE, isWriter: true);
 
                     dataClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
@@ -108,7 +106,7 @@ namespace NamedPipeIPC
                     DebugLog("Connecting to " + id);
                     // "." means local computer which is what we want
                     // PipeOptions.Asynchronous is very important!! Or ConnectAsync won't stop when stopToken is canceled
-                    pingClient = new MemoryMappedFileConnection(id, PING_BUFFER_SIZE, isWriter: true);
+                    pingClient = new MemoryMappedFileConnection(id, IpcUtils.PING_BUFFER_SIZE, isWriter: true);
                     pingClient.WaitForConnection(stopToken.Token, millisBetweenPing * timeoutMultiplier);
                     this.connectionStatus = IpcUtils.ConnectionStatus.Connected;
                     OnConnect?.Invoke();
