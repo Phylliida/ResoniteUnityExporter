@@ -111,18 +111,18 @@ namespace ImportFromUnityLib
                 meshx.SetUV_Dimension(uv, mesh.uvChannels[uv].dimension);
             }
 
-            U2ResUtils.CopyArray(mesh.positions, meshx.RawPositions);
+            ResoniteBridgeUtils.CopyArray(mesh.positions, meshx.RawPositions);
             if (meshx.HasColors)
             {
-                U2ResUtils.CopyArray(mesh.colors, meshx.RawColors);
+                ResoniteBridgeUtils.CopyArray(mesh.colors, meshx.RawColors);
             }
             if (hasNormals)
             {
-                U2ResUtils.CopyArray(mesh.normals, meshx.RawNormals);
+                ResoniteBridgeUtils.CopyArray(mesh.normals, meshx.RawNormals);
             }
             if (hasTangents)
             {
-                U2ResUtils.CopyArray(mesh.tangents, meshx.RawTangents);
+                ResoniteBridgeUtils.CopyArray(mesh.tangents, meshx.RawTangents);
             }
 
 
@@ -132,15 +132,15 @@ namespace ImportFromUnityLib
                 int curDimension = uvChannel.dimension;
                 if (curDimension == 2)
                 {
-                    U2ResUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
+                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
                 }
                 else if (curDimension == 3)
                 {
-                    U2ResUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
+                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
                 }
                 else if (curDimension == 4)
                 {
-                    U2ResUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
+                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
                 }
             }
 
@@ -166,7 +166,7 @@ namespace ImportFromUnityLib
                 }
                 int numPrimitives = indices.Length / 3;
                 submesh.SetCount(numPrimitives);
-                U2ResUtils.CopyArray(indices, submesh.RawIndicies);
+                ResoniteBridgeUtils.CopyArray(indices, submesh.RawIndicies);
             }
 
             for (int blendShapeI = 0; blendShapeI < mesh.blendShapes.Length; blendShapeI++)
@@ -182,16 +182,16 @@ namespace ImportFromUnityLib
                     BlendShapeFrame_U2Res blendShapeFrame = blendShape.frames[blendShapeFrameI];
                     // todo: ModelImporter just uses 1.0 for weight, should we do that?
                     Elements.Assets.BlendShapeFrame blendShapeFrameX = blendShapeX.AddFrame(blendShapeFrame.frameWeight);
-                    U2ResUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
+                    ResoniteBridgeUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
 
                     if (hasNormals)
                     {
-                        U2ResUtils.CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
+                        ResoniteBridgeUtils.CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
                     }
 
                     if (hasTangents)
                     {
-                        U2ResUtils.CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
+                        ResoniteBridgeUtils.CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
                     }
                 }
             }

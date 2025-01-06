@@ -68,8 +68,71 @@ namespace ResoniteBridgeUnity
             }
         }
 
+		public static void CheckAllEqual(object a, object b)
+		{
+			foreach (FieldInfo field in ResoniteBridgeUtils.GetTypeFields(a.GetType()))
+			{
+				object valueA = field.GetValue(a);
+				object valueB = field.GetValue(b);
+				if (ResoniteBridgeUtils.primitiveTypes.Contains(field.FieldType) || field.FieldType == typeof(System.String))
+				{
+					// equality doesn't work because they are boxed, just use to string as good enough
+                    if (valueA.ToString() == valueB.ToString())
+					{
+						Debug.Log("Matches " + a.GetType() + "." + field.Name + " with values " + valueA + " " + valueB);
+					}
+					else
+					{
+						Debug.LogError("Does not match (primitive) " + a.GetType() + "." + field.Name + " has values " + valueA + " and " + valueB);
+					}
+                }
+				else
+				{
+                    if (valueA == null || valueB == null)
+                    {
+                        if (valueA == valueB)
+                        {
+                            Debug.Log("Matches " + a.GetType() + "." + field.Name + " (both null)");
+                        }
+                        else
+                        {
+                            Debug.LogError("Does not match (struct/class) " + a.GetType() + "." + field.Name + " has values " + valueA + " and " + valueB);
+                        }
+                    }
+                    else if (field.FieldType.IsArray)
+                    {
+						int aLen = (int)valueA.GetType().GetProperty("Length")
+										.GetValue(valueA, new object[] { });
+                        int bLen = (int)valueB.GetType().GetProperty("Length")
+										.GetValue(valueA, new object[] { });
+						if (aLen != bLen)
+						{
+							Debug.LogError("Does not match (array length) " + a.GetType() + "." + field.Name + ".Length, has values " + aLen + " and " + bLen);
+						}
+						else
+						{
+							Debug.Log("Array length matches " + a.GetType() + "." + field.Name + ".Length with lengths of " + aLen + " " + bLen);
+                            var aGetMethod = valueA.GetType().GetMethod("GetValue", new Type[] { typeof(int) });
+                            var bGetMethod = valueB.GetType().GetMethod("GetValue", new Type[] { typeof(int)});
+							object[] args = new object[] { 0 };
+							// todo:
+							for (int i = 0; i < aLen; i++)
+							{
+							//	var aArrValue = aGetMethod()
+							}
+                        }
+                    }
+                    else
+                    {
+						CheckAllEqual(valueA, valueB);
+                    }
+                }
+            }
+		}
+
 		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{
+			ResoniteBridgeUtils.DebugLog = x => Debug.Log(x);
             List<string> boneNames = new List<string>();
             if (NotEmpty(skinnedMeshRenderer.bones))
             {
@@ -84,6 +147,8 @@ namespace ResoniteBridgeUnity
 			using (Timer _ = new Timer("Encoding"))
 			{
                 byte[] encoded = ResoniteBridgeUtils.EncodeObject(convertedMesh);
+				StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
+				CheckAllEqual(convertedMesh, decoded);
             }
             /*
 			bridgeClient.SendMessageSync(
@@ -174,7 +239,7 @@ namespace ResoniteBridgeUnity
 			int numVertices;
             using (Timer _  = new Timer("Mesh data"))
 			{
-				vertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
+				vertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
 				numVertices = vertices.Length;
                 meshx.positions = vertices;
 				if (NotEmpty(unityMesh.colors))
@@ -182,17 +247,17 @@ namespace ResoniteBridgeUnity
 					// important to use .colors instead of .colors32 on the unityMesh
 					// because colors32 stores each r,g,b,a as a byte instead of a float
 					// so this conversion would not work without manually fixing
-					meshx.colors = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
+					meshx.colors = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
 				}
 
 				if (NotEmpty(unityMesh.normals))
 				{
-					normals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
+					normals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
 					meshx.normals = normals;
 				}
 				if (NotEmpty(unityMesh.tangents))
 				{
-					tangents = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
+					tangents = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
 					meshx.tangents = tangents;
 				}
 			}
@@ -216,19 +281,19 @@ namespace ResoniteBridgeUnity
 					{
 						List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
 						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-						allUvs[i].uv_2D = U2ResUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
+						allUvs[i].uv_2D = ResoniteBridgeUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
 					}
 					else if (curDimension == 3)
 					{
 						List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
 						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-						allUvs[i].uv_3D = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
+						allUvs[i].uv_3D = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
 					}
 					else if (curDimension == 4)
 					{
 						List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
 						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-						allUvs[i].uv_4D = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
+						allUvs[i].uv_4D = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
 					}
 				}
 				meshx.uvChannels = allUvs;
@@ -343,7 +408,7 @@ namespace ResoniteBridgeUnity
 							deltaTangents
 						);
 
-						Float3_U2Res[] frameVertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
+						Float3_U2Res[] frameVertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
 						for (int i = 0; i < numVertices; i++)
 						{
 							frameVertices[i].x = frameVertices[i].x - vertices[i].x;
@@ -354,7 +419,7 @@ namespace ResoniteBridgeUnity
 
 						if (normals != null)
 						{
-							Float3_U2Res[] frameNormals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
+							Float3_U2Res[] frameNormals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
 							for (int i = 0; i < numVertices; i++)
 							{
 								frameNormals[i].x = frameNormals[i].x - normals[i].x;
@@ -366,7 +431,7 @@ namespace ResoniteBridgeUnity
 
 						if (tangents != null)
 						{
-							Float3_U2Res[] frameTangents = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
+							Float3_U2Res[] frameTangents = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
 							for (int i = 0; i < numVertices; i++)
 							{
 								frameTangents[i].x = frameTangents[i].x - tangents[i].x;

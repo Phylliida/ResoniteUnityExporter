@@ -97,25 +97,7 @@ namespace ResoniteBridgeLib
             return destination;
         }
 
-        public static void CopyToArray<T>(T[] dest, byte[] source, int sourceOffset = 0, int numBytesToCopy = -1) where T : struct
-        {
-            CopyToArray(dest, source, sourceOffset: sourceOffset, numBytesToCopy: numBytesToCopy);
-        }
-        public static void CopyToArray(object destArray, byte[] source, int sourceOffset = 0, int numBytesToCopy = -1)
-        {
-            GCHandle handle = GCHandle.Alloc(destArray, GCHandleType.Pinned);
-            try
-            {
-                IntPtr pointer = handle.AddrOfPinnedObject();
-                Marshal.Copy(source, sourceOffset, pointer, (numBytesToCopy >= 0) ? numBytesToCopy : source.Length);
-            }
-            finally
-            {
-                if (handle.IsAllocated)
-                    handle.Free();
-            }
-
-        }
+        
         public static T[] FromByteArray<T>(byte[] source) where T : struct
         {
             T[] destination = new T[source.Length / Marshal.SizeOf(typeof(T))];
@@ -130,6 +112,21 @@ namespace ResoniteBridgeLib
             return FromByteArray<ArrOut>(ToByteArray<ArrIn>(inArr));
         }
 
+        public static void CopyToArray<T>(T[] dest, byte[] source, int sourceOffset = 0, int numBytesToCopy = -1) where T : struct
+        {
+            // note: it would be nice to make dest an object but that crashes things, don't do that
+            GCHandle handle = GCHandle.Alloc(dest, GCHandleType.Pinned);
+            try
+            {
+                IntPtr pointer = handle.AddrOfPinnedObject();
+                Marshal.Copy(source, sourceOffset, pointer, (numBytesToCopy >= 0) ? numBytesToCopy : source.Length);
+            }
+            finally
+            {
+                if (handle.IsAllocated)
+                    handle.Free();
+            }
+        }
         public static void CopyArray<T1, T2>(T1[] src, T2[] dst)
             where T1 : struct
             where T2 : struct
@@ -155,7 +152,7 @@ namespace ResoniteBridgeLib
                 outBytes, offset,
                 sizeof(int));
             offset += sizeof(int);
-            if (writeBytes) Buffer.BlockCopy(strBytes, 0, outBytes, 0, strBytes.Length);
+            if (writeBytes) Buffer.BlockCopy(strBytes, 0, outBytes, offset, strBytes.Length);
             offset += strBytes.Length;
         }
 
@@ -167,6 +164,11 @@ namespace ResoniteBridgeLib
 
         public static object DecodeObject(Type type, byte[] bytes, ref int offset)
         {
+            // null check byte
+            if(bytes[offset++] == 0)
+            {
+                return null;
+            }
             object result;
             switch (type.ToString())
             {
@@ -228,17 +230,19 @@ namespace ResoniteBridgeLib
             {
                 long arrayLen = BitConverter.ToInt64(bytes, offset);
                 offset += sizeof(long);
-
                 Type arrayType = GetArrayType(type);
 
                 int arraySizeInBytes = (int)(Marshal.SizeOf(arrayType) * arrayLen);
+                DebugLog("Got array of length " + arrayLen + " and of type " + arrayType.ToString());
 
                 if (TypeRecursivelyHasAllPrimitiveFields(type))
                 {
-                    object destArr = type.GetConstructor(new Type[] { typeof(System.Int32) })
-                        .Invoke(new object[] { (int)arrayLen });
+                    object destArr = Array.CreateInstance(arrayType, arrayLen);
 
-                    CopyToArray(destArr, bytes, offset, arraySizeInBytes);
+                    ThisStaticType().GetMethod("CopyToArray", BindingFlags.Static | BindingFlags.Public)
+                        .MakeGenericMethod(arrayType)
+                        .Invoke(null, new object[] { destArr, bytes, offset, arraySizeInBytes });
+                    //CopyToArray(destArr, bytes, offset, arraySizeInBytes);
                     offset += arraySizeInBytes;
                     return destArr;
                 }
@@ -246,7 +250,7 @@ namespace ResoniteBridgeLib
                 {
                     object[] parms = new object[] { bytes, (int)arrayLen, offset };
 
-                    object res = ThisStaticType().GetMethod("SlowDecodeArray")
+                    object res = ThisStaticType().GetMethod("DecodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
                         .MakeGenericMethod(arrayType)
                         .Invoke(null, parms);
                     offset = (int)parms[2];
@@ -255,14 +259,20 @@ namespace ResoniteBridgeLib
             }
             else
             {
-                object res = type.GetConstructor(new Type[] { })
-                    .Invoke(new object[] { });
+                object res = CreateDefaultOfObject(type);
+                DebugLog("Running empty constructor for type " + type.ToString());
                 foreach (FieldInfo field in GetTypeFields(type))
                 {
+                    DebugLog("Got field " + field + " for type " + type.ToString());
                     field.SetValue(res, DecodeObject(field.FieldType, bytes, ref offset));
                 }
                 return res;
             }
+        }
+
+        static object CreateDefaultOfObject(Type type)
+        {
+            return Activator.CreateInstance(type);
         }
 
         static Type ThisStaticType()
@@ -271,10 +281,18 @@ namespace ResoniteBridgeLib
             return MethodBase.GetCurrentMethod().DeclaringType;
         }
 
-
+        public static ResoniteBridgeServer.LogDelegate DebugLog = x => Console.WriteLine(x);
 
         static void EncodeObject(object obj, byte[] outBytes, ref int offset, bool writeBytes)
         {
+            // null checking
+            if (writeBytes) outBytes[offset] = (byte)((obj == null) ? 0 : 1);
+            offset += 1;
+            if (obj == null)
+            {
+                return;
+            }
+            // not null, actually parse the value
             Type objType = obj.GetType();
             switch (obj.GetType().ToString())
             {
@@ -335,7 +353,7 @@ namespace ResoniteBridgeLib
                 //// write length
                 if (writeBytes) Buffer.BlockCopy(
                     BitConverter.GetBytes(arrayLength), 0,
-                    outBytes, 0, sizeof(long));
+                    outBytes, offset, sizeof(long));
                 offset += sizeof(long);
 
                 //// write contents
@@ -357,7 +375,7 @@ namespace ResoniteBridgeLib
                 {
                     object[] parms = new object[] { obj, outBytes, offset, writeBytes };
                     // need to use reflection because we don't know the array type
-                    ThisStaticType().GetMethod("EncodeArraySlow")
+                    ThisStaticType().GetMethod("EncodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
                         .MakeGenericMethod(arrayType)
                         .Invoke(null, parms);
                     // ref types are passed like this
@@ -368,12 +386,13 @@ namespace ResoniteBridgeLib
             {
                 foreach (FieldInfo field in GetTypeFields(objType))
                 {
+                    DebugLog("Got field: " + field.Name + " of type " + objType.ToString());
                     EncodeObject(field.GetValue(obj), outBytes, ref offset, writeBytes);
                 }
             }
         }
 
-        public static void EncodeArraySlow<T>(T[] arr, byte[] outBytes, ref int offset, bool writeBytes)
+        static void EncodeArraySlow<T>(T[] arr, byte[] outBytes, ref int offset, bool writeBytes)
         {
             for (int i = 0; i < arr.Length; i++)
             {
@@ -415,7 +434,7 @@ namespace ResoniteBridgeLib
 
         public static IEnumerable<FieldInfo> GetTypeFields(Type type)
         {
-            foreach (FieldInfo field in type.GetFields())
+            foreach (FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
             {
                 if (!field.IsSpecialName)
                 {
