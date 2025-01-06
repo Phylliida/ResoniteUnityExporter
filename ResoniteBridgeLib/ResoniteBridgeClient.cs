@@ -163,8 +163,8 @@ namespace ResoniteBridgeLib
             {
                 try
                 {
-                    ResoniteBridgeMessage parsedResult = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
-                        bytes, typeof(ResoniteBridgeMessage));
+                    ResoniteBridgeMessage parsedResult = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject< ResoniteBridgeMessage>(
+                        bytes);
                     outputMessages[parsedResult.uuid] = parsedResult;
                     outputMessageEvents[parsedResult.uuid].Set();
                 }

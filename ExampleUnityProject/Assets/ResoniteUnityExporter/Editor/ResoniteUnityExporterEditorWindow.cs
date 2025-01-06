@@ -89,6 +89,7 @@ namespace ResoniteBridgeUnity {
             GUILayout.Label(labelText);
 
 			bool ready = skinnedMesh != null && bridgeClient.IsConnected();
+			ready = true; // tmp
             EditorGUI.BeginDisabledGroup(!ready);
             
             if (GUILayout.Button("Export"))

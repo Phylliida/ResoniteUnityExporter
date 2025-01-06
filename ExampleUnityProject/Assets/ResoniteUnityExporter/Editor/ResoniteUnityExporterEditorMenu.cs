@@ -13,14 +13,35 @@ using System.Xml.Linq;
 using UnityEngine.XR;
 using UnityEngine.Assertions.Must;
 using System.Runtime.InteropServices;
+using System.Reflection;
+using System.CodeDom;
+using UnityEditor.Playables;
+using System.ComponentModel;
+using System.Text;
 
 
 namespace ResoniteBridgeUnity
 {
+
+	public class Timer : IDisposable
+	{
+		string name;
+		long startMillis;
+		public Timer(string name)
+		{
+			this.name = name;
+			startMillis = System.Diagnostics.Stopwatch.GetTimestamp();
+		}
+
+		public void Dispose()
+		{
+			long elapsedMillis = System.Diagnostics.Stopwatch.GetTimestamp() - startMillis;
+			Debug.Log(name + " elapsed " + elapsedMillis / 1000.0f);
+		}
+	}
+
 	public class ResoniteUnityExporterEditorMenu
 	{
-
-
 		public static void TestBees(ResoniteBridgeClient bridgeClient)
 		{
 
@@ -46,6 +67,7 @@ namespace ResoniteBridgeUnity
                 Debug.Log("Got response float: " + responseFloat.x + " " + responseFloat.y + " " + responseFloat.z);
             }
         }
+
 		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{
             List<string> boneNames = new List<string>();
@@ -59,6 +81,11 @@ namespace ResoniteBridgeUnity
 
 			StaticMesh_U2Res convertedMesh = ConvertMesh(skinnedMeshRenderer.sharedMesh, boneNames.ToArray());
 
+			using (Timer _ = new Timer("Encoding"))
+			{
+                byte[] encoded = ResoniteBridgeUtils.EncodeObject(convertedMesh);
+            }
+            /*
 			bridgeClient.SendMessageSync(
                 "ImportToStaticMesh",
 				ResoniteBridgeUtils.EncodeObject(convertedMesh),
@@ -71,7 +98,13 @@ namespace ResoniteBridgeUnity
 				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
 			}
 			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
-			Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
+			
+			*/
+            RefID_U2Res staticMeshRefId = new RefID_U2Res()
+			{
+				id = 420
+			};
+            Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
 			return staticMeshRefId;
 		}
 
@@ -135,259 +168,278 @@ namespace ResoniteBridgeUnity
 			meshx.name = unityMesh.name;
             int[] uvDimensions = GetMeshUVChannelDimensions(unityMesh, out int[] actualTexCoordIndices);
 
-            Float3_U2Res[] vertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
-            meshx.positions = vertices;
-			int numVertices = vertices.Length;
-            if (NotEmpty(unityMesh.colors))
-            {
-                // important to use .colors instead of .colors32 on the unityMesh
-                // because colors32 stores each r,g,b,a as a byte instead of a float
-                // so this conversion would not work without manually fixing
-                meshx.colors = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
-            }
+			Float3_U2Res[] vertices = null;
+			Float3_U2Res[] normals = null;
+			Float4_U2Res[] tangents = null;
+			int numVertices;
+            using (Timer _  = new Timer("Mesh data"))
+			{
+				vertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
+				numVertices = vertices.Length;
+                meshx.positions = vertices;
+				if (NotEmpty(unityMesh.colors))
+				{
+					// important to use .colors instead of .colors32 on the unityMesh
+					// because colors32 stores each r,g,b,a as a byte instead of a float
+					// so this conversion would not work without manually fixing
+					meshx.colors = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
+				}
 
-            Float3_U2Res[] normals = null;
-            if (NotEmpty(unityMesh.normals))
-            {
-                normals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
-                meshx.normals = normals;
-            }
-            Float4_U2Res[] tangents = null;
-            if (NotEmpty(unityMesh.tangents))
-            {
-                tangents = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
-                meshx.tangents = tangents;
-            }
+				if (NotEmpty(unityMesh.normals))
+				{
+					normals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
+					meshx.normals = normals;
+				}
+				if (NotEmpty(unityMesh.tangents))
+				{
+					tangents = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
+					meshx.tangents = tangents;
+				}
+			}
             Debug.Log("Loaded mesh vertex data");
 
-            // uvs are stored as UV_Array[] uv_channels
-            // where uv_channels[0] is for UV0 array, uv_channels[1] is for UV1 array, etc.
-            // inside a UV_Array they have three arrays,
-            // float2[] uv_2D
-            // float3[] uv_3D
-            // float4[] uv_4D
-            // so we can just set that directly
-            UVArray_U2Res[] allUvs = new UVArray_U2Res[uvDimensions.Length];
-            for (int i = 0; i < uvDimensions.Length; i++)
-            {
-                allUvs[i] = new UVArray_U2Res();
-                int curDimension = uvDimensions[i];
-                if (curDimension == 2)
-                {
-                    List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
-                    unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_2D = U2ResUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
-                }
-                else if (curDimension == 3)
-                {
-                    List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
-                    unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_3D = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
-                }
-                else if (curDimension == 4)
-                {
-                    List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
-                    unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                    allUvs[i].uv_4D = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
-                }
-            }
-            meshx.uvChannels = allUvs;
+			// uvs are stored as UV_Array[] uv_channels
+			// where uv_channels[0] is for UV0 array, uv_channels[1] is for UV1 array, etc.
+			// inside a UV_Array they have three arrays,
+			// float2[] uv_2D
+			// float3[] uv_3D
+			// float4[] uv_4D
+			// so we can just set that directly
+			using (Timer _ = new Timer("UV data"))
+			{
+				UVArray_U2Res[] allUvs = new UVArray_U2Res[uvDimensions.Length];
+				for (int i = 0; i < uvDimensions.Length; i++)
+				{
+					allUvs[i] = new UVArray_U2Res();
+					int curDimension = uvDimensions[i];
+					if (curDimension == 2)
+					{
+						List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
+						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+						allUvs[i].uv_2D = U2ResUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
+					}
+					else if (curDimension == 3)
+					{
+						List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
+						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+						allUvs[i].uv_3D = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
+					}
+					else if (curDimension == 4)
+					{
+						List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
+						unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
+						allUvs[i].uv_4D = U2ResUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
+					}
+				}
+				meshx.uvChannels = allUvs;
+			}
             Debug.Log("Loaded mesh uv channels");
 
-            // submesh (index buffers)
-            TriSubmesh_U2Res[] submeshes = new TriSubmesh_U2Res[unityMesh.subMeshCount];
-            for (int subMeshI = 0; subMeshI < unityMesh.subMeshCount; subMeshI++)
-            {
-                UnityEngine.Rendering.SubMeshDescriptor subMeshDescriptor = unityMesh.GetSubMesh(subMeshI);
-				TriSubmesh_U2Res submesh = new TriSubmesh_U2Res();
-                // todo: Lines, LineStrip, Points
-                int[] indicies = unityMesh.GetIndices(subMeshI);
-                int numPrimitives = 0;
-                bool reverse = false;
-                if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Triangles)
-                {
-                    numPrimitives = indicies.Length / 3;
-                    if (reverse)
-                    {
-                        // do it in place because why not
-                        for (int triI = 0; triI < indicies.Length; triI++)
-                        {
-                            int v0 = indicies[triI];
-                            int v1 = indicies[triI + 1];
-                            int v2 = indicies[triI + 2];
-                            indicies[triI] = v2;
-                            indicies[triI + 1] = v1;
-                            indicies[triI + 2] = v0;
-                        }
-                    }
-                }
-                else if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Quads)
-                {
-                    // turn each quad into two tris
-                    numPrimitives = 2 * (indicies.Length / 4);
-                    int[] triIndicies = new int[numPrimitives * 3];
-                    int triIndex = 0;
-                    for (int quadI = 0; quadI < indicies.Length; quadI += 4)
-                    {
-                        int v0 = indicies[quadI];
-                        int v1 = indicies[quadI + 1];
-                        int v2 = indicies[quadI + 2];
-                        int v3 = indicies[quadI + 3];
-                        if (reverse)
-                        {
-                            triIndicies[triIndex++] = v3;
-                            triIndicies[triIndex++] = v2;
-                            triIndicies[triIndex++] = v1;
+			using (Timer _ = new Timer("Submesh data"))
+			{
 
-                            triIndicies[triIndex++] = v3;
-                            triIndicies[triIndex++] = v1;
-                            triIndicies[triIndex++] = v0;
-                        }
-                        else
-                        {
-                            triIndicies[triIndex++] = v0;
-                            triIndicies[triIndex++] = v1;
-                            triIndicies[triIndex++] = v2;
+				// submesh (index buffers)
+				TriSubmesh_U2Res[] submeshes = new TriSubmesh_U2Res[unityMesh.subMeshCount];
+				for (int subMeshI = 0; subMeshI < unityMesh.subMeshCount; subMeshI++)
+				{
+					UnityEngine.Rendering.SubMeshDescriptor subMeshDescriptor = unityMesh.GetSubMesh(subMeshI);
+					TriSubmesh_U2Res submesh = new TriSubmesh_U2Res();
+					// todo: Lines, LineStrip, Points
+					int[] indicies = unityMesh.GetIndices(subMeshI);
+					int numPrimitives = 0;
+					bool reverse = false;
+					if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Triangles)
+					{
+						numPrimitives = indicies.Length / 3;
+						if (reverse)
+						{
+							// do it in place because why not
+							for (int triI = 0; triI < indicies.Length; triI++)
+							{
+								int v0 = indicies[triI];
+								int v1 = indicies[triI + 1];
+								int v2 = indicies[triI + 2];
+								indicies[triI] = v2;
+								indicies[triI + 1] = v1;
+								indicies[triI + 2] = v0;
+							}
+						}
+					}
+					else if (subMeshDescriptor.topology == UnityEngine.MeshTopology.Quads)
+					{
+						// turn each quad into two tris
+						numPrimitives = 2 * (indicies.Length / 4);
+						int[] triIndicies = new int[numPrimitives * 3];
+						int triIndex = 0;
+						for (int quadI = 0; quadI < indicies.Length; quadI += 4)
+						{
+							int v0 = indicies[quadI];
+							int v1 = indicies[quadI + 1];
+							int v2 = indicies[quadI + 2];
+							int v3 = indicies[quadI + 3];
+							if (reverse)
+							{
+								triIndicies[triIndex++] = v3;
+								triIndicies[triIndex++] = v2;
+								triIndicies[triIndex++] = v1;
 
-                            triIndicies[triIndex++] = v0;
-                            triIndicies[triIndex++] = v2;
-                            triIndicies[triIndex++] = v3;
-                        }
-                    }
-                    indicies = triIndicies;
-                }
-                submesh.indicies = indicies;
-                submeshes[subMeshI] = submesh;
-            }
-			meshx.submeshes = submeshes; // hhf
+								triIndicies[triIndex++] = v3;
+								triIndicies[triIndex++] = v1;
+								triIndicies[triIndex++] = v0;
+							}
+							else
+							{
+								triIndicies[triIndex++] = v0;
+								triIndicies[triIndex++] = v1;
+								triIndicies[triIndex++] = v2;
 
-			BlendShape_U2Res[] blendShapes = new BlendShape_U2Res[unityMesh.blendShapeCount];
+								triIndicies[triIndex++] = v0;
+								triIndicies[triIndex++] = v2;
+								triIndicies[triIndex++] = v3;
+							}
+						}
+						indicies = triIndicies;
+					}
+					submesh.indicies = indicies;
+					submeshes[subMeshI] = submesh;
+				}
+				meshx.submeshes = submeshes; // hhf
+			}
 
-            for (int blendShapeI = 0; blendShapeI < unityMesh.blendShapeCount; blendShapeI++)
-            {
-				BlendShape_U2Res blendShape = new BlendShape_U2Res();
-                blendShape.name = unityMesh.GetBlendShapeName(blendShapeI);
-                int blendShapeFrameCount = unityMesh.GetBlendShapeFrameCount(blendShapeI);
-				blendShape.frames = new BlendShapeFrame_U2Res[blendShapeFrameCount];
-                for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
-                {
-					BlendShapeFrame_U2Res frame = new BlendShapeFrame_U2Res();
-                    // todo: ModelImporter just uses 1.0 for weight, should we do that?
-                    frame.frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
-                    UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
-                    UnityEngine.Vector3[] deltaNormals = null;
-                    if (normals != null)
-                    {
-                        deltaNormals = new UnityEngine.Vector3[numVertices];
-                    }
+			using (Timer _ = new Timer("Blendshape data"))
+			{
 
-                    UnityEngine.Vector3[] deltaTangents = null;
-                    if (tangents != null)
-                    {
-                        deltaTangents = new UnityEngine.Vector3[numVertices];
-                    }
+				BlendShape_U2Res[] blendShapes = new BlendShape_U2Res[unityMesh.blendShapeCount];
 
-                    unityMesh.GetBlendShapeFrameVertices(
-                        blendShapeI,
-                        blendShapeFrameI,
-                        deltaVertices,
-                        deltaNormals,
-	                    deltaTangents
-                    );
+				for (int blendShapeI = 0; blendShapeI < unityMesh.blendShapeCount; blendShapeI++)
+				{
+					BlendShape_U2Res blendShape = new BlendShape_U2Res();
+					blendShape.name = unityMesh.GetBlendShapeName(blendShapeI);
+					int blendShapeFrameCount = unityMesh.GetBlendShapeFrameCount(blendShapeI);
+					blendShape.frames = new BlendShapeFrame_U2Res[blendShapeFrameCount];
+					for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
+					{
+						BlendShapeFrame_U2Res frame = new BlendShapeFrame_U2Res();
+						// todo: ModelImporter just uses 1.0 for weight, should we do that?
+						frame.frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
+						UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
+						UnityEngine.Vector3[] deltaNormals = null;
+						if (normals != null)
+						{
+							deltaNormals = new UnityEngine.Vector3[numVertices];
+						}
 
-                    Float3_U2Res[] frameVertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
-                    for (int i = 0; i < numVertices; i++)
-                    {
-                        frameVertices[i].x = frameVertices[i].x - vertices[i].x;
-                        frameVertices[i].y = frameVertices[i].y - vertices[i].y;
-                        frameVertices[i].z = frameVertices[i].z - vertices[i].z;
-                    }
-					frame.positions = frameVertices;
+						UnityEngine.Vector3[] deltaTangents = null;
+						if (tangents != null)
+						{
+							deltaTangents = new UnityEngine.Vector3[numVertices];
+						}
 
-                    if (normals != null)
-                    {
-                        Float3_U2Res[] frameNormals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
-                        for (int i = 0; i < numVertices; i++)
-                        {
-                            frameNormals[i].x = frameNormals[i].x - normals[i].x;
-                            frameNormals[i].y = frameNormals[i].y - normals[i].y;
-                            frameNormals[i].z = frameNormals[i].z - normals[i].z;
-                        }
-						frame.normals = frameNormals;
-                    }
+						unityMesh.GetBlendShapeFrameVertices(
+							blendShapeI,
+							blendShapeFrameI,
+							deltaVertices,
+							deltaNormals,
+							deltaTangents
+						);
 
-                    if (tangents != null)
-                    {
-                        Float3_U2Res[] frameTangents = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
-                        for (int i = 0; i < numVertices; i++)
-                        {
-                            frameTangents[i].x = frameTangents[i].x - tangents[i].x;
-                            frameTangents[i].y = frameTangents[i].y - tangents[i].y;
-                            frameTangents[i].z = frameTangents[i].z - tangents[i].z;
-                        }
-						frame.tangents = frameTangents;
-                    }
-                    blendShape.frames[blendShapeFrameI] = frame;
-                }
-                blendShapes[blendShapeI] = blendShape;
-            }
-			meshx.blendShapes = blendShapes;
+						Float3_U2Res[] frameVertices = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
+						for (int i = 0; i < numVertices; i++)
+						{
+							frameVertices[i].x = frameVertices[i].x - vertices[i].x;
+							frameVertices[i].y = frameVertices[i].y - vertices[i].y;
+							frameVertices[i].z = frameVertices[i].z - vertices[i].z;
+						}
+						frame.positions = frameVertices;
+
+						if (normals != null)
+						{
+							Float3_U2Res[] frameNormals = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
+							for (int i = 0; i < numVertices; i++)
+							{
+								frameNormals[i].x = frameNormals[i].x - normals[i].x;
+								frameNormals[i].y = frameNormals[i].y - normals[i].y;
+								frameNormals[i].z = frameNormals[i].z - normals[i].z;
+							}
+							frame.normals = frameNormals;
+						}
+
+						if (tangents != null)
+						{
+							Float3_U2Res[] frameTangents = U2ResUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
+							for (int i = 0; i < numVertices; i++)
+							{
+								frameTangents[i].x = frameTangents[i].x - tangents[i].x;
+								frameTangents[i].y = frameTangents[i].y - tangents[i].y;
+								frameTangents[i].z = frameTangents[i].z - tangents[i].z;
+							}
+							frame.tangents = frameTangents;
+						}
+						blendShape.frames[blendShapeFrameI] = frame;
+					}
+					blendShapes[blendShapeI] = blendShape;
+				}
+				meshx.blendShapes = blendShapes;
+			}
             Debug.Log("Loaded mesh index buffers");
 
-            // todo: they have some normal flipping thing if normals are wrong, do we need that?
+			// todo: they have some normal flipping thing if normals are wrong, do we need that?
 
-            var numBonesPerVertex = unityMesh.GetBonesPerVertex();
-            var boneWeights = unityMesh.GetAllBoneWeights();
-			meshx.bones = new Bone_U2Res[boneNames.Length];
-			meshx.boneBindings = new BoneBinding_U2Res[numVertices];
-            UnityEngine.Matrix4x4[] boneBindposes = unityMesh.bindposes;
-            if (numBonesPerVertex.Length > 0 && boneWeights.Length > 0)
-            {
-                for (int boneI = 0; boneI < boneNames.Length; boneI++)
-                {
-					meshx.bones[boneI] = new Bone_U2Res();
-                    meshx.bones[boneI].name = boneNames[boneI];
-					meshx.bones[boneI].bindPose = ConvertMatrix4x4(boneBindposes[boneI]);
-                }
-                int boneWeightIndex = 0;
-                // unity has us traverse over all them in this weird way
-                for (int vertexI = 0; vertexI < numVertices; vertexI++)
-                {
-                    byte numBones = numBonesPerVertex[vertexI];
-                    BoneBinding_U2Res boneBinding = new BoneBinding_U2Res();
-					meshx.boneBindings[vertexI] = boneBinding;
-                    for (int boneI = 0; boneI < numBones; boneI++)
-                    {
-                        UnityEngine.BoneWeight1 boneWeight = boneWeights[boneWeightIndex++];
-                        switch (boneI)
-                        {
-                            case 0:
-                                boneBinding.boneIndex0 = boneWeight.boneIndex;
-                                boneBinding.weight0 = boneWeight.weight;
-                                break;
-                            case 1:
-                                boneBinding.boneIndex1 = boneWeight.boneIndex;
-                                boneBinding.weight1 = boneWeight.weight;
-                                break;
-                            case 2:
-                                boneBinding.boneIndex2 = boneWeight.boneIndex;
-                                boneBinding.weight2 = boneWeight.weight;
-                                break;
-                            case 3:
-                                boneBinding.boneIndex3 = boneWeight.boneIndex;
-                                boneBinding.weight3 = boneWeight.weight;
-                                break;
-                            // sadly resonite only supports up to 4 bones per vertex
-                            default:
-                                break;
-                        }
-                        // luckily unity is already sorted (todo: is decending order correct?)
-                    }
-                }
-				//
-                //meshx.SortTrimAndNormalizeBoneWeights();
-                //meshx.FillInEmptyBindings(0);
-            }
+			using (Timer _ = new Timer("Bone data"))
+			{
+				var numBonesPerVertex = unityMesh.GetBonesPerVertex();
+				var boneWeights = unityMesh.GetAllBoneWeights();
+				meshx.bones = new Bone_U2Res[boneNames.Length];
+				meshx.boneBindings = new BoneBinding_U2Res[numVertices];
+				UnityEngine.Matrix4x4[] boneBindposes = unityMesh.bindposes;
+				if (numBonesPerVertex.Length > 0 && boneWeights.Length > 0)
+				{
+					for (int boneI = 0; boneI < boneNames.Length; boneI++)
+					{
+						meshx.bones[boneI] = new Bone_U2Res();
+						meshx.bones[boneI].name = boneNames[boneI];
+						meshx.bones[boneI].bindPose = ConvertMatrix4x4(boneBindposes[boneI]);
+					}
+					int boneWeightIndex = 0;
+					// unity has us traverse over all them in this weird way
+					for (int vertexI = 0; vertexI < numVertices; vertexI++)
+					{
+						byte numBones = numBonesPerVertex[vertexI];
+						BoneBinding_U2Res boneBinding = new BoneBinding_U2Res();
+						meshx.boneBindings[vertexI] = boneBinding;
+						for (int boneI = 0; boneI < numBones; boneI++)
+						{
+							UnityEngine.BoneWeight1 boneWeight = boneWeights[boneWeightIndex++];
+							switch (boneI)
+							{
+								case 0:
+									boneBinding.boneIndex0 = boneWeight.boneIndex;
+									boneBinding.weight0 = boneWeight.weight;
+									break;
+								case 1:
+									boneBinding.boneIndex1 = boneWeight.boneIndex;
+									boneBinding.weight1 = boneWeight.weight;
+									break;
+								case 2:
+									boneBinding.boneIndex2 = boneWeight.boneIndex;
+									boneBinding.weight2 = boneWeight.weight;
+									break;
+								case 3:
+									boneBinding.boneIndex3 = boneWeight.boneIndex;
+									boneBinding.weight3 = boneWeight.weight;
+									break;
+								// sadly resonite only supports up to 4 bones per vertex
+								default:
+									break;
+							}
+							// luckily unity is already sorted (todo: is decending order correct?)
+						}
+					}
+					//
+					//meshx.SortTrimAndNormalizeBoneWeights();
+					//meshx.FillInEmptyBindings(0);
+				}
+			}
             Debug.Log("Finished, sending mesh data");
 
             return meshx;

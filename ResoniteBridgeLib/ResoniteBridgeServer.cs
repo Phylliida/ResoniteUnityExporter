@@ -144,8 +144,8 @@ namespace ResoniteBridgeLib
                 try
                 {
                     DebugLog("Subscriber recieved " + bytes.Length + " bytes");
-                    ResoniteBridgeMessage parsedMessage = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject(
-                        bytes, typeof(ResoniteBridgeMessage));
+                    ResoniteBridgeMessage parsedMessage = (ResoniteBridgeMessage)ResoniteBridgeUtils.DecodeObject< ResoniteBridgeMessage>(
+                        bytes);
                     DebugLog("Recieved message " + parsedMessage.methodName + " with " + 
                         (parsedMessage.data == null ? 0 : parsedMessage.data.Length)
                         + " bytes");
