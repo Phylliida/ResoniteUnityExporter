@@ -68,67 +68,102 @@ namespace ResoniteBridgeUnity
             }
         }
 
-		public static void CheckAllEqual(object a, object b)
+		public static void CheckAllEqual(object a, object b, string parentPrefix="", Type type=null)
 		{
-			foreach (FieldInfo field in ResoniteBridgeUtils.GetTypeFields(a.GetType()))
+			string fieldStr = parentPrefix + "." + (type == null ? "" : type.ToString());
+			if (a == null || b == null)
 			{
-				object valueA = field.GetValue(a);
-				object valueB = field.GetValue(b);
-				if (ResoniteBridgeUtils.primitiveTypes.Contains(field.FieldType) || field.FieldType == typeof(System.String))
+				if (a == b)
+				{
+					Debug.Log("Matches " + fieldStr + " (both null)");
+				}
+				else
+				{
+					Debug.LogError("Does not match (struct/class) " + fieldStr + " has values " + a + " and " + b);
+				}
+			}
+			else
+			{
+				if (type == null) // default inits
+				{
+					type = a.GetType();
+				}
+				if (ResoniteBridgeUtils.primitiveTypes.Contains(type) || type == typeof(System.String))
 				{
 					// equality doesn't work because they are boxed, just use to string as good enough
-                    if (valueA.ToString() == valueB.ToString())
+					if (a.ToString() == b.ToString())
 					{
-						Debug.Log("Matches " + a.GetType() + "." + field.Name + " with values " + valueA + " " + valueB);
+						Debug.Log("Matches " + fieldStr + " with values " + a + " " + b);
 					}
 					else
 					{
-						Debug.LogError("Does not match (primitive) " + a.GetType() + "." + field.Name + " has values " + valueA + " and " + valueB);
+						Debug.LogError("Does not match (primitive) " + fieldStr + " has values " + a + " and " + b);
 					}
-                }
-				else
+				}
+				else if (type.IsArray)
 				{
-                    if (valueA == null || valueB == null)
-                    {
-                        if (valueA == valueB)
-                        {
-                            Debug.Log("Matches " + a.GetType() + "." + field.Name + " (both null)");
-                        }
-                        else
-                        {
-                            Debug.LogError("Does not match (struct/class) " + a.GetType() + "." + field.Name + " has values " + valueA + " and " + valueB);
-                        }
-                    }
-                    else if (field.FieldType.IsArray)
-                    {
-						int aLen = (int)valueA.GetType().GetProperty("Length")
-										.GetValue(valueA, new object[] { });
-                        int bLen = (int)valueB.GetType().GetProperty("Length")
-										.GetValue(valueA, new object[] { });
-						if (aLen != bLen)
+					int aLen = (int)a.GetType().GetProperty("Length")
+									.GetValue(a, new object[] { });
+					int bLen = (int)b.GetType().GetProperty("Length")
+									.GetValue(b, new object[] { });
+					if (aLen != bLen)
+					{
+						Debug.LogError("Does not match (array length) " + fieldStr + ".Length, has values " + aLen + " and " + bLen);
+					}
+					else
+					{
+						Debug.Log("Array length matches " + fieldStr + ".Length with lengths of " + aLen + " " + bLen);
+						var aGetMethod = a.GetType().GetMethod("GetValue", new Type[] { typeof(int) });
+						var bGetMethod = b.GetType().GetMethod("GetValue", new Type[] { typeof(int) });
+
+						Type elementType = a.GetType().GetElementType();
+						if (ResoniteBridgeUtils.TypeRecursivelyHasAllPrimitiveFields(elementType))
 						{
-							Debug.LogError("Does not match (array length) " + a.GetType() + "." + field.Name + ".Length, has values " + aLen + " and " + bLen);
+							object[] args = new object[] { 0 };
+							int numNotMatches = 0;
+							byte[] aByte = ResoniteBridgeUtils.ToByteArray(a, elementType, aLen);
+							byte[] bByte = ResoniteBridgeUtils.ToByteArray(b, elementType, bLen);
+							for (int i = 0; i < aByte.Length; i++)
+							{
+								if (aByte[i] != bByte[i])
+								{
+									numNotMatches += 1;
+								}
+							}
+							if (numNotMatches == 0)
+							{
+								Debug.Log("Array contents match " + fieldStr);
+							}
+							else
+							{
+								Debug.LogError("Array contents do not match " + fieldStr + " there are " + numNotMatches + " mismatched entries");
+							}
 						}
 						else
 						{
-							Debug.Log("Array length matches " + a.GetType() + "." + field.Name + ".Length with lengths of " + aLen + " " + bLen);
-                            var aGetMethod = valueA.GetType().GetMethod("GetValue", new Type[] { typeof(int) });
-                            var bGetMethod = valueB.GetType().GetMethod("GetValue", new Type[] { typeof(int)});
-							object[] args = new object[] { 0 };
-							// todo:
-							for (int i = 0; i < aLen; i++)
+							object[] parms = new object[] { 0 };
+
+                            for (int i = 0; i < aLen; i++)
 							{
-							//	var aArrValue = aGetMethod()
+								parms[0] = i;
+								var aVal = aGetMethod.Invoke(a, parms);
+								var bVal = bGetMethod.Invoke(b, parms);
+								CheckAllEqual(aVal, bVal, parentPrefix = parentPrefix + "." + type.ToString() + "[" + i + "]", type = elementType);
 							}
-                        }
-                    }
-                    else
-                    {
-						CheckAllEqual(valueA, valueB);
-                    }
-                }
+						}
+					}
+				}
+				else
+				{
+					foreach (FieldInfo field in ResoniteBridgeUtils.GetTypeFields(a.GetType()))
+					{
+						object valueA = field.GetValue(a);
+						object valueB = field.GetValue(b);
+						CheckAllEqual(valueA, valueB, parentPrefix = parentPrefix + "." + type.ToString(), type=field.FieldType);
+					}
+				}
             }
-		}
+        }
 
 		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{

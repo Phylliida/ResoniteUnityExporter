@@ -235,10 +235,10 @@ namespace ResoniteBridgeLib
                 int arraySizeInBytes = (int)(Marshal.SizeOf(arrayType) * arrayLen);
                 DebugLog("Got array of length " + arrayLen + " and of type " + arrayType.ToString());
 
-                if (TypeRecursivelyHasAllPrimitiveFields(type))
+                if (TypeRecursivelyHasAllPrimitiveFields(arrayType))
                 {
+                    DebugLog("Nice array type:" + arrayType + " main type " + type);
                     object destArr = Array.CreateInstance(arrayType, arrayLen);
-
                     ThisStaticType().GetMethod("CopyToArray", BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(arrayType)
                         .Invoke(null, new object[] { destArr, bytes, offset, arraySizeInBytes });
@@ -248,6 +248,7 @@ namespace ResoniteBridgeLib
                 }
                 else
                 {
+                    DebugLog("Manual array type:" + arrayType + " main type " + type);
                     object[] parms = new object[] { bytes, (int)arrayLen, offset };
 
                     object res = ThisStaticType().GetMethod("DecodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
@@ -363,6 +364,7 @@ namespace ResoniteBridgeLib
                 // we can just grab the raw bytes
                 if (TypeRecursivelyHasAllPrimitiveFields(arrayType))
                 {
+                    DebugLog("Encoding array that can go directly: " + arrayType + " full type " + objType);
                     long numBytes = Marshal.SizeOf(arrayType) *
                         arrayLength;
                     // todo: if overflow when cast to int, chunk it
@@ -373,6 +375,7 @@ namespace ResoniteBridgeLib
                 // we need to manually encode each type
                 else
                 {
+                    DebugLog("Encoding array manual: " + arrayType + " full type " + objType);
                     object[] parms = new object[] { obj, outBytes, offset, writeBytes };
                     // need to use reflection because we don't know the array type
                     ThisStaticType().GetMethod("EncodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
