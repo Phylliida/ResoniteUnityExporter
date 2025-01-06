@@ -233,11 +233,11 @@ namespace ResoniteBridgeLib
                 Type arrayType = GetArrayType(type);
 
                 int arraySizeInBytes = (int)(Marshal.SizeOf(arrayType) * arrayLen);
-                DebugLog("Got array of length " + arrayLen + " and of type " + arrayType.ToString());
+                //DebugLog("Got array of length " + arrayLen + " and of type " + arrayType.ToString());
 
                 if (TypeRecursivelyHasAllPrimitiveFields(arrayType))
                 {
-                    DebugLog("Nice array type:" + arrayType + " main type " + type);
+                    //DebugLog("Nice array type:" + arrayType + " main type " + type);
                     object destArr = Array.CreateInstance(arrayType, arrayLen);
                     ThisStaticType().GetMethod("CopyToArray", BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(arrayType)
@@ -248,7 +248,7 @@ namespace ResoniteBridgeLib
                 }
                 else
                 {
-                    DebugLog("Manual array type:" + arrayType + " main type " + type);
+                    //DebugLog("Manual array type:" + arrayType + " main type " + type);
                     object[] parms = new object[] { bytes, (int)arrayLen, offset };
 
                     object res = ThisStaticType().GetMethod("DecodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
@@ -261,10 +261,10 @@ namespace ResoniteBridgeLib
             else
             {
                 object res = CreateDefaultOfObject(type);
-                DebugLog("Running empty constructor for type " + type.ToString());
+                //DebugLog("Running empty constructor for type " + type.ToString());
                 foreach (FieldInfo field in GetTypeFields(type))
                 {
-                    DebugLog("Got field " + field + " for type " + type.ToString());
+                    //DebugLog("Got field " + field + " for type " + type.ToString());
                     field.SetValue(res, DecodeObject(field.FieldType, bytes, ref offset));
                 }
                 return res;
@@ -364,7 +364,7 @@ namespace ResoniteBridgeLib
                 // we can just grab the raw bytes
                 if (TypeRecursivelyHasAllPrimitiveFields(arrayType))
                 {
-                    DebugLog("Encoding array that can go directly: " + arrayType + " full type " + objType);
+                    //DebugLog("Encoding array that can go directly: " + arrayType + " full type " + objType);
                     long numBytes = Marshal.SizeOf(arrayType) *
                         arrayLength;
                     // todo: if overflow when cast to int, chunk it
@@ -375,7 +375,7 @@ namespace ResoniteBridgeLib
                 // we need to manually encode each type
                 else
                 {
-                    DebugLog("Encoding array manual: " + arrayType + " full type " + objType);
+                    //DebugLog("Encoding array manual: " + arrayType + " full type " + objType);
                     object[] parms = new object[] { obj, outBytes, offset, writeBytes };
                     // need to use reflection because we don't know the array type
                     ThisStaticType().GetMethod("EncodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
@@ -389,7 +389,7 @@ namespace ResoniteBridgeLib
             {
                 foreach (FieldInfo field in GetTypeFields(objType))
                 {
-                    DebugLog("Got field: " + field.Name + " of type " + objType.ToString());
+                    //DebugLog("Got field: " + field.Name + " of type " + objType.ToString());
                     EncodeObject(field.GetValue(obj), outBytes, ref offset, writeBytes);
                 }
             }
@@ -430,7 +430,8 @@ namespace ResoniteBridgeLib
 
         public static bool TypeRecursivelyHasAllPrimitiveFields(Type type)
         {
-            return GetTypeFields(type).All(t =>
+            return primitiveTypes.Contains(type) ||
+                GetTypeFields(type).All(t =>
                 primitiveTypes.Contains(t.FieldType) ||
                 TypeRecursivelyHasAllPrimitiveFields(t.FieldType));
         }
