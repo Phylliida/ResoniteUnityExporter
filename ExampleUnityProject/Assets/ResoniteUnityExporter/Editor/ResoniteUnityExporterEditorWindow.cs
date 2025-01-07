@@ -107,7 +107,7 @@ namespace ResoniteBridgeUnity {
 				{
 					foreach (UnityEngine.Component component in obj.gameObject.GetComponents<Component>())
 					{
-						GatherAssets
+						// todo: process it
 					}
 				}
             }

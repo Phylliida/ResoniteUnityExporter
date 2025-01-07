@@ -398,7 +398,7 @@ namespace ResoniteBridgeUnity
         public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
 		{
 			StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray());
-			convertedMesh.rootAssetSlot = hierarchyLookup.rootAssetsSlot;
+			convertedMesh.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
 
 			byte[] encoded = null;
 
