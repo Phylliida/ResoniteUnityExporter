@@ -91,17 +91,35 @@ namespace ResoniteBridgeUnity
 			return refIdLookup[transform.gameObject.GetInstanceID().ToString()];
 		}
 
-		public RefID_U2Res SendMesh(UnityEngine.Mesh mesh, string[] boneNames)
+		delegate RefID_U2Res CreateAssetDelegate();
+
+		RefID_U2Res CreateAssetIfNotExist(string assetId, CreateAssetDelegate createAsset)
 		{
-			RefID_U2Res outRefId;
-			if (!assetLookup.TryGetValue(mesh.GetInstanceID().ToString(), out outRefId))
-			{
-                ResoniteBridgeUtils.DebugLog = x => Debug.Log(x);
-                outRefId = ResoniteUnityExporterEditorMenu.SendMeshToResonite(this, mesh, boneNames, bridgeClient);
-				assetLookup.Add(mesh.GetInstanceID().ToString(), outRefId);
+            RefID_U2Res outRefId;
+            if (!assetLookup.TryGetValue(assetId, out outRefId))
+            {
+				outRefId = createAsset();
+                assetLookup.Add(assetId, outRefId);
             }
             return outRefId;
-		}
+
+        }
+
+        public RefID_U2Res SendMesh(UnityEngine.Mesh mesh, string[] boneNames)
+		{
+			return CreateAssetIfNotExist(mesh.GetInstanceID().ToString(), () =>
+			{
+				return ResoniteUnityExporterEditorMenu.SendMeshToResonite(this, mesh, boneNames, bridgeClient);
+			});
+        }
+
+        public RefID_U2Res SendTexture(UnityEngine.Texture2D texture)
+		{
+            return CreateAssetIfNotExist(texture.GetInstanceID().ToString(), () =>
+            {
+                return ResoniteUnityExporterEditorMenu.SendTextureToResonite(this, texture, bridgeClient);
+            });
+        }
 	}
 
 	public class Timer : IDisposable
@@ -332,10 +350,57 @@ namespace ResoniteBridgeUnity
             return hierarchyLookup;
         }
 
+		public static Texture2D_U2Res ConvertTexture(UnityEngine.Texture2D texture)
+		{
+			// this is slow (takes 10-20ms) but that's good enough for one time transfer
+			UnityEngine.Color[] textureColors = texture.GetPixels();
+			Color_U2Res[] colorData = ResoniteBridgeUtils.ConvertArray<Color_U2Res, UnityEngine.Color>(textureColors);
+			return new Texture2D_U2Res
+			{
+				width = texture.width,
+				height = texture.height,
+				data = colorData
+			};
+		}
+
+        public static RefID_U2Res SendTextureToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Texture2D texture, ResoniteBridgeClient bridgeClient)
+        {
+            Texture2D_U2Res convertedTexture = ConvertTexture(texture);
+            convertedTexture.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
+
+            byte[] encoded = null;
+
+            using (Timer _ = new Timer("Encoding"))
+            {
+                encoded = ResoniteBridgeUtils.EncodeObject(convertedTexture);
+                // test to make sure encodes correctly
+                //StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
+                //CheckAllEqual(convertedMesh, decoded);
+            }
+            using (Timer _ = new Timer("Processing Static Mesh"))
+            {
+                bridgeClient.SendMessageSync(
+                    "ImportToTexture2D",
+                    encoded,
+                    -1,
+                    out byte[] outBytes,
+                    out bool isError
+                    );
+                if (isError)
+                {
+                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                }
+                RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+                Debug.Log("Got refid for Texture2D of " + staticMeshRefId.id);
+                return staticMeshRefId;
+            }
+        }
+
+
         public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
 		{
 			StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray());
-			convertedMesh.rootAssetSlot = hierarchyLookup.rootAssetSlot;
+			convertedMesh.rootAssetSlot = hierarchyLookup.rootAssetsSlot;
 
 			byte[] encoded = null;
 

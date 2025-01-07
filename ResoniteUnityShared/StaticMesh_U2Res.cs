@@ -66,6 +66,15 @@ namespace ResoniteUnityExporterShared
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct Color_U2Res
+    {
+        public float r;
+        public float g;
+        public float b;
+        public float a;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct UVArray_U2Res
     {
         public int dimension;
