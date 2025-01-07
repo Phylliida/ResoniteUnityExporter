@@ -1,0 +1,78 @@
+﻿using Elements.Assets;
+using FreeImageAPI;
+using FrooxEngine;
+using FrooxEngine.Store;
+using ResoniteBridgeLib;
+using ResoniteUnityExporterShared;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ImportFromUnityLib
+{
+    public class ImportTexture2D
+    {
+
+        public static void SaveRawDataToPNG(int width, int height, Color32_U2Res[] rawData, string filePath)
+        {
+            FIBITMAP bitmap = FreeImage.AllocateT(FREE_IMAGE_TYPE.FIT_BITMAP,
+                width, height, 32,
+                FreeImage.FI_RGBA_RED_MASK,
+                FreeImage.FI_RGBA_GREEN_MASK,
+                FreeImage.FI_RGBA_BLUE_MASK);
+            
+            // shuffle around into bgra it expects
+            // sadly idk a way to do this in bulk (probably best option is to use simd)
+            byte[] pixels = new byte[rawData.Length * 4];
+            int dataI = 0;
+            for (int i = 0; i < rawData.Length; i++)
+            {
+                var col = rawData[i];
+                pixels[dataI++] = col.b;
+                pixels[dataI++] = col.g;
+                pixels[dataI++] = col.r;
+                pixels[dataI++] = col.a;
+            }
+            var stride = FreeImage.GetPitch(bitmap);
+            for (int y = 0; y < height; y++)
+            {
+                var scan = FreeImage.GetScanLine(bitmap, y);
+                Marshal.Copy(pixels, y * width * 4, scan, width * 4);
+            }
+            FreeImage.Save(FREE_IMAGE_FORMAT.FIF_PNG, bitmap, filePath, FREE_IMAGE_SAVE_FLAGS.PNG_Z_BEST_COMPRESSION);
+        }
+        public static IEnumerator<Context> ImportToTexture2DHelper(byte[] texData, OutputBytesHolder outputBytes)
+        {
+            yield return Context.ToBackground();
+            // load data from bytes
+            Texture2D_U2Res tex = ResoniteBridgeUtils.DecodeObject<Texture2D_U2Res>(texData);
+            // load texture into localdb to get a url
+            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
+            string tempFilePath = localDb.GetTempFilePath("png");
+            SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
+            System.Uri url = localDb.ImportLocalAssetAsync(tempFilePath, LocalDB.ImportLocation.Move).Result;
+            yield return Context.ToWorld();
+            Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == tex.rootAssetsSlot.id);
+            FrooxEngine.StaticTexture2D tex2d = assetsSlot.AttachComponent<FrooxEngine.StaticTexture2D>();
+            tex2d.URL.Value = url;
+            // return refid of StaticMesh component
+            RefID_U2Res result = new RefID_U2Res()
+            {
+                id = (ulong)tex2d.ReferenceID
+            };
+            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+        }
+
+        public static byte[] ImportTexture2DFunc(byte[] texData)
+        {
+            OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
+            ImportFromUnityUtils.RunOnWorldThread(ImportToTexture2DHelper(texData, outputBytesHolder));
+            return outputBytesHolder.outputBytes;
+        }
+    }
+}

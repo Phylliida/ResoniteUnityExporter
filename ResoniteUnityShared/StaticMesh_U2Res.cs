@@ -75,6 +75,15 @@ namespace ResoniteUnityExporterShared
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct Color32_U2Res
+    {
+        public byte r;
+        public byte g;
+        public byte b;
+        public byte a;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct UVArray_U2Res
     {
         public int dimension;
@@ -141,7 +150,7 @@ namespace ResoniteUnityExporterShared
     public struct StaticMesh_U2Res
     {
         public string name;
-        public RefID_U2Res rootAssetSlot;
+        public RefID_U2Res rootAssetsSlot;
         public StaticMeshImportSettings_U2Res importSettings;
         public Float3_U2Res[] positions;
         public Float4_U2Res[] colors;

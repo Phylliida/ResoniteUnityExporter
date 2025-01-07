@@ -353,8 +353,9 @@ namespace ResoniteBridgeUnity
 		public static Texture2D_U2Res ConvertTexture(UnityEngine.Texture2D texture)
 		{
 			// this is slow (takes 10-20ms) but that's good enough for one time transfer
-			UnityEngine.Color[] textureColors = texture.GetPixels();
-			Color_U2Res[] colorData = ResoniteBridgeUtils.ConvertArray<Color_U2Res, UnityEngine.Color>(textureColors);
+			// and it's better to use this vs getting raw data because we need to convert format
+			UnityEngine.Color32[] textureColors = texture.GetPixels32();
+			Color32_U2Res[] colorData = ResoniteBridgeUtils.ConvertArray<Color32_U2Res, UnityEngine.Color32>(textureColors);
 			return new Texture2D_U2Res
 			{
 				width = texture.width,
@@ -373,9 +374,6 @@ namespace ResoniteBridgeUnity
             using (Timer _ = new Timer("Encoding"))
             {
                 encoded = ResoniteBridgeUtils.EncodeObject(convertedTexture);
-                // test to make sure encodes correctly
-                //StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
-                //CheckAllEqual(convertedMesh, decoded);
             }
             using (Timer _ = new Timer("Processing Static Mesh"))
             {

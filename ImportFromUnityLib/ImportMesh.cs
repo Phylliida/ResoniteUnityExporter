@@ -17,150 +17,9 @@ using static OfficialAssets.Graphics;
 
 namespace ImportFromUnityLib
 {
+
     public class ImportMesh
     {
-
-
-        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server)
-        {
-            server.RegisterProcessor("ImportToStaticMesh", ImportToStaticMesh);
-            server.RegisterProcessor("TestBees", SimpleTest);
-            server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy);
-        }
-
-        public static byte[] SimpleTest(byte[] data)
-        {
-            Float3_U2Res input = ResoniteBridgeUtils.DecodeObject<Float3_U2Res>(data);
-            Float3_U2Res result = new Float3_U2Res()
-            {
-                x = input.x + 1,
-                y = input.y - 2,
-                z = input.z * 2,
-            };
-            return ResoniteBridgeUtils.EncodeObject(result);
-        }
-
-        public static bool NotEmpty<T>(T[] arr)
-        {
-            return arr != null && arr.Length > 0;
-        }
-
-        public static void AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
-        {
-            Slot addedSlot = parentSlot.AddSlot(obj.name);
-            ObjectLookup_U2Res lookup = new ObjectLookup_U2Res()
-            {
-                refId = new RefID_U2Res()
-                {
-                    id = (ulong)addedSlot.ReferenceID
-                },
-                uniqueId = obj.uniqueId
-            };
-            lookups.Add(lookup);
-            if (obj.children != null)
-            {
-                foreach (Object_U2Res child in obj.children)
-                {
-                    AddObjectAndChildren(addedSlot, child, lookups);
-                }
-            }
-        }
-
-        public static Slot GetAddingSlot()
-        {
-            return Engine.Current.WorldManager.FocusedWorld.LocalUserSpace;
-        }
-
-        static IEnumerator<Context> AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
-        {
-            //// decode bytes
-            yield return Context.ToBackground();
-            ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
-            yield return Context.ToWorld();
-
-            //// create assets slot 
-            Slot worldAssets = Engine.Current.WorldManager.FocusedWorld.AssetsSlot;
-            FrooxEngine.Slot assetsSlot = worldAssets.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
-            // it's dangerous to remove any assets slots, so just remove old assets slot if it has a comment with our name on it
-            if (assetsSlot != null && 
-                assetsSlot.GetComponent<Comment>() != null &&
-                assetsSlot.GetComponent<Comment>().Text.Value == hierarchy.hierarchyName)
-            {
-                assetsSlot.Destroy();
-            }
-            assetsSlot = worldAssets.AddSlot(hierarchy.hierarchyName);
-            // add the comment saying we are assets from this, also add asset optimization block as is standard
-            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
-            assetsSlot.AttachComponent<Comment>().Text.Value = hierarchy.hierarchyName;
-
-            //// create root slot
-            Slot parentSlot = GetAddingSlot();
-            Slot targetSlot = parentSlot.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
-            // if target slot not found, create it
-            if (targetSlot == null)
-            {
-                targetSlot = parentSlot.AddSlot(hierarchy.hierarchyName);
-            }
-            // otherwise, empty it out, we will fill it ourselves
-            // this way if they press the button multiple times it'll just be updated with most recent status
-            else
-            {
-                targetSlot.DestroyChildren();
-                targetSlot.RemoveAllComponents(x => true);
-            }
-
-            //// create the hierarchy
-            List<ObjectLookup_U2Res> lookups = new List<ObjectLookup_U2Res>();
-            foreach (Object_U2Res obj in hierarchy.objects)
-            {
-                AddObjectAndChildren(targetSlot, obj, lookups);
-            }
-
-            //// encode lookup and return it
-            yield return Context.ToBackground();
-            ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
-            {
-                lookups = lookups.ToArray(),
-                rootAssetSlot = new RefID_U2Res()
-                {
-                    id = (ulong)assetsSlot.ReferenceID
-                }
-            };
-            outputHolder.outputBytes = ResoniteBridgeUtils.EncodeObject(outputLookups);
-        }
-
-        class OutputBytesHolder
-        {
-            public byte[] outputBytes;
-        }
-
-        public static byte[] ImportSlotHierarchy(byte[] hierarchyBytes)
-        {
-            OutputBytesHolder outputHolder = new OutputBytesHolder();
-            RunOnWorldThread(AddHierarchy(hierarchyBytes, outputHolder));
-            return outputHolder.outputBytes;
-        }
-
-        static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<bool> completion)
-        {
-            try
-            {
-                yield return Context.WaitFor(action);
-            }
-            finally
-            {
-                completion.SetResult(result: true);
-            }
-        }
-
-        public static bool RunOnWorldThread(IEnumerator<Context> action)
-        {
-            TaskCompletionSource<bool> taskCompletionSource = new TaskCompletionSource<bool>();
-            Engine.Current.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
-            return taskCompletionSource.Task.GetAwaiter().GetResult();
-        }
-
-
         static IEnumerator<Context> ImportToStaticMeshHelper(byte[] staticMeshBytes, OutputBytesHolder outputBytes)
         {
             // Load mesh data into a meshx
@@ -183,7 +42,7 @@ namespace ImportFromUnityLib
             Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
             // attach StaticMesh component with resulting url
             yield return Context.ToWorld();
-            Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == meshOut.rootAssetSlot.id);
+            Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == meshOut.rootAssetsSlot.id);
             FrooxEngine.StaticMesh staticMesh = assetsSlot.AttachComponent<FrooxEngine.StaticMesh>();
             staticMesh.URL.Value = url;
             // return refid of StaticMesh component
@@ -199,10 +58,10 @@ namespace ImportFromUnityLib
         /// </summary>
         /// <param name="staticMeshBytes"></param>
         /// <returns>bytes representing RefID_U2Res that contains the static mesh asset component</returns>
-        public static byte[] ImportToStaticMesh(byte[] staticMeshBytes)
+        public static byte[] ImportToStaticMeshFunc(byte[] staticMeshBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            RunOnWorldThread(ImportToStaticMeshHelper(staticMeshBytes, outputBytesHolder));
+            ImportFromUnityUtils.RunOnWorldThread(ImportToStaticMeshHelper(staticMeshBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 
@@ -211,14 +70,14 @@ namespace ImportFromUnityLib
             // todo: provide option to ignore bones and ignore vertex colors
             MeshX meshx = new MeshX();
             int numVertices = mesh.positions.Length;
-            bool hasNormals = NotEmpty(mesh.normals);
+            bool hasNormals = ImportFromUnityUtils.NotEmpty(mesh.normals);
             meshx.HasNormals = hasNormals;
-            bool hasTangents = NotEmpty(mesh.tangents);
+            bool hasTangents = ImportFromUnityUtils.NotEmpty(mesh.tangents);
             meshx.HasTangents = hasTangents;
             // todo: do they ever have colors32 without colors? (maybe we need to convert)
-            meshx.HasColors = NotEmpty(mesh.colors);
+            meshx.HasColors = ImportFromUnityUtils.NotEmpty(mesh.colors);
             // todo: is this right? maybe we need to look at bindposes too
-            meshx.HasBoneBindings = NotEmpty(mesh.boneBindings);
+            meshx.HasBoneBindings = ImportFromUnityUtils.NotEmpty(mesh.boneBindings);
             // todo: make little drop down auto generate if need to configure options for thing
             // like a material needs to auto convert, which do u use?
             // they force all submeshes from the same import to have the same dimensions

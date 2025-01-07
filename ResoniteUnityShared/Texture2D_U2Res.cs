@@ -11,6 +11,6 @@ namespace ResoniteUnityExporterShared
         public RefID_U2Res rootAssetsSlot;
         public int width;
         public int height;
-        public Color_U2Res[] data;
+        public Color32_U2Res[] data;
     }
 }
