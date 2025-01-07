@@ -57,6 +57,7 @@ namespace ResoniteBridgeUnity {
 
         // gui
         Transform parentObject;
+		string exportSlotName;
         void OnGUI()
 		{
             if (bridgeClient == null) {
@@ -71,6 +72,8 @@ namespace ResoniteBridgeUnity {
 				typeof(Transform),
 				true
 			);
+
+            exportSlotName = EditorGUILayout.TextField(exportSlotName);
 
             if (GUILayout.Button("Restart connection"))
             {
@@ -92,10 +95,21 @@ namespace ResoniteBridgeUnity {
 			bool ready = bridgeClient.IsConnected();
 			ready = true; // tmp
             EditorGUI.BeginDisabledGroup(!ready);
-            
+
             if (GUILayout.Button("Export"))
             {
-				Dictionary<string, RefID_U2Res> hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(parentObject);
+                // First, mirror the hierarchy
+                HierarchyLookup hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(exportSlotName, parentObject, bridgeClient);
+
+                // Second, gather all assets
+
+                foreach (ObjectHolder obj in hierarchyLookup.GetObjects())
+				{
+					foreach (UnityEngine.Component component in obj.gameObject.GetComponents<Component>())
+					{
+
+					}
+				}
 				// test
 				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
             }

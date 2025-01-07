@@ -23,6 +23,66 @@ using System.Drawing.Imaging;
 
 namespace ResoniteBridgeUnity
 {
+	public class ObjectHolder
+	{
+		public ObjectHolder(GameObject gameObject, RefID_U2Res slotRefId)
+		{
+			this.gameObject = gameObject;
+			this.slotRefId = slotRefId;
+		}
+
+		public GameObject gameObject;
+		public RefID_U2Res slotRefId;
+	}
+
+	public class HierarchyLookup
+	{
+		List<ObjectHolder> objects = new List<ObjectHolder>();
+		Dictionary<string, GameObject> gameObjectLookup;
+		Dictionary<string, RefID_U2Res> refIdLookup;
+		Dictionary<ulong, GameObject> refIdToGameObject;
+		public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup)
+		{
+			refIdToGameObject = new Dictionary<ulong, GameObject>();
+			foreach (KeyValuePair<string, RefID_U2Res> keyRefID in refIdLookup)
+			{
+				GameObject gameObject = gameObjectLookup[keyRefID.Key];
+				RefID_U2Res refId = keyRefID.Value;
+                refIdToGameObject[keyRefID.Value.id] = gameObject;
+				objects.Add(new ObjectHolder(gameObject, refId));
+			}
+			this.gameObjectLookup = gameObjectLookup;
+			this.refIdLookup = refIdLookup;
+		}
+
+		public IEnumerable<ObjectHolder> GetObjects()
+		{
+			foreach (ObjectHolder obj in objects)
+			{
+				yield return obj;
+			}
+		}
+
+		public Transform LookupTransform(RefID_U2Res refID)
+		{
+			return refIdToGameObject[refID.id].transform;
+		}
+
+		public Transform LookupTransform(string key)
+		{
+			return gameObjectLookup[key].transform;
+		}
+
+		public RefID_U2Res LookupSlot(string key)
+		{
+			return refIdLookup[key];
+		}
+
+		public RefID_U2Res LookupSlot(Transform transform)
+		{
+			return refIdLookup[transform.gameObject.GetInstanceID().ToString()];
+		}
+	}
 
 	public class Timer : IDisposable
 	{
@@ -166,12 +226,13 @@ namespace ResoniteBridgeUnity
             }
         }
 		
-		public Object_U2Res GameObjectToObject(UnityEngine.GameObject obj)
+		public static Object_U2Res GameObjectToObject(UnityEngine.GameObject obj, Dictionary<string, GameObject> gameObjectLookup)
 		{
+			gameObjectLookup[obj.GetInstanceID().ToString()] = obj;
 			Object_U2Res[] children = new Object_U2Res[obj.transform.childCount];
 			for(int i = 0; i < obj.transform.childCount; i++)
 			{
-				children[i] = GameObjectToObject(obj.transform.GetChild(i).gameObject);
+				children[i] = GameObjectToObject(obj.transform.GetChild(i).gameObject, gameObjectLookup);
 			}
 			Object_U2Res result = new Object_U2Res()
 			{
@@ -202,7 +263,7 @@ namespace ResoniteBridgeUnity
 			return result;
 		}
 
-		public Dictionary<string, RefID_U2Res> CreateHierarchy(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+		public static HierarchyLookup CreateHierarchy(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
 		{
 			// if rootTransform is null, grab all objects in scene
 			GameObject[] gameObjects = (rootTransform == null)
@@ -211,10 +272,12 @@ namespace ResoniteBridgeUnity
 				: new GameObject[] { rootTransform.gameObject };
 
 
+			Dictionary<string, GameObject> gameObjectLookup = new Dictionary<string, GameObject>();
+
 			Object_U2Res[] convertedObjects = new Object_U2Res[gameObjects.Length];
 			for (int i = 0; i < gameObjects.Length; i++)
 			{
-				convertedObjects[i] = GameObjectToObject(gameObjects[i]);
+				convertedObjects[i] = GameObjectToObject(gameObjects[i], gameObjectLookup);
 			}
 
             ObjectHierarchy_U2Res hierarchyData = new ObjectHierarchy_U2Res()
@@ -238,13 +301,15 @@ namespace ResoniteBridgeUnity
             }
             ObjectLookups_U2Res lookups = ResoniteBridgeUtils.DecodeObject<ObjectLookups_U2Res>(outBytes);
 
-			Dictionary<string, RefID_U2Res> resultLookup = new Dictionary<string, RefID_U2Res>();
+			Dictionary<string, RefID_U2Res> refIdLookup = new Dictionary<string, RefID_U2Res>();
 			foreach (ObjectLookup_U2Res lookup in lookups.lookups)
 			{
-				resultLookup.Add(lookup.uniqueId, lookup.refId);
+                refIdLookup.Add(lookup.uniqueId, lookup.refId);
 			}
 
-			return resultLookup;
+			HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup);
+
+            return hierarchyLookup;
         }
 
         public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
