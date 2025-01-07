@@ -110,8 +110,6 @@ namespace ResoniteBridgeUnity {
 						GatherAssets
 					}
 				}
-				// test
-				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
             }
             EditorGUI.EndDisabledGroup();
 

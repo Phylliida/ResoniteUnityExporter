@@ -19,11 +19,34 @@ using UnityEditor.Playables;
 using System.ComponentModel;
 using System.Text;
 using System.Drawing.Imaging;
+using System.Drawing;
 
 
 namespace ResoniteBridgeUnity
 {
-	public class ObjectHolder
+
+
+    public class UnityAssetHolder
+    {
+		public UnityEngine.Transform[] bones;
+        public UnityEngine.Mesh mesh;
+        public UnityEngine.Texture2D texture2D;
+        public UnityEngine.Texture3D texture3D;
+        public UnityAssetHolder(StaticMesh staticMesh)
+        {
+
+        }
+        public UnityAssetHolder(Bitmap2D texture2D)
+        {
+
+        }
+        public UnityAssetHolder(Bitmap3D texture3D)
+        {
+
+        }
+    }
+
+    public class ObjectHolder
 	{
 		public ObjectHolder(GameObject gameObject, RefID_U2Res slotRefId)
 		{
@@ -37,11 +60,14 @@ namespace ResoniteBridgeUnity
 
 	public class HierarchyLookup
 	{
+		ResoniteBridgeClient bridgeClient;
 		List<ObjectHolder> objects = new List<ObjectHolder>();
 		Dictionary<string, GameObject> gameObjectLookup;
 		Dictionary<string, RefID_U2Res> refIdLookup;
 		Dictionary<ulong, GameObject> refIdToGameObject;
-		public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup)
+		Dictionary<string, RefID_U2Res> assetLookup = new Dictionary<string, RefID_U2Res>();
+		
+		public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient)
 		{
 			refIdToGameObject = new Dictionary<ulong, GameObject>();
 			foreach (KeyValuePair<string, RefID_U2Res> keyRefID in refIdLookup)
@@ -53,6 +79,7 @@ namespace ResoniteBridgeUnity
 			}
 			this.gameObjectLookup = gameObjectLookup;
 			this.refIdLookup = refIdLookup;
+			this.bridgeClient = bridgeClient;
 		}
 
 		public IEnumerable<ObjectHolder> GetObjects()
@@ -81,6 +108,18 @@ namespace ResoniteBridgeUnity
 		public RefID_U2Res LookupSlot(Transform transform)
 		{
 			return refIdLookup[transform.gameObject.GetInstanceID().ToString()];
+		}
+
+		public RefID_U2Res SendMesh(UnityEngine.Mesh mesh, string[] boneNames)
+		{
+			RefID_U2Res outRefId;
+			if (!assetLookup.TryGetValue(mesh.GetInstanceID().ToString(), out outRefId))
+			{
+                ResoniteBridgeUtils.DebugLog = x => Debug.Log(x);
+                outRefId = ResoniteUnityExporterEditorMenu.SendMeshToResonite(this, mesh, boneNames, bridgeClient);
+				assetLookup.Add(mesh.GetInstanceID().ToString(), outRefId);
+            }
+            return outRefId;
 		}
 	}
 
@@ -307,24 +346,14 @@ namespace ResoniteBridgeUnity
                 refIdLookup.Add(lookup.uniqueId, lookup.refId);
 			}
 
-			HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup);
+			HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup, bridgeClient);
 
             return hierarchyLookup;
         }
 
-        public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
+        public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
 		{
-			ResoniteBridgeUtils.DebugLog = x => Debug.Log(x);
-            List<string> boneNames = new List<string>();
-            if (NotEmpty(skinnedMeshRenderer.bones))
-            {
-                foreach (UnityEngine.Transform bone in skinnedMeshRenderer.bones)
-                {
-                    boneNames.Add(bone.name);
-                }
-            }
-
-			StaticMesh_U2Res convertedMesh = ConvertMesh(skinnedMeshRenderer.sharedMesh, boneNames.ToArray());
+			StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray());
 
 			byte[] encoded = null;
 
