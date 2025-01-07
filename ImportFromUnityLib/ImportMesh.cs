@@ -77,7 +77,20 @@ namespace ImportFromUnityLib
             ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
             // create hierarchy slots and lookup
             yield return Context.ToWorld();
-            FrooxEngine.Slot targetSlot = GetAddingSlot().AddSlot(hierarchy.hierarchyName);
+            Slot parentSlot = GetAddingSlot();
+            Slot targetSlot = parentSlot.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
+            // if target slot not found, create it
+            if (targetSlot == null)
+            {
+                targetSlot = parentSlot.AddSlot(hierarchy.hierarchyName);
+            }
+            // otherwise, empty it out, we will fill it ourselves
+            // this way if they press the button multiple times it'll just be updated with most recent status
+            else
+            {
+                targetSlot.DestroyChildren();
+                targetSlot.RemoveAllComponents(x => true);
+            }
             List<ObjectLookup_U2Res> lookups = new List<ObjectLookup_U2Res>();
             foreach (Object_U2Res obj in hierarchy.objects)
             {

@@ -98,16 +98,16 @@ namespace ResoniteBridgeUnity {
 
             if (GUILayout.Button("Export"))
             {
-                // First, mirror the hierarchy
+                // First, mirror the hierarchy into resonite
                 HierarchyLookup hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(exportSlotName, parentObject, bridgeClient);
 
-                // Second, gather all assets
+                // Second, process all components
 
                 foreach (ObjectHolder obj in hierarchyLookup.GetObjects())
 				{
 					foreach (UnityEngine.Component component in obj.gameObject.GetComponents<Component>())
 					{
-
+						GatherAssets
 					}
 				}
 				// test
