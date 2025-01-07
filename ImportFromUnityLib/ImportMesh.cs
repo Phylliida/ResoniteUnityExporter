@@ -73,11 +73,27 @@ namespace ImportFromUnityLib
 
         static IEnumerator<Context> AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
         {
-            // decode bytes
+            //// decode bytes
             yield return Context.ToBackground();
             ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
-            // create hierarchy slots and lookup
             yield return Context.ToWorld();
+
+            //// create assets slot 
+            Slot worldAssets = Engine.Current.WorldManager.FocusedWorld.AssetsSlot;
+            FrooxEngine.Slot assetsSlot = worldAssets.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
+            // it's dangerous to remove any assets slots, so just remove old assets slot if it has a comment with our name on it
+            if (assetsSlot != null && 
+                assetsSlot.GetComponent<Comment>() != null &&
+                assetsSlot.GetComponent<Comment>().Text.Value == hierarchy.hierarchyName)
+            {
+                assetsSlot.Destroy();
+            }
+            assetsSlot = worldAssets.AddSlot(hierarchy.hierarchyName);
+            // add the comment saying we are assets from this, also add asset optimization block as is standard
+            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
+            assetsSlot.AttachComponent<Comment>().Text.Value = hierarchy.hierarchyName;
+
+            //// create root slot
             Slot parentSlot = GetAddingSlot();
             Slot targetSlot = parentSlot.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // if target slot not found, create it
@@ -92,16 +108,23 @@ namespace ImportFromUnityLib
                 targetSlot.DestroyChildren();
                 targetSlot.RemoveAllComponents(x => true);
             }
+
+            //// create the hierarchy
             List<ObjectLookup_U2Res> lookups = new List<ObjectLookup_U2Res>();
             foreach (Object_U2Res obj in hierarchy.objects)
             {
                 AddObjectAndChildren(targetSlot, obj, lookups);
             }
-            // encode lookup and return it
+
+            //// encode lookup and return it
             yield return Context.ToBackground();
             ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
             {
-                lookups = lookups.ToArray()
+                lookups = lookups.ToArray(),
+                rootAssetSlot = new RefID_U2Res()
+                {
+                    id = (ulong)assetsSlot.ReferenceID
+                }
             };
             outputHolder.outputBytes = ResoniteBridgeUtils.EncodeObject(outputLookups);
         }
@@ -152,8 +175,6 @@ namespace ImportFromUnityLib
             // create assets slot
             yield return Context.ToWorld();
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
-            FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
-            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
             // load meshx into localdb to get a url
             FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
             string tempFilePath = localDb.GetTempFilePath("meshx");
@@ -162,6 +183,7 @@ namespace ImportFromUnityLib
             Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
             // attach StaticMesh component with resulting url
             yield return Context.ToWorld();
+            Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == meshOut.rootAssetSlot.id);
             FrooxEngine.StaticMesh staticMesh = assetsSlot.AttachComponent<FrooxEngine.StaticMesh>();
             staticMesh.URL.Value = url;
             // return refid of StaticMesh component

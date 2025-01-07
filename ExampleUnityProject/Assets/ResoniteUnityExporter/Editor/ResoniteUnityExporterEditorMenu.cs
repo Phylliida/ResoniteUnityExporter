@@ -25,27 +25,6 @@ using System.Drawing;
 namespace ResoniteBridgeUnity
 {
 
-
-    public class UnityAssetHolder
-    {
-		public UnityEngine.Transform[] bones;
-        public UnityEngine.Mesh mesh;
-        public UnityEngine.Texture2D texture2D;
-        public UnityEngine.Texture3D texture3D;
-        public UnityAssetHolder(StaticMesh staticMesh)
-        {
-
-        }
-        public UnityAssetHolder(Bitmap2D texture2D)
-        {
-
-        }
-        public UnityAssetHolder(Bitmap3D texture3D)
-        {
-
-        }
-    }
-
     public class ObjectHolder
 	{
 		public ObjectHolder(GameObject gameObject, RefID_U2Res slotRefId)
@@ -60,14 +39,15 @@ namespace ResoniteBridgeUnity
 
 	public class HierarchyLookup
 	{
-		ResoniteBridgeClient bridgeClient;
+		public RefID_U2Res rootAssetsSlot;
+		public ResoniteBridgeClient bridgeClient;
 		List<ObjectHolder> objects = new List<ObjectHolder>();
 		Dictionary<string, GameObject> gameObjectLookup;
 		Dictionary<string, RefID_U2Res> refIdLookup;
 		Dictionary<ulong, GameObject> refIdToGameObject;
 		Dictionary<string, RefID_U2Res> assetLookup = new Dictionary<string, RefID_U2Res>();
 		
-		public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient)
+		public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient, RefID_U2Res rootAssetsSlot)
 		{
 			refIdToGameObject = new Dictionary<ulong, GameObject>();
 			foreach (KeyValuePair<string, RefID_U2Res> keyRefID in refIdLookup)
@@ -80,6 +60,7 @@ namespace ResoniteBridgeUnity
 			this.gameObjectLookup = gameObjectLookup;
 			this.refIdLookup = refIdLookup;
 			this.bridgeClient = bridgeClient;
+			this.rootAssetsSlot = rootAssetsSlot;
 		}
 
 		public IEnumerable<ObjectHolder> GetObjects()
@@ -346,7 +327,7 @@ namespace ResoniteBridgeUnity
                 refIdLookup.Add(lookup.uniqueId, lookup.refId);
 			}
 
-			HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup, bridgeClient);
+			HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot);
 
             return hierarchyLookup;
         }
@@ -354,6 +335,7 @@ namespace ResoniteBridgeUnity
         public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
 		{
 			StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray());
+			convertedMesh.rootAssetSlot = hierarchyLookup.rootAssetSlot;
 
 			byte[] encoded = null;
 

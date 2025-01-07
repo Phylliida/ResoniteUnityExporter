@@ -132,6 +132,7 @@ namespace ResoniteUnityExporterShared
     public struct StaticMesh_U2Res
     {
         public string name;
+        public RefID_U2Res rootAssetSlot;
         public StaticMeshImportSettings_U2Res importSettings;
         public Float3_U2Res[] positions;
         public Float4_U2Res[] colors;
