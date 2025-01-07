@@ -12,6 +12,8 @@ using System.Xml.Linq;
 using FrooxEngine;
 using Elements.Core;
 using ResoniteBridgeLib;
+using System.Net.NetworkInformation;
+using static OfficialAssets.Graphics;
 
 namespace ImportFromUnityLib
 {
@@ -22,6 +24,7 @@ namespace ImportFromUnityLib
         {
             server.RegisterProcessor("ImportToStaticMesh", ImportToStaticMesh);
             server.RegisterProcessor("TestBees", SimpleTest);
+            server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy);
         }
 
         public static byte[] SimpleTest(byte[] data)
@@ -41,9 +44,90 @@ namespace ImportFromUnityLib
             return arr != null && arr.Length > 0;
         }
 
-        public static byte[] ImportToStaticMesh(byte[] staticMeshBytes)
+        public static void AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
         {
-            // tobackground...
+            Slot addedSlot = parentSlot.AddSlot(obj.name);
+            ObjectLookup_U2Res lookup = new ObjectLookup_U2Res()
+            {
+                refId = new RefID_U2Res()
+                {
+                    id = (ulong)addedSlot.ReferenceID
+                },
+                uniqueId = obj.uniqueId
+            };
+            lookups.Add(lookup);
+            if (obj.children != null)
+            {
+                foreach (Object_U2Res child in obj.children)
+                {
+                    AddObjectAndChildren(addedSlot, child, lookups);
+                }
+            }
+        }
+
+        public static Slot GetAddingSlot()
+        {
+            return Engine.Current.WorldManager.FocusedWorld.LocalUserSpace;
+        }
+
+        static IEnumerator<Context> AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
+        {
+            // decode bytes
+            yield return Context.ToBackground();
+            ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
+            // create hierarchy slots and lookup
+            yield return Context.ToWorld();
+            FrooxEngine.Slot targetSlot = GetAddingSlot().AddSlot(hierarchy.hierarchyName);
+            List<ObjectLookup_U2Res> lookups = new List<ObjectLookup_U2Res>();
+            foreach (Object_U2Res obj in hierarchy.objects)
+            {
+                AddObjectAndChildren(targetSlot, obj, lookups);
+            }
+            // encode lookup and return it
+            yield return Context.ToBackground();
+            ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
+            {
+                lookups = lookups.ToArray()
+            };
+            outputHolder.outputBytes = ResoniteBridgeUtils.EncodeObject(outputLookups);
+        }
+
+        class OutputBytesHolder
+        {
+            public byte[] outputBytes;
+        }
+
+        public static byte[] ImportSlotHierarchy(byte[] hierarchyBytes)
+        {
+            OutputBytesHolder outputHolder = new OutputBytesHolder();
+            RunOnWorldThread(AddHierarchy(hierarchyBytes, outputHolder));
+            return outputHolder.outputBytes;
+        }
+
+        static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<bool> completion)
+        {
+            try
+            {
+                yield return Context.WaitFor(action);
+            }
+            finally
+            {
+                completion.SetResult(result: true);
+            }
+        }
+
+        public static bool RunOnWorldThread(IEnumerator<Context> action)
+        {
+            TaskCompletionSource<bool> taskCompletionSource = new TaskCompletionSource<bool>();
+            Engine.Current.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
+            return taskCompletionSource.Task.GetAwaiter().GetResult();
+        }
+
+
+        static IEnumerator<Context> ImportToStaticMeshHelper(byte[] staticMeshBytes, OutputBytesHolder outputBytes)
+        {
+            // Load mesh data into a meshx
+            yield return Context.ToBackground();
             StaticMesh_U2Res meshOut = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(staticMeshBytes);
             string name = meshOut.name;
             if (name == null || name.Length == 0)
@@ -51,39 +135,39 @@ namespace ImportFromUnityLib
                 name = "StaticMesh";
             }
             MeshX meshx = ConvertToMeshX(meshOut);
-            World focusedWorld = Engine.Current.WorldManager.FocusedWorld;
-            AutoResetEvent finished = new AutoResetEvent(false);
+            // create assets slot
+            yield return Context.ToWorld();
+            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
+            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
+            // load meshx into localdb to get a url
+            FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
+            string tempFilePath = localDb.GetTempFilePath("meshx");
+            yield return Context.ToBackground();
+            meshx.SaveToFile(tempFilePath);
+            Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
+            // attach StaticMesh component with resulting url
+            yield return Context.ToWorld();
+            FrooxEngine.StaticMesh staticMesh = assetsSlot.AttachComponent<FrooxEngine.StaticMesh>();
+            staticMesh.URL.Value = url;
+            // return refid of StaticMesh component
             RefID_U2Res result = new RefID_U2Res()
             {
-                id = 0
+                id = (ulong)staticMesh.ReferenceID
             };
-            Engine.Current.WorldManager.FocusedWorld.RunSynchronously(() =>
-            {
-                try
-                {
-                    FrooxEngine.Slot targetSlot = focusedWorld.RootSlot.AddSlot(name);
-                    FrooxEngine.Slot assetsSlot = focusedWorld.AssetsSlot.AddSlot(name);
-                    assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
-                    FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
-                    string tempFilePath = localDb.GetTempFilePath("meshx");
-                    meshx.SaveToFile(tempFilePath);
-                    Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
-                    // toworld...
-                    FrooxEngine.StaticMesh staticMesh = assetsSlot.AddSlot("Mesh").AttachComponent<FrooxEngine.StaticMesh>();
-                    staticMesh.URL.Value = url;
-                    ulong refId = (ulong)staticMesh.ReferenceID;
-                    result = new RefID_U2Res()
-                    {
-                        id = refId
-                    };
-                }
-                finally
-                {
-                    finished.Set();
-                }
-            });
-            finished.WaitOne();
-            return ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+        }
+
+        /// <summary>
+        /// Takes static mesh data and makes a StaticMesh asset
+        /// </summary>
+        /// <param name="staticMeshBytes"></param>
+        /// <returns>bytes representing RefID_U2Res that contains the static mesh asset component</returns>
+        public static byte[] ImportToStaticMesh(byte[] staticMeshBytes)
+        {
+            OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
+            RunOnWorldThread(ImportToStaticMeshHelper(staticMeshBytes, outputBytesHolder));
+            return outputBytesHolder.outputBytes;
         }
 
         public static MeshX ConvertToMeshX(StaticMesh_U2Res mesh)

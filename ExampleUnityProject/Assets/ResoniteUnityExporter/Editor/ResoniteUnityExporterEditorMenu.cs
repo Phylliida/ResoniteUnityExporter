@@ -18,6 +18,7 @@ using System.CodeDom;
 using UnityEditor.Playables;
 using System.ComponentModel;
 using System.Text;
+using System.Drawing.Imaging;
 
 
 namespace ResoniteBridgeUnity
@@ -164,8 +165,89 @@ namespace ResoniteBridgeUnity
 				}
             }
         }
+		
+		public Object_U2Res GameObjectToObject(UnityEngine.GameObject obj)
+		{
+			Object_U2Res[] children = new Object_U2Res[obj.transform.childCount];
+			for(int i = 0; i < obj.transform.childCount; i++)
+			{
+				children[i] = GameObjectToObject(obj.transform.GetChild(i).gameObject);
+			}
+			Object_U2Res result = new Object_U2Res()
+			{
+				// note that this is unique during a session, but changes each time you reboot unity
+				uniqueId = obj.GetInstanceID().ToString(),
+				children = children,
+				name = obj.name,
+                localPosition = new Float3_U2Res()
+				{
+					x = obj.transform.localPosition.x,
+					y = obj.transform.localPosition.y,
+					z = obj.transform.localPosition.z
+				},
+				localRotation = new Float4_U2Res()
+                {
+                    x = obj.transform.localRotation.x,
+					y = obj.transform.localRotation.y,
+					z = obj.transform.localRotation.z,
+					w = obj.transform.localRotation.w
+                },
+				localScale = new Float3_U2Res()
+				{
+					x = obj.transform.localScale.x,
+					y = obj.transform.localScale.y,
+					z = obj.transform.localScale.z
+				}
+			};
+			return result;
+		}
 
-		public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
+		public Dictionary<string, RefID_U2Res> CreateHierarchy(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+		{
+			// if rootTransform is null, grab all objects in scene
+			GameObject[] gameObjects = (rootTransform == null)
+				? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+				// otherwise, just do the given object as root
+				: new GameObject[] { rootTransform.gameObject };
+
+
+			Object_U2Res[] convertedObjects = new Object_U2Res[gameObjects.Length];
+			for (int i = 0; i < gameObjects.Length; i++)
+			{
+				convertedObjects[i] = GameObjectToObject(gameObjects[i]);
+			}
+
+            ObjectHierarchy_U2Res hierarchyData = new ObjectHierarchy_U2Res()
+            {
+                hierarchyName = hierarchyName,
+                objects = convertedObjects
+            };
+
+			byte[] encoded = ResoniteBridgeUtils.EncodeObject(hierarchyData);
+
+            bridgeClient.SendMessageSync(
+				"ImportSlotHierarchy",
+				encoded,
+				-1,
+				out byte[] outBytes,
+				out bool isError
+				);
+            if (isError)
+            {
+                throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+            }
+            ObjectLookups_U2Res lookups = ResoniteBridgeUtils.DecodeObject<ObjectLookups_U2Res>(outBytes);
+
+			Dictionary<string, RefID_U2Res> resultLookup = new Dictionary<string, RefID_U2Res>();
+			foreach (ObjectLookup_U2Res lookup in lookups.lookups)
+			{
+				resultLookup.Add(lookup.uniqueId, lookup.refId);
+			}
+
+			return resultLookup;
+        }
+
+        public static RefID_U2Res ImportSkinnedMesh(UnityEngine.SkinnedMeshRenderer skinnedMeshRenderer, ResoniteBridgeClient bridgeClient)
 		{
 			ResoniteBridgeUtils.DebugLog = x => Debug.Log(x);
             List<string> boneNames = new List<string>();
@@ -179,33 +261,34 @@ namespace ResoniteBridgeUnity
 
 			StaticMesh_U2Res convertedMesh = ConvertMesh(skinnedMeshRenderer.sharedMesh, boneNames.ToArray());
 
+			byte[] encoded = null;
+
 			using (Timer _ = new Timer("Encoding"))
 			{
-                byte[] encoded = ResoniteBridgeUtils.EncodeObject(convertedMesh);
-				StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
-				CheckAllEqual(convertedMesh, decoded);
+                encoded = ResoniteBridgeUtils.EncodeObject(convertedMesh);
+				// test to make sure encodes correctly
+				//StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
+				//CheckAllEqual(convertedMesh, decoded);
             }
-            /*
-			bridgeClient.SendMessageSync(
-                "ImportToStaticMesh",
-				ResoniteBridgeUtils.EncodeObject(convertedMesh),
-				-1,
-				out byte[] outBytes,
-				out bool isError
-				);
-			if (isError)
+			using (Timer _ = new Timer("Processing Static Mesh"))
 			{
-				throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
-			}
-			RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
-			
-			*/
-            RefID_U2Res staticMeshRefId = new RefID_U2Res()
-			{
-				id = 420
-			};
-            Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
-			return staticMeshRefId;
+                bridgeClient.SendMessageSync(
+                    "ImportToStaticMesh",
+                    encoded,
+                    -1,
+                    out byte[] outBytes,
+                    out bool isError
+                    );
+                if (isError)
+                {
+                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                }
+                RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+                Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
+                return staticMeshRefId;
+            }
+
+
 		}
 
 

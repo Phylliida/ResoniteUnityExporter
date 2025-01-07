@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
+using System.Collections.Generic;
 
 
 
@@ -55,7 +56,7 @@ namespace ResoniteBridgeUnity {
 
 
         // gui
-        SkinnedMeshRenderer skinnedMesh;
+        Transform parentObject;
         void OnGUI()
 		{
             if (bridgeClient == null) {
@@ -64,10 +65,10 @@ namespace ResoniteBridgeUnity {
 				bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
 				//return;
             }
-            skinnedMesh = (SkinnedMeshRenderer)EditorGUILayout.ObjectField(
-				"Skinned Mesh",
-				skinnedMesh,
-				typeof(SkinnedMeshRenderer),
+            parentObject = (Transform)EditorGUILayout.ObjectField(
+				"Parent object",
+                parentObject,
+				typeof(Transform),
 				true
 			);
 
@@ -85,15 +86,16 @@ namespace ResoniteBridgeUnity {
 				GUILayout.Label("Connecting to Resonite...", EditorStyles.boldLabel);
 			}
 
-			string labelText = skinnedMesh == null ? "Need skinned mesh" : "";
+			string labelText = parentObject == null ? "Sending all objects in scene" : "Sending all objects under parent object " + parentObject.name;
             GUILayout.Label(labelText);
 
-			bool ready = skinnedMesh != null && bridgeClient.IsConnected();
+			bool ready = bridgeClient.IsConnected();
 			ready = true; // tmp
             EditorGUI.BeginDisabledGroup(!ready);
             
             if (GUILayout.Button("Export"))
             {
+				Dictionary<string, RefID_U2Res> hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(parentObject);
 				// test
 				ResoniteUnityExporterEditorMenu.ImportSkinnedMesh(skinnedMesh, bridgeClient);
             }
