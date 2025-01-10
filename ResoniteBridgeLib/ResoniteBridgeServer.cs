@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using NamedPipeIPC;
+using MemoryMappedFileIPC;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 

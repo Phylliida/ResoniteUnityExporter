@@ -1,6 +1,6 @@
 using System;
 
-namespace NamedPipeIPC
+namespace MemoryMappedFileIPC
 { 
     public struct IpcServerInfo {
         public long timeOfLastUpdate;

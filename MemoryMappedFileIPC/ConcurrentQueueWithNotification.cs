@@ -2,7 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Threading;
 
-namespace NamedPipeIPC
+namespace MemoryMappedFileIPC
 {
     public class ConcurrentQueueWithNotification<T> { 
         private ConcurrentQueue<T> queue = new ConcurrentQueue<T>();

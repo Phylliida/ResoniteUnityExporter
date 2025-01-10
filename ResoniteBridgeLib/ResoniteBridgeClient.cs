@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
-using NamedPipeIPC;
+using MemoryMappedFileIPC;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
