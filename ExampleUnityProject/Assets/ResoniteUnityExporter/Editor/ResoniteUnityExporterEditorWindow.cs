@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEditor;
 using ResoniteBridgeLib;
-using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 
 
 
-namespace ResoniteBridgeUnity {
+namespace ResoniteUnityExporter {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
 		
@@ -98,6 +97,7 @@ namespace ResoniteBridgeUnity {
 
             if (GUILayout.Button("Export"))
             {
+				ResoniteTransferManager a;
                 // First, mirror the hierarchy into resonite
                 HierarchyLookup hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(exportSlotName, parentObject, bridgeClient);
 

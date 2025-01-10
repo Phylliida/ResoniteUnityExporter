@@ -21,6 +21,17 @@ namespace ImportFromUnityLib
         public static void AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
         {
             Slot addedSlot = parentSlot.AddSlot(obj.name);
+            addedSlot.LocalPosition = new Elements.Core.float3(obj.localPosition.x,
+                            obj.localPosition.y,
+                            obj.localPosition.z);
+            addedSlot.LocalRotation = new Elements.Core.floatQ(obj.localRotation.x,
+                            obj.localRotation.y,
+                            obj.localRotation.z,
+                            obj.localRotation.w);
+            addedSlot.LocalScale = new Elements.Core.float3(obj.localScale.x,
+                            obj.localScale.y,
+                            obj.localScale.z);
+
             ObjectLookup_U2Res lookup = new ObjectLookup_U2Res()
             {
                 refId = new RefID_U2Res()
