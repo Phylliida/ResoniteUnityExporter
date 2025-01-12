@@ -68,8 +68,6 @@ namespace ResoniteUnityExporter {
 		{
             if (bridgeClient == null) {
 
-                transferManager = new ResoniteTransferManager();
-				RegisterConverters();
 				
                 // bees
                 bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
@@ -90,15 +88,26 @@ namespace ResoniteUnityExporter {
 				bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
             }
-            // bees wow wow wow wow wow wow wow wow wow wow wow wow  wows wolw WOW wow wow
-            if (bridgeClient.IsConnected()) {
-				GUILayout.Label("Connected to Resonite", EditorStyles.boldLabel);
-			}
-			else {
-				GUILayout.Label("Connecting to Resonite...", EditorStyles.boldLabel);
-			}
+            // bees wow wow wow wow wow wo ffw wow wow wow wow wow wow  wows wolw WOW wow wow
+            if (bridgeClient.publisher.IsConnected())
+            {
+                GUILayout.Label("Publisher Connected to Resonite", EditorStyles.boldLabel);
+            }
+            else
+            {
+                GUILayout.Label("Publisher Connecting to Resonite...", EditorStyles.boldLabel);
+            }
+            if (bridgeClient.subscriber.IsConnected())
+            {
+                GUILayout.Label("Subscriber Connected to Resonite", EditorStyles.boldLabel);
+            }
+            else
+            {
+                GUILayout.Label("Subscriber Connecting to Resonite...", EditorStyles.boldLabel);
+            }
 
-			string labelText = parentObject == null ? "Sending all objects in scene" : "Sending all objects under parent object " + parentObject.name;
+
+            string labelText = parentObject == null ? "Sending all objects in scene" : "Sending all objects under parent object " + parentObject.name;
             GUILayout.Label(labelText);
 
 			bool ready = bridgeClient.IsConnected();
@@ -107,6 +116,8 @@ namespace ResoniteUnityExporter {
 
             if (GUILayout.Button("Export"))
             {
+                transferManager = new ResoniteTransferManager();
+                RegisterConverters();
                 transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
                 // First, mirror the hierarchy into resonite
             }

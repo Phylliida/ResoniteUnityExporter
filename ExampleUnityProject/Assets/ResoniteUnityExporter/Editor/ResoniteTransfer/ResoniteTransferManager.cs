@@ -28,6 +28,8 @@ namespace ResoniteUnityExporter
         public void ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
         {
             HierarchyLookup hierarchy = ResoniteTransferHierarchy.CreateHierarchy(hierarchyName, rootTransform, bridgeClient);
+            Debug.Log("Converted hierarchy");
+            return;
             Dictionary<Type, MethodInfo> methodCache = new Dictionary<Type, MethodInfo>();
             foreach (ObjectHolder obj in hierarchy.GetObjects())
             {

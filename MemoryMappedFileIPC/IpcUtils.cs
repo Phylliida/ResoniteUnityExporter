@@ -234,13 +234,30 @@ namespace MemoryMappedFileIPC
                             File.Delete(server);
                         }
                     }
+                    // we are canceled, bail
+                    else if (stopToken.IsCancellationRequested)
+                    {
+                        servers.Clear();
+                        break;
+                    }
                 }
+                // sometimes they are just left as empty, clean those up
                 catch (JsonSerializationException e) {
-                    
+                    long lastWriteMillis = DateTimeToMillis(System.IO.File.GetLastWriteTimeUtc(server));
+                    long curMillis = DateTimeToMillis(DateTime.UtcNow);
+                    if (curMillis - lastWriteMillis > keepAliveMillis)
+                    {
+                        File.Delete(server);
+                    }
                 }
             }
 
             return servers;
+        }
+
+        public static long DateTimeToMillis(DateTime datetime)
+        {
+            return (long)datetime.ToUniversalTime().Ticks / TimeSpan.TicksPerMillisecond;
         }
     }
 }

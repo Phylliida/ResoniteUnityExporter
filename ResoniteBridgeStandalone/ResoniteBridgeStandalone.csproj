@@ -45,8 +45,8 @@
     <Reference Include="ImportFromUnityLib">
       <HintPath>..\Published\ImportFromUnityLib\ImportFromUnityLib.dll</HintPath>
     </Reference>
-    <Reference Include="NamedPipeIPC">
-      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
+    <Reference Include="MemoryMappedFileIPC">
+      <HintPath>..\Published\MemoryMappedFileIPC\MemoryMappedFileIPC.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteBridgeLib">
       <HintPath>..\Published\ResoniteBridgeLib\ResoniteBridgeLib.dll</HintPath>

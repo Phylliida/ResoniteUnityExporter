@@ -130,7 +130,7 @@ namespace MemoryMappedFileIPC
                         2,
                         stopToken,
                         DebugLog);
-                    lock(connectEventLock)
+                    lock (connectEventLock)
                     {
                         connections[server.processId] = clientConnection;
                     }
