@@ -59,7 +59,9 @@ namespace ResoniteUnityExporter
             materialData.intValues = intValues.ToArray();
 
 
-
+            Debug.Log("Texture names " + texture2DNames);
+            Debug.Log("Float4 names " + vectorNames);
+            Debug.Log("int names " + intNames);
             byte[] encoded = ResoniteBridgeUtils.EncodeObject(materialData);
 
             bridgeClient.SendMessageSync(

@@ -17,6 +17,7 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
             server.RegisterProcessor("ImportToTexture2D", ImportTexture2D.ImportTexture2DFunc);
             server.RegisterProcessor("ImportSkinnedMeshRenderer", ImportSkinnedMeshRenderer.ImportSkinnedMeshRendererFunc);
+            server.RegisterProcessor("ImportToMaterial", ImportMaterial.ImportToMaterialFunc);
         }
 
         public static byte[] SimpleTestFunc(byte[] data)

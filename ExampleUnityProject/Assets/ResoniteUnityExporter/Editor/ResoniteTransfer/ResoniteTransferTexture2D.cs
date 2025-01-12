@@ -12,8 +12,34 @@ namespace ResoniteUnityExporter
 {
     public class ResoniteTransferTexture2D
     {
+        // needed for reading a texture that isn't readable
+        // from https://discussions.unity.com/t/easy-way-to-make-texture-isreadable-true-by-script/848617/6
+        static UnityEngine.Texture2D DupTexAsReadable(Texture2D source)
+        {
+            RenderTexture renderTex = RenderTexture.GetTemporary(
+                        source.width,
+                        source.height,
+                        0,
+                        RenderTextureFormat.Default,
+                        RenderTextureReadWrite.Linear);
+
+            Graphics.Blit(source, renderTex);
+            RenderTexture previous = RenderTexture.active;
+            RenderTexture.active = renderTex;
+            Texture2D readableText = new Texture2D(source.width, source.height);
+            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+            readableText.Apply();
+            RenderTexture.active = previous;
+            RenderTexture.ReleaseTemporary(renderTex);
+            return readableText;
+        }
+
         public static Texture2D_U2Res ConvertTexture(UnityEngine.Texture2D texture)
         {
+            if (!texture.isReadable)
+            {
+                texture = DupTexAsReadable(texture);
+            }
             // this is slow (takes 10-20ms) but that's good enough for one time transfer
             // and it's better to use this vs getting raw data because we need to convert format
             UnityEngine.Color32[] textureColors = texture.GetPixels32();

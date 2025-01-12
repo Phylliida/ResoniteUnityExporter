@@ -232,12 +232,12 @@ namespace ResoniteBridgeLib
                 offset += sizeof(long);
                 Type arrayType = GetArrayType(type);
 
-                int arraySizeInBytes = (int)(Marshal.SizeOf(arrayType) * arrayLen);
                 //DebugLog("Got array of length " + arrayLen + " and of type " + arrayType.ToString());
 
                 if (TypeRecursivelyHasAllPrimitiveFields(arrayType))
                 {
-                    //DebugLog("Nice array type:" + arrayType + " main type " + type);
+                    int arraySizeInBytes = (int)(Marshal.SizeOf(arrayType) * arrayLen);
+                    DebugLog("Nice array type:" + arrayType + " main type " + type);
                     object destArr = Array.CreateInstance(arrayType, arrayLen);
                     ThisStaticType().GetMethod("CopyToArray", BindingFlags.Static | BindingFlags.Public)
                         .MakeGenericMethod(arrayType)
@@ -248,7 +248,7 @@ namespace ResoniteBridgeLib
                 }
                 else
                 {
-                    //DebugLog("Manual array type:" + arrayType + " main type " + type);
+                    DebugLog("Manual array type:" + arrayType + " main type " + type);
                     object[] parms = new object[] { bytes, (int)arrayLen, offset };
 
                     object res = ThisStaticType().GetMethod("DecodeArraySlow", BindingFlags.Static | BindingFlags.NonPublic)
@@ -264,7 +264,7 @@ namespace ResoniteBridgeLib
                 //DebugLog("Running empty constructor for type " + type.ToString());
                 foreach (FieldInfo field in GetTypeFields(type))
                 {
-                    //DebugLog("Got field " + field + " for type " + type.ToString());
+                    DebugLog("Got field " + field + " for type " + type.ToString());
                     field.SetValue(res, DecodeObject(field.FieldType, bytes, ref offset));
                 }
                 return res;

@@ -120,11 +120,11 @@ namespace ResoniteUnityExporter
             });
         }
 
-        public RefID_U2Res SendOrGetMaterial(UnityEngine.Material material, string[] boneNames)
+        public RefID_U2Res SendOrGetMaterial(UnityEngine.Material material)
         {
             return CreateAssetIfNotExist(material.GetInstanceID().ToString(), () =>
             {
-                return ResoniteTransferMaterial.SendMaterialToResonite(this, material, boneNames, bridgeClient);
+                return ResoniteTransferMaterial.SendMaterialToResonite(this, material, bridgeClient);
             });
         }
 

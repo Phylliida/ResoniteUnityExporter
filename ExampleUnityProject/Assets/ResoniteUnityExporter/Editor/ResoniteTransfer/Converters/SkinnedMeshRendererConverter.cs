@@ -22,7 +22,7 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
 
 
             RefID_U2Res[] materialRefIds = renderer.materials.Select(mat =>
-                hierarchy.SendMaterial(mat)).ToArray();
+                hierarchy.SendOrGetMaterial(mat)).ToArray(); 
 
             foreach (Transform bone in renderer.bones)
             {
