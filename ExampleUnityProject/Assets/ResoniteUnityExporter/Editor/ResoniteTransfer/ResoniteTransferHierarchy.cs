@@ -112,7 +112,7 @@ namespace ResoniteUnityExporter
             return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
         } 
 
-        public RefID_U2Res SendMesh(UnityEngine.Mesh mesh, string[] boneNames)
+        public RefID_U2Res SendOrGetMesh(UnityEngine.Mesh mesh, string[] boneNames)
         {
             return CreateAssetIfNotExist(mesh.GetInstanceID().ToString(), () =>
             {
@@ -120,7 +120,7 @@ namespace ResoniteUnityExporter
             });
         }
 
-        public RefID_U2Res SendMaterial(UnityEngine.Material material, string[] boneNames)
+        public RefID_U2Res SendOrGetMaterial(UnityEngine.Material material, string[] boneNames)
         {
             return CreateAssetIfNotExist(material.GetInstanceID().ToString(), () =>
             {
@@ -128,7 +128,7 @@ namespace ResoniteUnityExporter
             });
         }
 
-        public RefID_U2Res SendTexture(UnityEngine.Texture2D texture)
+        public RefID_U2Res SendOrGetTexture(UnityEngine.Texture2D texture)
         {
             return CreateAssetIfNotExist(texture.GetInstanceID().ToString(), () =>
             {
