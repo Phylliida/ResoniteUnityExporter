@@ -79,7 +79,7 @@ namespace MemoryMappedFileIPC
             finishedRead = new SharedEventWaitHandle(id + "finishedRead", false, isWriter);
             connected = new SharedEventWaitHandle(id + "connected", false, isWriter);
             readyForConnection = new SharedEventWaitHandle(id + "readyForConnection", false, isWriter);
-            file = MemoryMappedFile.CreateOrOpen(id, (long)bufferSize);
+            file = MemoryMappedFile.CreateOrOpen(id, (long)bufferSize, MemoryMappedFileAccess.ReadWrite);
             accessor = file.CreateViewAccessor(0, bufferSize);
             if (isWriter)
             {
@@ -202,19 +202,21 @@ namespace MemoryMappedFileIPC
                 WriteDataChunk(data, offset + chunkStart, chunkLen);
                 bool partialChunk = (chunkStart + this.bufferSize) < len;
                 accessor.Write(STATUS_POSITION, partialChunk ? PARTIAL_DATA : FINAL_DATA);
-                readyForRead.waitHandle.Set();
                 // wait for finishedRead should be sufficient, however, if the server disposes of the events
                 // then on some OS they get stuck in a perpertual "Set" state
                 // so we need to see that they change the acknowledge bit as well
-                accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);      
+                accessor.Write(ACKNOWLEDGE_POSITION, NO_ACKNOWLEDGE);
                 // it can get stuck on ACKNOWLEDGED if server disconnects, if so, bail (not sure that is true, actually, but just in case)
                 if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != NO_ACKNOWLEDGE)
                 {
                     throw new IpcUtils.DisconnectedException();
                 }
+
+                readyForRead.waitHandle.Set();
                 WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
                 // sometimes the ACHKNOWLEDGE takes longer to sync than the wait handles,
                 // try a few times
+                
                 bool acknowledged = false;
                 int ACKNOWLEDGE_RETRIES = 2;
                 int ACKNOWLEDGE_WAIT_MILLIS = 100; // can be pretty small, its very fast
