@@ -12,7 +12,7 @@ namespace ResoniteBridgeLib
     {
         public const string NAMED_SOCKET_KEY = "ResoniteCustomBridge";
 
-        public const int millisBetweenPing = 1000;
+        public const int millisBetweenPing = ResoniteBridgeClient.millisBetweenPing;
 
         public IpcPublisher publisher;
         public IpcSubscriber subscriber;
