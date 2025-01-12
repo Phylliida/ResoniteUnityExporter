@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using ResoniteBridgeLib;
 using System.Collections.Generic;
+using Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters;
 
 
 
@@ -54,15 +55,24 @@ namespace ResoniteUnityExporter {
         }
 
 
+		void RegisterConverters()
+		{
+            transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
+        }
+
         // gui
         Transform parentObject;
 		string exportSlotName;
+		ResoniteTransferManager transferManager;
         void OnGUI()
 		{
             if (bridgeClient == null) {
 
-				// bees
-				bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
+                transferManager = new ResoniteTransferManager();
+				RegisterConverters();
+				
+                // bees
+                bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
 				//return;
             }
             parentObject = (Transform)EditorGUILayout.ObjectField(
@@ -97,19 +107,8 @@ namespace ResoniteUnityExporter {
 
             if (GUILayout.Button("Export"))
             {
-				ResoniteTransferManager a;
+                transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
                 // First, mirror the hierarchy into resonite
-                HierarchyLookup hierarchyLookup = ResoniteUnityExporterEditorMenu.CreateHierarchy(exportSlotName, parentObject, bridgeClient);
-
-                // Second, process all components
-
-                foreach (ObjectHolder obj in hierarchyLookup.GetObjects())
-				{
-					foreach (UnityEngine.Component component in obj.gameObject.GetComponents<Component>())
-					{
-						// todo: process it
-					}
-				}
             }
             EditorGUI.EndDisabledGroup();
 

@@ -8,7 +8,8 @@ namespace ResoniteUnityExporterShared
     [StructLayout(LayoutKind.Sequential)]
     public struct SkinnedMeshRenderer_U2Res
     {
+        public RefID_U2Res targetSlot;
         public RefID_U2Res staticMeshAsset;
-        public int[] boneHierarchy;
+        public RefID_U2Res[] bones;
     }
 }

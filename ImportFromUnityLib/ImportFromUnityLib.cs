@@ -16,6 +16,7 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
             server.RegisterProcessor("ImportToTexture2D", ImportTexture2D.ImportTexture2DFunc);
+            server.RegisterProcessor("ImportSkinnedMeshRenderer", ImportSkinnedMeshRenderer.ImportSkinnedMeshRendererFunc);
         }
 
         public static byte[] SimpleTestFunc(byte[] data)

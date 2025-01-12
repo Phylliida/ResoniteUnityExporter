@@ -1,4 +1,5 @@
 ﻿using FrooxEngine;
+using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,11 @@ namespace ImportFromUnityLib
         public static Slot GetAddingSlot()
         {
             return Engine.Current.WorldManager.FocusedWorld.LocalUserSpace;
+        }
+
+        public static IWorldElement LookupRefID(RefID_U2Res refID)
+        {
+            return Engine.Current.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID.id);
         }
 
         static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<bool> completion)

@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{E0FD38DF-5B97-043C-1ED3-013B21356B20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -58,13 +59,6 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\ResoniteUnityExporter\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\ResoniteTransfer\ResoniteTransferMesh.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\ResoniteTransfer\ResoniteTransferManager.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\ResoniteTransfer\ResoniteTransferUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ResoniteUnityExporter\Plugins\MemoryMappedFileIPC.dll" />
