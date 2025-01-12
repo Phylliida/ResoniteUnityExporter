@@ -20,6 +20,7 @@ namespace ResoniteUnityExporter
         public static RefID_U2Res SendMaterialToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Material material, ResoniteBridgeClient bridgeClient)
         {
             Material_U2Res materialData = new Material_U2Res();
+            materialData.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
             string[] textures = material.GetPropertyNames(MaterialPropertyType.Texture);
             List<string> texture2DNames = new List<string>();
             List<RefID_U2Res> texture2DValues = new List<RefID_U2Res>();
@@ -59,9 +60,9 @@ namespace ResoniteUnityExporter
             materialData.intValues = intValues.ToArray();
 
 
-            Debug.Log("Texture names " + texture2DNames);
-            Debug.Log("Float4 names " + vectorNames);
-            Debug.Log("int names " + intNames);
+            Debug.Log("Texture names " + String.Join(",", texture2DNames));
+            Debug.Log("Float4 names " + String.Join(",", vectorNames));
+            Debug.Log("int names " + String.Join(",", intNames));
             byte[] encoded = ResoniteBridgeUtils.EncodeObject(materialData);
 
             bridgeClient.SendMessageSync(
