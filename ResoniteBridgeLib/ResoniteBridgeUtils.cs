@@ -402,7 +402,7 @@ namespace ResoniteBridgeLib
                 EncodeObject(arr[i], outBytes, ref offset, writeBytes);
             }
         }
-        static T[] DecodeArraySlow<T>(byte[] bytes, int arrayLength, ref int offset) where T : struct
+        static T[] DecodeArraySlow<T>(byte[] bytes, int arrayLength, ref int offset)
         {
             T[] outArr = new T[arrayLength];
             for (int i = 0; i < arrayLength; i++)
