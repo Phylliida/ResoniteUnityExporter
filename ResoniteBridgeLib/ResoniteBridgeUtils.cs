@@ -430,6 +430,11 @@ namespace ResoniteBridgeLib
 
         public static bool TypeRecursivelyHasAllPrimitiveFields(Type type)
         {
+            // classes we don't support
+            if (type.IsClass)
+            {
+                return false;
+            }
             return primitiveTypes.Contains(type) ||
                 GetTypeFields(type).All(t =>
                 primitiveTypes.Contains(t.FieldType) ||

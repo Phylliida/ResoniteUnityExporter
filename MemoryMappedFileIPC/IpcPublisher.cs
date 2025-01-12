@@ -115,7 +115,7 @@ namespace MemoryMappedFileIPC
                 }
             }).Start();
 
-            DebugLog("Looking to connect, currently have " + connections.Count + " active connections");
+            //DebugLog("Looking to connect, currently have " + connections.Count + " active connections");
             
             foreach (IpcServerInfo server in IpcUtils.GetLoadedServers(this.millisBetweenPing * 2, stopToken))
             {

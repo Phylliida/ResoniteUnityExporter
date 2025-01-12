@@ -88,7 +88,7 @@ namespace ResoniteUnityExporter {
 				bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
             }
-            // bees wow wow wow wow wow wo ffw wow wow wow wow wow wow  wows wolw WOW wow wow
+            // bees wow wow wow woffffw wow wo ffw wow wow wow wow wow wow  wows wolw WOW wow wow
             if (bridgeClient.publisher.IsConnected())
             {
                 GUILayout.Label("Publisher Connected to Resonite", EditorStyles.boldLabel);

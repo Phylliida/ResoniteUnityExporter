@@ -110,9 +110,9 @@ namespace MemoryMappedFileIPC
                         while (!stopToken.IsCancellationRequested)
                         {
                             // keepalive ping
-                            DebugLog("Sending ping to " + id);
+                            //DebugLog("Sending ping to " + id);
                             SendPing(pingClient, millisBetweenPing);
-                            DebugLog("Sent ping to " + id);
+                            //DebugLog("Sent ping to " + id);
                             Task.Delay(millisBetweenPing, stopToken.Token).GetAwaiter().GetResult();
                         }
                     }

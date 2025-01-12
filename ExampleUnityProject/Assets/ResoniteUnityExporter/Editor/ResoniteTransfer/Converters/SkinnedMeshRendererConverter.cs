@@ -19,6 +19,11 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
         {
             string[] boneNames = renderer.bones.Select(x => x.name).ToArray();
             RefID_U2Res meshRefId = hierarchy.SendMesh(renderer.sharedMesh, boneNames);
+
+
+            RefID_U2Res[] materialRefIds = renderer.materials.Select(mat =>
+                hierarchy.SendMaterial(mat)).ToArray();
+
             foreach (Transform bone in renderer.bones)
             {
                 if (!hierarchy.TryLookupSlot(bone.transform, out RefID_U2Res _))

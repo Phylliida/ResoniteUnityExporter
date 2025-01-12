@@ -28,8 +28,7 @@ namespace ResoniteUnityExporter
         public void ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
         {
             HierarchyLookup hierarchy = ResoniteTransferHierarchy.CreateHierarchy(hierarchyName, rootTransform, bridgeClient);
-            Debug.Log("Converted hierarchy");
-            return;
+            Debug.Log("Converted hierarchy"); // finished
             Dictionary<Type, MethodInfo> methodCache = new Dictionary<Type, MethodInfo>();
             foreach (ObjectHolder obj in hierarchy.GetObjects())
             {
@@ -38,16 +37,21 @@ namespace ResoniteUnityExporter
                 var convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
                 foreach (UnityEngine.Component component in gameObject.GetComponents<UnityEngine.Component>())
                 {
-                    MethodInfo convertMethod = null;
-                    if (!methodCache.TryGetValue(component.GetType(), out convertMethod))
+                    // sometimes it gives null components??
+                    if (component != null)
                     {
-                        convertMethod = convertComponentMethod.MakeGenericMethod(component.GetType());
-                        methodCache.Add(component.GetType(), convertMethod);
+                        Debug.Log("Processing component: " + component);
+                        MethodInfo convertMethod = null;
+                        if (!methodCache.TryGetValue(component.GetType(), out convertMethod))
+                        {
+                            convertMethod = convertComponentMethod.MakeGenericMethod(component.GetType());
+                            methodCache.Add(component.GetType(), convertMethod);
+                        }
+                        convertMethod.Invoke(this, new object[]
+                        {
+                            component, hierarchy
+                        });
                     }
-                    convertMethod.Invoke(this, new object[]
-                    {
-                        component, hierarchy
-                    });
                 }
             }
         }

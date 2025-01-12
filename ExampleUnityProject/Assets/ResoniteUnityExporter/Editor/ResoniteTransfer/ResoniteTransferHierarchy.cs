@@ -120,6 +120,14 @@ namespace ResoniteUnityExporter
             });
         }
 
+        public RefID_U2Res SendMaterial(UnityEngine.Material material, string[] boneNames)
+        {
+            return CreateAssetIfNotExist(material.GetInstanceID().ToString(), () =>
+            {
+                return ResoniteTransferMaterial.SendMaterialToResonite(this, material, boneNames, bridgeClient);
+            });
+        }
+
         public RefID_U2Res SendTexture(UnityEngine.Texture2D texture)
         {
             return CreateAssetIfNotExist(texture.GetInstanceID().ToString(), () =>
@@ -155,6 +163,8 @@ namespace ResoniteUnityExporter
             };
 
             byte[] encoded = ResoniteBridgeUtils.EncodeObject(hierarchyData);
+
+            Debug.Log("Encoded:" + encoded.Length + " bytes");
 
             bridgeClient.SendMessageSync(
                 "ImportSlotHierarchy",

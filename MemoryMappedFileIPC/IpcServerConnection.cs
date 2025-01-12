@@ -131,7 +131,7 @@ namespace MemoryMappedFileIPC
                             IpcUtils.ResponseType responseType = ReadBytes(pingServer, out byte[] bytes, stopToken, millisBetweenPing * 2);
                             if (responseType == IpcUtils.ResponseType.Ping)
                             {
-                                DebugLog("Got ping from " + id);
+                                //DebugLog("Got ping from " + id);
                             }
                             else if (responseType == IpcUtils.ResponseType.Data)
                             {
@@ -202,7 +202,7 @@ namespace MemoryMappedFileIPC
         public IpcUtils.ResponseType ReadBytes(MemoryMappedFileConnection connection, out byte[] bytes, CancellationTokenSource readStopToken, int millisTimeout=-1)
         {
             byte[] kindBytes = connection.ReadData(readStopToken.Token, millisTimeout);
-            DebugLog("read bytes with kind " + kindBytes[0]);
+            //DebugLog("read bytes with kind " + kindBytes[0]);
             if (kindBytes[0] == 0) // a zero can happen if we are disconnected (named pipes are weird like that)
             {
                 bytes = null;
@@ -211,7 +211,7 @@ namespace MemoryMappedFileIPC
             }
             else if (kindBytes[0] == IpcUtils.PING_MESSAGE)
             {
-                DebugLog("read ping bytes");
+                //DebugLog("read ping bytes");
                 bytes = null;
                 return IpcUtils.ResponseType.Ping;
             }
