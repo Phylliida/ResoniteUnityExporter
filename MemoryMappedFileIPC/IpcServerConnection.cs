@@ -102,7 +102,7 @@ namespace MemoryMappedFileIPC
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got exception in server, disconnecting " + e.GetType() + " " + e.Message + " " + e.StackTrace);
+                    DebugLog("Got exception in data thread of server, disconnecting " + e.GetType() + " " + e.Message + " " + e.StackTrace);
                 }
                 finally
                 {
@@ -148,7 +148,7 @@ namespace MemoryMappedFileIPC
                 }
                 catch (Exception e)
                 {
-                    DebugLog("Got exception in server, disconnecting " + e.GetType() + " " + e.Message + " " + e.StackTrace);
+                    DebugLog("Got exception in ping thread of server, disconnecting " + e.GetType() + " " + e.Message + " " + e.StackTrace);
                 }
                 finally
                 {

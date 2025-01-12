@@ -1,6 +1,7 @@
 ﻿using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -25,9 +26,10 @@ namespace ResoniteUnityExporter
             return MethodBase.GetCurrentMethod().DeclaringType;
         }
 
-        public void ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+        public IEnumerator ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
         {
             HierarchyLookup hierarchy = ResoniteTransferHierarchy.CreateHierarchy(hierarchyName, rootTransform, bridgeClient);
+            yield return null;
             Debug.Log("Converted hierarchy"); // finished
             Dictionary<Type, MethodInfo> methodCache = new Dictionary<Type, MethodInfo>();
             foreach (ObjectHolder obj in hierarchy.GetObjects())
@@ -51,6 +53,7 @@ namespace ResoniteUnityExporter
                         {
                             component, hierarchy
                         });
+                        yield return null;
                     }
                 }
             }

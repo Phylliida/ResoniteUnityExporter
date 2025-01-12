@@ -148,9 +148,9 @@ namespace MemoryMappedFileIPC
         int ReadChunk(byte[] outBytes, int offset)
         {
             int length = accessor.ReadInt32(CHUNK_LENGTH_POSITION);
-            accessor.ReadArray<byte>(DATA_POSITION, outBytes, offset, length);
             // also set the ADKNOWLEDGED byte so the client knows we did something
             accessor.Write(ACKNOWLEDGE_POSITION, ACKNOWLEDGED);
+            accessor.ReadArray<byte>(DATA_POSITION, outBytes, offset, length);
             return length;
         }
 
@@ -213,7 +213,24 @@ namespace MemoryMappedFileIPC
                     throw new IpcUtils.DisconnectedException();
                 }
                 WaitOrCancel(finishedRead.waitHandle, cancelToken, timeoutMillis);
-                if (accessor.ReadByte(ACKNOWLEDGE_POSITION) != ACKNOWLEDGED)
+                // sometimes the ACHKNOWLEDGE takes longer to sync than the wait handles,
+                // try a few times
+                bool acknowledged = false;
+                int ACKNOWLEDGE_RETRIES = 2;
+                int ACKNOWLEDGE_WAIT_MILLIS = 100; // can be pretty small, its very fast
+                for (int i = 0; i < ACKNOWLEDGE_RETRIES; i++)
+                {
+                    if (accessor.ReadByte(ACKNOWLEDGE_POSITION) == ACKNOWLEDGED)
+                    {
+                        acknowledged = true;
+                        break;
+                    }
+                    else
+                    {
+                        Task.Delay(ACKNOWLEDGE_WAIT_MILLIS, cancelToken).GetAwaiter().GetResult();
+                    }
+                }
+                if (!acknowledged)
                 {
                     throw new IpcUtils.DisconnectedException();
                 }

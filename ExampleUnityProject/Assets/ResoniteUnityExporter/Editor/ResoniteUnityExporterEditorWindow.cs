@@ -9,8 +9,28 @@ using Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters;
 namespace ResoniteUnityExporter {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
-		
-		public static ResoniteBridgeClient bridgeClient;
+        static ResoniteUnityExporterEditorWindow()
+        {
+            EditorApplication.update += ExecuteCoroutine;
+        }
+        // lets us run coroutines in editor, modified from https://discussions.unity.com/t/coroutine-in-editor/4970/6
+        private static void ExecuteCoroutine()
+        {
+            if (CoroutinesInProgress.Count <= 0)
+            {
+                return;
+            }
+
+            for(int i = CoroutinesInProgress.Count-1; i >= 0; i--)
+            {
+                if(!CoroutinesInProgress[i].MoveNext())
+                {
+                    CoroutinesInProgress.RemoveAt(i);
+                }
+            }
+        }
+
+        public static ResoniteBridgeClient bridgeClient;
 
 		// Add menu item named "My Custom Window" to the Window menu
 		[MenuItem("ResoniteUnityExporter/Open Resonite Unity Exporter")]
@@ -43,6 +63,8 @@ namespace ResoniteUnityExporter {
 				
 				bridgeClient = null;
             }
+            // stop all running coroutines
+            CoroutinesInProgress.Clear();
         }
         public void OnAfterAssemblyReload()
         {
@@ -64,6 +86,7 @@ namespace ResoniteUnityExporter {
         Transform parentObject;
 		string exportSlotName;
 		ResoniteTransferManager transferManager;
+        static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
         void OnGUI()
 		{
             if (bridgeClient == null) {
@@ -118,7 +141,8 @@ namespace ResoniteUnityExporter {
             {
                 transferManager = new ResoniteTransferManager();
                 RegisterConverters();
-                transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
+                System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
+                CoroutinesInProgress.Add(coroutine);
                 // First, mirror the hierarchy into resonite
             }
             EditorGUI.EndDisabledGroup();
