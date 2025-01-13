@@ -147,7 +147,7 @@ namespace ResoniteUnityExporter {
             {
                 if (exportSlotName == null || exportSlotName == "")
                 {
-                    exportSlotName = "Untitled";
+                    exportSlotName = "Untitled"; // BLAH
                 }
                 transferManager = new ResoniteTransferManager();
                 RegisterConverters();

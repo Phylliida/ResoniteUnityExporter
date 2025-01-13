@@ -48,7 +48,5 @@ namespace ImportFromUnityLib
             Engine.Current.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
             return taskCompletionSource.Task.GetAwaiter().GetResult();
         }
-
-
     }
 }

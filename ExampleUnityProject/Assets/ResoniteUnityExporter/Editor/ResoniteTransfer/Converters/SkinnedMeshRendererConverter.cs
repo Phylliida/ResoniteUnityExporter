@@ -23,9 +23,9 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
             RefID_U2Res meshRefId = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames);
             yield return null;
 
-            RefID_U2Res[] materialRefIds = new RefID_U2Res[renderer.materials.Length];
+            RefID_U2Res[] materialRefIds = new RefID_U2Res[renderer.sharedMaterials.Length];
             int i = 0;
-            foreach (UnityEngine.Material mat in renderer.materials)
+            foreach (UnityEngine.Material mat in renderer.sharedMaterials)
             {
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending material " + mat.name;
                 yield return null;

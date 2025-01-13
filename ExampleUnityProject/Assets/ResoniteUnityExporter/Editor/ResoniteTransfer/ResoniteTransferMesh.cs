@@ -25,12 +25,13 @@ namespace ResoniteUnityExporter
                 UnityEngine.Rendering.VertexAttribute.TexCoord7
             };
 
-        public static int[] GetMeshUVChannelDimensions(UnityEngine.Mesh unityMesh, out int[] actualTexCoordIndices)
+        public static int[] GetMeshUVChannelDimensions(UnityEngine.Mesh unityMesh, out int[] actualTexCoordIndices, out int maxUVIndex)
         {
             // Coroutines is a property
 
             List<int> texCoordIndices = new List<int>();
             List<int> texCoordDimensions = new List<int>();
+            maxUVIndex = 0;
             foreach (UnityEngine.Rendering.VertexAttributeDescriptor descriptor in unityMesh.GetVertexAttributes())
             {
                 int uvIndex = AllUVAttributes.IndexOf(descriptor.attribute);
@@ -38,6 +39,7 @@ namespace ResoniteUnityExporter
                 {
                     texCoordIndices.Add(uvIndex);
                     texCoordDimensions.Add(descriptor.dimension);
+                    maxUVIndex = Math.Max(maxUVIndex, uvIndex);
                 }
             }
             actualTexCoordIndices = texCoordIndices.ToArray();
@@ -49,7 +51,8 @@ namespace ResoniteUnityExporter
             // todo: provide option to ignore bones and ignore vertex colors
             StaticMesh_U2Res meshx = new StaticMesh_U2Res();
             meshx.name = unityMesh.name;
-            int[] uvDimensions = GetMeshUVChannelDimensions(unityMesh, out int[] actualTexCoordIndices);
+            int maxUVIndex;
+            int[] uvDimensions = GetMeshUVChannelDimensions(unityMesh, out int[] actualTexCoordIndices, out maxUVIndex);
 
             Float3_U2Res[] vertices = null;
             Float3_U2Res[] normals = null;
@@ -90,29 +93,39 @@ namespace ResoniteUnityExporter
             // so we can just set that directly
             using (Timer _ = new Timer("UV data"))
             {
-                UVArray_U2Res[] allUvs = new UVArray_U2Res[uvDimensions.Length];
-                for (int i = 0; i < uvDimensions.Length; i++)
+                UVArray_U2Res[] allUvs = new UVArray_U2Res[maxUVIndex+1];
+                for (int i = 0; i < actualTexCoordIndices.Length; i++)
                 {
-                    allUvs[i] = new UVArray_U2Res();
+                    int uvIndex = actualTexCoordIndices[i];
+                    UVArray_U2Res uvArrayI = new UVArray_U2Res();
                     int curDimension = uvDimensions[i];
+                    Debug.Log("UV with index " + uvIndex + " and dimension " + curDimension);
                     if (curDimension == 2)
                     {
                         List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
-                        unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                        allUvs[i].uv_2D = ResoniteBridgeUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
+                        unityMesh.GetUVs(uvIndex, uvs);
+                        Debug.Log("Some example data:" + uvs[0] + ", " + uvs[1]);
+
+                        uvArrayI.uv_2D = ResoniteBridgeUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
                     }
                     else if (curDimension == 3)
                     {
                         List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
-                        unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                        allUvs[i].uv_3D = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
+                        unityMesh.GetUVs(uvIndex, uvs);
+                        uvArrayI.uv_3D = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
                     }
                     else if (curDimension == 4)
                     {
                         List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
-                        unityMesh.GetUVs(actualTexCoordIndices[i], uvs);
-                        allUvs[i].uv_4D = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
+                        unityMesh.GetUVs(uvIndex, uvs);
+                        uvArrayI.uv_4D = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
                     }
+                    uvArrayI.dimension = curDimension;
+                    allUvs[uvIndex] = uvArrayI;
+                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[0].x + " " + allUvs[uvIndex].uv_2D[0].y);
+                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[1].x + " " + allUvs[uvIndex].uv_2D[1].y);
+                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[2].x + " " + allUvs[uvIndex].uv_2D[2].y);
+                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[3].x + " " + allUvs[uvIndex].uv_2D[3].y);
                 }
                 meshx.uvChannels = allUvs;
             }

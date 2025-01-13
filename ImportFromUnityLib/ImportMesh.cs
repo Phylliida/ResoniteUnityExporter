@@ -82,9 +82,8 @@ namespace ImportFromUnityLib
             // like a material needs to auto convert, which do u use?
             // they force all submeshes from the same import to have the same dimensions
             // but I think that's guaranteed by unity so we are ok
-            
-            
-            meshx.IncreaseVertexCount(mesh.positions.Length);
+
+            meshx.AddVertices(mesh.positions.Length);
             for (int uv = 0; uv < mesh.uvChannels.Length; uv++)
             {
                 meshx.SetUV_Dimension(uv, mesh.uvChannels[uv].dimension);
@@ -111,15 +110,22 @@ namespace ImportFromUnityLib
                 int curDimension = uvChannel.dimension;
                 if (curDimension == 2)
                 {
+                    meshx.SetHasUV(uv, true);
                     ResoniteBridgeUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
                 }
                 else if (curDimension == 3)
                 {
+                    meshx.SetHasUV_3D(uv, true);
                     ResoniteBridgeUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
                 }
                 else if (curDimension == 4)
                 {
+                    meshx.SetHasUV_4D(uv, true);
                     ResoniteBridgeUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
+                }
+                for (int i = 0; i < meshx.GetRawUVs(uv).Length; i++)
+                {
+                    ImportFromUnityLib.DebugLog("Got UV:" + meshx.GetRawUVs(uv)[i].x + " " + meshx.GetRawUVs(uv)[i].y);
                 }
             }
 

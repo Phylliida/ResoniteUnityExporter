@@ -10,8 +10,14 @@ namespace ImportFromUnityLib
 {
     public class ImportFromUnityLib
     {
-        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server)
+
+        public delegate void DebugLogDelegate(string msg);
+
+        public static DebugLogDelegate DebugLog;
+
+        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, DebugLogDelegate DebugLog)
         {
+            ImportFromUnityLib.DebugLog = DebugLog;
             server.RegisterProcessor("TestBees", SimpleTestFunc);
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
