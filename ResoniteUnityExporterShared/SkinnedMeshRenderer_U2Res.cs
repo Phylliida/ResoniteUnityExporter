@@ -11,5 +11,6 @@ namespace ResoniteUnityExporterShared
         public RefID_U2Res targetSlot;
         public RefID_U2Res staticMeshAsset;
         public RefID_U2Res[] bones;
+        public RefID_U2Res[] materials;
     }
 }

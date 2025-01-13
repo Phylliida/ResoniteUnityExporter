@@ -26,7 +26,12 @@ namespace ImportFromUnityLib
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.targetSlot);
             SkinnedMeshRenderer renderer = targetSlot.AttachComponent<SkinnedMeshRenderer>();
             renderer.Mesh.Value = skinnedMeshRendererData.staticMeshAsset.id;
-
+            renderer.Materials.Clear();
+            foreach (RefID_U2Res material in skinnedMeshRendererData.materials)
+            {
+                IAssetProvider<Material> frooxMat = (IAssetProvider<Material>)ImportFromUnityUtils.LookupRefID(material);
+                renderer.Materials.Add(frooxMat);
+            }
             // return refid of StaticMesh component
             RefID_U2Res result = new RefID_U2Res()
             {

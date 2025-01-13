@@ -145,6 +145,10 @@ namespace ResoniteUnityExporter {
 
             if (GUILayout.Button("Export"))
             {
+                if (exportSlotName == null || exportSlotName == "")
+                {
+                    exportSlotName = "Untitled";
+                }
                 transferManager = new ResoniteTransferManager();
                 RegisterConverters();
                 DebugProgressString = "";

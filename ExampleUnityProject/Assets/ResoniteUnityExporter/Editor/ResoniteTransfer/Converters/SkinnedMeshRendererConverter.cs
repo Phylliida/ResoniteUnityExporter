@@ -48,6 +48,7 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                 targetSlot = objRefID,
                 staticMeshAsset = meshRefId,
                 bones = boneRefIDs,
+                materials = materialRefIds,
             };
 
             byte[] data = ResoniteBridgeUtils.EncodeObject(meshRendererData);
