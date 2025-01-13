@@ -210,7 +210,7 @@ namespace ResoniteUnityExporter
                     for (int blendShapeFrameI = 0; blendShapeFrameI < blendShapeFrameCount; blendShapeFrameI++)
                     {
                         BlendShapeFrame_U2Res frame = new BlendShapeFrame_U2Res();
-                        // todo: ModelImporter just uses 1.0 for weight, should we do that?
+                        // todo: ModelImporter just uses 1.0 for weight, should we do that? Answer: yes we should, doesn't work otherwise
                         frame.frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
                         frame.frameWeight = 1.0f;
                         UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
@@ -237,6 +237,7 @@ namespace ResoniteUnityExporter
                         Float3_U2Res[] frameVertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
                         for (int i = 0; i < numVertices; i++)
                         {
+                            // subtracting vertices makes it shrink very small
                             frameVertices[i].x = frameVertices[i].x;// - vertices[i].x;
                             frameVertices[i].y = frameVertices[i].y;//  - vertices[i].y;
                             frameVertices[i].z = frameVertices[i].z;// - vertices[i].z;
@@ -248,6 +249,7 @@ namespace ResoniteUnityExporter
                             Float3_U2Res[] frameNormals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
                             for (int i = 0; i < numVertices; i++)
                             {
+                                // idk if this is right? but it doesn't go all black or dissapear anymore... maybe i need to normalize?
                                 frameNormals[i].x = frameNormals[i].x + normals[i].x;
                                 frameNormals[i].y = frameNormals[i].y + normals[i].y;
                                 frameNormals[i].z = frameNormals[i].z + normals[i].z;
