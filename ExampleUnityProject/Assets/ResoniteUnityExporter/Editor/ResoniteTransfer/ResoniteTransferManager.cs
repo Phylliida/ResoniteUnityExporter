@@ -3,10 +3,12 @@ using ResoniteUnityExporterShared;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ResoniteUnityExporter
@@ -28,6 +30,9 @@ namespace ResoniteUnityExporter
 
         public IEnumerator ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
         {
+            ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+            ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
+            yield return null;
             HierarchyLookup hierarchy = ResoniteTransferHierarchy.CreateHierarchy(hierarchyName, rootTransform, bridgeClient);
             yield return null;
             Debug.Log("Converted hierarchy"); // finished
@@ -42,6 +47,9 @@ namespace ResoniteUnityExporter
                     // sometimes it gives null components??
                     if (component != null)
                     {
+                        ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                        ResoniteUnityExporterEditorWindow.DebugProgressString = "Converting component: " + component.GetType() + " on object " + gameObject.name;
+                        yield return null;
                         Debug.Log("Processing component: " + component);
                         MethodInfo convertMethod = null;
                         if (!methodCache.TryGetValue(component.GetType(), out convertMethod))
@@ -49,29 +57,41 @@ namespace ResoniteUnityExporter
                             convertMethod = convertComponentMethod.MakeGenericMethod(component.GetType());
                             methodCache.Add(component.GetType(), convertMethod);
                         }
-                        convertMethod.Invoke(this, new object[]
+                        IEnumerator en = (IEnumerator)convertMethod.Invoke(this, new object[]
                         {
                             component, hierarchy
                         });
+                        while (en.MoveNext())
+                        {
+                            yield return null;
+                        }
+                        ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
                         yield return null;
                     }
                 }
             }
         }
 
-        public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, RefID_U2Res> converter) where T : UnityEngine.Component
+        public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>> converter) where T : UnityEngine.Component
         {
             converters[typeof(T)] = converter;
         }
 
-        public void ConvertComponent<T>(T component, HierarchyLookup hierarchy) where T : UnityEngine.Component
+        public IEnumerator ConvertComponent<T>(T component, HierarchyLookup hierarchy) where T : UnityEngine.Component
         {
             GameObject holder = component.transform.gameObject;
             if (converters.TryGetValue(typeof(T), out object converter))
             {
-                Func<T, GameObject, RefID_U2Res, HierarchyLookup, RefID_U2Res> convertAction = (Func<T, GameObject, RefID_U2Res, HierarchyLookup, RefID_U2Res>)converter;
+                Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>> convertAction = (Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>>)converter;
                 RefID_U2Res holderRefID = hierarchy.LookupSlot(holder.GetInstanceID().ToString());
-                convertAction(component, holder, holderRefID, hierarchy);
+                IEnumerator<object> en = convertAction(component, holder, holderRefID, hierarchy);
+                object result = en.Current;
+                while (en.MoveNext())
+                {
+                    result = en.Current;
+                    yield return null;
+                }
+                // could convert result to RefID_U2Res and store it if needed
             }
             else
             {

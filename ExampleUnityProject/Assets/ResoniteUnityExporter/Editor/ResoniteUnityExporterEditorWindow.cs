@@ -3,6 +3,7 @@ using UnityEditor;
 using ResoniteBridgeLib;
 using System.Collections.Generic;
 using Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters;
+using System.Numerics;
 
 
 
@@ -13,6 +14,7 @@ namespace ResoniteUnityExporter {
         {
             EditorApplication.update += ExecuteCoroutine;
         }
+        static int iters = 0;
         // lets us run coroutines in editor, modified from https://discussions.unity.com/t/coroutine-in-editor/4970/6
         private static void ExecuteCoroutine()
         {
@@ -28,6 +30,7 @@ namespace ResoniteUnityExporter {
                     CoroutinesInProgress.RemoveAt(i);
                 }
             }
+            iters += 1;
         }
 
         public static ResoniteBridgeClient bridgeClient;
@@ -82,13 +85,16 @@ namespace ResoniteUnityExporter {
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
         }
 
+        bool ranAnyRuns = false;
+
+        public static string DebugProgressString = "";
+        public static string DebugProgressStringDetail = "";
         // gui
         Transform parentObject;
 		string exportSlotName;
 		ResoniteTransferManager transferManager;
         static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
-        void OnGUI()
-		{
+        void OnGUI()		{
             if (bridgeClient == null) {
 
 				
@@ -135,17 +141,31 @@ namespace ResoniteUnityExporter {
 
 			bool ready = bridgeClient.IsConnected();
 			ready = true; // tmp
-            EditorGUI.BeginDisabledGroup(!ready);
+            EditorGUI.BeginDisabledGroup(!ready && CoroutinesInProgress.Count == 0);
 
             if (GUILayout.Button("Export"))
             {
                 transferManager = new ResoniteTransferManager();
                 RegisterConverters();
+                DebugProgressString = "";
                 System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
                 CoroutinesInProgress.Add(coroutine);
+                iters = 0;
+                ranAnyRuns = true;
                 // First, mirror the hierarchy into resonite
             }
             EditorGUI.EndDisabledGroup();
+            string progressLabel = "Iters: " + iters + " ... (in progress, please wait)";
+            if (CoroutinesInProgress.Count == 0)
+            {
+                DebugProgressString = "";
+                DebugProgressStringDetail = "";
+                progressLabel = ranAnyRuns ? "Done" : "";
+            }
+            GUILayout.Label(progressLabel);
+            GUILayout.Label(DebugProgressString);
+            GUILayout.Label(DebugProgressStringDetail);
+
 
             // bees
 
@@ -183,5 +203,5 @@ namespace ResoniteUnityExporter {
 			}
 			*/
         }
-	}
+    }
 }
