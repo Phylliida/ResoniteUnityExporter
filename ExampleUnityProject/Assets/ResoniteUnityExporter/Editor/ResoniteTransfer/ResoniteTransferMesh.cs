@@ -104,8 +104,6 @@ namespace ResoniteUnityExporter
                     {
                         List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
                         unityMesh.GetUVs(uvIndex, uvs);
-                        Debug.Log("Some example data:" + uvs[0] + ", " + uvs[1]);
-
                         uvArrayI.uv_2D = ResoniteBridgeUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
                     }
                     else if (curDimension == 3)
@@ -122,10 +120,6 @@ namespace ResoniteUnityExporter
                     }
                     uvArrayI.dimension = curDimension;
                     allUvs[uvIndex] = uvArrayI;
-                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[0].x + " " + allUvs[uvIndex].uv_2D[0].y);
-                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[1].x + " " + allUvs[uvIndex].uv_2D[1].y);
-                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[2].x + " " + allUvs[uvIndex].uv_2D[2].y);
-                    Debug.Log("Some example out: " + allUvs[uvIndex].uv_2D[3].x + " " + allUvs[uvIndex].uv_2D[3].y);
                 }
                 meshx.uvChannels = allUvs;
             }
@@ -218,6 +212,7 @@ namespace ResoniteUnityExporter
                         BlendShapeFrame_U2Res frame = new BlendShapeFrame_U2Res();
                         // todo: ModelImporter just uses 1.0 for weight, should we do that?
                         frame.frameWeight = unityMesh.GetBlendShapeFrameWeight(blendShapeI, blendShapeFrameI);
+                        frame.frameWeight = 1.0f;
                         UnityEngine.Vector3[] deltaVertices = new UnityEngine.Vector3[numVertices];
                         UnityEngine.Vector3[] deltaNormals = null;
                         if (normals != null)
@@ -242,9 +237,9 @@ namespace ResoniteUnityExporter
                         Float3_U2Res[] frameVertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
                         for (int i = 0; i < numVertices; i++)
                         {
-                            frameVertices[i].x = frameVertices[i].x - vertices[i].x;
-                            frameVertices[i].y = frameVertices[i].y - vertices[i].y;
-                            frameVertices[i].z = frameVertices[i].z - vertices[i].z;
+                            frameVertices[i].x = frameVertices[i].x;// - vertices[i].x;
+                            frameVertices[i].y = frameVertices[i].y;//  - vertices[i].y;
+                            frameVertices[i].z = frameVertices[i].z;// - vertices[i].z;
                         }
                         frame.positions = frameVertices;
 
@@ -253,9 +248,9 @@ namespace ResoniteUnityExporter
                             Float3_U2Res[] frameNormals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
                             for (int i = 0; i < numVertices; i++)
                             {
-                                frameNormals[i].x = frameNormals[i].x - normals[i].x;
-                                frameNormals[i].y = frameNormals[i].y - normals[i].y;
-                                frameNormals[i].z = frameNormals[i].z - normals[i].z;
+                                frameNormals[i].x = frameNormals[i].x + normals[i].x;
+                                frameNormals[i].y = frameNormals[i].y + normals[i].y;
+                                frameNormals[i].z = frameNormals[i].z + normals[i].z;
                             }
                             frame.normals = frameNormals;
                         }
@@ -265,9 +260,9 @@ namespace ResoniteUnityExporter
                             Float3_U2Res[] frameTangents = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
                             for (int i = 0; i < numVertices; i++)
                             {
-                                frameTangents[i].x = frameTangents[i].x - tangents[i].x;
-                                frameTangents[i].y = frameTangents[i].y - tangents[i].y;
-                                frameTangents[i].z = frameTangents[i].z - tangents[i].z;
+                                frameTangents[i].x = frameTangents[i].x; // - tangents[i].x;
+                                frameTangents[i].y = frameTangents[i].y; // - tangents[i].y;
+                                frameTangents[i].z = frameTangents[i].z; // - tangents[i].z;
                             }
                             frame.tangents = frameTangents;
                         }
