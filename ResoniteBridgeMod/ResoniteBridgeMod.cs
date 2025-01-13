@@ -57,7 +57,7 @@ namespace ResoniteBridgeMod
                         Msg("Bridge message:" + msg);
                     }))
                     {
-                        ImportFromUnityLib.ImportMesh.Register(bridgeServer);
+                        ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer);
                         Msg("Bridge server listening");
                         cancellation.Token.WaitHandle.WaitOne();
                     }

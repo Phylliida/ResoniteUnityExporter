@@ -52,8 +52,9 @@
     <Reference Include="ImportFromUnityLib">
       <HintPath>..\Published\ImportFromUnityLib\ImportFromUnityLib.dll</HintPath>
     </Reference>
-    <Reference Include="NamedPipeIPC">
-      <HintPath>..\Published\NamedPipeIPC\NamedPipeIPC.dll</HintPath>
+    <Reference Include="MemoryMappedFileIPC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Published\MemoryMappedFileIPC\MemoryMappedFileIPC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -101,7 +102,7 @@
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\$(ProjectName).dll
 copy /Y "$(TargetDir)ResoniteBridgeLib.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ResoniteBridgeLib.dll
-copy /Y "$(TargetDir)NamedPipeIPC.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\NamedPipeIPC.dll
+copy /Y "$(TargetDir)MemoryMappedFileIPC.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\MemoryMappedFileIPC.dll
 copy /Y "$(TargetDir)ResoniteUnityExporterShared.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ResoniteUnityExporterShared.dll
 copy /Y "$(TargetDir)ImportFromUnityLib.dll" "C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\ImportFromUnityLib.dll</PostBuildEvent>
   </PropertyGroup>
