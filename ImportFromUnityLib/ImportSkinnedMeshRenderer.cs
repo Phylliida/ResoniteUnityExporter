@@ -26,17 +26,35 @@ namespace ImportFromUnityLib
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.targetSlot);
             SkinnedMeshRenderer renderer = targetSlot.AttachComponent<SkinnedMeshRenderer>();
             renderer.Mesh.Value = skinnedMeshRendererData.staticMeshAsset.id;
+
+            // assign materials
             renderer.Materials.Clear();
             foreach (RefID_U2Res material in skinnedMeshRendererData.materials)
             {
                 IAssetProvider<Material> frooxMat = (IAssetProvider<Material>)ImportFromUnityUtils.LookupRefID(material);
                 renderer.Materials.Add(frooxMat);
             }
+            // assign bones and rig
+            // todo: resonite forces these to be unique by name
+            // but that constraint doesn't seem necessary as far as I can tell so I did everything
+            // so that we can have multiple bones named same thing
+            // will that cause issues? idk
+            foreach (RefID_U2Res boneRefID in skinnedMeshRendererData.bones)
+            {
+                renderer.Bones.Add().Value = boneRefID.id;
+            }
+            renderer.BoundsComputeMethod.Value = SkinnedBounds.Static;
+            Rig rig = renderer.Slot.AttachComponent<Rig>();
+            foreach (RefID_U2Res boneRefID in skinnedMeshRendererData.bones)
+            {
+                rig.Bones.Add().Value = boneRefID.id;
+            }
             // return refid of StaticMesh component
             RefID_U2Res result = new RefID_U2Res()
             {
                 id = (ulong)renderer.ReferenceID
             };
+            
             outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
         }
 

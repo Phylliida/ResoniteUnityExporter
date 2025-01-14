@@ -249,7 +249,7 @@ namespace ResoniteBridge
                             if (first)
                             {
                                 bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer((msg) => Console.WriteLine(msg));
-                                ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer);
+                                ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, msg => Console.WriteLine(msg));
                                 first = false;
 
                                 // hack to prevent discord interface from crashing it

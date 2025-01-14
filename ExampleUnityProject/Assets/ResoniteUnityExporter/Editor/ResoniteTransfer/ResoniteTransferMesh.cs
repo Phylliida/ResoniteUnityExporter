@@ -299,7 +299,6 @@ namespace ResoniteUnityExporter
                     {
                         byte numBones = numBonesPerVertex[vertexI];
                         BoneBinding_U2Res boneBinding = new BoneBinding_U2Res();
-                        meshx.boneBindings[vertexI] = boneBinding;
                         for (int boneI = 0; boneI < numBones; boneI++)
                         {
                             UnityEngine.BoneWeight1 boneWeight = boneWeights[boneWeightIndex++];
@@ -325,6 +324,7 @@ namespace ResoniteUnityExporter
                                 default:
                                     break;
                             }
+                            meshx.boneBindings[vertexI] = boneBinding;
                             // luckily unity is already sorted (todo: is decending order correct?)
                         }
                     }

@@ -123,10 +123,6 @@ namespace ImportFromUnityLib
                     meshx.SetHasUV_4D(uv, true);
                     ResoniteBridgeUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
                 }
-                for (int i = 0; i < meshx.GetRawUVs(uv).Length; i++)
-                {
-                    ImportFromUnityLib.DebugLog("Got UV:" + meshx.GetRawUVs(uv)[i].x + " " + meshx.GetRawUVs(uv)[i].y);
-                }
             }
 
             // submesh (index buffers)
@@ -180,6 +176,35 @@ namespace ImportFromUnityLib
                     }
                 }
             }
+
+            if (mesh.bones != null && mesh.bones.Length > 0)
+            {
+                foreach (Bone_U2Res bone in mesh.bones)
+                {
+                    Bone bonex = meshx.AddBone(bone.name);
+                    bonex.BindPose = new float4x4(bone.bindPose.m00, bone.bindPose.m01, bone.bindPose.m02, bone.bindPose.m03,
+                                                  bone.bindPose.m10, bone.bindPose.m11, bone.bindPose.m12, bone.bindPose.m13,
+                                                  bone.bindPose.m20, bone.bindPose.m21, bone.bindPose.m22, bone.bindPose.m23,
+                                                  bone.bindPose.m30, bone.bindPose.m31, bone.bindPose.m32, bone.bindPose.m33);
+                    bonex.
+                }
+                meshx.HasBoneBindings = true; // this allocates the bindings
+                BoneBinding_U2Res[] boneBindings = mesh.boneBindings;
+                for (int i = 0; i < numVertices; i++)
+                {
+                    meshx.RawBoneBindings[i].weight0 = boneBindings[i].weight0;
+                    meshx.RawBoneBindings[i].weight1 = boneBindings[i].weight1;
+                    meshx.RawBoneBindings[i].weight2 = boneBindings[i].weight2;
+                    meshx.RawBoneBindings[i].weight3 = boneBindings[i].weight3;
+                    meshx.RawBoneBindings[i].boneIndex0 = boneBindings[i].boneIndex0;
+                    meshx.RawBoneBindings[i].boneIndex1 = boneBindings[i].boneIndex1;
+                    meshx.RawBoneBindings[i].boneIndex2 = boneBindings[i].boneIndex2;
+                    meshx.RawBoneBindings[i].boneIndex3 = boneBindings[i].boneIndex3;
+                }
+                meshx.SortTrimAndNormalizeBoneWeights();
+                meshx.FillInEmptyBindings(0);
+            }
+
             if (mesh.importSettings.makeDualSided)
             {
                 meshx.MakeDualSided();
