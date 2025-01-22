@@ -1,4 +1,5 @@
-﻿using FrooxEngine;
+﻿using Elements.Core;
+using FrooxEngine;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,22 @@ namespace ImportFromUnityLib
 
     public class ImportFromUnityUtils
     {
+
+        public static bool AllowedToSpawn()
+        {
+            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            if (focusedWorld.CanSpawnObjects())
+            {
+                return focusedWorld.LocalUser.CanEnableEditMode();
+            }
+            return false;
+        }
+
+        public static void SendCantSpawnMessage()
+        {
+            NotificationMessage.SpawnTextMessage("Permissions.NotAllowedToSpawn".AsLocaleKey(), colorX.Red);
+        }
+
         public static bool NotEmpty<T>(T[] arr)
         {
             return arr != null && arr.Length > 0;

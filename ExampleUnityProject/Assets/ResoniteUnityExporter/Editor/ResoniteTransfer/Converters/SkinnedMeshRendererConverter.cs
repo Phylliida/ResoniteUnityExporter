@@ -51,10 +51,11 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                 materials = materialRefIds,
                 settings = new SkinnedMeshRendererSettings_U2Res()
                 {
-                    forceTPose = true,
+                    forceTPose = false,
                     generateColliders = true,
                     generateSkeletonBoneVisuals = false,
-                    setupIK = true
+                    setupIK = true,
+                    setupAvatar = true
                 }
             };
 

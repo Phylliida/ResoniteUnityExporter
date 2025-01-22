@@ -14,6 +14,7 @@ using static OfficialAssets.Graphics;
 using System.IO;
 using System.Xml.Linq;
 using System.Reflection;
+using FrooxEngine.FinalIK;
 
 namespace ImportFromUnityLib
 {
@@ -67,7 +68,50 @@ namespace ImportFromUnityLib
                     skinnedMeshRendererData.settings.forceTPose,
                     skinnedMeshRendererData.settings.generateColliders,
                     skinnedMeshRendererData.settings.generateSkeletonBoneVisuals);
+
+                BipedRig bipedRig = rig.Slot.GetComponent<BipedRig>();
+                if (skinnedMeshRendererData.settings.setupAvatar)
+                {
+                    Slot space = focusedWorld.LocalUserSpace;
+                    if (space == null)
+                    {
+                        space = focusedWorld.RootSlot;
+                    }
+                    Slot slot = space.AddSlot("Avatar Creator");
+                    AvatarCreator aviCreator = slot.AttachComponent<AvatarCreator>();
+                    // LocalUser.Root is null in standalone
+                    if (focusedWorld.LocalUser != null && focusedWorld.LocalUser.Root != null && focusedWorld.LocalUser.Root.Slot != null)
+                    {
+                        slot.AttachComponent<ReferenceField<User>>().Reference.Target = focusedWorld.LocalUser;
+                        slot.PositionInFrontOfUser(null, null, 1.25f);
+                        slot.FloorAtUserRoot(height: 0, user: focusedWorld.LocalUser);
+                        slot.PointAtUserHead(float3.Forward, verticalAxisOnly: true);
+                    }
+                    Slot head = bipedRig.TryGetBone(BodyNode.Head);
+                    Slot rightHandRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_rightReference", BindingFlags.Instance | BindingFlags.NonPublic)
+                        .GetValue(aviCreator)).Target;
+                    float3 aviCreatorScale = ComputeAviCreatorScale(bipedRig, rightHandRef);
+                    // line up head
+                    if (head != null)
+                    {
+                        Slot headsetRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_headsetReference", BindingFlags.Instance | BindingFlags.NonPublic)
+                        .GetValue(aviCreator)).Target;
+                        float3 localCenter = head.ComputeBoundingBox(includeInactive: false, space: head.Parent).Center;
+                        headsetRef.GlobalPosition = head.Parent.LocalPointToGlobal(localCenter);
+                        headsetRef.GlobalRotation = head.GlobalRotation;
+                    }
+                    // line up right hand (symmetry will take care of left hand)
+                    Slot rightHand = bipedRig.TryGetBone(BodyNode.RightHand);
+                    if (rightHand != null)
+                    {
+                        float3 localCenter = rightHand.ComputeBoundingBox(includeInactive: false, space: rightHand.Parent).Center;
+                        rightHandRef.GlobalPosition = rightHand.Parent.LocalPointToGlobal(localCenter);
+                        rightHandRef.GlobalRotation = rightHand.GlobalRotation;
+                    }
+                }
+
             }
+
 
             // ik
             // return refid of StaticMesh component
@@ -77,6 +121,23 @@ namespace ImportFromUnityLib
             };
             
             outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+        }
+
+        static float3 ComputeAviCreatorScale(BipedRig rig, Slot handProxy)
+        {
+            Slot handSlot = rig.TryGetBone(BodyNode.LeftHand);
+            if (handSlot != null)
+            {
+                float3 handSize = handSlot.ComputeExactBounds().GetAwaiter().GetResult().Size;
+                float maxSize = Math.Max(Math.Max(handSize.x, handSize.y), handSize.z);
+                float3 handMaxSize = new float3(maxSize, maxSize, maxSize);
+                float3 resultScale = handSlot.Parent.LocalScaleToSpace(handMaxSize, handProxy.Parent);
+                return resultScale / 0.3f; // this is the size of the spheres
+            }
+            else
+            {
+                return new float3(1,1,1);
+            }
         }
 
         static Slot GetSharedParent(Slot a, Slot b)
