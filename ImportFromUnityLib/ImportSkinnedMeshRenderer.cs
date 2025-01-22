@@ -52,7 +52,7 @@ namespace ImportFromUnityLib
             List<RefID_U2Res> refIds = new List<RefID_U2Res>(skinnedMeshRendererData.bones);
             refIds.Add(new RefID_U2Res()
             {
-                id = (ulong)renderer.ReferenceID
+                id = (ulong)renderer.Slot.ReferenceID
             });
 
             Slot sharedParent = FindSharedParent(refIds.ToArray());
