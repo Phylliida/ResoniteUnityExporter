@@ -14,6 +14,8 @@ using Elements.Core;
 using ResoniteBridgeLib;
 using System.Net.NetworkInformation;
 using static OfficialAssets.Graphics;
+using static FrooxEngine.DynamicBoneChain;
+using System.IO;
 
 namespace ImportFromUnityLib
 {
@@ -181,12 +183,11 @@ namespace ImportFromUnityLib
             {
                 foreach (Bone_U2Res bone in mesh.bones)
                 {
-                    Bone bonex = meshx.AddBone(bone.name);
+                    Elements.Assets.Bone bonex = meshx.AddBone(bone.name);
                     bonex.BindPose = new float4x4(bone.bindPose.m00, bone.bindPose.m01, bone.bindPose.m02, bone.bindPose.m03,
                                                   bone.bindPose.m10, bone.bindPose.m11, bone.bindPose.m12, bone.bindPose.m13,
                                                   bone.bindPose.m20, bone.bindPose.m21, bone.bindPose.m22, bone.bindPose.m23,
                                                   bone.bindPose.m30, bone.bindPose.m31, bone.bindPose.m32, bone.bindPose.m33);
-                    bonex.
                 }
                 meshx.HasBoneBindings = true; // this allocates the bindings
                 BoneBinding_U2Res[] boneBindings = mesh.boneBindings;

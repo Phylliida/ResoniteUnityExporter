@@ -42,13 +42,20 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
             }
             RefID_U2Res[] boneRefIDs = renderer.bones.Select(
                 bone => hierarchy.LookupSlot(bone.transform)).ToArray();
-            
+
             SkinnedMeshRenderer_U2Res meshRendererData = new SkinnedMeshRenderer_U2Res()
             {
                 targetSlot = objRefID,
                 staticMeshAsset = meshRefId,
                 bones = boneRefIDs,
                 materials = materialRefIds,
+                settings = new SkinnedMeshRendererSettings_U2Res()
+                {
+                    forceTPose = true,
+                    generateColliders = true,
+                    generateSkeletonBoneVisuals = false,
+                    setupIK = true
+                }
             };
 
             byte[] data = ResoniteBridgeUtils.EncodeObject(meshRendererData);
