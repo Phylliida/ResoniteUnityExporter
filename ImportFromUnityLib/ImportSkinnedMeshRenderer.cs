@@ -99,15 +99,16 @@ namespace ImportFromUnityLib
                         float3 localCenter = head.ComputeBoundingBox(includeInactive: false, space: head.Parent).Center;
                         headsetRef.GlobalPosition = head.Parent.LocalPointToGlobal(localCenter);
                         headsetRef.GlobalRotation = head.GlobalRotation;
+                        headsetRef.GlobalScale = aviCreatorScale;
                     }
                     // line up right hand (symmetry will take care of left hand)
                     Slot rightHand = bipedRig.TryGetBone(BodyNode.RightHand);
                     if (rightHand != null)
                     {
-                        float3 localCenter = rightHand.ComputeBoundingBox(includeInactive: false, space: rightHand.Parent).Center;
-                        rightHandRef.GlobalPosition = rightHand.Parent.LocalPointToGlobal(localCenter);
-                        rightHandRef.GlobalRotation = rightHand.GlobalRotation;
+                        rightHandRef.GlobalPosition = rightHand.GlobalPosition;
+                        SetAviCreatorHandRotation(bipedRig, aviCreator, true);
                     }
+                    // todo: optional set up left hand if it's not symmetric
                 }
 
             }
@@ -123,16 +124,234 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
         }
 
+        static float3[] relativeFingerPositionsRight = new float3[] {
+            new float3(-0.0944553f, -0.06033006f, 0.1202253f), // thumb
+            new float3(-0.03632067f, -0.0295704f, 0.2140587f), // index
+            new float3(-0.01105062f, -0.02654553f, 0.2155553f), // middle
+            new float3(0.01396004f, -0.02654572f, 0.2100046f), // ring
+            new float3(0.03692787f, -0.02956969f, 0.1954267f) // pinky
+        };
+
+        static float3[] relativeFingerPositionsLeft = new float3[]
+        {
+            new float3(0.09763367f, -0.06523453f, 0.1208142f), // thumb
+            new float3(0.03690476f, -0.02722489f, 0.209686f), // index
+            new float3(0.01103727f, -0.02597604f, 0.2162421f), // middle
+            new float3(-0.0133688f, -0.0280386f, 0.2088304f), // ring
+            new float3(-0.03593383f, -0.03025665f, 0.1963694f) // pinky
+        };
+
+        static BodyNode[][] leftFingerOrders = new BodyNode[][]
+        {
+            new BodyNode[]
+            {
+                BodyNode.LeftThumb_Metacarpal,
+                BodyNode.LeftThumb_Proximal,
+                BodyNode.LeftThumb_Distal,
+                BodyNode.LeftThumb_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.LeftIndexFinger_Metacarpal,
+                BodyNode.LeftIndexFinger_Proximal,
+                BodyNode.LeftIndexFinger_Intermediate,
+                BodyNode.LeftIndexFinger_Distal,
+                BodyNode.LeftIndexFinger_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.LeftMiddleFinger_Metacarpal,
+                BodyNode.LeftMiddleFinger_Proximal,
+                BodyNode.LeftMiddleFinger_Intermediate,
+                BodyNode.LeftMiddleFinger_Distal,
+                BodyNode.LeftMiddleFinger_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.LeftRingFinger_Metacarpal,
+                BodyNode.LeftRingFinger_Proximal,
+                BodyNode.LeftRingFinger_Intermediate,
+                BodyNode.LeftRingFinger_Distal,
+                BodyNode.LeftRingFinger_Tip,
+           },
+            new BodyNode[]
+            {
+                BodyNode.LeftPinky_Metacarpal,
+                BodyNode.LeftPinky_Proximal,
+                BodyNode.LeftPinky_Intermediate,
+                BodyNode.LeftPinky_Distal,
+                BodyNode.LeftPinky_Tip,
+            },
+        };
+
+        static BodyNode[][] rightFingerOrders = new BodyNode[][]
+        {
+            new BodyNode[]
+            {
+                BodyNode.RightThumb_Metacarpal,
+                BodyNode.RightThumb_Proximal,
+                BodyNode.RightThumb_Distal,
+                BodyNode.RightThumb_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.RightIndexFinger_Metacarpal,
+                BodyNode.RightIndexFinger_Proximal,
+                BodyNode.RightIndexFinger_Intermediate,
+                BodyNode.RightIndexFinger_Distal,
+                BodyNode.RightIndexFinger_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.RightMiddleFinger_Metacarpal,
+                BodyNode.RightMiddleFinger_Proximal,
+                BodyNode.RightMiddleFinger_Intermediate,
+                BodyNode.RightMiddleFinger_Distal,
+                BodyNode.RightMiddleFinger_Tip,
+            },
+            new BodyNode[]
+            {
+                BodyNode.RightRingFinger_Metacarpal,
+                BodyNode.RightRingFinger_Proximal,
+                BodyNode.RightRingFinger_Intermediate,
+                BodyNode.RightRingFinger_Distal,
+                BodyNode.RightRingFinger_Tip,
+           },
+            new BodyNode[]
+            {
+                BodyNode.RightPinky_Metacarpal,
+                BodyNode.RightPinky_Proximal,
+                BodyNode.RightPinky_Intermediate,
+                BodyNode.RightPinky_Distal,
+                BodyNode.RightPinky_Tip,
+            },
+        };
+
+        static Slot[] GetFingerTips(BipedRig bipedRig, bool rightSide, out float3[] tipRefs, bool includeThumb)
+        {
+            BodyNode[][] fingerOrders = rightSide ? rightFingerOrders : leftFingerOrders;
+            float3[] handTipRefs = rightSide ? relativeFingerPositionsRight : relativeFingerPositionsLeft;
+            List<Slot> fingerTips = new List<Slot>();
+            List<float3> tipRefsList = new List<float3>();
+            for(int i = 0; i < fingerOrders.Length; i++)
+            {
+                BodyNode[] fingerOrder = fingerOrders[i];
+                // todo: lookup positions for left hand
+                if (!includeThumb && fingerOrder[0].ToString().ToLower().Contains("thumb"))
+                {
+                    continue;
+                }
+                // get furthest part of finger available
+                Slot fingerTip = null;
+                foreach (BodyNode fingerPart in fingerOrder)
+                {
+                    fingerTip = bipedRig.TryGetBone(fingerPart);
+                }
+                if (fingerTip != null)
+                {
+                    tipRefsList.Add(handTipRefs[i]);
+                    fingerTips.Add(fingerTip);
+                }
+            }
+            tipRefs = tipRefsList.ToArray();
+            return fingerTips.ToArray();
+        }
+
+        static void SetAviCreatorHandRotation(BipedRig bipedRig, AvatarCreator avatarCreator, bool rightSide)
+        {
+            float3 fingerTipRef1;
+            float3 fingerTipRef2;
+            float3 aviCreatorTipRef1;
+            float3 aviCreatorTipRef2;
+            Slot[] nonThumbFingerTips = GetFingerTips(bipedRig, rightSide, out float3[] noThumbAviCreatorTipRefs, includeThumb: false);
+            // only one finger, need to also use thumb for other ref
+            if (nonThumbFingerTips.Length == 1)
+            {
+                Slot[] withThumbFingerTips = GetFingerTips(bipedRig, rightSide, out float3[] aviCreatorTipRefs, includeThumb: true);
+                if (withThumbFingerTips.Length == 1)
+                {
+                    // idk what u expect of us when we only have one point
+                    return;
+                }
+                else
+                {
+                    fingerTipRef1 = withThumbFingerTips[0].GlobalPosition;
+                    fingerTipRef2 = withThumbFingerTips[1].GlobalPosition;
+                    aviCreatorTipRef1 = aviCreatorTipRefs[0];
+                    aviCreatorTipRef2 = aviCreatorTipRefs[1];
+                }
+            }
+            else
+            {
+                // do first and last (non-thumb) finger, these are furthest apart which makes aligning nicer
+                fingerTipRef1 = nonThumbFingerTips[0].GlobalPosition;
+                fingerTipRef2 = nonThumbFingerTips[nonThumbFingerTips.Length-1].GlobalPosition;
+                aviCreatorTipRef1 = noThumbAviCreatorTipRefs[0];
+                aviCreatorTipRef2 = noThumbAviCreatorTipRefs[nonThumbFingerTips.Length-1];
+            }
+            // now we have two finger points (fingerTipRef1 and fingerTipRef2)
+            // and two points on the avatar creator glove that we want to align to those points
+            Slot avatarCreatorHand = avatarCreator.Slot.FindChild(rightSide ? "RightHand" : "LeftHand", matchSubstring: false, ignoreCase: false, maxDepth: 0);
+            // so we want to find a rotation for avatarCreatorHand such that
+            // Distance(
+            //   avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1),
+            //    fingerTipRef1
+            // ) +
+            // Distance(
+            //   avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef2),
+            //    fingerTipRef2
+            // )
+            // is minimized
+
+            // to do this, first find the rotation that aligns the midpoints:
+            float3 currentAvatarCreatorMidpoint =
+                (avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1) +
+                avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef2)) / 2.0f;
+            float3 fingerTipMidpoint = (fingerTipRef1 + fingerTipRef2) / 2.0f;
+            float3 vecToAviTipRefsMidpoint = avatarCreatorHand.GlobalPointToLocal(currentAvatarCreatorMidpoint);
+            float3 vecToFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(fingerTipMidpoint);
+            floatQ lineUpMidpointRotation = floatQ.FromToRotation(vecToAviTipRefsMidpoint, vecToFingerTipMidpoint);
+            avatarCreatorHand.LocalRotation = lineUpMidpointRotation * avatarCreatorHand.LocalRotation;
+
+            floatQ baseRotation = avatarCreatorHand.LocalRotation;
+            // now the midpoint is lined up, we just need to rotate around vecToFingerTipMidpoint until the two points are best aligned
+            // there's probably an analytic solution (feel free to PR such a solution) but iterative is good enough for a one-time thing
+            int ITERS = 3000;
+            
+            float minScore = float.MaxValue;
+            floatQ bestRotation = floatQ.Identity;
+            for (int i = 0; i < ITERS; i++)
+            {
+                float angleRotation = 360f * (i / (float)(ITERS - 1));
+                floatQ rotation = floatQ.AxisAngle(vecToFingerTipMidpoint, angleRotation) * baseRotation;
+                avatarCreatorHand.LocalRotation = rotation;
+                float score = (
+                       avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1) -
+                       fingerTipRef1
+                    ).Magnitude + (
+                       avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef2) -
+                       fingerTipRef2
+                    ).Magnitude;
+                if (score < minScore)
+                {
+                    minScore = score;
+                    bestRotation = rotation;
+                }
+            }
+            avatarCreatorHand.LocalRotation = bestRotation;
+        }
+
         static float3 ComputeAviCreatorScale(BipedRig rig, Slot handProxy)
         {
             Slot handSlot = rig.TryGetBone(BodyNode.LeftHand);
             if (handSlot != null)
             {
-                float3 handSize = handSlot.ComputeExactBounds().GetAwaiter().GetResult().Size;
+                float3 handSize = handSlot.ComputeBoundingBox(includeInactive: true, space: handSlot.Parent).Size;
                 float maxSize = Math.Max(Math.Max(handSize.x, handSize.y), handSize.z);
                 float3 handMaxSize = new float3(maxSize, maxSize, maxSize);
-                float3 resultScale = handSlot.Parent.LocalScaleToSpace(handMaxSize, handProxy.Parent);
-                return resultScale / 0.3f; // this is the size of the spheres
+                float3 resultScale = handSlot.Parent.LocalScaleToGlobal(handMaxSize);
+                ImportFromUnityLib.DebugLog("Got scale:" + resultScale);
+                return resultScale / 0.46f; // this is the distance from center of wrist to end of avatar creator fingers
             }
             else
             {

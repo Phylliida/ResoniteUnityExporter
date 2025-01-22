@@ -86,6 +86,7 @@ namespace ResoniteUnityExporter {
         }
 
         bool ranAnyRuns = false;
+        bool setupAvatar = true;
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
@@ -109,8 +110,10 @@ namespace ResoniteUnityExporter {
 				true
 			);
 
-            exportSlotName = EditorGUILayout.TextField(exportSlotName);
+            GUILayout.Label("Avatar/Project Name:");
 
+            exportSlotName = EditorGUILayout.TextField(exportSlotName);
+            setupAvatar = EditorGUILayout.ToggleLeft("Make Avatar Creator", setupAvatar);
             if (GUILayout.Button("Restart connection"))
             {
 				bridgeClient.Dispose();
