@@ -63,7 +63,7 @@ namespace ImportFromUnityLib
             }
             if (skinnedMeshRendererData.settings.setupIK)
             {
-                SetupIK(rig, renderer.Slot, assetsSlot,
+                SetupIK(rig, sharedParent, assetsSlot,
                     skinnedMeshRendererData.settings.forceTPose,
                     skinnedMeshRendererData.settings.generateColliders,
                     skinnedMeshRendererData.settings.generateSkeletonBoneVisuals);
