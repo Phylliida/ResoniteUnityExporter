@@ -106,6 +106,7 @@ namespace ImportFromUnityLib
                     if (rightHand != null)
                     {
                         rightHandRef.GlobalPosition = rightHand.GlobalPosition;
+                        rightHandRef.GlobalScale = aviCreatorScale;
                         SetAviCreatorHandRotation(bipedRig, aviCreator, true);
                     }
                     // todo: optional set up left hand if it's not symmetric
@@ -235,6 +236,7 @@ namespace ImportFromUnityLib
             List<float3> tipRefsList = new List<float3>();
             for(int i = 0; i < fingerOrders.Length; i++)
             {
+                ImportFromUnityLib.DebugLog("Finger order:" + fingerOrders[i]);
                 BodyNode[] fingerOrder = fingerOrders[i];
                 // todo: lookup positions for left hand
                 if (!includeThumb && fingerOrder[0].ToString().ToLower().Contains("thumb"))
@@ -245,11 +247,18 @@ namespace ImportFromUnityLib
                 Slot fingerTip = null;
                 foreach (BodyNode fingerPart in fingerOrder)
                 {
-                    fingerTip = bipedRig.TryGetBone(fingerPart);
+                    ImportFromUnityLib.DebugLog("Finger part:" + fingerPart);
+                    Slot curTip = bipedRig.TryGetBone(fingerPart);
+                    if (curTip != null)
+                    {
+                        fingerTip = curTip;
+                    }
                 }
                 if (fingerTip != null)
                 {
+                    ImportFromUnityLib.DebugLog("Got tip for finger:" + fingerTip + " with i " + i);
                     tipRefsList.Add(handTipRefs[i]);
+                    ImportFromUnityLib.DebugLog("set tip for finger:" + fingerTip);
                     fingerTips.Add(fingerTip);
                 }
             }
@@ -311,7 +320,7 @@ namespace ImportFromUnityLib
             float3 vecToAviTipRefsMidpoint = avatarCreatorHand.GlobalPointToLocal(currentAvatarCreatorMidpoint);
             float3 vecToFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(fingerTipMidpoint);
             floatQ lineUpMidpointRotation = floatQ.FromToRotation(vecToAviTipRefsMidpoint, vecToFingerTipMidpoint);
-            avatarCreatorHand.LocalRotation = lineUpMidpointRotation * avatarCreatorHand.LocalRotation;
+            avatarCreatorHand.LocalRotation = avatarCreatorHand.LocalRotation * lineUpMidpointRotation;
 
             floatQ baseRotation = avatarCreatorHand.LocalRotation;
             // now the midpoint is lined up, we just need to rotate around vecToFingerTipMidpoint until the two points are best aligned
@@ -351,7 +360,7 @@ namespace ImportFromUnityLib
                 float3 handMaxSize = new float3(maxSize, maxSize, maxSize);
                 float3 resultScale = handSlot.Parent.LocalScaleToGlobal(handMaxSize);
                 ImportFromUnityLib.DebugLog("Got scale:" + resultScale);
-                return resultScale / 0.46f; // this is the distance from center of wrist to end of avatar creator fingers
+                return resultScale / 0.23f; // this is the distance from center of wrist to end of avatar creator fingers
             }
             else
             {
