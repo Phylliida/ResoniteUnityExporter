@@ -106,8 +106,9 @@ namespace ImportFromUnityLib
                     if (rightHand != null)
                     {
                         rightHandRef.GlobalPosition = rightHand.GlobalPosition;
+                        float3 localScale = rightHandRef.Parent.GlobalScaleToLocal(aviCreatorScale);
                         rightHandRef.GlobalScale = aviCreatorScale;
-                        SetAviCreatorHandRotation(bipedRig, aviCreator, true);
+                        SetAviCreatorHandRotation(bipedRig, aviCreator, localScale, true);
                     }
                     // todo: optional set up left hand if it's not symmetric
                 }
@@ -266,13 +267,14 @@ namespace ImportFromUnityLib
             return fingerTips.ToArray();
         }
 
-        static void SetAviCreatorHandRotation(BipedRig bipedRig, AvatarCreator avatarCreator, bool rightSide)
+        static void SetAviCreatorHandRotation(BipedRig bipedRig, AvatarCreator avatarCreator, float3 localScale, bool rightSide)
         {
-            float3 fingerTipRef1;
-            float3 fingerTipRef2;
-            float3 aviCreatorTipRef1;
-            float3 aviCreatorTipRef2;
+            float3 globalFingerTipRef1;
+            float3 globalFingerTipRef2;
+            float3 localAviCreatorTipRef1;
+            float3 localAviCreatorTipRef2;
             Slot[] nonThumbFingerTips = GetFingerTips(bipedRig, rightSide, out float3[] noThumbAviCreatorTipRefs, includeThumb: false);
+            Slot avatarCreatorHand = avatarCreator.Slot.FindChild(rightSide ? "RightHand" : "LeftHand", matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // only one finger, need to also use thumb for other ref
             if (nonThumbFingerTips.Length == 1)
             {
@@ -284,23 +286,22 @@ namespace ImportFromUnityLib
                 }
                 else
                 {
-                    fingerTipRef1 = withThumbFingerTips[0].GlobalPosition;
-                    fingerTipRef2 = withThumbFingerTips[1].GlobalPosition;
-                    aviCreatorTipRef1 = aviCreatorTipRefs[0];
-                    aviCreatorTipRef2 = aviCreatorTipRefs[1];
+                    globalFingerTipRef1 = withThumbFingerTips[0].GlobalPosition;
+                    globalFingerTipRef2 = withThumbFingerTips[1].GlobalPosition;
+                    localAviCreatorTipRef1 = aviCreatorTipRefs[0];
+                    localAviCreatorTipRef2 = aviCreatorTipRefs[1];
                 }
             }
             else
             {
                 // do first and last (non-thumb) finger, these are furthest apart which makes aligning nicer
-                fingerTipRef1 = nonThumbFingerTips[0].GlobalPosition;
-                fingerTipRef2 = nonThumbFingerTips[nonThumbFingerTips.Length-1].GlobalPosition;
-                aviCreatorTipRef1 = noThumbAviCreatorTipRefs[0];
-                aviCreatorTipRef2 = noThumbAviCreatorTipRefs[nonThumbFingerTips.Length-1];
+                globalFingerTipRef1 = nonThumbFingerTips[0].GlobalPosition;
+                globalFingerTipRef2 = nonThumbFingerTips[nonThumbFingerTips.Length-1].GlobalPosition;
+                localAviCreatorTipRef1 = noThumbAviCreatorTipRefs[0];
+                localAviCreatorTipRef2 = noThumbAviCreatorTipRefs[nonThumbFingerTips.Length-1];
             }
             // now we have two finger points (fingerTipRef1 and fingerTipRef2)
             // and two points on the avatar creator glove that we want to align to those points
-            Slot avatarCreatorHand = avatarCreator.Slot.FindChild(rightSide ? "RightHand" : "LeftHand", matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // so we want to find a rotation for avatarCreatorHand such that
             // Distance(
             //   avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1),
@@ -313,38 +314,48 @@ namespace ImportFromUnityLib
             // is minimized
 
             // to do this, first find the rotation that aligns the midpoints:
-            float3 currentAvatarCreatorMidpoint =
-                (avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1) +
-                avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef2)) / 2.0f;
-            float3 fingerTipMidpoint = (fingerTipRef1 + fingerTipRef2) / 2.0f;
-            float3 vecToAviTipRefsMidpoint = avatarCreatorHand.GlobalPointToLocal(currentAvatarCreatorMidpoint);
-            float3 vecToFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(fingerTipMidpoint);
-            floatQ lineUpMidpointRotation = floatQ.FromToRotation(vecToAviTipRefsMidpoint, vecToFingerTipMidpoint);
+            float3 globalFingerTipMidpoint = (globalFingerTipRef1 + globalFingerTipRef2) / 2.0f;
+            float3 localFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(globalFingerTipMidpoint);
+            float3 localAviTipRefsMidpoint = (localAviCreatorTipRef1 + localAviCreatorTipRef2) / 2.0f;
+            floatQ lineUpMidpointRotation = floatQ.FromToRotation(localAviTipRefsMidpoint.Normalized, localFingerTipMidpoint.Normalized);
             avatarCreatorHand.LocalRotation = avatarCreatorHand.LocalRotation * lineUpMidpointRotation;
+            // double check we did it right
+            float3 newDirToFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(globalFingerTipMidpoint);
+            ImportFromUnityLib.DebugLog("got new finger tip midpoint:" + newDirToFingerTipMidpoint.Normalized);
+            ImportFromUnityLib.DebugLog("target direction is        :" + localAviTipRefsMidpoint.Normalized);
 
-            floatQ baseRotation = avatarCreatorHand.LocalRotation;
             // now the midpoint is lined up, we just need to rotate around vecToFingerTipMidpoint until the two points are best aligned
             // there's probably an analytic solution (feel free to PR such a solution) but iterative is good enough for a one-time thing
-            int ITERS = 3000;
+            int ITERS = 2000;
             
             float minScore = float.MaxValue;
             floatQ bestRotation = floatQ.Identity;
+            floatQ baseLocalRotation = avatarCreatorHand.LocalRotation;
+            float3 localPosition = avatarCreatorHand.LocalPosition;
+            float3 globalPosition = avatarCreatorHand.Parent.LocalPointToGlobal(localPosition);
+            float3 globalScale = avatarCreatorHand.Parent.LocalScaleToGlobal(localScale);
             for (int i = 0; i < ITERS; i++)
             {
                 float angleRotation = 360f * (i / (float)(ITERS - 1));
-                floatQ rotation = baseRotation * floatQ.AxisAngle(vecToFingerTipMidpoint, angleRotation);
-                avatarCreatorHand.LocalRotation = rotation;
-                float score = (
-                       avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1) -
-                       fingerTipRef1
+                floatQ localRotation = baseLocalRotation * floatQ.AxisAngle(localAviTipRefsMidpoint, angleRotation);
+                avatarCreatorHand.LocalRotation = localRotation;
+                    float score = (
+                       avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef1) -
+                       globalFingerTipRef1
                     ).Magnitude + (
-                       avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef2) -
-                       fingerTipRef2
+                       avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef2) -
+                       globalFingerTipRef2
                     ).Magnitude;
+                //ImportFromUnityLib.DebugLog("Got score:" + score + " with angle " + angleRotation);
+                //ImportFromUnityLib.DebugLog("fingerTipRef1: " + globalFingerTipRef1);
+                //ImportFromUnityLib.DebugLog("avi tip ref  : " + avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef1));
+                //ImportFromUnityLib.DebugLog("fingerTipRef1: " + globalFingerTipRef2);
+                //ImportFromUnityLib.DebugLog("avi tip ref  : " + avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef2));
                 if (score < minScore)
                 {
+                    ImportFromUnityLib.DebugLog("Got best score:" + score + " with angle " + angleRotation);
                     minScore = score;
-                    bestRotation = rotation;
+                    bestRotation = avatarCreatorHand.LocalRotation * localRotation;
                 }
             }
             avatarCreatorHand.LocalRotation = bestRotation;
