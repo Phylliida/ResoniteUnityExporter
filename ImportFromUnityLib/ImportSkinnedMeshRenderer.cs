@@ -96,8 +96,7 @@ namespace ImportFromUnityLib
                     {
                         Slot headsetRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_headsetReference", BindingFlags.Instance | BindingFlags.NonPublic)
                         .GetValue(aviCreator)).Target;
-                        float3 localCenter = head.ComputeBoundingBox(includeInactive: false, space: head.Parent).Center;
-                        headsetRef.GlobalPosition = head.Parent.LocalPointToGlobal(localCenter);
+                        headsetRef.GlobalPosition = head.GlobalPosition;
                         headsetRef.GlobalRotation = head.GlobalRotation;
                         headsetRef.GlobalScale = aviCreatorScale;
                     }

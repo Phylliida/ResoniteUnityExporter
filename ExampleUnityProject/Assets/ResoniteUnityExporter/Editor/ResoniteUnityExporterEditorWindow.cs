@@ -10,10 +10,22 @@ using System.Numerics;
 namespace ResoniteUnityExporter {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
+        static void OnApplicationQuit()
+        {
+
+        }
         static ResoniteUnityExporterEditorWindow()
         {
             EditorApplication.update += ExecuteCoroutine;
+            EditorApplication.quitting += EditorApplication_quitting;
         }
+
+        private static void EditorApplication_quitting()
+        {
+            // we need to clean this up manually
+            bridgeClient.Dispose();
+        }
+
         static int iters = 0;
         // lets us run coroutines in editor, modified from https://discussions.unity.com/t/coroutine-in-editor/4970/6
         private static void ExecuteCoroutine()
