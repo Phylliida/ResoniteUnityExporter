@@ -332,7 +332,7 @@ namespace ImportFromUnityLib
             for (int i = 0; i < ITERS; i++)
             {
                 float angleRotation = 360f * (i / (float)(ITERS - 1));
-                floatQ rotation = floatQ.AxisAngle(vecToFingerTipMidpoint, angleRotation) * baseRotation;
+                floatQ rotation = baseRotation * floatQ.AxisAngle(vecToFingerTipMidpoint, angleRotation);
                 avatarCreatorHand.LocalRotation = rotation;
                 float score = (
                        avatarCreatorHand.LocalPointToGlobal(aviCreatorTipRef1) -
