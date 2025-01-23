@@ -355,7 +355,7 @@ namespace ImportFromUnityLib
                 {
                     ImportFromUnityLib.DebugLog("Got best score:" + score + " with angle " + angleRotation);
                     minScore = score;
-                    bestRotation = avatarCreatorHand.LocalRotation * localRotation;
+                    bestRotation = localRotation;
                 }
             }
             avatarCreatorHand.LocalRotation = bestRotation;
