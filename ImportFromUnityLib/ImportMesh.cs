@@ -22,6 +22,8 @@ namespace ImportFromUnityLib
 
     public class ImportMesh
     {
+        
+
         static IEnumerator<Context> ImportToStaticMeshHelper(byte[] staticMeshBytes, OutputBytesHolder outputBytes)
         {
             // Load mesh data into a meshx

@@ -1,9 +1,11 @@
 ﻿using Elements.Core;
 using FrooxEngine;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +29,33 @@ namespace ImportFromUnityLib
             return false;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RefID_Example
+        {
+            public ulong id;
+        }
+
+        static IEnumerator<FrooxEngine.Context> AddSlotFuncHelper(byte[] inputBytes, OutputBytesHolder outputBytes)
+        {
+            // move to background thread (optional, useful if you are doing heavy stuff)
+            yield return FrooxEngine.Context.ToBackground();
+            // move to world thread (necessary if we want to modify the world at all)
+            yield return Context.ToWorld();
+            string slotName = ResoniteBridgeUtils.DecodeString(inputBytes);
+            Slot resultSlot = Engine.Current.WorldManager.FocusedWorld.RootSlot.AddSlot(slotName);
+            RefID_Example result = new RefID_Example()
+            {
+                id = (ulong)resultSlot.ReferenceID
+            };
+            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+        }
+
+        public byte[] AddSlotFunc(byte[] inputBytes)
+        {
+            OutputBytesHolder outputHolder = new OutputBytesHolder();
+            RunOnWorldThread(AddSlotFuncHelper(inputBytes, outputHolder));
+            return outputHolder.outputBytes;
+        }
         public static void SendCantSpawnMessage()
         {
             NotificationMessage.SpawnTextMessage("Permissions.NotAllowedToSpawn".AsLocaleKey(), colorX.Red);
