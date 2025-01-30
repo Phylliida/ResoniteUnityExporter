@@ -56,6 +56,14 @@ namespace ImportFromUnityLib
             });
 
             Slot sharedParent = FindSharedParent(refIds.ToArray());
+            // add extra parent so vrik is happy
+            if (skinnedMeshRendererData.settings.setupIK)
+            {
+                Slot parentParent = sharedParent.Parent.AddSlot("RootSlot");
+                sharedParent.SetParent(parentParent);
+                sharedParent = parentParent;
+            }
+
             Rig rig = sharedParent.AttachComponent<Rig>();
             foreach (RefID_U2Res boneRefID in skinnedMeshRendererData.bones)
             {

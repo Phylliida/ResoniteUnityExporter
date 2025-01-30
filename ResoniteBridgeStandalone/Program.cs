@@ -248,7 +248,15 @@ namespace ResoniteBridge
                         {
                             if (first)
                             {
-                                bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer((msg) => Console.WriteLine(msg));
+
+                                string serverDirectory =
+                                    Path.Combine(
+                                        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                                        "UnityResoniteImporter",
+                                        "IPCConnections",
+                                        "Servers"
+                                    );
+                                bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (msg) => Console.WriteLine(msg));
                                 ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, msg => Console.WriteLine(msg));
                                 first = false;
 

@@ -11,10 +11,10 @@ Material:
   m_Shader: {fileID: 4800000, guid: 645ddb695a089034b803c929e740378f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
   - TINTED_OUTLINE
   - _ALPHATEST_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

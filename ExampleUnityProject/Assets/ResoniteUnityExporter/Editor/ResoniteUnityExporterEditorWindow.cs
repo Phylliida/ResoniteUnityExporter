@@ -49,20 +49,28 @@ namespace ResoniteUnityExporter {
 
         public static ResoniteBridgeClient bridgeClient;
 
+        static int windowWidth = 460;
+        static int windowHeight = 600;
+
 		// Add menu item named "My Custom Window" to the Window menu
 		[MenuItem("ResoniteUnityExporter/Open Resonite Unity Exporter")]
 		public static void ShowWindow()
 		{
 			// Get existing open window or if none, make a new one
-			EditorWindow.GetWindow(typeof(ResoniteUnityExporterEditorWindow));
-		}
+            var window = EditorWindow.GetWindow(typeof(ResoniteUnityExporterEditorWindow));
+            window.minSize = new UnityEngine.Vector2(windowWidth, windowHeight); // Minimum size
+            window.maxSize = new UnityEngine.Vector2(windowWidth, windowHeight); // Maximum size (same as min for fixed size)
+        }
 
-		
-		// stuff for recreating connection on reload of scripts
+
+        // stuff for recreating connection on reload of scripts
         void OnEnable()
         {
             AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
             AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+            titleContent = new GUIContent("Resonite Unity Exporter");
+            minSize = new UnityEngine.Vector2(windowWidth, windowHeight);
+            maxSize = new UnityEngine.Vector2(windowWidth, windowHeight);
         }
 
         void OnDisable()
@@ -85,6 +93,8 @@ namespace ResoniteUnityExporter {
         }
         public void OnAfterAssemblyReload()
         {
+            // reinitialize style
+            customButtonStyle = null;
         }
 
         void Update()
@@ -113,8 +123,8 @@ namespace ResoniteUnityExporter {
         static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
         private GUIStyle customLabelStyle;
         private GUIStyle customButtonStyle;
-        private Texture2D rainbowBorderTexture;
-        private Texture2D backgroundTexture;
+        private GUIStyle headerStyle;
+        private Texture2D titleTexture;
 
         void InitializeStyles()
         {
@@ -126,29 +136,15 @@ namespace ResoniteUnityExporter {
             // Create button style
             customButtonStyle = new GUIStyle(GUI.skin.button);
             customButtonStyle.normal.textColor = Color.white;
-
-            // Create rainbow border texture (horizontal gradient)
-            rainbowBorderTexture = new Texture2D(256, 1);
-            Color[] colors = new Color[256];
-            for (int i = 0; i < 256; i++)
-            {
-                float hue = i / 255f;
-                colors[i] = Color.HSVToRGB(hue, 1f, 1f);
-            }
-            rainbowBorderTexture.SetPixels(colors);
-            rainbowBorderTexture.wrapMode = TextureWrapMode.Clamp;
-            rainbowBorderTexture.Apply();
-
-            // Create dark background texture
-            backgroundTexture = new Texture2D(1, 1);
-            backgroundTexture.SetPixel(0, 0, new Color(0.1f, 0.1f, 0.12f));
-            backgroundTexture.Apply();
+            
+            // Title texture 
+            titleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ResoniteUnityExporter/ResoniteUnityImporterLogo.png");
         }
 
 
         void OnGUI()
         {
-            if (customLabelStyle == null)
+            if (customLabelStyle == null || customButtonStyle == null || headerStyle == null)
             {
                 InitializeStyles();
             }
@@ -162,20 +158,31 @@ namespace ResoniteUnityExporter {
 
             if (bridgeClient == null)
             {
-
-
                 // bees
 
-                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
-                //return;
+                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
+                    // uncomment this for debugging info about connections
+                    //Debug.Log(message); 
+                });
             }
+            // Display the title image at original size and centered
+            if (titleTexture != null)
+            {
+                float imageWidth = titleTexture.width;
+                float imageHeight = titleTexture.height;
 
-            // Draw background
-            GUI.DrawTexture(new Rect(0, 0, position.width, position.height), backgroundTexture);
+                // Calculate centered position
+                float xPos = (position.width - imageWidth) * 0.5f;
 
-            // Draw rainbow borders
-            float borderSize = 2f;
-            GUILayout.Label("(Unofficial) Resonite Unity Exporter", customLabelStyle);
+                // Create rect for the image
+                Rect imageRect = new Rect(xPos, 10, imageWidth, imageHeight);
+
+                // Reserve space in the layout
+                GUILayoutUtility.GetRect(position.width, imageHeight + 20); // +20 for padding
+
+                // Draw the texture
+                GUI.DrawTexture(imageRect, titleTexture, ScaleMode.ScaleToFit);
+            }
 
             if (bridgeClient.publisher.NumActiveConnections() > 0 && bridgeClient.subscriber.NumActiveConnections() > 0)
             {
@@ -199,7 +206,7 @@ namespace ResoniteUnityExporter {
             }
             GUI.color = Color.white;
 
-            EditorGUILayout.Space(10);
+            EditorGUILayout.Space(5);
 
             exportSlotName = EditorGUILayout.TextField("Avatar/World Name", exportSlotName);
             parentObject = (Transform)EditorGUILayout.ObjectField(
