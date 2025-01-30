@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
+    <PackageReference Include="ResoniteBridgeLib" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,9 +42,6 @@
     </Reference>
     <Reference Include="FrooxEngine.Store">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.Store.dll</HintPath>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>..\Published\ResoniteBridgeLib\ResoniteBridgeLib.dll</HintPath>
     </Reference>
     <Reference Include="ResoniteUnityExporterShared">
       <HintPath>..\Published\ResoniteUnityExporterShared\ResoniteUnityExporterShared.dll</HintPath>

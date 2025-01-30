@@ -3,6 +3,7 @@ using ResoniteModLoader;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 
@@ -52,7 +53,14 @@ namespace ResoniteBridgeMod
                         Thread.Sleep(16);
                     }
                     readyToProcess.Set();
-                    using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer((string msg) =>
+                    string serverDirectory =
+                        Path.Combine(
+                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                            "UnityResoniteImporter",
+                            "IPCConnections",
+                            "Servers"
+                        );
+                    using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (string msg) =>
                     {
                         Msg("Bridge message:" + msg);
                     }))

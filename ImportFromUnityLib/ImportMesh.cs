@@ -1,29 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Concurrent;
+﻿using System;
 using Elements.Assets;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Linq;
-using System.Xml.Linq;
 using FrooxEngine;
 using Elements.Core;
 using ResoniteBridgeLib;
-using System.Net.NetworkInformation;
-using static OfficialAssets.Graphics;
-using static FrooxEngine.DynamicBoneChain;
-using System.IO;
 
 namespace ImportFromUnityLib
 {
 
     public class ImportMesh
     {
-        
-
         static IEnumerator<Context> ImportToStaticMeshHelper(byte[] staticMeshBytes, OutputBytesHolder outputBytes)
         {
             // Load mesh data into a meshx

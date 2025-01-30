@@ -15,7 +15,7 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
 {
     public class SkinnedMeshRendererConverter
     {
-        public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy)
+        public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings)
         {
             string[] boneNames = renderer.bones.Select(x => x.name).ToArray();
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
@@ -54,8 +54,8 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                     forceTPose = false,
                     generateColliders = true,
                     generateSkeletonBoneVisuals = false,
-                    setupIK = true,
-                    setupAvatar = true
+                    setupIK = settings.setupIK,
+                    setupAvatarCreator = settings.setupAvatarCreator
                 }
             };
 

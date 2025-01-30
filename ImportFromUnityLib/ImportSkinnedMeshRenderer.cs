@@ -20,7 +20,6 @@ namespace ImportFromUnityLib
 {
     public class ImportSkinnedMeshRenderer
     {
-
         public static IEnumerator<Context> ImportSkinnedMeshRendererHelper(byte[] skinnedMeshRendererBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToBackground();
@@ -70,7 +69,7 @@ namespace ImportFromUnityLib
                     skinnedMeshRendererData.settings.generateSkeletonBoneVisuals);
 
                 BipedRig bipedRig = rig.Slot.GetComponent<BipedRig>();
-                if (skinnedMeshRendererData.settings.setupAvatar)
+                if (skinnedMeshRendererData.settings.setupAvatarCreator)
                 {
                     Slot space = focusedWorld.LocalUserSpace;
                     if (space == null)

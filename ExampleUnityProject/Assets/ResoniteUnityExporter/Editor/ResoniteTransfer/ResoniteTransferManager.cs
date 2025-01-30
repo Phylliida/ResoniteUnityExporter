@@ -13,6 +13,12 @@ using UnityEngine;
 
 namespace ResoniteUnityExporter
 {
+
+    public struct ResoniteTransferSettings
+    {
+        public bool setupAvatarCreator;
+        public bool setupIK;
+    }
     public class ResoniteTransferManager
     {
 
@@ -28,7 +34,7 @@ namespace ResoniteUnityExporter
             return MethodBase.GetCurrentMethod().DeclaringType;
         }
 
-        public IEnumerator ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+        public IEnumerator ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient, ResoniteTransferSettings settings)
         {
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
             ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
@@ -59,7 +65,7 @@ namespace ResoniteUnityExporter
                         }
                         IEnumerator en = (IEnumerator)convertMethod.Invoke(this, new object[]
                         {
-                            component, hierarchy
+                            component, hierarchy, settings
                         });
                         while (en.MoveNext())
                         {
@@ -72,19 +78,19 @@ namespace ResoniteUnityExporter
             }
         }
 
-        public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>> converter) where T : UnityEngine.Component
+        public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, ResoniteTransferSettings, IEnumerator<object>> converter) where T : UnityEngine.Component
         {
             converters[typeof(T)] = converter;
         }
 
-        public IEnumerator ConvertComponent<T>(T component, HierarchyLookup hierarchy) where T : UnityEngine.Component
+        public IEnumerator ConvertComponent<T>(T component, HierarchyLookup hierarchy, ResoniteTransferSettings settings) where T : UnityEngine.Component
         {
             GameObject holder = component.transform.gameObject;
             if (converters.TryGetValue(typeof(T), out object converter))
             {
-                Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>> convertAction = (Func<T, GameObject, RefID_U2Res, HierarchyLookup, IEnumerator<object>>)converter;
+                Func<T, GameObject, RefID_U2Res, HierarchyLookup, ResoniteTransferSettings, IEnumerator<object>> convertAction = (Func<T, GameObject, RefID_U2Res, HierarchyLookup, ResoniteTransferSettings, IEnumerator<object>>)converter;
                 RefID_U2Res holderRefID = hierarchy.LookupSlot(holder.GetInstanceID().ToString());
-                IEnumerator<object> en = convertAction(component, holder, holderRefID, hierarchy);
+                IEnumerator<object> en = convertAction(component, holder, holderRefID, hierarchy, settings);
                 object result = en.Current;
                 while (en.MoveNext())
                 {

@@ -9,7 +9,7 @@ namespace ResoniteUnityExporterShared
     public struct SkinnedMeshRendererSettings_U2Res
     {
         public bool setupIK;
-        public bool setupAvatar;
+        public bool setupAvatarCreator;
         public bool forceTPose;
         public bool generateColliders;
         public bool generateSkeletonBoneVisuals;

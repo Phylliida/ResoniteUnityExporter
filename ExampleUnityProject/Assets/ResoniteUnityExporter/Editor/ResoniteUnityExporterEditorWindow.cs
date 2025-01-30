@@ -4,6 +4,8 @@ using ResoniteBridgeLib;
 using System.Collections.Generic;
 using Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters;
 using System.Numerics;
+using System.IO;
+using System;
 
 
 
@@ -98,7 +100,9 @@ namespace ResoniteUnityExporter {
         }
 
         bool ranAnyRuns = false;
-        bool setupAvatar = true;
+        bool setupAvatarCreator = true;
+        bool setupIK = true;
+        bool sendingAvatar = true;
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
@@ -107,58 +111,143 @@ namespace ResoniteUnityExporter {
 		string exportSlotName;
 		ResoniteTransferManager transferManager;
         static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
-        void OnGUI()		{
-            if (bridgeClient == null) {
+        private GUIStyle customLabelStyle;
+        private GUIStyle customButtonStyle;
+        private Texture2D rainbowBorderTexture;
+        private Texture2D backgroundTexture;
 
-				
-                // bees
-                bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
-				//return;
+        void InitializeStyles()
+        {
+            // Create text style
+            customLabelStyle = new GUIStyle(EditorStyles.label);
+            customLabelStyle.normal.textColor = Color.white;
+            customLabelStyle.fontSize = 12;
+
+            // Create button style
+            customButtonStyle = new GUIStyle(GUI.skin.button);
+            customButtonStyle.normal.textColor = Color.white;
+
+            // Create rainbow border texture (horizontal gradient)
+            rainbowBorderTexture = new Texture2D(256, 1);
+            Color[] colors = new Color[256];
+            for (int i = 0; i < 256; i++)
+            {
+                float hue = i / 255f;
+                colors[i] = Color.HSVToRGB(hue, 1f, 1f);
             }
+            rainbowBorderTexture.SetPixels(colors);
+            rainbowBorderTexture.wrapMode = TextureWrapMode.Clamp;
+            rainbowBorderTexture.Apply();
+
+            // Create dark background texture
+            backgroundTexture = new Texture2D(1, 1);
+            backgroundTexture.SetPixel(0, 0, new Color(0.1f, 0.1f, 0.12f));
+            backgroundTexture.Apply();
+        }
+
+
+        void OnGUI()
+        {
+            if (customLabelStyle == null)
+            {
+                InitializeStyles();
+            }
+            string serverFolder = Path.Combine(
+                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                            "UnityResoniteImporter",
+                            "IPCConnections",
+                            "Servers"
+                        );
+            string channelName = "UnityResoniteImporter";
+
+            if (bridgeClient == null)
+            {
+
+
+                // bees
+
+                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
+                //return;
+            }
+
+            // Draw background
+            GUI.DrawTexture(new Rect(0, 0, position.width, position.height), backgroundTexture);
+
+            // Draw rainbow borders
+            float borderSize = 2f;
+            GUILayout.Label("(Unofficial) Resonite Unity Exporter", customLabelStyle);
+
+            if (bridgeClient.publisher.NumActiveConnections() > 0 && bridgeClient.subscriber.NumActiveConnections() > 0)
+            {
+                GUI.color = Color.green;
+                GUILayout.Label("Connected to Resonite (2/2)", customLabelStyle);
+            }
+            else if (bridgeClient.publisher.NumActiveConnections() > 0)
+            {
+                GUI.color = Color.yellow;
+                GUILayout.Label("Connecting to Resonite (1/2 - need subscriber)", customLabelStyle);
+            }
+            else if (bridgeClient.subscriber.NumActiveConnections() > 0)
+            {
+                GUI.color = Color.yellow;
+                GUILayout.Label("Connecting to Resonite (1/2 - need publisher)", customLabelStyle);
+            }
+            else
+            {
+                GUI.color = Color.red;
+                GUILayout.Label("Not connected to Resonite", customLabelStyle);
+            }
+            GUI.color = Color.white;
+
+            EditorGUILayout.Space(10);
+
+            exportSlotName = EditorGUILayout.TextField("Avatar/World Name", exportSlotName);
             parentObject = (Transform)EditorGUILayout.ObjectField(
-				"Parent object",
+                new GUIContent("Select the object to export", "Select the object to export"),
                 parentObject,
-				typeof(Transform),
-				true
-			);
+                typeof(Transform),
+                true
+            );
 
-            GUILayout.Label("Avatar/Project Name:");
+            string labelText = parentObject == null ? "No object selected, sending all objects in scene" : "Sending object " + parentObject.name;
+            GUILayout.Label(labelText);
 
-            exportSlotName = EditorGUILayout.TextField(exportSlotName);
-            setupAvatar = EditorGUILayout.ToggleLeft("Make Avatar Creator", setupAvatar);
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                GUILayout.Label("Settings");
+                sendingAvatar = EditorGUILayout.ToggleLeft("Sending Avatar", sendingAvatar);
+                sendingAvatar = !EditorGUILayout.ToggleLeft("Sending World", !sendingAvatar);
+                EditorGUI.BeginDisabledGroup(!sendingAvatar);
+                if (!sendingAvatar)
+                {
+                    EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", false);
+                    EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", false);
+                }
+                else
+                {
+                    setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
+                    setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
+                }
+                EditorGUI.EndDisabledGroup();
+            }
+
+            /* for debugging
             if (GUILayout.Button("Restart connection"))
             {
 				bridgeClient.Dispose();
 				bridgeClient = null;
-                bridgeClient = new ResoniteBridgeClient((string message) => { Debug.Log(message); });
+                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
             }
-            // bees wow wow wow woffffw wow wo ffw wow wow wow wow wow wow  wows wolw WOW wow wow
-            if (bridgeClient.publisher.IsConnected())
-            {
-                GUILayout.Label("Publisher Connected to Resonite", EditorStyles.boldLabel);
-            }
-            else
-            {
-                GUILayout.Label("Publisher Connecting to Resonite...", EditorStyles.boldLabel);
-            }
-            if (bridgeClient.subscriber.IsConnected())
-            {
-                GUILayout.Label("Subscriber Connected to Resonite", EditorStyles.boldLabel);
-            }
-            else
-            {
-                GUILayout.Label("Subscriber Connecting to Resonite...", EditorStyles.boldLabel);
-            }
+            */
+            EditorGUILayout.Space(5);
 
 
-            string labelText = parentObject == null ? "Sending all objects in scene" : "Sending all objects under parent object " + parentObject.name;
-            GUILayout.Label(labelText);
 
-			bool ready = bridgeClient.IsConnected();
-			ready = true; // tmp
+            bool ready = bridgeClient.NumActiveConnections() > 0;
+
             EditorGUI.BeginDisabledGroup(!ready && CoroutinesInProgress.Count == 0);
 
-            if (GUILayout.Button("Export"))
+            if (GUILayout.Button("Export to Resonite", customButtonStyle))
             {
                 if (exportSlotName == null || exportSlotName == "")
                 {
@@ -167,7 +256,11 @@ namespace ResoniteUnityExporter {
                 transferManager = new ResoniteTransferManager();
                 RegisterConverters();
                 DebugProgressString = "";
-                System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient);
+                System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient, new ResoniteTransferSettings()
+                {
+                    setupAvatarCreator = setupAvatarCreator,
+                    setupIK = setupIK,
+                });
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;
                 ranAnyRuns = true;
@@ -181,46 +274,12 @@ namespace ResoniteUnityExporter {
                 DebugProgressStringDetail = "";
                 progressLabel = ranAnyRuns ? "Done" : "";
             }
-            GUILayout.Label(progressLabel);
-            GUILayout.Label(DebugProgressString);
-            GUILayout.Label(DebugProgressStringDetail);
-
-
-            // bees
-
-            /*
-			myString = EditorGUILayout.TextField("Tefffxt Field", myString);
-
-			groupEnabled = EditorGUILayout.BeginToggleGroup("Optional Settings", groupEnabled);
-			myFloat = EditorGUILayout.Slider("Slider", myFloat, 0, 5);
-			EditorGUILayout.EndToggleGroup();
-
-			if(GUILayout.Button("Press Me"))
-			{
-				Debug.Log("Button pressed!");
-			}
-
-			// Example of creating a horizontal group of controls
-			EditorGUILayout.BeginHorizontal();
-			if(GUILayout.Button("Button 1"))
-			{
-				FrooxEngine.Engine engine = FrooxEngine.Engine.Current;
-                Debug.Log("Got current engine " + engine.UID);
-				if (engine != null)
-				{
-					FrooxEngine.World world = engine.WorldManager.FocusedWorld;
-					if (world != null)
-					{
-						world.RootSlot.AddSlot("beees");
-					}
-				}
-				Debug.Log("Button 1");
-			}
-			if(GUILayout.Button("Button 2"))
-			{
-				Debug.Log("Button 2");
-			}
-			*/
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
+                GUILayout.Label(progressLabel, customLabelStyle);
+                GUILayout.Label(DebugProgressString, customLabelStyle);
+                GUILayout.Label(DebugProgressStringDetail, customLabelStyle);
+            }
         }
     }
 }

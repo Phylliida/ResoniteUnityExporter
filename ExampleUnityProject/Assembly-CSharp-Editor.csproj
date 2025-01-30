@@ -66,6 +66,7 @@
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
   </ItemGroup>
@@ -424,10 +425,6 @@
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Contact">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.SDK3.Dynamics.Contact.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MemoryMappedFileIPC">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\MemoryMappedFileIPC.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
