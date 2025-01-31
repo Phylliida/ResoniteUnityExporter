@@ -49,7 +49,7 @@ namespace ResoniteUnityExporter {
 
         public static ResoniteBridgeClient bridgeClient;
 
-        static int windowWidth = 460;
+        static int windowWidth = 480;
         static int windowHeight = 600;
 
 		// Add menu item named "My Custom Window" to the Window menu
@@ -162,7 +162,7 @@ namespace ResoniteUnityExporter {
 
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
                     // uncomment this for debugging info about connections
-                    //Debug.Log(message); 
+                    Debug.Log(message); 
                 });
             }
             // Display the title image at original size and centered
@@ -187,7 +187,7 @@ namespace ResoniteUnityExporter {
             if (bridgeClient.publisher.NumActiveConnections() > 0 && bridgeClient.subscriber.NumActiveConnections() > 0)
             {
                 GUI.color = Color.green;
-                GUILayout.Label("Connected to Resonite (2/2)", customLabelStyle);
+                GUILayout.Label("Connected to Resonite", customLabelStyle);
             }
             else if (bridgeClient.publisher.NumActiveConnections() > 0)
             {

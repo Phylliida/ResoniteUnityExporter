@@ -238,9 +238,9 @@ namespace ResoniteUnityExporter
                         for (int i = 0; i < numVertices; i++)
                         {
                             // subtracting vertices makes it shrink very small
-                            frameVertices[i].x = frameVertices[i].x;// - vertices[i].x;
-                            frameVertices[i].y = frameVertices[i].y;//  - vertices[i].y;
-                            frameVertices[i].z = frameVertices[i].z;// - vertices[i].z;
+                            frameVertices[i].x = frameVertices[i].x;
+                            frameVertices[i].y = frameVertices[i].y;
+                            frameVertices[i].z = frameVertices[i].z;
                         }
                         frame.positions = frameVertices;
 
