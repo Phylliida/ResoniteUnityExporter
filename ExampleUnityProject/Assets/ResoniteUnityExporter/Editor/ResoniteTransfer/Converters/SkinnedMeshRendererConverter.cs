@@ -55,7 +55,9 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                     generateColliders = true,
                     generateSkeletonBoneVisuals = false,
                     setupIK = settings.setupIK,
-                    setupAvatarCreator = settings.setupAvatarCreator
+                    setupAvatarCreator = settings.setupAvatarCreator,
+                    rescale = true,
+                    targetScale = 1.3f
                 }
             };
 

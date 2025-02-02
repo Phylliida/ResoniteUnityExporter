@@ -238,14 +238,13 @@ namespace ResoniteUnityExporter {
                 EditorGUI.EndDisabledGroup();
             }
 
-            /* for debugging
             if (GUILayout.Button("Restart connection"))
             {
 				bridgeClient.Dispose();
 				bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
             }
-            */
+            
             EditorGUILayout.Space(5);
 
 

@@ -206,9 +206,9 @@ namespace ResoniteUnityExporter
                 name = obj.name,
                 localPosition = new Float3_U2Res()
                 {
-                    x = obj.transform.localPosition.x,
-                    y = obj.transform.localPosition.y,
-                    z = obj.transform.localPosition.z
+                    x = obj.transform.localPosition.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = obj.transform.localPosition.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = obj.transform.localPosition.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
                 localRotation = new Float4_U2Res()
                 {

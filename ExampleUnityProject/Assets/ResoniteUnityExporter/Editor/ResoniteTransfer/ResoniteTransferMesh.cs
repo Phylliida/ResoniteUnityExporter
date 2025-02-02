@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using static ResoniteUnityExporter.ResoniteTransferUtils;
 
@@ -45,7 +46,7 @@ namespace ResoniteUnityExporter
             actualTexCoordIndices = texCoordIndices.ToArray();
             return texCoordDimensions.ToArray();
         }
-        public static ResoniteUnityExporterShared.StaticMesh_U2Res ConvertMesh(UnityEngine.Mesh unityMesh, string[] boneNames)
+        public static ResoniteUnityExporterShared.StaticMesh_U2Res ConvertMesh(UnityEngine.Mesh unityMesh, string[] boneNames, float scaleFactor)
         {
             Debug.Log("Starting export mesh");
             // todo: provide option to ignore bones and ignore vertex colors
@@ -58,9 +59,19 @@ namespace ResoniteUnityExporter
             Float3_U2Res[] normals = null;
             Float4_U2Res[] tangents = null;
             int numVertices;
+            string path = AssetDatabase.GetAssetPath(unityMesh);
+            ModelImporter modelImporter = AssetImporter.GetAtPath(path) as ModelImporter;
+            // unapply global scale since we will reapply global scaling on import
+
             using (Timer _ = new Timer("Mesh data"))
             {
                 vertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
+                for (int i = 0; i < vertices.Length; i++)
+                {
+                    vertices[i].x *= scaleFactor;
+                    vertices[i].y *= scaleFactor;
+                    vertices[i].z *= scaleFactor;
+                }
                 numVertices = vertices.Length;
                 meshx.positions = vertices;
                 if (NotEmpty(unityMesh.colors))
@@ -235,13 +246,24 @@ namespace ResoniteUnityExporter
                         );
 
                         Float3_U2Res[] frameVertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
+                        /*
                         for (int i = 0; i < numVertices; i++)
                         {
-                            // subtracting vertices makes it shrink very small
                             frameVertices[i].x = frameVertices[i].x;
                             frameVertices[i].y = frameVertices[i].y;
                             frameVertices[i].z = frameVertices[i].z;
                         }
+                        */
+                        if (modelImporter.globalScale != 1.0)
+                        {
+                            for (int i = 0; i < vertices.Length; i++)
+                            {
+                                frameVertices[i].x *= scaleFactor;
+                                frameVertices[i].y *= scaleFactor;
+                                frameVertices[i].z *= scaleFactor;
+                            }
+                        }
+
                         frame.positions = frameVertices;
 
                         if (normals != null)
@@ -291,7 +313,11 @@ namespace ResoniteUnityExporter
                     {
                         meshx.bones[boneI] = new Bone_U2Res();
                         meshx.bones[boneI].name = boneNames[boneI];
-                        meshx.bones[boneI].bindPose = ConvertMatrix4x4(boneBindposes[boneI]);
+                        // apply rescale
+                        UnityEngine.Vector3 pos = boneBindposes[boneI].GetPosition() * scaleFactor;
+                        UnityEngine.Quaternion rot = boneBindposes[boneI].rotation;
+                        UnityEngine.Vector3 scale = boneBindposes[boneI].lossyScale;
+                        meshx.bones[boneI].bindPose = ConvertMatrix4x4(Matrix4x4.TRS(pos, rot, scale));
                     }
                     int boneWeightIndex = 0;
                     // unity has us traverse over all them in this weird way
@@ -338,9 +364,11 @@ namespace ResoniteUnityExporter
             return meshx;
         }
 
+        // resonite wants things scaled up for ik to work correctly, so do that
+        public static float FIXED_SCALE_FACTOR = 100.0f;
         public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
         {
-            StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray());
+            StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray(), FIXED_SCALE_FACTOR);
             convertedMesh.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
 
             byte[] encoded = null;

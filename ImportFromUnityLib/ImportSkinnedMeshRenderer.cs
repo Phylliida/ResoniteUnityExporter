@@ -69,6 +69,33 @@ namespace ImportFromUnityLib
             {
                 rig.Bones.Add().Value = boneRefID.id;
             }
+
+            if (skinnedMeshRendererData.settings.rescale)
+            {
+                // compute bounding box of all bones to estimate bounding box of mesh
+                // we could also just directly compute bounding box of mesh but then we'd need
+                // to transform and it depends on where the bones are, so this is good enough
+                Elements.Core.BoundingBox box = new Elements.Core.BoundingBox();
+                foreach (Slot bone in rig.Bones)
+                {
+                    box.Encapsulate(sharedParent.Parent.GlobalPointToLocal(bone.GlobalPosition));
+                }
+                float largestSize = Math.Max(box.Size.x, Math.Max(box.Size.y, box.Size.z));
+                ImportFromUnityLib.DebugLog("Largest size:" + largestSize);
+                ImportFromUnityLib.DebugLog("box:" + box.Size);
+                float newScale = skinnedMeshRendererData.settings.targetScale / largestSize;
+                ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
+                sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
+            }
+            if (skinnedMeshRendererData.settings.floorOnOrigin)
+            {
+                Elements.Core.BoundingBox box = sharedParent.ComputeBoundingBox(false, focusedWorld.RootSlot);
+                // we want this to be 0,0,0
+                float3 currentFloorPos = box.Center - new float3(0, box.Size.y / 2.0f, 0);
+                sharedParent.GlobalPosition = sharedParent.GlobalPosition - currentFloorPos;
+            }
+
+
             if (skinnedMeshRendererData.settings.setupIK)
             {
                 SetupIK(rig, sharedParent, assetsSlot,
@@ -243,7 +270,7 @@ namespace ImportFromUnityLib
             List<float3> tipRefsList = new List<float3>();
             for(int i = 0; i < fingerOrders.Length; i++)
             {
-                ImportFromUnityLib.DebugLog("Finger order:" + fingerOrders[i]);
+                //ImportFromUnityLib.DebugLog("Finger order:" + fingerOrders[i]);
                 BodyNode[] fingerOrder = fingerOrders[i];
                 // todo: lookup positions for left hand
                 if (!includeThumb && fingerOrder[0].ToString().ToLower().Contains("thumb"))
@@ -254,7 +281,7 @@ namespace ImportFromUnityLib
                 Slot fingerTip = null;
                 foreach (BodyNode fingerPart in fingerOrder)
                 {
-                    ImportFromUnityLib.DebugLog("Finger part:" + fingerPart);
+                    //ImportFromUnityLib.DebugLog("Finger part:" + fingerPart);
                     Slot curTip = bipedRig.TryGetBone(fingerPart);
                     if (curTip != null)
                     {
@@ -263,9 +290,9 @@ namespace ImportFromUnityLib
                 }
                 if (fingerTip != null)
                 {
-                    ImportFromUnityLib.DebugLog("Got tip for finger:" + fingerTip + " with i " + i);
+                    //ImportFromUnityLib.DebugLog("Got tip for finger:" + fingerTip + " with i " + i);
                     tipRefsList.Add(handTipRefs[i]);
-                    ImportFromUnityLib.DebugLog("set tip for finger:" + fingerTip);
+                    //ImportFromUnityLib.DebugLog("set tip for finger:" + fingerTip);
                     fingerTips.Add(fingerTip);
                 }
             }
@@ -327,8 +354,8 @@ namespace ImportFromUnityLib
             avatarCreatorHand.LocalRotation = avatarCreatorHand.LocalRotation * lineUpMidpointRotation;
             // double check we did it right
             float3 newDirToFingerTipMidpoint = avatarCreatorHand.GlobalPointToLocal(globalFingerTipMidpoint);
-            ImportFromUnityLib.DebugLog("got new finger tip midpoint:" + newDirToFingerTipMidpoint.Normalized);
-            ImportFromUnityLib.DebugLog("target direction is        :" + localAviTipRefsMidpoint.Normalized);
+            //ImportFromUnityLib.DebugLog("got new finger tip midpoint:" + newDirToFingerTipMidpoint.Normalized);
+            //ImportFromUnityLib.DebugLog("target direction is        :" + localAviTipRefsMidpoint.Normalized);
 
             // now the midpoint is lined up, we just need to rotate around vecToFingerTipMidpoint until the two points are best aligned
             // there's probably an analytic solution (feel free to PR such a solution) but iterative is good enough for a one-time thing
@@ -359,7 +386,7 @@ namespace ImportFromUnityLib
                 //ImportFromUnityLib.DebugLog("avi tip ref  : " + avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef2));
                 if (score < minScore)
                 {
-                    ImportFromUnityLib.DebugLog("Got best score:" + score + " with angle " + angleRotation);
+                    //ImportFromUnityLib.DebugLog("Got best score:" + score + " with angle " + angleRotation);
                     minScore = score;
                     bestRotation = localRotation;
                 }

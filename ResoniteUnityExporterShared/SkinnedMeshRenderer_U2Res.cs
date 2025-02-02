@@ -8,6 +8,9 @@ namespace ResoniteUnityExporterShared
     [StructLayout(LayoutKind.Sequential)]
     public struct SkinnedMeshRendererSettings_U2Res
     {
+        public bool rescale;
+        public float targetScale;
+        public bool floorOnOrigin;
         public bool setupIK;
         public bool setupAvatarCreator;
         public bool forceTPose;
