@@ -18,6 +18,7 @@ namespace ResoniteUnityExporter
     {
         public bool setupAvatarCreator;
         public bool setupIK;
+        public float nearClip;
     }
     public class ResoniteTransferManager
     {

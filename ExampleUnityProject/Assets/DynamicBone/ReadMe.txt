@@ -24,13 +24,18 @@ You can add collider objects if required:
 
 
 -------------------------------------------------------------------------
-Dynamic Bone Component Description:
+Dynamic Bone component description:
 
 - Root
   The root of the transform hierarchy to apply physics.
 
 - Update Rate
   Internal physics simulation rate, measures in frames per seconds.
+
+- UpdateMode
+  Normal: Normal update.
+  AnimatePhysics: Updates during the physic loop in order to synchronized with the physics engine.
+  UnscaledTime: Updates independently of Time.timeScale.
 
 - Damping
   How much the bones slowed down.
@@ -65,7 +70,7 @@ Dynamic Bone Component Description:
   The force apply to bones, in world space.
 
 - Colliders
-  Collider objects interact with the bones. Bones are never penetrate into colliders.
+  Collider objects interact with the bones.
 
 - Exclusions
   Bones exclude from physics simulation.
@@ -77,8 +82,7 @@ Dynamic Bone Component Description:
   Disable physics simulation automatically if character is far from camera or player.
   If there is no reference object, default main camera is used.
 
-
-Dynamic Bone Collider Component Description:
+Dynamic Bone Collider component description:
 
 - Center
   The center of the sphere or capsule, in the object's local space.
@@ -95,6 +99,14 @@ Dynamic Bone Collider Component Description:
 - Bound
   Constrain bones to outside bound or inside bound.
 
+-------------------------------------------------------------------------
+Dynamic Bone script reference:
+
+- public void SetWeight(float w);
+  Control how physics blend with existing animation.
+
+- public void UpdateParameters();
+  Update parameters at runtime, call this funtion after modifing parameters.
 
 -------------------------------------------------------------------------
 Version History
@@ -111,3 +123,13 @@ Version History
       Fix bug when added via script.
 1.1.5 Add distant disable.
       Reduce GC alloc.
+1.1.6 Fix capsule collider bug.
+1.1.7 Unity 5 support.
+1.1.8 Fix problems caused by negative scale.
+1.1.9 Improve detecting negative scale.
+      Fix bug if collider is set as inside.
+      Add UpdateMode setting.
+1.1.10 Fix problems caused by negative scale after Unity 5.4.
+1.2.0 Add tool tips.
+      Add plane collider.
+      Add function to update parameters at runtime.

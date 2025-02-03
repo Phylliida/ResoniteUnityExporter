@@ -4,34 +4,101 @@ using System.Collections.Generic;
 [AddComponentMenu("Dynamic Bone/Dynamic Bone")]
 public class DynamicBone : MonoBehaviour
 {
+#if UNITY_5
+	[Tooltip("The root of the transform hierarchy to apply physics.")]
+#endif
     public Transform m_Root = null;
+	
+#if UNITY_5
+	[Tooltip("Internal physics simulation rate.")]
+#endif
     public float m_UpdateRate = 60.0f;
+	
+    public enum UpdateMode
+    {
+        Normal,
+        AnimatePhysics,
+        UnscaledTime
+    }
+    public UpdateMode m_UpdateMode = UpdateMode.Normal;
+	
+#if UNITY_5
+	[Tooltip("How much the bones slowed down.")]
+#endif
     [Range(0, 1)]
     public float m_Damping = 0.1f;
     public AnimationCurve m_DampingDistrib = null;
+	
+#if UNITY_5
+	[Tooltip("How much the force applied to return each bone to original orientation.")]
+#endif
     [Range(0, 1)]
     public float m_Elasticity = 0.1f;
     public AnimationCurve m_ElasticityDistrib = null;
+	
+#if UNITY_5
+	[Tooltip("How much bone's original orientation are preserved.")]
+#endif
     [Range(0, 1)]
     public float m_Stiffness = 0.1f;
     public AnimationCurve m_StiffnessDistrib = null;
+	
+#if UNITY_5
+	[Tooltip("How much character's position change is ignored in physics simulation.")]
+#endif
     [Range(0, 1)]
     public float m_Inert = 0;
     public AnimationCurve m_InertDistrib = null;
+	
+#if UNITY_5
+	[Tooltip("Each bone can be a sphere to collide with colliders. Radius describe sphere's size.")]
+#endif
     public float m_Radius = 0;
     public AnimationCurve m_RadiusDistrib = null;
 
+#if UNITY_5
+	[Tooltip("If End Length is not zero, an extra bone is generated at the end of transform hierarchy.")]
+#endif
     public float m_EndLength = 0;
+	
+#if UNITY_5
+	[Tooltip("If End Offset is not zero, an extra bone is generated at the end of transform hierarchy.")]
+#endif
     public Vector3 m_EndOffset = Vector3.zero;
+	
+#if UNITY_5
+	[Tooltip("The force apply to bones. Partial force apply to character's initial pose is cancelled out.")]
+#endif
     public Vector3 m_Gravity = Vector3.zero;
+	
+#if UNITY_5
+	[Tooltip("The force apply to bones.")]
+#endif
     public Vector3 m_Force = Vector3.zero;
-    public List<DynamicBoneCollider> m_Colliders = null;
+	
+#if UNITY_5
+	[Tooltip("Collider objects interact with the bones.")]
+#endif
+    public List<DynamicBoneColliderBase> m_Colliders = null;
+	
+#if UNITY_5
+	[Tooltip("Bones exclude from physics simulation.")]
+#endif
     public List<Transform> m_Exclusions = null;
+	
+	
     public enum FreezeAxis
     {
         None, X, Y, Z
     }
+#if UNITY_5
+	[Tooltip("Constrain bones to move on specified plane.")]
+#endif	
     public FreezeAxis m_FreezeAxis = FreezeAxis.None;
+	
+#if UNITY_5
+	[Tooltip("Disable physics simulation automatically if character is far from camera or player.")]
+#endif		
     public bool m_DistantDisable = false;
     public Transform m_ReferenceObject = null;
     public float m_DistanceToObject = 20;
@@ -70,10 +137,16 @@ public class DynamicBone : MonoBehaviour
         SetupParticles();
     }
 
+    void FixedUpdate()
+    {
+        if (m_UpdateMode == UpdateMode.AnimatePhysics)
+            PreUpdate();
+    }
+
     void Update()
     {
-        if (m_Weight > 0 && !(m_DistantDisable && m_DistantDisabled))
-            InitTransforms();
+        if (m_UpdateMode != UpdateMode.AnimatePhysics)
+            PreUpdate();
     }
 
     void LateUpdate()
@@ -82,7 +155,20 @@ public class DynamicBone : MonoBehaviour
             CheckDistance();
 
         if (m_Weight > 0 && !(m_DistantDisable && m_DistantDisabled))
-            UpdateDynamicBones(Time.deltaTime);
+        {
+#if UNITY_5
+            float dt = m_UpdateMode == UpdateMode.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+#else
+            float dt = Time.deltaTime;
+#endif
+            UpdateDynamicBones(dt);
+        }
+    }
+
+    void PreUpdate()
+    {
+        if (m_Weight > 0 && !(m_DistantDisable && m_DistantDisabled))
+            InitTransforms();
     }
 
     void CheckDistance()
@@ -222,42 +308,12 @@ public class DynamicBone : MonoBehaviour
             return;
 
         m_LocalGravity = m_Root.InverseTransformDirection(m_Gravity);
-        m_ObjectScale = transform.lossyScale.x;
+        m_ObjectScale = Mathf.Abs(transform.lossyScale.x);
         m_ObjectPrevPosition = transform.position;
         m_ObjectMove = Vector3.zero;
         m_BoneTotalLength = 0;
         AppendParticles(m_Root, -1, 0);
-
-        for (int i = 0; i < m_Particles.Count; ++i)
-        {
-            Particle p = m_Particles[i];
-            p.m_Damping = m_Damping;
-            p.m_Elasticity = m_Elasticity;
-            p.m_Stiffness = m_Stiffness;
-            p.m_Inert = m_Inert;
-            p.m_Radius = m_Radius;
-
-            if (m_BoneTotalLength > 0)
-            {
-                float a = p.m_BoneLength / m_BoneTotalLength;
-                if (m_DampingDistrib != null && m_DampingDistrib.keys.Length > 0)
-                    p.m_Damping *= m_DampingDistrib.Evaluate(a);
-                if (m_ElasticityDistrib != null && m_ElasticityDistrib.keys.Length > 0)
-                    p.m_Elasticity *= m_ElasticityDistrib.Evaluate(a);
-                if (m_StiffnessDistrib != null && m_StiffnessDistrib.keys.Length > 0)
-                    p.m_Stiffness *= m_StiffnessDistrib.Evaluate(a);
-                if (m_InertDistrib != null && m_InertDistrib.keys.Length > 0)
-                    p.m_Inert *= m_InertDistrib.Evaluate(a);
-                if (m_RadiusDistrib != null && m_RadiusDistrib.keys.Length > 0)
-                    p.m_Radius *= m_RadiusDistrib.Evaluate(a);
-            }
-
-            p.m_Damping = Mathf.Clamp01(p.m_Damping);
-            p.m_Elasticity = Mathf.Clamp01(p.m_Elasticity);
-            p.m_Stiffness = Mathf.Clamp01(p.m_Stiffness);
-            p.m_Inert = Mathf.Clamp01(p.m_Inert);
-            p.m_Radius = Mathf.Max(p.m_Radius, 0);
-        }
+        UpdateParameters();
     }
 
     void AppendParticles(Transform b, int parentIndex, float boneLength)
@@ -318,10 +374,51 @@ public class DynamicBone : MonoBehaviour
                 }
                 if (!exclude)
                     AppendParticles(b.GetChild(i), index, boneLength);
+                else if (m_EndLength > 0 || m_EndOffset != Vector3.zero)
+                    AppendParticles(null, index, boneLength);
             }
 
             if (b.childCount == 0 && (m_EndLength > 0 || m_EndOffset != Vector3.zero))
                 AppendParticles(null, index, boneLength);
+        }
+    }
+
+    public void UpdateParameters()
+    {
+        if (m_Root == null)
+            return;
+
+        m_LocalGravity = m_Root.InverseTransformDirection(m_Gravity);
+
+        for (int i = 0; i < m_Particles.Count; ++i)
+        {
+            Particle p = m_Particles[i];
+            p.m_Damping = m_Damping;
+            p.m_Elasticity = m_Elasticity;
+            p.m_Stiffness = m_Stiffness;
+            p.m_Inert = m_Inert;
+            p.m_Radius = m_Radius;
+
+            if (m_BoneTotalLength > 0)
+            {
+                float a = p.m_BoneLength / m_BoneTotalLength;
+                if (m_DampingDistrib != null && m_DampingDistrib.keys.Length > 0)
+                    p.m_Damping *= m_DampingDistrib.Evaluate(a);
+                if (m_ElasticityDistrib != null && m_ElasticityDistrib.keys.Length > 0)
+                    p.m_Elasticity *= m_ElasticityDistrib.Evaluate(a);
+                if (m_StiffnessDistrib != null && m_StiffnessDistrib.keys.Length > 0)
+                    p.m_Stiffness *= m_StiffnessDistrib.Evaluate(a);
+                if (m_InertDistrib != null && m_InertDistrib.keys.Length > 0)
+                    p.m_Inert *= m_InertDistrib.Evaluate(a);
+                if (m_RadiusDistrib != null && m_RadiusDistrib.keys.Length > 0)
+                    p.m_Radius *= m_RadiusDistrib.Evaluate(a);
+            }
+
+            p.m_Damping = Mathf.Clamp01(p.m_Damping);
+            p.m_Elasticity = Mathf.Clamp01(p.m_Elasticity);
+            p.m_Stiffness = Mathf.Clamp01(p.m_Stiffness);
+            p.m_Inert = Mathf.Clamp01(p.m_Inert);
+            p.m_Radius = Mathf.Max(p.m_Radius, 0);
         }
     }
 
@@ -430,7 +527,7 @@ public class DynamicBone : MonoBehaviour
                 float particleRadius = p.m_Radius * m_ObjectScale;
                 for (int j = 0; j < m_Colliders.Count; ++j)
                 {
-                    DynamicBoneCollider c = m_Colliders[j];
+                    DynamicBoneColliderBase c = m_Colliders[j];
                     if (c != null && c.enabled)
                         c.Collide(ref p.m_Position, particleRadius);
                 }
@@ -470,9 +567,8 @@ public class DynamicBone : MonoBehaviour
             Particle p = m_Particles[i];
             if (p.m_ParentIndex >= 0)
             {
-                Vector3 rmove = m_ObjectMove * p.m_Inert;
-                p.m_PrevPosition += rmove;
-                p.m_Position += rmove;
+                p.m_PrevPosition += m_ObjectMove;
+                p.m_Position += m_ObjectMove;
 
                 Particle p0 = m_Particles[p.m_ParentIndex];
 
@@ -515,8 +611,45 @@ public class DynamicBone : MonoBehaviour
         }
     }
 
+    static Vector3 MirrorVector(Vector3 v, Vector3 axis)
+    {
+        return v - axis * (Vector3.Dot(v, axis) * 2);
+    }
+
     void ApplyParticlesToTransforms()
     {
+#if !UNITY_5_4_OR_NEWER	
+        // detect negative scale
+        Vector3 ax = Vector3.right;
+        Vector3 ay = Vector3.up;
+        Vector3 az = Vector3.forward;
+        bool nx = false, ny = false, nz = false;
+
+        Vector3 loosyScale = transform.lossyScale;
+        if (loosyScale.x < 0 || loosyScale.y < 0 || loosyScale.z < 0)
+        {
+            Transform mirrorObject = transform;
+            do
+            {
+                Vector3 ls = mirrorObject.localScale;
+                nx = ls.x < 0;
+                if (nx)
+                    ax = mirrorObject.right;
+                ny = ls.y < 0;
+                if (ny)
+                    ay = mirrorObject.up;
+                nz = ls.z < 0;
+                if (nz)
+                    az = mirrorObject.forward;
+                if (nx || ny || nz)
+                    break;
+
+                mirrorObject = mirrorObject.parent;
+            }
+            while (mirrorObject != null);
+        }
+#endif
+
         for (int i = 1; i < m_Particles.Count; ++i)
         {
             Particle p = m_Particles[i];
@@ -529,7 +662,16 @@ public class DynamicBone : MonoBehaviour
                     v = p.m_Transform.localPosition;
                 else
                     v = p.m_EndOffset;
-                Quaternion rot = Quaternion.FromToRotation(p0.m_Transform.TransformDirection(v), p.m_Position - p0.m_Position);
+                Vector3 v2 = p.m_Position - p0.m_Position;
+#if !UNITY_5_4_OR_NEWER					
+                if (nx)
+                    v2 = MirrorVector(v2, ax);
+                if (ny)
+                    v2 = MirrorVector(v2, ay);
+                if (nz)
+                    v2 = MirrorVector(v2, az);
+#endif					
+                Quaternion rot = Quaternion.FromToRotation(p0.m_Transform.TransformDirection(v), v2);
                 p0.m_Transform.rotation = rot * p0.m_Transform.rotation;
             }
 

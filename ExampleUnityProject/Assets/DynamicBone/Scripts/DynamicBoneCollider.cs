@@ -1,25 +1,17 @@
 ﻿using UnityEngine;
 
-
 [AddComponentMenu("Dynamic Bone/Dynamic Bone Collider")]
-public class DynamicBoneCollider : MonoBehaviour
+public class DynamicBoneCollider : DynamicBoneColliderBase
 {
-    public Vector3 m_Center = Vector3.zero;
+#if UNITY_5
+	[Tooltip("The radius of the sphere or capsule.")]
+#endif	
     public float m_Radius = 0.5f;
+	
+#if UNITY_5
+	[Tooltip("The height of the capsule.")]
+#endif		
     public float m_Height = 0;
-
-    public enum Direction
-    {
-        X, Y, Z
-    }
-    public Direction m_Direction = Direction.X;
-
-    public enum Bound
-    {
-        Outside,
-        Inside
-    }
-    public Bound m_Bound = Bound.Outside;
 
     void OnValidate()
     {
@@ -27,10 +19,10 @@ public class DynamicBoneCollider : MonoBehaviour
         m_Height = Mathf.Max(m_Height, 0);
     }
 
-    public void Collide(ref Vector3 particlePosition, float particleRadius)
+    public override void Collide(ref Vector3 particlePosition, float particleRadius)
     {
         float radius = m_Radius * Mathf.Abs(transform.lossyScale.x);
-        float h = m_Height * 0.5f - radius;
+        float h = m_Height * 0.5f - m_Radius;
         if (h <= 0)
         {
             if (m_Bound == Bound.Outside)
@@ -82,7 +74,7 @@ public class DynamicBoneCollider : MonoBehaviour
 
     static void InsideSphere(ref Vector3 particlePosition, float particleRadius, Vector3 sphereCenter, float sphereRadius)
     {
-        float r = sphereRadius + particleRadius;
+        float r = sphereRadius - particleRadius;
         float r2 = r * r;
         Vector3 d = particlePosition - sphereCenter;
         float len2 = d.sqrMagnitude;
@@ -144,7 +136,7 @@ public class DynamicBoneCollider : MonoBehaviour
 
     static void InsideCapsule(ref Vector3 particlePosition, float particleRadius, Vector3 capsuleP0, Vector3 capsuleP1, float capsuleRadius)
     {
-        float r = capsuleRadius + particleRadius;
+        float r = capsuleRadius - particleRadius;
         float r2 = r * r;
         Vector3 dir = capsuleP1 - capsuleP0;
         Vector3 d = particlePosition - capsuleP0;
@@ -199,7 +191,7 @@ public class DynamicBoneCollider : MonoBehaviour
         else
             Gizmos.color = Color.magenta;
         float radius = m_Radius * Mathf.Abs(transform.lossyScale.x);
-        float h = m_Height * 0.5f - radius;
+        float h = m_Height * 0.5f - m_Radius;
         if (h <= 0)
         {
             Gizmos.DrawWireSphere(transform.TransformPoint(m_Center), radius);

@@ -60,11 +60,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DynamicBone\Scripts\DynamicBoneColliderBase.cs" />
     <Compile Include="Assets\DynamicBone\Demo\GameController.cs" />
+    <Compile Include="Assets\DynamicBone\Scripts\DynamicBonePlaneCollider.cs" />
+    <Compile Include="Assets\DynamicBone\Demo\DynamicBoneDemo1.cs" />
     <Compile Include="Assets\DynamicBone\Scripts\DynamicBoneCollider.cs" />
     <Compile Include="Assets\DynamicBone\Scripts\DynamicBone.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Kanna\jacket weight tras.txt" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Simple Gradient Sky.shader" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCoreLite.cginc" />
@@ -76,10 +80,12 @@
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Fade.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Memory.dll" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Numerics.Vectors.dll" />
+    <None Include="Assets\Kanna\Readme_English.txt" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonShadows.cginc" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Unit Shadowed.shader" />
+    <None Include="Assets\Kanna\Readme_Japanese.txt" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Distance Fade.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Buffers.dll" />
@@ -87,6 +93,7 @@
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll" />
     <None Include="Assets\DynamicBone\ReadMe.txt" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCore.cginc" />
+    <None Include="Assets\Cubeds-Unity-Shaders-master\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
   </ItemGroup>

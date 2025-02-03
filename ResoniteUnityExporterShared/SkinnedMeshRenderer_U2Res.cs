@@ -10,6 +10,7 @@ namespace ResoniteUnityExporterShared
     {
         public bool rescale;
         public float targetScale;
+        public float nearClip;
         public bool floorOnOrigin;
         public bool setupIK;
         public bool setupAvatarCreator;

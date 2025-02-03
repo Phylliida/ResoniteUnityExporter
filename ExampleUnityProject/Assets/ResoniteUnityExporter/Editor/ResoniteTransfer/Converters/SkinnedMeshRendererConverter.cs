@@ -57,7 +57,8 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                     setupIK = settings.setupIK,
                     setupAvatarCreator = settings.setupAvatarCreator,
                     rescale = true,
-                    targetScale = 1.3f
+                    targetScale = 1.3f,
+                    nearClip = settings.nearClip,
                 }
             };
 
