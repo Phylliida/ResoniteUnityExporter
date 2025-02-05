@@ -7,6 +7,8 @@ using System.Numerics;
 using System.IO;
 using System;
 using System.Linq;
+using ResoniteTransfer.Converters;
+using VRC.Core;
 
 
 
@@ -229,6 +231,8 @@ namespace ResoniteUnityExporter {
         void RegisterConverters()
 		{
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
+            transferManager.RegisterConverter<MeshRenderer>(MeshRendererConverter.ConvertMeshRenderer);
+            transferManager.RegisterConverter<PipelineManager>(PipelineManagerConverter.ConvertPipelineManager);
         }
 
         bool ranAnyRuns = false;

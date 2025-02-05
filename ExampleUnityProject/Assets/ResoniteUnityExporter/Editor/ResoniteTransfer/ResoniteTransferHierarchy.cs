@@ -25,14 +25,16 @@ namespace ResoniteUnityExporter
     {
         public RefID_U2Res rootAssetsSlot;
         public ResoniteBridgeClient bridgeClient;
+        public ResoniteTransferManager transferManager;
         List<ObjectHolder> objects = new List<ObjectHolder>();
         Dictionary<string, GameObject> gameObjectLookup;
         Dictionary<string, RefID_U2Res> refIdLookup;
         Dictionary<ulong, GameObject> refIdToGameObject;
         Dictionary<string, RefID_U2Res> assetLookup = new Dictionary<string, RefID_U2Res>();
 
-        public HierarchyLookup(Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient, RefID_U2Res rootAssetsSlot)
+        public HierarchyLookup(ResoniteTransferManager transferManager, Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient, RefID_U2Res rootAssetsSlot)
         {
+            this.transferManager = transferManager;
             refIdToGameObject = new Dictionary<ulong, GameObject>();
             foreach (KeyValuePair<string, RefID_U2Res> keyRefID in refIdLookup)
             {

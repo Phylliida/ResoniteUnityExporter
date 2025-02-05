@@ -11,11 +11,11 @@ using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
+namespace ResoniteTransfer.Converters
 {
     public class SkinnedMeshRendererConverter
     {
-        public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings)
+        public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
             string[] boneNames = renderer.bones.Select(x => x.name).ToArray();
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
@@ -49,24 +49,14 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
                 staticMeshAsset = meshRefId,
                 bones = boneRefIDs,
                 materials = materialRefIds,
-                settings = new SkinnedMeshRendererSettings_U2Res()
-                {
-                    forceTPose = false,
-                    generateColliders = true,
-                    generateSkeletonBoneVisuals = false,
-                    setupIK = settings.setupIK,
-                    setupAvatarCreator = settings.setupAvatarCreator,
-                    rescale = true,
-                    targetScale = 1.3f,
-                    nearClip = settings.nearClip,
-                }
             };
 
             byte[] data = ResoniteBridgeUtils.EncodeObject(meshRendererData);
             yield return null;
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating skinned mesh renderer";
             yield return null;
-            yield return hierarchy.Call<RefID_U2Res, SkinnedMeshRenderer_U2Res>("ImportSkinnedMeshRenderer", meshRendererData);
+            output.value = hierarchy.Call<RefID_U2Res, SkinnedMeshRenderer_U2Res>("ImportSkinnedMeshRenderer", meshRendererData);
+            yield return null; 
         }
     }
 }

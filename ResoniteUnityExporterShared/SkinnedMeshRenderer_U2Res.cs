@@ -6,23 +6,8 @@ using System.Text;
 namespace ResoniteUnityExporterShared
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct SkinnedMeshRendererSettings_U2Res
-    {
-        public bool rescale;
-        public float targetScale;
-        public float nearClip;
-        public bool floorOnOrigin;
-        public bool setupIK;
-        public bool setupAvatarCreator;
-        public bool forceTPose;
-        public bool generateColliders;
-        public bool generateSkeletonBoneVisuals;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
     public struct SkinnedMeshRenderer_U2Res
     {
-        public SkinnedMeshRendererSettings_U2Res settings;
         public RefID_U2Res targetSlot;
         public RefID_U2Res staticMeshAsset;
         public RefID_U2Res[] bones;

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: FreeMenu
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Clothes
+    icon: {fileID: 2800000, guid: 22f502815b3e07048b006f215f988cee, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 2b266114cc9a97e418b2917bd3b17e73, type: 2}
+    subParameters: []
+    labels: []
+  - name: Accessories
+    icon: {fileID: 2800000, guid: df40c4ece6bb33e4e925c9439b2827d8, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: f11d532112194d4468dd3ee2ccd28528, type: 2}
+    subParameters: []
+    labels: []
+  - name: Turn Off Contacts
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: Pasties
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: HollowHarts.Gumroad.com
+    icon: {fileID: 2800000, guid: c29f2e339aa1ff24ebcf9490230d6080, type: 3}
+    type: 101
+    parameter:
+      name: Contacts
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

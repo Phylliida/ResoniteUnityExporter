@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{8341B4D5-DF5A-FF70-1DCA-66E5CC0547C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,19 +61,20 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteCutoutInspector.cs" />
+    <Compile Include="Assets\Cubed's Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteCutoutInspector.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToon\FlatLitToonInspector.cs" />
+    <Compile Include="Assets\Cubed's Unity Shaders\Editor\FlatLitToon\FlatLitToonInspector.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
     <Compile Include="Assets\Cubeds-Unity-Shaders-master\Assets\Editor\Instant Screenshot\ScreenshotTaker.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteInspector.cs" />
+    <Compile Include="Assets\Cubed's Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

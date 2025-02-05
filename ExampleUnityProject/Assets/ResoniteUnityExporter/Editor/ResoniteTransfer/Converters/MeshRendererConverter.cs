@@ -15,7 +15,7 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
 {
     public class MeshRendererConverter
     {
-        public static IEnumerator<object> ConvertMeshRenderer(MeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings)
+        public static IEnumerator<object> ConvertMeshRenderer(MeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
             Mesh sharedMesh = renderer.GetComponent<MeshFilter>().sharedMesh;
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + sharedMesh.name;
@@ -44,7 +44,8 @@ namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
             yield return null;
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating skinned mesh renderer";
             yield return null;
-            yield return hierarchy.Call<RefID_U2Res, MeshRenderer_U2Res>("ImportMeshRenderer", meshRendererData);
+            output.value = hierarchy.Call<RefID_U2Res, MeshRenderer_U2Res>("ImportMeshRenderer", meshRendererData);
+            yield return null;
         }
     }
 }
