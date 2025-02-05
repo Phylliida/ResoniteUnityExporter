@@ -22,6 +22,7 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
             server.RegisterProcessor("ImportToTexture2D", ImportTexture2D.ImportTexture2DFunc);
+            server.RegisterProcessor("ImportAvatar", ImportAvatar.ImportAvatarFunc);
             server.RegisterProcessor("ImportSkinnedMeshRenderer", ImportSkinnedMeshRenderer.ImportSkinnedMeshRendererFunc);
             server.RegisterProcessor("ImportMeshRenderer", ImportMeshRenderer.ImportMeshRendererFunc);
             server.RegisterProcessor("ImportToMaterial", ImportMaterial.ImportToMaterialFunc);

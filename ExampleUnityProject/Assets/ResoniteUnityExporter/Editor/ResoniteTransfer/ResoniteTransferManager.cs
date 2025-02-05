@@ -68,7 +68,11 @@ namespace ResoniteUnityExporter
                     // sometimes it gives null components??
                     if (component != null)
                     {
-                        LookupComponent(component, new OutputHolder<object>());
+                        var en = LookupComponent(component, new OutputHolder<object>());
+                        while (en.MoveNext())
+                        {
+                            yield return null;
+                        }
                     }
                 }
             }
@@ -128,6 +132,7 @@ namespace ResoniteUnityExporter
                     result = en.Current;
                     yield return null;
                 }
+                componentLookup[component.GetInstanceID().ToString()] = output.value;
                 yield return null;
             }
         }
