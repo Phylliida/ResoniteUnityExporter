@@ -54,7 +54,7 @@ namespace ResoniteUnityExporter
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
             ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
             yield return null;
-            hierarchy = ResoniteTransferHierarchy.CreateHierarchy(hierarchyName, rootTransform, bridgeClient);
+            hierarchy = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient);
             yield return null;
             Debug.Log("Converted hierarchy"); // finished
             methodCache = new Dictionary<Type, MethodInfo>();

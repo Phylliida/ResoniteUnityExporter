@@ -141,7 +141,7 @@ namespace ResoniteUnityExporter
 
     public class ResoniteTransferHierarchy
     {
-        public static HierarchyLookup CreateHierarchy(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+        public static HierarchyLookup CreateHierarchy(ResoniteTransferManager manager, string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
         {
             // if rootTransform is null, grab all objects in scene
             GameObject[] gameObjects = (rootTransform == null)
@@ -187,7 +187,7 @@ namespace ResoniteUnityExporter
                 refIdLookup.Add(lookup.uniqueId, lookup.refId);
             }
 
-            HierarchyLookup hierarchyLookup = new HierarchyLookup(gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot);
+            HierarchyLookup hierarchyLookup = new HierarchyLookup(manager, gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot);
 
             return hierarchyLookup;
         }

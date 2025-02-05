@@ -18,7 +18,7 @@ namespace ResoniteTransfer.Converters
     {
         // we could use vrc avatar descriptor, however some old avatars don't have that,
         // whereas pipeline manager is very common
-        public static IEnumerator<object> ConvertPipelineManager(PipelineManager pipelineManager, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
+        public static IEnumerator<object> ConvertPipelineManager(PipelineManager pipelineManager, GameObject obj, RefID_U2Res objRefId, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
             // fetch all SkinnedMeshRenderer and MeshRenderer ref ids
