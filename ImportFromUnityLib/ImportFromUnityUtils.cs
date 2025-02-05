@@ -73,7 +73,15 @@ namespace ImportFromUnityLib
 
         public static IWorldElement LookupRefID(RefID_U2Res refID)
         {
-            return Engine.Current.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID.id);
+            // need this bc the call below will throw an error
+            if (refID.id == 0 || (RefID)refID.id == RefID.Null)
+            {
+                return null;
+            }
+            else
+            {
+                return Engine.Current.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID.id);
+            }
         }
 
         static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<bool> completion)
