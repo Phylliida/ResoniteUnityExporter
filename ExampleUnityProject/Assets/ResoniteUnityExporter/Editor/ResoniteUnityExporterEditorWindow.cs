@@ -381,7 +381,7 @@ namespace ResoniteUnityExporter {
                     setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
                 }
 
-                if (prevNearClip != nearClip || headViewTex != null
+                if (prevNearClip != nearClip || headViewTex == null
                     || (!foundHead && sendingAvatar)) // this is incase they modify hierarchy to have a head
                 {
                     headViewTex = CaptureViewFromHead(256, 128, nearClip, out foundHead);
