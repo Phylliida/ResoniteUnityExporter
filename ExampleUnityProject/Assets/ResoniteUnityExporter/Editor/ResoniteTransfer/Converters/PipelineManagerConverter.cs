@@ -20,47 +20,54 @@ namespace ResoniteTransfer.Converters
         // whereas pipeline manager is very common
         public static IEnumerator<object> ConvertPipelineManager(PipelineManager pipelineManager, GameObject obj, RefID_U2Res objRefId, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
-            ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
-            // fetch all SkinnedMeshRenderer and MeshRenderer ref ids
-            OutputHolder<object[]> refIdsSkinned = new OutputHolder<object[]>();
-            var e = hierarchy.transferManager.LookupAllComponentsOfType<SkinnedMeshRenderer>(refIdsSkinned);
-            while (e.MoveNext())
+            // not sending avatar, bail
+            if (settings.makeAvatar)
             {
+                Debug.Log("converting avatar...");
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                // fetch all SkinnedMeshRenderer and MeshRenderer ref ids
+                OutputHolder<object[]> refIdsSkinned = new OutputHolder<object[]>();
+                var e = hierarchy.transferManager.LookupAllComponentsOfType<SkinnedMeshRenderer>(refIdsSkinned);
+                while (e.MoveNext())
+                {
+                    yield return null;
+                }
+                OutputHolder<object[]> refIdsUnskinned = new OutputHolder<object[]>();
+                var eu = hierarchy.transferManager.LookupAllComponentsOfType<MeshRenderer>(refIdsUnskinned);
+                while (eu.MoveNext())
+                {
+                    yield return null;
+                }
+                List<object> refIds = new List<object>(refIdsSkinned.value);
+                refIds.AddRange(refIdsUnskinned.value);
+                Debug.Log("converting avatar (fetched meshes)");
+
+                RefID_U2Res[] rendererRefIds = refIds
+                    .Where(x => x != null)
+                    .Select(x => (RefID_U2Res)x).ToArray();
+
+                Avatar_U2Res avatarData = new Avatar_U2Res()
+                {
+                    renderers = rendererRefIds,
+                    floorOnOrigin = false,
+                    assetsSlot = hierarchy.rootAssetsSlot,
+                    forceTPose = false,
+                    generateColliders = true,
+                    generateSkeletonBoneVisuals = false,
+                    setupIK = settings.setupIK,
+                    setupAvatarCreator = settings.setupAvatarCreator,
+                    rescale = true,
+                    targetScale = 1.3f,
+                    nearClip = settings.nearClip,
+                };
+                byte[] data = ResoniteBridgeUtils.EncodeObject(avatarData);
+                yield return null;
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
+                yield return null;
+                output.value = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData);
+                Debug.Log("converted avatar");
                 yield return null;
             }
-            OutputHolder<object[]> refIdsUnskinned = new OutputHolder<object[]>();
-            var eu = hierarchy.transferManager.LookupAllComponentsOfType<MeshRenderer>(refIdsUnskinned);
-            while (eu.MoveNext())
-            {
-                yield return null;
-            }
-            List<object> refIds = new List<object>(refIdsSkinned.value);
-            refIds.AddRange(refIdsUnskinned.value);
-
-            RefID_U2Res[] rendererRefIds = refIds
-                .Where(x => x != null)
-                .Select(x => (RefID_U2Res)x).ToArray();
-
-            Avatar_U2Res avatarData = new Avatar_U2Res()
-            {
-                renderers = rendererRefIds,
-                floorOnOrigin = false,
-                assetsSlot = hierarchy.rootAssetsSlot,
-                forceTPose = false,
-                generateColliders = true,
-                generateSkeletonBoneVisuals = false,
-                setupIK = settings.setupIK,
-                setupAvatarCreator = settings.setupAvatarCreator,
-                rescale = true,
-                targetScale = 1.3f,
-                nearClip = settings.nearClip,
-            };
-            byte[] data = ResoniteBridgeUtils.EncodeObject(avatarData);
-            yield return null;
-            ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
-            yield return null;
-            output.value = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData);
-            yield return null;
         }
     }
 }

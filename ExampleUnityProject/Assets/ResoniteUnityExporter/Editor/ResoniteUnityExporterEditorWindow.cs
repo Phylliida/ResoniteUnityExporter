@@ -435,6 +435,7 @@ namespace ResoniteUnityExporter {
                     setupAvatarCreator = setupAvatarCreator,
                     setupIK = setupIK,
                     nearClip = nearClip,
+                    makeAvatar = sendingAvatar,
                 });
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;

@@ -54,8 +54,21 @@ namespace ImportFromUnityLib
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
             string tempFilePath = localDb.GetTempFilePath("png");
-            SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
-            System.Uri url = localDb.ImportLocalAssetAsync(tempFilePath, LocalDB.ImportLocation.Move).Result;
+
+            // raw data import
+            if (tex.data != null)
+            {
+                ImportFromUnityLib.DebugLog("Got raw data for texture");
+                SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
+            }
+            // import from file
+            else
+            {
+                ImportFromUnityLib.DebugLog("Got path " + tex.path + " for texture");
+                System.IO.File.Copy(tex.path, tempFilePath, true);
+            }
+
+            System.Uri url = localDb.ImportLocalAssetAsync(tempFilePath, LocalDB.ImportLocation.Move).GetAwaiter().GetResult();
             yield return Context.ToWorld();
             Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == tex.rootAssetsSlot.id);
             FrooxEngine.StaticTexture2D tex2d = assetsSlot.AttachComponent<FrooxEngine.StaticTexture2D>();

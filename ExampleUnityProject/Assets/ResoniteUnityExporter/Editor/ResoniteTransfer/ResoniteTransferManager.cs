@@ -22,6 +22,7 @@ namespace ResoniteUnityExporter
     }
     public struct ResoniteTransferSettings
     {
+        public bool makeAvatar;
         public bool setupAvatarCreator;
         public bool setupIK;
         public float nearClip;
@@ -68,10 +69,14 @@ namespace ResoniteUnityExporter
                     // sometimes it gives null components??
                     if (component != null)
                     {
-                        var en = LookupComponent(component, new OutputHolder<object>());
-                        while (en.MoveNext())
+                        // ignore transform
+                        if (component.GetType() != typeof(UnityEngine.Transform))
                         {
-                            yield return null;
+                            var en = LookupComponent(component, new OutputHolder<object>());
+                            while (en.MoveNext())
+                            {
+                                yield return null;
+                            }
                         }
                     }
                 }
@@ -90,16 +95,25 @@ namespace ResoniteUnityExporter
         public IEnumerator<object> LookupAllComponentsOfType(Type type, OutputHolder<object[]> outputs)
         {
             List<object> results = new List<object>();
-            foreach (var component in rootTransform.GetComponentsInChildren(type))
+            List<Transform> parentTransforms = new List<Transform>();
+            GameObject[] gameObjects = (rootTransform == null)
+            ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+            // otherwise, just do the given object as root
+            : new GameObject[] { rootTransform.gameObject };
+            foreach (var gameObject in gameObjects)
             {
-                OutputHolder<object> output = new OutputHolder<object>();
-                var enumerator = LookupComponent(component, output);
-                while (enumerator.MoveNext())
+                foreach (var component in gameObject.GetComponentsInChildren(type))
                 {
-                    yield return null;
+                    OutputHolder<object> output = new OutputHolder<object>();
+                    var enumerator = LookupComponent(component, output);
+                    while (enumerator.MoveNext())
+                    {
+                        yield return null;
+                    }
+                    results.Add(output.value);
                 }
-                results.Add(output.value);
             }
+
             outputs.value = results.ToArray();
         }
 

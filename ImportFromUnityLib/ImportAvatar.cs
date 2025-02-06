@@ -36,7 +36,7 @@ namespace ImportFromUnityLib
                 {
                     allSlots.Add(((FrooxEngine.Component)rendererComponent).Slot);
                 }
-                if (rendererComponent.GetType() == typeof(FrooxEngine.SkinnedMeshRenderer))
+                if (rendererComponent.GetType().ToString() == "FrooxEngine.SkinnedMeshRenderer")
                 {
                     SkinnedMeshRenderer skinnedMesh = (SkinnedMeshRenderer)rendererComponent;
                     if (skinnedMesh.Bones != null)
@@ -47,6 +47,7 @@ namespace ImportFromUnityLib
                             {
                                 bonesSet.Add(bone.ReferenceID);
                                 bones.Add(bone);
+                                allSlots.Add(bone);
                             }
                         }
                     }

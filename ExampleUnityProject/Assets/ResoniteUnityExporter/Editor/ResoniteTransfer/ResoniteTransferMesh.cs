@@ -59,8 +59,8 @@ namespace ResoniteUnityExporter
             Float3_U2Res[] normals = null;
             Float4_U2Res[] tangents = null;
             int numVertices;
-            string path = AssetDatabase.GetAssetPath(unityMesh);
-            ModelImporter modelImporter = AssetImporter.GetAtPath(path) as ModelImporter;
+            //string path = AssetDatabase.GetAssetPath(unityMesh);
+            //ModelImporter modelImporter = AssetImporter.GetAtPath(path) as ModelImporter;
             // unapply global scale since we will reapply global scaling on import
 
             using (Timer _ = new Timer("Mesh data"))
@@ -254,14 +254,11 @@ namespace ResoniteUnityExporter
                             frameVertices[i].z = frameVertices[i].z;
                         }
                         */
-                        if (modelImporter.globalScale != 1.0)
+                        for (int i = 0; i < vertices.Length; i++)
                         {
-                            for (int i = 0; i < vertices.Length; i++)
-                            {
-                                frameVertices[i].x *= scaleFactor;
-                                frameVertices[i].y *= scaleFactor;
-                                frameVertices[i].z *= scaleFactor;
-                            }
+                            frameVertices[i].x *= scaleFactor;
+                            frameVertices[i].y *= scaleFactor;
+                            frameVertices[i].z *= scaleFactor;
                         }
 
                         frame.positions = frameVertices;

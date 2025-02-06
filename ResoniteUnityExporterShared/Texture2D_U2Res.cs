@@ -12,5 +12,6 @@ namespace ResoniteUnityExporterShared
         public int width;
         public int height;
         public Color32_U2Res[] data;
+        public string path;
     }
 }
