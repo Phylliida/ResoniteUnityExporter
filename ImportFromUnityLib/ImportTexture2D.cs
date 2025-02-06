@@ -53,17 +53,19 @@ namespace ImportFromUnityLib
             // load texture into localdb to get a url
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
-            string tempFilePath = localDb.GetTempFilePath("png");
 
+            string tempFilePath;
             // raw data import
             if (tex.data != null)
             {
+                tempFilePath = localDb.GetTempFilePath("png");
                 ImportFromUnityLib.DebugLog("Got raw data for texture");
                 SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
             }
             // import from file
             else
             {
+                tempFilePath = localDb.GetTempFilePath(System.IO.Path.GetExtension(tex.path));
                 ImportFromUnityLib.DebugLog("Got path " + tex.path + " for texture");
                 System.IO.File.Copy(tex.path, tempFilePath, true);
             }

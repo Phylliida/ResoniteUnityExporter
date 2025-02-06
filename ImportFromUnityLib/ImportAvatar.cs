@@ -15,6 +15,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Reflection;
 using FrooxEngine.FinalIK;
+using FrooxEngine.CommonAvatar;
 
 namespace ImportFromUnityLib
 {
@@ -96,6 +97,13 @@ namespace ImportFromUnityLib
 
             if (avatarData.setupIK)
             {
+                Slot renderSettingsSlot = sharedParent.AddSlot("Avatar Render Settings");
+                AvatarRenderSettings renderSettings = renderSettingsSlot.AttachComponent<AvatarRenderSettings>();
+
+                renderSettings.NearClip.Value = avatarData.nearClip;
+
+
+
                 Slot assetsSlot = (Slot)ImportFromUnityUtils.LookupRefID(avatarData.assetsSlot);
                 SetupIK(rig, sharedParent, assetsSlot,
                     avatarData.forceTPose,
