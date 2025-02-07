@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using ResoniteTransfer.Converters;
 using VRC.Core;
+using VRC.SDK3.Avatars.Components;
 
 
 
@@ -53,7 +54,7 @@ namespace ResoniteUnityExporter {
         public static ResoniteBridgeClient bridgeClient;
 
         static int windowWidth = 480;
-        static int windowHeight = 700;
+        static int windowHeight = 630;
 
 		// Add menu item named "My Custom Window" to the Window menu
 		[MenuItem("ResoniteUnityExporter/Open Resonite Unity Exporter")]
@@ -205,12 +206,25 @@ namespace ResoniteUnityExporter {
 
         Texture2D CaptureViewFromHead(int width, int height, float nearClip, out bool foundHead)
         {
+            UnityEngine.Vector3 headPosition = new UnityEngine.Vector3(0, 0, 0);
+            VRCAvatarDescriptor descriptor = GameObject.FindAnyObjectByType<VRCAvatarDescriptor>();
             GameObject headObject = FindHeadObject();
             foundHead = headObject != null;
+            if (descriptor != null)
+            {
+                headPosition = descriptor.ViewPosition;
+            }
+            else
+            {
+                if (headObject != null)
+                {
+                    headPosition = headObject.transform.position;
+                }
+            }
             if (headObject != null)
             {
                 return CaptureFromPosition(
-                    headObject.transform.position,
+                    headPosition,
                     headObject.transform.rotation,
                     headObject.transform.lossyScale, 
                     nearClip,
@@ -392,7 +406,7 @@ namespace ResoniteUnityExporter {
                     prevNearClip = nearClip;
                 }
                 GUILayout.Label(foundHead ? "Found head" : "Could not find any object with 'head' in name (not case sensitive)");
-                nearClip = EditorGUILayout.Slider("Near clip", nearClip, 0f, 0.5f); // min is 0, max is 1
+                nearClip = EditorGUILayout.Slider("Near clip", nearClip, 0.001f, 0.5f); // min is 0, max is 1
                 GUILayout.Label("Make near clip as small as possible, yet large enough so nothing is in the way");
                 // Draw texture
                 Rect rect = EditorGUILayout.GetControlRect(false, headViewTex.height);

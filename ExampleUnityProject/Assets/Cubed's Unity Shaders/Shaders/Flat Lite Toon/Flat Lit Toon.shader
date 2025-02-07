@@ -46,9 +46,6 @@ Shader "CubedParadox/Flat Lit Toon"
 			#pragma geometry geom
 			#pragma fragment frag
 
-			#pragma only_renderers d3d11 glcore gles
-			#pragma target 4.0
-
 			#pragma multi_compile_fwdbase
 			#pragma multi_compile_fog
 
@@ -122,9 +119,6 @@ Shader "CubedParadox/Flat Lit Toon"
 			#pragma geometry geom
 			#pragma fragment frag
 
-			#pragma only_renderers d3d11 glcore gles
-			#pragma target 4.0
-
 			#pragma multi_compile_fwdadd_fullshadows
 			#pragma multi_compile_fog
 
@@ -177,10 +171,6 @@ Shader "CubedParadox/Flat Lit Toon"
 			#include "FlatLitToonShadows.cginc"
 			
 			#pragma multi_compile_shadowcaster
-			#pragma fragmentoption ARB_precision_hint_fastest
-
-			#pragma only_renderers d3d11 glcore gles
-			#pragma target 4.0
 
 			#pragma vertex vertShadowCaster
 			#pragma fragment fragShadowCaster

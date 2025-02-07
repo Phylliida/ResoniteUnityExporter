@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static VRC.SDKBase.VRCPlayerApi;
 
 namespace ResoniteUnityExporter
 {
@@ -96,22 +97,37 @@ namespace ResoniteUnityExporter
 
         }
 
-        public OutType Call<OutType, InType>(string callMethodName, InType input)
+        public IEnumerator<object> Call<OutType, InType>(string callMethodName, InType input, OutputHolder<object> output)
         {
-            byte[] messageBytes = ResoniteBridgeUtils.EncodeObject(input);
-            bridgeClient.SendMessageSync(
-                   callMethodName,
-                   messageBytes,
-                   -1,
-                   out byte[] outBytes,
-                   out bool isError
-                   );
-
-            if (isError)
+            System.Threading.Tasks.TaskCompletionSource<bool> taskCompletionSource = new System.Threading.Tasks.TaskCompletionSource<bool>();
+            Task<OutType> asyncTask = new Task<OutType>(() =>
             {
-                throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                byte[] messageBytes = ResoniteBridgeUtils.EncodeObject(input);
+                bridgeClient.SendMessageSync(
+                       callMethodName,
+                       messageBytes,
+                       -1,
+                       out byte[] outBytes,
+                       out bool isError
+                       );
+
+                if (isError)
+                {
+                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                }
+                return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
+            });
+            asyncTask.Start();
+            // we need to poll it so unity doesn't freeze up
+            while (!asyncTask.IsCompleted && !asyncTask.IsCanceled && !asyncTask.IsFaulted)
+            {
+                yield return null;
             }
-            return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
+            if (asyncTask.Exception != null)
+            {
+                Debug.LogError(asyncTask.Exception);
+            }
+            output.value = asyncTask.Result;
         } 
 
         public RefID_U2Res SendOrGetMesh(UnityEngine.Mesh mesh, string[] boneNames)

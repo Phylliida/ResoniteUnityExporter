@@ -55,7 +55,11 @@ namespace ResoniteTransfer.Converters
             yield return null;
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating skinned mesh renderer";
             yield return null;
-            output.value = hierarchy.Call<RefID_U2Res, SkinnedMeshRenderer_U2Res>("ImportSkinnedMeshRenderer", meshRendererData);
+            var e = hierarchy.Call<RefID_U2Res, SkinnedMeshRenderer_U2Res>("ImportSkinnedMeshRenderer", meshRendererData, output);
+            while (e.MoveNext())
+            {
+                yield return null;
+            }
             yield return null; 
         }
     }

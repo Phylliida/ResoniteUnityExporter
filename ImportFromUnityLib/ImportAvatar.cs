@@ -69,6 +69,13 @@ namespace ImportFromUnityLib
             {
                 rig.Bones.Add().Value = boneSlot.ReferenceID;
             }
+            
+            float3 relativeCustomHeadPosition = float3.Zero;
+            if (avatarData.hasCustomHeadPosition)
+            {
+                float3 customHeadPosition = new float3(avatarData.customHeadPosition.x, avatarData.customHeadPosition.y, avatarData.customHeadPosition.z);
+                relativeCustomHeadPosition = sharedParent.GlobalPointToLocal(customHeadPosition);
+            }
 
             if (avatarData.rescale)
             {
@@ -137,7 +144,9 @@ namespace ImportFromUnityLib
                     {
                         Slot headsetRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_headsetReference", BindingFlags.Instance | BindingFlags.NonPublic)
                         .GetValue(aviCreator)).Target;
-                        headsetRef.GlobalPosition = head.GlobalPosition;
+                        headsetRef.GlobalPosition = avatarData.hasCustomHeadPosition
+                            ? sharedParent.LocalPointToGlobal(relativeCustomHeadPosition)
+                            : head.GlobalPosition;
                         headsetRef.GlobalRotation = head.GlobalRotation;
                         headsetRef.GlobalScale = aviCreatorScale;
                     }
@@ -315,13 +324,64 @@ namespace ImportFromUnityLib
             Slot[] nonThumbFingerTips = GetFingerTips(bipedRig, rightSide, out float3[] noThumbAviCreatorTipRefs, includeThumb: false);
             Slot avatarCreatorHand = avatarCreator.Slot.FindChild(rightSide ? "RightHand" : "LeftHand", matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // only one finger, need to also use thumb for other ref
-            if (nonThumbFingerTips.Length == 1)
+            if (nonThumbFingerTips.Length <= 1)
             {
                 Slot[] withThumbFingerTips = GetFingerTips(bipedRig, rightSide, out float3[] aviCreatorTipRefs, includeThumb: true);
-                if (withThumbFingerTips.Length == 1)
+                if (withThumbFingerTips.Length <= 1)
                 {
-                    // idk what u expect of us when we only have one point
-                    return;
+                    Slot handSlot = bipedRig.TryGetBone(rightSide ? BodyNode.RightHand : BodyNode.LeftHand);
+                    if (handSlot == null)
+                    {
+                        // idk what u want from me
+                        return;
+                    }
+                    Slot fingerSlot = null;
+                    if (withThumbFingerTips.Length == 0)
+                    {
+                        // sometimes they have a finger end slot we can use
+                        Slot[] childFingers =
+                            handSlot.GetAllChildren()
+                            .Where(x => !x.LocalPosition.Approximately(float3.Zero, 0.0001f))
+                            .ToArray();
+                        if (childFingers.Length > 0)
+                        {
+                            fingerSlot = childFingers[0];
+                        }
+                    }
+                    else
+                    {
+                        fingerSlot = withThumbFingerTips[0];
+                    }
+                    if (fingerSlot == null)
+                    {
+                        // just align with hand rotation, not much else we can do
+                        avatarCreatorHand.GlobalRotation = handSlot.GlobalRotation;
+                        return;
+                    }
+                    else
+                    {
+                        float3 fingerDir = avatarCreatorHand.GlobalPosition - fingerSlot.GlobalPosition;
+                        // it's just zero
+                        if (fingerDir.Approximately(float3.Zero, 0.00001f))
+                        {
+                            // just align with hand rotation, not much else we can do
+                            avatarCreatorHand.GlobalRotation = handSlot.GlobalRotation;
+                            return;
+                        }
+                        else
+                        {
+                            // make two fake fingers going out from cross of up and dir from hand to finger
+                            float3 fanOutDir = MathX.Cross(fingerDir.Normalized, float3.Up);
+                            globalFingerTipRef1 = fingerSlot.GlobalPosition - fanOutDir * 0.01f;
+                            globalFingerTipRef2 = fingerSlot.GlobalPosition + fanOutDir * 0.01f;
+                            localAviCreatorTipRef1 = rightSide
+                                ? relativeFingerPositionsRight[1]
+                                : relativeFingerPositionsLeft[1]; // index finger
+                            localAviCreatorTipRef2 = rightSide
+                                ? relativeFingerPositionsRight[3]
+                                : relativeFingerPositionsLeft[3]; // ring finger
+                        }
+                    }
                 }
                 else
                 {

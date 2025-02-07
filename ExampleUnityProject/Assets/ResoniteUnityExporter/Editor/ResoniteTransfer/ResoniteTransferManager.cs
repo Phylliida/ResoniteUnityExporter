@@ -87,6 +87,18 @@ namespace ResoniteUnityExporter
         {
             converters[typeof(T)] = converter;
         }
+
+        public T[] GetComponents<T>()
+        {
+            GameObject[] gameObjects = (rootTransform == null)
+            ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+            // otherwise, just do the given object as root
+            : new GameObject[] { rootTransform.gameObject };
+
+            return gameObjects.SelectMany(g => g.GetComponents<T>()).ToArray();
+
+        }
+
         public IEnumerator<object> LookupAllComponentsOfType<T>(OutputHolder<object[]> outputs)
         {
             return LookupAllComponentsOfType(typeof(T), outputs);

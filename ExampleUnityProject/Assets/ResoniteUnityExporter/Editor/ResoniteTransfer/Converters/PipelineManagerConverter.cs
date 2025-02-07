@@ -11,6 +11,7 @@ using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using VRC.Core;
+using VRC.SDK3.Avatars.Components;
 
 namespace ResoniteTransfer.Converters
 {
@@ -46,6 +47,21 @@ namespace ResoniteTransfer.Converters
                     .Where(x => x != null)
                     .Select(x => (RefID_U2Res)x).ToArray();
 
+                bool hasCustomHeadPosition = false;
+                VRCAvatarDescriptor[] descriptors = hierarchy.transferManager.GetComponents<VRCAvatarDescriptor>();
+                Float3_U2Res customHeadPosition = new Float3_U2Res() { x = 0, y = 0, z = 0 };
+                if (descriptors.Length > 0)
+                {
+                    VRCAvatarDescriptor descriptor = descriptors[0];
+                    hasCustomHeadPosition = true;
+                    customHeadPosition = new Float3_U2Res()
+                    {
+                        x = descriptor.ViewPosition.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                        y = descriptor.ViewPosition.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                        z = descriptor.ViewPosition.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
+                    };
+                }
+
                 Avatar_U2Res avatarData = new Avatar_U2Res()
                 {
                     renderers = rendererRefIds,
@@ -59,12 +75,18 @@ namespace ResoniteTransfer.Converters
                     rescale = true,
                     targetScale = 1.3f,
                     nearClip = settings.nearClip,
+                    hasCustomHeadPosition = hasCustomHeadPosition,
+                    customHeadPosition = customHeadPosition,
                 };
                 byte[] data = ResoniteBridgeUtils.EncodeObject(avatarData);
                 yield return null;
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
                 yield return null;
-                output.value = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData);
+                var eout = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData, output);
+                while (eout.MoveNext())
+                {
+                    yield return null;
+                }
                 Debug.Log("converted avatar");
                 yield return null;
             }
