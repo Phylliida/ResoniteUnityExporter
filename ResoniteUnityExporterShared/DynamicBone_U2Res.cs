@@ -21,6 +21,9 @@ namespace ResoniteUnityExporterShared
     {
         public RefID_U2Res targetSlot;
         public RefID_U2Res[] bones;
+        public bool grabbable;
+        public float stiffness;
+        public float gravity;
         public float baseBoneRadius;
         public float[] boneRadiusModifiers;
         public RefID_U2Res[] colliders;

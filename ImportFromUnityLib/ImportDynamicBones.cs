@@ -132,6 +132,10 @@ namespace ImportFromUnityLib
             // resonite only has spheres, no capsules :(
             // we will do our best to convert
             DynamicBoneChain boneChain = targetSlot.AttachComponent<DynamicBoneChain>();
+            // convert some basic settings
+            boneChain.IsGrabbable.Value = boneChainData.grabbable;
+            boneChain.Gravity.Value = new float3(0, -boneChainData.gravity, 0);
+            boneChain.Stiffness.Value = boneChainData.stiffness;
             boneChain.BaseBoneRadius.Value = boneChainData.baseBoneRadius;
             // add bones
             for (int i = 0; i < boneChainData.bones.Length; i++)

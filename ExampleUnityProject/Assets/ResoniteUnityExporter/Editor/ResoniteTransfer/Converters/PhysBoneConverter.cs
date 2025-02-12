@@ -55,6 +55,9 @@ namespace ResoniteTransfer.Converters
             {
                 targetSlot = objRefID,
                 bones = boneSlots,
+                grabbable = physBone.allowGrabbing == VRCPhysBoneBase.AdvancedBool.True,
+                stiffness = physBone.stiffness,
+                gravity = physBone.gravity,
                 baseBoneRadius = physBone.radius * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
                 boneRadiusModifiers = boneRadiusModifiers,
                 colliders = colliders.ToArray(),

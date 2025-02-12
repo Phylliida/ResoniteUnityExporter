@@ -106,7 +106,7 @@ namespace ImportFromUnityLib
 
             if (avatarData.setupIK)
             {
-                Slot renderSettingsSlot = sharedParent.Parent.AddSlot("Avatar Render Settings");
+                Slot renderSettingsSlot = sharedParent.AddSlot("Avatar Render Settings");
                 AvatarRenderSettings renderSettings = renderSettingsSlot.AttachComponent<AvatarRenderSettings>();
 
                 renderSettings.NearClip.Value = avatarData.nearClip;
