@@ -139,9 +139,10 @@ namespace ImportFromUnityLib
                 RefID_U2Res boneRefID = boneChainData.bones[i];
                 float boneRadius = boneChainData.boneRadiuses[i];
                 Slot boneSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneRefID);
-                DynamicBoneChain.Bone bone = boneChain.Bones.Add();
-                bone.Assign(boneSlot);
-                bone.RadiusModifier.Value = boneRadius;
+                // need to access list like this because struct copies value
+                boneChain.Bones.Add();
+                boneChain.Bones[i].Assign(boneSlot);
+                boneChain.Bones[i].RadiusModifier.Value = boneRadius;
             }
 
             // add colliders
