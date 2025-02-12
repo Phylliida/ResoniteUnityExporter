@@ -25,6 +25,8 @@ namespace ResoniteUnityExporter
     public class HierarchyLookup
     {
         public RefID_U2Res rootAssetsSlot;
+        public RefID_U2Res rootHierarchySlot;
+        public RefID_U2Res mainParentSlot;
         public ResoniteBridgeClient bridgeClient;
         public ResoniteTransferManager transferManager;
         List<ObjectHolder> objects = new List<ObjectHolder>();
@@ -33,7 +35,7 @@ namespace ResoniteUnityExporter
         Dictionary<ulong, GameObject> refIdToGameObject;
         Dictionary<string, RefID_U2Res> assetLookup = new Dictionary<string, RefID_U2Res>();
 
-        public HierarchyLookup(ResoniteTransferManager transferManager, Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient, RefID_U2Res rootAssetsSlot)
+        public HierarchyLookup(ResoniteTransferManager transferManager, Dictionary<string, GameObject> gameObjectLookup, Dictionary<string, RefID_U2Res> refIdLookup, ResoniteBridgeClient bridgeClient, RefID_U2Res rootAssetsSlot, RefID_U2Res mainParentSlot)
         {
             this.transferManager = transferManager;
             refIdToGameObject = new Dictionary<ulong, GameObject>();
@@ -48,6 +50,7 @@ namespace ResoniteUnityExporter
             this.refIdLookup = refIdLookup;
             this.bridgeClient = bridgeClient;
             this.rootAssetsSlot = rootAssetsSlot;
+            this.mainParentSlot = mainParentSlot;
         }
 
         public IEnumerable<ObjectHolder> GetObjects()
@@ -203,7 +206,7 @@ namespace ResoniteUnityExporter
                 refIdLookup.Add(lookup.uniqueId, lookup.refId);
             }
 
-            HierarchyLookup hierarchyLookup = new HierarchyLookup(manager, gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot);
+            HierarchyLookup hierarchyLookup = new HierarchyLookup(manager, gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot, lookups.mainParentSlot);
 
             return hierarchyLookup;
         }

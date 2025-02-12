@@ -18,7 +18,7 @@ namespace ImportFromUnityLib
             return outputHolder.outputBytes;
         }
 
-        public static void AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
+        public static Slot AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
         {
             Slot addedSlot = parentSlot.AddSlot(obj.name);
             addedSlot.LocalPosition = new Elements.Core.float3(obj.localPosition.x,
@@ -48,6 +48,7 @@ namespace ImportFromUnityLib
                     AddObjectAndChildren(addedSlot, child, lookups);
                 }
             }
+            return addedSlot;
         }
         static IEnumerator<Context> AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
         {
@@ -73,6 +74,7 @@ namespace ImportFromUnityLib
 
             //// create root slot
             Slot parentSlot = ImportFromUnityUtils.GetAddingSlot();
+            parentSlot.LocalScale = new Elements.Core.float3(1.0f / 100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
             Slot targetSlot = parentSlot.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // if target slot not found, create it
             if (targetSlot == null)
@@ -99,6 +101,10 @@ namespace ImportFromUnityLib
             ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
             {
                 lookups = lookups.ToArray(),
+                mainParentSlot = new RefID_U2Res()
+                {
+                    id = (ulong)targetSlot.ReferenceID
+                },
                 rootAssetSlot = new RefID_U2Res()
                 {
                     id = (ulong)assetsSlot.ReferenceID

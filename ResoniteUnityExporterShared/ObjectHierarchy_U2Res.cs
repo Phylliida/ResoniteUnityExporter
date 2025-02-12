@@ -16,6 +16,7 @@ namespace ResoniteUnityExporterShared
 
     public struct ObjectLookups_U2Res
     {
+        public RefID_U2Res mainParentSlot;
         public RefID_U2Res rootAssetSlot;
         public ObjectLookup_U2Res[] lookups;
     }

@@ -59,7 +59,7 @@ namespace ImportFromUnityLib
             // add extra parent so vrik is happy
             if (avatarData.setupIK)
             {
-                Slot parentParent = sharedParent.Parent.AddSlot("RootSlot");
+                Slot parentParent = sharedParent.Parent.AddSlot("AvatarRoot");
                 sharedParent.SetParent(parentParent);
                 sharedParent = parentParent;
             }
@@ -82,6 +82,7 @@ namespace ImportFromUnityLib
                 // compute bounding box of all bones to estimate bounding box of mesh
                 // we could also just directly compute bounding box of mesh but then we'd need
                 // to transform and it depends on where the bones are, so this is good enough
+                /*
                 Elements.Core.BoundingBox box = new Elements.Core.BoundingBox();
                 foreach (Slot bone in bones)
                 {
@@ -92,9 +93,14 @@ namespace ImportFromUnityLib
                 ImportFromUnityLib.DebugLog("box:" + box.Size);
                 float newScale = avatarData.targetScale / largestSize;
                 // this ensures fov adjust is correct
-                newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
+                */
+                float newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
                 ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
+                Slot parentParent = sharedParent.Parent;
+                // since we rescale with our custom parent, undo scale on the root
+                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
+                    .LocalScale = new float3(1, 1, 1);
             }
             if (avatarData.floorOnOrigin)
             {

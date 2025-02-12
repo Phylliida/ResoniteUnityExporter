@@ -64,6 +64,7 @@ namespace ResoniteTransfer.Converters
 
                 Avatar_U2Res avatarData = new Avatar_U2Res()
                 {
+                    mainParentSlot = hierarchy.mainParentSlot,
                     renderers = rendererRefIds,
                     floorOnOrigin = false,
                     assetsSlot = hierarchy.rootAssetsSlot,

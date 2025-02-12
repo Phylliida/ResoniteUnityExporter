@@ -18,7 +18,6 @@ namespace ImportFromUnityLib
         public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, DebugLogDelegate DebugLog)
         {
             ImportFromUnityLib.DebugLog = DebugLog;
-            server.RegisterProcessor("TestBees", SimpleTestFunc);
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
             server.RegisterProcessor("ImportToTexture2D", ImportTexture2D.ImportTexture2DFunc);
@@ -28,18 +27,6 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportToMaterial", ImportMaterial.ImportToMaterialFunc);
             server.RegisterProcessor("ImportDynamicBoneChain", ImportDynamicBones.ImportDynamicBoneChainFunc);
             server.RegisterProcessor("ImportDynamicBoneCollider", ImportDynamicBones.ImportDynamicBoneColliderFunc);
-        }
-
-        public static byte[] SimpleTestFunc(byte[] data)
-        {
-            Float3_U2Res input = ResoniteBridgeUtils.DecodeObject<Float3_U2Res>(data);
-            Float3_U2Res result = new Float3_U2Res()
-            {
-                x = input.x + 1,
-                y = input.y - 2,
-                z = input.z * 2,
-            };
-            return ResoniteBridgeUtils.EncodeObject(result);
         }
     }
 }
