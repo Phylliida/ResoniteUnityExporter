@@ -64,19 +64,23 @@ namespace ImportFromUnityLib
                 sharedParent = parentParent;
             }
 
+
             Rig rig = sharedParent.AttachComponent<Rig>();
             foreach (Slot boneSlot in bones)
             {
                 rig.Bones.Add().Value = boneSlot.ReferenceID;
             }
-            
+
             float3 relativeCustomHeadPosition = float3.Zero;
             if (avatarData.hasCustomHeadPosition)
             {
+                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
+                    .LocalScale = new float3(1, 1, 1);
                 float3 customHeadPosition = new float3(avatarData.customHeadPosition.x, avatarData.customHeadPosition.y, avatarData.customHeadPosition.z);
                 relativeCustomHeadPosition = sharedParent.GlobalPointToLocal(customHeadPosition);
+                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
+                    .LocalScale = new float3(1.0f/100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
             }
-
             if (avatarData.rescale)
             {
                 // compute bounding box of all bones to estimate bounding box of mesh
@@ -97,7 +101,6 @@ namespace ImportFromUnityLib
                 float newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
                 ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
-                Slot parentParent = sharedParent.Parent;
                 // since we rescale with our custom parent, undo scale on the root
                 ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
                     .LocalScale = new float3(1, 1, 1);
