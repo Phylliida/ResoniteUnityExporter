@@ -132,17 +132,17 @@ namespace ImportFromUnityLib
             // resonite only has spheres, no capsules :(
             // we will do our best to convert
             DynamicBoneChain boneChain = targetSlot.AttachComponent<DynamicBoneChain>();
-
+            boneChain.BaseBoneRadius.Value = boneChainData.baseBoneRadius;
             // add bones
             for (int i = 0; i < boneChainData.bones.Length; i++)
             {
                 RefID_U2Res boneRefID = boneChainData.bones[i];
-                float boneRadius = boneChainData.boneRadiuses[i];
+                float boneRadiusModifier = boneChainData.boneRadiusModifiers[i];
                 Slot boneSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneRefID);
                 // need to access list like this because struct copies value
                 boneChain.Bones.Add();
                 boneChain.Bones[i].Assign(boneSlot);
-                boneChain.Bones[i].RadiusModifier.Value = boneRadius;
+                boneChain.Bones[i].RadiusModifier.Value = boneRadiusModifier;
             }
 
             // add colliders

@@ -21,8 +21,8 @@ namespace ResoniteTransfer.Converters
                 .Select(bone => hierarchy.LookupSlot(bone.transform))
                 .ToArray();
             float divideBy = Math.Max(1, physBone.bones.Count-1);
-            float[] boneRadiuses = physBone.bones
-                .Select(bone => physBone.CalcRadius(
+            float[] boneRadiusModifiers = physBone.bones
+                .Select(bone => physBone.radiusCurve.Evaluate(
                     bone.boneChainIndex / divideBy))
             .ToArray();
 
@@ -55,7 +55,8 @@ namespace ResoniteTransfer.Converters
             {
                 targetSlot = objRefID,
                 bones = boneSlots,
-                boneRadiuses = boneRadiuses,
+                baseBoneRadius = physBone.radius * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                boneRadiusModifiers = boneRadiusModifiers,
                 colliders = colliders.ToArray(),
             };
 
