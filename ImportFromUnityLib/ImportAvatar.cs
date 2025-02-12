@@ -91,6 +91,8 @@ namespace ImportFromUnityLib
                 ImportFromUnityLib.DebugLog("Largest size:" + largestSize);
                 ImportFromUnityLib.DebugLog("box:" + box.Size);
                 float newScale = avatarData.targetScale / largestSize;
+                // this ensures fov adjust is correct
+                newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
                 ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
             }
@@ -104,7 +106,7 @@ namespace ImportFromUnityLib
 
             if (avatarData.setupIK)
             {
-                Slot renderSettingsSlot = sharedParent.AddSlot("Avatar Render Settings");
+                Slot renderSettingsSlot = sharedParent.Parent.AddSlot("Avatar Render Settings");
                 AvatarRenderSettings renderSettings = renderSettingsSlot.AttachComponent<AvatarRenderSettings>();
 
                 renderSettings.NearClip.Value = avatarData.nearClip;

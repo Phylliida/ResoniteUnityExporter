@@ -24,7 +24,7 @@ namespace ImportFromUnityLib
             for (int i = 0; i < numSpheres; i++)
             {
                 // go from 0 to 1
-                float p = i / Math.Max(numSpheres - 1, 1);
+                float p = i / (float)Math.Max(numSpheres - 1, 1);
                 float3 lerpedPos = startPos * p + endPos * (1 - p);
                 localSpherePositions[i] = lerpedPos;
             }

@@ -21,13 +21,13 @@ namespace ResoniteTransfer.Converters
             {
                 targetSlot = objRefID,
                 colliderType = physBoneCollider.shapeType.ToString(),
-                radius = physBoneCollider.radius,
-                height = physBoneCollider.height,
+                radius = physBoneCollider.radius * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                height = physBoneCollider.height * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
                 localPosition = new Float3_U2Res()
                 {
-                    x = physBoneCollider.position.x,
-                    y = physBoneCollider.position.y,
-                    z = physBoneCollider.position.z,
+                    x = physBoneCollider.position.x*ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = physBoneCollider.position.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = physBoneCollider.position.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
                 },
                 localRotation = new Float4_U2Res()
                 {
