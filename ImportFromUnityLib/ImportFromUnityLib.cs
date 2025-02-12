@@ -26,6 +26,8 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportSkinnedMeshRenderer", ImportSkinnedMeshRenderer.ImportSkinnedMeshRendererFunc);
             server.RegisterProcessor("ImportMeshRenderer", ImportMeshRenderer.ImportMeshRendererFunc);
             server.RegisterProcessor("ImportToMaterial", ImportMaterial.ImportToMaterialFunc);
+            server.RegisterProcessor("ImportDynamicBoneChain", ImportDynamicBones.ImportDynamicBoneChainFunc);
+            server.RegisterProcessor("ImportDynamicBoneCollider", ImportDynamicBones.ImportDynamicBoneColliderFunc);
         }
 
         public static byte[] SimpleTestFunc(byte[] data)

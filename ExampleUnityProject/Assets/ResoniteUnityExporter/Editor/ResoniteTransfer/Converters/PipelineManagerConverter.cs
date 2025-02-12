@@ -78,7 +78,6 @@ namespace ResoniteTransfer.Converters
                     hasCustomHeadPosition = hasCustomHeadPosition,
                     customHeadPosition = customHeadPosition,
                 };
-                byte[] data = ResoniteBridgeUtils.EncodeObject(avatarData);
                 yield return null;
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
                 yield return null;

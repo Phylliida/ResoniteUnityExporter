@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using ResoniteBridgeLib;
 using System.Collections.Generic;
-using Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters;
 using System.Numerics;
 using System.IO;
 using System;
@@ -10,6 +9,7 @@ using System.Linq;
 using ResoniteTransfer.Converters;
 using VRC.Core;
 using VRC.SDK3.Avatars.Components;
+using VRC.SDK3.Dynamics.PhysBone.Components;
 
 
 
@@ -244,9 +244,14 @@ namespace ResoniteUnityExporter {
 
         void RegisterConverters()
 		{
+            // mesh renderers
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
             transferManager.RegisterConverter<MeshRenderer>(MeshRendererConverter.ConvertMeshRenderer);
+            // convert the avatar (when sending avatar), this does stuff like IK and avatar importer
             transferManager.RegisterConverter<PipelineManager>(PipelineManagerConverter.ConvertPipelineManager);
+            // dynamic bone chains and dynamic bone colliders
+            transferManager.RegisterConverter<VRCPhysBoneCollider>(PhysBoneColliderConverter.ConvertPhysBoneCollider);
+            transferManager.RegisterConverter<VRCPhysBone>(PhysBoneConverter.ConvertPhysBone);
         }
 
         bool ranAnyRuns = false;

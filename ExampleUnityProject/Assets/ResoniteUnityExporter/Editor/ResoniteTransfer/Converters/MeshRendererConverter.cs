@@ -11,7 +11,7 @@ using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-namespace Assets.ResoniteUnityExporter.Editor.ResoniteTransfer.Converters
+namespace ResoniteTransfer.Converters
 {
     public class MeshRendererConverter
     {

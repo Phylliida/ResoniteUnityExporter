@@ -51,7 +51,6 @@ namespace ResoniteTransfer.Converters
                 materials = materialRefIds,
             };
 
-            byte[] data = ResoniteBridgeUtils.EncodeObject(meshRendererData);
             yield return null;
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating skinned mesh renderer";
             yield return null;
