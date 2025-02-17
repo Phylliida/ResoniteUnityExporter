@@ -12,10 +12,6 @@ namespace ResoniteUnityExporter
 {
     public class ResoniteTransferMaterial
     {
-        public static Dictionary<String, string> shaderMapping = new Dictionary<string, string>()
-        {
-            { "Standard", "default" },
-        };
 
         public static RefID_U2Res SendMaterialToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Material material, ResoniteBridgeClient bridgeClient)
         {
@@ -59,10 +55,13 @@ namespace ResoniteUnityExporter
             materialData.intNames = intNames;
             materialData.intValues = intValues.ToArray();
 
+            Dictionary<int, string> materialMappings = hierarchyLookup.transferManager.settings.materialMappings;
+            if (!materialMappings.TryGetValue(material.GetInstanceID(), out materialData.materialName))
+            {
+                materialData.materialName = MaterialNames_U2Res.PBS_METALLIC_MAT;
+                Debug.LogWarning("Unknown material map for material: " + material.name + " with shader " + material.shader);
+            }
 
-            Debug.Log("Texture names " + String.Join(",", texture2DNames));
-            Debug.Log("Float4 names " + String.Join(",", vectorNames));
-            Debug.Log("int names " + String.Join(",", intNames));
             byte[] encoded = ResoniteBridgeUtils.EncodeObject(materialData);
 
             bridgeClient.SendMessageSync(

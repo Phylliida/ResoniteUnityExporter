@@ -26,6 +26,7 @@ namespace ResoniteUnityExporter
         public bool setupAvatarCreator;
         public bool setupIK;
         public float nearClip;
+        public Dictionary<int, string> materialMappings;
     }
     public class ResoniteTransferManager
     {
@@ -44,9 +45,9 @@ namespace ResoniteUnityExporter
 
         Dictionary<Type, MethodInfo> methodCache;
         MethodInfo convertComponentMethod;
-        HierarchyLookup hierarchy;
-        ResoniteTransferSettings settings;
-        Transform rootTransform;
+        public HierarchyLookup hierarchy;
+        public ResoniteTransferSettings settings;
+        public Transform rootTransform;
 
         public IEnumerator ConvertObjectAndChildren(string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient, ResoniteTransferSettings settings)
         {

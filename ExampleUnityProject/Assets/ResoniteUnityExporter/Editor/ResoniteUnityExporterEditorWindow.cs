@@ -14,11 +14,36 @@ using UnityEditor.SceneManagement;
 using NUnit.Framework.Constraints;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using ResoniteUnityExporterShared;
 
 
 
 namespace ResoniteUnityExporter {
-	public class ResoniteUnityExporterEditorWindow : EditorWindow
+
+    public static class LinqExtraExtensions {
+        public static IEnumerable<TSource> Unique<TSource, TKey>(this IEnumerable<TSource> arr, Func<TSource, TKey> keyFunc)
+        {
+            HashSet<TKey> keys = new HashSet<TKey>();
+
+            return arr.Where(value =>
+            {
+                TKey key = keyFunc(value);
+                if (keys.Contains(key))
+                {
+                    return false;
+                }
+                else
+                {
+                    keys.Add(key);
+                    return true;
+                }
+            });
+        }
+
+
+
+    }
+    public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
         bool ranAnyRuns = false;
         bool setupAvatarCreator = true;
@@ -29,6 +54,7 @@ namespace ResoniteUnityExporter {
         float prevNearClip = 0f;
         Transform parentObject;
         string exportSlotName;
+        Dictionary<string, string> materialMappings = new Dictionary<string, string>();
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
@@ -453,6 +479,7 @@ namespace ResoniteUnityExporter {
                     setupIK = setupIK,
                     nearClip = nearClip,
                     makeAvatar = sendingAvatar,
+                    materialMappings = GetMaterialMappings(),
                 });
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;
@@ -473,6 +500,150 @@ namespace ResoniteUnityExporter {
                 GUILayout.Label(DebugProgressString);
                 GUILayout.Label(DebugProgressStringDetail);
             }
+        }
+
+        Material[] GetAllMaterials()
+        {
+            GameObject[] gameObjects = (parentObject == null)
+             ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+             // otherwise, just do the given object as root
+             : new GameObject[] { parentObject.gameObject };
+
+            Dictionary<int, Material> uniqueMats = new Dictionary<int, Material>();
+            return gameObjects.SelectMany(x => x.GetComponentsInChildren<SkinnedMeshRenderer>())
+                .SelectMany(skinnedMeshRenderer =>
+                    skinnedMeshRenderer.sharedMaterials
+                    .Where(material => material != null)
+                )
+                .Unique(mat => mat.GetInstanceID())
+                .ToArray();
+        }
+
+        string GetMaterialName(Material material)
+        {
+            if (material.shader == null)
+            {
+                return null;
+            }
+            if (material.shader.name.Contains("Poiyomi"))
+            {
+                // sometimes weird hidden with uuid, just group them all together
+                return "Poiyomi";
+            }
+            else
+            {
+                return material.shader.name;
+            }
+        }
+
+        UnityEngine.Vector2 materialScrollPosition;
+        List<string> resoniteMaterials = new List<string>
+        {
+            MaterialNames_U2Res.XIEXE_TOON_MAT,
+            MaterialNames_U2Res.PBS_METALLIC_MAT,
+            MaterialNames_U2Res.PBS_SPECULAR_MAT,
+            MaterialNames_U2Res.UNLIT_MAT,
+        };
+
+        Dictionary<string, string> shaderDefaults = new Dictionary<string, string>()
+        {
+            {"Standard", MaterialNames_U2Res.PBS_METALLIC_MAT },
+            {"Legacy Shaders/Diffuse", MaterialNames_U2Res.PBS_METALLIC_MAT },
+            {"Legacy Shaders/Diffuse Detail", MaterialNames_U2Res.PBS_METALLIC_MAT },
+            {"Standard (Specular setup)", MaterialNames_U2Res.PBS_SPECULAR_MAT },
+            {"Poiyomi", MaterialNames_U2Res.XIEXE_TOON_MAT },
+            {"Unlit/Color", MaterialNames_U2Res.UNLIT_MAT },
+            {"Unlit/Texture", MaterialNames_U2Res.UNLIT_MAT },
+            {"Unlit/Transparent", MaterialNames_U2Res.UNLIT_MAT },
+            {"Unlit/Transparent Cutout", MaterialNames_U2Res.UNLIT_MAT },
+        };
+
+        string GetShaderDefault(string shaderName)
+        {
+            if (shaderDefaults.TryGetValue(shaderName, out string shaderDefault))
+            {
+                return shaderDefault;
+            }  
+            else
+            {
+                return MaterialNames_U2Res.PBS_METALLIC_MAT;
+            }
+        }
+
+        string GetMaterialMappedName(Material material)
+        {
+            if (material.shader == null)
+            {
+                return MaterialNames_U2Res.PBS_METALLIC_MAT;
+            }
+            string materialName = GetMaterialName(material);
+            if (materialMappings.TryGetValue(materialName, out string mappedName))
+            {
+                return mappedName;
+            }
+            return GetShaderDefault(materialName);
+        }
+
+        Dictionary<int, string> GetMaterialMappings()
+        {
+            Dictionary<int, string> mappings = new Dictionary<int, string>();
+            foreach (Material mat in GetAllMaterials())
+            {
+                mappings.Add(mat.GetInstanceID(), GetMaterialMappedName(mat));
+            }
+            return mappings;
+        }
+
+        void DrawMaterialMappings()
+        {
+            materialScrollPosition = EditorGUILayout.BeginScrollView(
+                materialScrollPosition,
+                GUILayout.ExpandWidth(true),
+                GUILayout.ExpandHeight(true)
+            );
+
+            GUILayout.Label("Resonite does not have custom shaders");
+            GUILayout.Label("Select a material mapping:");
+
+            List<string> shaderNames = GetAllMaterials()
+                .Select(GetMaterialName)
+                .Unique(x => x)
+                .Where(x => x != null)
+                .ToList();
+            // so consistent layout
+            shaderNames.Sort();
+
+            string[] defaults = shaderNames.Select(GetShaderDefault).ToArray();
+
+            // Content inside scroll view
+            string[] resoniteMaterialLabels = resoniteMaterials.ToArray();
+            foreach (string shaderName in shaderNames) {
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(shaderName, GUILayout.Width(200));
+                EditorGUILayout.LabelField("-->", GUILayout.Width(30));
+                string resoniteMaterial = MaterialNames_U2Res.PBS_METALLIC_MAT;
+                bool hasValue = materialMappings.TryGetValue(shaderName, out resoniteMaterial);
+                int selectedMaterialIndex = resoniteMaterials.IndexOf(resoniteMaterial);
+                string prefsKey = "U2R_MaterialMapping" + shaderName;
+                if (selectedMaterialIndex == -1 || !hasValue)
+                {
+                    selectedMaterialIndex = EditorPrefs.GetInt(prefsKey, resoniteMaterials.IndexOf(GetShaderDefault(shaderName)));
+                    materialMappings.Add(shaderName, resoniteMaterials[selectedMaterialIndex]);
+                }
+                int newMaterialIndex = EditorGUILayout.Popup(selectedMaterialIndex, resoniteMaterialLabels);
+                if (newMaterialIndex != selectedMaterialIndex)
+                {
+                    resoniteMaterial = resoniteMaterialLabels[newMaterialIndex];
+                    if (materialMappings.ContainsKey(shaderName))
+                    {
+                        materialMappings.Remove(shaderName);
+                    }
+                    materialMappings.Add(shaderName, resoniteMaterial);
+                    EditorPrefs.SetInt(prefsKey, newMaterialIndex);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+            EditorGUILayout.EndScrollView();
         }
 
         void OnGUI()
@@ -533,6 +704,7 @@ namespace ResoniteUnityExporter {
                     DrawSettings();
                     break;
                 case MATERIAL_MAPPINGS_TITLE:
+                    DrawMaterialMappings();
                     break;
             }
 

@@ -65,84 +65,362 @@ namespace ImportFromUnityLib
             Material_U2Res materialData = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<Material_U2Res>(materialBytes);
             yield return Context.ToWorld();
             Slot assetsSlot = (Slot)ImportFromUnityUtils.LookupRefID(materialData.rootAssetsSlot);
-            FrooxEngine.XiexeToonMaterial mat = assetsSlot.AttachComponent<FrooxEngine.XiexeToonMaterial>();
 
-            // _EmissionColor,
-            if (TryGetMaterialFloat4(materialData, "_EmissionColor", out Float4_U2Res emissionColor))
-            {
-                mat.EmissionColor.Value = new colorX(emissionColor.x, emissionColor.y, emissionColor.z, emissionColor.w);
-            }
+            bool hasColor = false;
+            colorX matColor = new colorX(1, 1, 1, 1);
+            bool hasEmissionColor = false;
+            colorX matEmissionColor = new colorX(1,1,1,1);
+
+            bool hasMainTex = false;
+            RefID_U2Res mainTexRefID = new RefID_U2Res();
+            float2 mainTexOffset = new float2(0,0);
+            float2 mainTexScale = new float2(1,1);
+
+            bool hasMetallicGlossTex = false;
+            RefID_U2Res metallicGlossTexRefID = new RefID_U2Res();
+            float2 metallicGlossTexOffset = new float2(0, 0);
+            float2 metallicGlossTexScale = new float2(1,1);
+
+            bool hasEmissionMapTex = false;
+            RefID_U2Res emissionMapTexRefID;
+            float2 emissionMapTexOffset = new float2(0, 0);
+            float2 emissionMapTexScale = new float2(1,1);
+
+            bool hasOcclusionMapTex = false;
+            RefID_U2Res occlusionMapTexRefID = new RefID_U2Res();
+            float2 occlusionMapTexOffset = new float2(0, 0);
+            float2 occlusionMapTexScale = new float2(1,1);
+
+            bool hasBumpMapTex = false;
+            RefID_U2Res bumpMapTexRefID = new RefID_U2Res();
+            float2 bumpMapTexOffset = new float2(0, 0);
+            float2 bumpMapTexScale = new float2(1, 1);
+
+            bool hasDetailAlbedoMapTex = false;
+            RefID_U2Res detailAlbedoMapTexRefID = new RefID_U2Res();
+            float2 detailAlbedoMapTexOffset = new float2(0, 0);
+            float2 detailAlbedoMapTexScale = new float2(1, 1);
+
+            bool hasDetailNormalMapTex = false;
+            RefID_U2Res detailNormalMapTexRefID = new RefID_U2Res();
+            float2 detailNormalMapTexOffset = new float2(0, 0);
+            float2 detailNormalMapTexScale = new float2(1, 1);
+
             // _Color,
             if (TryGetMaterialFloat4(materialData, "_Color", out Float4_U2Res color))
             {
-                mat.Color.Value = new colorX(color.x, color.y, color.z, color.w);
+                hasColor = true;
+                //mat.Color.Value
+                matColor = new colorX(color.x, color.y, color.z, color.w);
+            }
+            // _EmissionColor,
+            if (TryGetMaterialFloat4(materialData, "_EmissionColor", out Float4_U2Res emissionColor))
+            {
+                hasEmissionColor = true;
+                // mat.EmissionColor.Value
+                matEmissionColor = new colorX(emissionColor.x, emissionColor.y, emissionColor.z, emissionColor.w);
             }
             // _MainTex_ST,_MainTex_TexelSize,_MainTex_HDR,
-            if (TryGetMaterialTexture(materialData, "_MainTex", out RefID_U2Res matRefID))
+            if (TryGetMaterialTexture(materialData, "_MainTex", out mainTexRefID))
             {
-                mat.MainTexture.Value = matRefID.id;
+                hasMainTex = true;
+                // mat.MainTexture.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_MainTex_ST", out float2 offset, out float2 scale))
+            if (TryGetMaterialTextureTransform(materialData, "_MainTex_ST", out mainTexOffset, out mainTexScale))
             {
-                mat.MainTextureOffset.Value = offset;
-                mat.MainTextureScale.Value = scale;
+                //mat.MainTextureOffset.Value
+                //mat.MainTextureScale.Value
             }
             // _MetallicGlossMap_ST,_MetallicGlossMap_TexelSize,_MetallicGlossMap_HDR,
-            if (TryGetMaterialTexture(materialData, "_MetallicGlossMap", out RefID_U2Res metallicGlossMapRefID))
+            if (TryGetMaterialTexture(materialData, "_MetallicGlossMap", out metallicGlossTexRefID))
             {
-                mat.MetallicGlossMap.Value = metallicGlossMapRefID.id;
+                hasMetallicGlossTex = true;
+                //mat.MetallicGlossMap.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_MetallicGlossMap_ST", out float2 metallicoffset, out float2 metallicscale))
+            if (TryGetMaterialTextureTransform(materialData, "_MetallicGlossMap_ST", out metallicGlossTexOffset, out metallicGlossTexScale))
             {
-                mat.MetallicGlossMapOffset.Value = metallicoffset;
-                mat.MetallicGlossMapScale.Value = metallicscale;
-            }            
+                //mat.MetallicGlossMapOffset.Value
+                //mat.MetallicGlossMapScale.Value
+            }
             
             // _EmissionMap_ST,_EmissionMap_TexelSize,_EmissionMap_HDR,
-            if (TryGetMaterialTexture(materialData, "_EmissionMap", out RefID_U2Res emissionMapRefID))
+            if (TryGetMaterialTexture(materialData, "_EmissionMap", out emissionMapTexRefID))
             {
-                mat.EmissionMap.Value = emissionMapRefID.id;
+                hasEmissionMapTex = true;
+                //mat.EmissionMap.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_EmissionMap_ST", out float2 emissionoffset, out float2 emissionscale))
+            if (TryGetMaterialTextureTransform(materialData, "_EmissionMap_ST", out emissionMapTexOffset, out emissionMapTexScale))
             {
-                mat.EmissionMapOffset.Value = emissionoffset;
-                mat.EmissionMapScale.Value = emissionscale;
+                //mat.EmissionMapOffset.Value
+                //mat.EmissionMapScale.Value
             }
 
             // _OcclusionMap_ST,_OcclusionMap_TexelSize,_OcclusionMap_HDR,
-            if (TryGetMaterialTexture(materialData, "_OcclusionMap", out RefID_U2Res occlusionMapRefID))
+            if (TryGetMaterialTexture(materialData, "_OcclusionMap", out occlusionMapTexRefID))
             {
-                mat.OcclusionMap.Value = occlusionMapRefID.id;
+                hasOcclusionMapTex = true;
+                //mat.OcclusionMap.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_OcclusionMap_ST", out float2 occlusionoffset, out float2 occlusionscale))
+            if (TryGetMaterialTextureTransform(materialData, "_OcclusionMap_ST", out occlusionMapTexOffset, out occlusionMapTexScale))
             {
-                mat.OcclusionMapOffset.Value = occlusionoffset;
-                mat.OcclusionMapScale.Value = occlusionscale;
+                //mat.OcclusionMapOffset.Value
+                //mat.OcclusionMapScale.Value
             }
 
             // _BumpMap_ST,_BumpMap_TexelSize,_BumpMap_HDR,
             // "normal maps are a type of bump map" says unity
-            if (TryGetMaterialTexture(materialData, "_BumpMap", out RefID_U2Res bumpMapRefID))
+            if (TryGetMaterialTexture(materialData, "_BumpMap", out bumpMapTexRefID))
             {
-                mat.NormalMap.Value = bumpMapRefID.id;
+                hasBumpMapTex = true;
+                //mat.NormalMap.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_OcclusionMap_ST", out float2 bumpMapOffset, out float2 bumpMapScale))
+            if (TryGetMaterialTextureTransform(materialData, "_BumpMap_ST", out bumpMapTexOffset, out bumpMapTexScale))
             {
-                mat.NormalMapOffset.Value = bumpMapOffset;
-                mat.NormalMapScale.Value = bumpMapScale;
+                //mat.NormalMapOffset.Value
+                //mat.NormalMapScale.Value
+            }
+            // _DetailAlbedoMap_ST,_DetailAlbedoMap_TexelSize,_DetailAlbedoMap_HDR,
+            if (TryGetMaterialTexture(materialData, "_DetailAlbedoMap", out detailAlbedoMapTexRefID))
+            {
+                hasDetailAlbedoMapTex = true;
+                //mat.NormalMap.Value
+            }
+            if (TryGetMaterialTextureTransform(materialData, "_DetailAlbedoMap_ST", out detailAlbedoMapTexOffset, out detailAlbedoMapTexScale))
+            {
+                //mat.NormalMapOffset.Value
+                //mat.NormalMapScale.Value
+            }
+
+            // _DetailNormalMap_ST,_DetailNormalMap_TexelSize,_DetailNormalMap_HDR
+            if (TryGetMaterialTexture(materialData, "_DetailNormalMap", out detailNormalMapTexRefID))
+            {
+                hasDetailNormalMapTex = true;
+                //mat.NormalMap.Value
+            }
+            if (TryGetMaterialTextureTransform(materialData, "_DetailNormalMap_ST", out detailNormalMapTexOffset, out detailNormalMapTexScale))
+            {
+                //mat.NormalMapOffset.Value
+                //mat.NormalMapScale.Value
+            }
+
+
+            RefID_U2Res matRefId = new RefID_U2Res()
+            {
+                id = 0
+            };
+            if (materialData.materialName == MaterialNames_U2Res.XIEXE_TOON_MAT)
+            {
+                FrooxEngine.XiexeToonMaterial mat = assetsSlot.AttachComponent<FrooxEngine.XiexeToonMaterial>();
+                matRefId.id = (ulong)mat.ReferenceID;
+                if (hasColor)
+                {
+                    mat.Color.Value = matColor;
+                }
+                if (hasEmissionColor)
+                {
+                    mat.EmissionColor.Value = matEmissionColor;
+                }
+                if (hasMainTex)
+                {
+                    mat.MainTexture.Value = mainTexRefID.id;
+                    mat.MainTextureOffset.Value = mainTexOffset;
+                    mat.MainTextureScale.Value = mainTexScale;
+                }
+                if (hasMetallicGlossTex)
+                {
+                    mat.MetallicGlossMap.Value = metallicGlossTexRefID.id;
+                    mat.MetallicGlossMapOffset.Value = metallicGlossTexOffset;
+                    mat.MetallicGlossMapScale.Value = metallicGlossTexScale;
+                }
+                if (hasEmissionMapTex)
+                {
+                    mat.EmissionMap.Value = emissionMapTexRefID.id;
+                    mat.EmissionMapOffset.Value = emissionMapTexOffset;
+                    mat.EmissionMapScale.Value = emissionMapTexScale;
+                }
+                if (hasOcclusionMapTex)
+                {
+                    mat.OcclusionMap.Value = occlusionMapTexRefID.id;
+                    mat.OcclusionMapOffset.Value = occlusionMapTexOffset;
+                    mat.OcclusionMapScale.Value = occlusionMapTexScale;
+                }
+                if (hasBumpMapTex)
+                {
+                    mat.NormalMap.Value = bumpMapTexRefID.id;
+                    mat.NormalMapOffset.Value = bumpMapTexOffset;
+                    mat.NormalMapScale.Value = bumpMapTexScale;
+                }
+            }
+            else if (materialData.materialName == MaterialNames_U2Res.PBS_SPECULAR_MAT) {
+                FrooxEngine.PBS_Specular mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Specular>();
+                matRefId.id = (ulong)mat.ReferenceID;
+                if (hasColor)
+                {
+                    mat.AlbedoColor.Value = matColor;
+                }
+                if (hasEmissionColor)
+                {
+                    mat.EmissiveColor.Value = matEmissionColor;
+                }
+                if (hasMainTex)
+                {
+                    mat.AlbedoTexture.Value = mainTexRefID.id;
+                    mat.TextureOffset.Value = mainTexOffset;
+                    mat.TextureScale.Value = mainTexScale;
+                }
+                if (hasMetallicGlossTex)
+                {
+                    //mat.MetallicGlossMap.Value = metallicGlossTexRefID.id;
+                    //mat.MetallicGlossMapOffset.Value = metallicGlossTexOffset;
+                    //mat.MetallicGlossMapScale.Value = metallicGlossTexScale;
+                }
+                if (hasEmissionMapTex)
+                {
+                    mat.EmissiveMap.Value = emissionMapTexRefID.id;
+                    //mat.EmissionMapOffset.Value = emissionMapTexOffset;
+                    //mat.EmissionMapScale.Value = emissionMapTexScale;
+                }
+                if (hasOcclusionMapTex)
+                {
+                    mat.OcclusionMap.Value = occlusionMapTexRefID.id;
+                    //mat.OcclusionMapOffset.Value = occlusionMapTexOffset;
+                    //mat.OcclusionMapScale.Value = occlusionMapTexScale;
+                }
+                if (hasBumpMapTex)
+                {
+                    mat.NormalMap.Value = bumpMapTexRefID.id;
+                    //mat.NormalMapOffset.Value = bumpMapTexOffset;
+                    //mat.NormalScale.Value;
+                }
+                if (hasDetailAlbedoMapTex)
+                {
+                    mat.DetailAlbedoTexture.Value = detailAlbedoMapTexRefID.id;
+                    mat.DetailTextureOffset.Value = detailAlbedoMapTexOffset;
+                    mat.DetailTextureScale.Value = detailAlbedoMapTexScale;
+                }
+
+                if (hasDetailNormalMapTex)
+                {
+                    mat.DetailNormalMap.Value = detailNormalMapTexRefID.id;
+                    //mat.DetailNormalScale.Value = detailNormalMapTexScale;
+                }
+            }
+            else if (materialData.materialName == MaterialNames_U2Res.PBS_METALLIC_MAT)
+            {
+                FrooxEngine.PBS_Metallic mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Metallic>();
+                matRefId.id = (ulong)mat.ReferenceID;
+                if (hasColor)
+                {
+                    mat.AlbedoColor.Value = matColor;
+                }
+                if (hasEmissionColor)
+                {
+                    mat.EmissiveColor.Value = matEmissionColor;
+                }
+                if (hasMainTex)
+                {
+                    mat.AlbedoTexture.Value = mainTexRefID.id;
+                    mat.TextureOffset.Value = mainTexOffset;
+                    mat.TextureScale.Value = mainTexScale;
+                }
+                if (hasMetallicGlossTex)
+                {
+                    mat.MetallicMap.Value = metallicGlossTexRefID.id;
+                    //mat.MetallicGlossMapOffset.Value = metallicGlossTexOffset;
+                    //mat.MetallicGlossMapScale.Value = metallicGlossTexScale;
+                }
+                if (hasEmissionMapTex)
+                {
+                    mat.EmissiveMap.Value = emissionMapTexRefID.id;
+                    //mat.EmissionMapOffset.Value = emissionMapTexOffset;
+                    //mat.EmissionMapScale.Value = emissionMapTexScale;
+                }
+                if (hasOcclusionMapTex)
+                {
+                    mat.OcclusionMap.Value = occlusionMapTexRefID.id;
+                    //mat.OcclusionMapOffset.Value = occlusionMapTexOffset;
+                    //mat.OcclusionMapScale.Value = occlusionMapTexScale;
+                }
+                if (hasBumpMapTex)
+                {
+                    mat.NormalMap.Value = bumpMapTexRefID.id;
+                    //mat.NormalMapOffset.Value = bumpMapTexOffset;
+                    //mat.NormalScale.Value;
+                }
+                if (hasDetailAlbedoMapTex)
+                {
+                    mat.DetailAlbedoTexture.Value = detailAlbedoMapTexRefID.id;
+                    mat.DetailTextureOffset.Value = detailAlbedoMapTexOffset;
+                    mat.DetailTextureScale.Value = detailAlbedoMapTexScale;
+                }
+
+                if (hasDetailNormalMapTex)
+                {
+                    mat.DetailNormalMap.Value = detailNormalMapTexRefID.id;
+                    //mat.DetailNormalScale.Value = detailNormalMapTexScale;
+                }
+            }
+            else if (materialData.materialName == MaterialNames_U2Res.UNLIT_MAT)
+            {
+                FrooxEngine.UnlitMaterial mat = assetsSlot.AttachComponent<FrooxEngine.UnlitMaterial>();
+                matRefId.id = (ulong)mat.ReferenceID;
+                if (hasColor)
+                {
+                    mat.TintColor.Value = matColor;
+                }
+                if (hasEmissionColor)
+                {
+                    //mat.color.Value = matEmissionColor;
+                }
+                if (hasMainTex)
+                {
+                    mat.Texture.Value = mainTexRefID.id;
+                    mat.TextureOffset.Value = mainTexOffset;
+                    mat.TextureScale.Value = mainTexScale;
+                }
+                if (hasMetallicGlossTex)
+                {
+                    //mat.MetallicMap.Value = metallicGlossTexRefID.id;
+                    //mat.MetallicGlossMapOffset.Value = metallicGlossTexOffset;
+                    //mat.MetallicGlossMapScale.Value = metallicGlossTexScale;
+                }
+                if (hasEmissionMapTex)
+                {
+                    //mat.EmissiveMap.Value = emissionMapTexRefID.id;
+                    //mat.EmissionMapOffset.Value = emissionMapTexOffset;
+                    //mat.EmissionMapScale.Value = emissionMapTexScale;
+                }
+                if (hasOcclusionMapTex)
+                {
+                    //mat.OcclusionMap.Value = occlusionMapTexRefID.id;
+                    //mat.OcclusionMapOffset.Value = occlusionMapTexOffset;
+                    //mat.OcclusionMapScale.Value = occlusionMapTexScale;
+                }
+                if (hasBumpMapTex)
+                {
+                    StaticTexture2D tex = (StaticTexture2D)ImportFromUnityUtils.LookupRefID(bumpMapTexRefID);
+                    mat.NormalMap = tex;
+                }
+                if (hasDetailAlbedoMapTex)
+                {
+                    //mat.DetailAlbedoTexture.Value = detailAlbedoMapTexRefID.id;
+                    //mat.DetailTextureOffset.Value = detailAlbedoMapTexOffset;
+                    //mat.DetailTextureScale.Value = detailAlbedoMapTexScale;
+                }
+
+                if (hasDetailNormalMapTex && !hasBumpMapTex)
+                {
+                    //StaticTexture2D tex = (StaticTexture2D)ImportFromUnityUtils.LookupRefID(detailNormalMapTexRefID);
+                    //mat.NormalMap = tex;
+                    //mat.DetailNormalScale.Value = detailNormalMapTexScale;
+                }
             }
 
             // todo:
             // _DetailMask_ST,_DetailMask_TexelSize,_DetailMask_HDR,
-            // _DetailAlbedoMap_ST,_DetailAlbedoMap_TexelSize,_DetailAlbedoMap_HDR,
-            // _DetailNormalMap_ST,_DetailNormalMap_TexelSize,_DetailNormalMap_HDR
             // _ParallaxMap_ST,_ParallaxMap_TexelSize,_ParallaxMap_HDR,
             // return refid of StaticMesh component
-            RefID_U2Res result = new RefID_U2Res()
-            {
-                id = (ulong)mat.ReferenceID
-            };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(matRefId);
         }
 
         /// <summary>

@@ -4,6 +4,13 @@ using System.Text;
 
 namespace ResoniteUnityExporterShared
 {
+    public class MaterialNames_U2Res
+    {
+        public const string XIEXE_TOON_MAT = "XiexeToonMaterial";
+        public const string PBS_METALLIC_MAT = "PBS Metallic";
+        public const string PBS_SPECULAR_MAT = "PBS Specular";
+        public const string UNLIT_MAT = "Unlit";
+    }
     public class Material_U2Res
     {
         public RefID_U2Res rootAssetsSlot;
