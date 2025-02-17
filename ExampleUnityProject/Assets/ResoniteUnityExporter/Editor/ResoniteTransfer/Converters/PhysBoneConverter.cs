@@ -26,11 +26,6 @@ namespace ResoniteTransfer.Converters
                     bone.boneChainIndex / divideBy))
             .ToArray();
 
-            Debug.Log("Got " + physBone.bones.Count + " bones on obj " + obj.name);
-            foreach (RefID_U2Res boneRefID in boneSlots)
-            {
-                Debug.Log("Bone refid " + boneRefID.id);
-            }
             // fetch collider's ported values
             List<RefID_U2Res> colliders = new List<RefID_U2Res>();
             foreach (VRCPhysBoneColliderBase collider in physBone.colliders)

@@ -10,26 +10,53 @@ using ResoniteTransfer.Converters;
 using VRC.Core;
 using VRC.SDK3.Avatars.Components;
 using VRC.SDK3.Dynamics.PhysBone.Components;
+using UnityEditor.SceneManagement;
+using NUnit.Framework.Constraints;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 
 
 namespace ResoniteUnityExporter {
 	public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
-        static void OnApplicationQuit()
-        {
+        bool ranAnyRuns = false;
+        bool setupAvatarCreator = true;
+        bool setupIK = true;
+        bool sendingAvatar = true;
 
-        }
+        float nearClip = 0f;
+        float prevNearClip = 0f;
+        Transform parentObject;
+        string exportSlotName;
+
+        public static string DebugProgressString = "";
+        public static string DebugProgressStringDetail = "";
+
+        PipelineManager rootPipelineManager = null;
+
+        // gui styles
+        int selectedTab;
+        private Texture2D headViewTex;
+        private bool foundHead = false;
+
+        static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
+
         static ResoniteUnityExporterEditorWindow()
         {
             EditorApplication.update += ExecuteCoroutine;
             EditorApplication.quitting += EditorApplication_quitting;
         }
 
+
         private static void EditorApplication_quitting()
         {
             // we need to clean this up manually
-            bridgeClient.Dispose();
+            if (bridgeClient != null)
+            {
+                bridgeClient.Dispose();
+                bridgeClient = null;
+            }
         }
 
         static int iters = 0;
@@ -54,7 +81,7 @@ namespace ResoniteUnityExporter {
         public static ResoniteBridgeClient bridgeClient;
 
         static int windowWidth = 480;
-        static int windowHeight = 630;
+        static int windowHeight = 680;
 
 		// Add menu item named "My Custom Window" to the Window menu
 		[MenuItem("ResoniteUnityExporter/Open Resonite Unity Exporter")]
@@ -92,18 +119,29 @@ namespace ResoniteUnityExporter {
 				
 				bridgeClient = null;
             }
+            
             // stop all running coroutines
             CoroutinesInProgress.Clear();
         }
         public void OnAfterAssemblyReload()
         {
-            // reinitialize style
-            customButtonStyle = null;
+
+        }
+        private void SceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1)
+        {
+            Debug.Log("Loaded scene");
+            exportSlotName = null;
+            // automatically detect and change this
+            // makes swapping lots of scenes easier
+            PipelineManager pipelineManager = GameObject.FindObjectOfType<PipelineManager>();
+            if (pipelineManager != null)
+            {
+                exportSlotName = pipelineManager.name;
+            }
         }
 
         void Update()
         {
-            // Your GUI code here
             Repaint();
         }
 
@@ -200,6 +238,10 @@ namespace ResoniteUnityExporter {
                 head = heads
                     .Where(g => g.transform.parent.name.ToLower().Contains("neck"))
                     .FirstOrDefault();
+                if (head == null) // if none have neck just take first
+                {
+                    head = heads[0];
+                }
             }
             return head;
         }
@@ -242,7 +284,7 @@ namespace ResoniteUnityExporter {
             }
         }
 
-        void RegisterConverters()
+        void RegisterConverters(ResoniteTransferManager transferManager)
 		{
             // mesh renderers
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
@@ -254,42 +296,6 @@ namespace ResoniteUnityExporter {
             transferManager.RegisterConverter<VRCPhysBone>(PhysBoneConverter.ConvertPhysBone);
         }
 
-        bool ranAnyRuns = false;
-        bool setupAvatarCreator = true;
-        bool setupIK = true;
-        bool sendingAvatar = true;
-
-        float nearClip = 0f;
-        float prevNearClip = 0f;
-
-        public static string DebugProgressString = "";
-        public static string DebugProgressStringDetail = "";
-        // gui
-        Transform parentObject;
-		string exportSlotName;
-		ResoniteTransferManager transferManager;
-        static List<System.Collections.IEnumerator> CoroutinesInProgress = new List<System.Collections.IEnumerator>();
-        private GUIStyle customLabelStyle;
-        private GUIStyle customButtonStyle;
-        private GUIStyle headerStyle;
-        private Texture2D titleTexture;
-        private Texture2D headViewTex;
-        private bool foundHead = false;
-
-        void InitializeStyles()
-        {
-            // Create text style
-            customLabelStyle = new GUIStyle(EditorStyles.label);
-            customLabelStyle.normal.textColor = Color.white;
-            customLabelStyle.fontSize = 12;
-
-            // Create button style
-            customButtonStyle = new GUIStyle(GUI.skin.button);
-            customButtonStyle.normal.textColor = Color.white;
-            
-            // Title texture 
-            titleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ResoniteUnityExporter/ResoniteUnityImporterLogo.png");
-        }
         void DrawTextureCenter(Texture2D texture, Rect containerRect)
         {
             float aspectRatio = (float)texture.width / texture.height;
@@ -310,34 +316,26 @@ namespace ResoniteUnityExporter {
             Rect drawRect = new Rect(x, y, width, height);
             EditorGUI.DrawPreviewTexture(drawRect, texture);
         }
-        void OnGUI()
+        string serverFolder = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                        "UnityResoniteImporter",
+                        "IPCConnections",
+                        "Servers"
+                    );
+        string channelName = "UnityResoniteImporter";
+
+        Texture2D titleTexture;
+        void DrawTitle()
         {
-            if (customLabelStyle == null || customButtonStyle == null || headerStyle == null)
+            if (titleTexture == null)
             {
-                InitializeStyles();
-            }
-            string serverFolder = Path.Combine(
-                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                            "UnityResoniteImporter",
-                            "IPCConnections",
-                            "Servers"
-                        );
-            string channelName = "UnityResoniteImporter";
-
-            if (bridgeClient == null)
-            {
-                // bees
-
-                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
-                    // uncomment this for debugging info about connections
-                    Debug.Log(message); 
-                });
+                titleTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/ResoniteUnityExporter/ResoniteUnityImporterLogo.png");
             }
             // Display the title image at original size and centered
             if (titleTexture != null)
             {
-                float imageWidth = titleTexture.width/2;
-                float imageHeight = titleTexture.height/2;
+                float imageWidth = titleTexture.width;
+                float imageHeight = titleTexture.height;
 
                 // Calculate centered position
                 float xPos = (position.width - imageWidth) * 0.5f;
@@ -351,103 +349,103 @@ namespace ResoniteUnityExporter {
                 // Draw the texture
                 GUI.DrawTexture(imageRect, titleTexture, ScaleMode.StretchToFill);
             }
+        }
 
+        void DrawConnectedStatus()
+        {
             if (bridgeClient.publisher.NumActiveConnections() > 0 && bridgeClient.subscriber.NumActiveConnections() > 0)
             {
                 GUI.color = Color.green;
-                GUILayout.Label("Connected to Resonite", customLabelStyle);
+                GUILayout.Label("Connected to Resonite");
             }
             else if (bridgeClient.publisher.NumActiveConnections() > 0)
             {
                 GUI.color = Color.yellow;
-                GUILayout.Label("Connecting to Resonite (1/2 - need subscriber)", customLabelStyle);
+                GUILayout.Label("Connecting to Resonite (1/2 - need subscriber)");
             }
             else if (bridgeClient.subscriber.NumActiveConnections() > 0)
             {
                 GUI.color = Color.yellow;
-                GUILayout.Label("Connecting to Resonite (1/2 - need publisher)", customLabelStyle);
+                GUILayout.Label("Connecting to Resonite (1/2 - need publisher)");
             }
             else
             {
                 GUI.color = Color.red;
-                GUILayout.Label("Not connected to Resonite", customLabelStyle);
+                GUILayout.Label("Not connected to Resonite");
             }
             GUI.color = Color.white;
 
             EditorGUILayout.Space(5);
+        }
 
-            exportSlotName = EditorGUILayout.TextField("Avatar/World Name", exportSlotName);
-            parentObject = (Transform)EditorGUILayout.ObjectField(
-                new GUIContent("Select the object to export", "Select the object to export"),
-                parentObject,
-                typeof(Transform),
-                true
-            );
-
-            string labelText = parentObject == null ? "No object selected, sending all objects in scene" : "Sending object " + parentObject.name;
-            GUILayout.Label(labelText);
-
-            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+        void DrawSettings()
+        {
+            EditorGUI.BeginDisabledGroup(!sendingAvatar);
+            if (!sendingAvatar)
             {
-                GUILayout.Label("Settings");
-                sendingAvatar = EditorGUILayout.ToggleLeft("Sending Avatar", sendingAvatar);
-                sendingAvatar = !EditorGUILayout.ToggleLeft("Sending World", !sendingAvatar);
-                EditorGUI.BeginDisabledGroup(!sendingAvatar);
-                if (!sendingAvatar)
-                {
-                    EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", false);
-                    EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", false);
-                }
-                else
-                {
-                    setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
-                    setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
-                }
-
-                if (prevNearClip != nearClip || headViewTex == null
-                    || (!foundHead && sendingAvatar)) // this is incase they modify hierarchy to have a head
-                {
-                    headViewTex = CaptureViewFromHead(256, 128, nearClip, out foundHead);
-                    prevNearClip = nearClip;
-                }
-                GUILayout.Label(foundHead ? "Found head" : "Could not find any object with 'head' in name (not case sensitive)");
-                nearClip = EditorGUILayout.Slider("Near clip", nearClip, 0.001f, 0.5f); // min is 0, max is 1
-                GUILayout.Label("Make near clip as small as possible, yet large enough so nothing is in the way");
-                // Draw texture
-                Rect rect = EditorGUILayout.GetControlRect(false, headViewTex.height);
-                DrawTextureCenter(headViewTex, rect);
-                GUIStyle centeredStyle = new GUIStyle(GUI.skin.label);
-                centeredStyle.alignment = TextAnchor.MiddleCenter;
-
-                GUILayout.Label("View preview", centeredStyle);
-                EditorGUI.EndDisabledGroup();
+                EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", false);
+                EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", false);
             }
-            
+            else
+            {
+                setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
+                setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
+            }
+            EditorGUI.EndDisabledGroup();
+        }
+
+        void DrawViewPreview()
+        {
+            EditorGUI.BeginDisabledGroup(!sendingAvatar);
+            if (prevNearClip != nearClip || headViewTex == null
+                || (!foundHead && sendingAvatar)) // this is incase they modify hierarchy to have a head
+            {
+                headViewTex = CaptureViewFromHead(256, 128, nearClip, out foundHead);
+                prevNearClip = nearClip;
+            }
+            GUILayout.Label(foundHead ? "Found head" : "Could not find any object with 'head' in name (not case sensitive)");
+            nearClip = EditorGUILayout.Slider("Near clip", nearClip, 0.001f, 0.5f); // min is 0, max is 1
+            GUILayout.Label("Make near clip as small as possible, yet large enough so nothing is in the way");
+            // Draw texture
+            Rect rect = EditorGUILayout.GetControlRect(false, headViewTex.height);
+            DrawTextureCenter(headViewTex, rect);
+            GUIStyle centeredStyle = new GUIStyle(GUI.skin.label);
+            centeredStyle.alignment = TextAnchor.MiddleCenter;
+
+            GUILayout.Label("View preview", centeredStyle);
+            EditorGUI.EndDisabledGroup();
+        }
+
+        void DrawViewPreviewAndSubmit()
+        {
+            // include this in the submit page so they know to deal with it
+            DrawViewPreview();
+
             // for debuggin
+            /*
             if (GUILayout.Button("Restart connection"))
             {
-				bridgeClient.Dispose();
-				bridgeClient = null;
+                bridgeClient.Dispose();
+                bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
             }
-            
-            
+            */
+
+
             EditorGUILayout.Space(5);
-
-
 
             bool ready = bridgeClient.NumActiveConnections() > 0;
 
             EditorGUI.BeginDisabledGroup(!ready && CoroutinesInProgress.Count == 0);
 
-            if (GUILayout.Button("Export to Resonite", customButtonStyle))
+            if (GUILayout.Button("Export to Resonite"))
             {
                 if (exportSlotName == null || exportSlotName == "")
                 {
                     exportSlotName = "Untitled"; // BLAH
                 }
-                transferManager = new ResoniteTransferManager();
-                RegisterConverters();
+                ResoniteTransferManager transferManager = new ResoniteTransferManager();
+                RegisterConverters(transferManager);
                 DebugProgressString = "";
                 System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient, new ResoniteTransferSettings()
                 {
@@ -471,10 +469,75 @@ namespace ResoniteUnityExporter {
             }
             using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                GUILayout.Label(progressLabel, customLabelStyle);
-                GUILayout.Label(DebugProgressString, customLabelStyle);
-                GUILayout.Label(DebugProgressStringDetail, customLabelStyle);
+                GUILayout.Label(progressLabel);
+                GUILayout.Label(DebugProgressString);
+                GUILayout.Label(DebugProgressStringDetail);
             }
+        }
+
+        void OnGUI()
+        {
+            if (bridgeClient == null)
+            {
+                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
+                    // uncomment this for debugging info about connections
+                    //Debug.Log(message); 
+                });
+            }
+
+            PipelineManager curPipeline = GameObject.FindAnyObjectByType<PipelineManager>();
+            // autodetect pipeline and set name, this happens when scene load
+            if (rootPipelineManager != curPipeline)
+            {
+                rootPipelineManager = curPipeline;
+                if (rootPipelineManager != null)
+                {
+                    exportSlotName = rootPipelineManager.name;
+                }
+            }
+
+            DrawTitle();
+
+            DrawConnectedStatus();
+            
+            exportSlotName = EditorGUILayout.TextField("Avatar/World Name", exportSlotName);
+            parentObject = (Transform)EditorGUILayout.ObjectField(
+                new GUIContent("Select the object to export", "Select the object to export"),
+                parentObject,
+                typeof(Transform),
+                true
+            );
+            string labelText = parentObject == null ? "No object selected, sending all objects in scene" : "Sending object " + parentObject.name;
+            GUILayout.Label(labelText);
+            sendingAvatar = EditorGUILayout.ToggleLeft("Sending Avatar", sendingAvatar);
+            sendingAvatar = !EditorGUILayout.ToggleLeft("Sending World", !sendingAvatar);
+
+            const string SUBMIT_TITLE = "Submit";
+            const string SETTINGS_TITLE = "Settings";
+            const string MATERIAL_MAPPINGS_TITLE = "Materials";
+            string[] tabTitles = new string[]
+            {
+                SUBMIT_TITLE,
+                SETTINGS_TITLE,
+                MATERIAL_MAPPINGS_TITLE,
+            };
+
+            selectedTab = GUILayout.Toolbar(selectedTab, tabTitles);
+
+            switch (tabTitles[selectedTab])
+            {
+                case SUBMIT_TITLE:
+                    DrawViewPreviewAndSubmit();
+                    break;
+                case SETTINGS_TITLE:
+                    DrawSettings();
+                    break;
+                case MATERIAL_MAPPINGS_TITLE:
+                    break;
+            }
+
+
+
         }
     }
 }
