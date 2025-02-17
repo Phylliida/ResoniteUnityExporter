@@ -683,7 +683,7 @@ namespace ResoniteUnityExporter {
             sendingAvatar = EditorGUILayout.ToggleLeft("Sending Avatar", sendingAvatar);
             sendingAvatar = !EditorGUILayout.ToggleLeft("Sending World", !sendingAvatar);
 
-            const string SUBMIT_TITLE = "Submit";
+            const string SUBMIT_TITLE = "Transfer";
             const string SETTINGS_TITLE = "Settings";
             const string MATERIAL_MAPPINGS_TITLE = "Materials";
             string[] tabTitles = new string[]
