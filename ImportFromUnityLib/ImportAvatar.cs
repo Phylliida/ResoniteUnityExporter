@@ -98,7 +98,7 @@ namespace ImportFromUnityLib
                 // this ensures fov adjust is correct
                 */
                 float newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
-                ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
+                //ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
                 // since we rescale with our custom parent, undo scale on the root
                 mainParentSlot.LocalScale = new float3(1, 1, 1);
@@ -473,7 +473,7 @@ namespace ImportFromUnityLib
                 float maxSize = Math.Max(Math.Max(handSize.x, handSize.y), handSize.z);
                 float3 handMaxSize = new float3(maxSize, maxSize, maxSize);
                 float3 resultScale = handSlot.Parent.LocalScaleToGlobal(handMaxSize);
-                ImportFromUnityLib.DebugLog("Got scale:" + resultScale);
+                //ImportFromUnityLib.DebugLog("Got scale:" + resultScale);
                 return resultScale / 0.23f; // this is the distance from center of wrist to end of avatar creator fingers
             }
             else
@@ -545,7 +545,7 @@ namespace ImportFromUnityLib
             object modelImportData = modelImportDataType.GetConstructor(constructorTypes)
                 .Invoke(constructorParameters);
 
-            ImportFromUnityLib.DebugLog("Got model import data " + modelImportData);
+            //ImportFromUnityLib.DebugLog("Got model import data " + modelImportData);
 
             // Call GenerateRigBones, which makes the IK
             var generateRigBonesMethod = typeof(ModelImporter)
@@ -553,7 +553,7 @@ namespace ImportFromUnityLib
                 .Where(method => method.Name == "GenerateRigBones" &&
                     method.GetParameters().Length == 2)
                 .First();
-            ImportFromUnityLib.DebugLog("Got generate rig bones method " + generateRigBonesMethod);
+            //ImportFromUnityLib.DebugLog("Got generate rig bones method " + generateRigBonesMethod);
             generateRigBonesMethod.Invoke(null, new object[]
             {
                 rig,

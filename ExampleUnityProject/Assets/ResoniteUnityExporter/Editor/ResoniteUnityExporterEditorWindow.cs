@@ -122,7 +122,7 @@ namespace ResoniteUnityExporter {
 
         public static ResoniteBridgeClient bridgeClient;
 
-        static int windowWidth = 480;
+        static int windowWidth = 600;
         static int windowHeight = 680;
 
 		// Add menu item named "My Custom Window" to the Window menu
@@ -184,7 +184,6 @@ namespace ResoniteUnityExporter {
         }
 
 
-        float lastRequestedTime = 0;
         float pollFrequencyInMilliseconds = 2000;
         System.Diagnostics.Stopwatch pollStopwatch = new System.Diagnostics.Stopwatch();
         void Update()
@@ -452,7 +451,8 @@ namespace ResoniteUnityExporter {
                 if (serverInfo.allowedToCreateInWorld)
                 {
                     GUI.color = Color.green;
-                    GUILayout.Label(connectedString + ": Allowed to create objects in " + serverInfo.worldName);
+                    string postfix = serverInfo.worldName == "Local" ? " (not recommended, make a world)" : "";
+                    GUILayout.Label(connectedString + ": Allowed to create objects in " + serverInfo.worldName + postfix);
                 }
                 else if (serverInfo.label == LOADING_SERVER_LABEL)
                 {
@@ -547,7 +547,7 @@ namespace ResoniteUnityExporter {
 
             bool ready = bridgeClient.NumActiveConnections() > 0;
 
-            EditorGUI.BeginDisabledGroup(!ready && CoroutinesInProgress.Count == 0);
+            EditorGUI.BeginDisabledGroup(!ready || (debugCoroutine && CoroutinesInProgress.Count != 0) || !serverInfo.allowedToCreateInWorld);
 
             if (GUILayout.Button("Export to Resonite"))
             {

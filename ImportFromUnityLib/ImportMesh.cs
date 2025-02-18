@@ -172,7 +172,7 @@ namespace ImportFromUnityLib
             {
                 foreach (Bone_U2Res bone in mesh.bones)
                 {
-                    ImportFromUnityLib.DebugLog("Bone:" + bone.name);
+                    //ImportFromUnityLib.DebugLog("Bone:" + bone.name);
                     Elements.Assets.Bone bonex = meshx.AddBone(bone.name);
                     bonex.BindPose = new float4x4(bone.bindPose.m00, bone.bindPose.m01, bone.bindPose.m02, bone.bindPose.m03,
                                                   bone.bindPose.m10, bone.bindPose.m11, bone.bindPose.m12, bone.bindPose.m13,

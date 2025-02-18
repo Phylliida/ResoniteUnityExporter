@@ -59,14 +59,14 @@ namespace ImportFromUnityLib
             if (tex.data != null)
             {
                 tempFilePath = localDb.GetTempFilePath("png");
-                ImportFromUnityLib.DebugLog("Got raw data for texture");
+                //ImportFromUnityLib.DebugLog("Got raw data for texture");
                 SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
             }
             // import from file
             else
             {
                 tempFilePath = localDb.GetTempFilePath(System.IO.Path.GetExtension(tex.path));
-                ImportFromUnityLib.DebugLog("Got path " + tex.path + " for texture");
+                //ImportFromUnityLib.DebugLog("Got path " + tex.path + " for texture");
                 System.IO.File.Copy(tex.path, tempFilePath, true);
             }
 
