@@ -226,7 +226,9 @@ namespace ResoniteUnityExporter {
                 {
                     yield return en.Current;
                 }
-                ServerInfo_U2Res serverInfo = (ServerInfo_U2Res)outputInfo.value;
+                ServerInfo_U2Res serverInfo = outputInfo.value != null 
+                    ? (ServerInfo_U2Res)outputInfo.value
+                    : LOADING_SERVER_INFO; // we get null if disconnected
                 ResoniteUnityExporterEditorWindow.serverInfo = serverInfo;
             }
         }
