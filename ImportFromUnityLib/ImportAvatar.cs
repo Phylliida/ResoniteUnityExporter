@@ -111,6 +111,13 @@ namespace ImportFromUnityLib
                 sharedParent.GlobalPosition = sharedParent.GlobalPosition - currentFloorPos;
             }
 
+            HashSet<RefID> matRefIds = new HashSet<RefID>();
+            MeshRendererMaterialRelay materialRelay = sharedParent.AttachComponent<MeshRendererMaterialRelay>();
+            mainParentSlot.GetComponentsInChildren<MeshRenderer>().ForEach(x =>
+            {
+                materialRelay.Renderers.Add(x);
+            });
+
             if (avatarData.setupIK)
             {
                 Slot renderSettingsSlot = sharedParent.AddSlot("Avatar Render Settings");
