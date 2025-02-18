@@ -110,13 +110,16 @@ namespace ImportFromUnityLib
                 float3 currentFloorPos = box.Center - new float3(0, box.Size.y / 2.0f, 0);
                 sharedParent.GlobalPosition = sharedParent.GlobalPosition - currentFloorPos;
             }
-
-            HashSet<RefID> matRefIds = new HashSet<RefID>();
+            
+            // add material relay
             MeshRendererMaterialRelay materialRelay = sharedParent.AttachComponent<MeshRendererMaterialRelay>();
             mainParentSlot.GetComponentsInChildren<MeshRenderer>().ForEach(x =>
             {
                 materialRelay.Renderers.Add(x);
             });
+
+            // add objectroot
+            sharedParent.AttachComponent<ObjectRoot>();
 
             if (avatarData.setupIK)
             {
