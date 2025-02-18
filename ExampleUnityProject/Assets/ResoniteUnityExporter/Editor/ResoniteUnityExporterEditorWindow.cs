@@ -126,7 +126,7 @@ namespace ResoniteUnityExporter {
 
         public static ResoniteBridgeClient bridgeClient;
 
-        static int windowWidth = 600;
+        static int windowWidth = 560;
         static int windowHeight = 680;
 
 		// Add menu item named "My Custom Window" to the Window menu
