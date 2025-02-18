@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResoniteBridgeMod", "ResoniteBridgeMod.csproj", "{2A092467-467A-4DE3-9E84-27A610ABD63C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResoniteUnityExporterMod", "ResoniteUnityExporterMod.csproj", "{2A092467-467A-4DE3-9E84-27A610ABD63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
