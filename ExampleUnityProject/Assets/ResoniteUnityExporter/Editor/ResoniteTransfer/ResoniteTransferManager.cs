@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 using static UnityEngine.UIElements.VisualElement;
@@ -28,6 +29,8 @@ namespace ResoniteUnityExporter
         public bool pressCreateAvatar;
         public float nearClip;
         public Dictionary<int, string> materialMappings;
+        public bool makePackage;
+        public bool includeAssetVariantsInPackage;
     }
     public class ResoniteTransferManager
     {
@@ -86,12 +89,43 @@ namespace ResoniteUnityExporter
 
             if (settings.pressCreateAvatar && settings.makeAvatar && settings.setupAvatarCreator)
             {
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                ResoniteUnityExporterEditorWindow.DebugProgressString = "Finalizing Create Avatar";
                 FinalizeAvatarCreator_U2Res finalizeData = new FinalizeAvatarCreator_U2Res()
                 {
                     mainParentSlot = hierarchy.mainParentSlot
                 };
                 OutputHolder<object> output = new OutputHolder<object>();
                 var en = hierarchy.Call<bool, FinalizeAvatarCreator_U2Res>("FinalizeAvatarCreator", finalizeData, output);
+                while (en.MoveNext())
+                {
+                    yield return null;
+                }
+            }
+            if (settings.makePackage)
+            {
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                ResoniteUnityExporterEditorWindow.DebugProgressString = "Making Resonite Package";
+                string packagePath = null;
+
+                while (String.IsNullOrEmpty(packagePath))
+                {
+                    packagePath = EditorUtility.SaveFilePanel(
+                        "Select path to save .resonitepackage",
+                        Application.dataPath,
+                        hierarchyName,    // default filename
+                        "resonitepackage"             // file extension
+                    );
+                }
+
+                PackageInfo_U2Res packageInfo = new PackageInfo_U2Res()
+                {
+                    includeVariants = settings.includeAssetVariantsInPackage,
+                    mainParentSlot = hierarchy.mainParentSlot,
+                    packagePath = packagePath,
+                };
+                OutputHolder<object> output = new OutputHolder<object>();
+                var en = hierarchy.Call<bool, PackageInfo_U2Res>("MakePackage", packageInfo, output);
                 while (en.MoveNext())
                 {
                     yield return null;

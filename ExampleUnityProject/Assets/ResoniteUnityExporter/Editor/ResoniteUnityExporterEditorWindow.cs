@@ -51,6 +51,8 @@ namespace ResoniteUnityExporter {
         bool finalizeAvatarCreator = true;
         bool setupIK = true;
         bool sendingAvatar = true;
+        bool makePackage = true;
+        bool includeAssetVariantsInPackage = true;
 
         float nearClip = 0f;
         float prevNearClip = 0f;
@@ -70,6 +72,8 @@ namespace ResoniteUnityExporter {
             label = LOADING_SERVER_LABEL,
             worldName = "...",
         };
+
+        const string STANDALONE_LABEL = "Standalone";
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
@@ -503,6 +507,25 @@ namespace ResoniteUnityExporter {
                 EditorGUI.EndDisabledGroup();
             }
             EditorGUI.EndDisabledGroup();
+            if (serverInfo.label == STANDALONE_LABEL)
+            {
+                EditorGUILayout.ToggleLeft("Make Resonite Package (Required for Standalone)", true);
+            }
+            else
+            {
+                makePackage = EditorGUILayout.ToggleLeft("Make Resonite Package", makePackage);
+            }
+            bool makingPackage = makePackage || serverInfo.label == STANDALONE_LABEL;
+            EditorGUI.BeginDisabledGroup(!makingPackage);
+            if (!makingPackage)
+            {
+                EditorGUILayout.ToggleLeft("Include Asset Variants in Package", false);
+            }
+            else
+            {
+                includeAssetVariantsInPackage = EditorGUILayout.ToggleLeft("Include Asset Variants in Package", includeAssetVariantsInPackage);
+            }
+            EditorGUI.EndDisabledGroup();
         }
 
         void DrawViewPreview()
@@ -565,7 +588,10 @@ namespace ResoniteUnityExporter {
                     nearClip = nearClip,
                     makeAvatar = sendingAvatar,
                     materialMappings = GetMaterialMappings(),
+                    makePackage = makePackage || serverInfo.label == "Standalone", // force package for standalone
+                    includeAssetVariantsInPackage = includeAssetVariantsInPackage,
                 });
+
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;
                 debugCoroutine = true;

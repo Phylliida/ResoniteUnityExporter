@@ -22,6 +22,7 @@ namespace ImportFromUnityLib
         {
             ImportFromUnityLib.DebugLog = DebugLog;
             server.RegisterProcessor("GetServerInfo", (byte[] _) => ResoniteBridgeUtils.EncodeObject(serverInfoCallback()));
+            server.RegisterProcessor("MakePackage", MakePackage.MakePackageFunc);
 
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
