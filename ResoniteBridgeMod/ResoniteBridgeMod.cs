@@ -1,5 +1,7 @@
-﻿using ResoniteBridgeLib;
+﻿using ImportFromUnityLib;
+using ResoniteBridgeLib;
 using ResoniteModLoader;
+using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -62,10 +64,20 @@ namespace ResoniteBridgeMod
                         );
                     using (ResoniteBridgeServer bridgeServer = new ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (string msg) =>
                     {
-                        Msg("Bridge message:" + msg);
+                        // enable for debugging connections
+                        //Msg("Bridge message:" + msg);
                     }))
                     {
-                        ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, Msg);
+                        ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, () =>
+                        {
+                            var focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+                            return new ServerInfo_U2Res()
+                            {
+                                allowedToCreateInWorld = ImportFromUnityUtils.AllowedToSpawn(),
+                                label = "Mod",
+                                worldName = focusedWorld != null ? focusedWorld.Name : "None"
+                            };
+                        }, Msg);
                         Msg("Bridge server listening");
                         cancellation.Token.WaitHandle.WaitOne();
                     }
