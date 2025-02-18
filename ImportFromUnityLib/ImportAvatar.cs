@@ -72,14 +72,13 @@ namespace ImportFromUnityLib
             }
 
             float3 relativeCustomHeadPosition = float3.Zero;
+            Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot);
             if (avatarData.hasCustomHeadPosition)
             {
-                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
-                    .LocalScale = new float3(1, 1, 1);
+                mainParentSlot.LocalScale = new float3(1, 1, 1);
                 float3 customHeadPosition = new float3(avatarData.customHeadPosition.x, avatarData.customHeadPosition.y, avatarData.customHeadPosition.z);
                 relativeCustomHeadPosition = sharedParent.GlobalPointToLocal(customHeadPosition);
-                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
-                    .LocalScale = new float3(1.0f/100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
+                mainParentSlot.LocalScale = new float3(1.0f/100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
             }
             if (avatarData.rescale)
             {
@@ -102,8 +101,7 @@ namespace ImportFromUnityLib
                 ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
                 // since we rescale with our custom parent, undo scale on the root
-                ((Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot))
-                    .LocalScale = new float3(1, 1, 1);
+                mainParentSlot.LocalScale = new float3(1, 1, 1);
             }
             if (avatarData.floorOnOrigin)
             {
@@ -131,20 +129,15 @@ namespace ImportFromUnityLib
                 BipedRig bipedRig = rig.Slot.GetComponent<BipedRig>();
                 if (avatarData.setupAvatarCreator)
                 {
-                    Slot space = focusedWorld.LocalUserSpace;
-                    if (space == null)
-                    {
-                        space = focusedWorld.RootSlot;
-                    }
-                    Slot slot = space.AddSlot("Avatar Creator");
-                    AvatarCreator aviCreator = slot.AttachComponent<AvatarCreator>();
+                    Slot aviCreatorSlot = mainParentSlot.AddSlot("Avatar Creator");
+                    AvatarCreator aviCreator = aviCreatorSlot.AttachComponent<AvatarCreator>();
                     // LocalUser.Root is null in standalone
                     if (focusedWorld.LocalUser != null && focusedWorld.LocalUser.Root != null && focusedWorld.LocalUser.Root.Slot != null)
                     {
-                        slot.AttachComponent<ReferenceField<User>>().Reference.Target = focusedWorld.LocalUser;
-                        slot.PositionInFrontOfUser(null, null, 1.25f);
-                        slot.FloorAtUserRoot(height: 0, user: focusedWorld.LocalUser);
-                        slot.PointAtUserHead(float3.Forward, verticalAxisOnly: true);
+                        aviCreatorSlot.AttachComponent<ReferenceField<User>>().Reference.Target = focusedWorld.LocalUser;
+                        aviCreatorSlot.PositionInFrontOfUser(null, null, 1.25f);
+                        aviCreatorSlot.FloorAtUserRoot(height: 0, user: focusedWorld.LocalUser);
+                        aviCreatorSlot.PointAtUserHead(float3.Forward, verticalAxisOnly: true);
                     }
                     Slot head = bipedRig.TryGetBone(BodyNode.Head);
                     Slot rightHandRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_rightReference", BindingFlags.Instance | BindingFlags.NonPublic)

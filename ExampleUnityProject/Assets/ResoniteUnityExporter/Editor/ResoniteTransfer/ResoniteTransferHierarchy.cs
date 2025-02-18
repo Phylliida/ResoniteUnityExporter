@@ -102,23 +102,42 @@ namespace ResoniteUnityExporter
 
         public IEnumerator<object> Call<OutType, InType>(string callMethodName, InType input, OutputHolder<object> output)
         {
-            System.Threading.Tasks.TaskCompletionSource<bool> taskCompletionSource = new System.Threading.Tasks.TaskCompletionSource<bool>();
-            Task<OutType> asyncTask = new Task<OutType>(() =>
+            var en = Call<OutType, InType>(bridgeClient, callMethodName, input, output);
+            while (en.MoveNext())
             {
-                byte[] messageBytes = ResoniteBridgeUtils.EncodeObject(input);
-                bridgeClient.SendMessageSync(
-                       callMethodName,
-                       messageBytes,
-                       -1,
-                       out byte[] outBytes,
-                       out bool isError
-                       );
+                yield return en.Current;
+            }
+        }
 
-                if (isError)
+        public static IEnumerator<object> Call<OutType, InType>(ResoniteBridgeClient bridgeClient, string callMethodName, InType input, OutputHolder<object> output)
+        {
+            bool hasError = false;
+            System.Threading.Tasks.TaskCompletionSource<bool> taskCompletionSource = new System.Threading.Tasks.TaskCompletionSource<bool>();
+            Task<object> asyncTask = new Task<object>(() =>
+            {
+                try
                 {
-                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                    byte[] messageBytes = ResoniteBridgeUtils.EncodeObject(input);
+                    bridgeClient.SendMessageSync(
+                           callMethodName,
+                           messageBytes,
+                           -1,
+                           out byte[] outBytes,
+                           out bool isError
+                           );
+                    if (isError)
+                    {
+                        hasError = true;
+                        return ResoniteBridgeUtils.DecodeString(outBytes);
+                    }
+                    return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
                 }
-                return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
+                catch (Exception e)
+                {
+                    hasError = true;
+                    return e.ToString();
+                }
+
             });
             asyncTask.Start();
             // we need to poll it so unity doesn't freeze up
@@ -126,11 +145,20 @@ namespace ResoniteUnityExporter
             {
                 yield return null;
             }
-            if (asyncTask.Exception != null)
+            var result = asyncTask.Result;
+            if (hasError)
             {
-                Debug.LogError(asyncTask.Exception);
+                string error = (string)result;
+                // don't print disconnect exceptions, just ignore them
+                if (!error.Contains("DisconnectException"))
+                {
+                    Debug.LogError(error);
+                }
             }
-            output.value = asyncTask.Result;
+            else
+            {
+                output.value = asyncTask.Result;
+            }
         } 
 
         public RefID_U2Res SendOrGetMesh(UnityEngine.Mesh mesh, string[] boneNames)

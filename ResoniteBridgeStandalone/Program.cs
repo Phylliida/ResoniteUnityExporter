@@ -15,6 +15,7 @@ using static ResoniteBridge.ReflectionUtils;
 using System.Text.Json;
 using Newtonsoft.Json;
 using ImportFromUnityLib;
+using ResoniteUnityExporterShared;
 
 namespace ResoniteBridge
 {
@@ -257,7 +258,16 @@ namespace ResoniteBridge
                                         "Servers"
                                     );
                                 bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (msg) => Console.WriteLine(msg));
-                                ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, msg => Console.WriteLine(msg));
+                                ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, () =>
+                                {
+                                    return new ServerInfo_U2Res()
+                                    {
+                                        allowedToCreateInWorld = true,
+                                        worldName = "World",
+                                        label = "Standalone",
+                                    };
+                                },
+                                msg => Console.WriteLine(msg));
                                 first = false;
 
                                 // hack to prevent discord interface from crashing it

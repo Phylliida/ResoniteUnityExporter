@@ -5,7 +5,11 @@ using System.Text;
 
 namespace ResoniteUnityExporterShared
 {
-
+    [StructLayout(LayoutKind.Sequential)]
+    public struct FinalizeAvatarCreator_U2Res
+    {
+        public RefID_U2Res mainParentSlot;
+    }
     [StructLayout(LayoutKind.Sequential)]
     public struct Avatar_U2Res
     {

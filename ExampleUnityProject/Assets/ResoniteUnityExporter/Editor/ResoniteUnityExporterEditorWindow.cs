@@ -15,6 +15,7 @@ using NUnit.Framework.Constraints;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using ResoniteUnityExporterShared;
+using System.Threading.Tasks;
 
 
 
@@ -47,6 +48,7 @@ namespace ResoniteUnityExporter {
 	{
         bool ranAnyRuns = false;
         bool setupAvatarCreator = true;
+        bool finalizeAvatarCreator = true;
         bool setupIK = true;
         bool sendingAvatar = true;
 
@@ -55,6 +57,19 @@ namespace ResoniteUnityExporter {
         Transform parentObject;
         string exportSlotName;
         Dictionary<string, string> materialMappings = new Dictionary<string, string>();
+        const string LOADING_SERVER_LABEL = "Loading Info...";
+        static ServerInfo_U2Res LOADING_SERVER_INFO = new ServerInfo_U2Res()
+        {
+            allowedToCreateInWorld = false,
+            label = LOADING_SERVER_LABEL,
+            worldName = "...",
+        };
+        static ServerInfo_U2Res serverInfo = new ServerInfo_U2Res()
+        {
+            allowedToCreateInWorld = false,
+            label = LOADING_SERVER_LABEL,
+            worldName = "...",
+        };
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
@@ -80,6 +95,7 @@ namespace ResoniteUnityExporter {
             // we need to clean this up manually
             if (bridgeClient != null)
             {
+                serverInfo = LOADING_SERVER_INFO;
                 bridgeClient.Dispose();
                 bridgeClient = null;
             }
@@ -141,7 +157,8 @@ namespace ResoniteUnityExporter {
 			// otherwise unity will hang
 			if (bridgeClient != null)
 			{
-				bridgeClient.Dispose();
+                serverInfo = LOADING_SERVER_INFO;
+                bridgeClient.Dispose();
 				
 				bridgeClient = null;
             }
@@ -166,9 +183,52 @@ namespace ResoniteUnityExporter {
             }
         }
 
+
+        float lastRequestedTime = 0;
+        float pollFrequencyInMilliseconds = 2000;
+        System.Diagnostics.Stopwatch pollStopwatch = new System.Diagnostics.Stopwatch();
         void Update()
         {
             Repaint();
+
+            if (CoroutinesInProgress.Count != 0)
+            {
+                return;
+            }
+
+            if (bridgeClient != null && bridgeClient.NumActiveConnections() > 0)
+            {
+                if (!pollStopwatch.IsRunning)
+                {
+                    pollStopwatch.Restart();
+                }
+                if (pollStopwatch.ElapsedMilliseconds > pollFrequencyInMilliseconds)
+                {
+                    // don't show status for poll coroutine
+                    debugCoroutine = false;
+                    CoroutinesInProgress.Add(GetServerInfo());
+                    pollStopwatch.Stop();
+                }
+            }
+
+        }
+
+
+        bool debugCoroutine = true;
+
+        IEnumerator<object> GetServerInfo()
+        {
+            if (bridgeClient != null)
+            {
+                OutputHolder<object> outputInfo = new ResoniteUnityExporter.OutputHolder<object>();
+                var en = HierarchyLookup.Call<ServerInfo_U2Res, int>(bridgeClient, "GetServerInfo", 0, outputInfo);
+                while(en.MoveNext())
+                {
+                    yield return en.Current;
+                }
+                ServerInfo_U2Res serverInfo = (ServerInfo_U2Res)outputInfo.value;
+                ResoniteUnityExporterEditorWindow.serverInfo = serverInfo;
+            }
         }
 
         // uses scene camera to capture from a given position+rot+scale
@@ -379,10 +439,29 @@ namespace ResoniteUnityExporter {
 
         void DrawConnectedStatus()
         {
+            if (bridgeClient.NumActiveConnections() == 0)
+            {
+                serverInfo = LOADING_SERVER_INFO;
+            }
+
             if (bridgeClient.publisher.NumActiveConnections() > 0 && bridgeClient.subscriber.NumActiveConnections() > 0)
             {
-                GUI.color = Color.green;
-                GUILayout.Label("Connected to Resonite");
+                string connectedString = "Connected to Resonite (" + serverInfo.label + ")";
+                if (serverInfo.allowedToCreateInWorld)
+                {
+                    GUI.color = Color.green;
+                    GUILayout.Label(connectedString + ": Allowed to create objects in " + serverInfo.worldName);
+                }
+                else if (serverInfo.label == LOADING_SERVER_LABEL)
+                {
+                    GUI.color = Color.yellow;
+                    GUILayout.Label(connectedString);
+                }
+                else
+                {
+                    GUI.color = Color.yellow;
+                    GUILayout.Label(connectedString + ": No permissions in current world (ask host?)");
+                }
             }
             else if (bridgeClient.publisher.NumActiveConnections() > 0)
             {
@@ -411,11 +490,15 @@ namespace ResoniteUnityExporter {
             {
                 EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", false);
                 EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", false);
+                EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Recommended)", false);
             }
             else
             {
                 setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
                 setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
+                EditorGUI.BeginDisabledGroup(!setupAvatarCreator);
+                finalizeAvatarCreator = EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Optional)", finalizeAvatarCreator && setupAvatarCreator);
+                EditorGUI.EndDisabledGroup();
             }
             EditorGUI.EndDisabledGroup();
         }
@@ -483,12 +566,13 @@ namespace ResoniteUnityExporter {
                 });
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;
+                debugCoroutine = true;
                 ranAnyRuns = true;
                 // First, mirror the hierarchy into resonite
             }
             EditorGUI.EndDisabledGroup();
             string progressLabel = "Iters: " + iters + " ... (in progress, please wait)";
-            if (CoroutinesInProgress.Count == 0)
+            if (CoroutinesInProgress.Count == 0 || !debugCoroutine)
             {
                 DebugProgressString = "";
                 DebugProgressStringDetail = "";
@@ -650,10 +734,12 @@ namespace ResoniteUnityExporter {
         {
             if (bridgeClient == null)
             {
+                serverInfo = LOADING_SERVER_INFO;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
                     // uncomment this for debugging info about connections
                     //Debug.Log(message); 
                 });
+
             }
 
             PipelineManager curPipeline = GameObject.FindAnyObjectByType<PipelineManager>();

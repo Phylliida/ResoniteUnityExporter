@@ -25,6 +25,7 @@ namespace ResoniteUnityExporter
         public bool makeAvatar;
         public bool setupAvatarCreator;
         public bool setupIK;
+        public bool pressCreateAvatar;
         public float nearClip;
         public Dictionary<int, string> materialMappings;
     }
@@ -80,6 +81,20 @@ namespace ResoniteUnityExporter
                             }
                         }
                     }
+                }
+            }
+
+            if (settings.pressCreateAvatar && settings.makeAvatar && settings.setupAvatarCreator)
+            {
+                FinalizeAvatarCreator_U2Res finalizeData = new FinalizeAvatarCreator_U2Res()
+                {
+                    mainParentSlot = hierarchy.mainParentSlot
+                };
+                OutputHolder<object> output = new OutputHolder<object>();
+                var en = hierarchy.Call<bool, FinalizeAvatarCreator_U2Res>("FinalizeAvatarCreator", finalizeData, output);
+                while (en.MoveNext())
+                {
+                    yield return null;
                 }
             }
         }

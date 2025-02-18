@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ImportFromUnityLib.ImportFromUnityLib;
 
 namespace ImportFromUnityLib
 {
@@ -15,9 +16,13 @@ namespace ImportFromUnityLib
 
         public static DebugLogDelegate DebugLog;
 
-        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, DebugLogDelegate DebugLog)
+        public delegate ServerInfo_U2Res ServerInfoDelegate();
+
+        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, ServerInfoDelegate serverInfoCallback, DebugLogDelegate DebugLog)
         {
             ImportFromUnityLib.DebugLog = DebugLog;
+            server.RegisterProcessor("GetServerInfo", (byte[] _) => ResoniteBridgeUtils.EncodeObject(serverInfoCallback()));
+
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);
             server.RegisterProcessor("ImportToStaticMesh", ImportMesh.ImportToStaticMeshFunc);
             server.RegisterProcessor("ImportToTexture2D", ImportTexture2D.ImportTexture2DFunc);
@@ -27,6 +32,7 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportToMaterial", ImportMaterial.ImportToMaterialFunc);
             server.RegisterProcessor("ImportDynamicBoneChain", ImportDynamicBones.ImportDynamicBoneChainFunc);
             server.RegisterProcessor("ImportDynamicBoneCollider", ImportDynamicBones.ImportDynamicBoneColliderFunc);
+            server.RegisterProcessor("FinalizeAvatarCreator", ImportFinalizeAvatarCreator.ImportFinalizeAvatarCreatorFunc);
         }
     }
 }
