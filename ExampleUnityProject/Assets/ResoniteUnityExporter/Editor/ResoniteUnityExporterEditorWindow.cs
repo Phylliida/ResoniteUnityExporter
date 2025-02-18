@@ -587,6 +587,7 @@ namespace ResoniteUnityExporter {
                     setupIK = setupIK,
                     nearClip = nearClip,
                     makeAvatar = sendingAvatar,
+                    pressCreateAvatar = finalizeAvatarCreator,
                     materialMappings = GetMaterialMappings(),
                     makePackage = makePackage || serverInfo.label == "Standalone", // force package for standalone
                     includeAssetVariantsInPackage = includeAssetVariantsInPackage,
