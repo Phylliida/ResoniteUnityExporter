@@ -68,65 +68,19 @@
     <Compile Include="Assets\DynamicBone\Scripts\DynamicBone.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Materials\OptimizedShaders\Black 1\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll" />
-    <None Include="Assets\Materials\OptimizedShaders\51\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\PoiTexturePacker.shader" />
-    <None Include="Assets\_PoiyomiShaders\poiToonPresets.txt" />
-    <None Include="Assets\Materials\OptimizedShaders\Metallic 1\Poiyomi.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Simple Gradient Sky.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCoreLite.cginc" />
-    <None Include="Assets\Materials\OptimizedShaders\Black\Poiyomi.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite.shader" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\ThirdPartyLicenses\SILENT_LICENSE.txt" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Cutout.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Rainbow.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Main Earring\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\PoiTextureUnpacker.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Gothic Palelipedit\Poiyomi.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lite Toon\Flat Lit Toon.shader" />
-    <None Include="Assets\textures\Kinky Valentines by Vendi\OptimizedShaders\Skin Valentines\Poiyomi.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Fade.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Memory.dll" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\Extras\InvisStencil.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Numerics.Vectors.dll" />
-    <None Include="Assets\Materials\OptimizedShaders\nice-cock-funny-chicken-farming-bird-qwerty-designs\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi Early Outline.shader" />
     <None Include="Assets\csc.rsp" />
-    <None Include="Assets\Materials\OptimizedShaders\Eyes-DragonCat-CottonCandy\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonShadows.cginc" />
-    <None Include="Assets\Materials\OptimizedShaders\Jacket Texture\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\ModularShadersGeneratorStyle.uss" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Unit Shadowed.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Extra\Poiyomi.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Choker\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi World.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\PoiLabels.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Examples\Example1.shader" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Distance Fade.shader" />
-    <None Include="Assets\_PoiyomiShaders\ThirdPartyLicenses\LIL_LICENSE.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Examples\Example2.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Fluff\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Buffers.dll" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Transparent.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Circle_001\Poiyomi.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll" />
-    <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi Outline.shader" />
-    <None Include="Assets\Materials\OptimizedShaders\Metallic\Poiyomi.shader" />
     <None Include="Assets\DynamicBone\ReadMe.txt" />
-    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCore.cginc" />
-    <None Include="Assets\Cubeds-Unity-Shaders-master\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
-    <None Include="Assets\Materials\OptimizedShaders\bunny legs\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Examples\ThryPresetsExample.txt" />
-    <None Include="Assets\Materials\OptimizedShaders\52\Poiyomi.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Examples\ThryLabelExample.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1227,10 +1181,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ThryAssemblyDefinition.csproj">
-      <Project>{00F92C11-E3AB-4857-8270-B41395AC3FAB}</Project>
-      <Name>ThryAssemblyDefinition</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

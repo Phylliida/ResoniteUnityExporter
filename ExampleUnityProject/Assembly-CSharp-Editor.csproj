@@ -62,24 +62,15 @@
   <ItemGroup>
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\PoiData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\BakeToVertexColorsEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\TextureUtility.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteCutoutInspector.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToon\FlatLitToonInspector.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\BadImportChecker.cs" />
-    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteInspector.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\PoiHelpers.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\GradientFlood (8).cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1256,10 +1247,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{0F007E79-2B5F-5FE0-7DA5-7B5C3539F9F8}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="ThryAssemblyDefinition.csproj">
-      <Project>{00F92C11-E3AB-4857-8270-B41395AC3FAB}</Project>
-      <Name>ThryAssemblyDefinition</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
