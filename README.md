@@ -57,7 +57,7 @@ Now you are ready to export your content to Resonite.
 
 There are two options from here:
 
-1. Run `ResoniteUnityExporterStandalone.exe`.
+#### Run `ResoniteUnityExporterStandalone.exe`
 
 This is a standalone program that uses Resonite libraries to convert your avatar/world into a .resonitepackage.
 
@@ -67,7 +67,7 @@ This is easier to get setup and does not require any mods.
 
 See [Running Resonite Unity Exporter Standalone](#Running Resonite Unity Exporter Standalone)
 
-2. Install `ResoniteUnityExporterMod`.
+#### Install `ResoniteUnityExporterMod`
 
 This is a `ResoniteModLoader` mod for Resonite.
 
