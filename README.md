@@ -1,6 +1,6 @@
 # ResoniteUnityExporter
 
-A Unity Plugin to easily export Avatars or Worlds from Unity into Resonite. (Under construction)
+A Unity Plugin to easily export Avatars or Worlds from Unity into Resonite.
 
 ## How to use?
 
