@@ -24,7 +24,7 @@ Go to the releases page
 ![download ResoniteUnityExporter.unitypackage](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/releases%20unity%20package.png?raw=true)
 
 - Open Unity
-- Open your scene containing your Avatar.
+- Open your scene containing your Avatar or World.
 - In the top bar, click `Assets` -> `Import Package` -> `Custom Package`
 
 ![Assets -> Import Package -> Custom Package](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/Import%20Package.png?raw=true)
