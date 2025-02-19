@@ -134,7 +134,24 @@ Now Unity can talk to Resonite. Go to [Exporting to Resonite](#exporting-to-reso
 
 ### Exporting to Resonite
 
-bees
+You are ready to export to Resonite if, either:
+
+- `ResoniteUnityExporterStandalone.exe` is running, or
+- You've installed `Resonite Unity Exporter Mod` and are running Resonite
+
+The Unity Plugin will then be able to connect to Resonite. It should look something like this
+
+![Connected to Resonite](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/connected%20to%20standalone.png?raw=true)
+
+Press `Export to Resonite` to export your content!
+
+This may take some time, be patient.
+
+### Material mappings
+
+Because Resonite does not have custom materials, your materials will need to be converted to standard resonite ones.
+
+See the `Materials` tab to choose how you'd like this conversion to be done.
 
 ## Project Structure
 
@@ -147,10 +164,10 @@ This library is used by the unity library and also by the mod and standalone.
 `ImportFromUnityLib` is the library used in the Mod/Standalone, it contains the core of the code
 to take the data and import it into Resonite.
 
-`ResoniteBridgeMod` is the code for the Resonite mod, that uses `ImportFromUnityLib` to make the
+`ResoniteUnityExporterMod` is the code for the Resonite mod, that uses `ImportFromUnityLib` to make the
 avatar appear in whatever world you are in.
 
-`ResoniteBridgeStandalone` is a standalone custom headless server, you can't connect to it and it's
+`ResoniteUnityExporterStandalone` is a standalone custom headless server, you can't connect to it and it's
 anonomyous. This also uses `ImportFromUnityLib`, it's used to load resonite libraries needed to make a .resonitepackage.
 This is also useful for debugging since startup time is much faster.
 
@@ -160,5 +177,3 @@ a dependency of this library, it contains the inter-process communication and se
 ## I want to suggest a change
 
 Feel free to submit a PR! Contributions are welcome.
-
-## 
