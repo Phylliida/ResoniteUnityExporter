@@ -53,7 +53,7 @@ For example:
 
 ![Correct near clip](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/near%20clip%20fixed.png?raw=true)
 
-Now you are ready to import your avatar.
+Now you are ready to export your content to Resonite.
 
 There are two options from here:
 
@@ -73,7 +73,7 @@ This is a `ResoniteModLoader` mod for Resonite.
 
 This mod allows Resonite to communicate directly with Unity.
 
-When you press "Export to Resonite" your avatar will pop up in the world you are in.
+When you press "Export to Resonite" your avatar/world will pop up in the world you are in.
 
 See [Installing Resonite Unity Exporter Mod](#Installing Resonite Unity Exporter Mod)
 
@@ -96,9 +96,9 @@ Go to the releases page
 
 Now it should print out lots of text as it initializes things.
 
-Eventually the text should calm down, once it does that you are ready to export your avatar!
+Eventually the text should calm down, once it does that you are ready to export your avatar/world!
 
-Go to [Exporting your avatar](#Exporting your avatar)
+Go to [Exporting your content to Resonite](#Exporting your content to Resonite)
 
 ### Installing Resonite Unity Exporter Mod
 
@@ -130,7 +130,7 @@ It should look like this when you are done:
 
 (there may be more files if you also have other mods installed)
 
-Now Unity can talk to Resonite. Go to [Exporting your avatar](#Exporting your avatar)
+Now Unity can talk to Resonite. Go to [Exporting your content to Resonite](#Exporting your content to Resonite)
 
 ## Project Structure
 
