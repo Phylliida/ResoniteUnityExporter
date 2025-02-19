@@ -65,7 +65,7 @@ You can later copy paste the .resonitepackage in game to import your avatar.
 
 This is easier to get setup and does not require any mods.
 
-See [Running Resonite Unity Exporter Standalone](#Running Resonite Unity Exporter Standalone)
+See [Running Resonite Unity Exporter Standalone](#running-resonite-unity-exporter-standalone)
 
 #### Install `ResoniteUnityExporterMod`
 
@@ -75,7 +75,7 @@ This mod allows Resonite to communicate directly with Unity.
 
 When you press "Export to Resonite" your avatar/world will pop up in the world you are in.
 
-See [Installing Resonite Unity Exporter Mod](#Installing Resonite Unity Exporter Mod)
+See [Installing Resonite Unity Exporter Mod](#installing-resonite-unity-exporter-mod)
 
 ### Running Resonite Unity Exporter Standalone
 
@@ -98,7 +98,7 @@ Now it should print out lots of text as it initializes things.
 
 Eventually the text should calm down, once it does that you are ready to export your avatar/world!
 
-Go to [Exporting your content to Resonite](#Exporting your content to Resonite)
+Go to [Exporting to Resonite](#exporting-to-resonite)
 
 ### Installing Resonite Unity Exporter Mod
 
@@ -130,7 +130,11 @@ It should look like this when you are done:
 
 (there may be more files if you also have other mods installed)
 
-Now Unity can talk to Resonite. Go to [Exporting your content to Resonite](#Exporting your content to Resonite)
+Now Unity can talk to Resonite. Go to [Exporting to Resonite](#exporting-to-resonite)
+
+### Exporting to Resonite
+
+bees
 
 ## Project Structure
 
