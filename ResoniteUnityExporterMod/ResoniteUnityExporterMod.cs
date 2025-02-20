@@ -22,7 +22,7 @@ namespace ResoniteBridgeMod
         private static readonly ModConfigurationKey<bool> enabled = new ModConfigurationKey<bool>("enabled", "Should the mod be enabled", () => true); //Optional config settings
 
         private static ModConfiguration Config; //If you use config settings, this will be where you interface with them.
-        private static string harmony_id = "tessacoil.resonitebridgemod";
+        private static string harmony_id = "tessacoil.ResoniteUnityExporterMod";
 
         public override void OnEngineInit()
         {
@@ -47,7 +47,7 @@ namespace ResoniteBridgeMod
                 
                 try
                 {
-                    Msg("Starting bridge server");
+                    Msg("Starting resonite unity exporter server");
                     while (FrooxEngine.Engine.Current == null ||
                         FrooxEngine.Engine.Current.WorldManager == null ||
                         FrooxEngine.Engine.Current.WorldManager.FocusedWorld == null)

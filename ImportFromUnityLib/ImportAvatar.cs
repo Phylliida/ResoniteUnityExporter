@@ -16,6 +16,7 @@ using System.Xml.Linq;
 using System.Reflection;
 using FrooxEngine.FinalIK;
 using FrooxEngine.CommonAvatar;
+using static FrooxEngine.CubemapCreator;
 
 namespace ImportFromUnityLib
 {
@@ -57,9 +58,10 @@ namespace ImportFromUnityLib
 
             Slot sharedParent = FindSharedParent(allSlots.ToArray());
             // add extra parent so vrik is happy
+            Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot);
             if (avatarData.setupIK)
             {
-                Slot parentParent = sharedParent.Parent.AddSlot("AvatarRoot");
+                Slot parentParent = sharedParent.Parent.AddSlot(mainParentSlot.Name);
                 sharedParent.SetParent(parentParent);
                 sharedParent = parentParent;
             }
@@ -72,7 +74,6 @@ namespace ImportFromUnityLib
             }
 
             float3 relativeCustomHeadPosition = float3.Zero;
-            Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(avatarData.mainParentSlot);
             if (avatarData.hasCustomHeadPosition)
             {
                 mainParentSlot.LocalScale = new float3(1, 1, 1);
@@ -152,12 +153,15 @@ namespace ImportFromUnityLib
                     Slot head = bipedRig.TryGetBone(BodyNode.Head);
                     Slot rightHandRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_rightReference", BindingFlags.Instance | BindingFlags.NonPublic)
                         .GetValue(aviCreator)).Target;
-                    float3 aviCreatorScale = ComputeAviCreatorScale(bipedRig, rightHandRef);
+                    Slot leftHandRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_leftReference", BindingFlags.Instance | BindingFlags.NonPublic)
+                        .GetValue(aviCreator)).Target;
+
+                    float3 aviCreatorScale = ComputeAviCreatorScale(bipedRig);
+                    Slot headsetRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_headsetReference", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .GetValue(aviCreator)).Target;
                     // line up head
                     if (head != null)
                     {
-                        Slot headsetRef = ((SyncRef<Slot>)aviCreator.GetType().GetField("_headsetReference", BindingFlags.Instance | BindingFlags.NonPublic)
-                        .GetValue(aviCreator)).Target;
                         headsetRef.GlobalPosition = avatarData.hasCustomHeadPosition
                             ? sharedParent.LocalPointToGlobal(relativeCustomHeadPosition)
                             : head.GlobalPosition;
@@ -173,7 +177,49 @@ namespace ImportFromUnityLib
                         rightHandRef.GlobalScale = aviCreatorScale;
                         SetAviCreatorHandRotation(bipedRig, aviCreator, localScale, true);
                     }
-                    // todo: optional set up left hand if it's not symmetric
+                    // line up left hand and check if not symmetric
+                    Slot leftHand = bipedRig.TryGetBone(BodyNode.LeftHand);
+                    if (leftHand != null)
+                    {
+                        // give mirror transform time to apply
+                        floatQ prevRightHandRotation = rightHandRef.LocalRotation;
+                        // manually compute mirror transform so we don't need to wait for update
+                        float3 mirrorNormal = headsetRef.LocalDirectionToGlobal(float3.Right);
+                        floatQ prevLeftHandRotation = leftHandRef.Parent.GlobalRotationToLocal(
+                            MathX.ReflectRotation(rightHandRef.GlobalRotation, mirrorNormal)
+                            );
+                        leftHandRef.GlobalPosition = leftHand.GlobalPosition;
+                        ImportFromUnityLib.DebugLog("Angle before:" + prevLeftHandRotation);
+                        float3 localScale = leftHandRef.Parent.GlobalScaleToLocal(aviCreatorScale);
+                        leftHandRef.GlobalScale = aviCreatorScale;
+                        SetAviCreatorHandRotation(bipedRig, aviCreator, localScale, false);
+                        floatQ computedLeftHandRotation = leftHandRef.LocalRotation;
+                        ImportFromUnityLib.DebugLog("Angle after:" + computedLeftHandRotation);
+                        // not symmetric hands, turn off symmetry
+                        // (greater than 5 degrees difference, that's quite a bit)
+                        float angleDiff = Math.Abs(MathX.Angle(prevLeftHandRotation, computedLeftHandRotation));
+                        ImportFromUnityLib.DebugLog("Angle difference in left hand vs mirror align:" + angleDiff);
+                        if (angleDiff > 5.0f && angleDiff < 355.0f)
+                        {
+                            Sync<bool> useSymmetry = (Sync<bool>)aviCreator
+                                .GetType()
+                                .GetField("_useSymmetry", BindingFlags.Instance | BindingFlags.NonPublic)
+                                .GetValue(aviCreator);
+                            useSymmetry.Value = false;
+                            // call on changes callback to update
+                            aviCreator
+                                .GetType()
+                                .GetMethod("OnChanges", BindingFlags.Instance | BindingFlags.NonPublic)
+                                .Invoke(aviCreator, new object[] { });
+                            // wait for changes to update
+                            yield return Context.WaitForNextUpdate();
+                            yield return Context.WaitForNextUpdate();
+                            yield return Context.ToWorld();
+                            // set right hand back to what it was before
+                            rightHandRef.GlobalPosition = rightHand.GlobalPosition;
+                            rightHandRef.LocalRotation = prevRightHandRotation;
+                        }
+                    }
                 }
             }
 
@@ -474,17 +520,68 @@ namespace ImportFromUnityLib
             avatarCreatorHand.LocalRotation = bestRotation;
         }
 
-        static float3 ComputeAviCreatorScale(BipedRig rig, Slot handProxy)
+        // loops through fingers to get bounding box of size
+        static float3 GetHandSize(BipedRig rig, bool rightSide)
         {
-            Slot handSlot = rig.TryGetBone(BodyNode.LeftHand);
-            if (handSlot != null)
+            Elements.Core.BoundingBox box = new Elements.Core.BoundingBox();
+            box.MakeEmpty();
+            Slot handBone = rig.TryGetBone(rightSide ? BodyNode.RightHand : BodyNode.LeftHand);
+            if (handBone != null)
             {
-                float3 handSize = handSlot.ComputeBoundingBox(includeInactive: true, space: handSlot.Parent).Size;
-                float maxSize = Math.Max(Math.Max(handSize.x, handSize.y), handSize.z);
-                float3 handMaxSize = new float3(maxSize, maxSize, maxSize);
-                float3 resultScale = handSlot.Parent.LocalScaleToGlobal(handMaxSize);
-                //ImportFromUnityLib.DebugLog("Got scale:" + resultScale);
-                return resultScale / 0.23f; // this is the distance from center of wrist to end of avatar creator fingers
+                box.Encapsulate(handBone.Parent.GlobalPointToLocal(handBone.GlobalPosition));
+                BodyNode[][] fingerOrders = rightSide ? rightFingerOrders : leftFingerOrders;
+                foreach (BodyNode[] fingerPieces in fingerOrders)
+                {
+                    foreach (BodyNode fingerPiece in fingerPieces)
+                    {
+                        Slot fingerPieceSlot = rig.TryGetBone(fingerPiece);
+                        if (fingerPieceSlot != null)
+                        {
+                            float3 relativePosition = handBone.Parent.GlobalPointToLocal(fingerPieceSlot.GlobalPosition);
+                            box.Encapsulate(relativePosition);
+                        }
+                    }
+                }
+            }
+            return box.Size;
+        }
+
+        static float3 ComputeAviCreatorScale(BipedRig rig)
+        {
+            float3 avgSize = new float3(0,0,0);
+            int numSizesFound = 0;
+            foreach (bool rightSide in new bool[] { false, true })
+            {
+                Slot handSlot = rig.TryGetBone(rightSide ? BodyNode.RightHand : BodyNode.LeftHand);
+                if (handSlot != null)
+                {
+                    float resultSize;
+                    float3 handSizeByBoundingBox = handSlot.ComputeBoundingBox(includeInactive: true, space: handSlot.Parent).Size;
+                    float maxSizeByBoundingBox = Math.Max(Math.Max(handSizeByBoundingBox.x, handSizeByBoundingBox.y), handSizeByBoundingBox.z);
+                    float3 handSizeByFingers = GetHandSize(rig, rightSide);
+                    float maxSizeByFingers = Math.Max(Math.Max(handSizeByFingers.x, handSizeByFingers.y), handSizeByFingers.z);
+                    // if bounding box is substantially bigger, rely on finger size
+                    // this is in case they are holding something that messed up bounds
+                    // (as long as finger estimate is not too small, say, if they have no fingers)
+                    if (maxSizeByBoundingBox > maxSizeByFingers *  1.5f &&
+                        maxSizeByFingers > 0.01f)
+                    {
+                        resultSize = maxSizeByFingers;
+                    }
+                    // otherwise, bounding box tends to be slightly better
+                    else
+                    {
+                        resultSize = maxSizeByBoundingBox;
+                    }
+                    avgSize += handSlot.Parent.LocalScaleToGlobal(new float3(resultSize, resultSize, resultSize));
+                    numSizesFound += 1;
+                }
+            }
+            if (numSizesFound > 0)
+            {
+                // compute average (vrik doesn't support hands being different sizes, so, just do average)
+                avgSize /= numSizesFound;
+                return avgSize / 0.23f; // this is the distance from center of wrist to end of avatar creator fingers
             }
             else
             {
