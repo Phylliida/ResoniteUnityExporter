@@ -189,16 +189,13 @@ namespace ImportFromUnityLib
                             MathX.ReflectRotation(rightHandRef.GlobalRotation, mirrorNormal)
                             );
                         leftHandRef.GlobalPosition = leftHand.GlobalPosition;
-                        ImportFromUnityLib.DebugLog("Angle before:" + prevLeftHandRotation);
                         float3 localScale = leftHandRef.Parent.GlobalScaleToLocal(aviCreatorScale);
                         leftHandRef.GlobalScale = aviCreatorScale;
                         SetAviCreatorHandRotation(bipedRig, aviCreator, localScale, false);
                         floatQ computedLeftHandRotation = leftHandRef.LocalRotation;
-                        ImportFromUnityLib.DebugLog("Angle after:" + computedLeftHandRotation);
                         // not symmetric hands, turn off symmetry
                         // (greater than 5 degrees difference, that's quite a bit)
                         float angleDiff = Math.Abs(MathX.Angle(prevLeftHandRotation, computedLeftHandRotation));
-                        ImportFromUnityLib.DebugLog("Angle difference in left hand vs mirror align:" + angleDiff);
                         if (angleDiff > 5.0f && angleDiff < 355.0f)
                         {
                             Sync<bool> useSymmetry = (Sync<bool>)aviCreator
