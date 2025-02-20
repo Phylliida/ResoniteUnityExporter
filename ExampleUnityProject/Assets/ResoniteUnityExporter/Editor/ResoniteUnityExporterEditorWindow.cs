@@ -16,6 +16,8 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using ResoniteUnityExporterShared;
 using System.Threading.Tasks;
+using VRC.SDK3.Dynamics.Constraint.Components;
+using UnityEngine.Animations;
 
 
 
@@ -385,6 +387,19 @@ namespace ResoniteUnityExporter {
             // dynamic bone chains and dynamic bone colliders
             transferManager.RegisterConverter<VRCPhysBoneCollider>(PhysBoneColliderConverter.ConvertPhysBoneCollider);
             transferManager.RegisterConverter<VRCPhysBone>(PhysBoneConverter.ConvertPhysBone);
+            // constraints
+            transferManager.RegisterConverter<VRCPositionConstraint>(ConstraintConverter.ConvertVRCPositionConstraint);
+            transferManager.RegisterConverter<PositionConstraint>(ConstraintConverter.ConvertPositionConstraint);
+            transferManager.RegisterConverter<VRCRotationConstraint>(ConstraintConverter.ConvertVRCRotationConstraint);
+            transferManager.RegisterConverter<RotationConstraint>(ConstraintConverter.ConvertRotationConstraint);
+            transferManager.RegisterConverter<VRCScaleConstraint>(ConstraintConverter.ConvertVRCScaleConstraint);
+            transferManager.RegisterConverter<ScaleConstraint>(ConstraintConverter.ConvertScaleConstraint);
+            transferManager.RegisterConverter<VRCLookAtConstraint>(ConstraintConverter.ConvertVRCLookAtConstraint);
+            transferManager.RegisterConverter<LookAtConstraint>(ConstraintConverter.ConvertLookAtConstraint);
+            transferManager.RegisterConverter<VRCParentConstraint>(ConstraintConverter.ConvertVRCParentConstraint);
+            transferManager.RegisterConverter<ParentConstraint>(ConstraintConverter.ConvertParentConstraint);
+            transferManager.RegisterConverter<VRCAimConstraint>(ConstraintConverter.ConvertVRCAimConstraint);
+            transferManager.RegisterConverter<AimConstraint>(ConstraintConverter.ConvertAimConstraint);
         }
 
         void DrawTextureCenter(Texture2D texture, Rect containerRect)

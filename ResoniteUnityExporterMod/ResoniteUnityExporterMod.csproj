@@ -64,7 +64,7 @@
     <Reference Include="ProtoFluxBindings">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\ProtoFluxBindings.dll</HintPath>
     </Reference>
-    <PackageReference Include="ResoniteBridgeLib" Version="1.0.7" />
+    <PackageReference Include="ResoniteBridgeLib" Version="1.0.8" />
     <Reference Include="ResoniteModLoader">
       <HintPath>.\ResoniteModLoader.dll</HintPath>
     </Reference>

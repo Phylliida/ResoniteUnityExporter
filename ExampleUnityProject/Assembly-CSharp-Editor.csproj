@@ -69,6 +69,7 @@
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\ConstraintConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />

@@ -34,6 +34,15 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportDynamicBoneChain", ImportDynamicBones.ImportDynamicBoneChainFunc);
             server.RegisterProcessor("ImportDynamicBoneCollider", ImportDynamicBones.ImportDynamicBoneColliderFunc);
             server.RegisterProcessor("FinalizeAvatarCreator", ImportFinalizeAvatarCreator.ImportFinalizeAvatarCreatorFunc);
+
+            // constraints
+            server.RegisterProcessor("ImportPositionConstraint", ImportConstraint.ImportPositionConstraintFunc);
+            server.RegisterProcessor("ImportRotationConstraint", ImportConstraint.ImportRotationConstraintFunc);
+            server.RegisterProcessor("ImportScaleConstraint", ImportConstraint.ImportScaleConstraintFunc);
+            server.RegisterProcessor("ImportAimConstraint", ImportConstraint.ImportAimConstraintFunc);
+            server.RegisterProcessor("ImportParentConstraint", ImportConstraint.ImportParentConstraintFunc);
+            server.RegisterProcessor("ImportLookAtConstraint", ImportConstraint.ImportLookAtConstraintFunc);
+
         }
     }
 }
