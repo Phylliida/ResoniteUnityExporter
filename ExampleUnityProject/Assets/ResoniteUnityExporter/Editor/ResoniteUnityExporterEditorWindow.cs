@@ -53,7 +53,7 @@ namespace ResoniteUnityExporter {
         bool finalizeAvatarCreator = true;
         bool setupIK = true;
         bool sendingAvatar = true;
-        bool makePackage = true;
+        bool makePackage = false;
         bool includeAssetVariantsInPackage = true;
 
         float nearClip = 0f;
@@ -638,7 +638,7 @@ namespace ResoniteUnityExporter {
                     makeAvatar = sendingAvatar,
                     pressCreateAvatar = finalizeAvatarCreator,
                     materialMappings = GetMaterialMappings(),
-                    makePackage = makePackage || serverInfo.label == "Standalone", // force package for standalone
+                    makePackage = makePackage || serverInfo.label == STANDALONE_LABEL, // force package for standalone
                     includeAssetVariantsInPackage = includeAssetVariantsInPackage,
                 });
 

@@ -57,6 +57,7 @@ namespace ImportFromUnityLib
             ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
             yield return Context.ToWorld();
 
+
             //// create assets slot 
             Slot worldAssets = Engine.Current.WorldManager.FocusedWorld.AssetsSlot;
             FrooxEngine.Slot assetsSlot = worldAssets.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);

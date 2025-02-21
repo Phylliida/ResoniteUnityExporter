@@ -1,1 +1,27 @@
-{"default_texture_type":0,"showRenderQueue":true,"showManualReloadButton":false,"allowCustomLockingRenaming":false,"autoMarkPropertiesAnimated":true,"locale":"English","gradient_name":"gradient_<hash>.png","autoSetAnchorOverride":true,"humanBoneAnchor":7,"anchorOverrideObjectName":"AutoAnchorObject","autoSetAnchorAskedOnce":false,"verion":"2.26.5"}
+{
+    "default_texture_type": 0,
+    "showRenderQueue": true,
+    "showManualReloadButton": false,
+    "showColorspaceWarnings": true,
+    "allowCustomLockingRenaming": false,
+    "autoMarkPropertiesAnimated": true,
+    "showStarNextToNonDefaultProperties": true,
+    "texturePackerCompressionWithAlphaOverwrite": -1,
+    "texturePackerCompressionNoAlphaOverwrite": -1,
+    "gradientEditorCompressionOverwrite": -1,
+    "inlinePackerSaveLocation": 0,
+    "inlinePackerSaveLocationCustom": "Assets/Textures/Packed",
+    "inlinePackerChrunchCompression": false,
+    "locale": "English",
+    "gradient_name": "gradient_<hash>.png",
+    "autoSetAnchorOverride": true,
+    "humanBoneAnchor": 7,
+    "anchorOverrideObjectName": "AutoAnchorObject",
+    "autoSetAnchorAskedOnce": false,
+    "enableDeveloperMode": false,
+    "disableUnlockedShaderStrippingOnBuild": false,
+    "forceAsyncCompilationPreview": true,
+    "fixKeywordsWhenLocking": true,
+    "saveAfterLockUnlock": true,
+    "verion": "2.62.4"
+}

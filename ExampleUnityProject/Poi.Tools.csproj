@@ -10,10 +10,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{00F92C11-E3AB-4857-8270-B41395AC3FAB}</ProjectGuid>
+    <ProjectGuid>{8CFA9293-CF7E-C761-F994-36B45D0E4A73}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>ThryAssemblyDefinition</AssemblyName>
+    <AssemblyName>Poi.Tools</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -60,129 +60,33 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\RemoteMessage.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Settings.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Presets.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\TexturePacker.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GradiantEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\FileHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalSceneTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ConditionalTranslationBlockListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\MultiSlider.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryRGBAPacker.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderPart.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\StringExtensions.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Helpbox.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\TextureArray.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThrySeperator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\TexturePackerConfig.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\CrossEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Debug\InspectorCapture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\TextureHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryRichLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\VectorLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ListTextureUsesPopup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DefineableCondition.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Unity.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ShaderOptimizer.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\UnitTests.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderTextureProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ExpressionParser.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\PropertyValueAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\MaterialHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\ColorHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryIntRange.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThryHeaderLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Gradient.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ConditionalTranslationBlock.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderNameMatchedModificationsEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryShaderOptimizerLockButton.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslationsContainer.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorSectionListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\Helper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\MaterialLinker.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryExternalTextureTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderSection.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Debug\MaterialToDebugString.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryFileBuilder.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GUILib.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DrawingData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector4Toggles.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Mediator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslatorEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderHeader.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderNameMatchedModifications.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GradientEditor2.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\AvatarMaterialTranslator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector2.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Curve.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorLocale.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\PropertyModificationListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\UIElementsHelpers.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector31.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\PropertyOptions.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderHeaderProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryToggle.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorPropertySearchPopup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\PropertyTranslation.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\VRCInterface.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\sRGBWarning.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\HelperWeb.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryMultiFloats.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Parser.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryToggleUI.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector3.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\TrashHandler.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryWideEnum.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThryDecalPositioning.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\TextureData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\StylizedLargeTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\ShaderHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\ButtonData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Config.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\SmallTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryCustomGUI.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\UploadAnchorOverrideSetter.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\Converter.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\MaterialCleaner.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\StringHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderGroup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DefineableAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\LocalMessage.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\VectorToSliders.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\Constants.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\PersistentData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderModificationAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\OtherShaderProperties.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\SimpleLargeTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Localization.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\PasteSpecialPopup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Styles.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\PoiData.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\PoiOutlineUtil.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\ScriptedShaderTranslator\ShaderProperty.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Helpers and Extensions\PoiHelpers.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\ScriptedShaderTranslator\TranslationContext.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\External Tools\PoiExternalToolRegistry.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\GradientFlood (8).cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\BakeToVertexColorsEditor.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\External Tools\IPoiExternalTool.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\DuplicateWithUniqueMaterials.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Export Stuff\ThirdPartyIncluder.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\External Tools\PoiPackageHandler.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Export Stuff\PoiImportExportChecker.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\ErrorShaderEditor.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Helpers and Extensions\PoiExtensions.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\PoiSettingsUtility.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\External Tools\PoiExternalToolAttribute.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Export Stuff\ThirdPartyIncluderAsset.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\Tools and Editors\PoiContextMenus.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\ScriptedShaderTranslator\PropertyTranslation.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\ScriptedShaderTranslator\ScriptedShaderTranslator.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Editor\ScriptedShaderTranslator\ShaderRepresentation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorEditorStyles.uss" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\ChannelPreview.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslator.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorPropertySearchPopup.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorEditor.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslatorStyles.uss" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalGizmos.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\ThryTexturePacker.compute" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\ModificationListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorConditionalListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\PrettyPrint.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\ParserTests.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\ShaderNameMatchedModificationsListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslatorListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorSectionListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryAssemblyDefinition.asmdef" />
+    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\PoiTexturePacker.shader" />
+    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\PoiTextureUnpacker.shader" />
+    <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\PoiToolsDefinition.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1211,6 +1115,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="ThryAssemblyDefinition.csproj">
+      <Project>{00F92C11-E3AB-4857-8270-B41395AC3FAB}</Project>
+      <Name>ThryAssemblyDefinition</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

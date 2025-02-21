@@ -145,7 +145,7 @@ namespace ResoniteUnityExporter
                 // otherwise, just do the given object as root
                 : new GameObject[] { rootTransform.gameObject };
 
-            return gameObjects.SelectMany(g => g.GetComponents(type)).ToArray();
+            return gameObjects.SelectMany(g => g.GetComponentsInChildren(type)).ToArray();
 
         }
 
