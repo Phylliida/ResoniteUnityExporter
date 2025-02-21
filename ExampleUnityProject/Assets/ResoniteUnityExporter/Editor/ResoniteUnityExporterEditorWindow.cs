@@ -8,7 +8,6 @@ using System;
 using System.Linq;
 using ResoniteTransfer.Converters;
 using VRC.Core;
-using VRC.SDK3.Avatars.Components;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using UnityEditor.SceneManagement;
 using NUnit.Framework.Constraints;
@@ -18,6 +17,7 @@ using ResoniteUnityExporterShared;
 using System.Threading.Tasks;
 using VRC.SDK3.Dynamics.Constraint.Components;
 using UnityEngine.Animations;
+using static UnityEngine.UIElements.VisualElement;
 
 
 
@@ -339,15 +339,46 @@ namespace ResoniteUnityExporter {
             return head;
         }
 
+
+        public static bool IsAvatarsSDKAvailable()
+        {
+            return Type.GetType("VRC.SDK3.Avatars.Components.VRCAvatarDescriptor, VRCSDK3A") != null;
+        }
+
+        bool TryGetAvatarDescriptorPosition(out UnityEngine.Vector3 pos)
+        {
+            if (IsAvatarsSDKAvailable())
+            {
+                Type avatarDescriptorType = Type.GetType("VRC.SDK3.Avatars.Components.VRCAvatarDescriptor, VRCSDK3A");
+                GameObject[] gameObjects = (parentObject == null)
+                 ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+                 // otherwise, just do the given object as root
+                 : new GameObject[] { parentObject.gameObject };
+                foreach (GameObject go in gameObjects)
+                {
+                    Component avatarDescriptor = go.GetComponentInChildren(avatarDescriptorType);
+                    if (avatarDescriptor != null)
+                    {
+                        pos = (UnityEngine.Vector3)avatarDescriptor
+                            .GetType()
+                            .GetField("ViewPosition")
+                            .GetValue(avatarDescriptor);
+                        return true;
+                    }
+                }
+            }
+            pos = UnityEngine.Vector3.zero;
+            return false;
+        }
+
         Texture2D CaptureViewFromHead(int width, int height, float nearClip, out bool foundHead)
         {
             UnityEngine.Vector3 headPosition = new UnityEngine.Vector3(0, 0, 0);
-            VRCAvatarDescriptor descriptor = GameObject.FindAnyObjectByType<VRCAvatarDescriptor>();
             GameObject headObject = FindHeadObject();
             foundHead = headObject != null;
-            if (descriptor != null)
+            if (TryGetAvatarDescriptorPosition(out headPosition))
             {
-                headPosition = descriptor.ViewPosition;
+                // good, it's assigned
             }
             else
             {
@@ -568,7 +599,10 @@ namespace ResoniteUnityExporter {
         void DrawViewPreviewAndSubmit()
         {
             // include this in the submit page so they know to deal with it
-            DrawViewPreview();
+            if (IsAvatarsSDKAvailable())
+            {
+                DrawViewPreview();
+            }
 
             // for debuggin
             /*

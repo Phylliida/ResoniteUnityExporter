@@ -138,14 +138,20 @@ namespace ResoniteUnityExporter
             converters[typeof(T)] = converter;
         }
 
-        public T[] GetComponents<T>()
+        public UnityEngine.Component[] GetComponents(Type type)
         {
             GameObject[] gameObjects = (rootTransform == null)
-            ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
-            // otherwise, just do the given object as root
-            : new GameObject[] { rootTransform.gameObject };
+                ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+                // otherwise, just do the given object as root
+                : new GameObject[] { rootTransform.gameObject };
 
-            return gameObjects.SelectMany(g => g.GetComponents<T>()).ToArray();
+            return gameObjects.SelectMany(g => g.GetComponents(type)).ToArray();
+
+        }
+
+        public T[] GetComponents<T>() where T : UnityEngine.Component
+        {
+            return GetComponents(typeof(T)).Select(x => { return (T)x; }).ToArray();
 
         }
 

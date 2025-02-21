@@ -11,7 +11,6 @@ using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using VRC.Core;
-using VRC.SDK3.Avatars.Components;
 
 namespace ResoniteTransfer.Converters
 {
@@ -48,47 +47,61 @@ namespace ResoniteTransfer.Converters
                     .Select(x => (RefID_U2Res)x).ToArray();
 
                 bool hasCustomHeadPosition = false;
-                VRCAvatarDescriptor[] descriptors = hierarchy.transferManager.GetComponents<VRCAvatarDescriptor>();
-                Float3_U2Res customHeadPosition = new Float3_U2Res() { x = 0, y = 0, z = 0 };
-                if (descriptors.Length > 0)
-                {
-                    VRCAvatarDescriptor descriptor = descriptors[0];
-                    hasCustomHeadPosition = true;
-                    customHeadPosition = new Float3_U2Res()
-                    {
-                        x = descriptor.ViewPosition.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
-                        y = descriptor.ViewPosition.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
-                        z = descriptor.ViewPosition.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
-                    };
-                }
+                Avatar_U2Res avatarData;
 
-                Avatar_U2Res avatarData = new Avatar_U2Res()
+                if (ResoniteUnityExporterEditorWindow.IsAvatarsSDKAvailable())
                 {
-                    mainParentSlot = hierarchy.mainParentSlot,
-                    renderers = rendererRefIds,
-                    floorOnOrigin = false,
-                    assetsSlot = hierarchy.rootAssetsSlot,
-                    forceTPose = false,
-                    generateColliders = true,
-                    generateSkeletonBoneVisuals = false,
-                    setupIK = settings.setupIK,
-                    setupAvatarCreator = settings.setupAvatarCreator,
-                    rescale = true,
-                    targetScale = 1.3f,
-                    nearClip = settings.nearClip,
-                    hasCustomHeadPosition = hasCustomHeadPosition,
-                    customHeadPosition = customHeadPosition,
-                };
-                yield return null;
-                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
-                yield return null;
-                var eout = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData, output);
-                while (eout.MoveNext())
-                {
+                    Type avatarDescriptorType = Type.GetType("VRC.SDK3.Avatars.Components.VRCAvatarDescriptor, VRCSDK3A");
+                    UnityEngine.Component[] descriptors = hierarchy.transferManager.GetComponents(avatarDescriptorType);
+                    Float3_U2Res customHeadPosition = new Float3_U2Res() { x = 0, y = 0, z = 0 };
+                    if (descriptors.Length > 0)
+                    {
+                        UnityEngine.Component descriptor = descriptors[0];
+                        var viewPos = (UnityEngine.Vector3)descriptor
+                            .GetType()
+                            .GetField("ViewPosition")
+                            .GetValue(descriptor);
+                        hasCustomHeadPosition = true;
+                        customHeadPosition = new Float3_U2Res()
+                        {
+                            x = viewPos.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                            y = viewPos.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                            z = viewPos.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
+                        };
+                    }
+                    avatarData = new Avatar_U2Res()
+                    {
+                        mainParentSlot = hierarchy.mainParentSlot,
+                        renderers = rendererRefIds,
+                        floorOnOrigin = false,
+                        assetsSlot = hierarchy.rootAssetsSlot,
+                        forceTPose = false,
+                        generateColliders = true,
+                        generateSkeletonBoneVisuals = false,
+                        setupIK = settings.setupIK,
+                        setupAvatarCreator = settings.setupAvatarCreator,
+                        rescale = true,
+                        targetScale = 1.3f,
+                        nearClip = settings.nearClip,
+                        hasCustomHeadPosition = hasCustomHeadPosition,
+                        customHeadPosition = customHeadPosition,
+                    };
+
+                    yield return null;
+                    ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Creating avatar";
+                    yield return null;
+                    var eout = hierarchy.Call<RefID_U2Res, Avatar_U2Res>("ImportAvatar", avatarData, output);
+                    while (eout.MoveNext())
+                    {
+                        yield return null;
+                    }
+                    Debug.Log("converted avatar");
                     yield return null;
                 }
-                Debug.Log("converted avatar");
-                yield return null;
+                else
+                {
+                    // don't turn worlds into avatars
+                }
             }
         }
     }
