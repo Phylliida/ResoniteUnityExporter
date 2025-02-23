@@ -62,7 +62,6 @@ namespace ResoniteUnityExporter
             yield return null;
             hierarchy = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient);
             yield return null;
-            Debug.Log("Converted hierarchy"); // finished
             methodCache = new Dictionary<Type, MethodInfo>();
             convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
             foreach (ObjectHolder obj in hierarchy.GetObjects())

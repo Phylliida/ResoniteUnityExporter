@@ -17,7 +17,9 @@ namespace ResoniteTransfer.Converters
     {
         public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
-            string[] boneNames = renderer.bones.Select(x => x.name).ToArray();
+            string[] boneNames = renderer.bones == null ?
+                new string[] { } :
+                renderer.bones.Select(x => x.name).ToArray();
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
             yield return null;
             RefID_U2Res meshRefId = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames);
