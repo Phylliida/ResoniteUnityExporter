@@ -139,14 +139,11 @@ namespace ResoniteUnityExporter
 
         public static bool TryGetAvatarDescriptorPosition(Transform parentObject, out UnityEngine.Vector3 pos)
         {
-            Debug.Log("Try get avatar descriptor position with obj " + parentObject);
 #if RUE_HAS_AVATAR_VRCSDK
             foreach (Component avatarDescriptorComp in GetAvatarDescriptors(parentObject))
             {
-                Debug.Log("Got descriptor");
                 VRCAvatarDescriptor avatarDescriptor = (VRCAvatarDescriptor)avatarDescriptorComp;
                 pos = avatarDescriptor.ViewPosition;
-                Debug.Log("Got view pos: " + pos);
                 return true;
             }
 #endif
