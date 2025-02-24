@@ -177,3 +177,22 @@ a dependency of this library, it contains the inter-process communication and se
 ## I want to suggest a change
 
 Feel free to submit a PR! Contributions are welcome.
+
+Also feel free to make a gh issue if you encounter an issue and I'm happy to help u debug.
+
+## Credits
+
+[ResoniteImportHelper](https://github.com/KisaragiEffective/ResoniteImportHelper)'s kisaragi marine was helpful for figuring out how to call VRChat hooks and bone NOIK issues
+
+Cloud_Jumper helped me address the issue when bones were null
+
+yoshi1123_ helped me address non-symmetric hands/avatars that are holding something
+
+AlphaNeon helped me get VRChat World api support working
+
+Venport pointed me to constraints and helped me with those
+
+troyBORG helped with some of the head position debugging
+
+ariel_emerald helped me with initial idea generation, some brainstorming, encouragment, and finding many various issues
+

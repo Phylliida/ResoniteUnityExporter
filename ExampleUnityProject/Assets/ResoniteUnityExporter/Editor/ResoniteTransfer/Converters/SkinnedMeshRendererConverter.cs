@@ -16,10 +16,13 @@ namespace ResoniteUnityExporter.Converters
     {
         public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
-            string[] boneNames = renderer.bones == null ?
-                new string[] { } :
-                renderer.bones
-                    .Where(x => x != null && x.name != null)
+            // this is important to ignore null bones
+            Transform[] rendererBones = renderer.bones == null
+                ? new Transform[] { }
+                : renderer.bones
+                    .Where(x => x != null && x.name != null).ToArray();
+
+            string[] boneNames = rendererBones
                     .Select(x => x.name)
                     .ToArray();
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
@@ -37,15 +40,17 @@ namespace ResoniteUnityExporter.Converters
                 yield return null;
             }
 
-            foreach (Transform bone in renderer.bones)
+            foreach (Transform bone in rendererBones)
             {
                 if (!hierarchy.TryLookupSlot(bone.transform, out RefID_U2Res _))
                 {
                     throw new ArgumentOutOfRangeException("Object " + bone.transform.name + " in bone hierarchy is not one of the transforms we are exporting, do you need to select a higher up object? (or null, for all objects)");
                 }
             }
-            RefID_U2Res[] boneRefIDs = renderer.bones.Select(
-                bone => hierarchy.LookupSlot(bone.transform)).ToArray();
+            RefID_U2Res[] boneRefIDs = rendererBones
+                .Select(bone => hierarchy.LookupSlot(bone.transform))
+                .Where(x => x.id != 0) // ignore null bones
+                .ToArray();
 
             SkinnedMeshRenderer_U2Res meshRendererData = new SkinnedMeshRenderer_U2Res()
             {
