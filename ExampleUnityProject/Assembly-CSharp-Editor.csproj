@@ -60,19 +60,9 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\ConstraintConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />
+    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteCutoutInspector.cs" />
+    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToon\FlatLitToonInspector.cs" />
+    <Compile Include="Assets\Cubed&apos;s Unity Shaders\Editor\FlatLitToonLite\FlatLitToonLiteInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1091,6 +1081,10 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="nadena.dev.ndmf">
+      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
@@ -1121,6 +1115,10 @@
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nadena.dev.ndmf.vrchat">
+      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.vrchat.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
@@ -1161,6 +1159,10 @@
     </Reference>
     <Reference Include="VRC.SDKBase.Editor.ShaderStripping">
       <HintPath>Library\ScriptAssemblies\VRC.SDKBase.Editor.ShaderStripping.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nadena.dev.ndmf.runtime">
+      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDKBase.Editor.BuildPipeline">

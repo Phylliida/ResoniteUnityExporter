@@ -68,19 +68,42 @@
     <Compile Include="Assets\DynamicBone\Scripts\DynamicBone.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Simple Gradient Sky.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCoreLite.cginc" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Cutout.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Rainbow.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lite Toon\Flat Lit Toon.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Fade.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Memory.dll" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Numerics.Vectors.dll" />
     <None Include="Assets\csc.rsp" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonShadows.cginc" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Unit Shadowed.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Distance Fade.shader" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Buffers.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Transparent.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Stage\Shader\AlphaMask.shader" />
     <None Include="Assets\DynamicBone\ReadMe.txt" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCore.cginc" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
+    <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -965,6 +988,10 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nadena.dev.ndmf.runtime">
+      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDKBase.Editor.BuildPipeline">

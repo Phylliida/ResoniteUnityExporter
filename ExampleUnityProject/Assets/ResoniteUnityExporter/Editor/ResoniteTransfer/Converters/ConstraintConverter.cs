@@ -6,14 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unity.Mathematics;
 using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SocialPlatforms;
 using VRC.SDK3.Dynamics.Constraint.Components;
 
-namespace ResoniteTransfer.Converters
+namespace ResoniteUnityExporter.Converters
 {
     public class ConstraintConverter
     {

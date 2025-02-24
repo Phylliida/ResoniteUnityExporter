@@ -3,16 +3,10 @@ using ResoniteUnityExporterShared;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Mathematics;
 using UnityEditor;
-using UnityEditor.Graphs;
 using UnityEngine;
-using static UnityEngine.UIElements.VisualElement;
 
 namespace ResoniteUnityExporter
 {
@@ -57,6 +51,27 @@ namespace ResoniteUnityExporter
         {
             this.settings = settings;
             this.rootTransform = rootTransform;
+
+
+            bool ranPreprocess = false;
+            // need to run VRChat initializer
+#if RUE_HAS_VRCSDK
+            if (rootTransform != null && settings.makeAvatar && ResoniteTransferUtils.IsAvatarsSDKAvailable())
+            {
+                // duplicate it
+                rootTransform = UnityEngine.Object.Instantiate(rootTransform);
+                ranPreprocess = true;
+                VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessAvatar(rootTransform.gameObject);
+#if RUE_HAS_NDMF
+                nadena.dev.ndmf.AvatarProcessor.ProcessAvatar(rootTransform.gameObject);
+#endif
+            }
+            else if(!settings.makeAvatar)
+            {
+                VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                ranPreprocess = true;
+            }
+#endif
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
             ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
             yield return null;
@@ -130,6 +145,23 @@ namespace ResoniteUnityExporter
                     yield return null;
                 }
             }
+#if RUE_HAS_VRCSDK
+            if (ranPreprocess)
+            {
+                if (settings.makeAvatar)
+                {
+                    VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessAvatar();
+#if RUE_HAS_NDMF
+                    nadena.dev.ndmf.AvatarProcessor.CleanTemporaryAssets();
+#endif
+                }
+                else
+                {
+
+                    VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                }
+            }
+#endif
         }
 
         public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, ResoniteTransferSettings, OutputHolder<object>, IEnumerator<object>> converter) where T : UnityEngine.Component

@@ -2,50 +2,24 @@ using UnityEngine;
 using UnityEditor;
 using ResoniteBridgeLib;
 using System.Collections.Generic;
-using System.Numerics;
 using System.IO;
 using System;
 using System.Linq;
-using ResoniteTransfer.Converters;
+using ResoniteUnityExporterShared;
+using UnityEngine.Animations;
+using UnityEditor.Graphs;
+
+#if RUE_HAS_AVATAR_VRCSDK
 using VRC.Core;
 using VRC.SDK3.Dynamics.PhysBone.Components;
-using UnityEditor.SceneManagement;
-using NUnit.Framework.Constraints;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
-using ResoniteUnityExporterShared;
-using System.Threading.Tasks;
 using VRC.SDK3.Dynamics.Constraint.Components;
-using UnityEngine.Animations;
-using static UnityEngine.UIElements.VisualElement;
+#endif
+using ResoniteUnityExporter.Converters;
 
 
 
 namespace ResoniteUnityExporter {
-
-    public static class LinqExtraExtensions {
-        public static IEnumerable<TSource> Unique<TSource, TKey>(this IEnumerable<TSource> arr, Func<TSource, TKey> keyFunc)
-        {
-            HashSet<TKey> keys = new HashSet<TKey>();
-
-            return arr.Where(value =>
-            {
-                TKey key = keyFunc(value);
-                if (keys.Contains(key))
-                {
-                    return false;
-                }
-                else
-                {
-                    keys.Add(key);
-                    return true;
-                }
-            });
-        }
-
-
-
-    }
+   
     public class ResoniteUnityExporterEditorWindow : EditorWindow
 	{
         bool ranAnyRuns = false;
@@ -60,6 +34,7 @@ namespace ResoniteUnityExporter {
         float prevNearClip = 0f;
         Transform parentObject;
         string exportSlotName;
+        UnityEngine.Object rootPipelineManager;
         Dictionary<string, string> materialMappings = new Dictionary<string, string>();
         const string LOADING_SERVER_LABEL = "Loading Info...";
         static ServerInfo_U2Res LOADING_SERVER_INFO = new ServerInfo_U2Res()
@@ -79,8 +54,6 @@ namespace ResoniteUnityExporter {
 
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
-
-        PipelineManager rootPipelineManager = null;
 
         // gui styles
         int selectedTab;
@@ -176,19 +149,6 @@ namespace ResoniteUnityExporter {
         {
 
         }
-        private void SceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1)
-        {
-            Debug.Log("Loaded scene");
-            exportSlotName = null;
-            // automatically detect and change this
-            // makes swapping lots of scenes easier
-            PipelineManager pipelineManager = GameObject.FindObjectOfType<PipelineManager>();
-            if (pipelineManager != null)
-            {
-                exportSlotName = pipelineManager.name;
-            }
-        }
-
 
         float pollFrequencyInMilliseconds = 2000;
         System.Diagnostics.Stopwatch pollStopwatch = new System.Diagnostics.Stopwatch();
@@ -282,117 +242,16 @@ namespace ResoniteUnityExporter {
             return screenshot;
         }
 
-        public GameObject[] FindObjectsWithName(GameObject parent, string searchTerm)
-        {
-            if (parent == null)
-            {
-                List<GameObject> results = new List<GameObject>();
-                foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene()
-                    .GetRootGameObjects())
-                {
-                    results.AddRange(FindObjectsWithName(rootObject, searchTerm));
-                }
-                return results.ToArray();
-            }
-            else
-            {
-                List<GameObject> results = new List<GameObject>();
-                if (parent.name.ToLower().Contains(searchTerm))
-                {
-                    results.Add(parent);
-                }
-                Transform[] children = parent.GetComponentsInChildren<Transform>(true); // true includes inactive objects
-                foreach (Transform child in children)
-                {
-                    if (child.gameObject.name.ToLower().Contains(searchTerm.ToLower()))
-                    {
-                        results.Add(child.gameObject);
-                    }
-                }
-                return results.ToArray();
-            }
-        }
 
-        GameObject FindHeadObject()
-        {
-            GameObject targetObject =
-                parentObject != null
-                ? parentObject.gameObject
-                : null;
-            GameObject[] heads = FindObjectsWithName(targetObject, "head");
-            if (heads.Length == 0)
-            {
-                return null;
-            }
-            // if multiple heads, look for head that has neck above it
-            GameObject head = heads[0];
-            if (heads.Length > 0)
-            {
-                head = heads
-                    .Where(g => g.transform.parent.name.ToLower().Contains("neck"))
-                    .FirstOrDefault();
-                if (head == null) // if none have neck just take first
-                {
-                    head = heads[0];
-                }
-            }
-            return head;
-        }
-
-
-        public static bool IsAvatarsSDKAvailable()
-        {
-            return Type.GetType("VRC.SDK3.Avatars.Components.VRCAvatarDescriptor, VRCSDK3A") != null;
-        }
-
-        bool TryGetAvatarDescriptorPosition(out UnityEngine.Vector3 pos)
-        {
-            if (IsAvatarsSDKAvailable())
-            {
-                Type avatarDescriptorType = Type.GetType("VRC.SDK3.Avatars.Components.VRCAvatarDescriptor, VRCSDK3A");
-                GameObject[] gameObjects = (parentObject == null)
-                 ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
-                 // otherwise, just do the given object as root
-                 : new GameObject[] { parentObject.gameObject };
-                foreach (GameObject go in gameObjects)
-                {
-                    Component avatarDescriptor = go.GetComponentInChildren(avatarDescriptorType);
-                    if (avatarDescriptor != null)
-                    {
-                        pos = (UnityEngine.Vector3)avatarDescriptor
-                            .GetType()
-                            .GetField("ViewPosition")
-                            .GetValue(avatarDescriptor);
-                        return true;
-                    }
-                }
-            }
-            pos = UnityEngine.Vector3.zero;
-            return false;
-        }
 
         Texture2D CaptureViewFromHead(int width, int height, float nearClip, out bool foundHead)
         {
-            UnityEngine.Vector3 headPosition = new UnityEngine.Vector3(0, 0, 0);
-            GameObject headObject = FindHeadObject();
-            foundHead = headObject != null;
-            if (TryGetAvatarDescriptorPosition(out headPosition))
-            {
-                // good, it's assigned
-            }
-            else
-            {
-                if (headObject != null)
-                {
-                    headPosition = headObject.transform.position;
-                }
-            }
-            if (headObject != null)
+            if (ResoniteTransferUtils.TryGetHeadPosition(parentObject, out foundHead, out Vector3 headPosition, out GameObject headObject))
             {
                 return CaptureFromPosition(
                     headPosition,
-                    headObject.transform.rotation,
-                    headObject.transform.lossyScale, 
+                    headObject == null ? Quaternion.identity : headObject.transform.rotation,
+                    headObject == null ? new UnityEngine.Vector3(1,1,1) : headObject.transform.lossyScale, 
                     nearClip,
                     width, height);
             }
@@ -414,22 +273,24 @@ namespace ResoniteUnityExporter {
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
             transferManager.RegisterConverter<MeshRenderer>(MeshRendererConverter.ConvertMeshRenderer);
             // convert the avatar (when sending avatar), this does stuff like IK and avatar importer
+#if RUE_HAS_VRCSDK
             transferManager.RegisterConverter<PipelineManager>(PipelineManagerConverter.ConvertPipelineManager);
             // dynamic bone chains and dynamic bone colliders
             transferManager.RegisterConverter<VRCPhysBoneCollider>(PhysBoneColliderConverter.ConvertPhysBoneCollider);
             transferManager.RegisterConverter<VRCPhysBone>(PhysBoneConverter.ConvertPhysBone);
             // constraints
             transferManager.RegisterConverter<VRCPositionConstraint>(ConstraintConverter.ConvertVRCPositionConstraint);
-            transferManager.RegisterConverter<PositionConstraint>(ConstraintConverter.ConvertPositionConstraint);
             transferManager.RegisterConverter<VRCRotationConstraint>(ConstraintConverter.ConvertVRCRotationConstraint);
-            transferManager.RegisterConverter<RotationConstraint>(ConstraintConverter.ConvertRotationConstraint);
             transferManager.RegisterConverter<VRCScaleConstraint>(ConstraintConverter.ConvertVRCScaleConstraint);
-            transferManager.RegisterConverter<ScaleConstraint>(ConstraintConverter.ConvertScaleConstraint);
             transferManager.RegisterConverter<VRCLookAtConstraint>(ConstraintConverter.ConvertVRCLookAtConstraint);
-            transferManager.RegisterConverter<LookAtConstraint>(ConstraintConverter.ConvertLookAtConstraint);
             transferManager.RegisterConverter<VRCParentConstraint>(ConstraintConverter.ConvertVRCParentConstraint);
-            transferManager.RegisterConverter<ParentConstraint>(ConstraintConverter.ConvertParentConstraint);
             transferManager.RegisterConverter<VRCAimConstraint>(ConstraintConverter.ConvertVRCAimConstraint);
+#endif
+            transferManager.RegisterConverter<PositionConstraint>(ConstraintConverter.ConvertPositionConstraint);
+            transferManager.RegisterConverter<RotationConstraint>(ConstraintConverter.ConvertRotationConstraint);
+            transferManager.RegisterConverter<ScaleConstraint>(ConstraintConverter.ConvertScaleConstraint);
+            transferManager.RegisterConverter<LookAtConstraint>(ConstraintConverter.ConvertLookAtConstraint);
+            transferManager.RegisterConverter<ParentConstraint>(ConstraintConverter.ConvertParentConstraint);
             transferManager.RegisterConverter<AimConstraint>(ConstraintConverter.ConvertAimConstraint);
         }
 
@@ -599,7 +460,7 @@ namespace ResoniteUnityExporter {
         void DrawViewPreviewAndSubmit()
         {
             // include this in the submit page so they know to deal with it
-            if (IsAvatarsSDKAvailable())
+            if (sendingAvatar)
             {
                 DrawViewPreview();
             }
@@ -619,13 +480,19 @@ namespace ResoniteUnityExporter {
 
             bool ready = bridgeClient.NumActiveConnections() > 0;
 
-            EditorGUI.BeginDisabledGroup(!ready || (debugCoroutine && CoroutinesInProgress.Count != 0) || !serverInfo.allowedToCreateInWorld);
+            EditorGUI.BeginDisabledGroup(!ready || (debugCoroutine && CoroutinesInProgress.Count != 0) || !serverInfo.allowedToCreateInWorld || !multipleAvatarsSelected || (!Application.isPlaying));
 
-            if (GUILayout.Button("Export to Resonite"))
+            string exportLabel = "Export to Resonite";
+            if (!Application.isPlaying)
+            {
+                exportLabel += " (please press play)";
+            }
+
+            if (GUILayout.Button(exportLabel))
             {
                 if (exportSlotName == null || exportSlotName == "")
                 {
-                    exportSlotName = "Untitled"; // BLAH
+                    exportSlotName = "Untitled";
                 }
                 ResoniteTransferManager transferManager = new ResoniteTransferManager();
                 RegisterConverters(transferManager);
@@ -808,6 +675,8 @@ namespace ResoniteUnityExporter {
             EditorGUILayout.EndScrollView();
         }
 
+        bool multipleAvatarsSelected = false;
+
         void OnGUI()
         {
             if (bridgeClient == null)
@@ -820,32 +689,65 @@ namespace ResoniteUnityExporter {
 
             }
 
-            PipelineManager curPipeline = GameObject.FindAnyObjectByType<PipelineManager>();
+#if RUE_HAS_VRCSDK
+            UnityEngine.Object[] curPipelines = GameObject.FindObjectsOfType<VRC.Core.PipelineManager>();
             // autodetect pipeline and set name, this happens when scene load
-            if (rootPipelineManager != curPipeline)
+            if (curPipelines.Length == 1)
             {
-                rootPipelineManager = curPipeline;
-                if (rootPipelineManager != null)
+                if (rootPipelineManager != curPipelines[0])
                 {
-                    exportSlotName = rootPipelineManager.name;
+                    rootPipelineManager = curPipelines[0];
+                    if (rootPipelineManager != null)
+                    {
+                        exportSlotName = rootPipelineManager.name;
+                    }
                 }
             }
+            else
+            {
+                rootPipelineManager = null;
+            }
+#endif
 
             DrawTitle();
 
             DrawConnectedStatus();
             
             exportSlotName = EditorGUILayout.TextField("Avatar/World Name", exportSlotName);
+            EditorGUILayout.BeginHorizontal();
             parentObject = (Transform)EditorGUILayout.ObjectField(
                 new GUIContent("Select the object to export", "Select the object to export"),
                 parentObject,
                 typeof(Transform),
                 true
             );
+            if (GUILayout.Button("Export whole scene"))
+            {
+                parentObject = null;
+            }
+            EditorGUILayout.EndHorizontal();
             string labelText = parentObject == null ? "No object selected, sending all objects in scene" : "Sending object " + parentObject.name;
+            if (ResoniteTransferUtils.GetAvatarDescriptors(parentObject).Length > 1 && sendingAvatar)
+            {
+                GUI.color = Color.red;
+                labelText = "More than one avatar in " + (parentObject == null ? "scene" : "selected hierarchy or children") + " please select only one";
+                multipleAvatarsSelected = true;
+            }
             GUILayout.Label(labelText);
+            GUI.color = Color.white;
+            bool prevSendingAvatar = EditorPrefs.GetBool("R2USendingAvatar", sendingAvatar);
+            sendingAvatar = prevSendingAvatar;
             sendingAvatar = EditorGUILayout.ToggleLeft("Sending Avatar", sendingAvatar);
             sendingAvatar = !EditorGUILayout.ToggleLeft("Sending World", !sendingAvatar);
+            if (sendingAvatar != prevSendingAvatar)
+            {
+                EditorPrefs.SetBool("R2USendingAvatar", sendingAvatar);
+            }
+
+            if (sendingAvatar && parentObject == null && ResoniteTransferUtils.GetAvatarDescriptors(parentObject).Length == 1)
+            {
+                parentObject = ResoniteTransferUtils.GetAvatarDescriptors(parentObject)[0].transform;
+            } // bees wow
 
             const string SUBMIT_TITLE = "Transfer";
             const string SETTINGS_TITLE = "Settings";

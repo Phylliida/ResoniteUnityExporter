@@ -11,7 +11,7 @@ using VRC.Dynamics;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using static VRC.Dynamics.PhysBoneManager;
 
-namespace ResoniteTransfer.Converters
+namespace ResoniteUnityExporter.Converters
 {
     public class PhysBoneConverter
     {

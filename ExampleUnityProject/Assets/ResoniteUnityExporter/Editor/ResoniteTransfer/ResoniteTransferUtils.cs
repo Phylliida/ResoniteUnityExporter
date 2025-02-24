@@ -4,14 +4,153 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using VRC.SDK3.Avatars.Components;
 
 namespace ResoniteUnityExporter
 {
+
+    public static class LinqExtraExtensions
+    {
+        public static IEnumerable<TSource> Unique<TSource, TKey>(this IEnumerable<TSource> arr, Func<TSource, TKey> keyFunc)
+        {
+            HashSet<TKey> keys = new HashSet<TKey>();
+
+            return arr.Where(value =>
+            {
+                TKey key = keyFunc(value);
+                if (keys.Contains(key))
+                {
+                    return false;
+                }
+                else
+                {
+                    keys.Add(key);
+                    return true;
+                }
+            });
+        }
+    }
+
     public class ResoniteTransferUtils
     {
+        public static bool TryGetHeadPosition(Transform parentObject, out bool foundHead, out UnityEngine.Vector3 headPosition, out GameObject headObject)
+        {
+            headPosition = new UnityEngine.Vector3(0, 0, 0);
+            headObject = FindHeadObject(parentObject);
+            foundHead = headObject != null;
+            if (TryGetAvatarDescriptorPosition(parentObject, out headPosition))
+            {
+                return true;
+                // good, it's assigned
+            }
+            else
+            {
+                if (headObject != null)
+                {
+                    headPosition = headObject.transform.position;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static GameObject[] FindObjectsWithName(GameObject parent, string searchTerm)
+        {
+            if (parent == null)
+            {
+                List<GameObject> results = new List<GameObject>();
+                foreach (GameObject rootObject in UnityEngine.SceneManagement.SceneManager.GetActiveScene()
+                    .GetRootGameObjects())
+                {
+                    results.AddRange(FindObjectsWithName(rootObject, searchTerm));
+                }
+                return results.ToArray();
+            }
+            else
+            {
+                List<GameObject> results = new List<GameObject>();
+                if (parent.name.ToLower().Contains(searchTerm))
+                {
+                    results.Add(parent);
+                }
+                Transform[] children = parent.GetComponentsInChildren<Transform>(true); // true includes inactive objects
+                foreach (Transform child in children)
+                {
+                    if (child.gameObject.name.ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        results.Add(child.gameObject);
+                    }
+                }
+                return results.ToArray();
+            }
+        }
+
+        public static GameObject FindHeadObject(Transform parentObject)
+        {
+            GameObject targetObject =
+                parentObject != null
+                ? parentObject.gameObject
+                : null;
+            GameObject[] heads = FindObjectsWithName(targetObject, "head");
+            if (heads.Length == 0)
+            {
+                return null;
+            }
+            // if multiple heads, look for head that has neck above it
+            GameObject head = heads[0];
+            if (heads.Length > 0)
+            {
+                head = heads
+                    .Where(g => g.transform.parent.name.ToLower().Contains("neck"))
+                    .FirstOrDefault();
+                if (head == null) // if none have neck just take first
+                {
+                    head = heads[0];
+                }
+            }
+            return head;
+        }
+
+
+        public static bool IsAvatarsSDKAvailable()
+        {
+#if RUE_HAS_AVATAR_VRCSDK
+            return true;
+#else
+			return false;
+#endif
+        }
+
+
+        public static Component[] GetAvatarDescriptors(Transform parentObject)
+        {
+#if RUE_HAS_AVATAR_VRCSDK
+            GameObject[] gameObjects = (parentObject == null)
+             ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
+             // otherwise, just do the given object as root
+             : new GameObject[] { parentObject.gameObject };
+            return gameObjects.SelectMany(go => go.GetComponentsInChildren<VRCAvatarDescriptor>()).ToArray();
+#else
+            return new Component[] { };
+#endif
+        }
+
+        public static bool TryGetAvatarDescriptorPosition(Transform parentObject, out UnityEngine.Vector3 pos)
+        {
+#if RUE_HAS_AVATAR_VRCSDK
+            foreach (Component avatarDescriptor in GetAvatarDescriptors(parentObject))
+            {
+                pos = (UnityEngine.Vector3)avatarDescriptor
+                    .GetType()
+                    .GetField("ViewPosition")
+                    .GetValue(avatarDescriptor);
+                return true;
+            }
+#endif
+            pos = UnityEngine.Vector3.zero;
+            return false;
+        }
 
         public class Timer : IDisposable
         {

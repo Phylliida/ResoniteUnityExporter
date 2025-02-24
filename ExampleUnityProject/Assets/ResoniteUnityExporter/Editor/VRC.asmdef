@@ -1,0 +1,36 @@
+{
+  "name": "ResoniteUnityExporter.Editor",
+  "rootNamespace": "global::ResoniteUnityExporter",
+  "references": [
+    "VRC.Core",
+    "VRC.SDK3.Avatars",
+    "nadena.dev.ndmf"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [
+    {
+      "name": "com.vrchat.base",
+      "expression": "",
+      "define": "RUE_HAS_VRCSDK"
+    },
+    {
+      "name": "com.vrchat.avatars",
+      "expression": "",
+      "define": "RUE_HAS_AVATAR_VRCSDK"
+    },
+    {
+      "name": "nadena.dev.ndmf",
+      "expression": "",
+      "define": "RUE_HAS_NDMF"
+    }
+  ],
+  "noEngineReferences": false
+}
