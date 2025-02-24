@@ -18,7 +18,10 @@ namespace ResoniteUnityExporter.Converters
         {
             string[] boneNames = renderer.bones == null ?
                 new string[] { } :
-                renderer.bones.Select(x => x.name).ToArray();
+                renderer.bones
+                    .Where(x => x != null && x.name != null)
+                    .Select(x => x.name)
+                    .ToArray();
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
             yield return null;
             RefID_U2Res meshRefId = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames);
