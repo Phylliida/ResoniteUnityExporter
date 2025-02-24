@@ -8,6 +8,8 @@ using System.Linq;
 using ResoniteUnityExporterShared;
 using UnityEngine.Animations;
 using UnityEditor.Graphs;
+using VRC.SDK3.Avatars.Components;
+
 
 #if RUE_HAS_AVATAR_VRCSDK
 using VRC.Core;
@@ -435,11 +437,17 @@ namespace ResoniteUnityExporter {
             EditorGUI.EndDisabledGroup();
         }
 
+
+        Vector3 prevHeadPos = Vector3.zero;
         void DrawViewPreview()
         {
             EditorGUI.BeginDisabledGroup(!sendingAvatar);
+
+            ResoniteTransferUtils.TryGetHeadPosition(parentObject, out foundHead, out Vector3 headPosition, out GameObject headObject);
+
             if (prevNearClip != nearClip || headViewTex == null
-                || (!foundHead && sendingAvatar)) // this is incase they modify hierarchy to have a head
+                || (!foundHead && sendingAvatar) // this is incase they modify hierarchy to have a head
+                || (headPosition != prevHeadPos)) // this is if they change the head pos value
             {
                 headViewTex = CaptureViewFromHead(256, 128, nearClip, out foundHead);
                 prevNearClip = nearClip;
@@ -480,12 +488,34 @@ namespace ResoniteUnityExporter {
 
             bool ready = bridgeClient.NumActiveConnections() > 0;
 
-            EditorGUI.BeginDisabledGroup(!ready || (debugCoroutine && CoroutinesInProgress.Count != 0) || !serverInfo.allowedToCreateInWorld || !multipleAvatarsSelected || (!Application.isPlaying));
+            bool hasAvatarDescriptor = true;
+
+#if RUE_HAS_AVATAR_VRCSDK
+            if (parentObject == null)
+            {
+                hasAvatarDescriptor = false;
+            }
+            else
+            {
+                hasAvatarDescriptor = parentObject?.GetComponent<VRCAvatarDescriptor>() != null;
+            }
+#endif
+
+            EditorGUI.BeginDisabledGroup(!ready || 
+                (debugCoroutine && CoroutinesInProgress.Count != 0) || 
+                !serverInfo.allowedToCreateInWorld 
+                || multipleAvatarsSelected 
+                || (!Application.isPlaying)
+                || !hasAvatarDescriptor);
 
             string exportLabel = "Export to Resonite";
             if (!Application.isPlaying)
             {
                 exportLabel += " (please press play)";
+            }
+            if (!hasAvatarDescriptor)
+            {
+                exportLabel += " (please attach a VRCAvatarDescriptor to root object)";
             }
 
             if (GUILayout.Button(exportLabel))
@@ -732,6 +762,10 @@ namespace ResoniteUnityExporter {
                 GUI.color = Color.red;
                 labelText = "More than one avatar in " + (parentObject == null ? "scene" : "selected hierarchy or children") + " please select only one";
                 multipleAvatarsSelected = true;
+            }
+            else
+            {
+                multipleAvatarsSelected = false;
             }
             GUILayout.Label(labelText);
             GUI.color = Color.white;

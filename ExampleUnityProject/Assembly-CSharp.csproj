@@ -1086,10 +1086,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nadena.dev.ndmf.vrchat">
-      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.vrchat.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
       <Private>False</Private>
@@ -1204,6 +1200,10 @@
     </Reference>
     <Reference Include="UniTask.Addressables">
       <HintPath>Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nadena.dev.ndmf.vrchat">
+      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.vrchat.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">

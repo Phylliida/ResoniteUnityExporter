@@ -45,7 +45,6 @@ namespace ResoniteUnityExporter
         }
         public static ResoniteUnityExporterShared.StaticMesh_U2Res ConvertMesh(UnityEngine.Mesh unityMesh, string[] boneNames, float scaleFactor)
         {
-            Debug.Log("Starting export mesh");
             // todo: provide option to ignore bones and ignore vertex colors
             StaticMesh_U2Res meshx = new StaticMesh_U2Res();
             meshx.name = unityMesh.name;
@@ -90,7 +89,6 @@ namespace ResoniteUnityExporter
                     meshx.tangents = tangents;
                 }
             }
-            Debug.Log("Loaded mesh vertex data");
 
             // uvs are stored as UV_Array[] uv_channels
             // where uv_channels[0] is for UV0 array, uv_channels[1] is for UV1 array, etc.
@@ -131,7 +129,6 @@ namespace ResoniteUnityExporter
                 }
                 meshx.uvChannels = allUvs;
             }
-            Debug.Log("Loaded mesh uv channels");
 
             using (Timer _ = new Timer("Submesh data"))
             {
@@ -290,7 +287,6 @@ namespace ResoniteUnityExporter
                 }
                 meshx.blendShapes = blendShapes;
             }
-            Debug.Log("Loaded mesh index buffers");
 
             // todo: they have some normal flipping thing if normals are wrong, do we need that?
 
@@ -353,7 +349,6 @@ namespace ResoniteUnityExporter
                     //meshx.FillInEmptyBindings(0);
                 }
             }
-            Debug.Log("Finished, sending mesh data");
 
             return meshx;
         }

@@ -53,6 +53,7 @@ namespace ResoniteUnityExporter
             this.rootTransform = rootTransform;
 
 
+            bool duplicated = false;
             bool ranPreprocess = false;
             // need to run VRChat initializer
 #if RUE_HAS_VRCSDK
@@ -60,6 +61,8 @@ namespace ResoniteUnityExporter
             {
                 // duplicate it
                 rootTransform = UnityEngine.Object.Instantiate(rootTransform);
+                duplicated = true;
+                this.rootTransform = rootTransform;
                 ranPreprocess = true;
                 VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessAvatar(rootTransform.gameObject);
 #if RUE_HAS_NDMF
@@ -120,30 +123,29 @@ namespace ResoniteUnityExporter
             {
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
                 ResoniteUnityExporterEditorWindow.DebugProgressString = "Making Resonite Package";
-                string packagePath = null;
-
-                while (String.IsNullOrEmpty(packagePath))
-                {
-                    packagePath = EditorUtility.SaveFilePanel(
+                string packagePath = EditorUtility.SaveFilePanel(
                         "Select path to save .resonitepackage",
                         Application.dataPath,
                         hierarchyName,    // default filename
                         "resonitepackage"             // file extension
                     );
+
+                if (!String.IsNullOrEmpty(packagePath))
+                {
+                    PackageInfo_U2Res packageInfo = new PackageInfo_U2Res()
+                    {
+                        includeVariants = settings.includeAssetVariantsInPackage,
+                        mainParentSlot = hierarchy.mainParentSlot,
+                        packagePath = packagePath,
+                    };
+                    OutputHolder<object> output = new OutputHolder<object>();
+                    var en = hierarchy.Call<bool, PackageInfo_U2Res>("MakePackage", packageInfo, output);
+                    while (en.MoveNext())
+                    {
+                        yield return null;
+                    }
                 }
 
-                PackageInfo_U2Res packageInfo = new PackageInfo_U2Res()
-                {
-                    includeVariants = settings.includeAssetVariantsInPackage,
-                    mainParentSlot = hierarchy.mainParentSlot,
-                    packagePath = packagePath,
-                };
-                OutputHolder<object> output = new OutputHolder<object>();
-                var en = hierarchy.Call<bool, PackageInfo_U2Res>("MakePackage", packageInfo, output);
-                while (en.MoveNext())
-                {
-                    yield return null;
-                }
             }
 #if RUE_HAS_VRCSDK
             if (ranPreprocess)
@@ -159,6 +161,10 @@ namespace ResoniteUnityExporter
                 {
 
                     VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                }
+                if (this.rootTransform != null && duplicated)
+                {
+                    GameObject.Destroy(this.rootTransform.gameObject);
                 }
             }
 #endif

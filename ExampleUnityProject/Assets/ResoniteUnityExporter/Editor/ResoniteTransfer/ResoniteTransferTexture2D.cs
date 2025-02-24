@@ -89,7 +89,6 @@ namespace ResoniteUnityExporter
                     throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
                 }
                 RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
-                Debug.Log("Got refid for Texture2D of " + staticMeshRefId.id);
                 return staticMeshRefId;
             }
         }

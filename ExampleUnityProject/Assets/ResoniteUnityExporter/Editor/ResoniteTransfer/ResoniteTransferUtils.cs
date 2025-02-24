@@ -130,7 +130,8 @@ namespace ResoniteUnityExporter
              ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects()
              // otherwise, just do the given object as root
              : new GameObject[] { parentObject.gameObject };
-            return gameObjects.SelectMany(go => go.GetComponentsInChildren<VRCAvatarDescriptor>()).ToArray();
+            var res = gameObjects.SelectMany(go => go.GetComponents(typeof(VRCAvatarDescriptor))).ToArray();
+            return res;
 #else
             return new Component[] { };
 #endif
@@ -138,13 +139,14 @@ namespace ResoniteUnityExporter
 
         public static bool TryGetAvatarDescriptorPosition(Transform parentObject, out UnityEngine.Vector3 pos)
         {
+            Debug.Log("Try get avatar descriptor position with obj " + parentObject);
 #if RUE_HAS_AVATAR_VRCSDK
-            foreach (Component avatarDescriptor in GetAvatarDescriptors(parentObject))
+            foreach (Component avatarDescriptorComp in GetAvatarDescriptors(parentObject))
             {
-                pos = (UnityEngine.Vector3)avatarDescriptor
-                    .GetType()
-                    .GetField("ViewPosition")
-                    .GetValue(avatarDescriptor);
+                Debug.Log("Got descriptor");
+                VRCAvatarDescriptor avatarDescriptor = (VRCAvatarDescriptor)avatarDescriptorComp;
+                pos = avatarDescriptor.ViewPosition;
+                Debug.Log("Got view pos: " + pos);
                 return true;
             }
 #endif
@@ -165,7 +167,6 @@ namespace ResoniteUnityExporter
             public void Dispose()
             {
                 long elapsedMillis = System.Diagnostics.Stopwatch.GetTimestamp() - startMillis;
-                Debug.Log(name + " elapsed " + elapsedMillis / 1000.0f);
             }
         }
 
