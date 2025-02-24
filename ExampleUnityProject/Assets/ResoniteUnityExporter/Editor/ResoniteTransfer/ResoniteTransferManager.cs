@@ -71,8 +71,9 @@ namespace ResoniteUnityExporter
             }
             else if(!settings.makeAvatar)
             {
-                VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
-                ranPreprocess = true;
+                // don't do this
+                //VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                //ranPreprocess = true;
             }
 #endif
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
@@ -164,7 +165,7 @@ namespace ResoniteUnityExporter
                 }
                 if (this.rootTransform != null && duplicated)
                 {
-                    GameObject.Destroy(this.rootTransform.gameObject);
+                    GameObject.DestroyImmediate(this.rootTransform.gameObject);
                 }
             }
 #endif
@@ -233,7 +234,6 @@ namespace ResoniteUnityExporter
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
                 ResoniteUnityExporterEditorWindow.DebugProgressString = "Converting component: " + component.GetType() + " on object " + component.gameObject.name;
                 yield return null;
-                Debug.Log("Processing component: " + component);
 
                 MethodInfo convertMethod = null;
                 if (!methodCache.TryGetValue(component.GetType(), out convertMethod))

@@ -24,7 +24,6 @@ namespace ResoniteUnityExporter.Converters
             // not sending avatar, bail
             if (settings.makeAvatar)
             {
-                Debug.Log("converting avatar...");
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
                 // fetch all SkinnedMeshRenderer and MeshRenderer ref ids
                 OutputHolder<object[]> refIdsSkinned = new OutputHolder<object[]>();
@@ -41,7 +40,6 @@ namespace ResoniteUnityExporter.Converters
                 }
                 List<object> refIds = new List<object>(refIdsSkinned.value);
                 refIds.AddRange(refIdsUnskinned.value);
-                Debug.Log("converting avatar (fetched meshes)");
 
                 RefID_U2Res[] rendererRefIds = refIds
                     .Where(x => x != null)
@@ -92,7 +90,6 @@ namespace ResoniteUnityExporter.Converters
                 {
                     yield return null;
                 }
-                Debug.Log("converted avatar");
                 yield return null;              
             }
         }

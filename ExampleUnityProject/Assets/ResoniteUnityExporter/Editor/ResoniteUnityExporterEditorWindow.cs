@@ -491,13 +491,16 @@ namespace ResoniteUnityExporter {
             bool hasAvatarDescriptor = true;
 
 #if RUE_HAS_AVATAR_VRCSDK
-            if (parentObject == null)
+            if (sendingAvatar)
             {
-                hasAvatarDescriptor = false;
-            }
-            else
-            {
-                hasAvatarDescriptor = parentObject?.GetComponent<VRCAvatarDescriptor>() != null;
+                if (parentObject == null)
+                {
+                    hasAvatarDescriptor = false;
+                }
+                else
+                {
+                    hasAvatarDescriptor = parentObject?.GetComponent<VRCAvatarDescriptor>() != null;
+                }
             }
 #endif
 
@@ -505,13 +508,13 @@ namespace ResoniteUnityExporter {
                 (debugCoroutine && CoroutinesInProgress.Count != 0) || 
                 !serverInfo.allowedToCreateInWorld 
                 || multipleAvatarsSelected 
-                || (!Application.isPlaying)
+                || Application.isPlaying
                 || !hasAvatarDescriptor);
 
             string exportLabel = "Export to Resonite";
-            if (!Application.isPlaying)
+            if (Application.isPlaying)
             {
-                exportLabel += " (please press play)";
+                exportLabel += " (only works when not in play mode)";
             }
             if (!hasAvatarDescriptor)
             {

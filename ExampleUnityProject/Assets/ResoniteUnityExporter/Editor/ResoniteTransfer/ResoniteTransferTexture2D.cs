@@ -35,7 +35,6 @@ namespace ResoniteUnityExporter
         public static Texture2D_U2Res ConvertTexture(UnityEngine.Texture2D texture)
         {
             string path = Path.GetFullPath(AssetDatabase.GetAssetPath(texture));
-            Debug.Log("Got texture path:" + path);
 
             // if the texture exists in the file systefm (isn't some procedural thing), use that
             if (path != null && File.Exists(path))

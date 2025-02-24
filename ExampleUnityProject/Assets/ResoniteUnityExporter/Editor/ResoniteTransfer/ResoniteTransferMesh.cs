@@ -105,7 +105,6 @@ namespace ResoniteUnityExporter
                     int uvIndex = actualTexCoordIndices[i];
                     UVArray_U2Res uvArrayI = new UVArray_U2Res();
                     int curDimension = uvDimensions[i];
-                    Debug.Log("UV with index " + uvIndex + " and dimension " + curDimension);
                     if (curDimension == 2)
                     {
                         List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
@@ -383,7 +382,6 @@ namespace ResoniteUnityExporter
                     throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
                 }
                 RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
-                Debug.Log("Got refid for static mesh of " + staticMeshRefId.id);
                 return staticMeshRefId;
             }
         }
