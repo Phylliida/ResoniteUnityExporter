@@ -13,6 +13,20 @@ namespace ImportFromUnityLib
 {
     public class ImportMaterial
     {
+        static bool TryGetMaterialFloat(Material_U2Res material, string fieldName, out float value)
+        {
+            value = default(float);
+            for (int i = 0; i < material.floatNames.Length; i++)
+            {
+                if (material.floatNames[i] == fieldName)
+                {
+                    value = material.floatValues[i];
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static bool TryGetMaterialTextureTransform(Material_U2Res material, string fieldName, out float2 offset, out float2 scale)
         {
             offset = new float2(0, 0);
@@ -105,6 +119,32 @@ namespace ImportFromUnityLib
             RefID_U2Res detailNormalMapTexRefID = new RefID_U2Res();
             float2 detailNormalMapTexOffset = new float2(0, 0);
             float2 detailNormalMapTexScale = new float2(1, 1);
+
+
+            float renderingMode = 0.0f;
+
+            if (TryGetMaterialFloat(materialData, "_Mode", out renderingMode))
+            {
+
+            }
+            renderingMode = (float)Math.Round(renderingMode);
+            BlendMode blendMode = BlendMode.Opaque;
+            if (renderingMode == 0.0)
+            {
+                blendMode = BlendMode.Opaque;
+            }
+            else if (renderingMode == 1.0)
+            {
+                blendMode = BlendMode.Cutout;
+            }
+            else if (renderingMode == 2.0)
+            {
+                blendMode = BlendMode.Alpha;
+            }
+            else if (renderingMode == 3.0)
+            {
+                blendMode = BlendMode.Transparent;
+            }
 
             // _Color,
             if (TryGetMaterialFloat4(materialData, "_Color", out Float4_U2Res color))
@@ -211,6 +251,7 @@ namespace ImportFromUnityLib
             if (materialData.materialName == MaterialNames_U2Res.XIEXE_TOON_MAT)
             {
                 FrooxEngine.XiexeToonMaterial mat = assetsSlot.AttachComponent<FrooxEngine.XiexeToonMaterial>();
+                mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
                 {
@@ -253,6 +294,7 @@ namespace ImportFromUnityLib
             }
             else if (materialData.materialName == MaterialNames_U2Res.PBS_SPECULAR_MAT) {
                 FrooxEngine.PBS_Specular mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Specular>();
+                mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
                 {
@@ -308,6 +350,7 @@ namespace ImportFromUnityLib
             else if (materialData.materialName == MaterialNames_U2Res.PBS_METALLIC_MAT)
             {
                 FrooxEngine.PBS_Metallic mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Metallic>();
+                mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
                 {
@@ -363,6 +406,7 @@ namespace ImportFromUnityLib
             else if (materialData.materialName == MaterialNames_U2Res.UNLIT_MAT)
             {
                 FrooxEngine.UnlitMaterial mat = assetsSlot.AttachComponent<FrooxEngine.UnlitMaterial>();
+                mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
                 {

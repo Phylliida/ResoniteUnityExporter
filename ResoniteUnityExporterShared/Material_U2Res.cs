@@ -14,7 +14,6 @@ namespace ResoniteUnityExporterShared
     public class Material_U2Res
     {
         public RefID_U2Res rootAssetsSlot;
-        public string renderingMode;
         public string materialName;
 
         public string[] floatNames;
