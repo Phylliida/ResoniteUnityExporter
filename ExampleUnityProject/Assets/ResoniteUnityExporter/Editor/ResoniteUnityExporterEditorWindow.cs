@@ -414,7 +414,7 @@ namespace ResoniteUnityExporter {
                 setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
                 setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
                 EditorGUI.BeginDisabledGroup(!setupAvatarCreator);
-                finalizeAvatarCreator = EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Optional)", finalizeAvatarCreator && setupAvatarCreator);
+                finalizeAvatarCreator = EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Optional)", finalizeAvatarCreator && setupAvatarCreator && serverInfo.label != STANDALONE_LABEL);
                 EditorGUI.EndDisabledGroup();
             }
             EditorGUI.EndDisabledGroup();
