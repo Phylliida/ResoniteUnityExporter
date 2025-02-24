@@ -990,10 +990,6 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nadena.dev.ndmf.runtime">
-      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VRC.SDKBase.Editor.BuildPipeline">
       <HintPath>Library\ScriptAssemblies\VRC.SDKBase.Editor.BuildPipeline.dll</HintPath>
       <Private>False</Private>

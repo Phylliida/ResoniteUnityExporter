@@ -1050,10 +1050,6 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nadena.dev.ndmf">
-      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.XR.Management">
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
@@ -1126,10 +1122,6 @@
       <HintPath>Library\ScriptAssemblies\VRC.SDKBase.Editor.ShaderStripping.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nadena.dev.ndmf.runtime">
-      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VRC.SDKBase.Editor.BuildPipeline">
       <HintPath>Library\ScriptAssemblies\VRC.SDKBase.Editor.BuildPipeline.dll</HintPath>
       <Private>False</Private>
@@ -1200,10 +1192,6 @@
     </Reference>
     <Reference Include="UniTask.Addressables">
       <HintPath>Library\ScriptAssemblies\UniTask.Addressables.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nadena.dev.ndmf.vrchat">
-      <HintPath>Library\ScriptAssemblies\nadena.dev.ndmf.vrchat.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
