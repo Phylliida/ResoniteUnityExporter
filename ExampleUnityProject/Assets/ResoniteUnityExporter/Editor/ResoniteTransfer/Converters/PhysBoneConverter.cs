@@ -33,7 +33,7 @@ namespace ResoniteUnityExporter.Converters
             for (int i = 0; i < curChild.childCount; i++)
             {
                 float childWeight = 1.0f;
-                if (multiChildType == VRCPhysBoneBase.MultiChildType.First || multiChildType == VRCPhysBoneBase.MultiChildType.Ignore)
+                if (multiChildType == VRCPhysBoneBase.MultiChildType.First)
                 {
                     childWeight = 1.0f;
                 }
@@ -43,7 +43,7 @@ namespace ResoniteUnityExporter.Converters
                 }
                 GetBonesFromChildren(curChild.GetChild(i), bones, childWeight, depth + 1, multiChildType);
                 // don't do other children in these cases
-                if (multiChildType == VRCPhysBoneBase.MultiChildType.First || multiChildType == VRCPhysBoneBase.MultiChildType.Ignore)
+                if (multiChildType == VRCPhysBoneBase.MultiChildType.First)
                 {
                     break;
                 }
