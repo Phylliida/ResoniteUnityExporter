@@ -8,10 +8,12 @@ using System.Linq;
 using ResoniteUnityExporterShared;
 using UnityEngine.Animations;
 using UnityEditor.Graphs;
-using VRC.SDK3.Avatars.Components;
 
 
 #if RUE_HAS_AVATAR_VRCSDK
+using VRC.SDK3.Avatars.Components;
+#endif
+#if RUE_HAS_VRCSDK
 using VRC.Core;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.SDK3.Dynamics.Constraint.Components;

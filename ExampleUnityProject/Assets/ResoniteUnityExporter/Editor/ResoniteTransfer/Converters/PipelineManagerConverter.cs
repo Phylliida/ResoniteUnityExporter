@@ -9,9 +9,13 @@ using System.Threading.Tasks;
 using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using VRC.Core;
+#if RUE_HAS_AVATAR_VRCSDK
 using VRC.SDK3.Avatars.Components;
+#endif
+#if RUE_HAS_VRCSDK
+using VRC.Core;
 using VRC.Utility;
+#endif
 
 namespace ResoniteUnityExporter.Converters
 {

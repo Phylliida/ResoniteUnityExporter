@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+#if RUE_HAS_AVATAR_VRCSDK
 using VRC.SDK3.Avatars.Components;
+#endif
 
 namespace ResoniteUnityExporter
 {
