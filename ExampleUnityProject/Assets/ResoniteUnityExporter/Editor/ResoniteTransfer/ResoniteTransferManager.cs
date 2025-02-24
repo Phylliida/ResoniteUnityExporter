@@ -60,9 +60,11 @@ namespace ResoniteUnityExporter
             if (rootTransform != null && settings.makeAvatar && ResoniteTransferUtils.IsAvatarsSDKAvailable())
             {
                 // duplicate it
+                Transform prev = rootTransform;
                 rootTransform = UnityEngine.Object.Instantiate(rootTransform);
                 duplicated = true;
                 this.rootTransform = rootTransform;
+                rootTransform.name = prev.name;
                 ranPreprocess = true;
                 VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessAvatar(rootTransform.gameObject);
 #if RUE_HAS_NDMF
@@ -76,99 +78,106 @@ namespace ResoniteUnityExporter
                 //ranPreprocess = true;
             }
 #endif
-            ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
-            ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
-            yield return null;
-            hierarchy = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient);
-            yield return null;
-            methodCache = new Dictionary<Type, MethodInfo>();
-            convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
-            foreach (ObjectHolder obj in hierarchy.GetObjects())
+            try
             {
-                GameObject gameObject = obj.gameObject;
-                RefID_U2Res refID = obj.slotRefId;
-                foreach (UnityEngine.Component component in gameObject.GetComponents<UnityEngine.Component>())
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
+                yield return null;
+                hierarchy = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient);
+                yield return null;
+                methodCache = new Dictionary<Type, MethodInfo>();
+                convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
+                foreach (ObjectHolder obj in hierarchy.GetObjects())
                 {
-                    // sometimes it gives null components??
-                    if (component != null)
+                    GameObject gameObject = obj.gameObject;
+                    RefID_U2Res refID = obj.slotRefId;
+                    foreach (UnityEngine.Component component in gameObject.GetComponents<UnityEngine.Component>())
                     {
-                        // ignore transform
-                        if (component.GetType() != typeof(UnityEngine.Transform))
+                        // sometimes it gives null components??
+                        if (component != null)
                         {
-                            var en = LookupComponent(component, new OutputHolder<object>());
-                            while (en.MoveNext())
+                            // ignore transform
+                            if (component.GetType() != typeof(UnityEngine.Transform))
                             {
-                                yield return null;
+                                var en = LookupComponent(component, new OutputHolder<object>());
+                                while (en.MoveNext())
+                                {
+                                    yield return null;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            if (settings.pressCreateAvatar && settings.makeAvatar && settings.setupAvatarCreator)
-            {
-                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
-                ResoniteUnityExporterEditorWindow.DebugProgressString = "Finalizing Create Avatar";
-                FinalizeAvatarCreator_U2Res finalizeData = new FinalizeAvatarCreator_U2Res()
+                if (settings.pressCreateAvatar && settings.makeAvatar && settings.setupAvatarCreator)
                 {
-                    mainParentSlot = hierarchy.mainParentSlot
-                };
-                OutputHolder<object> output = new OutputHolder<object>();
-                var en = hierarchy.Call<bool, FinalizeAvatarCreator_U2Res>("FinalizeAvatarCreator", finalizeData, output);
-                while (en.MoveNext())
-                {
-                    yield return null;
-                }
-            }
-            if (settings.makePackage)
-            {
-                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
-                ResoniteUnityExporterEditorWindow.DebugProgressString = "Making Resonite Package";
-                string packagePath = EditorUtility.SaveFilePanel(
-                        "Select path to save .resonitepackage",
-                        Application.dataPath,
-                        hierarchyName,    // default filename
-                        "resonitepackage"             // file extension
-                    );
-
-                if (!String.IsNullOrEmpty(packagePath))
-                {
-                    PackageInfo_U2Res packageInfo = new PackageInfo_U2Res()
+                    ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                    ResoniteUnityExporterEditorWindow.DebugProgressString = "Finalizing Create Avatar";
+                    FinalizeAvatarCreator_U2Res finalizeData = new FinalizeAvatarCreator_U2Res()
                     {
-                        includeVariants = settings.includeAssetVariantsInPackage,
-                        mainParentSlot = hierarchy.mainParentSlot,
-                        packagePath = packagePath,
+                        mainParentSlot = hierarchy.mainParentSlot
                     };
                     OutputHolder<object> output = new OutputHolder<object>();
-                    var en = hierarchy.Call<bool, PackageInfo_U2Res>("MakePackage", packageInfo, output);
+                    var en = hierarchy.Call<bool, FinalizeAvatarCreator_U2Res>("FinalizeAvatarCreator", finalizeData, output);
                     while (en.MoveNext())
                     {
                         yield return null;
                     }
                 }
-
-            }
-#if RUE_HAS_VRCSDK
-            if (ranPreprocess)
-            {
-                if (settings.makeAvatar)
+                if (settings.makePackage)
                 {
-                    VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessAvatar();
+                    ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
+                    ResoniteUnityExporterEditorWindow.DebugProgressString = "Making Resonite Package";
+                    string packagePath = EditorUtility.SaveFilePanel(
+                            "Select path to save .resonitepackage",
+                            Application.dataPath,
+                            hierarchyName,    // default filename
+                            "resonitepackage"             // file extension
+                        );
+
+                    if (!String.IsNullOrEmpty(packagePath))
+                    {
+                        PackageInfo_U2Res packageInfo = new PackageInfo_U2Res()
+                        {
+                            includeVariants = settings.includeAssetVariantsInPackage,
+                            mainParentSlot = hierarchy.mainParentSlot,
+                            packagePath = packagePath,
+                        };
+                        OutputHolder<object> output = new OutputHolder<object>();
+                        var en = hierarchy.Call<bool, PackageInfo_U2Res>("MakePackage", packageInfo, output);
+                        while (en.MoveNext())
+                        {
+                            yield return null;
+                        }
+                    }
+
+                }
+            }
+            finally
+            {
+#if RUE_HAS_VRCSDK
+                if (ranPreprocess)
+                {
+                    if (settings.makeAvatar)
+                    {
+                        VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessAvatar();
 #if RUE_HAS_NDMF
                     nadena.dev.ndmf.AvatarProcessor.CleanTemporaryAssets();
 #endif
-                }
-                else
-                {
+                    }
+                    else
+                    {
 
-                    VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                        VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPostprocessScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                    }
+                    if (this.rootTransform != null && duplicated)
+                    {
+                        GameObject.DestroyImmediate(this.rootTransform.gameObject);
+                    }
                 }
-                if (this.rootTransform != null && duplicated)
-                {
-                    GameObject.DestroyImmediate(this.rootTransform.gameObject);
-                }
-            }
 #endif
+
+            }
         }
 
         public void RegisterConverter<T>(Func<T, GameObject, RefID_U2Res, HierarchyLookup, ResoniteTransferSettings, OutputHolder<object>, IEnumerator<object>> converter) where T : UnityEngine.Component
