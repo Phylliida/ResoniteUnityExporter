@@ -210,7 +210,6 @@ namespace ResoniteUnityExporter
 
             byte[] encoded = ResoniteBridgeUtils.EncodeObject(hierarchyData);
 
-            Debug.Log("Encoded:" + encoded.Length + " bytes");
 
             bridgeClient.SendMessageSync(
                 "ImportSlotHierarchy",

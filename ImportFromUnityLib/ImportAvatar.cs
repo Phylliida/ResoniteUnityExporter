@@ -17,6 +17,7 @@ using System.Reflection;
 using FrooxEngine.FinalIK;
 using FrooxEngine.CommonAvatar;
 using static FrooxEngine.CubemapCreator;
+using Newtonsoft.Json.Bson;
 
 namespace ImportFromUnityLib
 {
@@ -138,7 +139,7 @@ namespace ImportFromUnityLib
                     avatarData.generateSkeletonBoneVisuals);
 
                 BipedRig bipedRig = rig.Slot.GetComponent<BipedRig>();
-                if (avatarData.setupAvatarCreator)
+                if (avatarData.setupAvatarCreator && bipedRig != null)
                 {
                     Slot aviCreatorSlot = mainParentSlot.AddSlot("Avatar Creator");
                     AvatarCreator aviCreator = aviCreatorSlot.AttachComponent<AvatarCreator>();
@@ -217,6 +218,10 @@ namespace ImportFromUnityLib
                             rightHandRef.LocalRotation = prevRightHandRotation;
                         }
                     }
+                }
+                else if (avatarData.setupAvatarCreator && bipedRig == null)
+                {
+                    ImportFromUnityLib.DebugLog("Failed to detect humanoid rig, not setting up avatar creator");
                 }
             }
 

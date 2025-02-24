@@ -15,6 +15,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Reflection;
 using FrooxEngine.FinalIK;
+using Elements.Assets;
 
 namespace ImportFromUnityLib
 {
@@ -65,10 +66,22 @@ namespace ImportFromUnityLib
             }
             renderer.BoundsComputeMethod.Value = SkinnedBounds.Static;
 
+            // initialize blend shape weight list
+            // this would happen by default but waits until meshx is loaded which takes too long
+            // so we do it first
+            while (renderer.BlendShapeWeights.Count > skinnedMeshRendererData.blendShapeWeights.Length)
+            {
+                renderer.BlendShapeWeights.RemoveAt(renderer.BlendShapeWeights.Count - 1);
+            }
+
+            while (renderer.BlendShapeWeights.Count < skinnedMeshRendererData.blendShapeWeights.Length)
+            {
+                renderer.BlendShapeWeights.Add(0f);
+            }
             // copy over blend shape data
             for (int blendShapeI = 0; blendShapeI < skinnedMeshRendererData.blendShapeWeights.Length; blendShapeI++)
             {
-                renderer.SetBlendShapeWeight(blendShapeI, skinnedMeshRendererData.blendShapeWeights[blendShapeI]);
+                renderer.BlendShapeWeights[blendShapeI] = skinnedMeshRendererData.blendShapeWeights[blendShapeI];
             }
             
             // return refid of SkinnedMeshRenderer component
