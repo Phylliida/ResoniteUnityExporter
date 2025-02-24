@@ -15,13 +15,73 @@ namespace ResoniteUnityExporter.Converters
 {
     public class PhysBoneConverter
     {
+
+        public struct BoneInfo
+        {
+            public int boneChainIndex;
+            public float weight;
+            public Transform transform;
+        }
+        public static void GetBonesFromChildren(Transform curChild, List<BoneInfo> bones, float weight, int depth, VRCPhysBone.MultiChildType multiChildType)
+        {
+            bones.Add(new BoneInfo()
+            {
+                boneChainIndex = depth,
+                weight = weight,
+                transform = curChild,
+            });
+            for (int i = 0; i < curChild.childCount; i++)
+            {
+                float childWeight = 1.0f;
+                if (multiChildType == VRCPhysBoneBase.MultiChildType.First || multiChildType == VRCPhysBoneBase.MultiChildType.Ignore)
+                {
+                    childWeight = 1.0f;
+                }
+                else if(multiChildType == VRCPhysBoneBase.MultiChildType.Average)
+                {
+                    childWeight = 1.0f / curChild.childCount;
+                }
+                GetBonesFromChildren(curChild.GetChild(i), bones, childWeight, depth + 1, multiChildType);
+                // don't do other children in these cases
+                if (multiChildType == VRCPhysBoneBase.MultiChildType.First || multiChildType == VRCPhysBoneBase.MultiChildType.Ignore)
+                {
+                    break;
+                }
+            }
+        }
+
+        public static BoneInfo[] GetBones(VRCPhysBone physBone, GameObject obj, out int depth)
+        {
+            if (physBone.bones == null || physBone.bones.Count == 0)
+            {
+                List<BoneInfo> bones = new List<BoneInfo>();
+                // setup from children
+                GetBonesFromChildren(obj.transform, bones, 1.0f, 0, physBone.multiChildType);
+                depth = bones.Max(x => x.boneChainIndex)+1;
+                return bones.ToArray();
+            }
+            else
+            {
+                var bones = physBone.bones.Select(bone => new BoneInfo()
+                {
+                    boneChainIndex = bone.boneChainIndex,
+                    weight = 1.0f,
+                    transform = bone.transform,
+                }).ToArray();
+                depth = bones.Max(x => x.boneChainIndex) + 1;
+                return bones;
+            }
+        }
+
         public static IEnumerator<object> ConvertPhysBone(VRCPhysBone physBone, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
-            RefID_U2Res[] boneSlots = physBone.bones
+            // this will auto add children if empty (sometimes VRCPhysBones do that)
+            BoneInfo[] bones = GetBones(physBone, obj, out int depth);
+            RefID_U2Res[] boneSlots = bones
                 .Select(bone => hierarchy.LookupSlot(bone.transform))
                 .ToArray();
-            float divideBy = Math.Max(1, physBone.bones.Count-1);
-            float[] boneRadiusModifiers = physBone.bones
+            float divideBy = Math.Max(1, depth-1);
+            float[] boneRadiusModifiers = bones
                 .Select(bone => physBone.radiusCurve.Evaluate(
                     bone.boneChainIndex / divideBy))
             .ToArray();

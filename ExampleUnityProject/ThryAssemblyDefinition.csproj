@@ -23,11 +23,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_22;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;UNITY_POST_PROCESSING_STACK_V2;VRC_SDK_VRCSDK3;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION;SYSTEM_DRAWING</DefineConstants>
+    <DefineConstants>UNITY_2022_3_22;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_4_6;NET_UNITY_4_8;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;UNITY_POST_PROCESSING_STACK_V2;VRC_SDK_VRCSDK3;TPS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_EDITOR_ONLY_COMPILATION;SYSTEM_DRAWING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -60,128 +60,32 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\RemoteMessage.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Settings.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Presets.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\TexturePacker.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GradiantEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\FileHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalSceneTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ConditionalTranslationBlockListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\MultiSlider.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryRGBAPacker.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderPart.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\StringExtensions.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Helpbox.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\TextureArray.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThrySeperator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\TexturePackerConfig.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\CrossEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Debug\InspectorCapture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\TextureHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryRichLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\VectorLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ListTextureUsesPopup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DefineableCondition.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ShaderTranslator.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Unity.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ShaderOptimizer.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\UnitTests.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderTextureProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ExpressionParser.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\PropertyValueAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\MaterialHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\ColorHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryIntRange.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThryHeaderLabel.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Gradient.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ConditionalTranslationBlock.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderNameMatchedModificationsEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryShaderOptimizerLockButton.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslationsContainer.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorSectionListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\Helper.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helper.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\MaterialLinker.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryExternalTextureTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderSection.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Debug\MaterialToDebugString.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryFileBuilder.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GUILib.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DrawingData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector4Toggles.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorChanger.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Mediator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslatorEditor.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderTranslator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderHeader.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderNameMatchedModifications.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GradientEditor2.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\AvatarMaterialTranslator.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector2.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Curve.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorLocale.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\PropertyModificationListItem.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\UIElementsHelpers.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector31.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\PropertyOptions.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderHeaderProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryToggle.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderProperty.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\TranslatorPropertySearchPopup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\PropertyTranslation.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\VRCInterface.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\sRGBWarning.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\GUIHelper.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\HelperWeb.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryMultiFloats.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ModuleHandler.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Parser.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryToggleUI.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\Vector3.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\TrashHandler.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryWideEnum.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Decorators\ThryDecalPositioning.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\TextureData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\StylizedLargeTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\ShaderHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\ButtonData.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Config.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\SmallTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\ThryCustomGUI.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Locale.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\UploadAnchorOverrideSetter.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\Converter.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\MaterialCleaner.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\StringHelper.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\ShaderGroup.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\DefineableAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\LocalMessage.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\VectorToSliders.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DataStructs\Constants.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Helpers\PersistentData.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Shader Translator\ShaderModificationAction.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs\OtherShaderProperties.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Drawers\SimpleLargeTexture.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Localization.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalTool.cs" />
-    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\PasteSpecialPopup.cs" />
+    <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\EditorStructs.cs" />
     <Compile Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Styles.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorEditorStyles.uss" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\ChannelPreview.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslator.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorPropertySearchPopup.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorEditor.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslatorStyles.uss" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\DecalGizmos.shader" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\TexturePacker\ThryTexturePacker.compute" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\ModificationListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorConditionalListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\PrettyPrint.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Tests\ParserTests.txt" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\ShaderNameMatchedModificationsListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\AvatarMaterialTranslatorListItem.uxml" />
-    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\Resources\Shader Translator\TranslatorSectionListItem.uxml" />
+    <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryTexturePacker.compute" />
     <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Editor\ThryAssemblyDefinition.asmdef" />
   </ItemGroup>
   <ItemGroup>

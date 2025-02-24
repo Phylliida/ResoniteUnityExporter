@@ -1,0 +1,26 @@
+{
+    "name": "VRCFury",
+    "references": [
+        "VrcfEditorOnly"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "VRCSDKBase.dll",
+        "VRCSDK3A.dll",
+        "VRC.Dynamics.dll",
+        "VRC.SDK3.Dynamics.PhysBone.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.vrchat.base",
+            "expression": "3.1.12",
+            "define": "VRC_NEW_HOOK_API"
+        }
+    ],
+    "noEngineReferences": false
+}
