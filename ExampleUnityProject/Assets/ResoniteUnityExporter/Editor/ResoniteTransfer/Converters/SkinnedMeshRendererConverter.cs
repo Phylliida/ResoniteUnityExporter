@@ -16,15 +16,36 @@ namespace ResoniteUnityExporter.Converters
     {
         public static IEnumerator<object> ConvertSkinnedMeshRenderer(SkinnedMeshRenderer renderer, GameObject obj, RefID_U2Res objRefID, HierarchyLookup hierarchy, ResoniteTransferSettings settings, OutputHolder<object> output)
         {
+            Transform[] rendererBones = renderer.bones;
+            if (renderer.bones == null)
+            {
+                renderer.bones = new Transform[0];
+            }
+            int boneIndex = 0;
             // this is important to ignore null bones
-            Transform[] rendererBones = renderer.bones == null
-                ? new Transform[] { }
-                : renderer.bones
-                    .Where(x => x != null && x.name != null).ToArray();
+            string[] boneNames = new string[rendererBones.Length];
+            RefID_U2Res[] boneRefIDs = new RefID_U2Res[rendererBones.Length];
 
-            string[] boneNames = rendererBones
-                    .Select(x => x.name)
-                    .ToArray();
+            // handling for null bones, replace with bone at origin, they can fix it as needed
+            for (int boneI = 0; boneI < rendererBones.Length; boneI++)
+            {
+                Transform bone = rendererBones[boneI];
+                if (bone != null)
+                {
+                    boneNames[boneI] = bone.name;
+                    boneRefIDs[boneI] = hierarchy.LookupSlot(bone);
+                }
+                else
+                {
+                    // make a fake bone to fill in for null bone so the indices are correct
+                    boneNames[boneI] = SkinnedMeshRendererConstants.tempBonePrefix + boneI;
+                    boneRefIDs[boneI] = new RefID_U2Res()
+                    {
+                        id = 0
+                    };
+                }
+            }
+
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
             yield return null;
             RefID_U2Res meshRefId = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames);
@@ -42,15 +63,14 @@ namespace ResoniteUnityExporter.Converters
 
             foreach (Transform bone in rendererBones)
             {
-                if (!hierarchy.TryLookupSlot(bone.transform, out RefID_U2Res _))
+                if (bone != null)
                 {
-                    throw new ArgumentOutOfRangeException("Object " + bone.transform.name + " in bone hierarchy is not one of the transforms we are exporting, do you need to select a higher up object? (or null, for all objects)");
+                    if (!hierarchy.TryLookupSlot(bone.transform, out RefID_U2Res _))
+                    {
+                        throw new ArgumentOutOfRangeException("Object " + bone.transform.name + " in bone hierarchy is not one of the transforms we are exporting, do you need to select a higher up object? (or null, for all objects)");
+                    }
                 }
             }
-            RefID_U2Res[] boneRefIDs = rendererBones
-                .Select(bone => hierarchy.LookupSlot(bone.transform))
-                .Where(x => x.id != 0) // ignore null bones
-                .ToArray();
 
             SkinnedMeshRenderer_U2Res meshRendererData = new SkinnedMeshRenderer_U2Res()
             {

@@ -5,6 +5,11 @@ using System.Text;
 
 namespace ResoniteUnityExporterShared
 {
+    public static class SkinnedMeshRendererConstants
+    {
+        public static string tempBonePrefix = "_U2Rtempbone";
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct SkinnedMeshRenderer_U2Res
     {
