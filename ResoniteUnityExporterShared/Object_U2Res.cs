@@ -16,6 +16,7 @@ namespace ResoniteUnityExporterShared
         /// Name of slot, this doesn't have to be unique
         /// </summary>
         public string name;
+        public bool enabled;
         public Float3_U2Res localPosition;
         public Float4_U2Res localRotation;
         public Float3_U2Res localScale;

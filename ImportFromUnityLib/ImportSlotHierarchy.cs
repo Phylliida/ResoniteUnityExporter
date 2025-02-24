@@ -31,6 +31,7 @@ namespace ImportFromUnityLib
             addedSlot.LocalScale = new Elements.Core.float3(obj.localScale.x,
                             obj.localScale.y,
                             obj.localScale.z);
+            addedSlot.ActiveSelf = obj.enabled;
 
             ObjectLookup_U2Res lookup = new ObjectLookup_U2Res()
             {

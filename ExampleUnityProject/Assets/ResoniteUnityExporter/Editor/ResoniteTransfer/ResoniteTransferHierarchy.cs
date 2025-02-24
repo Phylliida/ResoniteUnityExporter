@@ -250,6 +250,7 @@ namespace ResoniteUnityExporter
                 uniqueId = obj.GetInstanceID().ToString(),
                 children = children,
                 name = obj.name,
+                enabled = obj.activeInHierarchy,
                 localPosition = new Float3_U2Res()
                 {
                     x = obj.transform.localPosition.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
