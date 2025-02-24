@@ -64,6 +64,12 @@ namespace ImportFromUnityLib
                 boneI += 1;
             }
             renderer.BoundsComputeMethod.Value = SkinnedBounds.Static;
+
+            // copy over blend shape data
+            for (int blendShapeI = 0; blendShapeI < skinnedMeshRendererData.blendShapeWeights.Length; blendShapeI++)
+            {
+                renderer.SetBlendShapeWeight(blendShapeI, skinnedMeshRendererData.blendShapeWeights[blendShapeI]);
+            }
             
             // return refid of SkinnedMeshRenderer component
             RefID_U2Res result = new RefID_U2Res()

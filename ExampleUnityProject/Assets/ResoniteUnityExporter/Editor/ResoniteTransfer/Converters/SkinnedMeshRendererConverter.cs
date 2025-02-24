@@ -72,12 +72,19 @@ namespace ResoniteUnityExporter.Converters
                 }
             }
 
+            float[] blendShapeWeights = new float[renderer.sharedMesh.blendShapeCount];
+            for (int blendShapeI = 0; blendShapeI < renderer.sharedMesh.blendShapeCount; blendShapeI++)
+            {
+                blendShapeWeights[blendShapeI] = renderer.GetBlendShapeWeight(blendShapeI);
+            }
+
             SkinnedMeshRenderer_U2Res meshRendererData = new SkinnedMeshRenderer_U2Res()
             {
                 targetSlot = objRefID,
                 staticMeshAsset = meshRefId,
                 bones = boneRefIDs,
                 materials = materialRefIds,
+                blendShapeWeights = blendShapeWeights,
             };
 
             yield return null;
