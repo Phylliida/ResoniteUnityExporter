@@ -1,16 +1,10 @@
-﻿using Elements.Assets;
-using FreeImageAPI;
+﻿using FreeImageAPI;
 using FrooxEngine;
 using FrooxEngine.Store;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -49,7 +43,7 @@ namespace ImportFromUnityLib
         {
             yield return Context.ToBackground();
             // load data from bytes
-            Texture2D_U2Res tex = ResoniteBridgeUtils.DecodeObject<Texture2D_U2Res>(texData);
+            Texture2D_U2Res tex = SerializationUtils.DecodeObject<Texture2D_U2Res>(texData);
             // load texture into localdb to get a url
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
@@ -80,7 +74,7 @@ namespace ImportFromUnityLib
             {
                 id = (ulong)tex2d.ReferenceID
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
         public static byte[] ImportTexture2DFunc(byte[] texData)

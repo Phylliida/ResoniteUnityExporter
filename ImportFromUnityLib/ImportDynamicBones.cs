@@ -1,12 +1,9 @@
 ﻿using Elements.Core;
 using FrooxEngine;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -35,7 +32,7 @@ namespace ImportFromUnityLib
         {
             yield return Context.ToBackground();
             // load data from bytes
-            DynamicBoneCollider_U2Res boneColliderData = ResoniteBridgeUtils.DecodeObject<DynamicBoneCollider_U2Res>(dynamicBonesColliderBytes);
+            DynamicBoneCollider_U2Res boneColliderData = SerializationUtils.DecodeObject<DynamicBoneCollider_U2Res>(dynamicBonesColliderBytes);
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneColliderData.targetSlot);
             // resonite only has spheres, no capsules :(
@@ -112,7 +109,7 @@ namespace ImportFromUnityLib
                 }
             }
             // return refid array since there could be multiple colliders
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(boneColliderRefIDs.ToArray());
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(boneColliderRefIDs.ToArray());
         }
 
         public static byte[] ImportDynamicBoneColliderFunc(byte[] dynamicBoneColliderData)
@@ -126,7 +123,7 @@ namespace ImportFromUnityLib
         {
             yield return Context.ToBackground();
             // load data from bytes
-            DynamicBoneChain_U2Res boneChainData = ResoniteBridgeUtils.DecodeObject<DynamicBoneChain_U2Res>(dynamicBoneChainBytes);
+            DynamicBoneChain_U2Res boneChainData = SerializationUtils.DecodeObject<DynamicBoneChain_U2Res>(dynamicBoneChainBytes);
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneChainData.targetSlot);
             // resonite only has spheres, no capsules :(
@@ -165,7 +162,7 @@ namespace ImportFromUnityLib
                 id = (ulong)boneChain.ReferenceID
             };
             // return refid array since there could be multiple colliders
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(boneChainRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(boneChainRefID);
         }
 
 

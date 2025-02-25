@@ -1,11 +1,7 @@
 ﻿using FrooxEngine;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -14,7 +10,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportPositionConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            PositionConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<PositionConstraint_U2Res>(constraintBytes);
+            PositionConstraint_U2Res constraintData = SerializationUtils.DecodeObject<PositionConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -24,7 +20,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportPositionConstraintFunc(byte[] constraintBytes)
@@ -37,7 +33,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportRotationConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            RotationConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<RotationConstraint_U2Res>(constraintBytes);
+            RotationConstraint_U2Res constraintData = SerializationUtils.DecodeObject<RotationConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -47,7 +43,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportRotationConstraintFunc(byte[] constraintBytes)
@@ -61,7 +57,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportScaleConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            ScaleConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<ScaleConstraint_U2Res>(constraintBytes);
+            ScaleConstraint_U2Res constraintData = SerializationUtils.DecodeObject<ScaleConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -71,7 +67,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportScaleConstraintFunc(byte[] constraintBytes)
@@ -85,7 +81,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportAimConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            AimConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<AimConstraint_U2Res>(constraintBytes);
+            AimConstraint_U2Res constraintData = SerializationUtils.DecodeObject<AimConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -95,7 +91,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportAimConstraintFunc(byte[] constraintBytes)
@@ -109,7 +105,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportParentConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            ParentConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<ParentConstraint_U2Res>(constraintBytes);
+            ParentConstraint_U2Res constraintData = SerializationUtils.DecodeObject<ParentConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -119,7 +115,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportParentConstraintFunc(byte[] constraintBytes)
@@ -133,7 +129,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportLookAtConstraintHelper(byte[] constraintBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            LookAtConstraint_U2Res constraintData = ResoniteBridgeUtils.DecodeObject<LookAtConstraint_U2Res>(constraintBytes);
+            LookAtConstraint_U2Res constraintData = SerializationUtils.DecodeObject<LookAtConstraint_U2Res>(constraintBytes);
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
@@ -143,7 +139,7 @@ namespace ImportFromUnityLib
             {
                 id = 0, // set this
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(outputRefID);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
 
         public static byte[] ImportLookAtConstraintFunc(byte[] constraintBytes)

@@ -16,9 +16,7 @@
 
 	
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
-    <PackageReference Include="ResoniteBridgeLib" Version="1.0.8" />
+    <PackageReference Include="ResoniteBridgeLib" Version="1.1.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,13 +1,9 @@
-﻿using Elements.Assets;
-using Elements.Core;
+﻿using Elements.Core;
 using FrooxEngine;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -76,7 +72,7 @@ namespace ImportFromUnityLib
         {
             // Load mesh data into a meshx
             yield return Context.ToBackground();
-            Material_U2Res materialData = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<Material_U2Res>(materialBytes);
+            Material_U2Res materialData = SerializationUtils.DecodeObject<Material_U2Res>(materialBytes);
             yield return Context.ToWorld();
             Slot assetsSlot = (Slot)ImportFromUnityUtils.LookupRefID(materialData.rootAssetsSlot);
 
@@ -464,7 +460,7 @@ namespace ImportFromUnityLib
             // _DetailMask_ST,_DetailMask_TexelSize,_DetailMask_HDR,
             // _ParallaxMap_ST,_ParallaxMap_TexelSize,_ParallaxMap_HDR,
             // return refid of StaticMesh component
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(matRefId);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(matRefId);
         }
 
         /// <summary>

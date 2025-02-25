@@ -1,23 +1,13 @@
-﻿using FrooxEngine.Store;
-using FrooxEngine;
-using ResoniteBridgeLib;
+﻿using FrooxEngine;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static FrooxEngine.DataFeedItemMappingManager;
 using Elements.Core;
-using Assimp;
-using static OfficialAssets.Graphics;
 using System.IO;
-using System.Xml.Linq;
 using System.Reflection;
-using FrooxEngine.FinalIK;
 using FrooxEngine.CommonAvatar;
-using static FrooxEngine.CubemapCreator;
-using Newtonsoft.Json.Bson;
+using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
 {
@@ -26,7 +16,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> ImportAvatarHelper(byte[] avatarBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToWorld();
-            Avatar_U2Res avatarData = ResoniteBridgeUtils.DecodeObject<Avatar_U2Res>(avatarBytes);
+            Avatar_U2Res avatarData = SerializationUtils.DecodeObject<Avatar_U2Res>(avatarBytes);
             List<Slot> allSlots = new List<Slot>();
             HashSet<RefID> bonesSet = new HashSet<RefID>();
             List<Slot> bones = new List<Slot>();
@@ -233,7 +223,7 @@ namespace ImportFromUnityLib
                 id = (ulong)sharedParent.ReferenceID
             };
             
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
         static float3[] relativeFingerPositionsRight = new float3[] {

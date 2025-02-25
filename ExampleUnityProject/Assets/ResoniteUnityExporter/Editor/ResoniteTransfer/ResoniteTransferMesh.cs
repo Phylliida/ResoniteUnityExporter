@@ -1,4 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace ResoniteUnityExporter
 
             using (Timer _ = new Timer("Mesh data"))
             {
-                vertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
+                vertices = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.vertices);
                 for (int i = 0; i < vertices.Length; i++)
                 {
                     vertices[i].x *= scaleFactor;
@@ -75,17 +76,17 @@ namespace ResoniteUnityExporter
                     // important to use .colors instead of .colors32 on the unityMesh
                     // because colors32 stores each r,g,b,a as a byte instead of a float
                     // so this conversion would not work without manually fixing
-                    meshx.colors = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
+                    meshx.colors = SerializationUtils.ConvertArray<Float4_U2Res, UnityEngine.Color>(unityMesh.colors);
                 }
 
                 if (NotEmpty(unityMesh.normals))
                 {
-                    normals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
+                    normals = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(unityMesh.normals);
                     meshx.normals = normals;
                 }
                 if (NotEmpty(unityMesh.tangents))
                 {
-                    tangents = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
+                    tangents = SerializationUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(unityMesh.tangents);
                     meshx.tangents = tangents;
                 }
             }
@@ -109,19 +110,19 @@ namespace ResoniteUnityExporter
                     {
                         List<UnityEngine.Vector2> uvs = new List<UnityEngine.Vector2>(unityMesh.vertexCount);
                         unityMesh.GetUVs(uvIndex, uvs);
-                        uvArrayI.uv_2D = ResoniteBridgeUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
+                        uvArrayI.uv_2D = SerializationUtils.ConvertArray<Float2_U2Res, UnityEngine.Vector2>(uvs.ToArray());
                     }
                     else if (curDimension == 3)
                     {
                         List<UnityEngine.Vector3> uvs = new List<UnityEngine.Vector3>(unityMesh.vertexCount);
                         unityMesh.GetUVs(uvIndex, uvs);
-                        uvArrayI.uv_3D = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
+                        uvArrayI.uv_3D = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(uvs.ToArray());
                     }
                     else if (curDimension == 4)
                     {
                         List<UnityEngine.Vector4> uvs = new List<UnityEngine.Vector4>(unityMesh.vertexCount);
                         unityMesh.GetUVs(uvIndex, uvs);
-                        uvArrayI.uv_4D = ResoniteBridgeUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
+                        uvArrayI.uv_4D = SerializationUtils.ConvertArray<Float4_U2Res, UnityEngine.Vector4>(uvs.ToArray());
                     }
                     uvArrayI.dimension = curDimension;
                     allUvs[uvIndex] = uvArrayI;
@@ -238,7 +239,7 @@ namespace ResoniteUnityExporter
                             deltaTangents
                         );
 
-                        Float3_U2Res[] frameVertices = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
+                        Float3_U2Res[] frameVertices = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaVertices);
                         /*
                         for (int i = 0; i < numVertices; i++)
                         {
@@ -258,7 +259,7 @@ namespace ResoniteUnityExporter
 
                         if (normals != null)
                         {
-                            Float3_U2Res[] frameNormals = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
+                            Float3_U2Res[] frameNormals = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaNormals);
                             for (int i = 0; i < numVertices; i++)
                             {
                                 // idk if this is right? but it doesn't go all black or dissapear anymore... maybe i need to normalize?
@@ -271,7 +272,7 @@ namespace ResoniteUnityExporter
 
                         if (tangents != null)
                         {
-                            Float3_U2Res[] frameTangents = ResoniteBridgeUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
+                            Float3_U2Res[] frameTangents = SerializationUtils.ConvertArray<Float3_U2Res, UnityEngine.Vector3>(deltaTangents);
                             for (int i = 0; i < numVertices; i++)
                             {
                                 frameTangents[i].x = frameTangents[i].x; // - tangents[i].x;
@@ -363,7 +364,7 @@ namespace ResoniteUnityExporter
 
             using (Timer _ = new Timer("Encoding"))
             {
-                encoded = ResoniteBridgeUtils.EncodeObject(convertedMesh);
+                encoded = SerializationUtils.EncodeObject(convertedMesh);
                 // test to make sure encodes correctly
                 //StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
                 //CheckAllEqual(convertedMesh, decoded);
@@ -379,9 +380,9 @@ namespace ResoniteUnityExporter
                     );
                 if (isError)
                 {
-                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                    throw new Exception(SerializationUtils.DecodeString(outBytes));
                 }
-                RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+                RefID_U2Res staticMeshRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
                 return staticMeshRefId;
             }
         }

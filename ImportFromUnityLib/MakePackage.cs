@@ -1,16 +1,10 @@
 ﻿using Elements.Core;
-using FrooxEngine.Store;
 using FrooxEngine;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using ResoniteUnityExporterShared;
-using ResoniteBridgeLib;
 using SkyFrost.Base;
+using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
 {
@@ -19,7 +13,7 @@ namespace ImportFromUnityLib
         public static IEnumerator<Context> MakePackageHelper(byte[] packageInfoBytes, OutputBytesHolder outputBytes)
         {
             yield return Context.ToBackground();
-            PackageInfo_U2Res packageInfo = ResoniteBridgeUtils.DecodeObject<PackageInfo_U2Res>(packageInfoBytes);
+            PackageInfo_U2Res packageInfo = SerializationUtils.DecodeObject<PackageInfo_U2Res>(packageInfoBytes);
             // modified from PackageExportable Resonite
             yield return Context.ToWorld();
             Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(packageInfo.mainParentSlot);
@@ -34,7 +28,7 @@ namespace ImportFromUnityLib
             {
                 PackageCreator.BuildPackage(focusedWorld.Engine, record, savedGraph, fstream, packageInfo.includeVariants).GetAwaiter().GetResult();
             }
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(true);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(true);
         }
 
         public static byte[] MakePackageFunc(byte[] packageInfoBytes)

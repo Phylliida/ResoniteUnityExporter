@@ -719,7 +719,7 @@ namespace ResoniteUnityExporter {
                 serverInfo = LOADING_SERVER_INFO;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
                     // uncomment this for debugging info about connections
-                    //Debug.Log(message); ff
+                    Debug.Log(message);
                 });
 
             }

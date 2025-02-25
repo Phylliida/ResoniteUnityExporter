@@ -1,13 +1,7 @@
-﻿using Elements.Assets;
-using Elements.Core;
-using FrooxEngine;
-using ResoniteBridgeLib;
+﻿using FrooxEngine;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -17,7 +11,7 @@ namespace ImportFromUnityLib
         {
             // Load mesh data into a meshx
             yield return Context.ToBackground();
-            FinalizeAvatarCreator_U2Res finalizeAviCreatorData = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<FinalizeAvatarCreator_U2Res>(materialBytes);
+            FinalizeAvatarCreator_U2Res finalizeAviCreatorData = SerializationUtils.DecodeObject<FinalizeAvatarCreator_U2Res>(materialBytes);
             yield return Context.ToWorld();
 
             Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(finalizeAviCreatorData.mainParentSlot);
@@ -39,7 +33,7 @@ namespace ImportFromUnityLib
             // _DetailMask_ST,_DetailMask_TexelSize,_DetailMask_HDR,
             // _ParallaxMap_ST,_ParallaxMap_TexelSize,_ParallaxMap_HDR,
             // return refid of StaticMesh component
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(finished);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(finished);
         }
 
         /// <summary>

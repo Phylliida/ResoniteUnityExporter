@@ -1,4 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -217,7 +218,7 @@ namespace ResoniteUnityExporter
                 {
                     type = a.GetType();
                 }
-                if (ResoniteBridgeUtils.primitiveTypes.Contains(type) || type == typeof(System.String))
+                if (SerializationUtils.primitiveTypes.Contains(type) || type == typeof(System.String))
                 {
                     // equality doesn't work because they are boxed, just use to string as good enough
                     if (a.ToString() == b.ToString())
@@ -246,12 +247,12 @@ namespace ResoniteUnityExporter
                         var bGetMethod = b.GetType().GetMethod("GetValue", new Type[] { typeof(int) });
 
                         Type elementType = a.GetType().GetElementType();
-                        if (ResoniteBridgeUtils.TypeRecursivelyHasAllPrimitiveFields(elementType))
+                        if (SerializationUtils.TypeRecursivelyHasAllPrimitiveFields(elementType))
                         {
                             object[] args = new object[] { 0 };
                             int numNotMatches = 0;
-                            byte[] aByte = ResoniteBridgeUtils.ToByteArray(a, elementType, aLen);
-                            byte[] bByte = ResoniteBridgeUtils.ToByteArray(b, elementType, bLen);
+                            byte[] aByte = SerializationUtils.ToByteArray(a, elementType, aLen);
+                            byte[] bByte = SerializationUtils.ToByteArray(b, elementType, bLen);
                             for (int i = 0; i < aByte.Length; i++)
                             {
                                 if (aByte[i] != bByte[i])
@@ -284,7 +285,7 @@ namespace ResoniteUnityExporter
                 }
                 else
                 {
-                    foreach (FieldInfo field in ResoniteBridgeUtils.GetTypeFields(a.GetType()))
+                    foreach (FieldInfo field in SerializationUtils.GetTypeFields(a.GetType()))
                     {
                         object valueA = field.GetValue(a);
                         object valueB = field.GetValue(b);

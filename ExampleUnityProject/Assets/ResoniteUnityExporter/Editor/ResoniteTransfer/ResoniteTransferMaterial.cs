@@ -1,4 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace ResoniteUnityExporter
             string[] vectorNames = material.GetPropertyNames(MaterialPropertyType.Vector);
             Vector4[] vectorValuesUnity = vectorNames.Select(f => material.GetVector(f)).ToArray();
             Float4_U2Res[] vectorValues = 
-                ResoniteBridgeUtils.ConvertArray<Float4_U2Res, Vector4>(vectorValuesUnity);
+                SerializationUtils.ConvertArray<Float4_U2Res, Vector4>(vectorValuesUnity);
             materialData.float4Names = vectorNames;
             materialData.float4Values = vectorValues;
 
@@ -59,7 +60,7 @@ namespace ResoniteUnityExporter
                 Debug.LogWarning("Unknown material map for material: " + material.name + " with shader " + material.shader);
             }
 
-            byte[] encoded = ResoniteBridgeUtils.EncodeObject(materialData);
+            byte[] encoded = SerializationUtils.EncodeObject(materialData);
 
             bridgeClient.SendMessageSync(
                 "ImportToMaterial",
@@ -70,9 +71,9 @@ namespace ResoniteUnityExporter
                 );
             if (isError)
             {
-                throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                throw new Exception(SerializationUtils.DecodeString(outBytes));
             }
-            RefID_U2Res staticMaterialRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+            RefID_U2Res staticMaterialRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
             return staticMaterialRefId;
         }
     }

@@ -1,11 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ImportFromUnityLib.ImportFromUnityLib;
 
 namespace ImportFromUnityLib
 {
@@ -21,7 +15,7 @@ namespace ImportFromUnityLib
         public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, ServerInfoDelegate serverInfoCallback, DebugLogDelegate DebugLog)
         {
             ImportFromUnityLib.DebugLog = DebugLog;
-            server.RegisterProcessor("GetServerInfo", (byte[] _) => ResoniteBridgeUtils.EncodeObject(serverInfoCallback()));
+            server.RegisterProcessor("GetServerInfo", (byte[] _) => SerializationUtils.EncodeObject(serverInfoCallback()));
             server.RegisterProcessor("MakePackage", MakePackage.MakePackageFunc);
 
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);

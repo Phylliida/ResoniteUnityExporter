@@ -471,10 +471,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.Utility.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Bson">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VRCSDK3A">
       <HintPath>Packages\com.vrchat.avatars\Runtime\VRCSDK\Plugins\VRCSDK3A.dll</HintPath>
       <Private>False</Private>
@@ -489,10 +485,6 @@
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Contact.Editor">
       <HintPath>Packages\com.vrchat.base\Editor\VRCSDK\Plugins\VRC.SDK3.Dynamics.Contact.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.PhysBone">
@@ -517,6 +509,10 @@
     </Reference>
     <Reference Include="ResoniteBridgeLib">
       <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">

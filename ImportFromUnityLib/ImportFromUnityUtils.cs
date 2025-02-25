@@ -1,12 +1,9 @@
 ﻿using Elements.Core;
 using FrooxEngine;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
@@ -41,13 +38,13 @@ namespace ImportFromUnityLib
             yield return FrooxEngine.Context.ToBackground();
             // move to world thread (necessary if we want to modify the world at all)
             yield return Context.ToWorld();
-            string slotName = ResoniteBridgeUtils.DecodeString(inputBytes);
+            string slotName = SerializationUtils.DecodeString(inputBytes);
             Slot resultSlot = Engine.Current.WorldManager.FocusedWorld.RootSlot.AddSlot(slotName);
             RefID_Example result = new RefID_Example()
             {
                 id = (ulong)resultSlot.ReferenceID
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
         public byte[] AddSlotFunc(byte[] inputBytes)

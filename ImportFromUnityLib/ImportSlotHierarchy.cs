@@ -1,11 +1,7 @@
 ﻿using FrooxEngine;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -55,7 +51,7 @@ namespace ImportFromUnityLib
         {
             //// decode bytes
             yield return Context.ToBackground();
-            ObjectHierarchy_U2Res hierarchy = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
+            ObjectHierarchy_U2Res hierarchy = SerializationUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
             yield return Context.ToWorld();
 
 
@@ -111,7 +107,7 @@ namespace ImportFromUnityLib
                     id = (ulong)assetsSlot.ReferenceID
                 }
             };
-            outputHolder.outputBytes = ResoniteBridgeUtils.EncodeObject(outputLookups);
+            outputHolder.outputBytes = SerializationUtils.EncodeObject(outputLookups);
         }
 
     }

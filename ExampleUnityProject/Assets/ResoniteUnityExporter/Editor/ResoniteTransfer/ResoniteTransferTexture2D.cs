@@ -1,4 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.IO;
@@ -53,7 +54,7 @@ namespace ResoniteUnityExporter
                 // this is slow (takes 10-20ms) but that's good enough for one time transfer
                 // and it's better to use this vs getting raw data because we need to convert format
                 UnityEngine.Color32[] textureColors = texture.GetPixels32();
-                Color32_U2Res[] colorData = ResoniteBridgeUtils.ConvertArray<Color32_U2Res, UnityEngine.Color32>(textureColors);
+                Color32_U2Res[] colorData = SerializationUtils.ConvertArray<Color32_U2Res, UnityEngine.Color32>(textureColors);
                 return new Texture2D_U2Res
                 {
                     width = texture.width,
@@ -72,7 +73,7 @@ namespace ResoniteUnityExporter
 
             using (Timer _ = new Timer("Encoding"))
             {
-                encoded = ResoniteBridgeUtils.EncodeObject(convertedTexture);
+                encoded = SerializationUtils.EncodeObject(convertedTexture);
             }
             using (Timer _ = new Timer("Processing Static Mesh"))
             {
@@ -85,9 +86,9 @@ namespace ResoniteUnityExporter
                     );
                 if (isError)
                 {
-                    throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                    throw new Exception(SerializationUtils.DecodeString(outBytes));
                 }
-                RefID_U2Res staticMeshRefId = ResoniteBridgeUtils.DecodeObject<RefID_U2Res>(outBytes);
+                RefID_U2Res staticMeshRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
                 return staticMeshRefId;
             }
         }

@@ -277,7 +277,6 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiBlending.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMainTex.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiPenetration.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiSubsurfaceScattering.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiFrag.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonShadows.cginc" />
@@ -367,7 +366,6 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGrab.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiHologram.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiTessellation.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\_PoiyomiShaders\Shaders\PoiLabels.txt" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiData.cginc" />
@@ -897,10 +895,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.Utility.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Bson">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.Bson.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VRCSDK3A">
       <HintPath>Packages\com.vrchat.avatars\Runtime\VRCSDK\Plugins\VRCSDK3A.dll</HintPath>
       <Private>False</Private>
@@ -911,10 +905,6 @@
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Constraint">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.SDK3.Dynamics.Constraint.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.PhysBone">
@@ -931,6 +921,10 @@
     </Reference>
     <Reference Include="ResoniteBridgeLib">
       <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SDKBase-Legacy">

@@ -1,4 +1,5 @@
-﻿using ResoniteBridgeLib;
+﻿using MemoryMappedFileIPC;
+using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -114,7 +115,7 @@ namespace ResoniteUnityExporter
             {
                 try
                 {
-                    byte[] messageBytes = ResoniteBridgeUtils.EncodeObject(input);
+                    byte[] messageBytes = SerializationUtils.EncodeObject(input);
                     bridgeClient.SendMessageSync(
                            callMethodName,
                            messageBytes,
@@ -125,9 +126,9 @@ namespace ResoniteUnityExporter
                     if (isError)
                     {
                         hasError = true;
-                        return ResoniteBridgeUtils.DecodeString(outBytes);
+                        return SerializationUtils.DecodeString(outBytes);
                     }
-                    return ResoniteBridgeUtils.DecodeObject<OutType>(outBytes);
+                    return SerializationUtils.DecodeObject<OutType>(outBytes);
                 }
                 catch (Exception e)
                 {
@@ -208,7 +209,7 @@ namespace ResoniteUnityExporter
                 objects = convertedObjects
             };
 
-            byte[] encoded = ResoniteBridgeUtils.EncodeObject(hierarchyData);
+            byte[] encoded = SerializationUtils.EncodeObject(hierarchyData);
 
 
             bridgeClient.SendMessageSync(
@@ -220,9 +221,9 @@ namespace ResoniteUnityExporter
                 );
             if (isError)
             {
-                throw new Exception(ResoniteBridgeUtils.DecodeString(outBytes));
+                throw new Exception(SerializationUtils.DecodeString(outBytes));
             }
-            ObjectLookups_U2Res lookups = ResoniteBridgeUtils.DecodeObject<ObjectLookups_U2Res>(outBytes);
+            ObjectLookups_U2Res lookups = SerializationUtils.DecodeObject<ObjectLookups_U2Res>(outBytes);
 
             Dictionary<string, RefID_U2Res> refIdLookup = new Dictionary<string, RefID_U2Res>();
             foreach (ObjectLookup_U2Res lookup in lookups.lookups)

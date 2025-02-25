@@ -4,11 +4,6 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.3" />
-  </ItemGroup>
 	<Target Name="PostPublish" AfterTargets="Publish">
 		<Exec Command="xcopy &quot;$(PublishDir)\*.dll&quot; &quot;..\ExampleUnityProject\Assets\ResoniteUnityExporter\Plugins&quot; /E /I /Y" />
 	</Target>

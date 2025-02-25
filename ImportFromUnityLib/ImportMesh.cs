@@ -4,7 +4,7 @@ using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 using FrooxEngine;
 using Elements.Core;
-using ResoniteBridgeLib;
+using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
 {
@@ -15,7 +15,7 @@ namespace ImportFromUnityLib
         {
             // Load mesh data into a meshx
             yield return Context.ToBackground();
-            StaticMesh_U2Res meshOut = ResoniteBridgeLib.ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(staticMeshBytes);
+            StaticMesh_U2Res meshOut = SerializationUtils.DecodeObject<StaticMesh_U2Res>(staticMeshBytes);
             string name = meshOut.name;
             if (name == null || name.Length == 0)
             {
@@ -41,7 +41,7 @@ namespace ImportFromUnityLib
             {
                 id = (ulong)staticMesh.ReferenceID
             };
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
         /// <summary>
@@ -80,18 +80,18 @@ namespace ImportFromUnityLib
                 meshx.SetUV_Dimension(uv, mesh.uvChannels[uv].dimension);
             }
 
-            ResoniteBridgeUtils.CopyArray(mesh.positions, meshx.RawPositions);
+            SerializationUtils.CopyArray(mesh.positions, meshx.RawPositions);
             if (meshx.HasColors)
             {
-                ResoniteBridgeUtils.CopyArray(mesh.colors, meshx.RawColors);
+                SerializationUtils.CopyArray(mesh.colors, meshx.RawColors);
             }
             if (hasNormals)
             {
-                ResoniteBridgeUtils.CopyArray(mesh.normals, meshx.RawNormals);
+                SerializationUtils.CopyArray(mesh.normals, meshx.RawNormals);
             }
             if (hasTangents)
             {
-                ResoniteBridgeUtils.CopyArray(mesh.tangents, meshx.RawTangents);
+                SerializationUtils.CopyArray(mesh.tangents, meshx.RawTangents);
             }
 
 
@@ -102,17 +102,17 @@ namespace ImportFromUnityLib
                 if (curDimension == 2)
                 {
                     meshx.SetHasUV(uv, true);
-                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
+                    SerializationUtils.CopyArray(uvChannel.uv_2D, meshx.GetRawUVs(uv));
                 }
                 else if (curDimension == 3)
                 {
                     meshx.SetHasUV_3D(uv, true);
-                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
+                    SerializationUtils.CopyArray(uvChannel.uv_3D, meshx.GetRawUVs_3D(uv));
                 }
                 else if (curDimension == 4)
                 {
                     meshx.SetHasUV_4D(uv, true);
-                    ResoniteBridgeUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
+                    SerializationUtils.CopyArray(uvChannel.uv_4D, meshx.GetRawUVs_4D(uv));
                 }
             }
 
@@ -138,7 +138,7 @@ namespace ImportFromUnityLib
                 }
                 int numPrimitives = indices.Length / 3;
                 submesh.SetCount(numPrimitives);
-                ResoniteBridgeUtils.CopyArray(indices, submesh.RawIndicies);
+                SerializationUtils.CopyArray(indices, submesh.RawIndicies);
             }
 
             for (int blendShapeI = 0; blendShapeI < mesh.blendShapes.Length; blendShapeI++)
@@ -154,16 +154,16 @@ namespace ImportFromUnityLib
                     BlendShapeFrame_U2Res blendShapeFrame = blendShape.frames[blendShapeFrameI];
                     // todo: ModelImporter just uses 1.0 for weight, should we do that?
                     Elements.Assets.BlendShapeFrame blendShapeFrameX = blendShapeX.AddFrame(blendShapeFrame.frameWeight);
-                    ResoniteBridgeUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
+                    SerializationUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
 
                     if (hasNormals)
                     {
-                        ResoniteBridgeUtils.CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
+                        SerializationUtils.CopyArray(blendShapeFrame.normals, blendShapeFrameX.RawNormals);
                     }
 
                     if (hasTangents)
                     {
-                        ResoniteBridgeUtils.CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
+                        SerializationUtils.CopyArray(blendShapeFrame.tangents, blendShapeFrameX.RawTangents);
                     }
                 }
             }

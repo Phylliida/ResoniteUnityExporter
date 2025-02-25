@@ -1,21 +1,7 @@
-﻿using FrooxEngine.Store;
-using FrooxEngine;
-using ResoniteBridgeLib;
+﻿using FrooxEngine;
 using ResoniteUnityExporterShared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static FrooxEngine.DataFeedItemMappingManager;
-using Elements.Core;
-using Assimp;
-using static OfficialAssets.Graphics;
-using System.IO;
-using System.Xml.Linq;
-using System.Reflection;
-using FrooxEngine.FinalIK;
-using Elements.Assets;
+using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
 {
@@ -25,7 +11,7 @@ namespace ImportFromUnityLib
         {
             yield return Context.ToBackground();
             // load data from bytes
-            SkinnedMeshRenderer_U2Res skinnedMeshRendererData = ResoniteBridgeUtils.DecodeObject<SkinnedMeshRenderer_U2Res>(skinnedMeshRendererBytes);
+            SkinnedMeshRenderer_U2Res skinnedMeshRendererData = SerializationUtils.DecodeObject<SkinnedMeshRenderer_U2Res>(skinnedMeshRendererBytes);
             // load texture into localdb to get a url
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             yield return Context.ToWorld();
@@ -90,7 +76,7 @@ namespace ImportFromUnityLib
                 id = (ulong)renderer.ReferenceID
             };
             
-            outputBytes.outputBytes = ResoniteBridgeUtils.EncodeObject(result);
+            outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
         public static byte[] ImportSkinnedMeshRendererFunc(byte[] skinnedMeshRendererData)
