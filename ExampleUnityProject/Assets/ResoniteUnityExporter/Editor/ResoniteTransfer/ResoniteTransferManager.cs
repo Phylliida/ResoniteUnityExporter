@@ -62,12 +62,11 @@ namespace ResoniteUnityExporter
             {
                 // duplicate it
                 Transform prev = rootTransform;
-                rootTransform = UnityEngine.Object.Instantiate(rootTransform);
                 duplicated = true;
-                rootTransform.name = prev.name;
-                this.rootTransform = rootTransform;
-
                 ranPreprocess = true;
+                this.rootTransform = rootTransform = UnityEngine.Object.Instantiate(rootTransform);
+                rootTransform.name = prev.name;
+
                 VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessAvatar(rootTransform.gameObject);
 #if RUE_HAS_NDMF
                 nadena.dev.ndmf.AvatarProcessor.ProcessAvatar(rootTransform.gameObject);

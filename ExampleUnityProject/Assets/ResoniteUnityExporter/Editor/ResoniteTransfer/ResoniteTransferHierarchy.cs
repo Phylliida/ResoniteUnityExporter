@@ -163,9 +163,13 @@ namespace ResoniteUnityExporter
                 // don't print disconnect exceptions, just ignore them
                 if (!error.Contains("DisconnectException"))
                 {
+                    Debug.LogError(error);
+                }
+                else
+                {
+                    Debug.Log(error);
                 }
 
-                Debug.LogError(error);
                 throw new RemoteException(error);
             }
             else
