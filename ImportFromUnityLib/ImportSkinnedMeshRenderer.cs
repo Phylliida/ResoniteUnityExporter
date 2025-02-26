@@ -16,6 +16,7 @@ namespace ImportFromUnityLib
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.targetSlot);
+            ImportFromUnityLib.DebugLog("Importing skinned mesh renderer on " + targetSlot.Name);
             SkinnedMeshRenderer renderer = targetSlot.AttachComponent<SkinnedMeshRenderer>();
             renderer.Mesh.Value = skinnedMeshRendererData.staticMeshAsset.id;
             Slot assetsSlot = ((FrooxEngine.StaticMesh)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.staticMeshAsset)).Slot;

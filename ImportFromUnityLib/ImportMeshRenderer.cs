@@ -16,6 +16,7 @@ namespace ImportFromUnityLib
             World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(meshRendererData.targetSlot);
+            ImportFromUnityLib.DebugLog("Importing mesh renderer on " + targetSlot.Name);
             MeshRenderer renderer = targetSlot.AttachComponent<MeshRenderer>();
             renderer.Mesh.Value = meshRendererData.staticMeshAsset.id;
             Slot assetsSlot = ((FrooxEngine.StaticMesh)ImportFromUnityUtils.LookupRefID(meshRendererData.staticMeshAsset)).Slot;

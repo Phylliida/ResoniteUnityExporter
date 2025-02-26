@@ -14,10 +14,9 @@
 		</ItemGroup>
 	</Target>
 
-	
-  <ItemGroup>
-    <PackageReference Include="ResoniteBridgeLib" Version="1.1.4" />
-  </ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="ResoniteBridgeLib" Version="1.1.5" />
+	</ItemGroup>
 
   <ItemGroup>
     <Reference Include="AssimpNet">

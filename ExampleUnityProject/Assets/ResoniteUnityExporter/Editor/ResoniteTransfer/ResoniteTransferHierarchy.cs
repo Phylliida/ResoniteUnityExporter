@@ -165,10 +165,6 @@ namespace ResoniteUnityExporter
                 {
                     Debug.LogError(error);
                 }
-                else
-                {
-                    Debug.Log(error);
-                }
 
                 throw new RemoteException(error);
             }

@@ -73,6 +73,7 @@ namespace ImportFromUnityLib
             // Load mesh data into a meshx
             yield return Context.ToBackground();
             Material_U2Res materialData = SerializationUtils.DecodeObject<Material_U2Res>(materialBytes);
+            ImportFromUnityLib.DebugLog("Importing material " + materialData.materialName);
             yield return Context.ToWorld();
             Slot assetsSlot = (Slot)ImportFromUnityUtils.LookupRefID(materialData.rootAssetsSlot);
 

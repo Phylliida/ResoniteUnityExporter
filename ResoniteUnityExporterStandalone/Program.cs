@@ -250,7 +250,10 @@ namespace ResoniteBridge
                                         "IPCConnections",
                                         "Servers"
                                     );
-                                bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (msg) => Console.WriteLine(msg));
+                                bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (msg) =>
+                                {
+                                    //Console.WriteLine(msg);
+                                });
                                 ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, () =>
                                 {
                                     return new ServerInfo_U2Res()

@@ -14,6 +14,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing position constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -37,6 +38,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing rotation constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -61,6 +63,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing scale constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -85,6 +88,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing aim constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -109,6 +113,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing parent constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -133,6 +138,7 @@ namespace ImportFromUnityLib
             if (constraintData.target.id != 0)
             {
                 Slot target = (Slot)ImportFromUnityUtils.LookupRefID(constraintData.target);
+                ImportFromUnityLib.DebugLog("Importing look at constraint on " + target.Name);
 
             }
             RefID_U2Res outputRefID = new RefID_U2Res()

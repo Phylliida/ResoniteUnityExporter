@@ -52,6 +52,7 @@ namespace ImportFromUnityLib
             // raw data import
             if (tex.data != null)
             {
+                ImportFromUnityLib.DebugLog("Importing texture raw data");
                 tempFilePath = localDb.GetTempFilePath("png");
                 //ImportFromUnityLib.DebugLog("Got raw data for texture");
                 SaveRawDataToPNG(tex.width, tex.height, tex.data, tempFilePath);
@@ -59,6 +60,7 @@ namespace ImportFromUnityLib
             // import from file
             else
             {
+                ImportFromUnityLib.DebugLog("Importing texture from path " + tex.path);
                 tempFilePath = localDb.GetTempFilePath(System.IO.Path.GetExtension(tex.path));
                 //ImportFromUnityLib.DebugLog("Got path " + tex.path + " for texture");
                 System.IO.File.Copy(tex.path, tempFilePath, true);

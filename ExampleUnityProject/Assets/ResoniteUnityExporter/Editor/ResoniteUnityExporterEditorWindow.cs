@@ -12,6 +12,8 @@ using UnityEditor.Graphs;
 
 #if RUE_HAS_AVATAR_VRCSDK
 using VRC.SDK3.Avatars.Components;
+using System.Runtime.Remoting.Contexts;
+
 #endif
 #if RUE_HAS_VRCSDK
 using VRC.Core;
@@ -185,20 +187,67 @@ namespace ResoniteUnityExporter {
 
         bool debugCoroutine = true;
 
+
+        // Helper class to safely iterate without try-catch in iterator blocks
+        class ExceptionSafeIterator
+        {
+            private readonly IEnumerator<object> _innerEnumerator;
+            public object Current { get; private set; }
+            public Exception CaughtException { get; private set; }
+            public bool ExceptionOccurred { get; private set; }
+
+            public ExceptionSafeIterator(IEnumerator<object> innerEnumerator)
+            {
+                _innerEnumerator = innerEnumerator;
+                Current = null;
+            }
+
+            public bool MoveNext()
+            {
+                if (ExceptionOccurred)
+                    return false;
+
+                try
+                {
+                    if (_innerEnumerator.MoveNext())
+                    {
+                        Current = _innerEnumerator.Current;
+                        return true;
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionOccurred = true;
+                    CaughtException = ex;
+                    return false;
+                }
+            }
+        }
+
         IEnumerator<object> GetServerInfo()
         {
             if (bridgeClient != null)
             {
                 OutputHolder<object> outputInfo = new ResoniteUnityExporter.OutputHolder<object>();
                 var en = HierarchyLookup.Call<ServerInfo_U2Res, int>(bridgeClient, "GetServerInfo", 0, outputInfo);
-                while(en.MoveNext())
+                var exceptCatcher = new ExceptionSafeIterator(en);
+                while(exceptCatcher.MoveNext())
                 {
-                    yield return en.Current;
+                    yield return exceptCatcher.Current;
                 }
-                ServerInfo_U2Res serverInfo = outputInfo.value != null 
-                    ? (ServerInfo_U2Res)outputInfo.value
-                    : LOADING_SERVER_INFO; // we get null if disconnected
-                ResoniteUnityExporterEditorWindow.serverInfo = serverInfo;
+                if (exceptCatcher.ExceptionOccurred)
+                {
+                    // ignore exceptions here so as to not spam
+                    ResoniteUnityExporterEditorWindow.serverInfo = LOADING_SERVER_INFO;
+                }
+                else
+                {
+                    ServerInfo_U2Res serverInfo = outputInfo.value != null
+                        ? (ServerInfo_U2Res)outputInfo.value
+                        : LOADING_SERVER_INFO; // we get null if disconnected
+                    ResoniteUnityExporterEditorWindow.serverInfo = serverInfo;
+                }
             }
         }
 
@@ -383,12 +432,12 @@ namespace ResoniteUnityExporter {
             else if (bridgeClient.publisher.NumActiveConnections() > 0)
             {
                 GUI.color = Color.yellow;
-                GUILayout.Label("Connecting to Resonite (1/2 - need subscriber)");
+                GUILayout.Label("Connecting to Resonite (1/2 - need sub - please wait)");
             }
             else if (bridgeClient.subscriber.NumActiveConnections() > 0)
             {
                 GUI.color = Color.yellow;
-                GUILayout.Label("Connecting to Resonite (1/2 - need publisher)");
+                GUILayout.Label("Connecting to Resonite (1/2 - need pub - please wait)");
             }
             else
             {
@@ -476,13 +525,14 @@ namespace ResoniteUnityExporter {
             }
 
             // for debuggin
-            
+            /*
             if (GUILayout.Button("Restart connection"))
             {
                 bridgeClient.Dispose();
                 bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
             }
+            */
             
 
 
@@ -719,7 +769,7 @@ namespace ResoniteUnityExporter {
                 serverInfo = LOADING_SERVER_INFO;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
                     // uncomment this for debugging info about connections
-                    // Debug.Log(message);
+                    //Debug.Log(message);
                 });
 
             }

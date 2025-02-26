@@ -53,6 +53,7 @@ namespace ImportFromUnityLib
             yield return Context.ToBackground();
             ObjectHierarchy_U2Res hierarchy = SerializationUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
             yield return Context.ToWorld();
+            ImportFromUnityLib.DebugLog("Importing slot hierarchy");
 
 
             //// create assets slot 

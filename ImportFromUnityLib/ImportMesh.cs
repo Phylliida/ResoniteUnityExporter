@@ -16,6 +16,7 @@ namespace ImportFromUnityLib
             // Load mesh data into a meshx
             yield return Context.ToBackground();
             StaticMesh_U2Res meshOut = SerializationUtils.DecodeObject<StaticMesh_U2Res>(staticMeshBytes);
+            ImportFromUnityLib.DebugLog("Importing mesh " + meshOut.name);
             string name = meshOut.name;
             if (name == null || name.Length == 0)
             {

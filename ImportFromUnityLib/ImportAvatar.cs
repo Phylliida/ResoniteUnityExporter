@@ -17,6 +17,7 @@ namespace ImportFromUnityLib
         {
             yield return Context.ToWorld();
             Avatar_U2Res avatarData = SerializationUtils.DecodeObject<Avatar_U2Res>(avatarBytes);
+            ImportFromUnityLib.DebugLog("Importing avatar");
             List<Slot> allSlots = new List<Slot>();
             HashSet<RefID> bonesSet = new HashSet<RefID>();
             List<Slot> bones = new List<Slot>();

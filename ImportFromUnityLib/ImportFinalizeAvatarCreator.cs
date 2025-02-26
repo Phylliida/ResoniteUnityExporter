@@ -15,6 +15,7 @@ namespace ImportFromUnityLib
             yield return Context.ToWorld();
 
             Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(finalizeAviCreatorData.mainParentSlot);
+            ImportFromUnityLib.DebugLog("Finalizing avatar creator");
 
             AvatarCreator aviCreator = mainParentSlot.GetComponentInChildren<AvatarCreator>();
 

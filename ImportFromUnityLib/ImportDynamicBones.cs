@@ -35,6 +35,7 @@ namespace ImportFromUnityLib
             DynamicBoneCollider_U2Res boneColliderData = SerializationUtils.DecodeObject<DynamicBoneCollider_U2Res>(dynamicBonesColliderBytes);
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneColliderData.targetSlot);
+            ImportFromUnityLib.DebugLog("Importing dynamic bone collider on " + targetSlot.Name);
             // resonite only has spheres, no capsules :(
             // we will do our best to convert
 

@@ -19,10 +19,10 @@
 	  <DebugType>full</DebugType>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageReference Include="ResoniteBridgeLib" Version="1.1.4" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
 		<Properties>TargetFramework=netstandard2.0</Properties>
 	</PackageReference>
+    <PackageReference Include="ResoniteBridgeLib" Version="1.1.5" />
 </ItemGroup>
   <ItemGroup>
     <Reference Include="ImportFromUnityLib">
