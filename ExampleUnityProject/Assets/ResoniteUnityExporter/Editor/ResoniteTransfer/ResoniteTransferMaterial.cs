@@ -11,7 +11,7 @@ namespace ResoniteUnityExporter
     public class ResoniteTransferMaterial
     {
 
-        public static RefID_U2Res SendMaterialToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Material material, ResoniteBridgeClient bridgeClient)
+        public static IEnumerator<object> SendMaterialToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Material material, ResoniteBridgeClient bridgeClient, OutputHolder<object> output)
         {
             Material_U2Res materialData = new Material_U2Res();
             materialData.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
@@ -24,7 +24,14 @@ namespace ResoniteUnityExporter
                 if (tex is Texture2D tex2D)
                 {
                     texture2DNames.Add(texName);
-                    texture2DValues.Add(hierarchyLookup.SendOrGetTexture(tex2D));
+                    var textureOutputHolder = new OutputHolder<object>();
+
+                    var texEn = hierarchyLookup.SendOrGetTexture(tex2D, textureOutputHolder);
+                    while (texEn.MoveNext())
+                    {
+                        yield return null;
+                    }
+                    texture2DValues.Add((RefID_U2Res)textureOutputHolder.value);
                 }
                 else
                 {
@@ -60,21 +67,11 @@ namespace ResoniteUnityExporter
                 Debug.LogWarning("Unknown material map for material: " + material.name + " with shader " + material.shader);
             }
 
-            byte[] encoded = SerializationUtils.EncodeObject(materialData);
-
-            bridgeClient.SendMessageSync(
-                "ImportToMaterial",
-                encoded,
-                -1,
-                out byte[] outBytes,
-                out bool isError
-                );
-            if (isError)
+            var en = hierarchyLookup.Call<RefID_U2Res, Material_U2Res>("ImportToMaterial", materialData, output);
+            while (en.MoveNext())
             {
-                throw new Exception(SerializationUtils.DecodeString(outBytes));
+                yield return null;
             }
-            RefID_U2Res staticMaterialRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
-            return staticMaterialRefId;
         }
     }
 }

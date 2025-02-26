@@ -355,35 +355,26 @@ namespace ResoniteUnityExporter
 
         // resonite wants things scaled up for ik to work correctly, so do that
         public static float FIXED_SCALE_FACTOR = 100.0f;
-        public static RefID_U2Res SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient)
+        public static IEnumerator<object> SendMeshToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Mesh mesh, string[] boneNames, ResoniteBridgeClient bridgeClient, OutputHolder<object> output)
         {
             StaticMesh_U2Res convertedMesh = ConvertMesh(mesh, boneNames.ToArray(), FIXED_SCALE_FACTOR);
             convertedMesh.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
 
-            byte[] encoded = null;
 
             using (Timer _ = new Timer("Encoding"))
             {
-                encoded = SerializationUtils.EncodeObject(convertedMesh);
+                //encoded = SerializationUtils.EncodeObject(convertedMesh);
                 // test to make sure encodes correctly
                 //StaticMesh_U2Res decoded = ResoniteBridgeUtils.DecodeObject<StaticMesh_U2Res>(encoded);
                 //CheckAllEqual(convertedMesh, decoded);
             }
             using (Timer _ = new Timer("Processing Static Mesh"))
             {
-                bridgeClient.SendMessageSync(
-                    "ImportToStaticMesh",
-                    encoded,
-                    -1,
-                    out byte[] outBytes,
-                    out bool isError
-                    );
-                if (isError)
+                var en = hierarchyLookup.Call<RefID_U2Res, StaticMesh_U2Res>("ImportToStaticMesh", convertedMesh, output);
+                while (en.MoveNext())
                 {
-                    throw new Exception(SerializationUtils.DecodeString(outBytes));
+                    yield return null;
                 }
-                RefID_U2Res staticMeshRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
-                return staticMeshRefId;
             }
         }
     }

@@ -84,18 +84,22 @@ namespace ResoniteUnityExporter
             return refIdLookup.TryGetValue(transform.gameObject.GetInstanceID().ToString(), out slotRefID);
         }
 
-        delegate RefID_U2Res CreateAssetDelegate();
+        delegate IEnumerator<object> CreateAssetDelegate();
 
-        RefID_U2Res CreateAssetIfNotExist(string assetId, CreateAssetDelegate createAsset)
+        IEnumerator<object> CreateAssetIfNotExist(string assetId, CreateAssetDelegate createAsset, OutputHolder<object> output)
         {
             RefID_U2Res outRefId;
             if (!assetLookup.TryGetValue(assetId, out outRefId))
             {
-                outRefId = createAsset();
+                var en = createAsset();
+                while (en.MoveNext())
+                {
+                    yield return null;
+                }
+                outRefId = (RefID_U2Res)output.value;
                 assetLookup.Add(assetId, outRefId);
             }
-            return outRefId;
-
+            output.value = outRefId;
         }
 
         public IEnumerator<object> Call<OutType, InType>(string callMethodName, InType input, OutputHolder<object> output)
@@ -104,6 +108,15 @@ namespace ResoniteUnityExporter
             while (en.MoveNext())
             {
                 yield return en.Current;
+            }
+        }
+
+        public class RemoteException : Exception
+        {
+            public string Message;
+            public RemoteException(string stackTrace)
+            {
+                this.Message = stackTrace;
             }
         }
 
@@ -150,8 +163,10 @@ namespace ResoniteUnityExporter
                 // don't print disconnect exceptions, just ignore them
                 if (!error.Contains("DisconnectException"))
                 {
-                    Debug.LogError(error);
                 }
+
+                Debug.LogError(error);
+                throw new RemoteException(error);
             }
             else
             {
@@ -159,28 +174,40 @@ namespace ResoniteUnityExporter
             }
         } 
 
-        public RefID_U2Res SendOrGetMesh(UnityEngine.Mesh mesh, string[] boneNames)
+        public IEnumerator<object> SendOrGetMesh(UnityEngine.Mesh mesh, string[] boneNames, OutputHolder<object> output)
         {
-            return CreateAssetIfNotExist(mesh.GetInstanceID().ToString(), () =>
+            var en = CreateAssetIfNotExist(mesh.GetInstanceID().ToString(), () =>
             {
-                return ResoniteTransferMesh.SendMeshToResonite(this, mesh, boneNames, bridgeClient);
-            });
+                return ResoniteTransferMesh.SendMeshToResonite(this, mesh, boneNames, bridgeClient, output);
+            }, output);
+            while (en.MoveNext())
+            {
+                yield return null;
+            }
         }
 
-        public RefID_U2Res SendOrGetMaterial(UnityEngine.Material material)
+        public IEnumerator<object> SendOrGetMaterial(UnityEngine.Material material, OutputHolder<object> output)
         {
-            return CreateAssetIfNotExist(material.GetInstanceID().ToString(), () =>
+            var en = CreateAssetIfNotExist(material.GetInstanceID().ToString(), () =>
             {
-                return ResoniteTransferMaterial.SendMaterialToResonite(this, material, bridgeClient);
-            });
+                return ResoniteTransferMaterial.SendMaterialToResonite(this, material, bridgeClient, output);
+            }, output);
+            while (en.MoveNext())
+            {
+                yield return null;
+            }
         }
 
-        public RefID_U2Res SendOrGetTexture(UnityEngine.Texture2D texture)
+        public IEnumerator<object> SendOrGetTexture(UnityEngine.Texture2D texture, OutputHolder<object> output)
         {
-            return CreateAssetIfNotExist(texture.GetInstanceID().ToString(), () =>
+            var en = CreateAssetIfNotExist(texture.GetInstanceID().ToString(), () =>
             {
-                return ResoniteTransferTexture2D.SendTextureToResonite(this, texture, bridgeClient);
-            });
+                return ResoniteTransferTexture2D.SendTextureToResonite(this, texture, bridgeClient, output);
+            }, output);
+            while (en.MoveNext())
+            {
+                yield return null;
+            }
         }
     }
 

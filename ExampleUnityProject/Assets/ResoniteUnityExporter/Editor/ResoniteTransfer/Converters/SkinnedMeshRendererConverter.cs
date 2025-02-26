@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using VRC.Core;
 
 namespace ResoniteUnityExporter.Converters
 {
@@ -48,8 +49,13 @@ namespace ResoniteUnityExporter.Converters
 
             ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending mesh " + renderer.sharedMesh.name;
             yield return null;
-            RefID_U2Res meshRefId = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames);
-            yield return null;
+            OutputHolder<object> meshOutputHolder = new OutputHolder<object>();
+            var meshEn = hierarchy.SendOrGetMesh(renderer.sharedMesh, boneNames, meshOutputHolder);
+            while (meshEn.MoveNext())
+            {
+                yield return null;
+            }
+            RefID_U2Res meshRefId = (RefID_U2Res)meshOutputHolder.value;
 
             RefID_U2Res[] materialRefIds = new RefID_U2Res[renderer.sharedMaterials.Length];
             int i = 0;
@@ -57,7 +63,13 @@ namespace ResoniteUnityExporter.Converters
             {
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Sending material " + mat.name;
                 yield return null;
-                materialRefIds[i++] = hierarchy.SendOrGetMaterial(mat);
+                OutputHolder<object> materialOutputHolder = new OutputHolder<object>();
+                var matEn = hierarchy.SendOrGetMaterial(mat, materialOutputHolder);
+                while (matEn.MoveNext())
+                {
+                    yield return null;
+                }
+                materialRefIds[i++] = (RefID_U2Res)materialOutputHolder.value;
                 yield return null;
             }
 

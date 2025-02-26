@@ -476,14 +476,14 @@ namespace ResoniteUnityExporter {
             }
 
             // for debuggin
-            /*
+            
             if (GUILayout.Button("Restart connection"))
             {
                 bridgeClient.Dispose();
                 bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
             }
-            */
+            
 
 
             EditorGUILayout.Space(5);
@@ -719,7 +719,7 @@ namespace ResoniteUnityExporter {
                 serverInfo = LOADING_SERVER_INFO;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { 
                     // uncomment this for debugging info about connections
-                    Debug.Log(message);
+                    // Debug.Log(message);
                 });
 
             }

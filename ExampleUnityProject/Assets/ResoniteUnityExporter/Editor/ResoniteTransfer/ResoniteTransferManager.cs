@@ -55,6 +55,7 @@ namespace ResoniteUnityExporter
 
             bool duplicated = false;
             bool ranPreprocess = false;
+            
             // need to run VRChat initializer
 #if RUE_HAS_VRCSDK
             if (rootTransform != null && settings.makeAvatar && ResoniteTransferUtils.IsAvatarsSDKAvailable())
@@ -63,8 +64,9 @@ namespace ResoniteUnityExporter
                 Transform prev = rootTransform;
                 rootTransform = UnityEngine.Object.Instantiate(rootTransform);
                 duplicated = true;
-                this.rootTransform = rootTransform;
                 rootTransform.name = prev.name;
+                this.rootTransform = rootTransform;
+
                 ranPreprocess = true;
                 VRC.SDKBase.Editor.BuildPipeline.VRCBuildPipelineCallbacks.OnPreprocessAvatar(rootTransform.gameObject);
 #if RUE_HAS_NDMF
@@ -78,6 +80,26 @@ namespace ResoniteUnityExporter
                 //ranPreprocess = true;
             }
 #endif
+
+            if (rootTransform != null && settings.makeAvatar)
+            {
+                Animator rootTransformAnimator = rootTransform.GetComponent<Animator>();
+                if (rootTransformAnimator != null)
+                {
+                    // duplictate it (if we haven't already) and rename bones so they align with Resonite whenever possible
+                    if (!duplicated)
+                    {
+                        Transform prev = rootTransform;
+                        rootTransform = UnityEngine.Object.Instantiate(rootTransform);
+                        duplicated = true;
+                        rootTransform.name = prev.name;
+                        this.rootTransform = rootTransform;
+                    }
+                    ArmatureRenamer.RenameArmature(rootTransform.gameObject, rootTransformAnimator);
+                }
+            }
+
+
             try
             {
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";

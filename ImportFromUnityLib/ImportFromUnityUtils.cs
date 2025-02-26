@@ -2,6 +2,7 @@
 using FrooxEngine;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -81,23 +82,77 @@ namespace ImportFromUnityLib
             }
         }
 
-        static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<bool> completion)
+        // Helper class to safely iterate without try-catch in iterator blocks
+        class ExceptionSafeIterator
         {
-            try
+            private readonly IEnumerator<Context> _innerEnumerator;
+            public Context Current { get; private set; }
+            public Exception CaughtException { get; private set; }
+            public bool ExceptionOccurred { get; private set; }
+
+            public ExceptionSafeIterator(IEnumerator<Context> innerEnumerator)
             {
-                yield return Context.WaitFor(action);
+                _innerEnumerator = innerEnumerator;
+                Current = Context.ToWorld();
             }
-            finally
+
+            public bool MoveNext()
             {
-                completion.SetResult(result: true);
+                if (ExceptionOccurred)
+                    return false;
+
+                try
+                {
+                    if (_innerEnumerator.MoveNext())
+                    {
+                        Current = _innerEnumerator.Current;
+                        return true;
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionOccurred = true;
+                    CaughtException = ex;
+                    return false;
+                }
+            }
+        }
+
+        static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<object> completion)
+        {
+            // weird hack to let us try catch in a yield return (which c# by default doesn't allow)
+            ExceptionSafeIterator iterator = new ExceptionSafeIterator(action);
+            while (iterator.MoveNext())
+            {
+                yield return iterator.Current;
+            }
+            if (iterator.ExceptionOccurred)
+            {
+                completion.SetResult(iterator.CaughtException);
+            }
+            else
+            {
+                completion.SetResult(true);
             }
         }
 
         public static bool RunOnWorldThread(IEnumerator<Context> action)
         {
-            TaskCompletionSource<bool> taskCompletionSource = new TaskCompletionSource<bool>();
+            TaskCompletionSource<object> taskCompletionSource = new TaskCompletionSource<object>();
             Engine.Current.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
-            return taskCompletionSource.Task.GetAwaiter().GetResult();
+            var result = taskCompletionSource.Task.GetAwaiter().GetResult();
+            if (result.GetType() == typeof(bool)) // not an exception
+            {
+                return true;
+            }
+            else // exception
+            {
+                // this preserves stack trace through seperate threads
+                // this also throws, tho it may not look like it. The return false below is just to make compiler happy
+                System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture((System.Exception)result).Throw();
+                return false;
+            }
         }
     }
 }

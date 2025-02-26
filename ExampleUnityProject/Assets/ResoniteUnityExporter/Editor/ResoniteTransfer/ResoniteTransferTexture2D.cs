@@ -2,6 +2,8 @@
 using ResoniteBridgeLib;
 using ResoniteUnityExporterShared;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -64,32 +66,18 @@ namespace ResoniteUnityExporter
             }
 
         }
-        public static RefID_U2Res SendTextureToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Texture2D texture, ResoniteBridgeClient bridgeClient)
+        public static IEnumerator<object> SendTextureToResonite(HierarchyLookup hierarchyLookup, UnityEngine.Texture2D texture, ResoniteBridgeClient bridgeClient, OutputHolder<object> output)
         {
             Texture2D_U2Res convertedTexture = ConvertTexture(texture);
             convertedTexture.rootAssetsSlot = hierarchyLookup.rootAssetsSlot;
 
-            byte[] encoded = null;
-
-            using (Timer _ = new Timer("Encoding"))
+            using (Timer _ = new Timer("Processing Texture"))
             {
-                encoded = SerializationUtils.EncodeObject(convertedTexture);
-            }
-            using (Timer _ = new Timer("Processing Static Mesh"))
-            {
-                bridgeClient.SendMessageSync(
-                    "ImportToTexture2D",
-                    encoded,
-                    -1,
-                    out byte[] outBytes,
-                    out bool isError
-                    );
-                if (isError)
+                var en = hierarchyLookup.Call<RefID_U2Res, Texture2D_U2Res>("ImportToTexture2D", convertedTexture, output);
+                while (en.MoveNext())
                 {
-                    throw new Exception(SerializationUtils.DecodeString(outBytes));
+                    yield return null;
                 }
-                RefID_U2Res staticMeshRefId = SerializationUtils.DecodeObject<RefID_U2Res>(outBytes);
-                return staticMeshRefId;
             }
         }
     }
