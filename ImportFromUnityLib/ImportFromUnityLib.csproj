@@ -15,7 +15,7 @@
 	</Target>
 
 	<ItemGroup>
-	  <PackageReference Include="ResoniteBridgeLib" Version="1.1.5" />
+	  <PackageReference Include="ResoniteBridgeLib" Version="1.1.6" />
 	</ItemGroup>
 
   <ItemGroup>
