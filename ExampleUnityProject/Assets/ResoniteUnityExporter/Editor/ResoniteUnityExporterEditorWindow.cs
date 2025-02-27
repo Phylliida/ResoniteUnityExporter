@@ -31,6 +31,7 @@ namespace ResoniteUnityExporter {
         bool ranAnyRuns = false;
         bool setupAvatarCreator = true;
         bool finalizeAvatarCreator = true;
+        bool renameSlots = true;
         bool setupIK = true;
         bool sendingAvatar = true;
         bool makePackage = false;
@@ -455,12 +456,14 @@ namespace ResoniteUnityExporter {
             if (!sendingAvatar)
             {
                 EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", false);
+                EditorGUILayout.ToggleLeft("Auto-rename slots (Recommended)", false);
                 EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", false);
                 EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Recommended)", false);
             }
             else
             {
                 setupIK = EditorGUILayout.ToggleLeft("Setup Inverse Kinematics (Recommended)", setupIK);
+                renameSlots = EditorGUILayout.ToggleLeft("Auto-rename slots (Recommended to help Resonite IK)", renameSlots);
                 setupAvatarCreator = EditorGUILayout.ToggleLeft("Setup Avatar Creator (Recommended)", setupAvatarCreator);
                 EditorGUI.BeginDisabledGroup(!setupAvatarCreator);
                 finalizeAvatarCreator = EditorGUILayout.ToggleLeft("Finalize Avatar Creator (Optional)", finalizeAvatarCreator && setupAvatarCreator && serverInfo.label != STANDALONE_LABEL);
@@ -588,6 +591,7 @@ namespace ResoniteUnityExporter {
                     setupIK = setupIK,
                     nearClip = nearClip,
                     makeAvatar = sendingAvatar,
+                    renameSlots = renameSlots,
                     pressCreateAvatar = finalizeAvatarCreator,
                     materialMappings = GetMaterialMappings(),
                     makePackage = makePackage || serverInfo.label == STANDALONE_LABEL, // force package for standalone

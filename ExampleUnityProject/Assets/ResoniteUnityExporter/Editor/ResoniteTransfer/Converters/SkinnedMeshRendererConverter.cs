@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEditor.Graphs;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using VRC.Core;
 
 namespace ResoniteUnityExporter.Converters
 {

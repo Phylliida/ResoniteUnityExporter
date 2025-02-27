@@ -21,6 +21,7 @@ namespace ResoniteUnityExporter
         public bool setupAvatarCreator;
         public bool setupIK;
         public bool pressCreateAvatar;
+        public bool renameSlots;
         public float nearClip;
         public Dictionary<int, string> materialMappings;
         public bool makePackage;
@@ -80,7 +81,7 @@ namespace ResoniteUnityExporter
             }
 #endif
 
-            if (rootTransform != null && settings.makeAvatar)
+            if (rootTransform != null && settings.makeAvatar && settings.renameSlots)
             {
                 Animator rootTransformAnimator = rootTransform.GetComponent<Animator>();
                 if (rootTransformAnimator != null)
@@ -104,7 +105,13 @@ namespace ResoniteUnityExporter
                 ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "";
                 ResoniteUnityExporterEditorWindow.DebugProgressString = "Copying hierarchy";
                 yield return null;
-                hierarchy = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient);
+                OutputHolder<HierarchyLookup> outputHierarchy = new OutputHolder<HierarchyLookup>();
+                var hierarchyEn = ResoniteTransferHierarchy.CreateHierarchy(this, hierarchyName, rootTransform, bridgeClient, outputHierarchy);
+                while (hierarchyEn.MoveNext())
+                {
+                    yield return null;
+                }
+                hierarchy = outputHierarchy.value;
                 yield return null;
                 methodCache = new Dictionary<Type, MethodInfo>();
                 convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
@@ -307,7 +314,7 @@ namespace ResoniteUnityExporter
             }
             else
             {
-                Debug.LogWarning("No converters available for type: " + typeof(T) + " on object " + holder.name);
+                Debug.Log("No converters available for type: " + typeof(T) + " on object " + holder.name);
                 yield return null;
             }
         }

@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+#if RUE_HAS_VRCSDK
 using VRC.Dynamics;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using static VRC.Dynamics.PhysBoneManager;
+#endif
 
 namespace ResoniteUnityExporter.Converters
 {

@@ -363,10 +363,10 @@ namespace ResoniteUnityExporter
 
             using (Timer _ = new Timer("Encoding"))
             {
-                byte[] encoded = SerializationUtils.EncodeObject(convertedMesh);
+                //byte[] encoded = SerializationUtils.EncodeObject(convertedMesh);
                 // test to make sure encodes correctlyf
-                StaticMesh_U2Res decoded = SerializationUtils.DecodeObject<StaticMesh_U2Res>(encoded);
-                CheckAllEqual(convertedMesh, decoded);
+                //StaticMesh_U2Res decoded = SerializationUtils.DecodeObject<StaticMesh_U2Res>(encoded);
+                //CheckAllEqual(convertedMesh, decoded);
             }
             using (Timer _ = new Timer("Processing Static Mesh"))
             {

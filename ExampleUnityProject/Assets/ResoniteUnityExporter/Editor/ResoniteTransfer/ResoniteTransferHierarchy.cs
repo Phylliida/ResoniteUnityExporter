@@ -1,5 +1,6 @@
 ﻿using MemoryMappedFileIPC;
 using ResoniteBridgeLib;
+using ResoniteUnityExporter.Converters;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
@@ -211,9 +212,50 @@ namespace ResoniteUnityExporter
         }
     }
 
+
     public class ResoniteTransferHierarchy
     {
-        public static HierarchyLookup CreateHierarchy(ResoniteTransferManager manager, string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient)
+        public static bool IsParentOrMeContainedInList(List<GameObject> objList, Transform child)
+        {
+            Transform parent = child;
+            while (parent != null)
+            {
+                if (objList.Contains(parent.gameObject))
+                {
+                    return true;
+                }
+                parent = parent.parent;
+            }
+            return false;
+        }
+
+
+        public static bool IsAncestorofObj(Transform ancestor, Transform child)
+        {
+            Transform parent = child;
+            while (parent != null)
+            {
+                if (parent == ancestor || parent.parent == ancestor)
+                {
+                    return true;
+                }
+                parent = parent.parent;
+            }
+            return false;
+        }
+
+        public static bool IsInHierarchy(GameObject[] parents, Transform obj)
+        {
+            foreach (GameObject parentObj in parents) { 
+                if (IsAncestorofObj(parentObj.transform, obj))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static IEnumerator<object> CreateHierarchy(ResoniteTransferManager manager, string hierarchyName, Transform rootTransform, ResoniteBridgeClient bridgeClient, OutputHolder<HierarchyLookup> output)
         {
             // if rootTransform is null, grab all objects in scene
             GameObject[] gameObjects = (rootTransform == null)
@@ -221,13 +263,85 @@ namespace ResoniteUnityExporter
                 // otherwise, just do the given object as root
                 : new GameObject[] { rootTransform.gameObject };
 
+            List<GameObject> bonusObjectsOutsideHierarchy = new List<GameObject>();
+            // extra objects references by bones in skinned mesh renderers but outside hierarchy, put them at root level
+            // also extra objects references by dyn bone chain colliders
+            bool foundSomething = true;
+            // repeat until we've crawled to grab all attached things
+            while (foundSomething)
+            {
+                List<GameObject> curRootObjects = new List<GameObject>(gameObjects);
+                curRootObjects.AddRange(bonusObjectsOutsideHierarchy);
+                foundSomething = false;
+                foreach (GameObject rootObj in curRootObjects)
+                {
+                    foreach (SkinnedMeshRenderer skinnedMeshRenderer in rootObj.GetComponentsInChildren<SkinnedMeshRenderer>())
+                    {
+                        if (skinnedMeshRenderer.bones != null)
+                        {
+                            foreach (Transform bone in skinnedMeshRenderer.bones)
+                            {
+                                // if outside of hierarchy we are exporting, also include it
+                                if (bone != null && !IsInHierarchy(gameObjects, bone) && !IsParentOrMeContainedInList(bonusObjectsOutsideHierarchy, bone))
+                                {
+                                    foundSomething = true;
+                                    bonusObjectsOutsideHierarchy.Add(bone.gameObject);
+                                }
+                            }
+                        }
+                    }
+#if RUE_HAS_AVATAR_VRCSDK
+                    //foreach (VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneCollider collider in rootObj.GetComponentsInChildren<VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBoneCollider>())
+                    //{
+
+                    //}
+                    foreach (VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBone physBone in rootObj.GetComponentsInChildren<VRC.SDK3.Dynamics.PhysBone.Components.VRCPhysBone>())
+                    {
+                        foreach (PhysBoneConverter.BoneInfo bone in PhysBoneConverter.GetBones(physBone, physBone.gameObject, out int depth))
+                        {
+                            Transform boneTransform = bone.transform;
+                            if (boneTransform != null && !IsInHierarchy(gameObjects, boneTransform) && !IsParentOrMeContainedInList(bonusObjectsOutsideHierarchy, boneTransform))
+                            {
+                                foundSomething = true;
+                                bonusObjectsOutsideHierarchy.Add(boneTransform.gameObject);
+                            }
+                        }
+                        if (physBone.colliders != null)
+                        {
+                            foreach (VRC.Dynamics.VRCPhysBoneColliderBase collider in physBone.colliders)
+                            {
+                                if (collider != null && collider.transform != null && !IsInHierarchy(gameObjects, collider.transform) && !IsParentOrMeContainedInList(bonusObjectsOutsideHierarchy, collider.transform))
+                                {
+                                    foundSomething = true;
+                                    bonusObjectsOutsideHierarchy.Add(collider.gameObject);
+                                }
+                            }
+                        }
+                    }
+#endif
+                }
+            }
 
             Dictionary<string, GameObject> gameObjectLookup = new Dictionary<string, GameObject>();
 
-            Object_U2Res[] convertedObjects = new Object_U2Res[gameObjects.Length];
+            if (bonusObjectsOutsideHierarchy.Count > 0)
+            {
+                Debug.LogWarning("Got: " + bonusObjectsOutsideHierarchy.Count + " extra slots outside hierarchy that we need to copy (and their children)");
+                Debug.LogWarning("Consider moving these inside the hierarchy for best results");
+                foreach (GameObject bonusObj in bonusObjectsOutsideHierarchy)
+                {
+                    Debug.LogWarning("Extra slot: " + bonusObj.name);
+                }
+                ResoniteUnityExporterEditorWindow.DebugProgressStringDetail = "Also copying: " + bonusObjectsOutsideHierarchy.Count + " bonus bone slots outside hierarchy, using their global data";
+            }
+            Object_U2Res[] convertedObjects = new Object_U2Res[gameObjects.Length + bonusObjectsOutsideHierarchy.Count];
             for (int i = 0; i < gameObjects.Length; i++)
             {
                 convertedObjects[i] = GameObjectToObject(gameObjects[i], gameObjectLookup);
+            }
+            for (int i = 0; i < bonusObjectsOutsideHierarchy.Count; i++)
+            {
+                convertedObjects[i + gameObjects.Length] = GameObjectToObject(bonusObjectsOutsideHierarchy[i], gameObjectLookup, useGlobal: true);
             }
 
             ObjectHierarchy_U2Res hierarchyData = new ObjectHierarchy_U2Res()
@@ -238,19 +352,20 @@ namespace ResoniteUnityExporter
 
             byte[] encoded = SerializationUtils.EncodeObject(hierarchyData);
 
+            OutputHolder<object> outputLookups = new OutputHolder<object>();
 
-            bridgeClient.SendMessageSync(
+            var en = HierarchyLookup.Call<ObjectLookups_U2Res, ObjectHierarchy_U2Res>(
+                bridgeClient,
                 "ImportSlotHierarchy",
-                encoded,
-                -1,
-                out byte[] outBytes,
-                out bool isError
-                );
-            if (isError)
+                hierarchyData,
+                outputLookups);
+
+            while (en.MoveNext())
             {
-                throw new Exception(SerializationUtils.DecodeString(outBytes));
+                yield return null;
             }
-            ObjectLookups_U2Res lookups = SerializationUtils.DecodeObject<ObjectLookups_U2Res>(outBytes);
+
+            ObjectLookups_U2Res lookups = (ObjectLookups_U2Res)outputLookups.value;
 
             Dictionary<string, RefID_U2Res> refIdLookup = new Dictionary<string, RefID_U2Res>();
             foreach (ObjectLookup_U2Res lookup in lookups.lookups)
@@ -258,19 +373,25 @@ namespace ResoniteUnityExporter
                 refIdLookup.Add(lookup.uniqueId, lookup.refId);
             }
 
-            HierarchyLookup hierarchyLookup = new HierarchyLookup(manager, gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot, lookups.mainParentSlot);
-
-            return hierarchyLookup;
+            output.value = new HierarchyLookup(manager, gameObjectLookup, refIdLookup, bridgeClient, lookups.rootAssetSlot, lookups.mainParentSlot);
         }
 
-        public static Object_U2Res GameObjectToObject(UnityEngine.GameObject obj, Dictionary<string, GameObject> gameObjectLookup)
+        public static Object_U2Res GameObjectToObject(UnityEngine.GameObject obj, Dictionary<string, GameObject> gameObjectLookup, bool useGlobal=false, bool addChildren=true)
         {
             gameObjectLookup[obj.GetInstanceID().ToString()] = obj;
-            Object_U2Res[] children = new Object_U2Res[obj.transform.childCount];
-            for (int i = 0; i < obj.transform.childCount; i++)
-            {
-                children[i] = GameObjectToObject(obj.transform.GetChild(i).gameObject, gameObjectLookup);
+            Object_U2Res[] children;
+            if (addChildren) {
+                children = new Object_U2Res[obj.transform.childCount];
+                for (int i = 0; i < obj.transform.childCount; i++)
+                {
+                    children[i] = GameObjectToObject(obj.transform.GetChild(i).gameObject, gameObjectLookup, useGlobal: false, addChildren: true);
+                }
             }
+            else
+            {
+                children = new Object_U2Res[0];
+            }
+            
             Object_U2Res result = new Object_U2Res()
             {
                 // note that this is unique during a session, but changes each time you reboot unity
@@ -280,22 +401,22 @@ namespace ResoniteUnityExporter
                 enabled = obj.activeInHierarchy,
                 localPosition = new Float3_U2Res()
                 {
-                    x = obj.transform.localPosition.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
-                    y = obj.transform.localPosition.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
-                    z = obj.transform.localPosition.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
+                    x = (useGlobal ? obj.transform.position.x : obj.transform.localPosition.x) * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = (useGlobal ? obj.transform.position.y : obj.transform.localPosition.y) * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = (useGlobal ? obj.transform.position.z : obj.transform.localPosition.z) * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
                 localRotation = new Float4_U2Res()
                 {
-                    x = obj.transform.localRotation.x,
-                    y = obj.transform.localRotation.y,
-                    z = obj.transform.localRotation.z,
-                    w = obj.transform.localRotation.w
+                    x = (useGlobal ? obj.transform.rotation.x : obj.transform.localRotation.x),
+                    y = (useGlobal ? obj.transform.rotation.y : obj.transform.localRotation.y),
+                    z = (useGlobal ? obj.transform.rotation.z : obj.transform.localRotation.z),
+                    w = (useGlobal ? obj.transform.rotation.w : obj.transform.localRotation.w)
                 },
                 localScale = new Float3_U2Res()
                 {
-                    x = obj.transform.localScale.x,
-                    y = obj.transform.localScale.y,
-                    z = obj.transform.localScale.z
+                    x = (useGlobal ? obj.transform.lossyScale.x : obj.transform.localScale.x),
+                    y = (useGlobal ? obj.transform.lossyScale.y : obj.transform.localScale.y),
+                    z = (useGlobal ? obj.transform.lossyScale.z : obj.transform.localScale.z),
                 }
             };
             return result;

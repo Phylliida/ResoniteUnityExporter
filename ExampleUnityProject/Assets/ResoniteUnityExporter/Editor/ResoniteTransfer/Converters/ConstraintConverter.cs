@@ -10,7 +10,9 @@ using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SocialPlatforms;
+#if RUE_HAS_VRCSDK
 using VRC.SDK3.Dynamics.Constraint.Components;
+#endif
 
 namespace ResoniteUnityExporter.Converters
 {
