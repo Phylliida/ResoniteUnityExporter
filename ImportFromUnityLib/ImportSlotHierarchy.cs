@@ -1,4 +1,7 @@
-﻿using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::FrooxEngine;
+using Froox::Elements.Core;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
@@ -17,14 +20,14 @@ namespace ImportFromUnityLib
         public static Slot AddObjectAndChildren(Slot parentSlot, Object_U2Res obj, List<ObjectLookup_U2Res> lookups)
         {
             Slot addedSlot = parentSlot.AddSlot(obj.name);
-            addedSlot.LocalPosition = new Elements.Core.float3(obj.localPosition.x,
+            addedSlot.LocalPosition = new float3(obj.localPosition.x,
                             obj.localPosition.y,
                             obj.localPosition.z);
-            addedSlot.LocalRotation = new Elements.Core.floatQ(obj.localRotation.x,
+            addedSlot.LocalRotation = new floatQ(obj.localRotation.x,
                             obj.localRotation.y,
                             obj.localRotation.z,
                             obj.localRotation.w);
-            addedSlot.LocalScale = new Elements.Core.float3(obj.localScale.x,
+            addedSlot.LocalScale = new float3(obj.localScale.x,
                             obj.localScale.y,
                             obj.localScale.z);
             addedSlot.ActiveSelf = obj.enabled;
@@ -57,8 +60,8 @@ namespace ImportFromUnityLib
 
 
             //// create assets slot 
-            Slot worldAssets = Engine.Current.WorldManager.FocusedWorld.AssetsSlot;
-            FrooxEngine.Slot assetsSlot = worldAssets.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
+            Slot worldAssets = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.AssetsSlot;
+            Slot assetsSlot = worldAssets.FindChild(hierarchy.hierarchyName, matchSubstring: false, ignoreCase: false, maxDepth: 0);
             // it's dangerous to remove any assets slots, so just remove old assets slot if it has a comment with our name on it
             if (assetsSlot != null &&
                 assetsSlot.GetComponent<Comment>() != null &&
@@ -68,7 +71,7 @@ namespace ImportFromUnityLib
             }
             assetsSlot = worldAssets.AddSlot(hierarchy.hierarchyName);
             // add the comment saying we are assets from this, also add asset optimization block as is standard
-            assetsSlot.AttachComponent<FrooxEngine.AssetOptimizationBlock>().Persistent = false;
+            assetsSlot.AttachComponent<AssetOptimizationBlock>().Persistent = false;
             assetsSlot.AttachComponent<Comment>().Text.Value = hierarchy.hierarchyName;
 
             //// create root slot
@@ -93,7 +96,7 @@ namespace ImportFromUnityLib
             {
                 AddObjectAndChildren(targetSlot, obj, lookups);
             }
-            targetSlot.LocalScale = new Elements.Core.float3(1.0f / 100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
+            targetSlot.LocalScale = new float3(1.0f / 100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
             //// encode lookup and return it
             yield return Context.ToBackground();
             ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()

@@ -1,5 +1,7 @@
-﻿using Elements.Core;
-using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::Elements.Core;
+using Froox::FrooxEngine;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
@@ -247,7 +249,7 @@ namespace ImportFromUnityLib
             };
             if (materialData.materialName == MaterialNames_U2Res.XIEXE_TOON_MAT)
             {
-                FrooxEngine.XiexeToonMaterial mat = assetsSlot.AttachComponent<FrooxEngine.XiexeToonMaterial>();
+                XiexeToonMaterial mat = assetsSlot.AttachComponent<XiexeToonMaterial>();
                 mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
@@ -290,7 +292,7 @@ namespace ImportFromUnityLib
                 }
             }
             else if (materialData.materialName == MaterialNames_U2Res.PBS_SPECULAR_MAT) {
-                FrooxEngine.PBS_Specular mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Specular>();
+                PBS_Specular mat = assetsSlot.AttachComponent<PBS_Specular>();
                 mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
@@ -346,7 +348,7 @@ namespace ImportFromUnityLib
             }
             else if (materialData.materialName == MaterialNames_U2Res.PBS_METALLIC_MAT)
             {
-                FrooxEngine.PBS_Metallic mat = assetsSlot.AttachComponent<FrooxEngine.PBS_Metallic>();
+                PBS_Metallic mat = assetsSlot.AttachComponent<PBS_Metallic>();
                 mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)
@@ -402,7 +404,7 @@ namespace ImportFromUnityLib
             }
             else if (materialData.materialName == MaterialNames_U2Res.UNLIT_MAT)
             {
-                FrooxEngine.UnlitMaterial mat = assetsSlot.AttachComponent<FrooxEngine.UnlitMaterial>();
+                UnlitMaterial mat = assetsSlot.AttachComponent<UnlitMaterial>();
                 mat.BlendMode.Value = blendMode;
                 matRefId.id = (ulong)mat.ReferenceID;
                 if (hasColor)

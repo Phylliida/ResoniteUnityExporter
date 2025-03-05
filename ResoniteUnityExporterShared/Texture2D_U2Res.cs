@@ -6,7 +6,7 @@ using System.Text;
 namespace ResoniteUnityExporterShared
 {
     [StructLayout(LayoutKind.Sequential)]
-    public class Texture2D_U2Res
+    public struct Texture2D_U2Res
     {
         public RefID_U2Res rootAssetsSlot;
         public int width;

@@ -67,6 +67,7 @@
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransferUtils.cs" />
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\ColliderConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferArmatureRenamer.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\LightConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ResoniteUnityExporter\Editor\VRC.asmdef" />

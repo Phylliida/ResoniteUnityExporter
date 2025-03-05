@@ -1,5 +1,7 @@
-﻿using Elements.Core;
-using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::Elements.Core;
+using Froox::FrooxEngine;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
@@ -16,10 +18,9 @@ namespace ImportFromUnityLib
 
     public class ImportFromUnityUtils
     {
-
         public static bool AllowedToSpawn()
         {
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
             if (focusedWorld.CanSpawnObjects())
             {
                 return focusedWorld.LocalUser.CanEnableEditMode();
@@ -33,14 +34,14 @@ namespace ImportFromUnityLib
             public ulong id;
         }
 
-        static IEnumerator<FrooxEngine.Context> AddSlotFuncHelper(byte[] inputBytes, OutputBytesHolder outputBytes)
+        static IEnumerator<Context> AddSlotFuncHelper(byte[] inputBytes, OutputBytesHolder outputBytes)
         {
             // move to background thread (optional, useful if you are doing heavy stuff)
-            yield return FrooxEngine.Context.ToBackground();
+            yield return Context.ToBackground();
             // move to world thread (necessary if we want to modify the world at all)
             yield return Context.ToWorld();
             string slotName = SerializationUtils.DecodeString(inputBytes);
-            Slot resultSlot = Engine.Current.WorldManager.FocusedWorld.RootSlot.AddSlot(slotName);
+            Slot resultSlot = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot.AddSlot(slotName);
             RefID_Example result = new RefID_Example()
             {
                 id = (ulong)resultSlot.ReferenceID
@@ -66,7 +67,7 @@ namespace ImportFromUnityLib
 
         public static Slot GetAddingSlot()
         {
-            return Engine.Current.WorldManager.FocusedWorld.LocalUserSpace;
+            return ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.LocalUserSpace;
         }
 
         public static IWorldElement LookupRefID(RefID_U2Res refID)
@@ -78,7 +79,7 @@ namespace ImportFromUnityLib
             }
             else
             {
-                return Engine.Current.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID.id);
+                return ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID.id);
             }
         }
 
@@ -140,7 +141,7 @@ namespace ImportFromUnityLib
         public static bool RunOnWorldThread(IEnumerator<Context> action)
         {
             TaskCompletionSource<object> taskCompletionSource = new TaskCompletionSource<object>();
-            Engine.Current.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
+            ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
             var result = taskCompletionSource.Task.GetAwaiter().GetResult();
             if (result.GetType() == typeof(bool)) // not an exception
             {

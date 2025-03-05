@@ -8,6 +8,7 @@ using System.Collections.Concurrent;
 
 using static ResoniteBridge.ReflectionUtils;
 using ResoniteUnityExporterShared;
+using System.Diagnostics;
 
 namespace ResoniteBridge
 {
@@ -58,6 +59,11 @@ namespace ResoniteBridge
                 StreamReader sr = new StreamReader(settingsLocation);
                 resoniteExeLocation = sr.ReadToEnd();
                 sr.Close();
+                if (!File.Exists(resoniteExeLocation))
+                {
+                    File.Delete(settingsLocation);
+                    continue; // retry
+                }
                 Console.WriteLine(string.Format("DIRECTORY: {0}", Path.GetDirectoryName(resoniteExeLocation)));
                 libraries.Clear();
                 string resoniteFolder = Path.GetDirectoryName(resoniteExeLocation);
@@ -81,6 +87,7 @@ namespace ResoniteBridge
 
                     assemblyFile += ".dll";
 
+
                     string targetPath = Path.Combine(libraryFolder, assemblyFile);
 
                     try
@@ -97,11 +104,10 @@ namespace ResoniteBridge
                 Console.WriteLine("current path" + Environment.GetEnvironmentVariable("PATH"));
                 try
                 {
-                    libraries.Add("Newtonsoft.Json", Assembly.LoadFrom(Path.Combine(libraryFolder, "Newtonsoft.Json.dll")));
-                    libraries.Add("FrooxEngine", Assembly.LoadFrom(Path.Combine(libraryFolder, "FrooxEngine.dll")));
-                    libraries.Add("SkyFrost.Base", Assembly.LoadFrom(Path.Combine(libraryFolder, "SkyFrost.Base.dll")));
-                    libraries.Add("SkyFrost.Base.Models", Assembly.LoadFrom(Path.Combine(libraryFolder, "SkyFrost.Base.Models.dll")));
-                    libraries.Add("Elements.Core", Assembly.LoadFrom(Path.Combine(libraryFolder, "Elements.Core.dll")));
+                    libraries.Add("FrooxEngine", Assembly.Load("FrooxEngine"));
+                    libraries.Add("SkyFrost.Base", Assembly.Load("SkyFrost.Base"));
+                    libraries.Add("SkyFrost.Base.Models", Assembly.Load("SkyFrost.Base.Models"));
+                    libraries.Add("Elements.Core", Assembly.Load("Elements.Core"));
                     success = true;
                 }
                 catch
@@ -113,6 +119,7 @@ namespace ResoniteBridge
             }
             return resoniteExeLocation;
         }
+
 
         public object engine;
         public object systemInfo;
@@ -263,7 +270,7 @@ namespace ResoniteBridge
                                         label = "Standalone",
                                     };
                                 },
-                                msg => Console.WriteLine(msg));
+                                msg => Console.WriteLine(msg), CurrentEngine: engine);
                                 first = false;
 
                                 // hack to prevent discord interface from crashing it

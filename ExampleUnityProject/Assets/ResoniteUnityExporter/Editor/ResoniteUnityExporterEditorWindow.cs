@@ -346,6 +346,17 @@ namespace ResoniteUnityExporter {
             transferManager.RegisterConverter<LookAtConstraint>(ConstraintConverter.ConvertLookAtConstraint);
             transferManager.RegisterConverter<ParentConstraint>(ConstraintConverter.ConvertParentConstraint);
             transferManager.RegisterConverter<AimConstraint>(ConstraintConverter.ConvertAimConstraint);
+
+            // colliders
+            transferManager.RegisterConverter<SphereCollider>(ColliderConverter.ConvertSphereCollider);
+            transferManager.RegisterConverter<BoxCollider>(ColliderConverter.ConvertBoxCollider);
+            transferManager.RegisterConverter<CapsuleCollider>(ColliderConverter.ConvertCapsuleCollider);
+            transferManager.RegisterConverter<MeshCollider>(ColliderConverter.ConvertMeshCollider);
+
+            // light
+            transferManager.RegisterConverter<Light>(LightConverter.ConvertLight);
+
+
         }
 
         void DrawTextureCenter(Texture2D texture, Rect containerRect)

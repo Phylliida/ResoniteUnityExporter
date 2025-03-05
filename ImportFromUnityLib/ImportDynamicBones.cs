@@ -1,5 +1,7 @@
-﻿using Elements.Core;
-using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::FrooxEngine;
+using Froox::Elements.Core;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;

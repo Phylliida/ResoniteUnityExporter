@@ -1,6 +1,8 @@
-﻿using FreeImageAPI;
-using FrooxEngine;
-using FrooxEngine.Store;
+﻿extern alias Froox;
+
+using Froox::FreeImageAPI;
+using Froox::FrooxEngine;
+using Froox::FrooxEngine.Store;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
@@ -45,8 +47,8 @@ namespace ImportFromUnityLib
             // load data from bytes
             Texture2D_U2Res tex = SerializationUtils.DecodeObject<Texture2D_U2Res>(texData);
             // load texture into localdb to get a url
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
-            FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
+            Froox::FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
 
             string tempFilePath;
             // raw data import
@@ -69,7 +71,7 @@ namespace ImportFromUnityLib
             System.Uri url = localDb.ImportLocalAssetAsync(tempFilePath, LocalDB.ImportLocation.Move).GetAwaiter().GetResult();
             yield return Context.ToWorld();
             Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == tex.rootAssetsSlot.id);
-            FrooxEngine.StaticTexture2D tex2d = assetsSlot.AttachComponent<FrooxEngine.StaticTexture2D>();
+            StaticTexture2D tex2d = assetsSlot.AttachComponent<StaticTexture2D>();
             tex2d.URL.Value = url;
             // return refid of StaticMesh component
             RefID_U2Res result = new RefID_U2Res()

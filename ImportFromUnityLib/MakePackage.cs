@@ -1,14 +1,16 @@
-﻿using Elements.Core;
-using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::Elements.Core;
+using Froox::FrooxEngine;
 using System.Collections.Generic;
 using System.IO;
 using ResoniteUnityExporterShared;
-using SkyFrost.Base;
+using Froox::SkyFrost.Base;
 using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
 {
-    internal class MakePackage
+    public class MakePackage
     {
         public static IEnumerator<Context> MakePackageHelper(byte[] packageInfoBytes, OutputBytesHolder outputBytes)
         {
@@ -18,8 +20,8 @@ namespace ImportFromUnityLib
             yield return Context.ToWorld();
             Slot mainParentSlot = (Slot)ImportFromUnityUtils.LookupRefID(packageInfo.mainParentSlot);
             SavedGraph savedGraph = mainParentSlot.SaveObject(DependencyHandling.CollectAssets);
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
-            SkyFrost.Base.Record record = RecordHelper.CreateForObject<SkyFrost.Base.Record>(mainParentSlot.Name, focusedWorld.LocalUser.UserID ?? focusedWorld.LocalUser.MachineID, null);
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
+            Record record = RecordHelper.CreateForObject<Record>(mainParentSlot.Name, focusedWorld.LocalUser.UserID ?? focusedWorld.LocalUser.MachineID, null);
             yield return Context.ToBackground();
             string path = packageInfo.packagePath;
             // make parent directory if not exist

@@ -26,6 +26,7 @@ namespace ResoniteUnityExporter.Converters
         }
         public static void GetBonesFromChildren(Transform curChild, List<BoneInfo> bones, float weight, int depth, VRCPhysBone.MultiChildType multiChildType)
         {
+
             bones.Add(new BoneInfo()
             {
                 boneChainIndex = depth,

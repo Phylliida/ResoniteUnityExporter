@@ -77,7 +77,7 @@ namespace ResoniteBridgeMod
                                 label = "Mod",
                                 worldName = focusedWorld != null ? focusedWorld.Name : "None"
                             };
-                        }, Msg);
+                        }, Msg, CurrentEngine: FrooxEngine.Engine.Current);
                         Msg("Bridge server listening");
                         cancellation.Token.WaitHandle.WaitOne();
                     }

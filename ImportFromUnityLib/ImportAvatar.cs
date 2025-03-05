@@ -1,12 +1,14 @@
-﻿using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::FrooxEngine;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Elements.Core;
+using Froox::Elements.Core;
 using System.IO;
 using System.Reflection;
-using FrooxEngine.CommonAvatar;
+using Froox::FrooxEngine.CommonAvatar;
 using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
@@ -21,14 +23,14 @@ namespace ImportFromUnityLib
             List<Slot> allSlots = new List<Slot>();
             HashSet<RefID> bonesSet = new HashSet<RefID>();
             List<Slot> bones = new List<Slot>();
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
             // collect all renderer bones into one list to put in the rig
             foreach (RefID_U2Res rendererComponentRefID in avatarData.renderers)
             {
                 IWorldElement rendererComponent = ImportFromUnityUtils.LookupRefID(rendererComponentRefID);
                 if (rendererComponent != null)
                 {
-                    allSlots.Add(((FrooxEngine.Component)rendererComponent).Slot);
+                    allSlots.Add(((Froox::FrooxEngine.Component)rendererComponent).Slot);
                 }
                 if (rendererComponent.GetType().ToString() == "FrooxEngine.SkinnedMeshRenderer")
                 {
@@ -98,7 +100,7 @@ namespace ImportFromUnityLib
             }
             if (avatarData.floorOnOrigin)
             {
-                Elements.Core.BoundingBox box = sharedParent.ComputeBoundingBox(false, focusedWorld.RootSlot);
+                Froox::Elements.Core.BoundingBox box = sharedParent.ComputeBoundingBox(false, focusedWorld.RootSlot);
                 // we want this to be 0,0,0
                 float3 currentFloorPos = box.Center - new float3(0, box.Size.y / 2.0f, 0);
                 sharedParent.GlobalPosition = sharedParent.GlobalPosition - currentFloorPos;
@@ -516,7 +518,7 @@ namespace ImportFromUnityLib
         // loops through fingers to get bounding box of size
         static float3 GetHandSize(BipedRig rig, bool rightSide)
         {
-            Elements.Core.BoundingBox box = new Elements.Core.BoundingBox();
+            Froox::Elements.Core.BoundingBox box = new Froox::Elements.Core.BoundingBox();
             box.MakeEmpty();
             Slot handBone = rig.TryGetBone(rightSide ? BodyNode.RightHand : BodyNode.LeftHand);
             if (handBone != null)
@@ -599,7 +601,7 @@ namespace ImportFromUnityLib
         {
             if (slots.Length == 0)
             {
-                return Engine.Current.WorldManager.FocusedWorld.RootSlot;
+                return ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot;
             }
             Slot sharedParent = slots[0];
             foreach (Slot slot in slots)
@@ -618,7 +620,7 @@ namespace ImportFromUnityLib
                 .Where(t => t.Name == "ModelImportData").First();
             Type[] constructorTypes = new Type[] {
                     typeof(string),
-                    typeof(Assimp.Scene),
+                    typeof(Froox::Assimp.Scene),
                     typeof(Slot),
                     typeof(Slot),
                     typeof(ModelImportSettings),

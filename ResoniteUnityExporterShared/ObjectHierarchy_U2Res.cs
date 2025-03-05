@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace ResoniteUnityExporterShared
 {
+    [StructLayout(LayoutKind.Sequential)]
     public struct ObjectHierarchy_U2Res
     {
         public string hierarchyName;
@@ -14,6 +16,7 @@ namespace ResoniteUnityExporterShared
         public Object_U2Res[] objects;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct ObjectLookups_U2Res
     {
         public RefID_U2Res mainParentSlot;
@@ -21,6 +24,7 @@ namespace ResoniteUnityExporterShared
         public ObjectLookup_U2Res[] lookups;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct ObjectLookup_U2Res
     {
         public string uniqueId;

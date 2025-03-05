@@ -1,4 +1,8 @@
-﻿using MemoryMappedFileIPC;
+﻿extern alias Froox;
+
+using Froox::FrooxEngine;
+
+using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 
 namespace ImportFromUnityLib
@@ -10,10 +14,13 @@ namespace ImportFromUnityLib
 
         public static DebugLogDelegate DebugLog;
 
+        public static Engine CurrentEngine;
+
         public delegate ServerInfo_U2Res ServerInfoDelegate();
 
-        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, ServerInfoDelegate serverInfoCallback, DebugLogDelegate DebugLog)
+        public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, ServerInfoDelegate serverInfoCallback, DebugLogDelegate DebugLog, object CurrentEngine)
         {
+            ImportFromUnityLib.CurrentEngine = (Engine)CurrentEngine;
             ImportFromUnityLib.DebugLog = DebugLog;
             server.RegisterProcessor("GetServerInfo", (byte[] _) => SerializationUtils.EncodeObject(serverInfoCallback()));
             server.RegisterProcessor("MakePackage", MakePackage.MakePackageFunc);
@@ -37,6 +44,14 @@ namespace ImportFromUnityLib
             server.RegisterProcessor("ImportParentConstraint", ImportConstraint.ImportParentConstraintFunc);
             server.RegisterProcessor("ImportLookAtConstraint", ImportConstraint.ImportLookAtConstraintFunc);
 
+            // colliders
+            server.RegisterProcessor("ImportSphereCollider", ImportCollider.ImportSphereColliderFunc);
+            server.RegisterProcessor("ImportCapsuleCollider", ImportCollider.ImportCapsuleColliderFunc);
+            server.RegisterProcessor("ImportBoxCollider", ImportCollider.ImportBoxColliderFunc);
+            server.RegisterProcessor("ImportMeshCollider", ImportCollider.ImportMeshColliderFunc);
+
+            // lights
+            server.RegisterProcessor("ImportLight", ImportLight.ImportLightFunc);
         }
     }
 }

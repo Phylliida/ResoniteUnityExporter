@@ -20,35 +20,55 @@
 
   <ItemGroup>
     <Reference Include="AssimpNet">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\AssimpNet.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\AssimpNet.dll</HintPath>
+      <Aliases>Froox</Aliases>
+		<Private>true</Private>
+	</Reference>
+    <Reference Include="BepuPhysics">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\BepuPhysics.dll</HintPath>
+      <Aliases>Froox</Aliases>
+		<Private>true</Private>
+	</Reference>
     <Reference Include="Elements.Assets">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Assets.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Assets.dll</HintPath>
+      <Aliases>Froox</Aliases>
+		<Private>true</Private>
+	</Reference>
     <Reference Include="Elements.Core">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Core.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Core.dll</HintPath>
+      <Aliases>Froox</Aliases>
+		<Private>true</Private>
+	</Reference>
     <Reference Include="Elements.Quantity">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Quantity.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\Elements.Quantity.dll</HintPath>
+      <Aliases>Froox</Aliases>
+		<Private>true</Private>
+	</Reference>
     <Reference Include="FreeImageNET">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FreeImageNET.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FreeImageNET.dll</HintPath>
+      <Aliases>Froox</Aliases>
+      <Private>true</Private>
+	</Reference>
     <Reference Include="FrooxEngine">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
+      <Aliases>Froox</Aliases>
+      <Private>true</Private>
+	</Reference>
     <Reference Include="FrooxEngine.Store">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.Store.dll</HintPath>
-    </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>..\Published\ResoniteUnityExporterShared\ResoniteUnityExporterShared.dll</HintPath>
-    </Reference>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\FrooxEngine.Store.dll</HintPath>
+      <Aliases>Froox</Aliases>
+	</Reference>
     <Reference Include="SkyFrost.Base">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\SkyFrost.Base.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\SkyFrost.Base.dll</HintPath>
+      <Aliases>Froox</Aliases>
     </Reference>
     <Reference Include="SkyFrost.Base.Models">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\SkyFrost.Base.Models.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite_Data\Managed\SkyFrost.Base.Models.dll</HintPath>
+      <Aliases>Froox</Aliases>
     </Reference>
+	<Reference Include="ResoniteUnityExporterShared">
+		<HintPath>..\Published\ResoniteUnityExporterShared\ResoniteUnityExporterShared.dll</HintPath>
+	</Reference>
   </ItemGroup>
 
 </Project>

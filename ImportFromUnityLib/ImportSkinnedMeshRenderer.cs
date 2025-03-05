@@ -1,4 +1,6 @@
-﻿using FrooxEngine;
+﻿extern alias Froox;
+
+using Froox::FrooxEngine;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 using MemoryMappedFileIPC;
@@ -13,18 +15,18 @@ namespace ImportFromUnityLib
             // load data from bytes
             SkinnedMeshRenderer_U2Res skinnedMeshRendererData = SerializationUtils.DecodeObject<SkinnedMeshRenderer_U2Res>(skinnedMeshRendererBytes);
             // load texture into localdb to get a url
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
             yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.targetSlot);
             ImportFromUnityLib.DebugLog("Importing skinned mesh renderer on " + targetSlot.Name);
             SkinnedMeshRenderer renderer = targetSlot.AttachComponent<SkinnedMeshRenderer>();
             renderer.Mesh.Value = skinnedMeshRendererData.staticMeshAsset.id;
-            Slot assetsSlot = ((FrooxEngine.StaticMesh)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.staticMeshAsset)).Slot;
+            Slot assetsSlot = ((StaticMesh)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.staticMeshAsset)).Slot;
             // assign materials
             renderer.Materials.Clear();
             foreach (RefID_U2Res material in skinnedMeshRendererData.materials)
             {
-                IAssetProvider<FrooxEngine.Material> frooxMat = (IAssetProvider<FrooxEngine.Material>)ImportFromUnityUtils.LookupRefID(material);
+                IAssetProvider<Material> frooxMat = (IAssetProvider<Material>)ImportFromUnityUtils.LookupRefID(material);
                 renderer.Materials.Add(frooxMat);
             }
             // assign bones and rig

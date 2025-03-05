@@ -1,9 +1,11 @@
-﻿using System;
-using Elements.Assets;
+﻿extern alias Froox;
+
+using System;
+using Froox::Elements.Assets;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
-using FrooxEngine;
-using Elements.Core;
+using Froox::FrooxEngine;
+using Froox::Elements.Core;
 using MemoryMappedFileIPC;
 
 namespace ImportFromUnityLib
@@ -25,17 +27,17 @@ namespace ImportFromUnityLib
             MeshX meshx = ConvertToMeshX(meshOut);
             // create assets slot
             yield return Context.ToWorld();
-            World focusedWorld = FrooxEngine.Engine.Current.WorldManager.FocusedWorld;
+            World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
             // load meshx into localdb to get a url
-            FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
+            Froox::FrooxEngine.Store.LocalDB localDb = focusedWorld.Engine.LocalDB;
             string tempFilePath = localDb.GetTempFilePath("meshx");
             yield return Context.ToBackground();
             meshx.SaveToFile(tempFilePath);
-            Uri url = localDb.ImportLocalAssetAsync(tempFilePath, FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
+            Uri url = localDb.ImportLocalAssetAsync(tempFilePath, Froox::FrooxEngine.Store.LocalDB.ImportLocation.Move).Result;
             // attach StaticMesh component with resulting url
             yield return Context.ToWorld();
             Slot assetsSlot = focusedWorld.AssetsSlot.FindChild(x => (ulong)x.ReferenceID == meshOut.rootAssetsSlot.id);
-            FrooxEngine.StaticMesh staticMesh = assetsSlot.AttachComponent<FrooxEngine.StaticMesh>();
+            StaticMesh staticMesh = assetsSlot.AttachComponent<StaticMesh>();
             staticMesh.URL.Value = url;
             // return refid of StaticMesh component
             RefID_U2Res result = new RefID_U2Res()
@@ -118,10 +120,10 @@ namespace ImportFromUnityLib
             }
 
             // submesh (index buffers)
-            List<Elements.Assets.Submesh> submeshes = new List<Elements.Assets.Submesh>();
+            List<Froox::Elements.Assets.Submesh> submeshes = new List<Froox::Elements.Assets.Submesh>();
             for (int subMeshI = 0; subMeshI < mesh.submeshes.Length; subMeshI++)
             {
-                Elements.Assets.TriangleSubmesh submesh = meshx.AddSubmesh<Elements.Assets.TriangleSubmesh>();
+                Froox::Elements.Assets.TriangleSubmesh submesh = meshx.AddSubmesh<Froox::Elements.Assets.TriangleSubmesh>();
                 int[] indices = mesh.submeshes[subMeshI].indicies;
                 if (mesh.importSettings.reverse)
                 {
@@ -146,7 +148,7 @@ namespace ImportFromUnityLib
             {
                 BlendShape_U2Res blendShape = mesh.blendShapes[blendShapeI];
                 string blendShapeName = blendShape.name;
-                Elements.Assets.BlendShape blendShapeX = meshx.AddBlendShape(blendShapeName);
+                Froox::Elements.Assets.BlendShape blendShapeX = meshx.AddBlendShape(blendShapeName);
                 blendShapeX.HasNormals = meshx.HasNormals;
                 blendShapeX.HasTangents = meshx.HasTangents;
                 int blendShapeFrameCount = blendShape.frames.Length;
@@ -154,7 +156,7 @@ namespace ImportFromUnityLib
                 {
                     BlendShapeFrame_U2Res blendShapeFrame = blendShape.frames[blendShapeFrameI];
                     // todo: ModelImporter just uses 1.0 for weight, should we do that?
-                    Elements.Assets.BlendShapeFrame blendShapeFrameX = blendShapeX.AddFrame(blendShapeFrame.frameWeight);
+                    Froox::Elements.Assets.BlendShapeFrame blendShapeFrameX = blendShapeX.AddFrame(blendShapeFrame.frameWeight);
                     SerializationUtils.CopyArray(blendShapeFrame.positions, blendShapeFrameX.RawPositions);
 
                     if (hasNormals)
@@ -174,7 +176,7 @@ namespace ImportFromUnityLib
                 foreach (Bone_U2Res bone in mesh.bones)
                 {
                     //ImportFromUnityLib.DebugLog("Bone:" + bone.name);
-                    Elements.Assets.Bone bonex = meshx.AddBone(bone.name);
+                    Froox::Elements.Assets.Bone bonex = meshx.AddBone(bone.name);
                     bonex.BindPose = new float4x4(bone.bindPose.m00, bone.bindPose.m01, bone.bindPose.m02, bone.bindPose.m03,
                                                   bone.bindPose.m10, bone.bindPose.m11, bone.bindPose.m12, bone.bindPose.m13,
                                                   bone.bindPose.m20, bone.bindPose.m21, bone.bindPose.m22, bone.bindPose.m23,
