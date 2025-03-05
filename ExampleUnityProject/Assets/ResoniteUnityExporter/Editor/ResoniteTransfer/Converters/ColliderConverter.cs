@@ -18,11 +18,11 @@ namespace ResoniteUnityExporter.Converters
                 target = objRefID,
                 center = new Float3_U2Res()
                 {
-                    x = sphereCollider.center.x,
-                    y = sphereCollider.center.y,
-                    z = sphereCollider.center.z
+                    x = sphereCollider.center.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = sphereCollider.center.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = sphereCollider.center.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
-                radius = sphereCollider.radius
+                radius = sphereCollider.radius * ResoniteTransferMesh.FIXED_SCALE_FACTOR
             };
 
             var en = hierarchy.Call<RefID_U2Res, SphereCollider_U2Res>("ImportSphereCollider", sphereColliderData, output);
@@ -40,15 +40,15 @@ namespace ResoniteUnityExporter.Converters
                 target = objRefID,
                 center = new Float3_U2Res()
                 {
-                    x = boxCollider.center.x,
-                    y = boxCollider.center.y,
-                    z = boxCollider.center.z
+                    x = boxCollider.center.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = boxCollider.center.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = boxCollider.center.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
                 size = new Float3_U2Res()
                 {
-                    x = boxCollider.size.x,
-                    y = boxCollider.size.y,
-                    z = boxCollider.size.z
+                    x = boxCollider.size.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = boxCollider.size.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = boxCollider.size.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
             };
 
@@ -68,13 +68,13 @@ namespace ResoniteUnityExporter.Converters
                 target = objRefID,
                 center = new Float3_U2Res()
                 {
-                    x = capsuleCollider.center.x,
-                    y = capsuleCollider.center.y,
-                    z = capsuleCollider.center.z
+                    x = capsuleCollider.center.x * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    y = capsuleCollider.center.y * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                    z = capsuleCollider.center.z * ResoniteTransferMesh.FIXED_SCALE_FACTOR
                 },
                 direction = (CapsuleColliderDirection_U2Res) capsuleCollider.direction,
-                height = capsuleCollider.height,
-                radius = capsuleCollider.radius
+                height = capsuleCollider.height * ResoniteTransferMesh.FIXED_SCALE_FACTOR,
+                radius = capsuleCollider.radius * ResoniteTransferMesh.FIXED_SCALE_FACTOR
             };
 
             var en = hierarchy.Call<RefID_U2Res, CapsuleCollider_U2Res>("ImportCapsuleCollider", capsuleColliderData, output);
