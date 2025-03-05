@@ -33,6 +33,8 @@ namespace ResoniteUnityExporter {
         bool finalizeAvatarCreator = true;
         bool renameSlots = true;
         bool setupIK = true;
+        bool sendColliders = true;
+        bool sendLights = true;
         bool sendingAvatar = true;
         bool makePackage = false;
         bool includeAssetVariantsInPackage = true;
@@ -321,7 +323,7 @@ namespace ResoniteUnityExporter {
             }
         }
 
-        void RegisterConverters(ResoniteTransferManager transferManager)
+        void RegisterConverters(ResoniteTransferManager transferManager, bool sendColliders, bool sendLights)
 		{
             // mesh renderers
             transferManager.RegisterConverter<SkinnedMeshRenderer>(SkinnedMeshRendererConverter.ConvertSkinnedMeshRenderer);
@@ -348,13 +350,19 @@ namespace ResoniteUnityExporter {
             transferManager.RegisterConverter<AimConstraint>(ConstraintConverter.ConvertAimConstraint);
 
             // colliders
-            transferManager.RegisterConverter<SphereCollider>(ColliderConverter.ConvertSphereCollider);
-            transferManager.RegisterConverter<BoxCollider>(ColliderConverter.ConvertBoxCollider);
-            transferManager.RegisterConverter<CapsuleCollider>(ColliderConverter.ConvertCapsuleCollider);
-            transferManager.RegisterConverter<MeshCollider>(ColliderConverter.ConvertMeshCollider);
+            if (sendColliders)
+            {
+                transferManager.RegisterConverter<SphereCollider>(ColliderConverter.ConvertSphereCollider);
+                transferManager.RegisterConverter<BoxCollider>(ColliderConverter.ConvertBoxCollider);
+                transferManager.RegisterConverter<CapsuleCollider>(ColliderConverter.ConvertCapsuleCollider);
+                transferManager.RegisterConverter<MeshCollider>(ColliderConverter.ConvertMeshCollider);
+            }
 
             // light
-            transferManager.RegisterConverter<Light>(LightConverter.ConvertLight);
+            if (sendLights)
+            {
+                transferManager.RegisterConverter<Light>(LightConverter.ConvertLight);
+            }
 
 
         }
@@ -463,6 +471,9 @@ namespace ResoniteUnityExporter {
 
         void DrawSettings()
         {
+            sendColliders = EditorGUILayout.ToggleLeft("Send colliders (Not recommend for avatar, it'll auto-add them)", sendColliders);
+            sendLights = EditorGUILayout.ToggleLeft("Send lights", sendLights);
+
             EditorGUI.BeginDisabledGroup(!sendingAvatar);
             if (!sendingAvatar)
             {
@@ -594,7 +605,7 @@ namespace ResoniteUnityExporter {
                     exportSlotName = "Untitled";
                 }
                 ResoniteTransferManager transferManager = new ResoniteTransferManager();
-                RegisterConverters(transferManager);
+                RegisterConverters(transferManager, sendColliders, sendLights);
                 DebugProgressString = "";
                 System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient, new ResoniteTransferSettings()
                 {
@@ -846,6 +857,16 @@ namespace ResoniteUnityExporter {
             if (sendingAvatar != prevSendingAvatar)
             {
                 EditorPrefs.SetBool("R2USendingAvatar", sendingAvatar);
+                if (sendingAvatar)
+                {
+                    sendColliders = false;
+                    sendLights = false;
+                }
+                else
+                {
+                    sendColliders = true;
+                    sendLights = true;
+                }
             }
 
             if (sendingAvatar && parentObject == null && ResoniteTransferUtils.GetAvatarDescriptors(parentObject).Length == 1)
