@@ -115,6 +115,30 @@ namespace ResoniteUnityExporter
                 yield return null;
                 methodCache = new Dictionary<Type, MethodInfo>();
                 convertComponentMethod = ThisStaticType().GetMethod("ConvertComponent");
+                ResoniteUnityExporterEditorWindow.TotalTransferObjectCount = 0;
+                // dry run first to get counts for progress bar
+                foreach (ObjectHolder obj in hierarchy.GetObjects())
+                {
+                    GameObject gameObject = obj.gameObject;
+                    RefID_U2Res refID = obj.slotRefId;
+                    foreach (UnityEngine.Component component in gameObject.GetComponents<UnityEngine.Component>())
+                    {
+                        // sometimes it gives null components??
+                        if (component != null)
+                        {
+                            // ignore transform and mesh filters
+                            if (component.GetType() != typeof(UnityEngine.Transform) &&
+                                component.GetType() != typeof(UnityEngine.MeshFilter) &&
+                                CanConvertComponent(component))
+                            {
+                                 ResoniteUnityExporterEditorWindow.TotalTransferObjectCount += 1;
+                            }
+                        }
+                    }
+                }
+
+
+                ResoniteUnityExporterEditorWindow.CurTransferObjectCount = 0;
                 foreach (ObjectHolder obj in hierarchy.GetObjects())
                 {
                     GameObject gameObject = obj.gameObject;
@@ -125,13 +149,16 @@ namespace ResoniteUnityExporter
                         if (component != null)
                         {
                             // ignore transform
-                            if (component.GetType() != typeof(UnityEngine.Transform))
+                            if (component.GetType() != typeof(UnityEngine.Transform) &&
+                                component.GetType() != typeof(UnityEngine.MeshFilter) && 
+                                CanConvertComponent(component))
                             {
                                 var en = LookupComponent(component, new OutputHolder<object>());
                                 while (en.MoveNext())
                                 {
                                     yield return null;
                                 }
+                                ResoniteUnityExporterEditorWindow.CurTransferObjectCount += 1;
                             }
                         }
                     }
@@ -258,6 +285,11 @@ namespace ResoniteUnityExporter
             }
 
             outputs.value = results.ToArray();
+        }
+
+        public bool CanConvertComponent(UnityEngine.Component component)
+        {
+            return converters.ContainsKey(component.GetType());
         }
 
         public IEnumerator<object> LookupComponent(UnityEngine.Component component, OutputHolder<object> output)

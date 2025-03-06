@@ -52,6 +52,9 @@ namespace ImportFromUnityLib
 
             // lights
             server.RegisterProcessor("ImportLight", ImportLight.ImportLightFunc);
+
+            // LODGroups
+            server.RegisterProcessor("ImportLODGroup", ImportLOD.ImportLODFunc);
         }
     }
 }

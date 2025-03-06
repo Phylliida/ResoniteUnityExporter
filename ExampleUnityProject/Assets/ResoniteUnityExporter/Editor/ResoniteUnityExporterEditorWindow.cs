@@ -61,6 +61,9 @@ namespace ResoniteUnityExporter {
 
         const string STANDALONE_LABEL = "Standalone";
 
+
+        public static int TotalTransferObjectCount = 0;
+        public static int CurTransferObjectCount = 0;
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
 
@@ -364,7 +367,7 @@ namespace ResoniteUnityExporter {
                 transferManager.RegisterConverter<Light>(LightConverter.ConvertLight);
             }
 
-
+            transferManager.RegisterConverter<LODGroup>(LODGroupConverter.ConvertLODGroup);
         }
 
         void DrawTextureCenter(Texture2D texture, Rect containerRect)
@@ -627,7 +630,7 @@ namespace ResoniteUnityExporter {
                 // First, mirror the hierarchy into resonite
             }
             EditorGUI.EndDisabledGroup();
-            string progressLabel = "Iters: " + iters + " ... (in progress, please wait)";
+            string progressLabel = "Iters: " + iters + " ... " + CurTransferObjectCount + "/" + TotalTransferObjectCount + " (in progress, please wait)";
             if (CoroutinesInProgress.Count == 0 || !debugCoroutine)
             {
                 DebugProgressString = "";

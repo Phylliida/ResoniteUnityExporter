@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\LODGroupConverter.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
     <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
