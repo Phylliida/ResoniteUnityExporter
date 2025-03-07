@@ -551,12 +551,14 @@ namespace ResoniteUnityExporter {
             }
 
             // for debugging
+            /*
             if (GUILayout.Button("Restart connection"))
             {
                 bridgeClient.Dispose();
                 bridgeClient = null;
                 bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { UnityEngine.Debug.Log(message); });
             }
+            */
             
 
 
