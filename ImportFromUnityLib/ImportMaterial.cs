@@ -6,6 +6,7 @@ using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -70,13 +71,11 @@ namespace ImportFromUnityLib
             }
             return false;
         }
-        static IEnumerator<Context> ImportToMaterialHelper(byte[] materialBytes, OutputBytesHolder outputBytes)
+        static void ImportToMaterialHelper(byte[] materialBytes, OutputBytesHolder outputBytes)
         {
             // Load mesh data into a meshx
-            yield return Context.ToBackground();
             Material_U2Res materialData = SerializationUtils.DecodeObject<Material_U2Res>(materialBytes);
             ImportFromUnityLib.DebugLog("Importing material " + materialData.materialName);
-            yield return Context.ToWorld();
             Slot assetsSlot = (Slot)ImportFromUnityUtils.LookupRefID(materialData.rootAssetsSlot);
 
             bool hasColor = false;
@@ -90,22 +89,22 @@ namespace ImportFromUnityLib
             float2 mainTexScale = new float2(1,1);
 
             bool hasMetallicGlossTex = false;
-            RefID_U2Res metallicGlossTexRefID = new RefID_U2Res();
-            float2 metallicGlossTexOffset = new float2(0, 0);
+            RefID_U2Res metallicGlossTexRefID;
+            float2 metallicGlossTexOffset;
             float2 metallicGlossTexScale = new float2(1,1);
 
             bool hasEmissionMapTex = false;
             RefID_U2Res emissionMapTexRefID;
-            float2 emissionMapTexOffset = new float2(0, 0);
+            float2 emissionMapTexOffset;
             float2 emissionMapTexScale = new float2(1,1);
 
             bool hasOcclusionMapTex = false;
-            RefID_U2Res occlusionMapTexRefID = new RefID_U2Res();
-            float2 occlusionMapTexOffset = new float2(0, 0);
+            RefID_U2Res occlusionMapTexRefID;
+            float2 occlusionMapTexOffset;
             float2 occlusionMapTexScale = new float2(1,1);
 
             bool hasBumpMapTex = false;
-            RefID_U2Res bumpMapTexRefID = new RefID_U2Res();
+            RefID_U2Res bumpMapTexRefID;
             float2 bumpMapTexOffset = new float2(0, 0);
             float2 bumpMapTexScale = new float2(1, 1);
 
@@ -471,10 +470,10 @@ namespace ImportFromUnityLib
         /// </summary>
         /// <param name="staticMeshBytes"></param>
         /// <returns>bytes representing RefID_U2Res that contains the static mesh asset component</returns>
-        public static byte[] ImportToMaterialFunc(byte[] materialBytes)
+        public static async Task<byte[]> ImportToMaterialFunc(byte[] materialBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportToMaterialHelper(materialBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportToMaterialHelper(materialBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

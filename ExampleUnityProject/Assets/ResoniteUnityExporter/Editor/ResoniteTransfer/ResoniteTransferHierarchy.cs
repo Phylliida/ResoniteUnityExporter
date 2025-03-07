@@ -121,37 +121,36 @@ namespace ResoniteUnityExporter
             }
         }
 
+
+
         public static IEnumerator<object> Call<OutType, InType>(ResoniteBridgeClient bridgeClient, string callMethodName, InType input, OutputHolder<object> output)
         {
             bool hasError = false;
             System.Threading.Tasks.TaskCompletionSource<bool> taskCompletionSource = new System.Threading.Tasks.TaskCompletionSource<bool>();
-            Task<object> asyncTask = new Task<object>(() =>
+            
+            async Task<object> CallServer()
             {
                 try
                 {
                     byte[] messageBytes = SerializationUtils.EncodeObject(input);
-                    bridgeClient.SendMessageSync(
+                    var result = await bridgeClient.SendMessage(
                            callMethodName,
                            messageBytes,
-                           -1,
-                           out byte[] outBytes,
-                           out bool isError
-                           );
-                    if (isError)
+                           -1);
+                    if (result.isError)
                     {
                         hasError = true;
-                        return SerializationUtils.DecodeString(outBytes);
+                        return (object)SerializationUtils.DecodeString(result.messageBytes);
                     }
-                    return SerializationUtils.DecodeObject<OutType>(outBytes);
+                    return (object)SerializationUtils.DecodeObject<OutType>(result.messageBytes);
                 }
                 catch (Exception e)
                 {
                     hasError = true;
-                    return e.ToString();
+                    return (object)e.ToString();
                 }
-
-            });
-            asyncTask.Start();
+            }
+            Task<object> asyncTask = CallServer();
             // we need to poll it so unity doesn't freeze up
             while (!asyncTask.IsCompleted && !asyncTask.IsCanceled && !asyncTask.IsFaulted)
             {

@@ -4,19 +4,18 @@ using Froox::FrooxEngine;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 using MemoryMappedFileIPC;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
     public class ImportMeshRenderer
     {
-        public static IEnumerator<Context> ImportMeshRendererHelper(byte[] meshRendererBytes, OutputBytesHolder outputBytes)
+        public static void ImportMeshRendererHelper(byte[] meshRendererBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToBackground();
             // load data from bytes
             MeshRenderer_U2Res meshRendererData = SerializationUtils.DecodeObject<MeshRenderer_U2Res>(meshRendererBytes);
             // load texture into localdb to get a url
             World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
-            yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(meshRendererData.targetSlot);
             ImportFromUnityLib.DebugLog("Importing mesh renderer on " + targetSlot.Name);
             MeshRenderer renderer = targetSlot.AttachComponent<MeshRenderer>();
@@ -38,10 +37,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
-        public static byte[] ImportMeshRendererFunc(byte[] meshRendererData)
+        public static async Task<byte[]> ImportMeshRendererFunc(byte[] meshRendererData)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportMeshRendererHelper(meshRendererData, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportMeshRendererHelper(meshRendererData, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

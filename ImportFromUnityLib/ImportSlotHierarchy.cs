@@ -5,15 +5,16 @@ using Froox::Elements.Core;
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
     public class ImportSlotHierarchy
     {
-        public static byte[] ImportSlotHierarchyFunc(byte[] hierarchyBytes)
+        public static async Task<byte[]> ImportSlotHierarchyFunc(byte[] hierarchyBytes)
         {
             OutputBytesHolder outputHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(AddHierarchy(hierarchyBytes, outputHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => AddHierarchy(hierarchyBytes, outputHolder));
             return outputHolder.outputBytes;
         }
 
@@ -50,12 +51,10 @@ namespace ImportFromUnityLib
             }
             return addedSlot;
         }
-        static IEnumerator<Context> AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
+        static void AddHierarchy(byte[] hierarchyBytes, OutputBytesHolder outputHolder)
         {
             //// decode bytes
-            yield return Context.ToBackground();
             ObjectHierarchy_U2Res hierarchy = SerializationUtils.DecodeObject<ObjectHierarchy_U2Res>(hierarchyBytes);
-            yield return Context.ToWorld();
             ImportFromUnityLib.DebugLog("Importing slot hierarchy");
 
 
@@ -98,7 +97,6 @@ namespace ImportFromUnityLib
             }
             targetSlot.LocalScale = new float3(1.0f / 100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
             //// encode lookup and return it
-            yield return Context.ToBackground();
             ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
             {
                 lookups = lookups.ToArray(),

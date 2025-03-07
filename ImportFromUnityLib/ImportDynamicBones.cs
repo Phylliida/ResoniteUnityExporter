@@ -6,6 +6,7 @@ using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -30,12 +31,10 @@ namespace ImportFromUnityLib
             return localSpherePositions;
         }
 
-        public static IEnumerator<Context> ImportDynamicBoneColliderHelper(byte[] dynamicBonesColliderBytes, OutputBytesHolder outputBytes)
+        public static void ImportDynamicBoneColliderHelper(byte[] dynamicBonesColliderBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToBackground();
             // load data from bytes
             DynamicBoneCollider_U2Res boneColliderData = SerializationUtils.DecodeObject<DynamicBoneCollider_U2Res>(dynamicBonesColliderBytes);
-            yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneColliderData.targetSlot);
             ImportFromUnityLib.DebugLog("Importing dynamic bone collider on " + targetSlot.Name);
             // resonite only has spheres, no capsules :(
@@ -115,19 +114,17 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(boneColliderRefIDs.ToArray());
         }
 
-        public static byte[] ImportDynamicBoneColliderFunc(byte[] dynamicBoneColliderData)
+        public static async Task<byte[]> ImportDynamicBoneColliderFunc(byte[] dynamicBoneColliderData)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportDynamicBoneColliderHelper(dynamicBoneColliderData, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportDynamicBoneColliderHelper(dynamicBoneColliderData, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 
-        public static IEnumerator<Context> ImportDynamicBoneChainHelper(byte[] dynamicBoneChainBytes, OutputBytesHolder outputBytes)
+        public static void ImportDynamicBoneChainHelper(byte[] dynamicBoneChainBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToBackground();
             // load data from bytes
             DynamicBoneChain_U2Res boneChainData = SerializationUtils.DecodeObject<DynamicBoneChain_U2Res>(dynamicBoneChainBytes);
-            yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(boneChainData.targetSlot);
             // resonite only has spheres, no capsules :(
             // we will do our best to convert
@@ -169,10 +166,10 @@ namespace ImportFromUnityLib
         }
 
 
-        public static byte[] ImportDynamicBoneChainFunc(byte[] dynamicBoneColliderData)
+        public static async Task<byte[]> ImportDynamicBoneChainFunc(byte[] dynamicBoneColliderData)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportDynamicBoneChainHelper(dynamicBoneColliderData, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportDynamicBoneChainHelper(dynamicBoneColliderData, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

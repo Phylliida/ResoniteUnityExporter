@@ -4,6 +4,7 @@ using Froox::FrooxEngine;
 
 using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -18,11 +19,17 @@ namespace ImportFromUnityLib
 
         public delegate ServerInfo_U2Res ServerInfoDelegate();
 
+
         public static void Register(ResoniteBridgeLib.ResoniteBridgeServer server, ServerInfoDelegate serverInfoCallback, DebugLogDelegate DebugLog, object CurrentEngine)
         {
             ImportFromUnityLib.CurrentEngine = (Engine)CurrentEngine;
             ImportFromUnityLib.DebugLog = DebugLog;
-            server.RegisterProcessor("GetServerInfo", (byte[] _) => SerializationUtils.EncodeObject(serverInfoCallback()));
+
+            async Task<byte[]> GetServerInfo(byte[] _)
+            {
+               return SerializationUtils.EncodeObject(serverInfoCallback());
+            }
+            server.RegisterProcessor("GetServerInfo", GetServerInfo);
             server.RegisterProcessor("MakePackage", MakePackage.MakePackageFunc);
 
             server.RegisterProcessor("ImportSlotHierarchy", ImportSlotHierarchy.ImportSlotHierarchyFunc);

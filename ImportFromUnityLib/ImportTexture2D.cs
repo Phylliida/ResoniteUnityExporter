@@ -7,6 +7,7 @@ using MemoryMappedFileIPC;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -81,10 +82,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
-        public static byte[] ImportTexture2DFunc(byte[] texData)
+        public static async Task<byte[]> ImportTexture2DFunc(byte[] texData)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportToTexture2DHelper(texData, outputBytesHolder));
+            await ImportFromUnityUtils.RunCoroutine(ImportToTexture2DHelper(texData, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

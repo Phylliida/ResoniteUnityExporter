@@ -13,6 +13,12 @@ using UnityEditor.Graphs;
 #if RUE_HAS_AVATAR_VRCSDK
 using VRC.SDK3.Avatars.Components;
 using System.Runtime.Remoting.Contexts;
+using NUnit.Framework.Interfaces;
+using System.Diagnostics;
+using System.Text;
+
+
+
 
 #endif
 #if RUE_HAS_VRCSDK
@@ -63,9 +69,13 @@ namespace ResoniteUnityExporter {
 
 
         public static int TotalTransferObjectCount = 0;
+        public static int PrevCurTransferObjectCount = 0;
         public static int CurTransferObjectCount = 0;
+        public static double CurEstimatedMillisForEach = 0;
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
+        public Stopwatch curIterElapsed = new Stopwatch();
+        public Stopwatch elapsedTimeSending = new Stopwatch();
 
         // gui styles
         int selectedTab;
@@ -193,44 +203,6 @@ namespace ResoniteUnityExporter {
 
         bool debugCoroutine = true;
 
-
-        // Helper class to safely iterate without try-catch in iterator blocks
-        class ExceptionSafeIterator
-        {
-            private readonly IEnumerator<object> _innerEnumerator;
-            public object Current { get; private set; }
-            public Exception CaughtException { get; private set; }
-            public bool ExceptionOccurred { get; private set; }
-
-            public ExceptionSafeIterator(IEnumerator<object> innerEnumerator)
-            {
-                _innerEnumerator = innerEnumerator;
-                Current = null;
-            }
-
-            public bool MoveNext()
-            {
-                if (ExceptionOccurred)
-                    return false;
-
-                try
-                {
-                    if (_innerEnumerator.MoveNext())
-                    {
-                        Current = _innerEnumerator.Current;
-                        return true;
-                    }
-                    return false;
-                }
-                catch (Exception ex)
-                {
-                    ExceptionOccurred = true;
-                    CaughtException = ex;
-                    return false;
-                }
-            }
-        }
-
         IEnumerator<object> GetServerInfo()
         {
             if (bridgeClient != null)
@@ -244,6 +216,7 @@ namespace ResoniteUnityExporter {
                 }
                 if (exceptCatcher.ExceptionOccurred)
                 {
+                    //System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture((System.Exception)exceptCatcher.CaughtException).Throw();
                     // ignore exceptions here so as to not spam
                     ResoniteUnityExporterEditorWindow.serverInfo = LOADING_SERVER_INFO;
                 }
@@ -544,6 +517,31 @@ namespace ResoniteUnityExporter {
             EditorGUI.EndDisabledGroup();
         }
 
+        public static string FormatTimeSpan(TimeSpan obj)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (obj.Days != 0)
+            {
+                sb.Append(obj.Days);
+                sb.Append(" days ");
+            }
+            if (obj.Hours != 0)
+            {
+                sb.Append(obj.Hours);
+                sb.Append(" hours ");
+            }
+            if (obj.Minutes != 0 || sb.Length != 0)
+            {
+                sb.Append(obj.Minutes);
+                sb.Append(" minutes ");
+            }
+            if (obj.Seconds != 0 || sb.Length != 0)
+            {
+                sb.Append(obj.Seconds);
+                sb.Append(" seconds ");
+            }
+            return sb.ToString();
+        }
         void DrawViewPreviewAndSubmit()
         {
             // include this in the submit page so they know to deal with it
@@ -552,15 +550,13 @@ namespace ResoniteUnityExporter {
                 DrawViewPreview();
             }
 
-            // for debuggin
-            /*
+            // for debugging
             if (GUILayout.Button("Restart connection"))
             {
                 bridgeClient.Dispose();
                 bridgeClient = null;
-                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { Debug.Log(message); });
+                bridgeClient = new ResoniteBridgeClient(channelName, serverFolder, (string message) => { UnityEngine.Debug.Log(message); });
             }
-            */
             
 
 
@@ -610,6 +606,7 @@ namespace ResoniteUnityExporter {
                 ResoniteTransferManager transferManager = new ResoniteTransferManager();
                 RegisterConverters(transferManager, sendColliders, sendLights);
                 DebugProgressString = "";
+                
                 System.Collections.IEnumerator coroutine = transferManager.ConvertObjectAndChildren(exportSlotName, parentObject, bridgeClient, new ResoniteTransferSettings()
                 {
                     setupAvatarCreator = setupAvatarCreator,
@@ -623,14 +620,50 @@ namespace ResoniteUnityExporter {
                     includeAssetVariantsInPackage = includeAssetVariantsInPackage,
                 });
 
+                PrevCurTransferObjectCount = -1;
                 CoroutinesInProgress.Add(coroutine);
                 iters = 0;
                 debugCoroutine = true;
                 ranAnyRuns = true;
+                elapsedTimeSending.Restart();
+                CurEstimatedMillisForEach = 0;
                 // First, mirror the hierarchy into resonite
             }
             EditorGUI.EndDisabledGroup();
-            string progressLabel = "Iters: " + iters + " ... " + CurTransferObjectCount + "/" + TotalTransferObjectCount + " (in progress, please wait)";
+            // totalTime * fractionCompleted = curTime
+            // totalTime = curTime / fractionCompleted
+            if (PrevCurTransferObjectCount != CurTransferObjectCount)
+            {
+                curIterElapsed.Restart();
+                PrevCurTransferObjectCount = CurTransferObjectCount;
+            }
+            string estimatedTimeLeftStr = " ";
+            if (CurTransferObjectCount > 0)
+            {
+                double estimatedMillisForEach = (elapsedTimeSending.ElapsedMilliseconds - curIterElapsed.ElapsedMilliseconds) / (CurTransferObjectCount);
+                // only adjust if we are slower than average
+                if (curIterElapsed.ElapsedMilliseconds > estimatedMillisForEach)
+                {
+                    // do average over this and prev by adding one item to set
+                    estimatedMillisForEach = (estimatedMillisForEach * CurTransferObjectCount + curIterElapsed.ElapsedMilliseconds) / (CurTransferObjectCount + 1);
+                }
+                if (CurEstimatedMillisForEach == 0)
+                {
+                    CurEstimatedMillisForEach = estimatedMillisForEach;
+                }
+                else
+                {
+                    // do a slow weighted average so it's not so jumpy
+                    double weighting = 0.995;
+                    CurEstimatedMillisForEach = weighting * CurEstimatedMillisForEach + (1-weighting) * estimatedMillisForEach;
+                }
+                double totalEstimatedMillis = CurEstimatedMillisForEach * TotalTransferObjectCount;
+                double totalEstimatedMillisLeft = Math.Max(0, totalEstimatedMillis - elapsedTimeSending.ElapsedMilliseconds);
+                
+                estimatedTimeLeftStr = FormatTimeSpan(TimeSpan.FromMilliseconds(totalEstimatedMillisLeft));
+            }
+
+            string progressLabel = CurTransferObjectCount + "/" + TotalTransferObjectCount + " estimated time left " + estimatedTimeLeftStr + "with iters " + iters + " (in progress, please wait)";
             if (CoroutinesInProgress.Count == 0 || !debugCoroutine)
             {
                 DebugProgressString = "";

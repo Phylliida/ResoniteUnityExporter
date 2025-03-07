@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0">
 		<Properties>TargetFramework=netstandard2.0</Properties>
 	</PackageReference>
-    <PackageReference Include="ResoniteBridgeLib" Version="1.1.6" />
+    <PackageReference Include="ResoniteBridgeLib" Version="1.2.0" />
 </ItemGroup>
   <ItemGroup>
     <Reference Include="ImportFromUnityLib">

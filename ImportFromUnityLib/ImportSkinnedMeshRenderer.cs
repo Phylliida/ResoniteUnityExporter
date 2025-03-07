@@ -4,19 +4,18 @@ using Froox::FrooxEngine;
 using ResoniteUnityExporterShared;
 using System.Collections.Generic;
 using MemoryMappedFileIPC;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
     public class ImportSkinnedMeshRenderer
     {
-        public static IEnumerator<Context> ImportSkinnedMeshRendererHelper(byte[] skinnedMeshRendererBytes, OutputBytesHolder outputBytes)
+        public static void ImportSkinnedMeshRendererHelper(byte[] skinnedMeshRendererBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToBackground();
             // load data from bytes
             SkinnedMeshRenderer_U2Res skinnedMeshRendererData = SerializationUtils.DecodeObject<SkinnedMeshRenderer_U2Res>(skinnedMeshRendererBytes);
             // load texture into localdb to get a url
             World focusedWorld = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld;
-            yield return Context.ToWorld();
             Slot targetSlot = (Slot)ImportFromUnityUtils.LookupRefID(skinnedMeshRendererData.targetSlot);
             ImportFromUnityLib.DebugLog("Importing skinned mesh renderer on " + targetSlot.Name);
             SkinnedMeshRenderer renderer = targetSlot.AttachComponent<SkinnedMeshRenderer>();
@@ -82,10 +81,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
-        public static byte[] ImportSkinnedMeshRendererFunc(byte[] skinnedMeshRendererData)
+        public static async Task<byte[]> ImportSkinnedMeshRendererFunc(byte[] skinnedMeshRendererData)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportSkinnedMeshRendererHelper(skinnedMeshRendererData, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportSkinnedMeshRendererHelper(skinnedMeshRendererData, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

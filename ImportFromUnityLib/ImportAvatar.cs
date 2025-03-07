@@ -10,6 +10,7 @@ using System.IO;
 using System.Reflection;
 using Froox::FrooxEngine.CommonAvatar;
 using MemoryMappedFileIPC;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -663,10 +664,10 @@ namespace ImportFromUnityLib
             });
         }
 
-        public static byte[] ImportAvatarFunc(byte[] avatarBytes)
+        public static async Task<byte[]> ImportAvatarFunc(byte[] avatarBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportAvatarHelper(avatarBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunCoroutine(ImportAvatarHelper(avatarBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

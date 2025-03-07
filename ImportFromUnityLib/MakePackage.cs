@@ -7,6 +7,7 @@ using System.IO;
 using ResoniteUnityExporterShared;
 using Froox::SkyFrost.Base;
 using MemoryMappedFileIPC;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -33,10 +34,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(true);
         }
 
-        public static byte[] MakePackageFunc(byte[] packageInfoBytes)
+        public static async Task<byte[]> MakePackageFunc(byte[] packageInfoBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(MakePackageHelper(packageInfoBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunCoroutine(MakePackageHelper(packageInfoBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 

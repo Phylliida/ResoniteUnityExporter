@@ -14,14 +14,14 @@ namespace ImportFromUnityLib
 {
     public class ImportLOD
     {
-        public static IEnumerator<Context> ImportLODHelper(byte[] lodBytes, OutputBytesHolder outputBytes)
+        public static void ImportLODHelper(byte[] lodBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
             LODGroup_U2Res lodGroupData = SerializationUtils.DecodeObject<LODGroup_U2Res>(lodBytes);
             Slot attachSlot = (Slot)ImportFromUnityUtils.LookupRefID(lodGroupData.target);
             RefID resultRefID = RefID.Null;
             if (attachSlot != null)
             {
+                ImportFromUnityLib.DebugLog("Importing lod on " + attachSlot.Name);
                 LODGroup lodGroup = attachSlot.AttachComponent<LODGroup>();
                 //lodGroup.LODs = 
                 // lodGroupData.localReferencePoint seems to not be relevant
@@ -53,10 +53,10 @@ namespace ImportFromUnityLib
 
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
-        public static byte[] ImportLODFunc(byte[] lodBytes)
+        public static async Task<byte[]> ImportLODFunc(byte[] lodBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportLODHelper(lodBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() =>ImportLODHelper(lodBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
     }

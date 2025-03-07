@@ -12,6 +12,42 @@ using VRC.SDK3.Avatars.Components;
 
 namespace ResoniteUnityExporter
 {
+    // Helper class to safely iterate without try-catch in iterator blocks
+    public class ExceptionSafeIterator
+    {
+        private readonly IEnumerator<object> _innerEnumerator;
+        public object Current { get; private set; }
+        public Exception CaughtException { get; private set; }
+        public bool ExceptionOccurred { get; private set; }
+
+        public ExceptionSafeIterator(IEnumerator<object> innerEnumerator)
+        {
+            _innerEnumerator = innerEnumerator;
+            Current = null;
+        }
+
+        public bool MoveNext()
+        {
+            if (ExceptionOccurred)
+                return false;
+
+            try
+            {
+                if (_innerEnumerator.MoveNext())
+                {
+                    Current = _innerEnumerator.Current;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                ExceptionOccurred = true;
+                CaughtException = ex;
+                return false;
+            }
+        }
+    }
 
     public static class LinqExtraExtensions
     {

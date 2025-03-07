@@ -14,9 +14,8 @@ namespace ImportFromUnityLib
 {
     public class ImportCollider
     {
-        public static IEnumerator<Context> ImportSphereColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
+        public static void ImportSphereColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
             SphereCollider_U2Res sphereColliderData = SerializationUtils.DecodeObject<SphereCollider_U2Res>(colliderBytes);
             Slot holdingSlot = (Slot)ImportFromUnityUtils.LookupRefID(sphereColliderData.target);
             RefID result = RefID.Null;
@@ -40,16 +39,15 @@ namespace ImportFromUnityLib
 
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
-        public static byte[] ImportSphereColliderFunc(byte[] colliderBytes)
+        public static async Task<byte[]> ImportSphereColliderFunc(byte[] colliderBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportSphereColliderHelper(colliderBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportSphereColliderHelper(colliderBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 
-        public static IEnumerator<Context> ImportBoxColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
+        public static void ImportBoxColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
             BoxCollider_U2Res boxColliderData = SerializationUtils.DecodeObject<BoxCollider_U2Res>(colliderBytes);
             Slot holdingSlot = (Slot)ImportFromUnityUtils.LookupRefID(boxColliderData.target);
             RefID result = RefID.Null;
@@ -77,16 +75,15 @@ namespace ImportFromUnityLib
 
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
-        public static byte[] ImportBoxColliderFunc(byte[] colliderBytes)
+        public static async Task<byte[]> ImportBoxColliderFunc(byte[] colliderBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportBoxColliderHelper(colliderBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportBoxColliderHelper(colliderBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 
-        public static IEnumerator<Context> ImportCapsuleColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
+        public static void ImportCapsuleColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
             CapsuleCollider_U2Res capsuleColliderData = SerializationUtils.DecodeObject<CapsuleCollider_U2Res>(colliderBytes);
             Slot holdingSlot = (Slot)ImportFromUnityUtils.LookupRefID(capsuleColliderData.target);
             RefID result = RefID.Null;
@@ -124,18 +121,17 @@ namespace ImportFromUnityLib
 
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
-        public static byte[] ImportCapsuleColliderFunc(byte[] colliderBytes)
+        public static async Task<byte[]> ImportCapsuleColliderFunc(byte[] colliderBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportCapsuleColliderHelper(colliderBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportCapsuleColliderHelper(colliderBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 
 
 
-        public static IEnumerator<Context> ImportMeshColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
+        public static void ImportMeshColliderHelper(byte[] colliderBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
             MeshCollider_U2Res meshColliderData = SerializationUtils.DecodeObject<MeshCollider_U2Res>(colliderBytes);
             Slot holdingSlot = (Slot)ImportFromUnityUtils.LookupRefID(meshColliderData.target);
             RefID result = RefID.Null;
@@ -160,10 +156,10 @@ namespace ImportFromUnityLib
 
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outputRefID);
         }
-        public static byte[] ImportMeshColliderFunc(byte[] colliderBytes)
+        public static async Task<byte[]> ImportMeshColliderFunc(byte[] colliderBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportMeshColliderHelper(colliderBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportMeshColliderHelper(colliderBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 

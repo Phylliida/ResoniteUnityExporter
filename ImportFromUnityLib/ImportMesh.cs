@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Froox::FrooxEngine;
 using Froox::Elements.Core;
 using MemoryMappedFileIPC;
+using System.Threading.Tasks;
 
 namespace ImportFromUnityLib
 {
@@ -52,10 +53,10 @@ namespace ImportFromUnityLib
         /// </summary>
         /// <param name="staticMeshBytes"></param>
         /// <returns>bytes representing RefID_U2Res that contains the static mesh asset component</returns>
-        public static byte[] ImportToStaticMeshFunc(byte[] staticMeshBytes)
+        public static async Task<byte[]> ImportToStaticMeshFunc(byte[] staticMeshBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportToStaticMeshHelper(staticMeshBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunCoroutine(ImportToStaticMeshHelper(staticMeshBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 

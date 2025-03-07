@@ -34,12 +34,8 @@ namespace ImportFromUnityLib
             public ulong id;
         }
 
-        static IEnumerator<Context> AddSlotFuncHelper(byte[] inputBytes, OutputBytesHolder outputBytes)
+        static void AddSlotFuncHelper(byte[] inputBytes, OutputBytesHolder outputBytes)
         {
-            // move to background thread (optional, useful if you are doing heavy stuff)
-            yield return Context.ToBackground();
-            // move to world thread (necessary if we want to modify the world at all)
-            yield return Context.ToWorld();
             string slotName = SerializationUtils.DecodeString(inputBytes);
             Slot resultSlot = ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot.AddSlot(slotName);
             RefID_Example result = new RefID_Example()
@@ -49,10 +45,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(result);
         }
 
-        public byte[] AddSlotFunc(byte[] inputBytes)
+        public async Task<byte[]> AddSlotFunc(byte[] inputBytes)
         {
             OutputBytesHolder outputHolder = new OutputBytesHolder();
-            RunOnWorldThread(AddSlotFuncHelper(inputBytes, outputHolder));
+            await RunOnWorldThread(() => AddSlotFuncHelper(inputBytes, outputHolder));
             return outputHolder.outputBytes;
         }
         public static void SendCantSpawnMessage()
@@ -120,7 +116,7 @@ namespace ImportFromUnityLib
             }
         }
 
-        static IEnumerator<Context> ActionWrapper(IEnumerator<Context> action, TaskCompletionSource<object> completion)
+        static IEnumerator<Context> CoroutineWrapper(IEnumerator<Context> action, TaskCompletionSource<object> completion)
         {
             // weird hack to let us try catch in a yield return (which c# by default doesn't allow)
             ExceptionSafeIterator iterator = new ExceptionSafeIterator(action);
@@ -138,11 +134,34 @@ namespace ImportFromUnityLib
             }
         }
 
-        public static bool RunOnWorldThread(IEnumerator<Context> action)
+        static Action ActionWrapper(Action action, TaskCompletionSource<object> completion)
         {
-            TaskCompletionSource<object> taskCompletionSource = new TaskCompletionSource<object>();
-            ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot.StartCoroutine(ActionWrapper(action, taskCompletionSource));
-            var result = taskCompletionSource.Task.GetAwaiter().GetResult();
+            return () =>
+            {
+                bool setResult = false;
+                // weird hack to let us try catch in a yield return (which c# by default doesn't allow)
+                try
+                {
+                    action();
+                }
+                catch (Exception e)
+                {
+                    completion.SetResult(e);
+                    setResult = true;
+                }
+                finally
+                {
+                    if (!setResult)
+                    {
+                        completion.SetResult(true);
+                    }
+                }
+            };
+        }
+
+        public static async Task<bool> WaitForTaskCompletionSource(TaskCompletionSource<object> tcs)
+        {
+            var result = await tcs.Task;
             if (result.GetType() == typeof(bool)) // not an exception
             {
                 return true;
@@ -154,6 +173,20 @@ namespace ImportFromUnityLib
                 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture((System.Exception)result).Throw();
                 return false;
             }
+        }
+
+        public static async Task<bool> RunOnWorldThread(Action action)
+        {
+            TaskCompletionSource<object> taskCompletionSource = new TaskCompletionSource<object>();
+            ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RunSynchronously(ActionWrapper(action, taskCompletionSource));
+            return await WaitForTaskCompletionSource(taskCompletionSource);
+        }
+
+        public static async Task<bool> RunCoroutine(IEnumerator<Context> coroutine)
+        {
+            TaskCompletionSource<object> taskCompletionSource = new TaskCompletionSource<object>();
+            ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.RootSlot.StartCoroutine(CoroutineWrapper(coroutine, taskCompletionSource));
+            return await WaitForTaskCompletionSource(taskCompletionSource);
         }
     }
 }

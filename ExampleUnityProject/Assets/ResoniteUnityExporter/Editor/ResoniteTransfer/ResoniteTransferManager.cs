@@ -154,11 +154,36 @@ namespace ResoniteUnityExporter
                                 CanConvertComponent(component))
                             {
                                 var en = LookupComponent(component, new OutputHolder<object>());
-                                while (en.MoveNext())
+                                ExceptionSafeIterator iteratorHolder = new ExceptionSafeIterator(en);
+
+                                while (iteratorHolder.MoveNext())
                                 {
                                     yield return null;
                                 }
-                                ResoniteUnityExporterEditorWindow.CurTransferObjectCount += 1;
+                                if (iteratorHolder.ExceptionOccurred)
+                                {
+                                    Debug.LogError("Got exception processing component: " + component.GetType());
+                                    Debug.LogError("Of object: " + obj.gameObject.name + String.Format(" with refid ID{0:X}", refID.id));
+                                    List<GameObject> parents = new List<GameObject>();
+                                    GameObject curObj = obj.gameObject;
+                                    while (curObj != null)
+                                    {
+                                        parents.Add(curObj);
+                                        if (curObj.transform.parent != null)
+                                        {
+                                            curObj = curObj.transform.parent.gameObject;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    Debug.LogError("Parent chain:\n" + string.Join("\n", parents.Select(x => x.name)));
+                                    // this preserves stack trace and lets us catch exception in iterator,
+                                    // but lets us do other stuff first
+                                    System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture((System.Exception)iteratorHolder.CaughtException).Throw();
+                                }
+                                ResoniteUnityExporterEditorWindow.CurTransferObjectCount += 1;    
                             }
                         }
                     }

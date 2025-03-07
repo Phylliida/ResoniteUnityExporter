@@ -15,10 +15,8 @@ namespace ImportFromUnityLib
 {
     public class ImportLight
     {
-        public static IEnumerator<Context> ImportLightHelper(byte[] lightBytes, OutputBytesHolder outputBytes)
+        public static void ImportLightHelper(byte[] lightBytes, OutputBytesHolder outputBytes)
         {
-            yield return Context.ToWorld();
-
             Light_U2Res lightData = SerializationUtils.DecodeObject<Light_U2Res>(lightBytes);
 
             RefID lightRefID = RefID.Null;
@@ -102,10 +100,10 @@ namespace ImportFromUnityLib
             outputBytes.outputBytes = SerializationUtils.EncodeObject(outRefId);
 
         }
-        public static byte[] ImportLightFunc(byte[] lightBytes)
+        public static async Task<byte[]> ImportLightFunc(byte[] lightBytes)
         {
             OutputBytesHolder outputBytesHolder = new OutputBytesHolder();
-            ImportFromUnityUtils.RunOnWorldThread(ImportLightHelper(lightBytes, outputBytesHolder));
+            await ImportFromUnityUtils.RunOnWorldThread(() => ImportLightHelper(lightBytes, outputBytesHolder));
             return outputBytesHolder.outputBytes;
         }
 

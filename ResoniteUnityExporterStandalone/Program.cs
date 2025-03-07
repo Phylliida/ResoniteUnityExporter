@@ -259,6 +259,17 @@ namespace ResoniteBridge
                                     );
                                 bridgeServer = new ResoniteBridgeLib.ResoniteBridgeServer("UnityResoniteImporter", serverDirectory, (msg) =>
                                 {
+                                    // observing thread occupancy (if needed)
+                                    //int workerThreads, completionPortThreads;
+                                    //int maxWorkerThreads, maxCompletionPortThreads;
+
+                                    // Get available threads
+                                    //ThreadPool.GetAvailableThreads(out workerThreads, out completionPortThreads);
+
+                                    // Get maximum threads
+                                    //ThreadPool.GetMaxThreads(out maxWorkerThreads, out maxCompletionPortThreads);
+                                    //Console.WriteLine("threads: " + workerThreads + " " + completionPortThreads + " " + maxWorkerThreads + " " + maxCompletionPortThreads);
+
                                     //Console.WriteLine(msg);
                                 });
                                 ImportFromUnityLib.ImportFromUnityLib.Register(bridgeServer, () =>
