@@ -7,26 +7,18 @@ using System;
 using System.Linq;
 using ResoniteUnityExporterShared;
 using UnityEngine.Animations;
-using UnityEditor.Graphs;
+using System.Text;
+using ResoniteUnityExporter.Converters;
 
 
 #if RUE_HAS_AVATAR_VRCSDK
 using VRC.SDK3.Avatars.Components;
-using System.Runtime.Remoting.Contexts;
-using NUnit.Framework.Interfaces;
-using System.Diagnostics;
-using System.Text;
-
-
-
-
 #endif
 #if RUE_HAS_VRCSDK
 using VRC.Core;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.SDK3.Dynamics.Constraint.Components;
 #endif
-using ResoniteUnityExporter.Converters;
 
 
 
@@ -74,8 +66,8 @@ namespace ResoniteUnityExporter {
         public static double CurEstimatedMillisForEach = 0;
         public static string DebugProgressString = "";
         public static string DebugProgressStringDetail = "";
-        public Stopwatch curIterElapsed = new Stopwatch();
-        public Stopwatch elapsedTimeSending = new Stopwatch();
+        public System.Diagnostics.Stopwatch curIterElapsed = new System.Diagnostics.Stopwatch();
+        public System.Diagnostics.Stopwatch elapsedTimeSending = new System.Diagnostics.Stopwatch();
 
         // gui styles
         int selectedTab;

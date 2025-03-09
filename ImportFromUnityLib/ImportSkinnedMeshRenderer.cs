@@ -33,9 +33,10 @@ namespace ImportFromUnityLib
             // but that constraint doesn't seem necessary as far as I can tell so I did everything
             // so that we can have multiple bones named same thing
             // will that cause issues? idk
-            int boneI = 0;
-            foreach (RefID_U2Res boneRefID in skinnedMeshRendererData.bones)
+            // can't use foreach or we end up with multiple null bones using same index (for reasons I don't quite understand)
+            for(int boneI = 0; boneI < skinnedMeshRendererData.bones.Length; boneI++)
             {
+                RefID_U2Res boneRefID = skinnedMeshRendererData.bones[boneI];
                 // support null bones by initializing a new one at location of skinned mesh renderer
                 // it's not ideal but as good as we can do
                 // since just ignoring them would cause errors
@@ -50,7 +51,6 @@ namespace ImportFromUnityLib
                 {
                     renderer.Bones.Add().Value = boneRefID.id;
                 }
-                boneI += 1;
             }
             renderer.BoundsComputeMethod.Value = SkinnedBounds.Static;
 
