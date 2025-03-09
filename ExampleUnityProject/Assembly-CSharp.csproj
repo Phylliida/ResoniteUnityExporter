@@ -94,7 +94,6 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiIridescence.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiSpecular.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiMath.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiShadowVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGeomFur.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRNG.cginc" />
@@ -190,8 +189,8 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiVideo.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassOutline.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMSDF.cginc" />
+    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiData.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGrab.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRNG.cginc" />
@@ -212,15 +211,14 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBlackLight.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Fade.shader" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Memory.dll" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiVertexManipulations.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiSpawnInFrag.cginc" />
     <None Include="Assets\_PoiyomiShaders\Shaders\Extras\InvisStencil.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMatcap.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiPenetration.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Numerics.Vectors.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBulge.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiSpecular.cginc" />
+    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll" />
     <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi Early Outline.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiShadowVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiV2F.cginc" />
@@ -292,7 +290,6 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiDithering.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiSpecular.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDepthColor.cginc" />
     <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\ModularShadersGeneratorStyle.uss" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiBlending.cginc" />
@@ -448,7 +445,6 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiBackFace.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRandom.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDecal.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Buffers.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDefines.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_FunctionsArtistic.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Transparent.shader" />
@@ -467,7 +463,6 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiDithering.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRimLighting.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_FunctionsArtistic.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFur.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRNG.cginc" />
@@ -568,8 +563,6 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDecal.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiDefines.cginc" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\System.Threading.Tasks.Extensions.dll" />
-    <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiUVDistortion.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiEnvironmentalRimLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBulge.cginc" />
@@ -931,10 +924,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.SDK3.Dynamics.Contact.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="librsync.net">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\librsync\librsync.net.dll</HintPath>
       <Private>False</Private>
@@ -951,20 +940,12 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="VRC.Utility">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.Utility.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRCSDK3A">
       <HintPath>Packages\com.vrchat.avatars\Runtime\VRCSDK\Plugins\VRCSDK3A.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Constraint">
@@ -979,16 +960,16 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\Harmony\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Collections.Pooled">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\Collections.Pooled.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRCSDKBase">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRCSDKBase.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -1020,7 +1001,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

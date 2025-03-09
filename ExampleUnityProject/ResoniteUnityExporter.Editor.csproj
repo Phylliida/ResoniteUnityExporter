@@ -60,27 +60,27 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.22f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\LODGroupConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteUnityExporterEditorWindow.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransferUtils.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\ColliderConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\ConstraintConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\ResoniteTransferArmatureRenamer.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />
-    <Compile Include="Assets\ResoniteUnityExporter\Editor\ResoniteTransfer\Converters\LightConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\LightConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferArmatureRenamer.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferMaterial.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferHierarchy.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteUnityExporterEditorWindow.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferUtils.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\ColliderConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\ConstraintConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferManager.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\PipelineManagerConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\MeshRendererConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\SkinnedMeshRendererConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\PhysBoneConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\LODGroupConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\Converters\PhysBoneColliderConverter.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferMesh.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransfer\ResoniteTransferTexture2D.cs" />
+    <Compile Include="Assets\ResoniteUnityExporterPackage\Editor\ResoniteTransferUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\ResoniteUnityExporter\Editor\VRC.asmdef" />
+    <None Include="Assets\ResoniteUnityExporterPackage\Editor\VRC.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -439,10 +439,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.SDK3.Dynamics.Contact.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="librsync.net">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\librsync\librsync.net.dll</HintPath>
       <Private>False</Private>
@@ -463,10 +459,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="vpm-core-lib">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\vpm-core-lib.dll</HintPath>
       <Private>False</Private>
@@ -481,10 +473,6 @@
     </Reference>
     <Reference Include="VRCSDK3A">
       <HintPath>Packages\com.vrchat.avatars\Runtime\VRCSDK\Plugins\VRCSDK3A.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Constraint">
@@ -503,6 +491,10 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\Harmony\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Collections.Pooled">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\Collections.Pooled.dll</HintPath>
       <Private>False</Private>
@@ -513,10 +505,6 @@
     </Reference>
     <Reference Include="Serilog.Sinks.File">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.File.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -559,16 +547,20 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRCCore-Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="YamlDotNet">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Serilog.Sinks.Unity3D">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.Unity3D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

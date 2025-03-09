@@ -431,10 +431,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.SDK3.Dynamics.Contact.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="librsync.net">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\librsync\librsync.net.dll</HintPath>
       <Private>False</Private>
@@ -455,10 +451,6 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Security.AccessControl">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.AccessControl.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="vpm-core-lib">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\vpm-core-lib.dll</HintPath>
       <Private>False</Private>
@@ -473,10 +465,6 @@
     </Reference>
     <Reference Include="VRCSDK3A">
       <HintPath>Packages\com.vrchat.avatars\Runtime\VRCSDK\Plugins\VRCSDK3A.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\System.Security.Principal.Windows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VRC.SDK3.Dynamics.Constraint">
@@ -495,6 +483,10 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\Harmony\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Collections.Pooled">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\Collections.Pooled.dll</HintPath>
       <Private>False</Private>
@@ -505,10 +497,6 @@
     </Reference>
     <Reference Include="Serilog.Sinks.File">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.File.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -549,10 +537,6 @@
     </Reference>
     <Reference Include="VRCCore-Editor">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRCCore-Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="YamlDotNet">

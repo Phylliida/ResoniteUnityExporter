@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResoniteUnityExporter.Editor", "ResoniteUnityExporter.Editor.csproj", "{B0964E4A-BE02-66D2-529B-FE945E3068E0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRCFury-Editor", "VRCFury-Editor.csproj", "{DAE8A0C3-7981-C51D-DC48-A1E260BE34ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThryAssemblyDefinition", "ThryAssemblyDefinition.csproj", "{00F92C11-E3AB-4857-8270-B41395AC3FAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRCFury", "VRCFury.csproj", "{258B80B3-1ABC-F952-9E17-35E3A9657288}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResoniteUnityExporter.Editor", "ResoniteUnityExporter.Editor.csproj", "{B0964E4A-BE02-66D2-529B-FE945E3068E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{0F007E79-2B5F-5FE0-7DA5-7B5C3539F9F8}"
 EndProject
@@ -31,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DAE8A0C3-7981-C51D-DC48-A1E260BE34ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DAE8A0C3-7981-C51D-DC48-A1E260BE34ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAE8A0C3-7981-C51D-DC48-A1E260BE34ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +43,10 @@ Global
 		{258B80B3-1ABC-F952-9E17-35E3A9657288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258B80B3-1ABC-F952-9E17-35E3A9657288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258B80B3-1ABC-F952-9E17-35E3A9657288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0964E4A-BE02-66D2-529B-FE945E3068E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F007E79-2B5F-5FE0-7DA5-7B5C3539F9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F007E79-2B5F-5FE0-7DA5-7B5C3539F9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F007E79-2B5F-5FE0-7DA5-7B5C3539F9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
