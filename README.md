@@ -13,6 +13,8 @@ This lets us avoid any of the limitations of converting to an intermediate file 
 
 ### Installing the unity package
 
+(If you have the old version, go to Assets and delete the ResoniteUnityExporter folder)
+
 Click `Window` at the top of the screen, then select `Package Manager`.
 
 ![press package manager button](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/package%20manager%20button.png?raw=true)
