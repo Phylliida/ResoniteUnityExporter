@@ -35,6 +35,11 @@ namespace ImportFromUnityLib
                     case LightType_U2Res.Area: lightType = LightType.Point; break;
                     case LightType_U2Res.Disc: lightType = LightType.Point; break;
                 }
+                if (lightType == LightType.Point)
+                {
+                    // need to scale up the lights if point light
+                    lightSlot.Scale_Field.Value *= new float3(100, 100, 100);
+                }
                 light.LightType.Value = lightType;
                 // lightData.shape
                 light.SpotAngle.Value = lightData.spotAngle;

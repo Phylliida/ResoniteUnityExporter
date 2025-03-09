@@ -11,31 +11,25 @@ This lets us avoid any of the limitations of converting to an intermediate file 
 
 ## Tutorial
 
-### Installing the unitypackage
+### Installing the unity package
 
-Go to the releases page
+Click `Window` at the top of the screen, then select `Package Manager`.
 
-[https://github.com/Phylliida/ResoniteUnityExporter/releases](https://github.com/Phylliida/ResoniteUnityExporter/releases)
+![press package manager button](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/package%20manager%20button.png?raw=true)
 
-- Pick the most recent release
-- Scroll down unitil you see `Assets`, expand it
-- Download `ResoniteUnityExporter.unitypackage`
+Press the `+` in the top left, and click `add package from git URL...`
 
-![download ResoniteUnityExporter.unitypackage](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/releases%20unity%20package.png?raw=true)
+![add package from git url](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/add%20package%20from%20git%20url.png?raw=true)
 
-- Open Unity
-- Open your scene containing your Avatar or World.
-- In the top bar, click `Assets` -> `Import Package` -> `Custom Package`
+Then add the url from the package repo:
 
-![Assets -> Import Package -> Custom Package](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/Import%20Package.png?raw=true)
+```
+https://github.com/Phylliida/ResoniteUnityExporterPackage.git
+```
 
-Select the downloaded `ResoniteUnityExporter.unitypackage` and press `Open`
+and press `Add`.
 
-![select downloaded resonite unity exporter](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/import%20package%20file.png?raw=true)
-
-A window will pop up in Unity, press `Import`
-
-![import package contents](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/import%20package%20popup.png?raw=true)
+![which git url to use](https://github.com/Phylliida/ResoniteUnityExporter/blob/main/TutorialAssets/which%20git%20url%20to%20add%20package.png?raw=true)
 
 Click the new `ResoniteUnityExporter` tab at the top of the screen and click `Open Unity Resonite Exporter`.
 
