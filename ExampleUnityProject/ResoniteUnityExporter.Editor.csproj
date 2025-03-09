@@ -459,8 +459,16 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="vpm-core-lib">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\vpm-core-lib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SemanticVersioning">
@@ -553,14 +561,6 @@
     </Reference>
     <Reference Include="Serilog.Sinks.Unity3D">
       <HintPath>Packages\com.vrchat.core.vpm-resolver\Editor\Dependencies\Serilog.Sinks.Unity3D.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

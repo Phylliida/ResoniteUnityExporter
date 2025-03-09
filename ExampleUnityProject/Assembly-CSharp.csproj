@@ -940,6 +940,14 @@
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Dependencies\Managed\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ResoniteBridgeLib">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ResoniteUnityExporterShared">
+      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="VRC.Utility">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRC.Utility.dll</HintPath>
       <Private>False</Private>
@@ -998,14 +1006,6 @@
     </Reference>
     <Reference Include="VRCCore-Editor">
       <HintPath>Packages\com.vrchat.base\Runtime\VRCSDK\Plugins\VRCCore-Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteUnityExporterShared">
-      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ResoniteBridgeLib">
-      <HintPath>Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
