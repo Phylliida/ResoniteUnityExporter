@@ -248,6 +248,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMacros.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFur.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiData.cginc" />
+    <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiAlphaToCoverage.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMatcap.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassShadow.cginc" />

@@ -23,9 +23,19 @@ namespace ResoniteUnityExporterShared
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct ConstraintSource_U2Res
+    {
+        public RefID_U2Res transform;
+        public float weight;
+        public Float3_U2Res parentPositionOffset;
+        public Float3_U2Res parentRotationOffset;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct PositionConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public bool lockConstraint;
@@ -39,6 +49,7 @@ namespace ResoniteUnityExporterShared
     public struct RotationConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public bool lockConstraint;
@@ -52,6 +63,7 @@ namespace ResoniteUnityExporterShared
     public struct ScaleConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public bool lockConstraint;
@@ -65,6 +77,7 @@ namespace ResoniteUnityExporterShared
     public struct AimConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public Float3_U2Res aimVector;
@@ -80,6 +93,7 @@ namespace ResoniteUnityExporterShared
     public struct ParentConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public bool lockConstraint;
@@ -93,6 +107,7 @@ namespace ResoniteUnityExporterShared
     public struct LookAtConstraint_U2Res
     {
         public RefID_U2Res target;
+        public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
         public bool useUpObject;

@@ -5,6 +5,6 @@
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 	<Target Name="PostPublish" AfterTargets="Publish">
-		<Exec Command="xcopy &quot;$(PublishDir)\*.dll&quot; &quot;..\ExampleUnityProject\Assets\ResoniteUnityExporter\Plugins&quot; /E /I /Y" />
+		<Exec Command="xcopy &quot;$(PublishDir)\*.dll&quot; &quot;..\ExampleUnityProject\Assets\ResoniteUnityExporterPackage\Plugins&quot; /E /I /Y" />
 	</Target>
 </Project>
