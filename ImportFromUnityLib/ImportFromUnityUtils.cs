@@ -79,6 +79,19 @@ namespace ImportFromUnityLib
             }
         }
 
+        public static IWorldElement LookupRefID(RefID refID)
+        {
+            // need this bc the call below will throw an error
+            if (refID == RefID.Null)
+            {
+                return null;
+            }
+            else
+            {
+                return ImportFromUnityLib.CurrentEngine.WorldManager.FocusedWorld.ReferenceController.GetObjectOrNull(refID);
+            }
+        }
+
         // Helper class to safely iterate without try-catch in iterator blocks
         class ExceptionSafeIterator
         {

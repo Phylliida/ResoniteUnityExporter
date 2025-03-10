@@ -105,6 +105,11 @@ namespace ResoniteBridge
                 try
                 {
                     libraries.Add("FrooxEngine", Assembly.Load("FrooxEngine"));
+                    libraries.Add("FrooxEngine.Store", Assembly.Load("FrooxEngine.Store"));
+                    libraries.Add("ProtoFlux.Core", Assembly.Load("ProtoFlux.Core"));
+                    libraries.Add("ProtoFlux.Nodes.Core", Assembly.Load("ProtoFlux.Nodes.Core"));
+                    libraries.Add("ProtoFlux.Nodes.FrooxEngine", Assembly.Load("ProtoFlux.Nodes.FrooxEngine"));
+                    libraries.Add("ProtoFluxBindings", Assembly.Load("ProtoFluxBindings"));
                     libraries.Add("SkyFrost.Base", Assembly.Load("SkyFrost.Base"));
                     libraries.Add("SkyFrost.Base.Models", Assembly.Load("SkyFrost.Base.Models"));
                     libraries.Add("Elements.Core", Assembly.Load("Elements.Core"));
@@ -162,6 +167,10 @@ namespace ResoniteBridge
                 GetEnum(FrooxEngineAsm, "FrooxEngine.CloudProfile", "Production"));
             SetProperty(launchOptions, "VerboseInit",
                 false);
+            // see InitializeFrooxEngine where it tries to manually load them
+            // this prevents it from finding dlls and loading them twice, since we manually loaded them above
+            var tmpDir = Directory.CreateDirectory("Stap looking up");
+            Directory.SetCurrentDirectory(tmpDir.FullName);
 
             engine = CallConstructor(FrooxEngineAsm, "FrooxEngine.Engine");
             systemInfo = CallConstructor(FrooxEngineAsm, "FrooxEngine.StandaloneSystemInfo");
@@ -173,13 +182,15 @@ namespace ResoniteBridge
                     systemInfo,
                     null,
                     CallConstructor(FrooxEngineAsm, "FrooxEngine.ConsoleEngineInitProgress"));
-
             var configuredTaskAwaiter = task.ConfigureAwait(false).GetAwaiter();
 
             while (!configuredTaskAwaiter.IsCompleted)
             {
                 Thread.Sleep(16);
             }
+            // remove tmp dir
+            Directory.SetCurrentDirectory(resoniteDir);
+            Directory.Delete(tmpDir.FullName);
 
             // if you want to login, optional
             //var consolelogin = ((FrooxEngine.Engine)this.engine).Cloud.InteractiveConsoleLogin().ConfigureAwait(false).GetAwaiter();
@@ -286,6 +297,7 @@ namespace ResoniteBridge
 
                                 // hack to prevent discord interface from crashing it
                                 var platformConnectorType = LookupType("FrooxEngine", "FrooxEngine.IPlatformConnector");
+                                // todo: less aggressive version of this
                                 SetField(
                                     GetProperty(engine, "PlatformInterface"),
                                     "connectors",
@@ -293,6 +305,7 @@ namespace ResoniteBridge
                                         ,
                                         0)
                                     );
+                                
                                 readyToProcess.Set();
                             }   
                         }
