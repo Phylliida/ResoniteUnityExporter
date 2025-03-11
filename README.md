@@ -217,15 +217,15 @@ Also feel free to make a gh issue if you encounter an issue and I'm happy to hel
 
 [ResoniteImportHelper](https://github.com/KisaragiEffective/ResoniteImportHelper)'s kisaragi marine was helpful for figuring out how to call VRChat hooks and bone NOIK issues
 
-Cloud_Jumper helped me address the issue when bones were null
+Cloud_Jumper helped me address the issue when bones were null and a few other issues
 
-yoshi1123_ helped me address non-symmetric hands/avatars that are holding something
+yoshi1123_ helped me address non-symmetric hands/avatars that are holding something, and a few other issues (see releases)
 
 AlphaNeon helped me get VRChat World api support working
 
 Venport pointed me to constraints and helped me with those
 
-troyBORG helped with some of the head position debugging
+troyBORG helped with some of the head position debugging and many other things
 
 ariel_emerald helped me with initial idea generation, some brainstorming, encouragment, and finding many various issues
 
