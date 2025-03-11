@@ -184,6 +184,7 @@ See the `Materials` tab to choose how you'd like this conversion to be done.
 - Why hips rotated on certain avatars with null bones but only for Standalone? (maybe has to do with hack to avoid discord crash?)
 - Asset bundle not working?
 - Skybox
+- Remember last resonite package save location
 - Dynamic bone plane colliders (not sure how to do this...)
 
 ## Project Structure
