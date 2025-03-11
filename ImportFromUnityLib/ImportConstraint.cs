@@ -264,16 +264,6 @@ namespace ImportFromUnityLib
                 Slot scaleConstraint = target.AddSlot("Scale constraint");
                 DynamicVariableSpace scaleConstraintSpace = scaleConstraint.AttachComponent<DynamicVariableSpace>();
                 scaleConstraintSpace.OnlyDirectBinding.Value = true;
-                float totalWeight = 0.0f;
-                foreach (ConstraintSource_U2Res source in constraintData.sources)
-                {
-                    totalWeight += source.weight;
-                }
-                // don't divide by zero
-                if (totalWeight == 0.0f)
-                {
-                    totalWeight = 1.0f;
-                }
                 scaleConstraintSpace.SpaceName.Value = "ScaleConstraint";
                 var applyAxesField = scaleConstraint.AttachComponent<DynamicValueVariable<float3>>();
                 applyAxesField.Value.Value = new float3(
@@ -307,12 +297,7 @@ namespace ImportFromUnityLib
 
                     var sourceWeightField = scaleConstraint.AttachComponent<DynamicValueVariable<float>>();
                     // we need to normalize weights for the maths to work
-                    float sourceWeight = source.weight / totalWeight;
-                    // unity doesn't normalize if there is only one
-                    if (constraintData.sources.Length == 1)
-                    {
-                        sourceWeight = source.weight;
-                    }
+                    float sourceWeight = source.weight;
                     sourceWeightField.Value.Value = sourceWeight;
                     sourceWeightField.VariableName.Value = "ScaleConstraint/" + sourceName + "Weight";
                 }
@@ -357,17 +342,37 @@ namespace ImportFromUnityLib
                 }
                 var encodingType = typeManager.EncodeType(typeof(RefObjectInput<Slot>));
                 */
+                // formula is (source1Scale ^ weight1*source2Scale ^ weight2*...*scaleOffset ^ numSources)^(1 / sumOfAllWeights)
                 var inputNode = AddFluxNode<RefObjectInput<Slot>>(new float3(0.165f, 0.81375f, 0));
                 inputNode.Target.Value = scaleConstraint.Parent.ReferenceID;
 
                 var getParent = AddFluxNode<GetParentSlot>(new float3(0.405f, 0.73865f, 0));
                 getParent.Instance.Value = inputNode.ReferenceID;
 
-                var localTransform = AddFluxNode<LocalTransform>(new float3(0.87f, 0.933f, 0));
+                var localTransform = AddFluxNode<LocalTransform>(new float3(0.94f, 1.23f, 0));
                 localTransform.Instance.Value = inputNode.ReferenceID;
 
+                var whichAxesActivatedNode = AddFluxNode<DynamicVariableValueInput<float3>>(new float3(1.1998f, 1.025f, 0));
+                var whichAxesActivatedNodeValue = whichAxesActivatedNode.Slot.AttachComponent<GlobalValue<string>>();
+                whichAxesActivatedNodeValue.Value.Value = "ScaleConstraint/ApplyAxes";
+                whichAxesActivatedNode.VariableName.Value = whichAxesActivatedNodeValue.ReferenceID;
 
-                var mulAll = AddFluxNode<ValueAddMulti<float3>>(new float3(1.08f, 0.57f, 0f));
+                var scaleConstraintOffsetNode = AddFluxNode<DynamicVariableValueInput<float3>>(new float3(0.9098f, 0.901f, 0));
+                var scaleConstraintOffsetNodeValue = scaleConstraintOffsetNode.Slot.AttachComponent<GlobalValue<string>>();
+                scaleConstraintOffsetNode.VariableName.Value = scaleConstraintOffsetNodeValue.ReferenceID;
+                scaleConstraintOffsetNodeValue.Value.Value = "ScaleConstraint/Offset";
+
+                var powForScaleOffset = AddFluxNode<Pow_Float3_Float>(new float3(1.195f, 0.907f, 0));
+                var inputForOffsetPow = AddFluxNode<ValueInput<float>>(new float3(1.043f, 0.86698f, 0));
+                inputForOffsetPow.Value.Value = constraintData.sources.Length;
+                powForScaleOffset.N.Value = scaleConstraintOffsetNode.Value.ReferenceID;
+                powForScaleOffset.Power.Value = inputForOffsetPow.ReferenceID;
+
+                var mulAll = AddFluxNode<ValueMulMulti<float3>>(new float3(1.367f, 0.595f, 0f));
+                mulAll.Inputs.Add().Value = whichAxesActivatedNode.Value.ReferenceID;
+                mulAll.Inputs.Add().Value = powForScaleOffset.ReferenceID;
+
+                var addAllWeights = AddFluxNode<ValueAddMulti<float>>(new float3(0.901f, 0.753f, 0));
 
                 for (int i = 0; i < constraintData.sources.Length; i++)
                 {
@@ -389,47 +394,41 @@ namespace ImportFromUnityLib
                     weightSourceValue.Value.Value = "ScaleConstraint/" + sourceStr + "Weight";
                     weightSource.VariableName.Value = weightSourceValue.ReferenceID;
 
-                    var mulSourceWeight = AddFluxNode<Mul_Float3_Float>(new float3(0.87f, 0.558f + yOffset, 0f));
-                    mulSourceWeight.A.Value = transformScaleSource.ReferenceID;
-                    mulSourceWeight.B.Value = weightSource.Value.ReferenceID;
-                    mulAll.Inputs.Add().Value = mulSourceWeight.ReferenceID;
+                    addAllWeights.Inputs.Add().Value = weightSource.Value.ReferenceID;
+
+                    var powSourceWeight = AddFluxNode<Pow_Float3_Float>(new float3(0.88f, 0.558f + yOffset, 0f));
+                    powSourceWeight.N.Value = transformScaleSource.ReferenceID;
+                    powSourceWeight.Power.Value = weightSource.Value.ReferenceID;
+                    mulAll.Inputs.Add().Value = powSourceWeight.ReferenceID;
                 }
 
-                // it does multiplicitive average (multiply all then to the power of 1/num sources)
-                var pow = AddFluxNode<Pow_Float3_Float>(new float3(1.36f, 0.554f, 0));
-                var powInput = AddFluxNode<ValueInput<float>>(new float3(1.20f, 0.5f, 0));
-                pow.N.Value = mulAll.ReferenceID;
-                pow.Power.Value = powInput.ReferenceID;
-                powInput.Value.Value = 1.0f / constraintData.sources.Length;
+                var reciprocalInput = AddFluxNode<ValueReciprocal<float>>(new float3(1.187f, 0.7187f, 0));
+                reciprocalInput.N.Value = addAllWeights.ReferenceID;
 
-                var whichAxesActivatedNode = AddFluxNode<DynamicVariableValueInput<float3>>(new float3(1.047f, 0.85f, 0));
-                var whichAxesActivatedNodeValue = whichAxesActivatedNode.Slot.AttachComponent<GlobalValue<string>>();
-                whichAxesActivatedNodeValue.Value.Value = "ScaleConstraint/ApplyAxes";
-                whichAxesActivatedNode.VariableName.Value = whichAxesActivatedNodeValue.ReferenceID;
+                var powByWeightReciprocal = AddFluxNode<Pow_Float3_Float>(new float3(1.546f, 0.741f, 0));
+                powByWeightReciprocal.N.Value = mulAll.ReferenceID;
+                powByWeightReciprocal.Power.Value = reciprocalInput.ReferenceID;
 
-                var scaleConstraintOffsetNode = AddFluxNode<DynamicVariableValueInput<float3>>(new float3(1.357f, 0.73f, 0));
-                var scaleConstraintOffsetNodeValue = scaleConstraintOffsetNode.Slot.AttachComponent<GlobalValue<string>>();
-                scaleConstraintOffsetNode.VariableName.Value = scaleConstraintOffsetNodeValue.ReferenceID;
-                scaleConstraintOffsetNodeValue.Value.Value = "ScaleConstraint/Offset";
-
-                var mulByWhichNode = AddFluxNode<ValueMulMulti<float3>>(new float3(new float3(1.533f, 0.775f, 0)));
-                mulByWhichNode.Inputs.Add().Value = whichAxesActivatedNode.Value.ReferenceID;
-                mulByWhichNode.Inputs.Add().Value = scaleConstraintOffsetNode.Value.ReferenceID;
-                mulByWhichNode.Inputs.Add().Value = pow.ReferenceID;
-
-                var oneMinusWhichAxesActivatedNode = AddFluxNode<ValueOneMinus<float3>>(new float3(1.273f, 0.897f, 0));
+                var oneMinusWhichAxesActivatedNode = AddFluxNode<ValueOneMinus<float3>>(new float3(1.3726f, 1.0526f, 0));
                 oneMinusWhichAxesActivatedNode.X.Value = whichAxesActivatedNode.Value.ReferenceID;
 
-                var mulByLocalScaleNode = AddFluxNode<ValueMul<float3>>(new float3(1.53f, 0.957f, 0));
+                var mulByLocalScaleNode = AddFluxNode<ValueMul<float3>>(new float3(1.527f, 1.0982f, 0));
                 mulByLocalScaleNode.A.Value = localTransform.LocalScale.ReferenceID;
                 mulByLocalScaleNode.B.Value = oneMinusWhichAxesActivatedNode.ReferenceID;
 
-                var valueAddFinal = AddFluxNode<ValueAdd<float3>>(new float3(1.704f, 0.819f, 0));
+                var valueAddFinal = AddFluxNode<ValueAdd<float3>>(new float3(1.815f, 0.805f, 0));
                 valueAddFinal.A.Value = mulByLocalScaleNode.ReferenceID;
-                valueAddFinal.B.Value = mulByWhichNode.ReferenceID;
+                valueAddFinal.B.Value = powByWeightReciprocal.ReferenceID;
 
-                var finalDrive = AddFluxNode<ValueFieldDrive<float3>>(new float3(1.92f, 0.75f, 0));
-                finalDrive.Value.Value = valueAddFinal.ReferenceID;
+                var checkIfAllZeroWeights = AddFluxNode<ValueEquals<float>>(new float3(1.8097f, 0.975f, 0));
+                checkIfAllZeroWeights.A.Value = addAllWeights.ReferenceID;
+                var conditionalOnAllZero = AddFluxNode<ValueConditional<float3>>(new float3(1.997f, 1.1615f, 0));
+                conditionalOnAllZero.Condition.Value = checkIfAllZeroWeights.ReferenceID;
+                conditionalOnAllZero.OnTrue.Value = localTransform.LocalScale.ReferenceID;
+                conditionalOnAllZero.OnFalse.Value = valueAddFinal.ReferenceID;
+
+                var finalDrive = AddFluxNode<ValueFieldDrive<float3>>(new float3(2.2291f, 1.2014f, 0));
+                finalDrive.Value.Value = conditionalOnAllZero.ReferenceID;
                 finalDrive.GetRootProxy(true).Drive.Value = outputField.Value.ReferenceID;
                 outputRefId = scaleConstraint.ReferenceID;
                 scaleConstraint.Scale_Field.Value = new float3(100, 100, 100);
