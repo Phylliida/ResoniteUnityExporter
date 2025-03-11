@@ -149,6 +149,43 @@ Because Resonite does not have custom materials, your materials will need to be 
 
 See the `Materials` tab to choose how you'd like this conversion to be done.
 
+## Stuff supported
+- Worlds and Avatars
+- Mesh Renderer
+- Skinned Mesh Renderer
+- Blend shape values
+- Relative transforms and names of all slots
+- Bones, including:
+  - Auto-rename to help Resonite (modified from [ResoniteImportHelper](https://github.com/KisaragiEffective/ResoniteImportHelper))
+  - Null bones are supported (they just get a default bone made for them on the Resonite side)
+- Dynamic Bone Chains and Colliders
+- VRIK/Humanoid rig import
+- Auto create and use Avatar Creator (including better auto-hand align)
+- VRChat build hooks (including [VRCFury](https://vrcfury.com/) hooks)
+- [Non-Destructive Modular Avatar Framework](https://github.com/bdunderscore/ndmf) hooks
+- Position and Scale Constraints
+- Most material properties (including textures), and you can choose which supported Resonite material to map to
+- Lights (mostly, as much as I can with Resonite, baked lighting todo)
+- LODGroups
+- Colliders
+
+## Todo
+
+- Aim, Parent, LookAt, and Rotation constraints
+- Baked lighting
+- Reflection probes
+- [Toggles](https://github.com/Phylliida/ResoniteUnityExporter/issues/12)
+- Animations
+- Better liltoon support (see [18](https://github.com/Phylliida/ResoniteUnityExporter/issues/18))
+- [Linux Support](https://github.com/Phylliida/ResoniteUnityExporter/issues/15)
+- [Option to put tooltip anchor on tip of first finger](https://github.com/Phylliida/ResoniteUnityExporter/issues/16)
+- Particles
+- Sounds
+- Why hips rotated on certain avatars with null bones but only for Standalone? (maybe has to do with hack to avoid discord crash?)
+- Asset bundle not working?
+- Skybox
+- Dynamic bone plane colliders (not sure how to do this...)
+
 ## Project Structure
 
 `ExampleUnityProject` is a Unity project that has everything installed that you'll need,
