@@ -104,12 +104,14 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiShadowVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiTessellation.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiBlending.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_MultiScaleVO.shader" />
     <None Include="Assets\_PoiyomiShaders\Scripts\poi-tools\Resources\Poi\PoiTexturePacker.shader" />
     <None Include="Assets\VRCFury\SPS\sps_props.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_Poicludes.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiEnvironmentalRimLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBackFace.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiWireframe.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_ScreenSpaceReflections.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiSpawnInVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiShadowIncludes.cginc" />
@@ -137,6 +139,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_FunctionsArtistic.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiHelpers.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiClearCoat.cginc" />
+    <None Include="Assets\Shader\Bakery_Light.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiData.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRimLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiGrab.cginc" />
@@ -158,8 +161,10 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiShadowVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGeomFur.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Bloom.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDissolve.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiVert.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_SubpixelMorphologicalAntialiasing.shader" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiVert.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
@@ -179,17 +184,18 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiAlphaToCoverage.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie 2\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDithering.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_TemporalAntialiasing.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Shaders\S_Poiyomi_Toon.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Shaders\S_Poiyomi_Toon.shader" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Rainbow.shader" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiOutlineFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiV2F.cginc" />
+    <None Include="Assets\Shader\Merlin_World_Standard Video Emission.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiSpawnInFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiVideo.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassOutline.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMSDF.cginc" />
-    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiData.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGrab.cginc" />
@@ -218,9 +224,9 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiPenetration.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBulge.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiSpecular.cginc" />
-    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll" />
     <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi Early Outline.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiShadowVert.cginc" />
+    <None Include="Assets\Shader\ProTV_VideoScreen.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiV2F.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiSpecular.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBulge.cginc" />
@@ -238,6 +244,7 @@
     <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\CREDITS.txt" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassShadow.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiIridescence.cginc" />
+    <None Include="Assets\Shader\Custom_DoubleSidedFoliage.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRGBMask.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiTessellation.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces\Poiyomi.shader" />
@@ -248,7 +255,9 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMacros.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFur.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiData.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_FinalPass.shader" />
     <None Include="Assets\ResoniteUnityExporter\Plugins\ResoniteUnityExporterShared.dll" />
+    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteUnityExporterShared.dll" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiAlphaToCoverage.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMatcap.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassShadow.cginc" />
@@ -304,10 +313,12 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiColors.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiWireframe.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiColors.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_GrainBaker.shader" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Unit Shadowed.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Kangaroo\Eye\OptimizedShaders\Eyes\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMSDF.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiMath.cginc" />
+    <None Include="Assets\Shader\ProBuilder_Standard Vertex Color.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiRandom.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiVertexManipulations.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiWireframe.cginc" />
@@ -321,18 +332,23 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiBackFace.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiHologram.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiHelpers.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_CopyStd.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiDithering.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Tail Bag\Materials\OptimizedShaders\Tail Bag\Poiyomi.shader" />
     <None Include="Assets\VRCFury\VrcfResources\VRCFuryStyle.uss" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_CopyStdFromDoubleWide.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiBlending.cginc" />
     <None Include="Assets\VRCFury\SPS\sps_plus.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiTessellation.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiSpawnInVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Shaders\S_Poiyomi_Toon.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiPenetration.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_ScalableAO.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFur.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiHelpers.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiUVDistortion.cginc" />
+    <None Include="Assets\Shader\TextMeshPro_Mobile_Distance Field.shader" />
+    <None Include="Assets\Shader\VRChat_Mobile_Diffuse.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPanosphere.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiOutlineFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMainTex.cginc" />
@@ -340,7 +356,9 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiEmission.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiMacros.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiData.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_CopyStdFromTexArray.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiData.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Debug_Vectorscope.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiMainTex.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiLighting.cginc" />
@@ -352,6 +370,8 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiDefines.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFlipbook.cginc" />
+    <None Include="Assets\Shader\FX_MirrorReflection.shader" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_MotionBlur.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Shaders\S_Poiyomi_Toon.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiHelpers.cginc" />
     <None Include="Assets\_PoiyomiShaders\Shaders\8.0\Poiyomi World.shader" />
@@ -367,6 +387,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\_PoiyomiShaders\Shaders\PoiLabels.txt" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiData.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Copy.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDissolve.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiSpawnInVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiShadowFrag.cginc" />
@@ -375,6 +396,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBlending.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiMacros.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiShadowFrag.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Debug_LightMeter.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiPassShadow.cginc" />
     <None Include="Assets\_PoiyomiShaders\TPS\Dev Resources\TPS.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFrag.cginc" />
@@ -412,6 +434,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiShadowFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiHelpers.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiShadowFrag.cginc" />
+    <None Include="Assets\Shader\VRChat_Mobile_Standard Lite.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiPassShadow.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiDithering.cginc" />
@@ -433,6 +456,7 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiVertexManipulations.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_DeferredFog.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiTessellation.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiShadowIncludes.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiShadowFrag.cginc" />
@@ -452,6 +476,7 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiMacros.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Kangaroo\Body\OptimizedShaders\Body - Standard\Poiyomi.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiEnvironmentalRimLighting.cginc" />
+    <None Include="Assets\ResoniteUnityExporterPackage\Plugins\ResoniteBridgeLib.dll" />
     <None Include="Assets\_PoiyomiShaders\TPS\Dev Resources\tps.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDithering.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDissolve.cginc" />
@@ -481,12 +506,14 @@
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiPassShadow.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMirror.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGlitter.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Debug_Waveform.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMetal.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDepthColor.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiVert.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiShadowIncludes.cginc" />
     <None Include="Assets\VRCFury\SPS\sps_utils.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFlipbook.cginc" />
+    <None Include="Assets\Shader\ASE_ASE_StandartCutout2Sided.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPass.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiAlphaToCoverage.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Scarf\Materials - Party\OptimizedShaders\Scarf\Includes\CGI_PoiEnvironmentalRimLighting.cginc" />
@@ -512,6 +539,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiGrab.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiMainTex.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBlending.cginc" />
+    <None Include="Assets\Shader\TextMeshPro_Distance Field Overlay.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_FunctionsArtistic.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiTessellation.cginc" />
     <None Include="Assets\_PoiyomiShaders\Shaders\Extras\MasterScanner.shader" />
@@ -547,6 +575,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiV2F.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCore.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiShadowIncludes.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Uber.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiEmission.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_PoiWireframe.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Hoodie\Materials\OptimizedShaders\Hoodie-349636ab\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiMath.cginc" />
@@ -564,6 +593,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoe Laces\OptimizedShaders\Shoes Laces\Includes\CGI_PoiFrag.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiDecal.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiDefines.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_DiscardAlpha.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiUVDistortion.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiEnvironmentalRimLighting.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoes\OptimizedShaders\Shoes-4b119ea1\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBulge.cginc" />
@@ -575,6 +605,7 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPanosphere.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Orca Fins\Materials\OptimizedShaders\Orca Fins\Includes\CGI_PoiGrab.cginc" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiFlipbook.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Texture2DLerp.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials\Shoe Laces\OptimizedShaders\Shoes Laces-1bbbd25c\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiAlphaToCoverage.cginc" />
     <None Include="Assets\Tropical Kangaroo\Resources\Other\Artist Credit\OptimizedShaders\Artist Credit\Includes\CGI_FunctionsArtistic.cginc" />
     <None Include="Assets\Cubed&apos;s Unity Shaders\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
@@ -585,8 +616,12 @@
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiPassOutline.cginc" />
     <None Include="Assets\_PoiyomiShaders\Scripts\ThryEditor\Examples\ThryLabelExample.txt" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Shoes\Materials - Party\Shoes\OptimizedShaders\Shoes\Includes\CGI_PoiPass.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Debug_Overlays.shader" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Debug_Histogram.shader" />
     <None Include="Assets\Tropical Kangaroo\Resources\Orca\Body\OptimizedShaders\Body - Orca\Includes\CGI_PoiPass.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_DepthOfField.shader" />
     <None Include="Assets\Tropical Kangaroo\Attachments\Party Gear\Party Cup\Materials\OptimizedShaders\Party Cup-f092efe0\Assets\_PoiyomiShaders\Shaders\Toon\Includes\CGI_PoiBackFace.cginc" />
+    <None Include="Assets\Shader\Hidden_PostProcessing_Lut2DBaker.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

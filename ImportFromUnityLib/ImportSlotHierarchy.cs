@@ -95,7 +95,7 @@ namespace ImportFromUnityLib
             {
                 AddObjectAndChildren(targetSlot, obj, lookups);
             }
-            targetSlot.LocalScale = new float3(1.0f / 100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
+            targetSlot.LocalScale = new float3(1.0f / hierarchy.rescaleFactor, 1.0f / hierarchy.rescaleFactor, 1.0f / hierarchy.rescaleFactor);
             //// encode lookup and return it
             ObjectLookups_U2Res outputLookups = new ObjectLookups_U2Res()
             {

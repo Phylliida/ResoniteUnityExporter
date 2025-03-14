@@ -1083,6 +1083,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="lilToon.Editor">
+      <HintPath>Library\ScriptAssemblies\lilToon.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="VRC.SDK3A.Editor">
       <HintPath>Library\ScriptAssemblies\VRC.SDK3A.Editor.dll</HintPath>
       <Private>False</Private>

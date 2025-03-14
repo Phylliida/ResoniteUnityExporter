@@ -114,6 +114,7 @@ namespace ResoniteUnityExporterShared
     public struct Light_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public LightType_U2Res type;
         public LightShape_U2Res shape;
         public float spotAngle;

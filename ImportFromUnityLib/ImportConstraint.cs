@@ -212,7 +212,7 @@ namespace ImportFromUnityLib
                     finalDrive.Value.Value = valueAddFinal.ReferenceID;
                     finalDrive.GetRootProxy(true).Drive.Value = outputField.Value.ReferenceID;
                     outputRefId = positionConstraint.ReferenceID;
-                    positionConstraint.Scale_Field.Value = new float3(100, 100, 100);
+                    positionConstraint.Scale_Field.Value = new float3(constraintData.rescaleFactor, constraintData.rescaleFactor, constraintData.rescaleFactor);
                 }
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
@@ -431,7 +431,7 @@ namespace ImportFromUnityLib
                 finalDrive.Value.Value = conditionalOnAllZero.ReferenceID;
                 finalDrive.GetRootProxy(true).Drive.Value = outputField.Value.ReferenceID;
                 outputRefId = scaleConstraint.ReferenceID;
-                scaleConstraint.Scale_Field.Value = new float3(100, 100, 100);
+                scaleConstraint.Scale_Field.Value = new float3(constraintData.rescaleFactor, constraintData.rescaleFactor, constraintData.rescaleFactor);
             }
             RefID_U2Res outputRefID = new RefID_U2Res()
             {

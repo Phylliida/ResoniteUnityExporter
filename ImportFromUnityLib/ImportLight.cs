@@ -38,7 +38,7 @@ namespace ImportFromUnityLib
                 if (lightType == LightType.Point)
                 {
                     // need to scale up the lights if point light
-                    lightSlot.Scale_Field.Value *= new float3(100, 100, 100);
+                    lightSlot.Scale_Field.Value *= new float3(lightData.rescaleFactor, lightData.rescaleFactor, lightData.rescaleFactor);
                 }
                 light.LightType.Value = lightType;
                 // lightData.shape

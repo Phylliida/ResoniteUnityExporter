@@ -14,6 +14,7 @@ namespace ResoniteUnityExporterShared
     public struct Avatar_U2Res
     {
         public RefID_U2Res mainParentSlot;
+        public float rescaleFactor;
         public RefID_U2Res[] renderers;
         public RefID_U2Res assetsSlot;
         public bool hasCustomHeadPosition;

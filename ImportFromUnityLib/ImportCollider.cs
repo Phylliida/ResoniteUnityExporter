@@ -146,6 +146,8 @@ namespace ImportFromUnityLib
                 );
                 // sadly I don't know about convex options in mesh collider??
                 result = meshCollider.ReferenceID;
+                meshCollider.Type.Value = ColliderType.Static;
+                meshCollider.CharacterCollider.Value = true;
             }
 
             // return refid of sphere collider

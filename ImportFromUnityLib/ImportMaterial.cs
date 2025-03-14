@@ -12,12 +12,50 @@ namespace ImportFromUnityLib
 {
     public class ImportMaterial
     {
+        static bool TryGetMaterialBool(Material_U2Res material, string fieldName, out bool value)
+        {
+            value = default(bool);
+            for (int i = 0; i < material.keywords.Length; i++)
+            {
+                if (material.keywords[i].ToLower() == fieldName.ToLower())
+                {
+                    value = material.keywordValues[i];
+                    return true;
+                }
+            }
+            // try int and float as well, depends on the shader
+            if (TryGetMaterialInt(material, fieldName, out int intValue))
+            {
+                return intValue == 1;
+            }
+            if (TryGetMaterialFloat(material, fieldName, out float floatValue))
+            {
+                return floatValue == 1.0f;
+            }
+            return false;
+        }
+
+
+        static bool TryGetMaterialInt(Material_U2Res material, string fieldName, out int value)
+        {
+            value = default(int);
+            for (int i = 0; i < material.intNames.Length; i++)
+            {
+                if (material.intNames[i].ToLower() == fieldName.ToLower())
+                {
+                    value = material.intValues[i];
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static bool TryGetMaterialFloat(Material_U2Res material, string fieldName, out float value)
         {
             value = default(float);
             for (int i = 0; i < material.floatNames.Length; i++)
             {
-                if (material.floatNames[i] == fieldName)
+                if (material.floatNames[i].ToLower() == fieldName.ToLower())
                 {
                     value = material.floatValues[i];
                     return true;
@@ -45,7 +83,7 @@ namespace ImportFromUnityLib
             value = new Float4_U2Res();
             for (int i = 0; i < material.float4Names.Length; i++)
             {
-                if (material.float4Names[i] == fieldName)
+                if (material.float4Names[i].ToLower() == fieldName.ToLower())
                 {
                     value = material.float4Values[i];
                     return true;
@@ -63,7 +101,7 @@ namespace ImportFromUnityLib
 
             for (int i = 0; i < material.texture2DNames.Length; i++)
             {
-                if (material.texture2DNames[i] == textureName)
+                if (material.texture2DNames[i].ToLower() == textureName.ToLower())
                 {
                     matRefID = material.texture2DValues[i];
                     return true;
@@ -121,6 +159,19 @@ namespace ImportFromUnityLib
 
             float renderingMode = 0.0f;
 
+
+            bool emissionEnabled = true;
+
+            if (TryGetMaterialBool(materialData, "_EMISSION", out bool _emissionEnabledStandard))
+            {
+                emissionEnabled = _emissionEnabledStandard;
+            }
+
+            if (TryGetMaterialBool(materialData, "_UseEmission", out bool _emissionEnabledLilToon))
+            {
+                emissionEnabled = _emissionEnabledLilToon;
+            }
+
             if (TryGetMaterialFloat(materialData, "_Mode", out renderingMode))
             {
 
@@ -151,6 +202,12 @@ namespace ImportFromUnityLib
                 //mat.Color.Value
                 matColor = new colorX(color.x, color.y, color.z, color.w);
             }
+            if (TryGetMaterialFloat4(materialData, "_AlbedoColor", out Float4_U2Res color2))
+            {
+                hasColor = true;
+                //mat.Color.Value
+                matColor = new colorX(color2.x, color2.y, color2.z, color2.w);
+            }
             // _EmissionColor,
             if (TryGetMaterialFloat4(materialData, "_EmissionColor", out Float4_U2Res emissionColor))
             {
@@ -159,13 +216,30 @@ namespace ImportFromUnityLib
                 matEmissionColor = new colorX(emissionColor.x, emissionColor.y, emissionColor.z, emissionColor.w);
             }
             // _MainTex_ST,_MainTex_TexelSize,_MainTex_HDR,
-            if (TryGetMaterialTexture(materialData, "_MainTex", out mainTexRefID))
+            if (TryGetMaterialTexture(materialData, "_MainTex", out RefID_U2Res _mainTexRefID))
             {
                 hasMainTex = true;
+                mainTexRefID = _mainTexRefID;
                 // mat.MainTexture.Value
             }
-            if (TryGetMaterialTextureTransform(materialData, "_MainTex_ST", out mainTexOffset, out mainTexScale))
+            if (TryGetMaterialTextureTransform(materialData, "_MainTex_ST", out float2 _mainTexOffset, out float2 _mainTexScale))
             {
+                mainTexOffset = _mainTexOffset;
+                mainTexScale = _mainTexScale;
+                //mat.MainTextureOffset.Value
+                //mat.MainTextureScale.Value
+            }
+            // sometimes they are albedo instead
+            if (TryGetMaterialTexture(materialData, "_Albedo", out RefID_U2Res _mainTexRefID2))
+            {
+                hasMainTex = true;
+                mainTexRefID = _mainTexRefID2;
+                // mat.MainTexture.Value
+            }
+            if (TryGetMaterialTextureTransform(materialData, "_Albedo_ST", out float2 mainTexOffset2, out float2 mainTexScale2))
+            {
+                mainTexOffset = mainTexOffset2;
+                mainTexScale = mainTexScale2;
                 //mat.MainTextureOffset.Value
                 //mat.MainTextureScale.Value
             }
@@ -257,7 +331,9 @@ namespace ImportFromUnityLib
                 }
                 if (hasEmissionColor)
                 {
-                    mat.EmissionColor.Value = matEmissionColor;
+                    mat.EmissionColor.Value = emissionEnabled
+                        ? matEmissionColor
+                        : new colorX(0,0,0,0);
                 }
                 if (hasMainTex)
                 {
@@ -300,7 +376,9 @@ namespace ImportFromUnityLib
                 }
                 if (hasEmissionColor)
                 {
-                    mat.EmissiveColor.Value = matEmissionColor;
+                    mat.EmissiveColor.Value = emissionEnabled
+                        ? matEmissionColor
+                        : new colorX(0,0,0,0);
                 }
                 if (hasMainTex)
                 {
@@ -356,7 +434,9 @@ namespace ImportFromUnityLib
                 }
                 if (hasEmissionColor)
                 {
-                    mat.EmissiveColor.Value = matEmissionColor;
+                    mat.EmissiveColor.Value = emissionEnabled
+                        ? matEmissionColor
+                        : new colorX(0, 0, 0, 0);
                 }
                 if (hasMainTex)
                 {

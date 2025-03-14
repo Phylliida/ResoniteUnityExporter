@@ -35,6 +35,7 @@ namespace ResoniteUnityExporterShared
     public struct PositionConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
@@ -49,6 +50,7 @@ namespace ResoniteUnityExporterShared
     public struct RotationConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
@@ -63,6 +65,7 @@ namespace ResoniteUnityExporterShared
     public struct ScaleConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
@@ -77,6 +80,7 @@ namespace ResoniteUnityExporterShared
     public struct AimConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
@@ -93,6 +97,7 @@ namespace ResoniteUnityExporterShared
     public struct ParentConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;
@@ -107,6 +112,7 @@ namespace ResoniteUnityExporterShared
     public struct LookAtConstraint_U2Res
     {
         public RefID_U2Res target;
+        public float rescaleFactor;
         public ConstraintSource_U2Res[] sources;
         public bool isActive;
         public float weight;

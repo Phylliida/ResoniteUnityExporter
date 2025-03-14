@@ -9,6 +9,7 @@ namespace ResoniteUnityExporterShared
     public struct ObjectHierarchy_U2Res
     {
         public string hierarchyName;
+        public float rescaleFactor;
         /// <summary>
         /// All objects in the hierarchy (each object may include children)
         /// Each object should have a unique id used for looking it up

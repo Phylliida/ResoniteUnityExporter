@@ -19,6 +19,9 @@ namespace ResoniteUnityExporterShared
         public RefID_U2Res rootAssetsSlot;
         public string materialName;
 
+        public string[] keywords;
+        public bool[] keywordValues;
+
         public string[] floatNames;
         public float[] floatValues;
 

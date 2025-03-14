@@ -74,7 +74,7 @@ namespace ImportFromUnityLib
                 mainParentSlot.LocalScale = new float3(1, 1, 1);
                 float3 customHeadPosition = new float3(avatarData.customHeadPosition.x, avatarData.customHeadPosition.y, avatarData.customHeadPosition.z);
                 relativeCustomHeadPosition = sharedParent.GlobalPointToLocal(customHeadPosition);
-                mainParentSlot.LocalScale = new float3(1.0f/100.0f, 1.0f / 100.0f, 1.0f / 100.0f);
+                mainParentSlot.LocalScale = new float3(1.0f/avatarData.rescaleFactor, 1.0f / avatarData.rescaleFactor, 1.0f / avatarData.rescaleFactor);
             }
             if (avatarData.rescale)
             {
@@ -93,7 +93,7 @@ namespace ImportFromUnityLib
                 float newScale = avatarData.targetScale / largestSize;
                 // this ensures fov adjust is correct
                 */
-                float newScale = 1.0f / 100.0f; // lets just use fixed adjust, hard coded on other side too
+                float newScale = 1.0f / avatarData.rescaleFactor; // lets just use fixed adjust, hard coded on other side too
                 //ImportFromUnityLib.DebugLog("Scale adjust:" + newScale);
                 sharedParent.LocalScale *= new float3(newScale, newScale, newScale);
                 // since we rescale with our custom parent, undo scale on the root
