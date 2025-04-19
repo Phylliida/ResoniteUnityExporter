@@ -479,42 +479,137 @@ namespace ImportFromUnityLib
             //ImportFromUnityLib.DebugLog("got new finger tip midpoint:" + newDirToFingerTipMidpoint.Normalized);
             //ImportFromUnityLib.DebugLog("target direction is        :" + localAviTipRefsMidpoint.Normalized);
 
-            // now the midpoint is lined up, we just need to rotate around vecToFingerTipMidpoint until the two points are best aligned
-            // there's probably an analytic solution (feel free to PR such a solution) but iterative is good enough for a one-time thing
-            int ITERS = 2000;
-            
-            float minScore = float.MaxValue;
-            floatQ bestRotation = floatQ.Identity;
-            floatQ baseLocalRotation = avatarCreatorHand.LocalRotation;
-            float3 localPosition = avatarCreatorHand.LocalPosition;
-            float3 globalPosition = avatarCreatorHand.Parent.LocalPointToGlobal(localPosition);
-            float3 globalScale = avatarCreatorHand.Parent.LocalScaleToGlobal(localScale);
-            for (int i = 0; i < ITERS; i++)
+            //define our starting variables.
+            float3 Axis = localAviTipRefsMidpoint;
+            float3 pointAGoal = avatarCreatorHand.GlobalPointToLocal(globalFingerTipRef1);
+            float3 pointBGoal = avatarCreatorHand.GlobalPointToLocal(globalFingerTipRef2);
+            float3 pointAReal = localAviCreatorTipRef1;
+            float3 pointBReal = localAviCreatorTipRef2;
+
+            //these vectors are all in plane
+            float3 pointAReal_to_Axis = PointToVector(pointAReal, Axis);
+            float3 pointBReal_to_Axis = PointToVector(pointBReal, Axis);
+            float3 pointAGoal_to_Axis = PointToVector(pointAGoal, Axis);
+            float3 pointBGoal_to_Axis = PointToVector(pointBGoal, Axis);
+
+            //I am using a custom implementation of MathX.AngleRad here because 
+            //mathx.anglerad can not return negative angles.
+            //this calculates the distance each point needs to rotate to have ideal orientation
+            float angleA = VectorsToAngle(pointAReal_to_Axis, pointAGoal_to_Axis, Axis);
+            float angleB = VectorsToAngle(pointBReal_to_Axis, pointBGoal_to_Axis, Axis);
+
+            //Error("angleA = " + (float)(angleA * ((float)180f / Math.PI)) + " angleB = " + (float)(angleB * ((float)180f / Math.PI)));
+
+            //calculate the best possible rotation and the worst possible rotation
+            floatQ angleABestRotation = floatQ.AxisAngleRad(Axis, angleA);
+            floatQ angleAWorstRotation = floatQ.AxisAngleRad(Axis, angleA + MathX.PI);
+            floatQ angleBBestRotation = floatQ.AxisAngleRad(Axis, angleB);
+            floatQ angleBWorstRotation = floatQ.AxisAngleRad(Axis, angleB + MathX.PI);
+
+            //find the real world values of rotating the points by the earlier values
+            //This will be used for weighting later.
+            float3 pointABest = angleABestRotation * pointAReal; //quat math isn't commutative lol
+            float3 pointAWorst = angleAWorstRotation * pointAReal;
+            float3 pointBBest = angleBBestRotation * pointBReal;
+            float3 pointBWorst = angleBWorstRotation * pointBReal;
+            //Error("close a " + pointABest + " furth a " + pointAWorst + " close b " + pointBBest + " furth b " + pointBWorst);
+
+            //find the distance to goal point for best and worst case.
+            //This will be used for weighting later.
+            float3 pointABest_to_goal = pointAGoal - pointABest;
+            float3 pointAWorst_to_goal = pointAGoal - pointAWorst;
+            //Warn("pointABest_to_goal.mag = " + pointABest_to_goal.Magnitude + " pointAWorst_to_goal.mag = " + pointAWorst_to_goal.Magnitude);
+            if (pointABest_to_goal.Magnitude > pointAWorst.Magnitude)
             {
-                float angleRotation = 360f * (i / (float)(ITERS - 1));
-                floatQ localRotation = baseLocalRotation * floatQ.AxisAngle(localAviTipRefsMidpoint, angleRotation);
-                avatarCreatorHand.LocalRotation = localRotation;
-                    float score = (
-                       avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef1) -
-                       globalFingerTipRef1
-                    ).Magnitude + (
-                       avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef2) -
-                       globalFingerTipRef2
-                    ).Magnitude;
-                //ImportFromUnityLib.DebugLog("Got score:" + score + " with angle " + angleRotation);
-                //ImportFromUnityLib.DebugLog("fingerTipRef1: " + globalFingerTipRef1);
-                //ImportFromUnityLib.DebugLog("avi tip ref  : " + avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef1));
-                //ImportFromUnityLib.DebugLog("fingerTipRef1: " + globalFingerTipRef2);
-                //ImportFromUnityLib.DebugLog("avi tip ref  : " + avatarCreatorHand.LocalPointToGlobal(localAviCreatorTipRef2));
-                if (score < minScore)
-                {
-                    //ImportFromUnityLib.DebugLog("Got best score:" + score + " with angle " + angleRotation);
-                    minScore = score;
-                    bestRotation = localRotation;
-                }
+                //Error(" ERROR: pointABest.mag is greater than pointAWorst.mag");
             }
-            avatarCreatorHand.LocalRotation = bestRotation;
+
+            //find the distance to goal point for best and worst case.
+            //This will be used for weighting later.
+            float3 pointBBest_to_goal = pointBGoal - pointBBest;
+            float3 pointBWorst_to_goal = pointBGoal - pointBWorst;
+            //Warn("pointBBest_to_goal.mag = " + pointBBest_to_goal.Magnitude + " pointBWorst_to_goal.mag = " + pointBWorst_to_goal.Magnitude);
+            if (pointBBest_to_goal.Magnitude > pointBWorst.Magnitude)
+            {
+                //Error(" ERROR: pointBBest.mag is greater than pointBWorst.mag");
+            }
+
+            //the power, or "significance" of each point is equal to its potential to affect the score.
+            //potential to affect the score is defined as the worst score minus the best score.
+            float powerA = pointAWorst_to_goal.Magnitude - pointABest_to_goal.Magnitude;
+            float powerB = pointBWorst_to_goal.Magnitude - pointBBest_to_goal.Magnitude;
+            if (powerA < 0 || powerB < 0)
+            {
+                //Error(" ERROR: One or more powers are negative");
+                //Error("power A = " + powerA);
+                //Error("power B = " + powerB);
+            }
+
+            //turn the powers into ratios so that we can use them to weight the rotations
+            float sum = powerA + powerB;
+            float ratioA = powerA / sum;
+            float ratioB = powerB / sum;
+            //Error("Ratio A = " + ratioA);
+            //Error("Ratio B = " + ratioB);
+            if (MathX.Abs(ratioA + ratioB - 1) > 0.0001)
+            {
+                //Error("Ratios added together DO NOT EQUAL ONE!!!!!! ERROR: ratios added are: " + (ratioA + ratioB));
+                //Error("power A = " + powerA);
+                //Error("power B = " + powerB);
+            }
+
+            //calculate the average angle weighted by the importance to the score
+            float averageAngle = (float)(angleA * ratioA + angleB * ratioB);
+            floatQ averageRotation = floatQ.AxisAngleRad(Axis, averageAngle);
+
+            //finally, actually evaluate what these rotations mean for our points.
+            float3 finalpointA = averageRotation * pointAReal;
+            float3 finalpointB = averageRotation * pointBReal;
+
+            float3 finalpointA_global = avatarCreatorHand.LocalPointToGlobal((float3)finalpointA);
+            float3 finalpointB_global = avatarCreatorHand.LocalPointToGlobal((float3)finalpointB);
+
+            float myScore = (finalpointA_global - globalFingerTipRef1).Magnitude + (finalpointB_global - globalFingerTipRef2).Magnitude;
+            float degreesAngleForPrint = (float)(averageAngle * (180f / Math.PI));
+            //Msg("Your score was::" + myScore + " with angle " + degreesAngleForPrint);
+            //Msg("First point was " + finalpointA_global + " Second point was " + finalpointB_global);
+
+            avatarCreatorHand.LocalRotation = avatarCreatorHand.LocalRotation * (floatQ)averageRotation;
         }
+
+        static float VectorsToAngle(float3 Vec1, float3 Vec2, float3 Axis)
+        {
+            float dot = MathX.Dot(Vec1, Vec2);
+            float magnitudes = Vec1.Magnitude * Vec2.Magnitude;
+            float dotOverMagnitudes = dot / magnitudes;
+            float angle = MathX.Acos(dotOverMagnitudes); //RADIANS
+
+            //we define vec1 as UP, or Y
+            float3 XVector = MathX.Cross(Vec1, Axis);
+            float XDot = MathX.Dot(XVector, Vec2);
+            //if the dot product is negative, the angle is obtuse
+            //if the angle from the x axis is obtuse, the vector is in the negative X region
+            //I don't know why I am inverting this, but it seems to give me the correct answer
+            //It should be > instead of <, but... it works?
+            float invert = (XDot < 0) ? 1 : -1;
+            //Warn("VectorsToAngle: invert = " + invert + " angle = " + angle + " XDot = " + XDot);
+            return angle * invert;
+        }
+
+        static float3 PointToVector(float3 point, float3 Axis)
+        {
+            //float3's with _to_ in their name are vectors
+            //float3's without that are points
+            float AxisSquared = Axis.SqrMagnitude;
+            float origin_to_pointAReal_DOT_Axis = MathX.Dot(point, Axis);
+            float scalarDistanceAlong_Axis = origin_to_pointAReal_DOT_Axis / AxisSquared;
+            float3 pointARealClosestAxisPoint = scalarDistanceAlong_Axis * Axis;
+
+            float3 pointAReal_to_Axis = pointARealClosestAxisPoint - point;
+
+            return pointAReal_to_Axis;
+        }
+
 
         // loops through fingers to get bounding box of size
         static float3 GetHandSize(BipedRig rig, bool rightSide)
